@@ -9,6 +9,16 @@ isPlainObject = (obj) ->
 
 cache = { }
 
+timeCapsule = (result, prefixes) ->
+  return if prefixes.browsers.selected.length == 0
+  return if prefixes.add.selectors.length > 0
+  return if Object.keys(prefixes.add).length > 2
+
+  result.warn(
+    'Greetings, space traveller. ' +
+    'We are in the golden age of prefix-less CSS, ' +
+    'where Autoprefixer is no longer needed for your stylesheet.')
+
 module.exports = postcss.plugin 'autoprefixer', (reqs...) ->
   if reqs.length == 1 and isPlainObject(reqs[0])
     options = reqs[0]
@@ -32,6 +42,7 @@ module.exports = postcss.plugin 'autoprefixer', (reqs...) ->
 
   plugin = (css, result) ->
     prefixes = loadPrefixes(from: css.source?.input.file)
+    timeCapsule(result, prefixes)
     prefixes.processor.remove(css)      if options.remove != false
     prefixes.processor.add(css, result) if options.add != false
 
