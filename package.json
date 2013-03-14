@@ -1,0 +1,21 @@
+{
+  "name": "rework-vendors",
+  "version": "0.1.0",
+  "description": "Add actual prefixes to Rework by selected browsers",
+  "keywords": ["css", "prefix", "rework"],
+  "author": "Andrey Sitnik <andrey@sitnik.ru>",
+  "dependencies": {
+    "rework": "0.13.2"
+  },
+  "devDependencies": {
+    "coffee-script": "*",
+    "mocha": "*",
+    "sinon": "*",
+    "chai": "*",
+    "sinon-chai": "*"
+  },
+  "main": "index",
+  "scripts": {
+    "test": "mocha --reporter spec --compilers coffee:coffee-script"
+  }
+}

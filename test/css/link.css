@@ -1,0 +1,5 @@
+a {
+  transform: rotate(0);
+  transition: transform 200ms;
+  background: linear-gradient(white, black)
+}
