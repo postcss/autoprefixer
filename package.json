@@ -4,6 +4,11 @@
   "description": "Parse CSS and add prefixed properties and values, when it really necessary for selected browsers.",
   "keywords": ["css", "prefix", "rework"],
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
+  "license": "LGPL 3",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ai/autoprefixer.git"
+  },
   "dependencies": {
     "rework": ">= 0.13.2"
   },
