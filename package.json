@@ -1,7 +1,7 @@
 {
-  "name": "rework-vendors",
+  "name": "autoprefixer",
   "version": "0.1.0",
-  "description": "Add actual prefixes to Rework by selected browsers",
+  "description": "Parse CSS and add prefixed properties and values, when it really necessary for selected browsers.",
   "keywords": ["css", "prefix", "rework"],
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
   "dependencies": {

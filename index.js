@@ -1,1 +1,1 @@
-module.exports = require('./lib/rework-vendors');
+module.exports = require('./lib/autoprefixer');
