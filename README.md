@@ -1,3 +1,4 @@
-# Rework Vendors
+# Autoprefixer
 
-Add actual prefixes to Rework by selected browsers.
+Parse CSS and add prefixed properties and values, when it really necessary
+for selected browsers.
