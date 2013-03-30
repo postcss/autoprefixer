@@ -1,0 +1,8 @@
+#!/usr/bin/env node
+var fs      = require('fs');
+var coffee  = require('coffee-script');
+
+var updaters = fs.readdirSync(__dirname + '/../updaters');
+for ( var i = 0; i < updaters.length; i++ ) {
+    require('../updaters/' + updaters[i]);
+}

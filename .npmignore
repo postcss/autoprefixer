@@ -1,2 +1,7 @@
 node_modules
+
 test
+
+updaters/
+bin/update
+lib/autoprefixer/updater.coffee
