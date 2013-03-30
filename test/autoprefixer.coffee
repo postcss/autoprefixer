@@ -9,13 +9,14 @@ css  = (name) ->
 
 autoprefixer.data.browsers =
   chrome:
-    versions: [3, 2, 1]
+    future:     [5, 4]
+    versions:   [3, 2, 1]
     popularity: [45, 4, 1]
-    prefix: '-webkit-'
+    prefix:     '-webkit-'
   ie:
-    versions: [3, 2, 1]
+    versions:   [3, 2, 1]
     popularity: [45, 4, 1]
-    prefix: '-ms-'
+    prefix:     '-ms-'
 
 autoprefixer.data.props =
   'transform':
@@ -62,11 +63,18 @@ describe 'autoprefixer', ->
       ( -> autoprefixer.filter('AA 10') ).should.throw('Unknown browser `AA`')
 
     it 'should check browser version', ->
-      ( -> autoprefixer.filter('ie') ).should.throw("Can't recognize version in `ie`")
+      ( ->
+        autoprefixer.filter('ie')
+      ).should.throw("Can't recognize version in `ie`")
+
+    it 'should allow future versions', ->
+      autoprefixer.filter(['chrome 5'])
+      autoprefixer.props.should.have.been.calledWith(['chrome 5'])
 
     it 'should normalize browser version', ->
-      autoprefixer.filter(['chrome 100', 'chrome 0.1'])
-      autoprefixer.props.should.have.been.calledWith(['chrome 3', 'chrome 1'])
+      autoprefixer.filter(['chrome 100', 'ie 0.1', 'ie 7'])
+      autoprefixer.props.should.have.been.
+        calledWith(['chrome 5', 'ie 1', 'ie 3'])
 
   describe '.props()', ->
 
