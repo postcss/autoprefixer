@@ -910,5 +910,46 @@ module.exports = {
             "ios 5.1"
         ],
         transition: true
+    },
+    "box-sizing": {
+        browsers: [
+            "ff 2",
+            "ff 3",
+            "ff 4",
+            "ff 5",
+            "ff 6",
+            "ff 7",
+            "ff 8",
+            "ff 9",
+            "ff 10",
+            "ff 11",
+            "ff 12",
+            "ff 13",
+            "ff 14",
+            "ff 15",
+            "ff 16",
+            "ff 17",
+            "ff 18",
+            "ff 19",
+            "ff 20",
+            "ff 21",
+            "ff 3.5",
+            "ff 3.6",
+            "chrome 4",
+            "chrome 5",
+            "chrome 6",
+            "chrome 7",
+            "chrome 8",
+            "chrome 9",
+            "safari 4",
+            "safari 5",
+            "safari 3.1",
+            "safari 3.2",
+            "ios 3.2",
+            "ios 4.0",
+            "ios 4.1",
+            "ios 4.2",
+            "ios 4.3"
+        ]
     }
 };

@@ -30,21 +30,28 @@ browsers = (data) ->
           need.push(updater.browsers[browser] + ' ' + version)
   need
 
+# Transition
 updater.caniuse 'features-json/css-transitions.json', (data) ->
   props 'transition', 'transition-property', 'transition-duration',
         'transition-delay', 'transition-timing-function',
          browsers: browsers(data)
 
+# Transform
 updater.caniuse 'features-json/transforms2d.json', (data) ->
   props 'transform', 'transform-origin', 'transform-style',
         'perspective', 'perspective-origin', 'backface-visibility',
          browsers: browsers(data)
          transition: true
 
+# Gradients
 updater.caniuse '/features-json/css-gradients.json', (data) ->
   props 'linear-gradient', 'repeating-linear-gradient',
         'radial-gradient', 'repeating-radial-gradient',
          browsers: browsers(data)
          onlyValue: true
+
+# Box sizing
+updater.caniuse '/features-json/css3-boxsizing.json', (data) ->
+  props 'box-sizing', browsers: browsers(data)
 
 updater.done -> updater.save('props.js', propsData)
