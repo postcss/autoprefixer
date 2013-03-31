@@ -40,18 +40,25 @@ updater.caniuse 'features-json/css-transitions.json', (data) ->
 updater.caniuse 'features-json/transforms2d.json', (data) ->
   props 'transform', 'transform-origin', 'transform-style',
         'perspective', 'perspective-origin', 'backface-visibility',
-         browsers: browsers(data)
+         browsers:   browsers(data)
          transition: true
 
 # Gradients
-updater.caniuse '/features-json/css-gradients.json', (data) ->
+updater.caniuse 'features-json/css-gradients.json', (data) ->
   props 'linear-gradient', 'repeating-linear-gradient',
         'radial-gradient', 'repeating-radial-gradient',
-         browsers: browsers(data)
+         browsers:  browsers(data)
          onlyValue: true
 
 # Box sizing
-updater.caniuse '/features-json/css3-boxsizing.json', (data) ->
-  props 'box-sizing', browsers: browsers(data)
+updater.caniuse 'features-json/css3-boxsizing.json', (data) ->
+  props 'box-sizing',
+         browsers: browsers(data)
+
+# Filter Effects
+updater.caniuse 'features-json/css-filters.json', (data) ->
+  props 'filter',
+         browsers:   browsers(data)
+         transition: true
 
 updater.done -> updater.save('props.js', properties)

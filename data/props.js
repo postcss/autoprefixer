@@ -108,6 +108,23 @@ module.exports = {
             "ios 4.3"
         ]
     },
+    filter: {
+        browsers: [
+            "chrome 18",
+            "chrome 19",
+            "chrome 20",
+            "chrome 21",
+            "chrome 22",
+            "chrome 23",
+            "chrome 24",
+            "chrome 25",
+            "chrome 26",
+            "chrome 27",
+            "safari 6",
+            "ios 6"
+        ],
+        transition: true
+    },
     "linear-gradient": {
         browsers: [
             "ff 4",
