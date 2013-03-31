@@ -14,12 +14,17 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-updater   = require('../lib/autoprefixer/updater')
-propsData = { }
+updater    = require('../lib/autoprefixer/updater')
+properties = { }
+
+sort = (obj) ->
+  sorted = {}
+  sorted[key] = obj[key] for key in Object.keys(obj).sort()
+  sorted
 
 props = (names..., data) ->
   for name in names
-    propsData[name] = data
+    properties[name] = data
 
 browsers = (data) ->
   need = []
@@ -54,4 +59,4 @@ updater.caniuse '/features-json/css-gradients.json', (data) ->
 updater.caniuse '/features-json/css3-boxsizing.json', (data) ->
   props 'box-sizing', browsers: browsers(data)
 
-updater.done -> updater.save('props.js', propsData)
+updater.done -> updater.save('props.js', sort(properties))
