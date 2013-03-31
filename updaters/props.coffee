@@ -30,6 +30,14 @@ browsers = (data) ->
           need.push(updater.browsers[browser] + ' ' + version)
   need
 
+# Animation
+updater.caniuse 'features-json/css-animation.json', (data) ->
+  props 'animation', 'animation-name', 'animation-duration',
+        'animation-delay', 'animation-direction', 'animation-fill-mode',
+        'animation-iteration-count', 'animation-play-state',
+        'animation-timing-function', '@keyframes',
+         browsers: browsers(data)
+
 # Transition
 updater.caniuse 'features-json/css-transitions.json', (data) ->
   props 'transition', 'transition-property', 'transition-duration',

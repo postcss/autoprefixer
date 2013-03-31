@@ -41,6 +41,11 @@ describe 'autoprefixer', ->
     it 'should compile CSS', ->
       autoprefixer.compile(css('link')).should.equal(css('link.out'))
 
+    it 'should add keyframes filter', ->
+      sinon.stub(autoprefixer, 'props').returns(
+        [name: '@keyframes', prefixes: ['-webkit-', '-ms-']])
+      autoprefixer.compile(css('keyframes')).should.equal(css('keyframes.out'))
+
   describe '.parse()', ->
     beforeEach -> sinon.stub(autoprefixer, 'props').returns([])
 
