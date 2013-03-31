@@ -1018,6 +1018,32 @@ module.exports = {
         ],
         transition: true
     },
+    calc: {
+        browsers: [
+            "ff 4",
+            "ff 5",
+            "ff 6",
+            "ff 7",
+            "ff 8",
+            "ff 9",
+            "ff 10",
+            "ff 11",
+            "ff 12",
+            "ff 13",
+            "ff 14",
+            "ff 15",
+            "chrome 19",
+            "chrome 20",
+            "chrome 21",
+            "chrome 22",
+            "chrome 23",
+            "chrome 24",
+            "chrome 25",
+            "safari 6",
+            "ios 6"
+        ],
+        onlyValue: true
+    },
     "column-count": {
         browsers: [
             "ff 2",
