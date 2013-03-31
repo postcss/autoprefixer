@@ -17,11 +17,6 @@
 updater    = require('../lib/autoprefixer/updater')
 properties = { }
 
-sort = (obj) ->
-  sorted = {}
-  sorted[key] = obj[key] for key in Object.keys(obj).sort()
-  sorted
-
 props = (names..., data) ->
   for name in names
     properties[name] = data
@@ -59,4 +54,4 @@ updater.caniuse '/features-json/css-gradients.json', (data) ->
 updater.caniuse '/features-json/css3-boxsizing.json', (data) ->
   props 'box-sizing', browsers: browsers(data)
 
-updater.done -> updater.save('props.js', sort(properties))
+updater.done -> updater.save('props.js', properties)
