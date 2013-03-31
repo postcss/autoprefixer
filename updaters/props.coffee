@@ -81,6 +81,18 @@ updater.caniuse 'features-json/multicolumn.json', (data) ->
 # User select
 updater.caniuse 'features-json/user-select-none.json', (data) ->
   props 'user-select',
+         browsers: browsers(data)
+
+# Flexible Box Layout
+updater.caniuse 'features-json/flexbox.json', (data) ->
+  props 'flex',
          browsers:   browsers(data)
+         onlyValue:  true
+
+  props 'flex', 'flex-direction', 'flex-wrap', 'flex-flow', 'flex-grow',
+        'flex-shrink', 'flex-basis', 'justify-content', 'order',
+        'align-items', 'align-self', 'align-content',
+         browsers:   browsers(data)
+         transition: true
 
 updater.done -> updater.save('props.js', properties)
