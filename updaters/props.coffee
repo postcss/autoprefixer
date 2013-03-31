@@ -78,4 +78,9 @@ updater.caniuse 'features-json/multicolumn.json', (data) ->
          browsers:   browsers(data)
          transition: true
 
+# User select
+updater.caniuse 'features-json/user-select-none.json', (data) ->
+  props 'user-select',
+         browsers:   browsers(data)
+
 updater.done -> updater.save('props.js', properties)
