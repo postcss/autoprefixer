@@ -57,5 +57,5 @@ module.exports =
                "// See updaters/ dir for generator. " +
                   "Run bin/update to update.\n\n"
     content += "module.exports = " + JSON.stringify(sorted, null, 4) + ";\n"
-    content  = content.replace(/"([^-"]+)":/g, '$1:')
+    content  = content.replace(/"([^@-"]+)":/g, '$1:')
     fs.writeFileSync(file, content)

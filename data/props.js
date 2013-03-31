@@ -2,7 +2,7 @@
 // See updaters/ dir for generator. Run bin/update to update.
 
 module.exports = {
-    @keyframes: {
+    '@keyframes': {
         browsers: [
             "ff 5",
             "ff 6",
