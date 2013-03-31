@@ -69,4 +69,13 @@ updater.caniuse 'features-json/css-filters.json', (data) ->
          browsers:   browsers(data)
          transition: true
 
+# Multicolumns
+updater.caniuse 'features-json/multicolumn.json', (data) ->
+  props 'columns', 'column-width', 'column-count', 'column-gap',
+        'column-rule', 'column-rule-color', 'column-rule-style',
+        'column-rule-width', 'break-before', 'break-after', 'break-inside',
+        'column-span', 'column-fill',
+         browsers:   browsers(data)
+         transition: true
+
 updater.done -> updater.save('props.js', properties)
