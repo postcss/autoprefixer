@@ -38,10 +38,8 @@ updater.caniuse 'data.json', (data) ->
     result.popularity = versions.map (i) -> info.usage_global[i[1]] / i[2]
     result
 
-  updater.save 'browsers.js',
-    chrome:  agent('chrome')
-    ff:      agent('firefox')
-    ie:      agent('ie')
-    safari:  agent('safari')
-    opera:   agent('opera')
-    ios:     agent('ios_saf')
+  browsers = { }
+  for caniuse, internal of updater.browsers
+    browsers[internal] = agent(caniuse)
+
+  updater.save('browsers.js', browsers)

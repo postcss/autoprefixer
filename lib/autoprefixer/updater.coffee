@@ -20,6 +20,15 @@ fs    = require('fs')
 
 module.exports =
 
+  # Can I Use browser names to internal
+  browsers:
+    firefox: 'ff'
+    chrome:  'chrome'
+    safari:  'safari'
+    ios_saf: 'ios'
+    opera:   'opera'
+    ie:      'ie'
+
   # Load file from Can I Use repository and run `callback` with JSON content.
   caniuse: (file, callback) ->
     https.get 'https://raw.github.com/Fyrd/caniuse/master/data.json', (res) ->
