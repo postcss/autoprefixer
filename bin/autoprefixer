@@ -18,10 +18,11 @@
  */
 'use strict';
 
-var argv   = process.argv.slice(2);
-var reqs   = undefined;
-var output = undefined;
-var inputs = [];
+var argv    = process.argv.slice(2);
+var reqs    = undefined;
+var output  = undefined;
+var inputs  = [];
+var inspect = false;
 
 // Help
 
@@ -33,8 +34,9 @@ function showHelp() {
     h.push('Parse CSS files and add prefixed properties and values.');
     h.push('');
     h.push('Options:');
-    h.push('  -b, --browsers REQUIRES  add prefixes for selected browsers');
+    h.push('  -b, --browsers BROWSERS  add prefixes for selected browsers');
     h.push('  -o, --output FILE        set output CSS file');
+    h.push('  -i, --inspect            show selected browsers and properties');
     h.push('  -h, --help               show help text');
     h.push('  -v, --version            print program version');
     h.push('');
@@ -45,9 +47,11 @@ function showHelp() {
     h.push("  Output CSS will be written to stdout stream on " +
              "`-o -' argument or stdin input.");
     h.push('');
-    h.push('Requires:');
+    h.push('Browsers:');
     h.push('  Separate browsers by comma. For example, ' +
              "`-b \"> 1%, opera 12\".");
+    h.push("  You can set browsers by global usage statictics: `-b \"> 1%\"'");
+    h.push("  or last version: `-b \"2 last versions\"' (by default).");
     process.stdout.write(h.join("\n") + "\n");
     process.exit(0);
 }
@@ -63,6 +67,9 @@ while ( argv.length > 0 ) {
         var version = require('../package.json').version;
         process.stdout.write('autoprefixer ' + version + "\n");
         process.exit(0);
+
+    } else if ( arg == '-i' || arg == '--inspect' ) {
+        inspect = true;
 
     } else if ( arg == '-b' || arg == '--browsers' ) {
         var reqs = argv.shift();
@@ -84,7 +91,7 @@ if ( inputs.length == 0 ) {
     }
 }
 
-if (reqs) {
+if ( reqs ) {
     reqs = reqs.split(',').map(function (req) {
         return req.replace(/^\s+|\s+$/g, '');
     });
@@ -93,8 +100,14 @@ if (reqs) {
 // Work
 
 var autoprefixer = require('..');
-var fs           = require('fs');
 
+if ( inspect ) {
+    var output = require('../lib/autoprefixer/inspect')(reqs);
+    process.stdout.write(output);
+    process.exit(0);
+}
+
+var fs = require('fs');
 for (var i = 0; i < inputs.length; i++) {
     var css      = fs.readFileSync(inputs[i]).toString();
     var prefixed = autoprefixer.compile(css, reqs);

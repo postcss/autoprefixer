@@ -78,3 +78,8 @@ describe 'binary', ->
     child.exec "echo '#{css}' | bin/autoprefixer -b 'chrome 25'", (_, out) ->
       trim(out).should.eql('a { -webkit-transition: 1s; transition: 1s } ')
       done()
+
+  it 'should inspect', (done) ->
+    exec '-i', (out) ->
+      out.should.match(/^Browsers:/)
+      done()
