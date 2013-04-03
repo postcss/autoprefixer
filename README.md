@@ -2,3 +2,83 @@
 
 Parse CSS and add prefixed properties and values, when it really necessary
 for selected browsers.
+
+```js
+var css = 'a { transition: transform 1s }';
+var prefixed = autoprefixer.compile(css);
+```
+
+yields:
+
+```css
+a {
+  -webkit-transition: -webkit-transform 1s;
+  -ms-transition: -ms-transform 1s;
+  -o-transition: -o-transform 1s;
+  -webkit-transition: transform 1s;
+  -o-transition: transform 1s;
+  transition: transform 1s
+}
+```
+
+Features:
+* You write normal CSS (or use Autoprefixer after Sass, Stylus
+  or other compiler).
+* You write normal properties (not special mixins), so you didn’t remember
+  which properties need prefixes now.
+* Autoprefixed use only really necessary prefixes. You set browsers (by default,
+  it’s last 2 version of each browsers). Do you know, that `border-radius`
+  [is not necessary](http://caniuse.com/border-radius) for a long time?
+* Properties and browsers database is updated automatically
+  (from [Can I Use](http://caniuse.com/)), so prefixes will be always actual
+  (scripts hasn’t holidays and work).
+* It add prefixes also to the values. For example, to `calc(1em + 5px)` or
+  to properties names in `transition`.
+
+## Browsers
+
+You can specify browsers, actual for your project (by default, it’s
+`"last 2 versions"`):
+
+```js
+autoprefixer.compile(css, ["last 1 version", "> 1%", "ie 8", "ie 7"]);
+```
+
+* `"last n versions"` is last `n` versions for each browsers (for example,
+  [Google also use](http://support.google.com/a/bin/answer.py?answer=33864)
+  “last 2 version” strategy).
+* `> n%` is browser versions, which global usage statistics is more than `n`%.
+* You can also set browsers directly.
+
+## Usage
+
+### Node.js
+
+Use `autoprefixer` npm-package:
+
+```js
+var autoprefixer = require('autoprefixer');
+var prefixed     = autoprefixer.compile(css);
+```
+
+### Rework
+
+Autoprefixer is a [Rework](https://github.com/visionmedia/rework) filter,
+so you can can combine it with another filters:
+
+```js
+rework(css).
+    use( autoprefixer.filter(["> 1%", "opera 12.5"]) ).
+    use( rework.references() ).
+    toString()
+```
+
+### Others
+
+You can use `autoprefixed` binary to process CSS files in any assets manager:
+
+```
+autoprefixer *.css
+```
+
+See `autoprefixer -h` for help.
