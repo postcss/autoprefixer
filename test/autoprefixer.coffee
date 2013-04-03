@@ -54,8 +54,9 @@ describe 'autoprefixer', ->
       autoprefixer.props.should.have.been.calledWith(['chrome 3', 'ie 3'])
 
     it 'should parse popularity', ->
-      autoprefixer.filter('> 40%')
-      autoprefixer.props.should.have.been.calledWith(['chrome 3', 'ie 3'])
+      autoprefixer.filter('> 0.9%')
+      autoprefixer.props.should.have.been.calledWith(
+        ['chrome 3', 'chrome 2', 'chrome 1', 'ie 3', 'ie 2', 'ie 1'])
 
     it 'should parse manuall', ->
       autoprefixer.filter(['chrome 2', 'ie 2'])
