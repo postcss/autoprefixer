@@ -1,0 +1,108 @@
+#!/usr/bin/env node
+/*
+ * Copyright 2013 Andrey Sitnik <andrey@sitnik.ru>,
+ * sponsored by Evil Martians.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+'use strict';
+
+var argv   = process.argv.slice(2);
+var reqs   = undefined;
+var output = undefined;
+var inputs = [];
+
+// Help
+
+var usage = "Usage: autoprefixer [OPTION...] FILES";
+
+function showHelp() {
+    var h = [usage];
+    h.push('');
+    h.push('Parse CSS files and add prefixed properties and values.');
+    h.push('');
+    h.push('Options:');
+    h.push('  -b, --browsers REQUIRES  add prefixes for selected browsers');
+    h.push('  -o, --output FILE        set output CSS file');
+    h.push('  -h, --help               show help text');
+    h.push('  -v, --version            print program version');
+    h.push('');
+    h.push('Files:');
+    h.push("  Be default, prefixed CSS will rewrite original files.");
+    h.push("  If you didn't set input files, " +
+             "autoprefixer will read from stdin stream.");
+    h.push("  Output CSS will be written to stdout stream on " +
+             "`-o -' argument or stdin input.");
+    h.push('');
+    h.push('Requires:');
+    h.push('  Separate browsers by comma. For example, ' +
+             "`-b \"> 1%, opera 12\".");
+    process.stdout.write(h.join("\n") + "\n");
+    process.exit(0);
+}
+
+// Options
+
+while ( argv.length > 0 ) {
+    var arg = argv.shift();
+    if ( arg == '-h' || arg == '--help' ) {
+        showHelp();
+
+    } else if ( arg == '-v' || arg == '--version' ) {
+        var version = require('../package.json').version;
+        process.stdout.write('autoprefixer ' + version + "\n");
+        process.exit(0);
+
+    } else if ( arg == '-b' || arg == '--browsers' ) {
+        var reqs = argv.shift();
+
+    } else if ( arg == '-o' || arg == '--output' ) {
+        var output = argv.shift();
+
+    } else {
+        inputs.push(arg);
+    }
+}
+
+// Options
+
+if ( inputs.length == 0 ) {
+    inputs = ['/dev/stdin'];
+    if ( !output ) {
+        output = '-';
+    }
+}
+
+if (reqs) {
+    reqs = reqs.split(',').map(function (req) {
+        return req.replace(/^\s+|\s+$/g, '');
+    });
+}
+
+// Work
+
+var autoprefixer = require('..');
+var fs           = require('fs');
+
+for (var i = 0; i < inputs.length; i++) {
+    var css      = fs.readFileSync(inputs[i]).toString();
+    var prefixed = autoprefixer.compile(css, reqs);
+    if ( output == undefined ) {
+        fs.writeFileSync(inputs[i], prefixed);
+    } else if ( output == '-' ) {
+        process.stdout.write(prefixed + "\n");
+    } else {
+        fs.writeFileSync(output, prefixed);
+    }
+}
