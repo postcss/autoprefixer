@@ -11,15 +11,15 @@ autoprefixer.data.browsers =
   chrome:
     future:     [5, 4]
     versions:   [3, 2, 1]
-    popularity: [45, 4, 1]
+    popularity: [45, 5, 0.5]
     prefix:     '-webkit-'
   ie:
     versions:   [3, 2, 1]
-    popularity: [45, 4, 1]
+    popularity: [45, 4, 0.5]
     prefix:     '-ms-'
 
 autoprefixer.data.props =
-  'transform':
+  transform:
     browsers: ['ie 3', 'chrome 1']
     transition: true
   'linear-gradient':
@@ -56,7 +56,7 @@ describe 'autoprefixer', ->
     it 'should parse popularity', ->
       autoprefixer.filter('> 0.9%')
       autoprefixer.props.should.have.been.calledWith(
-        ['chrome 3', 'chrome 2', 'chrome 1', 'ie 3', 'ie 2', 'ie 1'])
+        ['chrome 3', 'chrome 2', 'ie 3', 'ie 2'])
 
     it 'should parse manuall', ->
       autoprefixer.filter(['chrome 2', 'ie 2'])
