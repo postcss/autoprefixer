@@ -2,11 +2,19 @@ fs     = require('fs')
 child  = require('child_process')
 should = require('chai').should()
 
-exec = (args..., callback) ->
+exec = (args, callback) ->
   opts = if typeof(args[args.length - 1]) == 'object' then args.pop() else {}
-  child.execFile 'bin/autoprefixer', args, opts, (error, out, err) ->
+  child.execFile('bin/autoprefixer', args, opts, callback)
+
+bin = (args..., callback) ->
+  exec args, (error, out, err) ->
     should.not.exist(error)
     callback(out)
+
+error = (args..., callback) ->
+  exec args, (error, out, err) ->
+    should.exist(error)
+    callback(err)
 
 input = (file, css) ->
   fs.mkdirSync('test/fixtures') unless fs.existsSync('test/fixtures')
@@ -28,18 +36,18 @@ describe 'binary', ->
       fs.rmdirSync('test/fixtures')
 
   it 'should show version', (done) ->
-    exec '-v', (out) ->
+    bin '-v', (out) ->
       out.should.match(/^autoprefixer [\d\.]+\n$/)
       done()
 
   it 'should show help', (done) ->
-    exec '-h', (out) ->
+    bin '-h', (out) ->
       out.should.match(/^Usage: /)
       done()
 
   it 'should use 2 last browsers by default', (done) ->
     input 'a', css
-    exec 'test/fixtures/a', (out) ->
+    bin 'test/fixtures/a', (out) ->
       out.should.eql('')
       read('a').should.eql('a { -webkit-transition: 1s; ' +
                                '-o-transition: 1s; transition: 1s }')
@@ -47,7 +55,7 @@ describe 'binary', ->
 
   it 'should change browsers', (done) ->
     input 'a', css
-    exec 'test/fixtures/a', '--browsers', 'chrome 25, ff 15', ->
+    bin 'test/fixtures/a', '--browsers', 'chrome 25, ff 15', ->
       read('a').should.eql('a { -webkit-transition: 1s; ' +
                                '-moz-transition: 1s; transition: 1s }')
       done()
@@ -55,21 +63,21 @@ describe 'binary', ->
   it 'should rewrite several files', (done) ->
     input 'a', css
     input 'b', 'b { transition: 1s }'
-    exec 'test/fixtures/a', 'test/fixtures/b', '-b', 'chrome 25', ->
+    bin 'test/fixtures/a', 'test/fixtures/b', '-b', 'chrome 25', ->
       read('a').should.eql('a { -webkit-transition: 1s; transition: 1s }')
       read('b').should.eql('b { -webkit-transition: 1s; transition: 1s }')
       done()
 
   it 'should change output file', (done) ->
     input 'a', css
-    exec 'test/fixtures/a', '-o', 'test/fixtures/b', '-b', 'chrome 25', ->
+    bin 'test/fixtures/a', '-o', 'test/fixtures/b', '-b', 'chrome 25', ->
       read('a').should.eql('a { transition: 1s }')
       read('b').should.eql('a { -webkit-transition: 1s; transition: 1s }')
       done()
 
   it 'should output to stdout', (done) ->
     input 'a', css
-    exec 'test/fixtures/a', '-o', '-', '-b', 'chrome 25', (out) ->
+    bin 'test/fixtures/a', '-o', '-', '-b', 'chrome 25', (out) ->
       read('a').should.eql('a { transition: 1s }')
       trim(out).should.eql('a { -webkit-transition: 1s; transition: 1s } ')
       done()
@@ -80,6 +88,16 @@ describe 'binary', ->
       done()
 
   it 'should inspect', (done) ->
-    exec '-i', (out) ->
+    bin '-i', (out) ->
       out.should.match(/^Browsers:/)
+      done()
+
+  it "should raise error, when files isn't exists", (done) ->
+    error 'test/fixtures/a', (err) ->
+      err.should.eql("autoprefixer: File 'test/fixtures/a' doesn't exists\n")
+      done()
+
+  it 'should raise error on unknown argumnets', (done) ->
+    error '-x', (err) ->
+      err.should.eql("autoprefixer: Unknown argument -x\n")
       done()

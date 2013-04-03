@@ -28,7 +28,7 @@ var inspect = false;
 
 var usage = "Usage: autoprefixer [OPTION...] FILES";
 
-function showHelp() {
+function showHelp(error) {
     var h = [usage];
     h.push('');
     h.push('Parse CSS files and add prefixed properties and values.');
@@ -39,21 +39,24 @@ function showHelp() {
     h.push('  -i, --inspect            show selected browsers and properties');
     h.push('  -h, --help               show help text');
     h.push('  -v, --version            print program version');
-    h.push('');
-    h.push('Files:');
-    h.push("  Be default, prefixed CSS will rewrite original files.");
-    h.push("  If you didn't set input files, " +
-             "autoprefixer will read from stdin stream.");
-    h.push("  Output CSS will be written to stdout stream on " +
-             "`-o -' argument or stdin input.");
-    h.push('');
-    h.push('Browsers:');
-    h.push('  Separate browsers by comma. For example, ' +
-             "`-b \"> 1%, opera 12\".");
-    h.push("  You can set browsers by global usage statictics: `-b \"> 1%\"'");
-    h.push("  or last version: `-b \"2 last versions\"' (by default).");
+    if ( !error ) {
+        h.push('');
+        h.push('Files:');
+        h.push("  Be default, prefixed CSS will rewrite original files.");
+        h.push("  If you didn't set input files, " +
+               "autoprefixer will read from stdin stream.");
+        h.push("  Output CSS will be written to stdout stream on " +
+               "`-o -' argument or stdin input.");
+        h.push('');
+        h.push('Browsers:');
+        h.push('  Separate browsers by comma. For example, ' +
+               "`-b \"> 1%, opera 12\".");
+        h.push("  You can set browsers by global usage statictics: " +
+               "`-b \"> 1%\"'");
+        h.push("  or last version: `-b \"2 last versions\"' (by default).");
+    }
     process.stdout.write(h.join("\n") + "\n");
-    process.exit(0);
+    process.exit(error ? 1 : 0);
 }
 
 // Options
@@ -76,6 +79,10 @@ while ( argv.length > 0 ) {
 
     } else if ( arg == '-o' || arg == '--output' ) {
         var output = argv.shift();
+
+    } else if ( arg.match(/^-\w$/) || arg.match(/^--\w[\w-]+$/) ) {
+        process.stderr.write('autoprefixer: Unknown argument ' + arg + "\n");
+        showHelp(true);
 
     } else {
         inputs.push(arg);
@@ -109,7 +116,13 @@ if ( inspect ) {
 
 var fs = require('fs');
 for (var i = 0; i < inputs.length; i++) {
-    var css      = fs.readFileSync(inputs[i]).toString();
+    if ( !fs.existsSync(inputs[i]) ) {
+        process.stderr.write(
+            "autoprefixer: File '" + inputs[i] + "' doesn't exists\n");
+        process.exit(1);
+    }
+
+    var css = fs.readFileSync(inputs[i]).toString();
     var prefixed = autoprefixer.compile(css, reqs);
     if ( output == undefined ) {
         fs.writeFileSync(inputs[i], prefixed);
