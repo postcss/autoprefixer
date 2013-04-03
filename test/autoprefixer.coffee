@@ -29,13 +29,6 @@ autoprefixer.data.props =
 describe 'autoprefixer', ->
   afterEach -> autoprefixer[i].restore?() for i of autoprefixer
 
-  describe '.filter()', ->
-    beforeEach -> sinon.stub(autoprefixer, 'parse').returns([])
-
-    it 'should use default requirement', ->
-      autoprefixer.filter()
-      autoprefixer.parse.should.have.been.calledWith(['last 2 versions'])
-
   describe '.compile()', ->
 
     it 'should compile CSS', ->
@@ -48,6 +41,11 @@ describe 'autoprefixer', ->
 
   describe '.parse()', ->
     beforeEach -> sinon.stub(autoprefixer, 'props').returns([])
+
+    it 'should use default requirement', ->
+      autoprefixer.filter()
+      autoprefixer.props.should.have.been.calledWith(
+        ['chrome 3', 'chrome 2', 'ie 3', 'ie 2'])
 
     it 'should parse last versions', ->
       autoprefixer.filter('last 1 versions')
