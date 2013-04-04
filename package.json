@@ -22,7 +22,7 @@
   "bin": {
     "autoprefixer": "./bin/autoprefixer"
   },
-  "main": "index",
+  "main": "lib/autoprefixer",
   "scripts": {
     "test": "mocha --reporter spec --compilers coffee:coffee-script"
   }
