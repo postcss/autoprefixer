@@ -78,6 +78,7 @@ rework(css).
 You can use `autoprefixer` binary to process CSS files in any assets manager:
 
 ```
+sudo npm install --global autoprefixer
 autoprefixer *.css
 ```
 
