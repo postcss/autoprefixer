@@ -1,7 +1,6 @@
 node_modules
 
 test
-
+Cakefile
 updaters/
-bin/update
 lib/autoprefixer/updater.coffee
