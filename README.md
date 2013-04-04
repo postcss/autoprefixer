@@ -1,6 +1,7 @@
 # Autoprefixer
 
-Parses CSS and add prefixed properties and values when it really necessary for selected browsers.
+Parses CSS and add prefixed properties and values when it really necessary
+for selected browsers.
 
 ```js
 var css = 'a { transition: transform 1s }';
@@ -24,7 +25,8 @@ Features:
 
 * You write normal CSS (or use Autoprefixer after Sass, Stylus
   or another preprocessor).
-* You write normal properties (not special mixins), so you don't need to remember which properties needs to be prefixed.
+* You write normal properties (not special mixins), so you don’t need to
+  remember which properties needs to be prefixed.
 * Autoprefixed uses only really necessary prefixes. You set browsers (by default
   last 2 version for each browsers). Do you know, that prefixes for
   `border-radius` [is not necessary](http://caniuse.com/border-radius)
@@ -44,7 +46,7 @@ You can specify browsers actual for your project (by default, it’s
 autoprefixer.compile(css, ["last 1 version", "> 1%", "ie 8", "ie 7"]);
 ```
 
-* `"last n versions"` is last `n` versions for each browser (for example,
+* `last n versions` is last `n` versions for each browser (for example,
   [Google also uses](http://support.google.com/a/bin/answer.py?answer=33864)
   “last 2 version” strategy).
 * `> n%` is browser versions, which global usage statistics is more than `n`%.
@@ -60,6 +62,11 @@ Use `autoprefixer` npm-package:
 var autoprefixer = require('autoprefixer');
 var prefixed     = autoprefixer.compile(css);
 ```
+
+### JavaScript
+
+You can use Autoprefixer in browser or non-node JS runtime
+by [standalone version](https://raw.github.com/ai/autoprefixer-rails/master/vendor/autoprefixer.js).
 
 ### Rework
 
