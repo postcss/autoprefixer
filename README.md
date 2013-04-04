@@ -27,7 +27,7 @@ Features:
 * You write normal properties (not special mixins), so you didn’t remember
   which properties need prefixes now.
 * Autoprefixed uses only really necessary prefixes. You set browsers (by default
-  last 2 version for each browsers). Do you know, that prefixes for
+  last 2 version for each browsers). Do you know, that prefixes for
   `border-radius` [is not necessary](http://caniuse.com/border-radius)
   for a long time?
 * Properties and browsers database is updated automatically
