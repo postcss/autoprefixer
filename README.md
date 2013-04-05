@@ -12,8 +12,8 @@ var prefixed = autoprefixer.compile(css);
 ```
 
 Autoprefixer will take own database (from [Can I Use](http://caniuse.com/))
-with current browser statistics and properties support and adds only actual
-prefixes:
+with current browser statistics and properties support and adds only
+actual prefixes:
 
 ```css
 a {
