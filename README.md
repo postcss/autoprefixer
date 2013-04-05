@@ -3,12 +3,15 @@
 Parses CSS and add prefixed properties and values when it really necessary
 for selected browsers.
 
+Write your CSS usual code prefixes (forget about them at all, Autoprefixer
+will think for you):
+
 ```js
 var css = 'a { transition: transform 1s }';
 var prefixed = autoprefixer.compile(css);
 ```
 
-yields:
+Autoprefixer will take current browser statistics and adds only actual prefixes:
 
 ```css
 a {
