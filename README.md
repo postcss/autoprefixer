@@ -3,15 +3,17 @@
 Parses CSS and add prefixed properties and values when it really necessary
 for selected browsers.
 
-Write your CSS usual code prefixes (forget about them at all, Autoprefixer
-will think for you):
+Write your CSS usual code without prefixes (forget about them at all,
+Autoprefixer will think for you):
 
 ```js
 var css = 'a { transition: transform 1s }';
 var prefixed = autoprefixer.compile(css);
 ```
 
-Autoprefixer will take current browser statistics and adds only actual prefixes:
+Autoprefixer will take own database (from [Can I Use](http://caniuse.com/))
+with current browser statistics and properties support and adds only actual
+prefixes:
 
 ```css
 a {
@@ -24,7 +26,7 @@ a {
 }
 ```
 
-Features:
+## Features
 
 * You write normal CSS (or use Autoprefixer after Sass, Stylus
   or another preprocessor).
@@ -56,6 +58,30 @@ autoprefixer.compile(css, ["last 1 version", "> 1%", "ie 8", "ie 7"]);
 * You can also set browsers directly.
 
 ## Usage
+
+### Ruby on Rails
+
+Add `autoprefixer-rails` [gem](https://github.com/ai/autoprefixer-rails)
+to `Gemfile` and write CSS in usual way:
+
+```ruby
+gem "autoprefixer-rails"
+```
+
+### Ruby
+
+You can integrate Autoprefxier to your Sprockets environment
+by `autoprefixer-rails` gem:
+
+```ruby
+AutoprefixerRails.install(sprockets_env)
+```
+
+or process CSS from plain Ruby:
+
+```ruby
+prefixed = AutoprefixerRails.compile(css)
+```
 
 ### Node.js
 
