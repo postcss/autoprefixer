@@ -1,6 +1,9 @@
-node_modules
+node_modules/
+components/
+build/
 
-test
+test/
 Cakefile
+
 updaters/
 lib/autoprefixer/updater.coffee

@@ -1,0 +1,14 @@
+{
+  "name": "autoprefixer",
+  "version": "0.1.20130409",
+  "description": "Parse CSS and add prefixed properties and values, when it really necessary for selected browsers.",
+  "keywords": ["css", "prefix", "rework"],
+  "dependencies": {
+    "visionmedia/rework": "0.14.0"
+  },
+  "scripts": [
+    "data/browsers.js",
+    "data/props.js",
+    "lib/autoprefixer.js"
+  ]
+}

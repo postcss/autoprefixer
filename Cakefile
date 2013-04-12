@@ -1,30 +1,39 @@
-fs = require('fs')
+fs   = require('fs')
+exec = require('child_process').exec
 
 task 'update', 'Update browsers and properties data', ->
    require('./updaters/' + i) for i in fs.readdirSync(__dirname + '/updaters')
 
 task 'build', 'Build autoprefixer.js to standalone work', ->
-  https = require('https')
+  save = ->
+    build = __dirname + '/build/build.js'
+    js = ";(function () {" +
+         fs.readFileSync(build).toString() +
 
-  js = fs.readFileSync(__dirname + '/lib/autoprefixer.js').toString()
-  js = js.replace("'use strict';\n", '')
-  js = js.replace("module.exports = autoprefixer;",
-                  "window.autoprefixer = autoprefixer;\n})();")
+         "require.register('visionmedia-rework/lib/plugins/inline.js', " +
+            "function(_, _, module){\n" +
+          "module.exports = function () {};\n" +
+          "});\n\n" +
 
-  data = (file) ->
-    fs.readFileSync("#{ __dirname }/data/#{ file }.js").toString().
-      replace('module.exports = ', '').
-      replace(/\/\/[^\n]+\n+/g, '').
-      replace("};\n", '}')
+         "var path = 'autoprefixer/lib/autoprefixer.js';\n" +
+         "if (typeof exports == 'object') {\n" +
+         "  module.exports = require(path);\n" +
+         "} else if (typeof define == 'function' && define.amd) {\n" +
+         "  define(function(){ return require(path); });\n" +
+         "} else {\n" +
+         "  this['autoprefixer'] = require(path);\n" +
+         "} })();"
 
-  js = js.replace "require('../data/browsers')", -> data('browsers')
-  js = js.replace "require('../data/props')",    -> data('props')
+    fs.writeFileSync(__dirname + '/autoprefixer.js', js)
+    fs.unlinkSync(build)
+    fs.rmdirSync(__dirname + '/build/')
 
-  url = 'https://raw.github.com/visionmedia/rework/master/rework.js'
-  https.get url, (res) ->
-    rework = '';
-    res.on 'data', (chunk) -> rework += chunk
-    res.on 'end', ->
-      js = js.replace "var rework = require('rework');", ->
-         rework + "\n(function () {"
-      fs.writeFileSync(__dirname + '/autoprefixer.js', js)
+  npm_bin = (cmd, callback) ->
+    exec "./node_modules/.bin/#{ cmd }", (error, stdout, stderr) ->
+      process.stderr.write(stderr)
+      process.exit(1) if error
+      callback()
+
+  npm_bin 'component install', ->
+    npm_bin 'component build', ->
+      save()
