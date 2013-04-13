@@ -12,17 +12,18 @@ task 'build', 'Build autoprefixer.js to standalone work', ->
          fs.readFileSync(build).toString() +
 
          "require.register('visionmedia-rework/lib/plugins/inline.js', " +
-            "function(_, _, module){\n" +
-          "module.exports = function () {};\n" +
-          "});\n\n" +
+           "function(_, _, module){\n" +
+         "module.exports = function () {};\n" +
+         "});\n\n" +
 
-         "var path = 'autoprefixer/lib/autoprefixer.js';\n" +
+         "var autoprefixer = require('autoprefixer/lib/autoprefixer.js');\n" +
+         "autoprefixer.inspect = require('autoprefixer/lib/autoprefixer/inspect.js');\n" +
          "if (typeof exports == 'object') {\n" +
-         "  module.exports = require(path);\n" +
+         "  module.exports = autoprefixer;\n" +
          "} else if (typeof define == 'function' && define.amd) {\n" +
-         "  define(function(){ return require(path); });\n" +
+         "  define(function(){ return autoprefixer; });\n" +
          "} else {\n" +
-         "  this['autoprefixer'] = require(path);\n" +
+         "  this['autoprefixer'] = autoprefixer;\n" +
          "} })();"
 
     fs.writeFileSync(__dirname + '/autoprefixer.js', js)
