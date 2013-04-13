@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-updater = require('../lib/autoprefixer/updater')
+updater = require('./lib/updater')
 
 updater.caniuse 'data.json', (data) ->
   normalize = (array) -> array.reverse().filter (i) -> i

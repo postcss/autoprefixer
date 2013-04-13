@@ -2,7 +2,8 @@ fs   = require('fs')
 exec = require('child_process').exec
 
 task 'update', 'Update browsers and properties data', ->
-   require('./updaters/' + i) for i in fs.readdirSync(__dirname + '/updaters')
+  for i in fs.readdirSync(__dirname + '/updaters')
+    require('./updaters/' + i) if i.match(/\.coffee$/)
 
 task 'build', 'Build autoprefixer.js to standalone work', ->
   save = ->

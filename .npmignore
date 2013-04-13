@@ -6,4 +6,3 @@ test/
 Cakefile
 
 updaters/
-lib/autoprefixer/updater.coffee
