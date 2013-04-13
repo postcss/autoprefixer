@@ -1,6 +1,6 @@
 {
   "name": "autoprefixer",
-  "version": "0.1.20130409",
+  "version": "0.2.20130413",
   "description": "Parse CSS and add prefixed properties and values by actual Can I Use database",
   "keywords": ["css", "prefix", "rework"],
   "author": "Andrey Sitnik <andrey@sitnik.ru>",

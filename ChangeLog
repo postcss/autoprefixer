@@ -1,2 +1,7 @@
+== 0.2 (Hear Me Roar!)
+* Update parse libraries.
+* Use component package manager to build standalone script.
+* Add inspect to standalone script.
+
 == 0.1 (Fire and Blood)
 * Initial release.
