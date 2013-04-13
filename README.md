@@ -1,7 +1,7 @@
 # Autoprefixer
 
-Parses CSS and add prefixed properties and values when it really necessary
-for selected browsers.
+Parse CSS and add prefixed properties and values by
+[Can I Use](http://caniuse.com/) database for actual browsers.
 
 Write your CSS usual code without prefixes (forget about them at all,
 Autoprefixer will think for you):
@@ -11,9 +11,8 @@ var css = 'a { transition: transform 1s }';
 var prefixed = autoprefixer.compile(css);
 ```
 
-Autoprefixer will take own database (from [Can I Use](http://caniuse.com/))
-with current browser statistics and properties support and adds only
-actual prefixes:
+Autoprefixer will take database with current browser statistics
+and properties support and adds only actual prefixes:
 
 ```css
 a {
