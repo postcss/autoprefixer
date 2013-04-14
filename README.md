@@ -25,6 +25,8 @@ a {
 }
 ```
 
+Sponsored by [Evil Martians](http://evilmartians.com/).
+
 ## Features
 
 * You write normal CSS (or use Autoprefixer after Sass, Stylus
