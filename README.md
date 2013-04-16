@@ -27,6 +27,10 @@ a {
 
 Sponsored by [Evil Martians](http://evilmartians.com/).
 
+## Translations
+
+Документация на русском: [habrahabr.ru/company/evilmartians/blog/176909](http://habrahabr.ru/company/evilmartians/blog/176909/)
+
 ## Features
 
 * You write normal CSS (or use Autoprefixer after Sass, Stylus
