@@ -36,10 +36,10 @@ Sponsored by [Evil Martians](http://evilmartians.com/).
 * You write normal CSS (or use Autoprefixer after Sass, Stylus
   or another preprocessor).
 * You write normal properties (not special mixins), so you don’t need to
-  remember which properties needs to be prefixed.
-* Autoprefixed uses only really necessary prefixes. You set browsers (by default
-  last 2 version for each browsers). Do you know, that prefixes for
-  `border-radius` [is not necessary](http://caniuse.com/border-radius)
+  remember which properties need to be prefixed.
+* Autoprefixer uses only really necessary prefixes. You set browsers (by default
+  last 2 version for each browsers). Did you know that prefixes for
+  `border-radius` [are not necessary](http://caniuse.com/border-radius)
   for a long time?
 * Properties and browsers database is updated automatically
   (from [Can I Use](http://caniuse.com/)), so prefixes will be always actual
