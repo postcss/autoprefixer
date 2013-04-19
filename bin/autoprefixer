@@ -53,7 +53,7 @@ function showHelp(error) {
                "`-b \"> 1%, opera 12\".");
         h.push("  You can set browsers by global usage statictics: " +
                "`-b \"> 1%\"'");
-        h.push("  or last version: `-b \"2 last versions\"' (by default).");
+        h.push("  or last version: `-b \"last 2 versions\"' (by default).");
     }
     process.stdout.write(h.join("\n") + "\n");
     process.exit(error ? 1 : 0);
