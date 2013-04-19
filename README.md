@@ -66,7 +66,7 @@ autoprefixer.compile(css, ["last 1 version", "> 1%", "ie 8", "ie 7"]);
 
 ### Ruby on Rails
 
-Add `autoprefixer-rails` [gem](https://github.com/ai/autoprefixer-rails)
+Add [autoprefixer-rails](https://github.com/ai/autoprefixer-rails) gem
 to `Gemfile` and write CSS in usual way:
 
 ```ruby
@@ -86,6 +86,15 @@ or process CSS from plain Ruby:
 
 ```ruby
 prefixed = AutoprefixerRails.compile(css)
+```
+
+### Grunt
+
+You can use [grunt-autoprefixer](https://github.com/nDmitry/grunt-autoprefixer)
+plugin for Grunt. Install npm-package and add it to Gruntfile:
+
+```js
+grunt.loadNpmTasks('grunt-autoprefixer');
 ```
 
 ### Node.js
