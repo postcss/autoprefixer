@@ -1,5 +1,4 @@
 sinon = require('sinon')
-require('chai').use(require('sinon-chai')).should()
 
 autoprefixer = require('..')
 
@@ -18,13 +17,18 @@ autoprefixer.data.browsers =
     popularity: [45, 4, 0.5]
     prefix:     '-ms-'
 
+autoprefixer.data.values =
+  'linear-gradient':
+    browsers: ['chrome 2', 'chrome 1']
+    props: ['background']
 autoprefixer.data.props =
   transform:
     browsers: ['ie 3', 'chrome 1']
     transition: true
-  'linear-gradient':
-    browsers: ['chrome 2', 'chrome 1']
-    onlyValue: true
+  "@keyframes":
+    browsers: ['ie 3', 'chrome 3']
+
+browsers = -> autoprefixer.prefixed.firstCall.args[1]
 
 describe 'autoprefixer', ->
   afterEach -> autoprefixer[i].restore?() for i of autoprefixer
@@ -34,34 +38,27 @@ describe 'autoprefixer', ->
     it 'should compile CSS', ->
       autoprefixer.compile(css('link')).should.equal(css('link.out'))
 
-    it 'should add keyframes filter', ->
-      sinon.stub(autoprefixer, 'props').returns(
-        [name: '@keyframes', prefixes: ['-webkit-', '-ms-']])
-      autoprefixer.compile(css('keyframes')).should.equal(css('keyframes.out'))
-
   describe '.parse()', ->
-    beforeEach -> sinon.stub(autoprefixer, 'props').returns([])
+    beforeEach -> sinon.stub(autoprefixer, 'prefixed').returns([])
 
     it 'should use default requirement', ->
       autoprefixer.filter()
-      autoprefixer.props.should.have.been.calledWith(
-        ['chrome 3', 'chrome 2', 'ie 3', 'ie 2'])
+      browsers().should.eql(['chrome 3', 'chrome 2', 'ie 3', 'ie 2'])
 
     it 'should parse last versions', ->
       autoprefixer.filter('last 1 versions')
-      autoprefixer.props.should.have.been.calledWith(['chrome 3', 'ie 3'])
+      browsers().should.eql(['chrome 3', 'ie 3'])
 
     it 'should parse popularity', ->
       autoprefixer.filter('> 0.9%')
-      autoprefixer.props.should.have.been.calledWith(
-        ['chrome 3', 'chrome 2', 'ie 3', 'ie 2'])
+      browsers().should.eql(['chrome 3', 'chrome 2', 'ie 3', 'ie 2'])
 
     it 'should parse manuall', ->
       autoprefixer.filter(['chrome 2', 'ie 2'])
-      autoprefixer.props.should.have.been.calledWith(['chrome 2', 'ie 2'])
+      browsers().should.eql(['chrome 2', 'ie 2'])
 
   describe '.check()', ->
-    beforeEach -> sinon.stub(autoprefixer, 'props').returns([])
+    beforeEach -> sinon.stub(autoprefixer, 'prefixed').returns([])
 
     it 'should check browser name', ->
       ( -> autoprefixer.filter('AA 10') ).should.throw('Unknown browser `AA`')
@@ -73,35 +70,25 @@ describe 'autoprefixer', ->
 
     it 'should allow future versions', ->
       autoprefixer.filter(['chrome 5'])
-      autoprefixer.props.should.have.been.calledWith(['chrome 5'])
+      browsers().should.eql(['chrome 5'])
 
     it 'should normalize browser version', ->
       autoprefixer.filter(['chrome 100', 'ie 0.1', 'ie 7'])
-      autoprefixer.props.should.have.been.
-        calledWith(['chrome 5', 'ie 1', 'ie 3'])
+      browsers().should.eql(['chrome 5', 'ie 1', 'ie 3'])
 
-  describe '.props()', ->
+  describe '.prefixed()', ->
 
-    it 'should return props', ->
-      autoprefixer.props(['chrome 2']).should.eql([
-        {
-          name:      'linear-gradient',
-          prefixes: ['-webkit-'],
-          onlyValue:  true,
-          transition: undefined
-        }
-      ])
-      autoprefixer.props(['ie 3', 'chrome 2', 'chrome 1']).should.eql([
-        {
-          name:      'transform',
-          prefixes: ['-ms-', '-webkit-'],
-          onlyValue:  undefined,
-          transition: true
-        },
-        {
-          name:      'linear-gradient',
-          prefixes: ['-webkit-'],
-          onlyValue:  true,
-          transition: undefined
-        }
+    it 'should filter', ->
+      data = autoprefixer.data.props
+      autoprefixer.prefixed(data, ['chrome 2']).should.eql([])
+      autoprefixer.prefixed(data, ['ie 3', 'chrome 2', 'chrome 1']).should.eql([
+        name:      'transform'
+        props:      undefined
+        prefixes: ['-ms-', '-webkit-']
+        transition: true
+      ,
+        name:      '@keyframes'
+        props:      undefined
+        prefixes: ['-ms-']
+        transition: undefined
       ])

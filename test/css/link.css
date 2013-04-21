@@ -3,3 +3,12 @@ a {
   transition: transform 200ms;
   background: linear-gradient(white, black)
 }
+
+@keyframes anim {
+    from {
+        color: white
+    }
+    to {
+        color: black
+    }
+}

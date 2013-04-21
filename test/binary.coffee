@@ -1,6 +1,6 @@
 fs     = require('fs')
 child  = require('child_process')
-should = require('chai').should()
+should = require('should')
 
 exec = (args, callback) ->
   opts = if typeof(args[args.length - 1]) == 'object' then args.pop() else {}

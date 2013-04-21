@@ -15,11 +15,16 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 updater    = require('./lib/updater')
-properties = { }
+propsData  = { }
+valuesData = { }
 
 props = (names..., data) ->
   for name in names
-    properties[name] = data
+    propsData[name] = data
+
+values = (names..., data) ->
+  for name in names
+    valuesData[name] = data
 
 browsers = (data) ->
   need = []
@@ -53,10 +58,10 @@ updater.caniuse 'features-json/transforms2d.json', (data) ->
 
 # Gradients
 updater.caniuse 'features-json/css-gradients.json', (data) ->
-  props 'linear-gradient', 'repeating-linear-gradient',
-        'radial-gradient', 'repeating-radial-gradient',
-         browsers:  browsers(data)
-         onlyValue: true
+  values 'linear-gradient', 'repeating-linear-gradient',
+         'radial-gradient', 'repeating-radial-gradient',
+          props:   ['background', 'background-image']
+          browsers:  browsers(data)
 
 # Box sizing
 updater.caniuse 'features-json/css3-boxsizing.json', (data) ->
@@ -85,9 +90,9 @@ updater.caniuse 'features-json/user-select-none.json', (data) ->
 
 # Flexible Box Layout
 updater.caniuse 'features-json/flexbox.json', (data) ->
-  props 'flex',
-         browsers:  browsers(data)
-         onlyValue: true
+  values 'flex', 'inline-flex',
+          props:  ['display']
+          browsers: browsers(data)
 
   props 'flex', 'flex-direction', 'flex-wrap', 'flex-flow', 'flex-grow',
         'flex-shrink', 'flex-basis', 'justify-content', 'order',
@@ -97,8 +102,9 @@ updater.caniuse 'features-json/flexbox.json', (data) ->
 
 # calc() unit
 updater.caniuse 'features-json/calc.json', (data) ->
-  props 'calc',
-         browsers:  browsers(data)
-         onlyValue: true
+  values 'calc',
+          browsers: browsers(data)
 
-updater.done -> updater.save('props.js', properties)
+updater.done ->
+  updater.save('values.js', valuesData)
+  updater.save('props.js',  propsData)
