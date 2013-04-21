@@ -28,7 +28,7 @@ autoprefixer.data.props =
   "@keyframes":
     browsers: ['ie 3', 'chrome 3']
 
-browsers = -> autoprefixer.prefixed.firstCall.args[1]
+browsers = -> autoprefixer.prefixes.firstCall.args[0]
 
 describe 'autoprefixer', ->
   afterEach -> autoprefixer[i].restore?() for i of autoprefixer
@@ -39,7 +39,7 @@ describe 'autoprefixer', ->
       autoprefixer.compile(css('link')).should.equal(css('link.out'))
 
   describe '.parse()', ->
-    beforeEach -> sinon.stub(autoprefixer, 'prefixed').returns([])
+    beforeEach -> sinon.stub(autoprefixer, 'prefixes').returns([])
 
     it 'should use default requirement', ->
       autoprefixer.rework()
@@ -58,7 +58,7 @@ describe 'autoprefixer', ->
       browsers().should.eql(['chrome 2', 'ie 2'])
 
   describe '.check()', ->
-    beforeEach -> sinon.stub(autoprefixer, 'prefixed').returns([])
+    beforeEach -> sinon.stub(autoprefixer, 'prefixes').returns([])
 
     it 'should check browser name', ->
       ( -> autoprefixer.rework('AA 10') ).should.throw('Unknown browser `AA`')
@@ -76,19 +76,17 @@ describe 'autoprefixer', ->
       autoprefixer.rework(['chrome 100', 'ie 0.1', 'ie 7'])
       browsers().should.eql(['chrome 5', 'ie 1', 'ie 3'])
 
-  describe '.prefixed()', ->
+  describe '.filter()', ->
 
     it 'should filter', ->
       data = autoprefixer.data.props
-      autoprefixer.prefixed(data, ['chrome 2']).should.eql([])
-      autoprefixer.prefixed(data, ['ie 3', 'chrome 2', 'chrome 1']).should.eql([
-        name:      'transform'
-        props:      undefined
-        prefixes: ['-ms-', '-webkit-']
-        transition: true
-      ,
-        name:      '@keyframes'
-        props:      undefined
-        prefixes: ['-ms-']
-        transition: undefined
-      ])
+      autoprefixer.filter(data, ['chrome 2']).should.eql({ })
+      autoprefixer.filter(data, ['ie 3', 'chrome 2', 'chrome 1']).should.eql
+        transform:
+          props:      undefined
+          prefixes: ['-ms-', '-webkit-']
+          transition: true
+        "@keyframes":
+          props:      undefined
+          prefixes: ['-ms-']
+          transition: undefined

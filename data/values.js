@@ -3,6 +3,9 @@
 
 module.exports = {
     calc: {
+        props: [
+            "*"
+        ],
         browsers: [
             "ff 4",
             "ff 5",

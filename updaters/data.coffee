@@ -103,6 +103,7 @@ updater.caniuse 'features-json/flexbox.json', (data) ->
 # calc() unit
 updater.caniuse 'features-json/calc.json', (data) ->
   values 'calc',
+          props:  ['*']
           browsers: browsers(data)
 
 updater.done ->
