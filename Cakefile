@@ -5,6 +5,22 @@ task 'update', 'Update browsers and properties data', ->
   for i in fs.readdirSync(__dirname + '/updaters')
     require('./updaters/' + i) if i.match(/\.coffee$/)
 
+task 'bench', 'Benchmark on GitHub CSS', ->
+  autoprefixer = require('./lib/autoprefixer')
+  https        = require('https')
+
+  asset = 'assets/github2-8700f58b37c27f7b329397f20a75deb70a514871.css'
+  https.get "https://a248.e.akamai.net/assets.github.com/#{asset}", (res) ->
+    css = ''
+    res.on 'data', (chunk) -> css += chunk
+    res.on 'end', ->
+
+      start = new Date()
+      autoprefixer.compile(css) for i in [1..100]
+      diff = (new Date()) - start
+      process.stdout.write(
+        "GitHub CSS was autoprefixed 100 times by:\n#{diff} ms\n")
+
 task 'build', 'Build autoprefixer.js to standalone work', ->
   save = ->
     build = __dirname + '/build/build.js'
