@@ -20,7 +20,10 @@ autoprefixer.data.browsers =
 autoprefixer.data.values =
   'linear-gradient':
     browsers: ['chrome 2', 'chrome 1']
-    props: ['background']
+    props:    ['background']
+  calc:
+    browsers: ['chrome 3']
+    props:    ['*']
 autoprefixer.data.props =
   transform:
     browsers: ['ie 3', 'chrome 1']
@@ -84,9 +87,11 @@ describe 'autoprefixer', ->
       autoprefixer.filter(data, ['ie 3', 'chrome 2', 'chrome 1']).should.eql
         transform:
           props:      undefined
+          regexp:     undefined
           prefixes: ['-webkit-', '-ms-']
           transition: true
         "@keyframes":
           props:      undefined
+          regexp:     undefined
           prefixes: ['-ms-']
           transition: undefined

@@ -13,6 +13,7 @@ a {
   }
 
   to {
+    width: calc(10% + 10px);
     color: black
   }
 }
@@ -23,6 +24,8 @@ a {
   }
 
   to {
+    width: -webkit-calc(10% + 10px);
+    width: calc(10% + 10px);
     color: black
   }
 }
@@ -33,6 +36,7 @@ a {
   }
 
   to {
+    width: calc(10% + 10px);
     color: black
   }
 }

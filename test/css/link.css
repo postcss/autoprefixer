@@ -9,6 +9,7 @@ a {
         color: white
     }
     to {
+        width: calc(10% + 10px);
         color: black
     }
 }
