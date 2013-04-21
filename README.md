@@ -118,7 +118,7 @@ so you can can combine it with other filters:
 
 ```js
 rework(css).
-    use( autoprefixer.filter(['> 1%', 'opera 12.5']) ).
+    use( autoprefixer.rework(['> 1%', 'opera 12.5']) ).
     use( rework.references() ).
     toString();
 ```

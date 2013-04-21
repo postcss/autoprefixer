@@ -42,38 +42,38 @@ describe 'autoprefixer', ->
     beforeEach -> sinon.stub(autoprefixer, 'prefixed').returns([])
 
     it 'should use default requirement', ->
-      autoprefixer.filter()
+      autoprefixer.rework()
       browsers().should.eql(['chrome 3', 'chrome 2', 'ie 3', 'ie 2'])
 
     it 'should parse last versions', ->
-      autoprefixer.filter('last 1 versions')
+      autoprefixer.rework('last 1 versions')
       browsers().should.eql(['chrome 3', 'ie 3'])
 
     it 'should parse popularity', ->
-      autoprefixer.filter('> 0.9%')
+      autoprefixer.rework('> 0.9%')
       browsers().should.eql(['chrome 3', 'chrome 2', 'ie 3', 'ie 2'])
 
     it 'should parse manuall', ->
-      autoprefixer.filter(['chrome 2', 'ie 2'])
+      autoprefixer.rework(['chrome 2', 'ie 2'])
       browsers().should.eql(['chrome 2', 'ie 2'])
 
   describe '.check()', ->
     beforeEach -> sinon.stub(autoprefixer, 'prefixed').returns([])
 
     it 'should check browser name', ->
-      ( -> autoprefixer.filter('AA 10') ).should.throw('Unknown browser `AA`')
+      ( -> autoprefixer.rework('AA 10') ).should.throw('Unknown browser `AA`')
 
     it 'should check browser version', ->
       ( ->
-        autoprefixer.filter('ie')
+        autoprefixer.rework('ie')
       ).should.throw("Can't recognize version in `ie`")
 
     it 'should allow future versions', ->
-      autoprefixer.filter(['chrome 5'])
+      autoprefixer.rework(['chrome 5'])
       browsers().should.eql(['chrome 5'])
 
     it 'should normalize browser version', ->
-      autoprefixer.filter(['chrome 100', 'ie 0.1', 'ie 7'])
+      autoprefixer.rework(['chrome 100', 'ie 0.1', 'ie 7'])
       browsers().should.eql(['chrome 5', 'ie 1', 'ie 3'])
 
   describe '.prefixed()', ->
