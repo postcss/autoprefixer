@@ -84,7 +84,7 @@ describe 'autoprefixer', ->
       autoprefixer.filter(data, ['ie 3', 'chrome 2', 'chrome 1']).should.eql
         transform:
           props:      undefined
-          prefixes: ['-ms-', '-webkit-']
+          prefixes: ['-webkit-', '-ms-']
           transition: true
         "@keyframes":
           props:      undefined
