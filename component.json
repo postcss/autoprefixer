@@ -6,6 +6,7 @@
   "dependencies": {
     "visionmedia/rework": "0.14.0"
   },
+  "main": "lib/autoprefixer.js",
   "scripts": [
     "data/browsers.js",
     "data/props.js",
