@@ -8,12 +8,12 @@ describe 'inspect', ->
       "  IE 3, 2\n" +
       "\n" +
       "Properties:\n" +
+      "  @keyframes: webkit, ms\n" +
+      "  filter*: ms\n" +
       "  transform*: ms\n" +
       "  transition: webkit\n" +
-      "  filter*: ms\n" +
-      "  @keyframes: webkit, ms\n" +
       "* - properties, which can be used in transition\n" +
       "\n" +
       "Values:\n" +
-      "  linear-gradient: webkit\n" +
-      "  calc: webkit\n")
+      "  calc: webkit\n" +
+      "  linear-gradient: webkit\n")
