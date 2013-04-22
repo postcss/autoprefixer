@@ -86,6 +86,7 @@ describe 'autoprefixer', ->
       autoprefixer.filter(data, ['chrome 2']).should.eql({ })
       autoprefixer.filter(data, ['ie 3', 'chrome 2', 'chrome 1']).should.eql
         transform:
+          regexp:   /(^|\s|,)(transform(\s[^,])?)($|,)/
           prefixes: ['-webkit-', '-ms-']
           transition: true
         "@keyframes":
