@@ -1,7 +1,8 @@
 a {
   transform: rotate(0);
   transition: transform 200ms;
-  background: linear-gradient(white, black)
+  background: linear-gradient(white, black);
+  width: calc(10% + 10px);
 }
 
 @keyframes anim {
@@ -9,7 +10,7 @@ a {
         color: white
     }
     to {
-        width: calc(10% + 10px);
+        transform: translateX(calc(10% + 10px));
         color: black
     }
 }
