@@ -1,11 +1,16 @@
 a {
   -ms-transform: rotate(0);
   transform: rotate(0);
-  transition: transform 200ms, -ms-transform 200ms;
+  transition: transform 200ms cubic-bezier(0.645, 0.045, 0.355, 1), -ms-transform 200ms cubic-bezier(0.645, 0.045, 0.355, 1);
   background: -webkit-linear-gradient(white, black);
   background: linear-gradient(white, black);
   width: -webkit-calc(10% + 10px);
   width: calc(10% + 10px)
+}
+
+b {
+  transition-property: transform, -ms-transform, color;
+  transition-duration: 200ms
 }
 
 @keyframes anim {
