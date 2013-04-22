@@ -16,12 +16,9 @@ and properties support and adds only actual prefixes:
 
 ```css
 a {
-  -webkit-transition: -webkit-transform 1s;
-  -ms-transition: -ms-transform 1s;
-  -o-transition: -o-transform 1s;
-  -webkit-transition: transform 1s;
-  -o-transition: transform 1s;
-  transition: transform 1s
+  -webkit-transition: transform 1s, -webkit-transform 1s;
+  -o-transition: transform 1s, -o-transform 1s;
+  transition: transform 1s, -webkit-transform 1s, -ms-transform 1s, -o-transform 1s
 }
 ```
 
