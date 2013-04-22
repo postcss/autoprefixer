@@ -28,6 +28,8 @@ autoprefixer.data.props =
   transform:
     browsers: ['ie 3', 'chrome 1']
     transition: true
+  transition:
+    browsers: ['chrome 3']
   "@keyframes":
     browsers: ['ie 3', 'chrome 3']
 
@@ -91,4 +93,3 @@ describe 'autoprefixer', ->
           transition: true
         "@keyframes":
           prefixes: ['-ms-']
-          transition: undefined
