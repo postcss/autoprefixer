@@ -10,6 +10,7 @@ describe 'inspect', ->
       "Properties:\n" +
       "  transform*: ms\n" +
       "  transition: webkit\n" +
+      "  filter*: ms\n" +
       "  @keyframes: webkit, ms\n" +
       "* - properties, which can be used in transition\n" +
       "\n" +

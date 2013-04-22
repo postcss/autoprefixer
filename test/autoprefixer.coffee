@@ -30,6 +30,9 @@ autoprefixer.data.props =
     transition: true
   transition:
     browsers: ['chrome 3']
+  filter:
+    browsers: ['ie 3']
+    transition: true
   "@keyframes":
     browsers: ['ie 3', 'chrome 3']
 
@@ -88,8 +91,12 @@ describe 'autoprefixer', ->
       autoprefixer.filter(data, ['chrome 2']).should.eql({ })
       autoprefixer.filter(data, ['ie 3', 'chrome 2', 'chrome 1']).should.eql
         transform:
-          regexp:   /(^|\s|,)(transform(\s[^,])?)($|,)/
+          regexp:   /(^|\s|,|\()transform($|\s|\()/
           prefixes: ['-webkit-', '-ms-']
+          transition: true
+        filter:
+          regexp:   /(^|\s|,|\()filter($|\s|\()/
+          prefixes: ['-ms-']
           transition: true
         "@keyframes":
           prefixes: ['-ms-']
