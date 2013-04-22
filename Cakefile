@@ -33,7 +33,8 @@ task 'build', 'Build autoprefixer.js to standalone work', ->
          "});\n\n" +
 
          "var autoprefixer = require('autoprefixer/lib/autoprefixer.js');\n" +
-         "autoprefixer.inspect = require('autoprefixer/lib/autoprefixer/inspect.js');\n" +
+         "autoprefixer.inspect = " +
+           "require('autoprefixer/lib/autoprefixer/inspect.js');\n" +
          "if (typeof exports == 'object') {\n" +
          "  module.exports = autoprefixer;\n" +
          "} else if (typeof define == 'function' && define.amd) {\n" +

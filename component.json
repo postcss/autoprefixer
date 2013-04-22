@@ -9,6 +9,7 @@
   "main": "lib/autoprefixer.js",
   "scripts": [
     "data/browsers.js",
+    "data/values.js",
     "data/props.js",
     "lib/autoprefixer/inspect.js",
     "lib/autoprefixer.js"
