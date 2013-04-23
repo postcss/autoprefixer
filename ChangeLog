@@ -1,3 +1,14 @@
+== 0.3 (Growing Strong)
+* Rename `autoprefixer.filter()` to `autoprefixer.rework()`.
+* Use own filters instead of Rework’s `prefix` and `prefixValue`.
+* Smarter value prefixer without false match “order” in “border”.
+* 40% faster.
+* Don’t add unnecessary properties instead of Rework’s `prefixValue`.
+* Don’t change properties order.
+* Sort properties and values in inspect output.
+* Add main to component config (by Jonathan Ong).
+* Fix documentation (by Sergey Leschina and Mark Vasilkov).
+
 == 0.2 (Hear Me Roar!)
 * Update parse libraries.
 * Use component package manager to build standalone script.
