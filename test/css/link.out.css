@@ -7,6 +7,7 @@ a {
   background: -webkit-linear-gradient(white, black);
   background: linear-gradient(white, black);
   width: -webkit-calc(10% + 10px);
+  width: -ms-calc(10% + 10px);
   width: calc(10% + 10px)
 }
 
@@ -16,8 +17,9 @@ a {
   }
 
   to {
-    -ms-transform: translateX(calc(10% + 10px));
+    -ms-transform: translateX(-ms-calc(10% + 10px));
     transform: translateX(-webkit-calc(10% + 10px));
+    transform: translateX(-ms-calc(10% + 10px));
     transform: translateX(calc(10% + 10px));
     color: black
   }
@@ -40,8 +42,8 @@ a {
   }
 
   to {
-    -ms-transform: translateX(calc(10% + 10px));
-    transform: translateX(calc(10% + 10px));
+    -ms-transform: translateX(-ms-calc(10% + 10px));
+    transform: translateX(-ms-calc(10% + 10px));
     color: black
   }
 }

@@ -15,5 +15,5 @@ describe 'inspect', ->
       "* - properties, which can be used in transition\n" +
       "\n" +
       "Values:\n" +
-      "  calc: webkit\n" +
+      "  calc: webkit, ms\n" +
       "  linear-gradient: webkit\n")

@@ -22,7 +22,7 @@ autoprefixer.data.values =
     browsers: ['chrome 2', 'chrome 1']
     props:    ['background']
   calc:
-    browsers: ['chrome 3']
+    browsers: ['ie 3', 'chrome 3']
     props:    ['*']
 autoprefixer.data.props =
   transform:
