@@ -14,10 +14,10 @@
   },
   "devDependencies": {
     "coffee-script": "1.6.2",
-    "mocha": "1.9.0",
-    "sinon": "1.6.0",
-    "should": "1.2.2",
-    "component": "0.13.2"
+    "mocha":         "1.9.0",
+    "sinon":         "1.6.0",
+    "should":        "1.2.2",
+    "component":     "0.13.2"
   },
   "bin": {
     "autoprefixer": "./bin/autoprefixer"
