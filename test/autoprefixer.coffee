@@ -76,6 +76,12 @@ describe 'autoprefixer', ->
         autoprefixer.rework('ie')
       ).should.throw("Can't recognize version in `ie`")
 
+    it 'should check browser version', ->
+      ( ->
+        autoprefixer.rework('2 last version')
+      ).should.throw("Unknown browsers requirement `2 last version`")
+
+
     it 'should allow future versions', ->
       autoprefixer.rework(['chrome 5'])
       browsers().should.eql(['chrome 5'])
