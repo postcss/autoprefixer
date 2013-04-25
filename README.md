@@ -131,3 +131,9 @@ autoprefixer *.css
 ```
 
 See `autoprefixer -h` for help.
+
+### Sublime Text
+
+You can process your styles directly in Sublime Text by
+[sublime-autoprefixer](https://github.com/sindresorhus/sublime-autoprefixer)
+plugin.
