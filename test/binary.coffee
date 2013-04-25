@@ -101,3 +101,9 @@ describe 'binary', ->
     error '-x', (err) ->
       err.should.eql("autoprefixer: Unknown argument -x\n")
       done()
+
+  it 'should nice print errors', (done) ->
+    input 'a', css
+    error 'test/fixtures/a', '-b', 'ie', (err) ->
+      err.should.eql("autoprefixer: Can't recognize version in `ie`\n")
+      done()

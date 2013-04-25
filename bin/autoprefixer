@@ -123,7 +123,17 @@ for (var i = 0; i < inputs.length; i++) {
     }
 
     var css = fs.readFileSync(inputs[i]).toString();
-    var prefixed = autoprefixer.compile(css, reqs);
+    try {
+        var prefixed = autoprefixer.compile(css, reqs);
+    } catch ( error ) {
+        if ( error.autoprefixer ) {
+            process.stderr.write("autoprefixer: " + error.message + "\n");
+        } else {
+            process.stderr.write("autoprefixer: Internal error\n\n");
+            process.stderr.write(error.stack + "\n");
+        }
+        process.exit(1);
+    }
     if ( output == undefined ) {
         fs.writeFileSync(inputs[i], prefixed);
     } else if ( output == '-' ) {
