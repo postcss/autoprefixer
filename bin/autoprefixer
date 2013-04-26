@@ -89,22 +89,13 @@ while ( argv.length > 0 ) {
     }
 }
 
-// Options
-
-if ( inputs.length == 0 ) {
-    inputs = ['/dev/stdin'];
-    if ( !output ) {
-        output = '-';
-    }
-}
-
 if ( reqs ) {
     reqs = reqs.split(',').map(function (req) {
         return req.replace(/^\s+|\s+$/g, '');
     });
 }
 
-// Work
+// Inspect
 
 var autoprefixer = require('..');
 
@@ -114,31 +105,67 @@ if ( inspect ) {
     process.exit(0);
 }
 
-var fs = require('fs');
-for (var i = 0; i < inputs.length; i++) {
-    if ( !fs.existsSync(inputs[i]) ) {
-        process.stderr.write(
-            "autoprefixer: File '" + inputs[i] + "' doesn't exists\n");
-        process.exit(1);
-    }
+// Work
 
-    var css = fs.readFileSync(inputs[i]).toString();
+var fs = require('fs');
+var exitStatus = 0;
+
+var printError = function (message) {
+    process.stderr.write(message);
+    exitStatus = 1;
+};
+
+var compile = function (css, out) {
     try {
         var prefixed = autoprefixer.compile(css, reqs);
     } catch ( error ) {
         if ( error.autoprefixer ) {
-            process.stderr.write("autoprefixer: " + error.message + "\n");
+            printError("autoprefixer: " + error.message + "\n");
         } else {
-            process.stderr.write("autoprefixer: Internal error\n\n");
-            process.stderr.write(error.stack + "\n");
+            printError("autoprefixer: Internal error\n\n" + error.stack + "\n");
         }
-        process.exit(1);
     }
-    if ( output == undefined ) {
-        fs.writeFileSync(inputs[i], prefixed);
-    } else if ( output == '-' ) {
+
+    if ( out == '-' ) {
         process.stdout.write(prefixed + "\n");
     } else {
-        fs.writeFileSync(output, prefixed);
+        fs.writeFile(out, prefixed, function (error) {
+            if ( error ) {
+                printError("autoprefixer: " + error + "\n");
+            }
+        });
     }
 }
+
+if ( inputs.length == 0 ) {
+    if ( !output ) {
+        output = '-';
+    }
+
+    var css = '';
+    process.stdin.resume();
+    process.stdin.on('data', function (chunk) {
+        css += chunk;
+    });
+    process.stdin.on('end', function () {
+        compile(css, output);
+    });
+} else {
+    inputs.forEach(function (file) {
+        if ( !fs.existsSync(file) ) {
+            printError("autoprefixer: File '" + file + "' doesn't exists\n");
+        } else {
+            fs.readFile(file, function (error, css) {
+                if ( error ) {
+                    printError("autoprefixer: " + error + "\n");
+                } else {
+                    compile(css, output || file);
+                }
+            });
+        }
+    })
+}
+
+process.on('exit', function () {
+    process.reallyExit(exitStatus);
+});
