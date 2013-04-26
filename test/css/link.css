@@ -2,7 +2,7 @@ a {
   transform: rotate(0);
   transition: transform 200ms, filter 1s;
   background: linear-gradient(white, black);
-  width: calc(10% + 10px);
+  border: calc(10% + 10px) calc(5% + 5px);
 }
 
 @keyframes anim {
