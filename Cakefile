@@ -9,7 +9,7 @@ task 'bench', 'Benchmark on GitHub CSS', ->
   autoprefixer = require('./lib/autoprefixer')
   https        = require('https')
 
-  asset = 'assets/github2-8700f58b37c27f7b329397f20a75deb70a514871.css'
+  asset = 'assets/github-21d1f919c9b16786238504ad1232b4937bbdd088.css'
   https.get "https://a248.e.akamai.net/assets.github.com/#{asset}", (res) ->
     css = ''
     res.on 'data', (chunk) -> css += chunk
