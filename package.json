@@ -17,7 +17,7 @@
     "mocha":         "1.9.0",
     "sinon":         "1.6.0",
     "should":        "1.2.2",
-    "component":     "0.13.2"
+    "component":     "0.15.1"
   },
   "bin": {
     "autoprefixer": "./bin/autoprefixer"
