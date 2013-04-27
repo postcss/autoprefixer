@@ -9,6 +9,14 @@
 * Add main to component config (by Jonathan Ong).
 * Fix documentation (by Sergey Leschina and Mark Vasilkov).
 
+20130424:
+* Fix value override in prefixer.
+
+20130427:
+* Prefix several same values in one property.
+* Fix Windows support in binary.
+* Improve print errors in binary.
+
 == 0.2 (Hear Me Roar!)
 * Update parse libraries.
 * Use component package manager to build standalone script.
