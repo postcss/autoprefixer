@@ -73,6 +73,7 @@ updater.caniuse 'features-json/css-filters.json', (data) ->
   props 'filter',
          browsers:   browsers(data)
          transition: true
+         check:      -> !@match(/DXImageTransform\.Microsoft/)
 
 # Multicolumns
 updater.caniuse 'features-json/multicolumn.json', (data) ->

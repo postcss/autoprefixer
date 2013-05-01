@@ -1728,7 +1728,10 @@ module.exports = {
             "safari 6",
             "ios 6"
         ],
-        transition: true
+        transition: true,
+        check: function () {
+            return !this.match(/DXImageTransform\.Microsoft/);
+        }
     },
     flex: {
         browsers: [

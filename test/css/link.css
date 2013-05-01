@@ -3,6 +3,7 @@ a {
   transition: transform 200ms, filter 1s;
   background: linear-gradient(white, black);
   border: calc(10% + 10px) calc(5% + 5px);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fffcde', endColorstr='#00ffffff',GradientType=0 );
 }
 
 @keyframes anim {

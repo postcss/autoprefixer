@@ -33,6 +33,7 @@ autoprefixer.data.props =
   filter:
     browsers: ['ie 3']
     transition: true
+    check:      -> !@match(/DXImageTransform\.Microsoft/)
   "@keyframes":
     browsers: ['ie 3', 'chrome 3']
 
@@ -97,12 +98,13 @@ describe 'autoprefixer', ->
       autoprefixer.filter(data, ['chrome 2']).should.eql({ })
       autoprefixer.filter(data, ['ie 3', 'chrome 2', 'chrome 1']).should.eql
         transform:
-          regexp:   /(^|\s|,|\()transform($|\s|\()/
-          prefixes: ['-webkit-', '-ms-']
+          prefixes:   ['-webkit-', '-ms-']
           transition: true
+          regexp:     /(^|\s|,|\()transform($|\s|\()/
         filter:
-          regexp:   /(^|\s|,|\()filter($|\s|\()/
-          prefixes: ['-ms-']
+          prefixes:   ['-ms-']
           transition: true
+          check:      autoprefixer.data.props.filter.check
+          regexp:     /(^|\s|,|\()filter($|\s|\()/
         "@keyframes":
           prefixes: ['-ms-']
