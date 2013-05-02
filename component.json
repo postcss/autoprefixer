@@ -1,6 +1,6 @@
 {
   "name": "autoprefixer",
-  "version": "0.3.20130427",
+  "version": "0.3.20130502",
   "description": "Parse CSS and add prefixed properties and values by actual Can I Use database",
   "keywords": ["css", "prefix", "rework"],
   "dependencies": {

@@ -17,6 +17,10 @@
 * Fix Windows support in binary.
 * Improve print errors in binary.
 
+20130502:
+* Don’t add -webkit- prefix to IE filter.
+* Don’t duplicate prefixes on second run.
+
 == 0.2 (Hear Me Roar!)
 * Update parse libraries.
 * Use component package manager to build standalone script.
