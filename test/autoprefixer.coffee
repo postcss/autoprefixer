@@ -47,6 +47,9 @@ describe 'autoprefixer', ->
     it 'should compile CSS', ->
       autoprefixer.compile(css('link')).should.equal(css('link.out'))
 
+    it 'should not double same prefixes', ->
+      autoprefixer.compile(css('link.out')).should.equal(css('link.out'))
+
   describe '.parse()', ->
     beforeEach -> sinon.stub(autoprefixer, 'prefixes').returns([])
 
