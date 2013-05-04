@@ -10,12 +10,16 @@ autoprefixer.data.browsers =
   chrome:
     future:     [5, 4]
     versions:   [3, 2, 1]
-    popularity: [45, 5, 0.5]
+    popularity: [40, 5, 0.5]
     prefix:     '-webkit-'
   ie:
     versions:   [3, 2, 1]
-    popularity: [45, 4, 0.5]
+    popularity: [40, 3.5, 0.5]
     prefix:     '-ms-'
+  ff:
+    versions:   [3, 2, 1]
+    popularity: [10, 0.5, 0]
+    prefix:     '-moz-'
   opera:
     versions:   [3, 2, 1]
     popularity: [0, 0, 0]
@@ -38,6 +42,9 @@ autoprefixer.data.props =
     browsers: ['ie 3']
     transition: true
     check:      -> !@match(/DXImageTransform\.Microsoft/)
+  'border-top-left-radius':
+    browsers: ['ff 1']
+    prefixed: '-moz-': '-moz-border-radius-topleft'
   "@keyframes":
     browsers: ['ie 3', 'chrome 3', 'opera 1']
 
@@ -60,16 +67,17 @@ describe 'autoprefixer', ->
     it 'should use default requirement', ->
       autoprefixer.rework()
       browsers().should.eql(['chrome 3', 'chrome 2',
-                             'ie 3', 'ie 2',
-                             'opera 3', 'opera 2'])
+                             'ie 3',     'ie 2',
+                             'ff 3',     'ff 2'
+                             'opera 3',  'opera 2'])
 
     it 'should parse last versions', ->
       autoprefixer.rework('last 1 versions')
-      browsers().should.eql(['chrome 3', 'ie 3', 'opera 3'])
+      browsers().should.eql(['chrome 3', 'ie 3', 'ff 3', 'opera 3'])
 
     it 'should parse popularity', ->
       autoprefixer.rework('> 0.9%')
-      browsers().should.eql(['chrome 3', 'chrome 2', 'ie 3', 'ie 2'])
+      browsers().should.eql(['chrome 3', 'chrome 2', 'ie 3', 'ie 2', 'ff 3'])
 
     it 'should parse manuall', ->
       autoprefixer.rework(['chrome 2', 'ie 2'])

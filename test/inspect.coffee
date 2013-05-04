@@ -6,6 +6,7 @@ describe 'inspect', ->
       "Browsers:\n" +
       "  Chrome 3, 2\n" +
       "  IE 3, 2\n" +
+      "  Firefox 3, 2\n" +
       "  Opera 3, 2\n" +
       "\n" +
       "Properties:\n" +

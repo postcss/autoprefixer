@@ -811,7 +811,10 @@ module.exports = {
             "safari 3.2",
             "ios 3.2"
         ],
-        transition: true
+        transition: true,
+        prefixed: {
+            "-moz-": "moz-border-radius-bottomleft"
+        }
     },
     "border-bottom-right-radius": {
         browsers: [
@@ -825,7 +828,10 @@ module.exports = {
             "safari 3.2",
             "ios 3.2"
         ],
-        transition: true
+        transition: true,
+        prefixed: {
+            "-moz-": "moz-border-radius-bottomright"
+        }
     },
     "border-radius": {
         browsers: [
@@ -853,7 +859,10 @@ module.exports = {
             "safari 3.2",
             "ios 3.2"
         ],
-        transition: true
+        transition: true,
+        prefixed: {
+            "-moz-": "moz-border-radius-topleft"
+        }
     },
     "border-top-right-radius": {
         browsers: [
@@ -867,7 +876,10 @@ module.exports = {
             "safari 3.2",
             "ios 3.2"
         ],
-        transition: true
+        transition: true,
+        prefixed: {
+            "-moz-": "moz-border-radius-topright"
+        }
     },
     "box-shadow": {
         browsers: [

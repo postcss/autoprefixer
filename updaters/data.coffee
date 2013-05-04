@@ -37,10 +37,25 @@ browsers = (data) ->
 
 # Border Radius
 updater.caniuse 'features-json/border-radius.json', (data) ->
-  props 'border-radius', 'border-top-left-radius', 'border-top-right-radius',
-        'border-bottom-right-radius', 'border-bottom-left-radius',
+  props 'border-radius',
          browsers:   browsers(data)
          transition: true
+  props 'border-top-left-radius',
+         browsers:   browsers(data)
+         transition: true
+         prefixed: '-moz-': 'moz-border-radius-topleft'
+  props 'border-top-right-radius',
+         browsers:   browsers(data)
+         transition: true
+         prefixed: '-moz-': 'moz-border-radius-topright'
+  props 'border-bottom-right-radius',
+         browsers:   browsers(data)
+         transition: true
+         prefixed: '-moz-': 'moz-border-radius-bottomright'
+  props 'border-bottom-left-radius',
+         browsers:   browsers(data)
+         transition: true
+         prefixed: '-moz-': 'moz-border-radius-bottomleft'
 
 # Box Shadow
 updater.caniuse 'features-json/css-boxshadow.json', (data) ->
