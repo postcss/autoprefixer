@@ -35,6 +35,19 @@ browsers = (data) ->
           need.push(updater.browsers[browser] + ' ' + version)
   need
 
+# Border Radius
+updater.caniuse 'features-json/border-radius.json', (data) ->
+  props 'border-radius', 'border-top-left-radius', 'border-top-right-radius',
+        'border-bottom-right-radius', 'border-bottom-left-radius',
+         browsers:   browsers(data)
+         transition: true
+
+# Box Shadow
+updater.caniuse 'features-json/css-boxshadow.json', (data) ->
+  props 'box-shadow',
+         browsers:   browsers(data)
+         transition: true
+
 # Animation
 updater.caniuse 'features-json/css-animation.json', (data) ->
   props 'animation', 'animation-name', 'animation-duration',

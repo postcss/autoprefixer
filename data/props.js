@@ -799,6 +799,98 @@ module.exports = {
         ],
         transition: true
     },
+    "border-bottom-left-radius": {
+        browsers: [
+            "ff 2",
+            "ff 3",
+            "ff 3.5",
+            "ff 3.6",
+            "chrome 4",
+            "safari 4",
+            "safari 3.1",
+            "safari 3.2",
+            "ios 3.2"
+        ],
+        transition: true
+    },
+    "border-bottom-right-radius": {
+        browsers: [
+            "ff 2",
+            "ff 3",
+            "ff 3.5",
+            "ff 3.6",
+            "chrome 4",
+            "safari 4",
+            "safari 3.1",
+            "safari 3.2",
+            "ios 3.2"
+        ],
+        transition: true
+    },
+    "border-radius": {
+        browsers: [
+            "ff 2",
+            "ff 3",
+            "ff 3.5",
+            "ff 3.6",
+            "chrome 4",
+            "safari 4",
+            "safari 3.1",
+            "safari 3.2",
+            "ios 3.2"
+        ],
+        transition: true
+    },
+    "border-top-left-radius": {
+        browsers: [
+            "ff 2",
+            "ff 3",
+            "ff 3.5",
+            "ff 3.6",
+            "chrome 4",
+            "safari 4",
+            "safari 3.1",
+            "safari 3.2",
+            "ios 3.2"
+        ],
+        transition: true
+    },
+    "border-top-right-radius": {
+        browsers: [
+            "ff 2",
+            "ff 3",
+            "ff 3.5",
+            "ff 3.6",
+            "chrome 4",
+            "safari 4",
+            "safari 3.1",
+            "safari 3.2",
+            "ios 3.2"
+        ],
+        transition: true
+    },
+    "box-shadow": {
+        browsers: [
+            "ff 3.5",
+            "ff 3.6",
+            "chrome 4",
+            "chrome 5",
+            "chrome 6",
+            "chrome 7",
+            "chrome 8",
+            "chrome 9",
+            "safari 4",
+            "safari 5",
+            "safari 3.1",
+            "safari 3.2",
+            "ios 3.2",
+            "ios 4.0",
+            "ios 4.1",
+            "ios 4.2",
+            "ios 4.3"
+        ],
+        transition: true
+    },
     "box-sizing": {
         browsers: [
             "ff 2",
