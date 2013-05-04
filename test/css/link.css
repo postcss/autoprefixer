@@ -8,6 +8,15 @@ a {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fffcde', endColorstr='#00ffffff',GradientType=0 );
 }
 
+@-o-keyframes anim {
+    from {
+        color: white
+    }
+    to {
+        color: black
+    }
+}
+
 @keyframes anim {
     from {
         color: white

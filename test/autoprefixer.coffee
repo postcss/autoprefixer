@@ -16,6 +16,10 @@ autoprefixer.data.browsers =
     versions:   [3, 2, 1]
     popularity: [45, 4, 0.5]
     prefix:     '-ms-'
+  opera:
+    versions:   [3, 2, 1]
+    popularity: [0, 0, 0]
+    prefix:     '-o-'
 
 autoprefixer.data.values =
   'linear-gradient':
@@ -35,7 +39,7 @@ autoprefixer.data.props =
     transition: true
     check:      -> !@match(/DXImageTransform\.Microsoft/)
   "@keyframes":
-    browsers: ['ie 3', 'chrome 3']
+    browsers: ['ie 3', 'chrome 3', 'opera 1']
 
 browsers = -> autoprefixer.parse.returnValues[0]
 
@@ -55,11 +59,13 @@ describe 'autoprefixer', ->
 
     it 'should use default requirement', ->
       autoprefixer.rework()
-      browsers().should.eql(['chrome 3', 'chrome 2', 'ie 3', 'ie 2'])
+      browsers().should.eql(['chrome 3', 'chrome 2',
+                             'ie 3', 'ie 2',
+                             'opera 3', 'opera 2'])
 
     it 'should parse last versions', ->
       autoprefixer.rework('last 1 versions')
-      browsers().should.eql(['chrome 3', 'ie 3'])
+      browsers().should.eql(['chrome 3', 'ie 3', 'opera 3'])
 
     it 'should parse popularity', ->
       autoprefixer.rework('> 0.9%')
