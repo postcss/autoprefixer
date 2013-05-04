@@ -37,7 +37,7 @@ autoprefixer.data.props =
   "@keyframes":
     browsers: ['ie 3', 'chrome 3']
 
-browsers = -> autoprefixer.prefixes.firstCall.args[0]
+browsers = -> autoprefixer.parse.returnValues[0]
 
 describe 'autoprefixer', ->
   afterEach -> autoprefixer[i].restore?() for i of autoprefixer
@@ -51,7 +51,7 @@ describe 'autoprefixer', ->
       autoprefixer.compile(css('link.out')).should.equal(css('link.out'))
 
   describe '.parse()', ->
-    beforeEach -> sinon.stub(autoprefixer, 'prefixes').returns([])
+    beforeEach -> sinon.spy(autoprefixer, 'parse')
 
     it 'should use default requirement', ->
       autoprefixer.rework()
@@ -70,7 +70,7 @@ describe 'autoprefixer', ->
       browsers().should.eql(['chrome 2', 'ie 2'])
 
   describe '.check()', ->
-    beforeEach -> sinon.stub(autoprefixer, 'prefixes').returns([])
+    beforeEach -> sinon.spy(autoprefixer, 'parse')
 
     it 'should check browser name', ->
       ( -> autoprefixer.rework('AA 10') ).should.throw('Unknown browser `AA`')
