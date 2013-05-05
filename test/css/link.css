@@ -3,7 +3,7 @@ a {
   transform: rotate(0);
   transition: -webkit-transform 200ms, filter 1s;
   transition: transform 200ms, filter 1s;
-  background: linear-gradient(white, black);
+  background: linear-gradient(350deg, white, black);
   border: calc(10% + 10px) calc(5% + 5px);
   -moz-border-radius-topleft: 5px;
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fffcde', endColorstr='#00ffffff',GradientType=0 );

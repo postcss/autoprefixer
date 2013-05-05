@@ -225,7 +225,26 @@ module.exports = {
             "ios 4.3",
             "ios 5.0",
             "ios 5.1"
-        ]
+        ],
+        replace: function (string, prefix) {
+            var regexp;
+            if (prefix !== '-webkit-') {
+            return;
+            }
+            regexp = /((repeating-)?(linear|radial)-gradient\()\s*(\d+deg)?/;
+            return string.replace(regexp, function(_0, gradient, _1, _2, deg) {
+            if (deg) {
+            deg = parseInt(deg);
+            deg += 90;
+            if (deg > 360) {
+            deg -= 360;
+            }
+            return prefix + gradient + deg + 'deg';
+            } else {
+            return prefix + gradient;
+            }
+            });
+        }
     },
     "radial-gradient": {
         props: [
@@ -284,7 +303,26 @@ module.exports = {
             "ios 4.3",
             "ios 5.0",
             "ios 5.1"
-        ]
+        ],
+        replace: function (string, prefix) {
+            var regexp;
+            if (prefix !== '-webkit-') {
+            return;
+            }
+            regexp = /((repeating-)?(linear|radial)-gradient\()\s*(\d+deg)?/;
+            return string.replace(regexp, function(_0, gradient, _1, _2, deg) {
+            if (deg) {
+            deg = parseInt(deg);
+            deg += 90;
+            if (deg > 360) {
+            deg -= 360;
+            }
+            return prefix + gradient + deg + 'deg';
+            } else {
+            return prefix + gradient;
+            }
+            });
+        }
     },
     "repeating-linear-gradient": {
         props: [
@@ -343,7 +381,26 @@ module.exports = {
             "ios 4.3",
             "ios 5.0",
             "ios 5.1"
-        ]
+        ],
+        replace: function (string, prefix) {
+            var regexp;
+            if (prefix !== '-webkit-') {
+            return;
+            }
+            regexp = /((repeating-)?(linear|radial)-gradient\()\s*(\d+deg)?/;
+            return string.replace(regexp, function(_0, gradient, _1, _2, deg) {
+            if (deg) {
+            deg = parseInt(deg);
+            deg += 90;
+            if (deg > 360) {
+            deg -= 360;
+            }
+            return prefix + gradient + deg + 'deg';
+            } else {
+            return prefix + gradient;
+            }
+            });
+        }
     },
     "repeating-radial-gradient": {
         props: [
@@ -402,6 +459,25 @@ module.exports = {
             "ios 4.3",
             "ios 5.0",
             "ios 5.1"
-        ]
+        ],
+        replace: function (string, prefix) {
+            var regexp;
+            if (prefix !== '-webkit-') {
+            return;
+            }
+            regexp = /((repeating-)?(linear|radial)-gradient\()\s*(\d+deg)?/;
+            return string.replace(regexp, function(_0, gradient, _1, _2, deg) {
+            if (deg) {
+            deg = parseInt(deg);
+            deg += 90;
+            if (deg > 360) {
+            deg -= 360;
+            }
+            return prefix + gradient + deg + 'deg';
+            } else {
+            return prefix + gradient;
+            }
+            });
+        }
     }
 };

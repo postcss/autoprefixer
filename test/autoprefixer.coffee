@@ -6,6 +6,8 @@ read = require('fs').readFileSync
 css  = (name) ->
   read('test/css/' + name + '.css', 'utf8').trim();
 
+original = autoprefixer.data
+
 autoprefixer.data.browsers =
   chrome:
     future:     [5, 4]
@@ -29,6 +31,7 @@ autoprefixer.data.values =
   'linear-gradient':
     browsers: ['chrome 2', 'chrome 1']
     props:    ['background']
+    replace:    original.values['linear-gradient'].replace
   calc:
     browsers: ['ie 3', 'chrome 3']
     props:    ['*']

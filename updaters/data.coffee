@@ -90,6 +90,17 @@ updater.caniuse 'features-json/css-gradients.json', (data) ->
          'radial-gradient', 'repeating-radial-gradient',
           props:   ['background', 'background-image']
           browsers:  browsers(data)
+          replace: (string, prefix) ->
+            return unless prefix == '-webkit-'
+            regexp = /((repeating-)?(linear|radial)-gradient\()\s*(\d+deg)?/
+            string.replace regexp, (_0, gradient, _1, _2, deg) ->
+              if deg
+                deg  = parseInt(deg)
+                deg += 90
+                deg -= 360 if deg > 360
+                prefix + gradient + deg + 'deg'
+              else
+                prefix + gradient
 
 # Box sizing
 updater.caniuse 'features-json/css3-boxsizing.json', (data) ->
