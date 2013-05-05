@@ -18,6 +18,8 @@ https = require('https')
 path  = require('path')
 fs    = require('fs')
 
+beautify = require('js-beautify').js_beautify
+
 module.exports =
 
   # Can I Use browser names to internal
@@ -68,8 +70,10 @@ module.exports =
       indent + '}'
 
     else if typeof(obj) == 'function'
-      obj.toString().replace(/\n\s+/g, "\n#{indent}    ").
-                     replace(/\s\s\s\s\}$/, '}')
+      func  = beautify(obj.toString(), indent_size: 4).
+              replace(/function\(/g, 'function (').
+              replace(/\n/g, "\n#{indent}").
+              replace(/\n\s*\n/g, "\n")
 
     else
       JSON.stringify(obj)

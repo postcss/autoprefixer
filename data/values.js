@@ -229,20 +229,20 @@ module.exports = {
         replace: function (string, prefix) {
             var regexp;
             if (prefix !== '-webkit-') {
-            return;
+                return;
             }
             regexp = /((repeating-)?(linear|radial)-gradient\()\s*(\d+deg)?/;
-            return string.replace(regexp, function(_0, gradient, _1, _2, deg) {
-            if (deg) {
-            deg = parseInt(deg);
-            deg += 90;
-            if (deg > 360) {
-            deg -= 360;
-            }
-            return prefix + gradient + deg + 'deg';
-            } else {
-            return prefix + gradient;
-            }
+            return string.replace(regexp, function (_0, gradient, _1, _2, deg) {
+                if (deg) {
+                    deg = parseInt(deg);
+                    deg += 90;
+                    if (deg > 360) {
+                        deg -= 360;
+                    }
+                    return prefix + gradient + deg + 'deg';
+                } else {
+                    return prefix + gradient;
+                }
             });
         }
     },
@@ -307,20 +307,20 @@ module.exports = {
         replace: function (string, prefix) {
             var regexp;
             if (prefix !== '-webkit-') {
-            return;
+                return;
             }
             regexp = /((repeating-)?(linear|radial)-gradient\()\s*(\d+deg)?/;
-            return string.replace(regexp, function(_0, gradient, _1, _2, deg) {
-            if (deg) {
-            deg = parseInt(deg);
-            deg += 90;
-            if (deg > 360) {
-            deg -= 360;
-            }
-            return prefix + gradient + deg + 'deg';
-            } else {
-            return prefix + gradient;
-            }
+            return string.replace(regexp, function (_0, gradient, _1, _2, deg) {
+                if (deg) {
+                    deg = parseInt(deg);
+                    deg += 90;
+                    if (deg > 360) {
+                        deg -= 360;
+                    }
+                    return prefix + gradient + deg + 'deg';
+                } else {
+                    return prefix + gradient;
+                }
             });
         }
     },
@@ -385,20 +385,20 @@ module.exports = {
         replace: function (string, prefix) {
             var regexp;
             if (prefix !== '-webkit-') {
-            return;
+                return;
             }
             regexp = /((repeating-)?(linear|radial)-gradient\()\s*(\d+deg)?/;
-            return string.replace(regexp, function(_0, gradient, _1, _2, deg) {
-            if (deg) {
-            deg = parseInt(deg);
-            deg += 90;
-            if (deg > 360) {
-            deg -= 360;
-            }
-            return prefix + gradient + deg + 'deg';
-            } else {
-            return prefix + gradient;
-            }
+            return string.replace(regexp, function (_0, gradient, _1, _2, deg) {
+                if (deg) {
+                    deg = parseInt(deg);
+                    deg += 90;
+                    if (deg > 360) {
+                        deg -= 360;
+                    }
+                    return prefix + gradient + deg + 'deg';
+                } else {
+                    return prefix + gradient;
+                }
             });
         }
     },
@@ -463,20 +463,20 @@ module.exports = {
         replace: function (string, prefix) {
             var regexp;
             if (prefix !== '-webkit-') {
-            return;
+                return;
             }
             regexp = /((repeating-)?(linear|radial)-gradient\()\s*(\d+deg)?/;
-            return string.replace(regexp, function(_0, gradient, _1, _2, deg) {
-            if (deg) {
-            deg = parseInt(deg);
-            deg += 90;
-            if (deg > 360) {
-            deg -= 360;
-            }
-            return prefix + gradient + deg + 'deg';
-            } else {
-            return prefix + gradient;
-            }
+            return string.replace(regexp, function (_0, gradient, _1, _2, deg) {
+                if (deg) {
+                    deg = parseInt(deg);
+                    deg += 90;
+                    if (deg > 360) {
+                        deg -= 360;
+                    }
+                    return prefix + gradient + deg + 'deg';
+                } else {
+                    return prefix + gradient;
+                }
             });
         }
     }
