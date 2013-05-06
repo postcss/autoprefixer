@@ -92,7 +92,7 @@ updater.caniuse 'features-json/css-gradients.json', (data) ->
           browsers:  browsers(data)
           replace: (string, prefix) ->
             return unless prefix == '-webkit-'
-            regexp = /((repeating-)?(linear|radial)-gradient\()\s*(\d+deg)?/g
+            regexp = /((repeating-)?(linear|radial)-gradient\()\s*(-?\d+deg)?/g
             string.replace regexp, (_0, gradient, _1, _2, deg) ->
               if deg
                 deg  = parseInt(deg)
