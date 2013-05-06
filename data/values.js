@@ -231,7 +231,7 @@ module.exports = {
             if (prefix !== '-webkit-') {
                 return;
             }
-            regexp = /((repeating-)?(linear|radial)-gradient\()\s*(\d+deg)?/;
+            regexp = /((repeating-)?(linear|radial)-gradient\()\s*(\d+deg)?/g;
             return string.replace(regexp, function (_0, gradient, _1, _2, deg) {
                 if (deg) {
                     deg = parseInt(deg);
@@ -309,7 +309,7 @@ module.exports = {
             if (prefix !== '-webkit-') {
                 return;
             }
-            regexp = /((repeating-)?(linear|radial)-gradient\()\s*(\d+deg)?/;
+            regexp = /((repeating-)?(linear|radial)-gradient\()\s*(\d+deg)?/g;
             return string.replace(regexp, function (_0, gradient, _1, _2, deg) {
                 if (deg) {
                     deg = parseInt(deg);
@@ -387,7 +387,7 @@ module.exports = {
             if (prefix !== '-webkit-') {
                 return;
             }
-            regexp = /((repeating-)?(linear|radial)-gradient\()\s*(\d+deg)?/;
+            regexp = /((repeating-)?(linear|radial)-gradient\()\s*(\d+deg)?/g;
             return string.replace(regexp, function (_0, gradient, _1, _2, deg) {
                 if (deg) {
                     deg = parseInt(deg);
@@ -465,7 +465,7 @@ module.exports = {
             if (prefix !== '-webkit-') {
                 return;
             }
-            regexp = /((repeating-)?(linear|radial)-gradient\()\s*(\d+deg)?/;
+            regexp = /((repeating-)?(linear|radial)-gradient\()\s*(\d+deg)?/g;
             return string.replace(regexp, function (_0, gradient, _1, _2, deg) {
                 if (deg) {
                     deg = parseInt(deg);

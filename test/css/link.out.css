@@ -4,8 +4,8 @@ a {
   -webkit-transition: transform 200ms, filter 1s;
   transition: -ms-transform 200ms, -ms-filter 1s;
   transition: transform 200ms, filter 1s;
-  background: -webkit-linear-gradient(80deg, white, black);
-  background: linear-gradient(350deg, white, black);
+  background: -webkit-linear-gradient(80deg, white, black), -webkit-linear-gradient(black, white);
+  background: linear-gradient(350deg, white, black), linear-gradient(black, white);
   border: -webkit-calc(10% + 10px) -webkit-calc(5% + 5px);
   border: -ms-calc(10% + 10px) -ms-calc(5% + 5px);
   border: calc(10% + 10px) calc(5% + 5px);
