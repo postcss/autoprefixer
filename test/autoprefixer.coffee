@@ -54,7 +54,7 @@ autoprefixer.data.props =
 browsers = -> autoprefixer.parse.returnValues[0]
 
 describe 'autoprefixer', ->
-  afterEach -> autoprefixer[i].restore?() for i of autoprefixer
+  afterEach -> sinon.restore(autoprefixer)
 
   describe '.compile()', ->
 
