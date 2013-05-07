@@ -1,3 +1,8 @@
+== 0.4 (Winter Is Coming)
+* Remove outdated prefixes.
+* Add border-radius and box-shadow properties to database.
+* Change degrees in webkit gradients.
+
 == 0.3 (Growing Strong)
 * Rename `autoprefixer.filter()` to `autoprefixer.rework()`.
 * Use own filters instead of Rework’s `prefix` and `prefixValue`.
