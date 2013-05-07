@@ -42,6 +42,7 @@ Sponsored by [Evil Martians](http://evilmartians.com/).
 * Properties and browsers database is updated automatically
   (from [Can I Use](http://caniuse.com/)), so prefixes will be always actual
   (scripts don’t have holidays and work).
+* Remove outdated prefixes to clean libraries and legacy code.
 * It also adds prefixes to the values. For example, to `calc(1em + 5px)` or
   to properties names in `transition`.
 
