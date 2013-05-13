@@ -36,6 +36,7 @@ module.exports = {
         ],
         browsers: [
             "ie 10",
+            "ie 11",
             "ff 2",
             "ff 3",
             "ff 4",
@@ -105,6 +106,7 @@ module.exports = {
         ],
         browsers: [
             "ie 10",
+            "ie 11",
             "ff 2",
             "ff 3",
             "ff 4",
