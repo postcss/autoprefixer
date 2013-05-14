@@ -1,68 +1,65 @@
-sinon = require('sinon')
-
+sinon        = require('sinon')
 autoprefixer = require('..')
-
-read = require('fs').readFileSync
-css  = (name) ->
-  read('test/css/' + name + '.css', 'utf8').trim();
+read         = require('fs').readFileSync
+css          = (name) -> read('test/css/' + name + '.css', 'utf8').trim()
 
 original = autoprefixer.data
-
-autoprefixer.data.browsers =
-  chrome:
-    future:     [5, 4]
-    versions:   [3, 2, 1]
-    popularity: [40, 5, 0.5]
-    prefix:     '-webkit-'
-  ie:
-    versions:   [3, 2, 1]
-    popularity: [40, 3.5, 0.5]
-    prefix:     '-ms-'
-  ff:
-    versions:   [3, 2, 1]
-    popularity: [10, 0.5, 0]
-    prefix:     '-moz-'
-  opera:
-    versions:   [3, 2, 1]
-    popularity: [0, 0, 0]
-    prefix:     '-o-'
-
-autoprefixer.data.values =
-  'linear-gradient':
-    browsers: ['chrome 2', 'chrome 1']
-    props:    ['background']
-    replace:    original.values['linear-gradient'].replace
-  calc:
-    browsers: ['ie 3', 'chrome 3']
-    props:    ['*']
-autoprefixer.data.props =
-  transform:
-    browsers: ['ie 3', 'chrome 1']
-    transition: true
-  transition:
-    browsers: ['chrome 3']
-  filter:
-    browsers: ['ie 3']
-    transition: true
-    check:      -> !@match(/DXImageTransform\.Microsoft/)
-  'border-top-left-radius':
-    browsers: ['ff 1']
-    prefixed: '-moz-': '-moz-border-radius-topleft'
-  "@keyframes":
-    browsers: ['ie 3', 'chrome 3', 'opera 1']
+autoprefixer.data =
+  browsers:
+    chrome:
+      future:     [5, 4]
+      versions:   [3, 2, 1]
+      popularity: [40, 5, 0.5]
+      prefix:     '-webkit-'
+    ie:
+      versions:   [3, 2, 1]
+      popularity: [40, 3.5, 0.5]
+      prefix:     '-ms-'
+    ff:
+      versions:   [3, 2, 1]
+      popularity: [10, 0.5, 0]
+      prefix:     '-moz-'
+    opera:
+      versions:   [3, 2, 1]
+      popularity: [0, 0, 0]
+      prefix:     '-o-'
+  values:
+    'linear-gradient':
+      browsers: ['chrome 2', 'chrome 1']
+      props:    ['background']
+    calc:
+      browsers: ['ie 3', 'chrome 3']
+      props:    ['*']
+  props:
+    transform:
+      browsers: ['ie 3', 'chrome 1']
+      transition: true
+    transition:
+      browsers: ['chrome 3']
+    filter:
+      browsers: ['ie 3']
+      transition: true
+    'border-top-left-radius':
+      browsers: ['ff 1']
+      prefixed: '-moz-': '-moz-border-radius-topleft'
+    "@keyframes":
+      browsers: ['ie 3', 'chrome 3', 'opera 1']
 
 browsers = -> autoprefixer.parse.returnValues[0]
 
 describe 'autoprefixer', ->
   afterEach -> sinon.restore(autoprefixer)
+  after     -> autoprefixer.data = original
 
   describe '.compile()', ->
 
     it 'should compile CSS', ->
-      autoprefixer.compile(css('link')).should.equal(css('link.out'))
+      autoprefixer.compile(css('autoprefixer')).should.equal(
+        css('autoprefixer.out'))
 
     it 'should not double same prefixes', ->
-      autoprefixer.compile(css('link.out')).should.equal(css('link.out'))
+      autoprefixer.compile(css('autoprefixer.out')).should.equal(
+        css('autoprefixer.out'))
 
   describe '.parse()', ->
     beforeEach -> sinon.spy(autoprefixer, 'parse')
@@ -126,7 +123,6 @@ describe 'autoprefixer', ->
           prefixes:   ['-ms-']
           browsers:   ['ie 3', 'chrome 2', 'chrome 1']
           transition: true
-          check:      autoprefixer.data.props.filter.check
           regexp:     /(^|\s|,|\()filter($|\s|\()/
         "@keyframes":
           prefixes:   ['-ms-']
