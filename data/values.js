@@ -98,8 +98,11 @@ module.exports = {
             "ios 5.0",
             "ios 5.1"
         ],
-        replace: function (string, prefix) {
-            if (prefix === '-moz-') {
+        replace: function (string, prefix, rules) {
+            if (prefix === '-webkit-') {
+                rules.add('display', '-webkit-box');
+                return '-webkit-' + string;
+            } else if (prefix === '-moz-') {
                 return prefix + 'box';
             } else if (prefix === '-ms-') {
                 return prefix + 'flexbox';

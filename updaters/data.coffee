@@ -133,8 +133,11 @@ updater.caniuse 'features-json/flexbox.json', (data) ->
   values 'flex',
           props:  ['display']
           browsers: browsers(data)
-          replace:  (string, prefix) ->
-            if prefix == '-moz-'
+          replace:  (string, prefix, rules) ->
+            if prefix == '-webkit-'
+              rules.add('display', '-webkit-box')
+              '-webkit-' + string
+            else if prefix == '-moz-'
               prefix + 'box'
             else if prefix == '-ms-'
               prefix + 'flexbox'
