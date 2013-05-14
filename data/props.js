@@ -58,7 +58,6 @@ module.exports = {
     "align-content": {
         browsers: [
             "ie 10",
-            "ie 11",
             "ff 2",
             "ff 3",
             "ff 4",
@@ -126,7 +125,6 @@ module.exports = {
     "align-items": {
         browsers: [
             "ie 10",
-            "ie 11",
             "ff 2",
             "ff 3",
             "ff 4",
@@ -194,7 +192,6 @@ module.exports = {
     "align-self": {
         browsers: [
             "ie 10",
-            "ie 11",
             "ff 2",
             "ff 3",
             "ff 4",
@@ -1843,7 +1840,6 @@ module.exports = {
     flex: {
         browsers: [
             "ie 10",
-            "ie 11",
             "ff 2",
             "ff 3",
             "ff 4",
@@ -1911,7 +1907,6 @@ module.exports = {
     "flex-basis": {
         browsers: [
             "ie 10",
-            "ie 11",
             "ff 2",
             "ff 3",
             "ff 4",
@@ -1979,7 +1974,6 @@ module.exports = {
     "flex-direction": {
         browsers: [
             "ie 10",
-            "ie 11",
             "ff 2",
             "ff 3",
             "ff 4",
@@ -2047,7 +2041,6 @@ module.exports = {
     "flex-flow": {
         browsers: [
             "ie 10",
-            "ie 11",
             "ff 2",
             "ff 3",
             "ff 4",
@@ -2115,7 +2108,6 @@ module.exports = {
     "flex-grow": {
         browsers: [
             "ie 10",
-            "ie 11",
             "ff 2",
             "ff 3",
             "ff 4",
@@ -2183,7 +2175,6 @@ module.exports = {
     "flex-shrink": {
         browsers: [
             "ie 10",
-            "ie 11",
             "ff 2",
             "ff 3",
             "ff 4",
@@ -2251,7 +2242,6 @@ module.exports = {
     "flex-wrap": {
         browsers: [
             "ie 10",
-            "ie 11",
             "ff 2",
             "ff 3",
             "ff 4",
@@ -2319,7 +2309,6 @@ module.exports = {
     "justify-content": {
         browsers: [
             "ie 10",
-            "ie 11",
             "ff 2",
             "ff 3",
             "ff 4",
@@ -2387,7 +2376,6 @@ module.exports = {
     order: {
         browsers: [
             "ie 10",
-            "ie 11",
             "ff 2",
             "ff 3",
             "ff 4",
