@@ -130,7 +130,16 @@ updater.caniuse 'features-json/user-select-none.json', (data) ->
 
 # Flexible Box Layout
 updater.caniuse 'features-json/flexbox.json', (data) ->
-  values 'flex', 'inline-flex',
+  values 'flex',
+          props:  ['display']
+          browsers: browsers(data)
+          replace:  (string, prefix) ->
+            if prefix == '-moz-'
+              prefix + 'box'
+            else if prefix == '-ms-'
+              prefix + 'flexbox'
+
+  values 'inline-flex',
           props:  ['display']
           browsers: browsers(data)
 

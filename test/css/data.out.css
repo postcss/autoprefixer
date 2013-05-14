@@ -1,5 +1,9 @@
 a {
   background: -webkit-linear-gradient(80deg, white, black), -webkit-linear-gradient(-40deg, black, white), -webkit-linear-gradient(black, white);
   background: linear-gradient(350deg, white, black), linear-gradient(-130deg, black, white), linear-gradient(black, white);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fffcde', endColorstr='#00ffffff',GradientType=0 )
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fffcde', endColorstr='#00ffffff',GradientType=0 );
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex
 }

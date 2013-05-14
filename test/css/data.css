@@ -1,4 +1,5 @@
 a {
   background: linear-gradient(350deg, white, black), linear-gradient(-130deg, black, white), linear-gradient(black, white);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fffcde', endColorstr='#00ffffff',GradientType=0 );
+  display: flex;
 }

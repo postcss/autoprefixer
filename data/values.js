@@ -97,7 +97,14 @@ module.exports = {
             "ios 4.3",
             "ios 5.0",
             "ios 5.1"
-        ]
+        ],
+        replace: function (string, prefix) {
+            if (prefix === '-moz-') {
+                return prefix + 'box';
+            } else if (prefix === '-ms-') {
+                return prefix + 'flexbox';
+            }
+        }
     },
     "inline-flex": {
         props: [
