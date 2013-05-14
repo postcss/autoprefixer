@@ -91,16 +91,28 @@ updater.caniuse 'features-json/css-gradients.json', (data) ->
           props:   ['background', 'background-image']
           browsers:  browsers(data)
           replace: (string, prefix) ->
-            return unless prefix == '-webkit-'
-            regexp = /((repeating-)?(linear|radial)-gradient\()\s*(-?\d+deg)?/g
+            regexp = /to\s+(top|bottom)?\s*(left|right)?/ig
+            string = string.replace regexp, (_, ver, hor) ->
+              direct  = []
+              direct.push('bottom') if ver == 'top'
+              direct.push('top')    if ver == 'bottom'
+              direct.push('left')   if hor == 'right'
+              direct.push('right')  if hor == 'left'
+              direct.join(' ')
+
+            regexp = /(repeating-)?(linear|radial)-gradient/gi
+            string = string.replace(regexp, prefix + '$&')
+
+            return string unless prefix == '-webkit-'
+            regexp = /((repeating-)?(linear|radial)-gradient\()\s*(-?\d+deg)?/ig
             string.replace regexp, (_0, gradient, _1, _2, deg) ->
               if deg
                 deg  = parseInt(deg)
                 deg += 90
                 deg -= 360 if deg > 360
-                prefix + gradient + deg + 'deg'
+                gradient + deg + 'deg'
               else
-                prefix + gradient
+                gradient
 
 # Box sizing
 updater.caniuse 'features-json/css3-boxsizing.json', (data) ->
