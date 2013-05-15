@@ -116,14 +116,11 @@ describe 'autoprefixer', ->
       autoprefixer.filter(data, ['ie 3', 'chrome 2', 'chrome 1']).should.eql
         transform:
           prefixes:   ['-webkit-', '-ms-']
-          browsers:   ['ie 3', 'chrome 2', 'chrome 1']
           transition: true
           regexp:     /(^|\s|,|\()transform($|\s|\()/
         filter:
           prefixes:   ['-ms-']
-          browsers:   ['ie 3', 'chrome 2', 'chrome 1']
           transition: true
           regexp:     /(^|\s|,|\()filter($|\s|\()/
         "@keyframes":
           prefixes:   ['-ms-']
-          browsers:   ['ie 3', 'chrome 2', 'chrome 1']
