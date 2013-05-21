@@ -8,6 +8,9 @@
 * Add old syntax for display: flex.
 * Update browser global usage statistics.
 
+20130521:
+* Add Firefox 23 data.
+
 == 0.3 (Growing Strong)
 * Rename `autoprefixer.filter()` to `autoprefixer.rework()`.
 * Use own filters instead of Rework’s `prefix` and `prefixValue`.
