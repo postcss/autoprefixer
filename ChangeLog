@@ -11,6 +11,9 @@
 20130521:
 * Add Firefox 23 data.
 
+20130524:
+* Add Chrome 29 data.
+
 == 0.3 (Growing Strong)
 * Rename `autoprefixer.filter()` to `autoprefixer.rework()`.
 * Use own filters instead of Rework’s `prefix` and `prefixValue`.
