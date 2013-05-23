@@ -5,6 +5,7 @@ module.exports = {
     chrome: {
         prefix: "-webkit-",
         versions: [
+            27,
             26,
             25,
             24,
@@ -30,10 +31,10 @@ module.exports = {
             4
         ],
         future: [
-            28,
-            27
+            28
         ],
         popularity: [
+            0.19803,
             27.6639,
             1.61868,
             0.72324,
