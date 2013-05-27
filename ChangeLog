@@ -14,6 +14,10 @@
 20130524:
 * Add Chrome 29 data.
 
+20130528:
+* Fix compatibilty with Rework from git master.
+* Add minor browsers to data, which can be selected only directly.
+
 == 0.3 (Growing Strong)
 * Rename `autoprefixer.filter()` to `autoprefixer.rework()`.
 * Use own filters instead of Rework’s `prefix` and `prefixValue`.
