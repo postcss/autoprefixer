@@ -17,7 +17,7 @@ autoprefixer.data =
       prefix:     '-ms-'
     ff:
       versions:   [3, 2, 1]
-      popularity: [10, 0.5, 0]
+      popularity: [9, 0.5, 0]
       prefix:     '-moz-'
     opera:
       versions:   [3, 2, 1]
@@ -25,7 +25,7 @@ autoprefixer.data =
       prefix:     '-o-'
     bb:
       versions:   [3, 2, 1]
-      popularity: [0, 0, 0]
+      popularity: [1, 0, 0]
       prefix:     '-webkit-'
       minor:      true
   values:
