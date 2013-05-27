@@ -61,6 +61,13 @@ autoprefixer.compile(css, ["last 1 version", "> 1%", "ie 8", "ie 7"]);
 * `> n%` is browser versions, which global usage statistics is more than `n`%.
 * You can also set browsers directly.
 
+Blackberry and stock Android browsers will not be used in `last n versions`
+or `> n%` selects. Add them by name if you need them:
+
+```js
+autoprefixer.compile(css, ["last 1 version", "bb 10", "android 4"]);
+```
+
 ## Usage
 
 ### Ruby on Rails
