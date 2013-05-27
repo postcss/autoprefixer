@@ -2,6 +2,40 @@
 // See updaters/ dir for generator. Run bin/update to update.
 
 module.exports = {
+    android: {
+        prefix: "-webkit-",
+        versions: [
+            4.2,
+            4.1,
+            4,
+            3,
+            2.3,
+            2.2,
+            2.1
+        ],
+        minor: true,
+        popularity: [
+            0.113747,
+            1.29078,
+            1.36002,
+            0.00494553,
+            1.90403,
+            0.182984,
+            0.0840739
+        ]
+    },
+    bb: {
+        prefix: "-webkit-",
+        versions: [
+            10,
+            7
+        ],
+        minor: true,
+        popularity: [
+            0,
+            0.102165
+        ]
+    },
     chrome: {
         prefix: "-webkit-",
         versions: [

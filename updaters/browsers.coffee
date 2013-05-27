@@ -15,6 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 updater = require('./lib/updater')
+minor   = ['bb', 'android']
 
 updater.caniuse 'data.json', (data) ->
   normalize = (array) -> array.reverse().filter (i) -> i
@@ -34,6 +35,7 @@ updater.caniuse 'data.json', (data) ->
     result   =
       prefix:  "-#{info.prefix}-"
       versions: versions.map (i) -> parseFloat(i[0])
+    result.minor      = true   if minor.indexOf(name) != -1
     result.future     = future if future.length
     result.popularity = versions.map (i) -> info.usage_global[i[1]] / i[2]
     result

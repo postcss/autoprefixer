@@ -23,6 +23,11 @@ autoprefixer.data =
       versions:   [3, 2, 1]
       popularity: [0, 0, 0]
       prefix:     '-o-'
+    bb:
+      versions:   [3, 2, 1]
+      popularity: [0, 0, 0]
+      prefix:     '-webkit-'
+      minor:      true
   values:
     'linear-gradient':
       browsers: ['chrome 2', 'chrome 1']
@@ -80,8 +85,8 @@ describe 'autoprefixer', ->
       browsers().should.eql(['chrome 3', 'chrome 2', 'ie 3', 'ie 2', 'ff 3'])
 
     it 'should parse manuall', ->
-      autoprefixer.rework(['chrome 2', 'ie 2'])
-      browsers().should.eql(['chrome 2', 'ie 2'])
+      autoprefixer.rework(['chrome 2', 'bb 2'])
+      browsers().should.eql(['chrome 2', 'bb 2'])
 
   describe '.check()', ->
     beforeEach -> sinon.spy(autoprefixer, 'parse')

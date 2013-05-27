@@ -30,6 +30,8 @@ module.exports =
     ios_saf: 'ios'
     opera:   'opera'
     ie:      'ie'
+    bb:      'bb'
+    android: 'android'
 
   # Count of loading HTTP requests
   requests: 0

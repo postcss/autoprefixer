@@ -27,7 +27,8 @@ module.exports = {
             "chrome 24",
             "chrome 25",
             "safari 6",
-            "ios 6"
+            "ios 6",
+            "bb 10"
         ]
     },
     flex: {
@@ -97,7 +98,16 @@ module.exports = {
             "ios 4.2",
             "ios 4.3",
             "ios 5.0",
-            "ios 5.1"
+            "ios 5.1",
+            "android 3",
+            "android 4",
+            "android 2.1",
+            "android 2.2",
+            "android 2.3",
+            "android 4.1",
+            "android 4.2",
+            "bb 7",
+            "bb 10"
         ],
         replace: function (string, prefix, rules) {
             if (prefix === '-webkit-') {
@@ -177,7 +187,16 @@ module.exports = {
             "ios 4.2",
             "ios 4.3",
             "ios 5.0",
-            "ios 5.1"
+            "ios 5.1",
+            "android 3",
+            "android 4",
+            "android 2.1",
+            "android 2.2",
+            "android 2.3",
+            "android 4.1",
+            "android 4.2",
+            "bb 7",
+            "bb 10"
         ]
     },
     "linear-gradient": {
@@ -236,7 +255,16 @@ module.exports = {
             "ios 4.2",
             "ios 4.3",
             "ios 5.0",
-            "ios 5.1"
+            "ios 5.1",
+            "android 3",
+            "android 4",
+            "android 2.1",
+            "android 2.2",
+            "android 2.3",
+            "android 4.1",
+            "android 4.2",
+            "bb 7",
+            "bb 10"
         ],
         replace: function (string, prefix) {
             var regexp;
@@ -334,7 +362,16 @@ module.exports = {
             "ios 4.2",
             "ios 4.3",
             "ios 5.0",
-            "ios 5.1"
+            "ios 5.1",
+            "android 3",
+            "android 4",
+            "android 2.1",
+            "android 2.2",
+            "android 2.3",
+            "android 4.1",
+            "android 4.2",
+            "bb 7",
+            "bb 10"
         ],
         replace: function (string, prefix) {
             var regexp;
@@ -432,7 +469,16 @@ module.exports = {
             "ios 4.2",
             "ios 4.3",
             "ios 5.0",
-            "ios 5.1"
+            "ios 5.1",
+            "android 3",
+            "android 4",
+            "android 2.1",
+            "android 2.2",
+            "android 2.3",
+            "android 4.1",
+            "android 4.2",
+            "bb 7",
+            "bb 10"
         ],
         replace: function (string, prefix) {
             var regexp;
@@ -530,7 +576,16 @@ module.exports = {
             "ios 4.2",
             "ios 4.3",
             "ios 5.0",
-            "ios 5.1"
+            "ios 5.1",
+            "android 3",
+            "android 4",
+            "android 2.1",
+            "android 2.2",
+            "android 2.3",
+            "android 4.1",
+            "android 4.2",
+            "bb 7",
+            "bb 10"
         ],
         replace: function (string, prefix) {
             var regexp;
