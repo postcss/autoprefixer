@@ -1,9 +1,9 @@
 # Autoprefixer
 
-Parse CSS and add prefixed properties and values by
+Parse CSS and add prefixed properties and values from
 [Can I Use](http://caniuse.com/) database for actual browsers.
 
-Write your CSS usual code without prefixes (forget about them at all,
+Write your usual CSS code without prefixes (forget about them at all,
 Autoprefixer will think for you):
 
 ```js
@@ -12,7 +12,7 @@ var prefixed = autoprefixer.compile(css);
 ```
 
 Autoprefixer will take database with current browser statistics
-and properties support and adds only actual prefixes:
+and properties support and add only actual prefixes:
 
 ```css
 a {
@@ -57,8 +57,8 @@ autoprefixer.compile(css, ["last 1 version", "> 1%", "ie 8", "ie 7"]);
 
 * `last n versions` is last `n` versions for each browser (for example,
   [Google also uses](http://support.google.com/a/bin/answer.py?answer=33864)
-  “last 2 version” strategy).
-* `> n%` is browser versions, which global usage statistics is more than `n`%.
+  “last 2 versions” strategy).
+* `> n%` is browser versions, whose global usage statistics is more than `n`%.
 * You can also set browsers directly.
 
 Blackberry and stock Android browsers will not be used in `last n versions`
@@ -81,7 +81,7 @@ gem "autoprefixer-rails"
 
 ### Ruby
 
-You can integrate Autoprefxier to your Sprockets environment
+You can integrate Autoprefixer into your Sprockets environment
 by `autoprefixer-rails` gem:
 
 ```ruby
@@ -97,7 +97,7 @@ prefixed = AutoprefixerRails.compile(css)
 ### Grunt
 
 You can use [grunt-autoprefixer](https://github.com/nDmitry/grunt-autoprefixer)
-plugin for Grunt. Install npm-package and add it to Gruntfile:
+plugin for Grunt. Install npm package and add it to Gruntfile:
 
 ```js
 grunt.loadNpmTasks('grunt-autoprefixer');
@@ -105,7 +105,7 @@ grunt.loadNpmTasks('grunt-autoprefixer');
 
 ### Node.js
 
-Use `autoprefixer` npm-package:
+Use `autoprefixer` npm package:
 
 ```js
 var autoprefixer = require('autoprefixer');
@@ -115,7 +115,7 @@ var prefixed     = autoprefixer.compile(css);
 ### JavaScript
 
 You can use Autoprefixer in browser or non-node JS runtime
-by [standalone version](https://raw.github.com/ai/autoprefixer-rails/master/vendor/autoprefixer.js).
+with [standalone version](https://raw.github.com/ai/autoprefixer-rails/master/vendor/autoprefixer.js).
 
 ### Rework
 
