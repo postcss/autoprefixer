@@ -65,6 +65,7 @@ module.exports = {
             4
         ],
         future: [
+            29,
             28
         ],
         popularity: [
@@ -175,6 +176,7 @@ module.exports = {
         prefix: "-webkit-",
         versions: [
             6,
+            6.1,
             5,
             5.1,
             4.2,
@@ -184,7 +186,8 @@ module.exports = {
             3.2
         ],
         popularity: [
-            6.02384,
+            3.01192,
+            3.01192,
             0.3597855,
             0.3597855,
             0.065104,
@@ -209,6 +212,9 @@ module.exports = {
             10.1,
             9.5,
             9.6
+        ],
+        future: [
+            15
         ],
         popularity: [
             0.62853,

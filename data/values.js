@@ -27,7 +27,8 @@ module.exports = {
             "chrome 24",
             "chrome 25",
             "safari 6",
-            "ios 6",
+            "ios 6.0",
+            "ios 6.1",
             "bb 10"
         ]
     },
@@ -91,7 +92,7 @@ module.exports = {
             "safari 3.1",
             "safari 3.2",
             "safari 5.1",
-            "ios 6",
+            "opera 15",
             "ios 3.2",
             "ios 4.0",
             "ios 4.1",
@@ -99,6 +100,8 @@ module.exports = {
             "ios 4.3",
             "ios 5.0",
             "ios 5.1",
+            "ios 6.0",
+            "ios 6.1",
             "android 3",
             "android 4",
             "android 2.1",
@@ -180,7 +183,7 @@ module.exports = {
             "safari 3.1",
             "safari 3.2",
             "safari 5.1",
-            "ios 6",
+            "opera 15",
             "ios 3.2",
             "ios 4.0",
             "ios 4.1",
@@ -188,6 +191,8 @@ module.exports = {
             "ios 4.3",
             "ios 5.0",
             "ios 5.1",
+            "ios 6.0",
+            "ios 6.1",
             "android 3",
             "android 4",
             "android 2.1",
@@ -248,7 +253,6 @@ module.exports = {
             "opera 11.1",
             "opera 11.5",
             "opera 11.6",
-            "ios 6",
             "ios 3.2",
             "ios 4.0",
             "ios 4.1",
@@ -256,6 +260,8 @@ module.exports = {
             "ios 4.3",
             "ios 5.0",
             "ios 5.1",
+            "ios 6.0",
+            "ios 6.1",
             "android 3",
             "android 4",
             "android 2.1",
@@ -270,22 +276,22 @@ module.exports = {
             var regexp;
             regexp = /to\s+(top|bottom)?\s*(left|right)?/ig;
             string = string.replace(regexp, function (_, ver, hor) {
-                var direct;
-                direct = [];
-                if (ver === 'top') {
-                    direct.push('bottom');
-                }
-                if (ver === 'bottom') {
-                    direct.push('top');
-                }
-                if (hor === 'right') {
-                    direct.push('left');
-                }
-                if (hor === 'left') {
-                    direct.push('right');
-                }
-                return direct.join(' ');
-            });
+                    var direct;
+                    direct = [];
+                    if (ver === 'top') {
+                        direct.push('bottom');
+                    }
+                    if (ver === 'bottom') {
+                        direct.push('top');
+                    }
+                    if (hor === 'right') {
+                        direct.push('left');
+                    }
+                    if (hor === 'left') {
+                        direct.push('right');
+                    }
+                    return direct.join(' ');
+                });
             regexp = /(repeating-)?(linear|radial)-gradient/gi;
             string = string.replace(regexp, prefix + '$&');
             if (prefix !== '-webkit-') {
@@ -293,17 +299,17 @@ module.exports = {
             }
             regexp = /((repeating-)?(linear|radial)-gradient\()\s*(-?\d+deg)?/ig;
             return string.replace(regexp, function (_0, gradient, _1, _2, deg) {
-                if (deg) {
-                    deg = parseInt(deg);
-                    deg += 90;
-                    if (deg > 360) {
-                        deg -= 360;
+                    if (deg) {
+                        deg = parseInt(deg);
+                        deg += 90;
+                        if (deg > 360) {
+                            deg -= 360;
+                        }
+                        return gradient + deg + 'deg';
+                    } else {
+                        return gradient;
                     }
-                    return gradient + deg + 'deg';
-                } else {
-                    return gradient;
-                }
-            });
+                });
         }
     },
     "radial-gradient": {
@@ -355,7 +361,6 @@ module.exports = {
             "opera 11.1",
             "opera 11.5",
             "opera 11.6",
-            "ios 6",
             "ios 3.2",
             "ios 4.0",
             "ios 4.1",
@@ -363,6 +368,8 @@ module.exports = {
             "ios 4.3",
             "ios 5.0",
             "ios 5.1",
+            "ios 6.0",
+            "ios 6.1",
             "android 3",
             "android 4",
             "android 2.1",
@@ -377,22 +384,22 @@ module.exports = {
             var regexp;
             regexp = /to\s+(top|bottom)?\s*(left|right)?/ig;
             string = string.replace(regexp, function (_, ver, hor) {
-                var direct;
-                direct = [];
-                if (ver === 'top') {
-                    direct.push('bottom');
-                }
-                if (ver === 'bottom') {
-                    direct.push('top');
-                }
-                if (hor === 'right') {
-                    direct.push('left');
-                }
-                if (hor === 'left') {
-                    direct.push('right');
-                }
-                return direct.join(' ');
-            });
+                    var direct;
+                    direct = [];
+                    if (ver === 'top') {
+                        direct.push('bottom');
+                    }
+                    if (ver === 'bottom') {
+                        direct.push('top');
+                    }
+                    if (hor === 'right') {
+                        direct.push('left');
+                    }
+                    if (hor === 'left') {
+                        direct.push('right');
+                    }
+                    return direct.join(' ');
+                });
             regexp = /(repeating-)?(linear|radial)-gradient/gi;
             string = string.replace(regexp, prefix + '$&');
             if (prefix !== '-webkit-') {
@@ -400,17 +407,17 @@ module.exports = {
             }
             regexp = /((repeating-)?(linear|radial)-gradient\()\s*(-?\d+deg)?/ig;
             return string.replace(regexp, function (_0, gradient, _1, _2, deg) {
-                if (deg) {
-                    deg = parseInt(deg);
-                    deg += 90;
-                    if (deg > 360) {
-                        deg -= 360;
+                    if (deg) {
+                        deg = parseInt(deg);
+                        deg += 90;
+                        if (deg > 360) {
+                            deg -= 360;
+                        }
+                        return gradient + deg + 'deg';
+                    } else {
+                        return gradient;
                     }
-                    return gradient + deg + 'deg';
-                } else {
-                    return gradient;
-                }
-            });
+                });
         }
     },
     "repeating-linear-gradient": {
@@ -462,7 +469,6 @@ module.exports = {
             "opera 11.1",
             "opera 11.5",
             "opera 11.6",
-            "ios 6",
             "ios 3.2",
             "ios 4.0",
             "ios 4.1",
@@ -470,6 +476,8 @@ module.exports = {
             "ios 4.3",
             "ios 5.0",
             "ios 5.1",
+            "ios 6.0",
+            "ios 6.1",
             "android 3",
             "android 4",
             "android 2.1",
@@ -484,22 +492,22 @@ module.exports = {
             var regexp;
             regexp = /to\s+(top|bottom)?\s*(left|right)?/ig;
             string = string.replace(regexp, function (_, ver, hor) {
-                var direct;
-                direct = [];
-                if (ver === 'top') {
-                    direct.push('bottom');
-                }
-                if (ver === 'bottom') {
-                    direct.push('top');
-                }
-                if (hor === 'right') {
-                    direct.push('left');
-                }
-                if (hor === 'left') {
-                    direct.push('right');
-                }
-                return direct.join(' ');
-            });
+                    var direct;
+                    direct = [];
+                    if (ver === 'top') {
+                        direct.push('bottom');
+                    }
+                    if (ver === 'bottom') {
+                        direct.push('top');
+                    }
+                    if (hor === 'right') {
+                        direct.push('left');
+                    }
+                    if (hor === 'left') {
+                        direct.push('right');
+                    }
+                    return direct.join(' ');
+                });
             regexp = /(repeating-)?(linear|radial)-gradient/gi;
             string = string.replace(regexp, prefix + '$&');
             if (prefix !== '-webkit-') {
@@ -507,17 +515,17 @@ module.exports = {
             }
             regexp = /((repeating-)?(linear|radial)-gradient\()\s*(-?\d+deg)?/ig;
             return string.replace(regexp, function (_0, gradient, _1, _2, deg) {
-                if (deg) {
-                    deg = parseInt(deg);
-                    deg += 90;
-                    if (deg > 360) {
-                        deg -= 360;
+                    if (deg) {
+                        deg = parseInt(deg);
+                        deg += 90;
+                        if (deg > 360) {
+                            deg -= 360;
+                        }
+                        return gradient + deg + 'deg';
+                    } else {
+                        return gradient;
                     }
-                    return gradient + deg + 'deg';
-                } else {
-                    return gradient;
-                }
-            });
+                });
         }
     },
     "repeating-radial-gradient": {
@@ -569,7 +577,6 @@ module.exports = {
             "opera 11.1",
             "opera 11.5",
             "opera 11.6",
-            "ios 6",
             "ios 3.2",
             "ios 4.0",
             "ios 4.1",
@@ -577,6 +584,8 @@ module.exports = {
             "ios 4.3",
             "ios 5.0",
             "ios 5.1",
+            "ios 6.0",
+            "ios 6.1",
             "android 3",
             "android 4",
             "android 2.1",
@@ -591,22 +600,22 @@ module.exports = {
             var regexp;
             regexp = /to\s+(top|bottom)?\s*(left|right)?/ig;
             string = string.replace(regexp, function (_, ver, hor) {
-                var direct;
-                direct = [];
-                if (ver === 'top') {
-                    direct.push('bottom');
-                }
-                if (ver === 'bottom') {
-                    direct.push('top');
-                }
-                if (hor === 'right') {
-                    direct.push('left');
-                }
-                if (hor === 'left') {
-                    direct.push('right');
-                }
-                return direct.join(' ');
-            });
+                    var direct;
+                    direct = [];
+                    if (ver === 'top') {
+                        direct.push('bottom');
+                    }
+                    if (ver === 'bottom') {
+                        direct.push('top');
+                    }
+                    if (hor === 'right') {
+                        direct.push('left');
+                    }
+                    if (hor === 'left') {
+                        direct.push('right');
+                    }
+                    return direct.join(' ');
+                });
             regexp = /(repeating-)?(linear|radial)-gradient/gi;
             string = string.replace(regexp, prefix + '$&');
             if (prefix !== '-webkit-') {
@@ -614,17 +623,17 @@ module.exports = {
             }
             regexp = /((repeating-)?(linear|radial)-gradient\()\s*(-?\d+deg)?/ig;
             return string.replace(regexp, function (_0, gradient, _1, _2, deg) {
-                if (deg) {
-                    deg = parseInt(deg);
-                    deg += 90;
-                    if (deg > 360) {
-                        deg -= 360;
+                    if (deg) {
+                        deg = parseInt(deg);
+                        deg += 90;
+                        if (deg > 360) {
+                            deg -= 360;
+                        }
+                        return gradient + deg + 'deg';
+                    } else {
+                        return gradient;
                     }
-                    return gradient + deg + 'deg';
-                } else {
-                    return gradient;
-                }
-            });
+                });
         }
     }
 };
