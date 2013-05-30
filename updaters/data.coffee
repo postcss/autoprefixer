@@ -32,6 +32,7 @@ browsers = (data) ->
     for interval, support of versions
       for version in interval.split('-')
         if updater.browsers[browser] and support.match(/\sx$/)
+          version = version.replace(/\.0$/, '')
           need.push(updater.browsers[browser] + ' ' + version)
   need
 
