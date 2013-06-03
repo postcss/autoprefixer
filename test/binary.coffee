@@ -50,41 +50,41 @@ describe 'binary', ->
     bin 'test/fixtures/a', (out) ->
       out.should.eql('')
       read('a').should.eql('a { -webkit-transition: 1s; ' +
-                               '-o-transition: 1s; transition: 1s }')
+                               '-o-transition: 1s; transition: 1s; }')
       done()
 
   it 'should change browsers', (done) ->
     input 'a', css
     bin 'test/fixtures/a', '--browsers', 'chrome 25, ff 15', ->
       read('a').should.eql('a { -webkit-transition: 1s; ' +
-                               '-moz-transition: 1s; transition: 1s }')
+                               '-moz-transition: 1s; transition: 1s; }')
       done()
 
   it 'should rewrite several files', (done) ->
     input 'a', css
     input 'b', 'b { transition: 1s }'
     bin 'test/fixtures/a', 'test/fixtures/b', '-b', 'chrome 25', ->
-      read('a').should.eql('a { -webkit-transition: 1s; transition: 1s }')
-      read('b').should.eql('b { -webkit-transition: 1s; transition: 1s }')
+      read('a').should.eql('a { -webkit-transition: 1s; transition: 1s; }')
+      read('b').should.eql('b { -webkit-transition: 1s; transition: 1s; }')
       done()
 
   it 'should change output file', (done) ->
     input 'a', css
     bin 'test/fixtures/a', '-o', 'test/fixtures/b', '-b', 'chrome 25', ->
       read('a').should.eql('a { transition: 1s }')
-      read('b').should.eql('a { -webkit-transition: 1s; transition: 1s }')
+      read('b').should.eql('a { -webkit-transition: 1s; transition: 1s; }')
       done()
 
   it 'should output to stdout', (done) ->
     input 'a', css
     bin 'test/fixtures/a', '-o', '-', '-b', 'chrome 25', (out) ->
       read('a').should.eql('a { transition: 1s }')
-      trim(out).should.eql('a { -webkit-transition: 1s; transition: 1s } ')
+      trim(out).should.eql('a { -webkit-transition: 1s; transition: 1s; } ')
       done()
 
   it 'should read from stdin', (done) ->
     child.exec "echo '#{css}' | bin/autoprefixer -b 'chrome 25'", (_, out) ->
-      trim(out).should.eql('a { -webkit-transition: 1s; transition: 1s } ')
+      trim(out).should.eql('a { -webkit-transition: 1s; transition: 1s; } ')
       done()
 
   it 'should inspect', (done) ->

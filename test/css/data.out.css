@@ -13,7 +13,7 @@ a {
   display: -webkit-flex;
   display: -moz-box;
   display: -ms-flexbox;
-  display: flex
+  display: flex;
 }
 
 div {
@@ -25,5 +25,5 @@ div {
               -o-linear-gradient(bottom, aqua, red);
   background: linear-gradient(to left, white black),
               linear-gradient(to bottom right, black, white),
-              linear-gradient(to top, aqua, red)
+              linear-gradient(to top, aqua, red);
 }

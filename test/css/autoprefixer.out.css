@@ -12,12 +12,12 @@ a {
               linear-gradient(black, white);
   border: -webkit-calc(10% + 10px) -webkit-calc(5% + 5px);
   border: -ms-calc(10% + 10px) -ms-calc(5% + 5px);
-  border: calc(10% + 10px) calc(5% + 5px)
+  border: calc(10% + 10px) calc(5% + 5px);
 }
 
 @keyframes anim {
   from {
-    color: white
+    color: white;
   }
 
   to {
@@ -25,29 +25,29 @@ a {
     transform: translateX(-webkit-calc(10% + 10px));
     transform: translateX(-ms-calc(10% + 10px));
     transform: translateX(calc(10% + 10px));
-    color: black
+    color: black;
   }
 }
 
 @-webkit-keyframes anim {
   from {
-    color: white
+    color: white;
   }
 
   to {
     transform: translateX(-webkit-calc(10% + 10px));
-    color: black
+    color: black;
   }
 }
 
 @-ms-keyframes anim {
   from {
-    color: white
+    color: white;
   }
 
   to {
     -ms-transform: translateX(-ms-calc(10% + 10px));
     transform: translateX(-ms-calc(10% + 10px));
-    color: black
+    color: black;
   }
 }
