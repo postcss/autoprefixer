@@ -22,6 +22,10 @@
 * Add Opera 15 and iOS 6.1 data.
 * Fix iOS versions in properties and values data.
 
+20130603:
+* Use latest Rework 0.15 with a lot of CSS parsing fixes.
+* Update browsers usage statistics.
+
 == 0.3 (Growing Strong)
 * Rename `autoprefixer.filter()` to `autoprefixer.rework()`.
 * Use own filters instead of Rework’s `prefix` and `prefixValue`.
