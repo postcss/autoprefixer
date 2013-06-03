@@ -4,7 +4,7 @@
   "description": "Parse CSS and add prefixed properties and values by actual Can I Use database",
   "keywords": ["css", "prefix", "rework"],
   "dependencies": {
-    "visionmedia/rework": "0.14.0"
+    "visionmedia/rework": "0.15.0"
   },
   "main": "lib/autoprefixer.js",
   "scripts": [
