@@ -11,8 +11,8 @@ var css = 'a { transition: transform 1s }';
 var prefixed = autoprefixer.compile(css);
 ```
 
-Autoprefixer will take database with current browser statistics
-and properties support and add only actual prefixes:
+Autoprefixer uses a database with current browser statistics
+and properties support to add prefixes automatically:
 
 ```css
 a {
@@ -34,22 +34,22 @@ Sponsored by [Evil Martians](http://evilmartians.com/).
 * You write normal CSS (or use Autoprefixer after Sass, Stylus
   or another preprocessor).
 * You write normal properties (not special mixins), so you don’t need to
-  remember which properties need to be prefixed.
-* Autoprefixer uses only really necessary prefixes. You set browsers (by default
-  last 2 version for each browsers). Did you know that prefixes for
-  `border-radius` [are not necessary](http://caniuse.com/border-radius)
-  for a long time?
-* Properties and browsers database is updated automatically
-  (from [Can I Use](http://caniuse.com/)), so prefixes will be always actual
-  (scripts don’t have holidays and work).
-* Remove outdated prefixes to clean libraries and legacy code.
-* It also adds prefixes to the values. For example, to `calc(1em + 5px)` or
-  to properties names in `transition`.
+  remember which properties needs to be prefixed.
+* Autoprefixer uses only necessary prefixes. You choose which browsers
+  (by default the last 2 versions for each browser).
+  Did you know, that prefixes for `border-radius`
+  [have not been necessary](http://caniuse.com/border-radius)
+  for a long time now?
+* The properties and browsers database is updated automatically
+  (from [Can I Use](http://caniuse.com/)), so prefixes will always be up-to-date
+  (scripts don’t have holidays or work).
+* Removes outdated prefixes to clean libraries and legacy code.
+* It also adds prefixes to values. For example, to `calc(1em + 5px)` or
+  to property names in `transition`.
 
 ## Browsers
 
-You can specify browsers actual for your project (by default, it’s
-`"last 2 versions"`):
+You can specify browsers for your project (by default, it’s `last 2 versions`):
 
 ```js
 autoprefixer.compile(css, ["last 1 version", "> 1%", "ie 8", "ie 7"]);
