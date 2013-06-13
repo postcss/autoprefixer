@@ -185,6 +185,9 @@ module.exports = {
             4.1,
             3.2
         ],
+        future: [
+            7
+        ],
         popularity: [
             3.094025,
             3.094025,
@@ -240,6 +243,9 @@ module.exports = {
             4,
             3.2,
             3.1
+        ],
+        future: [
+            7
         ],
         popularity: [
             1.91251,
