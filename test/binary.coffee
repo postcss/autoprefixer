@@ -1,9 +1,8 @@
 autoprefixer = require('../lib/autoprefixer')
 Binary       = require('../lib/autoprefixer/binary')
 
-fs     = require('fs')
-os     = require('os')
-child  = require('child_process')
+fs    = require('fs-extra')
+child = require('child_process')
 
 class StringBuffer
   constructor: -> @content  = ''
@@ -15,7 +14,7 @@ class StringBuffer
     else if event == 'end'
       callback()
 
-tempDir = os.tmpdir() + '/' + (new Date).valueOf()
+tempDir = __dirname + '/fixtures'
 
 write = (file, css) ->
   fs.mkdirSync(tempDir) unless fs.existsSync(tempDir)
@@ -51,9 +50,7 @@ describe 'Binary', ->
         callback(@stdout.content, error)
 
   afterEach ->
-    if fs.existsSync(tempDir)
-      fs.unlinkSync("#{tempDir}/#{i}") for i in fs.readdirSync(tempDir)
-      fs.rmdirSync(tempDir)
+    fs.removeSync(tempDir) if fs.existsSync(tempDir)
 
   css      = 'a { transition: all 1s; }'
   prefixed = "a {\n  -webkit-transition: all 1s;\n  transition: all 1s;\n}"
