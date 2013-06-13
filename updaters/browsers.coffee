@@ -32,11 +32,10 @@ updater.caniuse 'data.json', (data) ->
     info     = data.agents[name]
     future   = normalize(info.versions[-2..-1]).map (i) -> parseFloat(i)
     versions = intervals(normalize(info.versions[0..-3]))
-    result   =
-      prefix:  "-#{info.prefix}-"
-      versions: versions.map (i) -> parseFloat(i[0])
+    result   = prefix: "-#{info.prefix}-"
     result.minor      = true   if minor.indexOf(name) != -1
     result.future     = future if future.length
+    result.versions   = versions.map (i) -> parseFloat(i[0])
     result.popularity = versions.map (i) -> info.usage_global[i[1]] / i[2]
     result
 
@@ -44,4 +43,4 @@ updater.caniuse 'data.json', (data) ->
   for caniuse, internal of updater.browsers
     browsers[internal] = agent(caniuse)
 
-  updater.save('browsers.js', browsers)
+  updater.save('browsers', browsers)

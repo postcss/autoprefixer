@@ -1,0 +1,17 @@
+a {
+    -webkit-transition: -webkit-transform 200ms, color 200ms;
+    -o-transition: -o-transform 200ms, color 200ms;
+    transition: transform 200ms, color 200ms;
+    -webkit-transform: rotate(10deg);
+    -o-transform: rotate(10deg);
+    transform: rotate(10deg);
+}
+
+div {
+    -webkit-transition-property: -webkit-filter;
+    -o-transition-property: filter;
+    transition-property: filter;
+    -webkit-animation-name: rotating;
+    -o-animation-name: rotating;
+    animation-name: rotating;
+}

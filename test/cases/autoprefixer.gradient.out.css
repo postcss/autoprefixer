@@ -1,0 +1,23 @@
+a {
+    background: -webkit-linear-gradient(80deg, white, black),
+                -webkit-linear-gradient(-40deg, black, white),
+                -webkit-linear-gradient(black, white);
+    background: -o-linear-gradient(350deg, white, black),
+                -o-linear-gradient(-130deg, black, white),
+                -o-linear-gradient(black, white);
+    background: linear-gradient(350deg, white, black),
+                linear-gradient(-130deg, black, white),
+                linear-gradient(black, white);
+}
+
+div {
+  background-image: -webkit-radial-gradient(right, white black),
+                    -webkit-repeating-linear-gradient(top left, black, white),
+                    -webkit-repeating-radial-gradient(bottom, aqua, red);
+  background-image: -o-radial-gradient(right, white black),
+                    -o-repeating-linear-gradient(top left, black, white),
+                    -o-repeating-radial-gradient(bottom, aqua, red);
+  background-image: radial-gradient(to left, white black),
+                    repeating-linear-gradient(to bottom right, black, white),
+                    repeating-radial-gradient(to top, aqua, red);
+}

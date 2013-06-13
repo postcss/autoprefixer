@@ -1,0 +1,16 @@
+@page {
+    margin: 0.5cm;
+}
+
+/* comment */
+
+@-moz-document url-prefix() {
+    a {
+        color: black;
+    }
+}
+
+a {
+    /* c */
+    color/**/: white;
+}

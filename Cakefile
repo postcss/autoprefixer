@@ -1,58 +1,92 @@
-fs   = require('fs')
-exec = require('child_process').exec
+fs = require('fs-extra')
+
+sh = (cmd, callback) ->
+  require('child_process').exec cmd, (error, stdout, stderr) ->
+    process.stderr.write(stderr)
+    process.exit(1) if error
+    callback()
 
 task 'update', 'Update browsers and properties data', ->
   for i in fs.readdirSync(__dirname + '/updaters')
     require('./updaters/' + i) if i.match(/\.coffee$/)
 
-task 'bench', 'Benchmark on GitHub CSS', ->
-  autoprefixer = require('./lib/autoprefixer')
-  https        = require('https')
+task 'clean', 'Remove all temporary files', ->
+  fs.removeSync(__dirname + '/build')
+  fs.removeSync(__dirname + '/autoprefixer.js')
 
-  asset = 'assets/github-21d1f919c9b16786238504ad1232b4937bbdd088.css'
-  https.get "https://a248.e.akamai.net/assets.github.com/#{asset}", (res) ->
-    css = ''
-    res.on 'data', (chunk) -> css += chunk
-    res.on 'end', ->
+task 'compile', 'Compile CoffeeScript to JS', ->
+  coffee = require('coffee-script')
 
-      start = new Date()
-      autoprefixer.compile(css) for i in [1..100]
-      diff = (new Date()) - start
-      process.stdout.write(
-        "GitHub CSS was autoprefixed 100 times by:\n#{diff} ms\n")
+  build = __dirname + '/build'
+  fs.removeSync(build)
+  fs.mkdirSync(build)
 
-task 'build', 'Build autoprefixer.js to standalone work', ->
-  save = ->
-    build = __dirname + '/build/build.js'
-    js = ";(function () {" +
-         fs.readFileSync(build).toString() +
+  ignore = fs.readFileSync(__dirname + '/.npmignore').toString().split("\n")
+  ignore = ignore.concat(['.git', '.npmignore'])
 
-         "require.register('visionmedia-rework/lib/plugins/inline.js', " +
-           "function(_, _, module){\n" +
-         "module.exports = function () {};\n" +
-         "});\n\n" +
+  compileCoffee = (path) ->
+    source = fs.readFileSync(path).toString()
+    coffee.compile(source)
 
-         "var autoprefixer = require('autoprefixer/lib/autoprefixer.js');\n" +
-         "autoprefixer.inspect = " +
-           "require('autoprefixer/lib/autoprefixer/inspect.js');\n" +
-         "if (typeof exports == 'object') {\n" +
-         "  module.exports = autoprefixer;\n" +
-         "} else if (typeof define == 'function' && define.amd) {\n" +
-         "  define(function(){ return autoprefixer; });\n" +
-         "} else {\n" +
-         "  this['autoprefixer'] = autoprefixer;\n" +
-         "} })();"
+  compile = (dir = '/') ->
+    path = __dirname + dir + '/'
+    for name in fs.readdirSync(__dirname + dir)
+      continue if ignore.some (i) -> i == name
 
-    fs.writeFileSync(__dirname + '/autoprefixer.js', js)
-    fs.unlinkSync(build)
-    fs.rmdirSync(__dirname + '/build/')
+      path       = dir + name
+      sourcePath = __dirname + path
+      buildPath  = build + path
 
-  npm_bin = (cmd, callback) ->
-    exec "./node_modules/.bin/#{ cmd }", (error, stdout, stderr) ->
-      process.stderr.write(stderr)
-      process.exit(1) if error
-      callback()
+      if fs.statSync(sourcePath).isDirectory()
+        fs.mkdirSync(buildPath)
+        compile(path + '/')
+      else if name[-7..-1] == '.coffee'
+        compiled = compileCoffee(sourcePath)
+        jsPath   = buildPath.replace(/\.coffee$/, '.js')
+        fs.writeFileSync(jsPath, compiled)
+      else if path == '/bin/autoprefixer'
+        compiled = compileCoffee(sourcePath)
+        compiled = "#!/usr/bin/env node\n" + compiled
+        fs.writeFileSync(buildPath, compiled)
+        fs.chmodSync(buildPath, '775')
+      else
+        fs.copy(sourcePath, buildPath)
 
-  npm_bin 'component install', ->
-    npm_bin 'component build', ->
-      save()
+  compile()
+
+task 'publish', 'Publish new version to npm', ->
+  invoke('compile')
+  build = #{__dirname} + '/build/'
+  sh "npm publish #{build}", ->
+    fs.removeSync(build)
+
+task 'build', 'Build standalone autoprefixer.js', ->
+  glob = require('glob')
+
+  invoke('compile')
+  build = __dirname + '/build/'
+
+  npm = JSON.parse fs.readFileSync(__dirname + '/package.json').toString()
+  config  =
+    name:         npm.name
+    version:      npm.version
+    main:         npm.main + '.js'
+    dependencies: { }
+
+  for name, version of npm.dependencies
+    config.dependencies["visionmedia/#{name}"] = version.replace(/[^\d\.]/g, '')
+  config.scripts = glob.sync(build + '**/*.js').map (i) -> i.replace(build, '')
+
+  fs.writeFileSync(build + 'component.json', JSON.stringify(config))
+
+  component = (command, callback) ->
+    sh("cd \"#{build}\"; ../node_modules/.bin/component #{command}", callback)
+
+  component 'install', ->
+    component 'build --standalone autoprefixer', ->
+      result = __dirname + '/autoprefixer.js'
+      fs.copy build + 'build/build.js', result, ->
+        fs.removeSync(build)
+
+        rails = __dirname + '/../autoprefixer-rails/vendor/autoprefixer.js'
+        fs.copy(result, rails) if fs.existsSync(rails)

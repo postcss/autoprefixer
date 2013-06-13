@@ -1,0 +1,8 @@
+a {
+    margin: -webkit-calc(5% + 5px) -webkit-calc(10% + 10px);
+    margin: calc(5% + 5px) calc(10% + 10px);
+    background: -webkit-linear-gradient(black, white), -webkit-radial-gradient(white, black);
+    background: -o-linear-gradient(black, white), -o-radial-gradient(white, black);
+    background: linear-gradient(black, white), radial-gradient(white, black);
+    content: " linear-gradient(black, white) ";
+}

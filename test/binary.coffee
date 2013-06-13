@@ -1,109 +1,149 @@
+autoprefixer = require('../lib/autoprefixer')
+Binary       = require('../lib/autoprefixer/binary')
+
 fs     = require('fs')
+os     = require('os')
 child  = require('child_process')
-should = require('should')
 
-exec = (args, callback) ->
-  opts = if typeof(args[args.length - 1]) == 'object' then args.pop() else {}
-  child.execFile('bin/autoprefixer', args, opts, callback)
+class StringBuffer
+  constructor: -> @content  = ''
+  write: (str) -> @content += str
+  resume:      -> @resumed  = true
+  on: (event, callback) ->
+    if event == 'data' and @resumed
+      callback(@content)
+    else if event == 'end'
+      callback()
 
-bin = (args..., callback) ->
-  exec args, (error, out, err) ->
-    should.not.exist(error)
-    callback(out)
+tempDir = os.tmpdir() + '/' + (new Date).valueOf()
 
-error = (args..., callback) ->
-  exec args, (error, out, err) ->
-    should.exist(error)
-    callback(err)
-
-input = (file, css) ->
-  fs.mkdirSync('test/fixtures') unless fs.existsSync('test/fixtures')
-  fs.writeFileSync("test/fixtures/#{file}", css)
-
-trim = (str) -> str.replace(/\s+/g, ' ')
+write = (file, css) ->
+  fs.mkdirSync(tempDir) unless fs.existsSync(tempDir)
+  fs.writeFileSync("#{tempDir}/#{file}", css)
 
 read = (file) ->
-  trim fs.readFileSync("test/fixtures/#{file}").toString()
+  fs.readFileSync("#{tempDir}/#{file}").toString()
 
-css = 'a { transition: 1s }'
+describe 'Binary', ->
+  beforeEach ->
+    @stdout = new StringBuffer()
+    @stderr = new StringBuffer()
+    @stdin  = new StringBuffer()
 
-describe 'binary', ->
+    @exec = (args..., callback) ->
+      args = args.map (i) ->
+        if i.match(/\.css/)
+          "#{tempDir}/#{i}"
+        else
+          i
+
+      binary = new Binary
+        argv:   ['', ''].concat(args)
+        stdin:  @stdin
+        stdout: @stdout
+        stderr: @stderr
+
+      binary.run =>
+        if binary.status == 0 and @stderr.content == ''
+          error = false
+        else
+          error = @stderr.content
+        callback(@stdout.content, error)
 
   afterEach ->
-    if fs.existsSync('test/fixtures')
-      files = fs.readdirSync('test/fixtures/')
-      fs.unlinkSync("test/fixtures/#{file}") for file in files
-      fs.rmdirSync('test/fixtures')
+    if fs.existsSync(tempDir)
+      fs.unlinkSync("#{tempDir}/#{i}") for i in fs.readdirSync(tempDir)
+      fs.rmdirSync(tempDir)
+
+  css      = 'a { transition: all 1s; }'
+  prefixed = "a {\n  -webkit-transition: all 1s;\n  transition: all 1s;\n}"
 
   it 'should show version', (done) ->
-    bin '-v', (out) ->
+    @exec '-v', (out, err) ->
+      err.should.be.false
       out.should.match(/^autoprefixer [\d\.]+\n$/)
       done()
 
   it 'should show help', (done) ->
-    bin '-h', (out) ->
-      out.should.match(/^Usage: /)
-      done()
-
-  it 'should use 2 last browsers by default', (done) ->
-    input 'a', css
-    bin 'test/fixtures/a', (out) ->
-      out.should.eql('')
-      read('a').should.eql('a { -webkit-transition: 1s; ' +
-                               '-o-transition: 1s; transition: 1s; }')
-      done()
-
-  it 'should change browsers', (done) ->
-    input 'a', css
-    bin 'test/fixtures/a', '--browsers', 'chrome 25, ff 15', ->
-      read('a').should.eql('a { -webkit-transition: 1s; ' +
-                               '-moz-transition: 1s; transition: 1s; }')
-      done()
-
-  it 'should rewrite several files', (done) ->
-    input 'a', css
-    input 'b', 'b { transition: 1s }'
-    bin 'test/fixtures/a', 'test/fixtures/b', '-b', 'chrome 25', ->
-      read('a').should.eql('a { -webkit-transition: 1s; transition: 1s; }')
-      read('b').should.eql('b { -webkit-transition: 1s; transition: 1s; }')
-      done()
-
-  it 'should change output file', (done) ->
-    input 'a', css
-    bin 'test/fixtures/a', '-o', 'test/fixtures/b', '-b', 'chrome 25', ->
-      read('a').should.eql('a { transition: 1s }')
-      read('b').should.eql('a { -webkit-transition: 1s; transition: 1s; }')
-      done()
-
-  it 'should output to stdout', (done) ->
-    input 'a', css
-    bin 'test/fixtures/a', '-o', '-', '-b', 'chrome 25', (out) ->
-      read('a').should.eql('a { transition: 1s }')
-      trim(out).should.eql('a { -webkit-transition: 1s; transition: 1s; } ')
-      done()
-
-  it 'should read from stdin', (done) ->
-    child.exec "echo '#{css}' | bin/autoprefixer -b 'chrome 25'", (_, out) ->
-      trim(out).should.eql('a { -webkit-transition: 1s; transition: 1s; } ')
+    @exec '-h', (out, err) ->
+      err.should.be.false
+      out.should.match(/Usage:/)
       done()
 
   it 'should inspect', (done) ->
-    bin '-i', (out) ->
-      out.should.match(/^Browsers:/)
+    @exec '-i', (out, err) ->
+      err.should.be.false
+      out.should.match(/Browsers:/)
       done()
 
-  it "should raise error, when files isn't exists", (done) ->
-    error 'test/fixtures/a', (err) ->
-      err.should.eql("autoprefixer: File 'test/fixtures/a' doesn't exists\n")
+  it 'should use 2 last browsers by default', (done) ->
+    chrome = autoprefixer.data.browsers.chrome.versions
+    @exec '-i', (out, err) ->
+      out.should.include("Chrome: #{ chrome[0] }, #{ chrome[1] }")
+      done()
+
+  it 'should change browsers', (done) ->
+    @exec '-i', '-b', 'ie 6', (out, err) ->
+      out.should.match(/IE: 6/)
+      done()
+
+  it 'should rewrite several files', (done) ->
+    write('a.css', css)
+    write('b.css', css + css)
+    @exec '-b', 'chrome 25', 'a.css', 'b.css', (out, err) ->
+      err.should.be.false
+      out.should.eql ''
+      read('a.css').should.eql prefixed
+      read('b.css').should.eql prefixed + "\n\n" + prefixed
+      done()
+
+  it 'should change output file', (done) ->
+    write('a.css', css)
+    @exec '-b', 'chrome 25', 'a.css', '-o', 'b.css', (out, err) ->
+      err.should.be.false
+      out.should.eql ''
+      read('a.css').should.eql css
+      read('b.css').should.eql prefixed
+      done()
+
+  it 'should output to stdout', (done) ->
+    write('a.css', css)
+    @exec '-b', 'chrome 25', '-o', '-', 'a.css', (out, err) ->
+      err.should.be.false
+      out.should.eql prefixed + "\n"
+      read('a.css').should.eql css
+      done()
+
+  it 'should read from stdin', (done) ->
+    @stdin.content = css
+    @exec '-b', 'chrome 25', (out, err) ->
+      err.should.be.false
+      out.should.eql prefixed + "\n"
+      done()
+
+  it "should raise error, when files doesn't exists", (done) ->
+    @exec 'a', (out, err) ->
+      out.should.be.empty
+      err.should.match(/autoprefixer: File a doesn't exists/)
       done()
 
   it 'should raise error on unknown argumnets', (done) ->
-    error '-x', (err) ->
-      err.should.eql("autoprefixer: Unknown argument -x\n")
+    @exec '-x', (out, err) ->
+      out.should.be.empty
+      err.should.match(/autoprefixer: Unknown argument -x/)
       done()
 
   it 'should nice print errors', (done) ->
-    input 'a', css
-    error 'test/fixtures/a', '-b', 'ie', (err) ->
-      err.should.eql("autoprefixer: Can't recognize version in `ie`\n")
+    @exec '-b', 'ie', (out, err) ->
+      out.should.be.empty
+      err.should.eql("autoprefixer: Unknown browser requirement `ie`\n")
+      done()
+
+describe 'bin/autoprefixer', ->
+
+  it 'should be executable', (done) ->
+    binary = __dirname + '/../bin/autoprefixer'
+    child.execFile binary, ['-v'], { }, (error, out) ->
+      (!!error).should.be.false
+      out.should.match(/^autoprefixer [\d\.]+\n$/)
       done()

@@ -1,0 +1,11 @@
+@-webkit-keyframes one {
+    to {
+        color: black;
+    }
+}
+
+@keyframes one {
+    to {
+        color: black;
+    }
+}

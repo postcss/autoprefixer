@@ -1,6 +1,6 @@
 {
   "name": "autoprefixer",
-  "version": "0.4.20130603",
+  "version": "0.4.20130530",
   "description": "Parse CSS and add prefixed properties and values by actual Can I Use database",
   "keywords": ["css", "prefix", "rework"],
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
@@ -10,15 +10,17 @@
     "url": "https://github.com/ai/autoprefixer.git"
   },
   "dependencies": {
-    "rework": ">= 0.15"
+    "css-parse":     "~> 1.4.0",
+    "css-stringify": "~> 1.3.1"
   },
   "devDependencies": {
     "coffee-script": "1.6.3",
-    "mocha":         "1.10.0",
-    "sinon":         "1.7.2",
+    "component":     "0.16.3",
+    "fs-extra":      "0.6.1",
     "should":        "1.2.2",
-    "component":     "0.16.2",
-    "js-beautify":   "1.3.3"
+    "rework":        "0.15.0",
+    "mocha":         "1.11.0",
+    "glob":          "3.2.1"
   },
   "bin": {
     "autoprefixer": "./bin/autoprefixer"

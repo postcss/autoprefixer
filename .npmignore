@@ -1,8 +1,10 @@
-node_modules/
-components/
-build/
+.gitignore
 
-test/
+node_modules
+build
+
+test
+.travis.yml
+
 Cakefile
-
-updaters/
+updaters
