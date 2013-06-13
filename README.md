@@ -119,8 +119,8 @@ with [standalone version](https://raw.github.com/ai/autoprefixer-rails/master/ve
 
 ### Rework
 
-Autoprefixer is a [Rework](https://github.com/visionmedia/rework) filter,
-so you can can combine it with other filters:
+Autoprefixer can be also as [Rework](https://github.com/visionmedia/rework)
+filter, so you can can combine it with other filters:
 
 ```js
 rework(css).
