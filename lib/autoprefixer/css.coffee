@@ -47,12 +47,9 @@ class CSS
     @number -= 1
 
   # Execute callback on every property: value declaration in CSS tree
-  eachDeclaration: (callback) ->
-    for i in @stylesheet.rules
-      if i.rules
-        rule = new Rule(i.rules, i.vendor)
-        rule.each(callback)
-        return
+  eachDeclaration: (callback, node = @stylesheet) ->
+    for i in node.rules
+      @eachDeclaration(callback, i) if i.rules
 
       if i.keyframes
         for keyframe in i.keyframes

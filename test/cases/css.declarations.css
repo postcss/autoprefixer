@@ -1,0 +1,23 @@
+@keyframes coloring {
+    from {
+        color: black;
+    }
+    to {
+        color: white;
+    }
+}
+
+a {
+    color: red;
+    position: relative;
+}
+
+@media all and (max-width: 320px) {
+    a {
+        width: 320px;
+    }
+}
+
+a {
+    width: 1000px;
+}

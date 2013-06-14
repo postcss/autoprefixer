@@ -55,15 +55,18 @@ describe 'CSS', ->
   describe 'eachDeclaration', ->
 
     it 'should iterate declarations', ->
+      nodes = cases.load('css.declarations')
+      css   = new CSS(nodes.stylesheet)
+
       decls = []
-      @css.eachDeclaration (i) ->
+      css.eachDeclaration (i) ->
         decls.push(i.node.property + ' ' + i.node.value)
       decls.should.eql ['color black'
                         'color white'
-                        'top 0'
-                        'top 100px'
                         'color red'
-                        'position relative']
+                        'position relative'
+                        'width 320px'
+                        'width 1000px']
 
     it 'should set prefix to rule', ->
       css      = new CSS(cases.load('css.prefix').stylesheet)
