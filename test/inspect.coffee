@@ -42,6 +42,21 @@ describe 'inspect', ->
                                  "Values:\n" +
                                  "  b: moz, ms\n"
 
+  it 'should not show transitions if it is not necessary', ->
+    browsers = new Browsers(data.browsers, ['chrome 1', 'ff 1', 'ie 2'])
+    prefixes = new Prefixes(data.prefixes, browsers)
+
+    inspect(prefixes).should.eql "Browsers:\n" +
+                                 "  Chrome: 1\n" +
+                                 "  Firefox: 1\n" +
+                                 "  IE: 2\n" +
+                                 "\n" +
+                                 "Properties:\n" +
+                                 "  a: webkit, moz\n" +
+                                 "\n" +
+                                 "Values:\n" +
+                                 "  b: moz, ms\n"
+
   it 'should return string for empty prefixes', ->
     browsers = new Browsers(data.browsers, ['ie 1'])
     prefixes = new Prefixes(data.prefixes, browsers)

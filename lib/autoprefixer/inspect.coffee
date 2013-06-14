@@ -47,11 +47,12 @@ module.exports = (prefixes) ->
 
   values = ''
   props  = ''
-  transition = false
+  useTransition  = false
+  needTransition = prefixes.add.transition?.prefixes
   for name, data of prefixes.add
     if data.prefixes
-      transitionProp = prefixes.data[name].transition
-      transition = true if transitionProp
+      transitionProp = needTransition and prefixes.data[name].transition
+      useTransition  = true if transitionProp
       props += prefix(name, transitionProp, data.prefixes)
       continue unless data.values
       continue if prefixes.transitionProps.some (i) -> i == name
@@ -61,7 +62,7 @@ module.exports = (prefixes) ->
         if values.indexOf(string) == -1
           values += string
 
-  if transition
+  if useTransition
     props += "  * - can be used in transition\n"
 
   out += "\nProperties:\n"+ props if props  != ''
