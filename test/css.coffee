@@ -52,7 +52,7 @@ describe 'CSS', ->
       cases.compare(@nodes, 'css.remove')
       names.should.eql ['coloring', 'moving']
 
-  describe 'eachDeclaration', ->
+  describe 'eachDeclaration()', ->
 
     it 'should iterate declarations', ->
       nodes = cases.load('css.declarations')
