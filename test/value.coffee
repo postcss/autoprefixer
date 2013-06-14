@@ -11,16 +11,16 @@ describe 'Value', ->
   describe '.load()', ->
 
     it 'should load class by value', ->
-      class A
+      class Hacked
         constructor: (@name, @prefixes) ->
-      Value.register('a', 'aa', A)
+      Value.register('hacked', 'hhacked', Hacked)
 
-      a = Value.load('a', ['-o-'])
-      a.should.be.an.instanceof(A)
-      a.name.should.eql 'a'
-      a.prefixes.should.eql ['-o-']
+      hacked = Value.load('hacked', ['-o-'])
+      hacked.should.be.an.instanceof(Hacked)
+      hacked.name.should.eql 'hacked'
+      hacked.prefixes.should.eql ['-o-']
 
-      Value.load('aa').should.be.an.instanceof(A)
+      Value.load('hhacked').should.be.an.instanceof(Hacked)
       Value.load('b').should.be.an.instanceof(Value)
 
   describe 'check()', ->
