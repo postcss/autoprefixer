@@ -20,6 +20,8 @@ data =
     b:
       browsers: ['ie 2', 'ff 1']
       props:    ['a', '*']
+    transition:
+      browsers: ['ff 2']
 
 describe 'inspect', ->
 
@@ -33,7 +35,9 @@ describe 'inspect', ->
                                  "  IE: 2\n" +
                                  "\n" +
                                  "Properties:\n" +
-                                 "  a: webkit, moz\n" +
+                                 "  transition: moz\n" +
+                                 "  a*: webkit, moz\n" +
+                                 "  * - can be used in transition\n" +
                                  "\n" +
                                  "Values:\n" +
                                  "  b: moz, ms\n"
