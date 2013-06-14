@@ -20,6 +20,9 @@ data =
     b:
       browsers: ['ie 2', 'ff 1']
       props:    ['a', '*']
+    c:
+      browsers: ['ff 2']
+      props:    ['c']
     transition:
       browsers: ['ff 2']
 
@@ -40,7 +43,8 @@ describe 'inspect', ->
                                  "  * - can be used in transition\n" +
                                  "\n" +
                                  "Values:\n" +
-                                 "  b: moz, ms\n"
+                                 "  b: moz, ms\n" +
+                                 "  c: moz\n"
 
   it 'should not show transitions if it is not necessary', ->
     browsers = new Browsers(data.browsers, ['chrome 1', 'ff 1', 'ie 2'])

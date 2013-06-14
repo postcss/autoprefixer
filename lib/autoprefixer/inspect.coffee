@@ -54,13 +54,13 @@ module.exports = (prefixes) ->
       transitionProp = needTransition and prefixes.data[name].transition
       useTransition  = true if transitionProp
       props += prefix(name, transitionProp, data.prefixes)
-      continue unless data.values
-      continue if prefixes.transitionProps.some (i) -> i == name
 
-      for value in data.values
-        string = prefix(value.name, false, value.prefixes)
-        if values.indexOf(string) == -1
-          values += string
+    continue unless data.values
+    continue if prefixes.transitionProps.some (i) -> i == name
+    for value in data.values
+      string = prefix(value.name, false, value.prefixes)
+      if values.indexOf(string) == -1
+        values += string
 
   if useTransition
     props += "  * - can be used in transition\n"
