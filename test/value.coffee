@@ -1,9 +1,10 @@
 Value = require('../lib/autoprefixer/value')
+utils = require('../lib/autoprefixer/utils')
 
 describe 'Value', ->
   beforeEach ->
     @calc = new Value('calc', ['-o-'])
-    @hacks = Value.hacks
+    @hacks = utils.clone Value.hacks
 
   afterEach ->
     Value.hachs = @hacks
