@@ -13,4 +13,5 @@
 a {
     /* c */
     color/**/: white;
+    padding: 0 /*{}*/ 1px;
 }

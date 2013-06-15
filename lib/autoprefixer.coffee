@@ -36,7 +36,7 @@ autoprefixer =
 
   # Parse CSS and add prefixed properties for selected browsers
   compile: (str, requirements) ->
-    nodes = parse(@fixIeComments str)
+    nodes = parse(@removeBadComments str)
     @rework(requirements)(nodes.stylesheet)
     stringify(nodes)
 
@@ -54,8 +54,9 @@ autoprefixer =
     prefixes: require('../data/prefixes')
 
   # Remove /**/ in non-IE6 declaration, until CSS parser has this issue
-  fixIeComments: (css) ->
-    css.replace(/\/\*[^\*]*\*\/\s*:/g, ':')
+  removeBadComments: (css) ->
+    css.replace(/\/\*[^\*]*\*\/\s*:/g, ':').
+        replace(/\/\*[^\*]*\{[^\*]*\*\//g, '')
 
   # Return string, what browsers selected and whar prefixes will be added
   inspect: (requirements) ->

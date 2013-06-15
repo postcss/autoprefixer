@@ -40,7 +40,7 @@ describe 'Autoprefixer', ->
     it 'should parse difficult files', ->
       input  = cases.read('autoprefixer.syntax')
       output = autoprefixer.compile(input, [])
-      compare(input.replace('/**/', ''), output)
+      compare(input.replace('/**/', '').replace('/*{}*/', ''), output)
 
   describe 'rework()', ->
 
