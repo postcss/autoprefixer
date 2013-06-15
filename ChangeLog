@@ -1,3 +1,8 @@
+== 0.5 (Ours is the Fury)
+* Rewrite Autoprefixer to be more flexible.
+* Use css, instead of Rework, to fix CSS parsing errors faster.
+* Fix a lot of CSS parsing errors.
+
 == 0.4 (Winter Is Coming)
 * Remove outdated prefixes.
 * Add border-radius and box-shadow properties to database.
