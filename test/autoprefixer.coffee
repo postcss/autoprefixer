@@ -24,6 +24,11 @@ describe 'Autoprefixer', ->
         css    = autoprefixer.compile(input, [])
         compare(css, output)
 
+      input  = cases.read('autoprefixer.old')
+      output = cases.read('autoprefixer.old.out')
+      css    = autoprefixer.compile(input, [])
+      compare(css, output)
+
     it 'should not double prefixes', ->
       for type in ['transition', 'values', 'keyframes', 'gradient']
         input  = cases.read('autoprefixer.' + type)

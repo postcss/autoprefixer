@@ -1,0 +1,7 @@
+a {
+    background: linear-gradient(white, black);
+}
+
+div {
+    background: radial-gradient(white, black);
+}

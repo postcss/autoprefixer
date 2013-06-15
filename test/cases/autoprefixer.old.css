@@ -1,0 +1,11 @@
+a {
+    background: -webkit-gradient(linear, 0% 0%, 100% 100%, color-stop(0%, white), color-stop(100%, black));
+    background: -webkit-linear-gradient(white, black);
+    background: linear-gradient(white, black)
+}
+
+div {
+    background: -webkit-gradient(radial, 0% 0%, 100% 100%, color-stop(0%, white), color-stop(100%, black));
+    background: -webkit-radial-gradient(white, black);
+    background: radial-gradient(white, black)
+}

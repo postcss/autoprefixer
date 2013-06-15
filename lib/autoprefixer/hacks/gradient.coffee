@@ -55,4 +55,12 @@ class Gradient extends Value
     param -= 360 if param > 360
     "#{param}deg"
 
+  # Remove old WebKit gradient too
+  prefixed: (prefix) ->
+    if prefix == '-webkit-'
+      type = if @name == 'linear-gradient' then 'linear' else 'radial'
+      utils.regexp("-webkit-(#{type}-gradient|gradient\\(\\s*#{type})", false)
+    else
+      super
+
 module.exports = Gradient
