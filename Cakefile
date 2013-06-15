@@ -56,7 +56,7 @@ task 'compile', 'Compile CoffeeScript to JS', ->
 
 task 'publish', 'Publish new version to npm', ->
   invoke('compile')
-  build = #{__dirname} + '/build/'
+  build = __dirname + '/build/'
   sh "npm publish #{build}", ->
     fs.removeSync(build)
 
