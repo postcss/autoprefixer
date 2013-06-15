@@ -18,7 +18,7 @@
     "component":     "0.16.3",
     "fs-extra":      "0.6.1",
     "should":        "1.2.2",
-    "rework":        "0.15.0",
+    "rework":        "0.16.0",
     "mocha":         "1.11.0",
     "glob":          "3.2.1"
   },
