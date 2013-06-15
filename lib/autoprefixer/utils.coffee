@@ -43,5 +43,6 @@ module.exports =
     string.replace(/([.?*+\^\$\[\]\\(){}|\-])/g, "\\$1")
 
   # Return regexp to check, that CSS string contain word
-  regexp: (word) ->
-    new RegExp('(^|\\s|,|\\()(' + @escapeRegexp(word) + '($|\\s|\\(|,))', 'gi')
+  regexp: (word, escape = true) ->
+    word = @escapeRegexp(word) if escape
+    new RegExp('(^|\\s|,|\\()(' + word + '($|\\s|\\(|,))', 'gi')

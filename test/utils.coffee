@@ -61,3 +61,13 @@ describe 'utils', ->
       test('(foo)').should.be.false
       test('-a-foo').should.be.false
 
+    it 'should escape or not escape string', ->
+      regexp = utils.regexp('(a|b)')
+      test   = (string) -> string.match(regexp) != null
+
+      test('a').should.be.false
+      test('(a|b)').should.be.ok
+
+      regexp = utils.regexp('(a|b)', false)
+      test('a').should.be.ok
+      test('b').should.be.ok
