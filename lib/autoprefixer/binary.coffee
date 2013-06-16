@@ -143,8 +143,9 @@ class Binary
         @error "autoprefixer: #{ error.message }"
       else
         @error 'autoprefixer: Internal error'
-        @error ''
-        @error error.stack
+        if error.stack?
+          @error ''
+          @error error.stack
     return @endWork() unless prefixed
 
     if file == '-'
