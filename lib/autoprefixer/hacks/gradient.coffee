@@ -18,6 +18,9 @@ Value = require('../value')
 utils = require('../utils')
 
 class Gradient extends Value
+  @names = ['linear-gradient', 'repeating-linear-gradient',
+            'radial-gradient', 'repeating-radial-gradient']
+
   constructor: (@name, @prefixes) ->
     name    = utils.escapeRegexp(@name)
     @regexp = new RegExp('(^|\\s|,)' + name + '\\(([^)]+)\\)', 'gi')

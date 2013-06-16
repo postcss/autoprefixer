@@ -19,9 +19,7 @@ utils = require('./utils')
 Processor = require('./processor')
 Value     = require('./value')
 
-Value.register 'linear-gradient', 'repeating-linear-gradient',
-               'radial-gradient', 'repeating-radial-gradient',
-               require('./hacks/gradient')
+Value.register require('./hacks/gradient')
 
 class Prefixes
   constructor: (@data, @browsers) ->

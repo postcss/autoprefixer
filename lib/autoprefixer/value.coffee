@@ -18,8 +18,8 @@ utils = require('./utils')
 
 class Value
   # Add hack to selected names
-  @register: (names..., klass) ->
-    for name in names
+  @register: (klass) ->
+    for name in klass.names
       @hacks[name] = klass
 
   # Override classes for special values

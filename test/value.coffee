@@ -13,8 +13,9 @@ describe 'Value', ->
 
     it 'should load class by value', ->
       class Hacked
+        @names = ['hacked', 'hhacked']
         constructor: (@name, @prefixes) ->
-      Value.register('hacked', 'hhacked', Hacked)
+      Value.register(Hacked)
 
       hacked = Value.load('hacked', ['-o-'])
       hacked.should.be.an.instanceof(Hacked)
