@@ -64,6 +64,6 @@ class Gradient extends Value
       type = if @name == 'linear-gradient' then 'linear' else 'radial'
       utils.regexp("-webkit-(#{type}-gradient|gradient\\(\\s*#{type})", false)
     else
-      super
+      super(prefix)
 
 module.exports = Gradient

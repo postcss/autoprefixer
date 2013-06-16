@@ -32,6 +32,7 @@ class Declaration
 
   constructor: (@rule, @number, @node) ->
     @prop  = @node.property
+    @name  = @prop
     @value = @node.value
 
     if @prop[0] == '-'

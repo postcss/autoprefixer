@@ -18,7 +18,7 @@ describe 'Autoprefixer', ->
     it 'should prefix @keyframes', -> test('keyframes', 'keyframes.out')
 
     it 'should remove unnecessary prefixes', ->
-      for type in ['transition', 'values', 'keyframes', 'gradient']
+      for type in ['transition', 'values', 'keyframes', 'gradient', 'filter']
         input  = cases.read('autoprefixer.' + type + '.out')
         output = cases.read('autoprefixer.' + type)
         css    = autoprefixer.compile(input, [])
@@ -30,7 +30,7 @@ describe 'Autoprefixer', ->
       compare(css, output)
 
     it 'should not double prefixes', ->
-      for type in ['transition', 'values', 'keyframes', 'gradient']
+      for type in ['transition', 'values', 'keyframes', 'gradient', 'filter']
         input  = cases.read('autoprefixer.' + type)
         output = cases.read('autoprefixer.' + type + '.out')
         css    = autoprefixer.compile(input, ['chrome 25', 'opera 12'])
@@ -56,7 +56,7 @@ describe 'Autoprefixer', ->
 
     it 'should be a Rework filter', ->
       rework = require('rework')
-      for type in ['transition', 'values', 'keyframes', 'gradient']
+      for type in ['transition', 'values', 'keyframes', 'gradient', 'filter']
         ideal = cases.read('autoprefixer.' + type + '.out')
         real  = rework(cases.read('autoprefixer.' + type)).
           use(autoprefixer.rework(['chrome 25', 'opera 12'])).
@@ -71,3 +71,4 @@ describe 'Autoprefixer', ->
   describe 'hacks', ->
 
     it 'should change angles in gradients', -> test('gradient', 'gradient.out')
+    it 'should not prefix IE filter',       -> test('filter', 'filter.out')

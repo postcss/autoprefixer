@@ -16,6 +16,8 @@
 
 Declaration = require('./declaration')
 
+Declaration.register require('./hacks/filter')
+
 class Rule
   constructor: (@declarations, @prefix) ->
 

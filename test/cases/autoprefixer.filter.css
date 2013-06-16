@@ -1,0 +1,7 @@
+a {
+    filter: blur(10px);
+}
+
+div {
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=50);
+}
