@@ -49,7 +49,7 @@ class Binary
   desc: ->
     h = []
     h.push 'Files:'
-    h.push "  Be default, prefixed CSS will rewrite original files."
+    h.push "  By default, prefixed CSS will rewrite original files."
     h.push "  If you didn't set input files, " +
            "autoprefixer will read from stdin stream."
     h.push "  Output CSS will be written to stdout stream on " +
