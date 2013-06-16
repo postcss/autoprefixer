@@ -24,7 +24,7 @@ class Rule
     @number = 0
     while @number < @declarations.length
       if @declarations[@number].property
-        decl = new Declaration(@, @number, @declarations[@number])
+        decl = Declaration.load(@, @number, @declarations[@number])
         callback(decl, decl.prefix || @prefix)
       @number += 1
 
@@ -44,7 +44,7 @@ class Rule
   byProp: (prop) ->
     for decl, i in @declarations
       if decl.property == prop
-        return new Declaration(@, i, decl)
+        return Declaration.load(@, i, decl)
     return null
 
   # Remove declaration in selected position

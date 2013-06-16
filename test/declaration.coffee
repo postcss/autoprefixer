@@ -1,14 +1,16 @@
 cases        = require('./lib/cases')
+utils        = require('../lib/autoprefixer/utils')
 
 Rule         = require('../lib/autoprefixer/rule')
 Value        = require('../lib/autoprefixer/value')
 Declaration  = require('../lib/autoprefixer/declaration')
 
-
 describe 'Declaration', ->
   decl = null
 
   beforeEach ->
+    @hacks = utils.clone Declaration.hacks
+
     @nodes = cases.load('declaration')
     @list  = @nodes.stylesheet.rules[0].declarations
     @rule  = new Rule(@list)
@@ -16,6 +18,22 @@ describe 'Declaration', ->
     decl = (number) =>
       @rule.number = number
       new Declaration(@rule, number, @list[number])
+
+  afterEach ->
+    Declaration.hachs = @hacks
+
+  describe '.load()', ->
+
+    it 'should load class by property', ->
+      class Hacked
+        @names = ['hacked', 'hhacked']
+      Declaration.register(Hacked)
+
+      load = (prop) -> Declaration.load({ }, 0, property: prop)
+
+      load('hacked' ).should.be.an.instanceof(Hacked)
+      load('hhacked').should.be.an.instanceof(Hacked)
+      load('color'  ).should.be.an.instanceof(Declaration)
 
   describe 'unprefixed', ->
 

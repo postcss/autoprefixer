@@ -17,6 +17,19 @@
 utils = require('./utils')
 
 class Declaration
+  # Add hack to selected names
+  @register: (klass) ->
+    for name in klass.names
+      @hacks[name] = klass
+
+  # Override classes for special values
+  @hacks: { }
+
+  # Detect right class by value name and create it instance
+  @load: (rule, number, node) ->
+    klass = @hacks[node.property] || Declaration
+    new klass(rule, number, node)
+
   constructor: (@rule, @number, @node) ->
     @prop  = @node.property
     @value = @node.value
