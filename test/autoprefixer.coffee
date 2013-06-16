@@ -42,6 +42,16 @@ describe 'Autoprefixer', ->
       output = autoprefixer.compile(input, [])
       compare(input.replace('/**/', '').replace('/*{}*/', ''), output)
 
+    it 'should mark parsing error', ->
+      error = null
+      try
+        autoprefixer.compile('a {', [])
+      catch e
+        error = e
+
+      error.message.should.eql "Can't parse CSS"
+      error.css.should.be.true
+
   describe 'rework()', ->
 
     it 'should be a Rework filter', ->

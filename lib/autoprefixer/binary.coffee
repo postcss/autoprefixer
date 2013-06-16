@@ -139,10 +139,12 @@ class Binary
     try
       prefixed = autoprefixer.compile(css, @requirements)
     catch error
-      if error.autoprefixer
+      if error.autoprefixer or error.css
         @error "autoprefixer: #{ error.message }"
       else
         @error 'autoprefixer: Internal error'
+
+      if error.css or not error.autoprefixer
         if error.stack?
           @error ''
           @error error.stack

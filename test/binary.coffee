@@ -136,6 +136,13 @@ describe 'Binary', ->
       err.should.eql("autoprefixer: Unknown browser requirement `ie`\n")
       done()
 
+  it 'should nice print parsing error', (done) ->
+    @stdin.content = 'a {'
+    @exec '-b', 'chrome 25', (out, err) ->
+      out.should.be.empty
+      err.should.match(/^autoprefixer: Can't parse CSS\n\n\w/)
+      done()
+
 describe 'bin/autoprefixer', ->
 
   it 'should be executable', (done) ->

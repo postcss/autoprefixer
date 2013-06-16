@@ -36,9 +36,9 @@ autoprefixer =
 
   # Parse CSS and add prefixed properties for selected browsers
   compile: (str, requirements) ->
-    nodes = parse(@removeBadComments str)
+    nodes = @catchParseErrors => parse(@removeBadComments str)
     @rework(requirements)(nodes.stylesheet)
-    stringify(nodes)
+    @catchParseErrors => stringify(nodes)
 
   # Return Rework filter, which will add necessary prefixes
   rework: (requirements) ->
@@ -66,5 +66,14 @@ autoprefixer =
     @inspectFunc ||= require('./autoprefixer/inspect')
     @inspectFunc(prefixes)
 
+  # Catch errors from CSS parsing and throw readable message
+  catchParseErrors: (callback) ->
+    try
+      callback()
+    catch e
+      error = new Error("Can't parse CSS")
+      error.stack = e.stack
+      error.css   = true
+      throw error
 
 module.exports = autoprefixer
