@@ -3,6 +3,11 @@
 * Use css, instead of Rework, to fix CSS parsing errors faster.
 * Fix a lot of CSS parsing errors.
 
+20130616:
+* More useful message for CSS parsing errors.
+* Remove old WebKit gradient syntax.
+* Fix parsing error on comment with braces.
+
 == 0.4 (Winter Is Coming)
 * Remove outdated prefixes.
 * Add border-radius and box-shadow properties to database.
