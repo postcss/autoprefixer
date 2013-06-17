@@ -26,7 +26,7 @@ class Processor
 
     # Properties
     css.eachDeclaration (decl, vendor) =>
-     @prefixes.each decl.name, (prefix) =>
+     @prefixes.each decl.prop, (prefix) =>
        return if vendor and vendor != prefix
        return if decl.valueContain(@prefixes.other(prefix))
        decl.prefixProp(prefix)
@@ -49,7 +49,7 @@ class Processor
 
     css.eachDeclaration (decl, vendor) =>
       # Properties
-      if @prefixes.toRemove(decl.name)
+      if @prefixes.toRemove(decl.prop)
         decl.remove()
         return
 

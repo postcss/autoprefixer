@@ -43,7 +43,6 @@ class Declaration
 
   constructor: (@rule, @number, @node, @prefix, @unprefixed) ->
     @prop  = @node.property
-    @name  = @prop
     @value = @node.value
     @valuesCache = { }
 

@@ -21,6 +21,7 @@ class Filter extends Declaration
 
   constructor: ->
     super
-    @name = '-ms-filter' if @value.match(/DXImageTransform\.Microsoft/)
+    if @value.match(/DXImageTransform\.Microsoft/)
+      @unprefixed = @prop = '-ms-filter'
 
 module.exports = Filter
