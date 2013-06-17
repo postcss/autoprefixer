@@ -18,7 +18,8 @@ describe 'Autoprefixer', ->
     it 'should prefix @keyframes', -> test('keyframes', 'keyframes.out')
 
     it 'should remove unnecessary prefixes', ->
-      for type in ['transition', 'values', 'keyframes', 'gradient', 'filter']
+      for type in ['transition', 'values', 'keyframes', 'gradient', 'filter',
+                   'border-radius']
         input  = cases.read('autoprefixer.' + type + '.out')
         output = cases.read('autoprefixer.' + type)
         css    = autoprefixer.compile(input, [])
@@ -70,5 +71,10 @@ describe 'Autoprefixer', ->
 
   describe 'hacks', ->
 
-    it 'should change angles in gradients', -> test('gradient', 'gradient.out')
-    it 'should not prefix IE filter',       -> test('filter', 'filter.out')
+    it 'should change angles in gradients',  -> test('gradient', 'gradient.out')
+    it 'should not prefix IE filter',        -> test('filter', 'filter.out')
+    it 'should support old Mozilla prefixe', ->
+      input  = cases.read('autoprefixer.border-radius')
+      output = cases.read('autoprefixer.border-radius.out')
+      css    = autoprefixer.compile(input, ['safari 4', 'ff 3.6'])
+      compare(css, output)

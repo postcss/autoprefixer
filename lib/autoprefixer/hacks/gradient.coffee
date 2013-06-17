@@ -25,6 +25,7 @@ class Gradient extends Value
   for i in @names
     @regexps[i] = new RegExp('(^|\\s|,)' + i + '\\(([^)]+)\\)', 'gi')
 
+  # Cache regexp to parse params
   constructor: (@name, @prefixes) ->
     @regexp = Gradient.regexps[@name]
 
