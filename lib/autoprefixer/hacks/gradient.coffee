@@ -21,9 +21,12 @@ class Gradient extends Value
   @names = ['linear-gradient', 'repeating-linear-gradient',
             'radial-gradient', 'repeating-radial-gradient']
 
+  @regexps = { }
+  for i in @names
+    @regexps[i] = new RegExp('(^|\\s|,)' + i + '\\(([^)]+)\\)', 'gi')
+
   constructor: (@name, @prefixes) ->
-    name    = utils.escapeRegexp(@name)
-    @regexp = new RegExp('(^|\\s|,)' + name + '\\(([^)]+)\\)', 'gi')
+    @regexp = Gradient.regexps[@name]
 
   # Change degrees for webkit prefix
   addPrefix: (prefix, string) ->
