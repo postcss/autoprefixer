@@ -9,6 +9,13 @@ describe 'Value', ->
   afterEach ->
     Value.hachs = @hacks
 
+  describe '.regexp()', ->
+
+    it 'should cache regexp', ->
+      Object.keys(Value.regexps).should.not.include('rg')
+      Value.regexp('rg').should.eql Value.regexps.rg
+      Object.keys(Value.regexps).should.include('rg')
+
   describe '.load()', ->
 
     it 'should load class by value', ->

@@ -30,8 +30,15 @@ class Value
     klass = @hacks[name] || Value
     new klass(name, prefixes)
 
+  # Cached regexps
+  @regexps = { }
+
+  # Generate or get cached regexp
+  @regexp = (name) ->
+    @regexps[name] ||= utils.regexp(name)
+
   constructor: (@name, @prefixes) ->
-    @regexp = utils.regexp(@name)
+    @regexp = Value.regexp(@name)
 
   # Is declaration need to be prefixed
   check: (decl) ->
