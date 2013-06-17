@@ -15,6 +15,8 @@ task 'clean', 'Remove all temporary files', ->
   fs.removeSync(__dirname + '/autoprefixer.js')
 
 task 'compile', 'Compile CoffeeScript to JS', ->
+  invoke('clean')
+
   coffee = require('coffee-script')
 
   build = __dirname + '/build'
@@ -61,10 +63,10 @@ task 'publish', 'Publish new version to npm', ->
     fs.removeSync(build)
 
 task 'build', 'Build standalone autoprefixer.js', ->
-  glob = require('glob')
-
   invoke('compile')
   build = __dirname + '/build/'
+
+  glob = require('glob')
 
   npm = JSON.parse fs.readFileSync(__dirname + '/package.json').toString()
   config  =
