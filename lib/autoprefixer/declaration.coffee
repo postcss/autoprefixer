@@ -27,21 +27,24 @@ class Declaration
 
   # Detect right class by value name and create it instance
   @load: (rule, number, node) ->
-    klass = @hacks[node.property] || Declaration
-    new klass(rule, number, node)
+    [prefix, unprefixed] = @split(node.property)
+    klass = @hacks[unprefixed] || Declaration
+    new klass(rule, number, node, prefix, unprefixed)
 
-  constructor: (@rule, @number, @node) ->
+  # Split prefix and unprefixed part of property
+  @split: (prop) ->
+    if prop[0] == '-'
+      separator   = prop.indexOf('-', 1) + 1
+      prefix     = prop[0...separator]
+      unprefixed = prop[separator..-1]
+      [prefix, unprefixed]
+    else
+      [undefined, prop]
+
+  constructor: (@rule, @number, @node, @prefix, @unprefixed) ->
     @prop  = @node.property
     @name  = @prop
     @value = @node.value
-
-    if @prop[0] == '-'
-      separator   = @prop.indexOf('-', 1) + 1
-      @prefix     = @prop[0...separator]
-      @unprefixed = @prop[separator..-1]
-    else
-      @unprefixed = @prop
-
     @valuesCache = { }
 
   # Is property value contain any of strings

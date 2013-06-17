@@ -19,8 +19,8 @@ Declaration = require('../declaration')
 class Filter extends Declaration
   @names = ['filter']
 
-  constructor: (rule, number, node) ->
-    super(rule, number, node)
+  constructor: ->
+    super
     @name = '-ms-filter' if @value.match(/DXImageTransform\.Microsoft/)
 
 module.exports = Filter

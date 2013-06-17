@@ -17,10 +17,16 @@ describe 'Declaration', ->
 
     decl = (number) =>
       @rule.number = number
-      new Declaration(@rule, number, @list[number])
+      Declaration.load(@rule, number, @list[number])
 
   afterEach ->
     Declaration.hachs = @hacks
+
+  describe '.split()', ->
+
+    it 'should split prefix', ->
+      Declaration.split('color').should.eql [undefined, 'color']
+      Declaration.split('-webkit-filter').should.eql ['-webkit-', 'filter']
 
   describe '.load()', ->
 
@@ -31,9 +37,12 @@ describe 'Declaration', ->
 
       load = (prop) -> Declaration.load({ }, 0, property: prop)
 
-      load('hacked' ).should.be.an.instanceof(Hacked)
-      load('hhacked').should.be.an.instanceof(Hacked)
-      load('color'  ).should.be.an.instanceof(Declaration)
+      load('hacked'   ).should.be.an.instanceof(Hacked)
+      load('hhacked'  ).should.be.an.instanceof(Hacked)
+      load('-o-hacked').should.be.an.instanceof(Hacked)
+
+      load('color'    ).should.be.an.instanceof(Declaration)
+      load('-o-color' ).should.be.an.instanceof(Declaration)
 
   describe 'unprefixed', ->
 
