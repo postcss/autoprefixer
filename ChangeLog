@@ -8,6 +8,13 @@
 * Remove old WebKit gradient syntax.
 * Fix parsing error on comment with braces.
 
+20130617:
+* Remove old Mozilla border-radius.
+* Don’t prefix old IE filter.
+* Remove old background-clip, background-size and background-origin prefixes.
+* Speed up regexps in values.
+* Allow to hack property declarations.
+
 == 0.4 (Winter Is Coming)
 * Remove outdated prefixes.
 * Add border-radius and box-shadow properties to database.
