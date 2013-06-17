@@ -129,4 +129,9 @@ updater.caniuse 'features-json/calc.json', (data) ->
           props:  ['*']
           browsers: browsers(data)
 
+# Background options
+updater.caniuse 'features-json/background-img-opts.json', (data) ->
+  prefix 'background-clip', 'background-origin', 'background-size',
+          browsers: browsers(data)
+
 updater.done -> updater.save('prefixes', prefixes)

@@ -995,6 +995,27 @@ module.exports =
     ]
     transition: true
 
+  "background-clip":
+    browsers: [
+      "ff 3.6"
+      "opera 10"
+      "opera 10.1"
+    ]
+
+  "background-origin":
+    browsers: [
+      "ff 3.6"
+      "opera 10"
+      "opera 10.1"
+    ]
+
+  "background-size":
+    browsers: [
+      "ff 3.6"
+      "opera 10"
+      "opera 10.1"
+    ]
+
   "border-bottom-left-radius":
     browsers: [
       "ff 2"
