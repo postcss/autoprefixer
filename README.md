@@ -33,10 +33,10 @@ Sponsored by [Evil Martians](http://evilmartians.com/).
 
 * You write normal CSS (or use Autoprefixer after Sass, Stylus
   or another preprocessor).
-* You write normal properties (not special mixins), so you don’t need to
-  remember which properties needs to be prefixed.
+* You write normal properties (not special mixins), so you don’t need
+  to remember which properties needs to be prefixed.
 * Autoprefixer uses only necessary prefixes. You choose which browsers
-  (by default the last 2 versions for each browser).
+  (by default the last 2 versions for each browser).
   Did you know, that prefixes for `border-radius`
   [have not been necessary](http://caniuse.com/border-radius)
   for a long time now?
@@ -62,7 +62,7 @@ autoprefixer.compile(css, ["last 1 version", "> 1%", "ie 8", "ie 7"]);
 * You can also set browsers directly.
 
 Blackberry and stock Android browsers will not be used in `last n versions`
-or `> n%` selects. Add them by name if you need them:
+or `> n%` selects. Add them by name if you need them:
 
 ```js
 autoprefixer.compile(css, ["last 1 version", "bb 10", "android 4"]);
