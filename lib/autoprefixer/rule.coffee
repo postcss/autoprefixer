@@ -17,6 +17,7 @@
 Declaration = require('./declaration')
 
 Declaration.register require('./hacks/filter')
+Declaration.register require('./hacks/display-flex')
 Declaration.register require('./hacks/border-radius')
 
 class Rule

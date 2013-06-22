@@ -19,7 +19,7 @@ describe 'Autoprefixer', ->
 
     it 'should remove unnecessary prefixes', ->
       for type in ['transition', 'values', 'keyframes', 'gradient', 'filter',
-                   'border-radius']
+                   'border-radius', 'flexbox']
         input  = cases.read('autoprefixer.' + type + '.out')
         output = cases.read('autoprefixer.' + type)
         css    = autoprefixer.compile(input, [])
@@ -31,12 +31,17 @@ describe 'Autoprefixer', ->
       compare(css, output)
 
     it 'should not double prefixes', ->
-      for type in ['transition', 'values', 'keyframes', 'gradient', 'filter']
+      check = (type, browsers) ->
         input  = cases.read('autoprefixer.' + type)
         output = cases.read('autoprefixer.' + type + '.out')
-        css    = autoprefixer.compile(input, ['chrome 25', 'opera 12'])
-        css    = autoprefixer.compile(css,   ['chrome 25', 'opera 12'])
+        css    = autoprefixer.compile(input, browsers)
+        css    = autoprefixer.compile(css,   browsers)
         compare(css, output)
+
+      for i in ['transition', 'values', 'keyframes', 'gradient', 'filter']
+        check(i, ['chrome 25', 'opera 12'])
+      check('border-radius', ['safari 4', 'ff 3.6'])
+      check('flexbox',       ['chrome 25', 'ff 21', 'ie 10'])
 
     it 'should parse difficult files', ->
       input  = cases.read('autoprefixer.syntax')
@@ -72,9 +77,16 @@ describe 'Autoprefixer', ->
   describe 'hacks', ->
 
     it 'should change angles in gradients',  -> test('gradient', 'gradient.out')
-    it 'should not prefix IE filter',        -> test('filter', 'filter.out')
+    it 'should not prefix IE filter',        -> test('filter',   'filter.out')
+
     it 'should support old Mozilla prefixe', ->
       input  = cases.read('autoprefixer.border-radius')
       output = cases.read('autoprefixer.border-radius.out')
       css    = autoprefixer.compile(input, ['safari 4', 'ff 3.6'])
+      compare(css, output)
+
+    it 'should support all flexbox syntaxes', ->
+      input  = cases.read('autoprefixer.flexbox')
+      output = cases.read('autoprefixer.flexbox.out')
+      css    = autoprefixer.compile(input, ['chrome 25', 'ff 21', 'ie 10'])
       compare(css, output)

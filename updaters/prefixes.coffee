@@ -109,8 +109,7 @@ updater.caniuse 'features-json/user-select-none.json', (data) ->
 
 # Flexible Box Layout
 updater.caniuse 'features-json/flexbox.json', (data) ->
-  prefix 'flex',
-          props:  ['display']
+  prefix 'display-flex',
           browsers: browsers(data)
 
   prefix 'inline-flex',
