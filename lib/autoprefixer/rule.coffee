@@ -19,6 +19,7 @@ Declaration = require('./declaration')
 Declaration.register require('./hacks/filter')
 Declaration.register require('./hacks/border-radius')
 
+Declaration.register require('./hacks/align-items')
 Declaration.register require('./hacks/display-flex')
 Declaration.register require('./hacks/flex-direction')
 Declaration.register require('./hacks/justify-content')

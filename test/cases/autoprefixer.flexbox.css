@@ -5,19 +5,24 @@ a {
 .a {
     flex-direction: row;
     justify-content: flex-start;
+    align-items: flex-start;
 }
 .b {
     flex-direction: row-reverse;
     justify-content: flex-end;
+    align-items: flex-end;
 }
 .c {
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 .e {
     flex-direction: column-reverse;
     justify-content: space-between;
+    align-items: baseline;
 }
 .f {
     justify-content: space-around;
+    align-items: stretch;
 }
