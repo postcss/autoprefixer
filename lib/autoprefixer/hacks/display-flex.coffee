@@ -21,20 +21,11 @@ class DisplayFlex extends FlexDeclaration
 
   constructor: ->
     super
-    if @value == 'flex'
-      @unprefixed = @prop = 'display-flex'
-    else if @value == '-webkit-box' or @value == '-webkit-flex'
-      @prefix     = '-webkit-'
+    [prefix, name] = FlexDeclaration.split(@value)
+    if name == 'flex' or name == 'box' or name == 'flexbox'
+      @prefix     = prefix
       @unprefixed = 'display-flex'
-      @prop       = '-webkit-display-flex'
-    else if @value == '-moz-box'
-      @prefix     = '-moz-'
-      @unprefixed = 'display-flex'
-      @prop       = '-moz-display-flex'
-    else if @value == '-ms-flexbox'
-      @prefix     = '-ms-'
-      @unprefixed = 'display-flex'
-      @prop       = '-ms-display-flex'
+      @prop       = @prefix + @unprefixed
 
   # Add prefix to value depend on flebox spec version
   prefixProp: (prefix) ->
