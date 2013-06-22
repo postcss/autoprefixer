@@ -24,6 +24,9 @@ a {
     -moz-box-align: start;
     -ms-flex-align: start;
     align-items: flex-start;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
 }
 .b {
     -webkit-box-orient: horizontal;
@@ -43,6 +46,9 @@ a {
     -moz-box-align: end;
     -ms-flex-align: end;
     align-items: flex-end;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
 }
 .c {
     -webkit-box-orient: vertical;
@@ -62,6 +68,9 @@ a {
     -moz-box-align: center;
     -ms-flex-align: center;
     align-items: center;
+    -webkit-flex-wrap: reverse-wrap;
+    -ms-flex-wrap: reverse-wrap;
+    flex-wrap: reverse-wrap;
 }
 .e {
     -webkit-box-orient: vertical;

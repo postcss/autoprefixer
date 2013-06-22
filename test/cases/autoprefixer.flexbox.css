@@ -6,16 +6,19 @@ a {
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
+    flex-wrap: nowrap;
 }
 .b {
     flex-direction: row-reverse;
     justify-content: flex-end;
     align-items: flex-end;
+    flex-wrap: wrap;
 }
 .c {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex-wrap: reverse-wrap;
 }
 .e {
     flex-direction: column-reverse;
