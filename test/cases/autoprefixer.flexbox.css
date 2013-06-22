@@ -10,25 +10,30 @@ a {
     justify-content: flex-start;
     align-items: flex-start;
     flex-wrap: nowrap;
+    align-content: flex-start;
 }
 .b {
     flex-direction: row-reverse;
     justify-content: flex-end;
     align-items: flex-end;
     flex-wrap: wrap;
+    align-content: flex-end;
 }
 .c {
     flex-direction: column;
     justify-content: center;
     align-items: center;
     flex-wrap: reverse-wrap;
+    align-content: center;
 }
 .e {
     flex-direction: column-reverse;
     justify-content: space-between;
     align-items: baseline;
+    align-content: space-between;
 }
 .f {
     justify-content: space-around;
     align-items: stretch;
+    align-content: space-around;
 }
