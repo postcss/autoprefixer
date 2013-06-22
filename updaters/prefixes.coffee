@@ -112,15 +112,10 @@ updater.caniuse 'features-json/flexbox.json', (data) ->
   prefix 'display-flex',
           browsers: browsers(data)
 
-  prefix 'inline-flex',
-          props:  ['display']
-          browsers: browsers(data)
-
   prefix 'flex', 'flex-direction', 'flex-wrap', 'flex-flow', 'flex-grow',
          'flex-shrink', 'flex-basis', 'justify-content', 'order',
          'align-items', 'align-self', 'align-content',
-          browsers:   browsers(data)
-          transition: true
+          browsers: browsers(data)
 
 # calc() unit
 updater.caniuse 'features-json/calc.json', (data) ->
