@@ -1,6 +1,9 @@
 a {
     display: flex;
 }
+.inline {
+    display: inline-flex;
+}
 
 .a {
     flex-direction: row;

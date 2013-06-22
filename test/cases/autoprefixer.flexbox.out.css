@@ -5,6 +5,11 @@ a {
     display: -ms-flexbox;
     display: flex;
 }
+.inline {
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+}
 
 .a {
     -webkit-box-orient: horizontal;

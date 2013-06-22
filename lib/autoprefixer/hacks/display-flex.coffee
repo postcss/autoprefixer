@@ -26,6 +26,11 @@ class DisplayFlex extends FlexDeclaration
       @prefix     = prefix
       @unprefixed = 'display-flex'
       @prop       = @prefix + @unprefixed
+    else if name == 'inline-flex' or name == 'inline-flexbox'
+      @prefix     = prefix
+      @unprefixed = 'display-flex'
+      @prop       = @prefix + @unprefixed
+      @inline     = true
 
   # Add prefix to value depend on flebox spec version
   prefixProp: (prefix) ->
@@ -34,10 +39,14 @@ class DisplayFlex extends FlexDeclaration
     else
       spec = @flexSpec(prefix)
       if spec.spec2009
-        @insertBefore('display', prefix + 'box')
+        @prefixDisplay(prefix, 'box') unless @inline
       if spec.spec2012
-        @insertBefore('display', prefix + 'flexbox')
+        @prefixDisplay(prefix, if @inline then 'inline-flexbox' else 'flexbox')
       if spec.final
-        @insertBefore('display', prefix + 'flex')
+        @prefixDisplay(prefix, if @inline then 'inline-flex' else 'flex')
+
+  # Prefix value
+  prefixDisplay: (prefix, name) ->
+    @insertBefore('display', prefix + name)
 
 module.exports = DisplayFlex
