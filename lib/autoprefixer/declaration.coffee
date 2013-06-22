@@ -39,7 +39,7 @@ class Declaration
       unprefixed = prop[separator..-1]
       [prefix, unprefixed]
     else
-      [undefined, prop]
+      ['', prop]
 
   constructor: (@rule, @number, @node, @prefix, @unprefixed) ->
     @prop  = @node.property

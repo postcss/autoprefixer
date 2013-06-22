@@ -14,9 +14,9 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program.  If not, see <http:#www.gnu.org/licenses/>.
 
-Declaration = require('../declaration')
+FlexDeclaration = require('./flex-declaration')
 
-class JustifyContent extends Declaration
+class JustifyContent extends FlexDeclaration
   @names = ['justify-content', 'flex-pack', 'box-pack']
 
   @oldValues =
@@ -27,18 +27,18 @@ class JustifyContent extends Declaration
 
   constructor: ->
     super
-    if @unprefixed == 'flex-pack' or @unprefixed == 'box-pack'
-      @unprefixed = 'justify-content'
-      @prop = @prefix + @unprefixed
+    @unprefixed = 'justify-content'
+    @prop = @prefix + @unprefixed
 
   # Add prefix and convert spec 2009
   prefixProp: (prefix) ->
+    spec     = @flexSpec(prefix)
     oldValue = JustifyContent.oldValues[@value] || @value
-    if prefix == '-webkit-' or prefix == '-moz-'
+    if spec.spec2009
       @insertBefore(prefix + 'box-pack', oldValue) if @value != 'space-around'
-    else if prefix == '-ms-'
+    if spec.spec2012
       @insertBefore(prefix + 'flex-pack', oldValue)
-    if prefix == '-webkit-'
+    if spec.final
       super
 
 module.exports = JustifyContent

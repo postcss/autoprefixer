@@ -14,29 +14,16 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program.  If not, see <http:#www.gnu.org/licenses/>.
 
-FlexDeclaration = require('./flex-declaration')
+Declaration = require('../declaration')
 
-class FlexDirection extends FlexDeclaration
-  @names = ['flex-direction', 'box-direction', 'box-orient']
+class FlexDeclaration extends Declaration
 
-  constructor: ->
-    super
-    @unprefixed = 'flex-direction'
-    @prop = @prefix + @unprefixed
+  # Return flexbox spec versions by prefix
+  flexSpec: (prefix) ->
+    {
+      spec2009: prefix == '-webkit-' or prefix == '-moz-'
+      spec2012: prefix == '-ms-'
+      final:    prefix == '-webkit-'
+    }
 
-  # Add prefix and convert spec 2009
-  prefixProp: (prefix) ->
-    spec = @flexSpec(prefix)
-    if spec.spec2009
-      @insertBefore(prefix + 'box-orient', if @value.indexOf('row') != -1
-        'horizontal'
-      else
-        'vertical')
-      @insertBefore(prefix + 'box-direction', if @value.indexOf('reverse') != -1
-        'reverse'
-      else
-        'normal')
-    if spec.spec2012 or spec.final
-      super
-
-module.exports = FlexDirection
+module.exports = FlexDeclaration

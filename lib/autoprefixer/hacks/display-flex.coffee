@@ -14,9 +14,9 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program.  If not, see <http:#www.gnu.org/licenses/>.
 
-Declaration = require('../declaration')
+FlexDeclaration = require('./flex-declaration')
 
-class DisplayFlex extends Declaration
+class DisplayFlex extends FlexDeclaration
   @names = ['display']
 
   constructor: ->
@@ -40,12 +40,13 @@ class DisplayFlex extends Declaration
   prefixProp: (prefix) ->
     if @unprefixed != 'display-flex'
       super
-    else if prefix == '-webkit-'
-      @insertBefore('display', '-webkit-box')
-      @insertBefore('display', '-webkit-flex')
-    else if prefix == '-moz-'
-      @insertBefore('display', '-moz-box')
-    else if prefix == '-ms-'
-      @insertBefore('display', '-ms-flexbox')
+    else
+      spec = @flexSpec(prefix)
+      if spec.spec2009
+        @insertBefore('display', prefix + 'box')
+      if spec.spec2012
+        @insertBefore('display', prefix + 'flexbox')
+      if spec.final
+        @insertBefore('display', prefix + 'flex')
 
 module.exports = DisplayFlex

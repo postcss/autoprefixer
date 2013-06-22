@@ -25,7 +25,7 @@ describe 'Declaration', ->
   describe '.split()', ->
 
     it 'should split prefix', ->
-      Declaration.split('color').should.eql [undefined, 'color']
+      Declaration.split('color').should.eql ['', 'color']
       Declaration.split('-webkit-filter').should.eql ['-webkit-', 'filter']
 
   describe '.load()', ->
