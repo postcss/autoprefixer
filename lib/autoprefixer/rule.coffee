@@ -20,6 +20,7 @@ Declaration.register require('./hacks/filter')
 Declaration.register require('./hacks/border-radius')
 
 Declaration.register require('./hacks/flex-wrap')
+Declaration.register require('./hacks/flex-flow')
 Declaration.register require('./hacks/align-items')
 Declaration.register require('./hacks/display-flex')
 Declaration.register require('./hacks/align-content')

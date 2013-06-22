@@ -1,5 +1,6 @@
 a {
     display: flex;
+    flex-flow: row;
 }
 .inline {
     display: inline-flex;

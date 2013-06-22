@@ -4,6 +4,9 @@ a {
     display: -moz-box;
     display: -ms-flexbox;
     display: flex;
+    -webkit-flex-flow: row;
+    -ms-flex-flow: row;
+    flex-flow: row;
 }
 .inline {
     display: -webkit-inline-flex;
