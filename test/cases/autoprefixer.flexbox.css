@@ -4,13 +4,20 @@ a {
 
 .a {
     flex-direction: row;
+    justify-content: flex-start;
 }
 .b {
     flex-direction: row-reverse;
+    justify-content: flex-end;
 }
 .c {
     flex-direction: column;
+    justify-content: center;
 }
-.c {
+.e {
     flex-direction: column-reverse;
+    justify-content: space-between;
+}
+.f {
+    justify-content: space-around;
 }

@@ -17,9 +17,11 @@
 Declaration = require('./declaration')
 
 Declaration.register require('./hacks/filter')
-Declaration.register require('./hacks/display-flex')
 Declaration.register require('./hacks/border-radius')
+
+Declaration.register require('./hacks/display-flex')
 Declaration.register require('./hacks/flex-direction')
+Declaration.register require('./hacks/justify-content')
 
 class Rule
   constructor: (@declarations, @prefix) ->
