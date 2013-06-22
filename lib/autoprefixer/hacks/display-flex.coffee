@@ -36,7 +36,7 @@ class DisplayFlex extends Declaration
       @unprefixed = 'display-flex'
       @prop       = '-ms-display-flex'
 
-  # Add another declaration with prefixed property
+  # Add prefix to value depend on flebox spec version
   prefixProp: (prefix) ->
     if @unprefixed != 'display-flex'
       super
