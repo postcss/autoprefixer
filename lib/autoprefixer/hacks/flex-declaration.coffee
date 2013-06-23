@@ -21,9 +21,9 @@ class FlexDeclaration extends Declaration
   # Return flexbox spec versions by prefix
   flexSpec: (prefix) ->
     {
-      spec2009: prefix == '-webkit-' or prefix == '-moz-'
-      spec2012: prefix == '-ms-'
-      final:    prefix == '-webkit-'
+      v2009: prefix == '-webkit-' or prefix == '-moz-'
+      v2012: prefix == '-ms-'
+      final: prefix == '-webkit-'
     }
 
 module.exports = FlexDeclaration

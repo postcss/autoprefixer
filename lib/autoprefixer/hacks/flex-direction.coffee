@@ -27,7 +27,7 @@ class FlexDirection extends FlexDeclaration
   # Add prefix and convert spec 2009
   prefixProp: (prefix) ->
     spec = @flexSpec(prefix)
-    if spec.spec2009
+    if spec.v2009
       @insertBefore(prefix + 'box-orient', if @value.indexOf('row') != -1
         'horizontal'
       else
@@ -36,7 +36,7 @@ class FlexDirection extends FlexDeclaration
         'reverse'
       else
         'normal')
-    if spec.spec2012 or spec.final
+    if spec.v2012 or spec.final
       super
 
 module.exports = FlexDirection

@@ -22,7 +22,7 @@ class FlexFlow extends FlexDeclaration
   # Add prefix and convert spec 2009
   prefixProp: (prefix) ->
     spec = @flexSpec(prefix)
-    if spec.spec2012
+    if spec.v2012
       super
     if spec.final
       super
