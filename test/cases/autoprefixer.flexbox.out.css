@@ -29,6 +29,12 @@ a {
     -webkit-align-self: auto;
     -ms-flex-item-align: auto;
     align-self: auto;
+
+    -webkit-box-flex: 0;
+    -webkit-flex-grow: 0;
+    -moz-box-flex: 0;
+    -ms-flex: 0;
+    flex-grow: 0;
 }
 
 .a {

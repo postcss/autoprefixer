@@ -21,6 +21,7 @@ Declaration.register require('./hacks/border-radius')
 
 Declaration.register require('./hacks/flex')
 Declaration.register require('./hacks/order')
+Declaration.register require('./hacks/flex-grow')
 Declaration.register require('./hacks/flex-wrap')
 Declaration.register require('./hacks/flex-flow')
 Declaration.register require('./hacks/align-self')

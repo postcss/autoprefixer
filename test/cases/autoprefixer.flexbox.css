@@ -7,6 +7,7 @@ a {
 .inline {
     display: inline-flex;
     align-self: auto;
+    flex-grow: 0;
 }
 
 .a {
