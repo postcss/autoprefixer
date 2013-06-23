@@ -14,6 +14,12 @@ a {
     -moz-box-ordinal-group: 1;
     -ms-flex-order: 0;
     order: 0;
+
+    -webkit-box-flex: 0;
+    -webkit-flex: 0;
+    -moz-box-flex: 0;
+    -ms-flex: 0;
+    flex: 0;
 }
 .inline {
     display: -webkit-inline-flex;

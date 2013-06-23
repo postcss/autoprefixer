@@ -2,6 +2,7 @@ a {
     display: flex;
     flex-flow: row;
     order: 0;
+    flex: 0;
 }
 .inline {
     display: inline-flex;

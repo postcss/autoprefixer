@@ -19,6 +19,7 @@ Declaration = require('./declaration')
 Declaration.register require('./hacks/filter')
 Declaration.register require('./hacks/border-radius')
 
+Declaration.register require('./hacks/flex')
 Declaration.register require('./hacks/order')
 Declaration.register require('./hacks/flex-wrap')
 Declaration.register require('./hacks/flex-flow')
