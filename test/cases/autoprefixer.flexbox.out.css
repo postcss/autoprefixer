@@ -69,6 +69,10 @@ a {
     -webkit-align-self: flex-start;
     -ms-flex-item-align: start;
     align-self: flex-start;
+
+    -webkit-flex-shrink: 1;
+    -ms-flex: 0 1;
+    flex-shrink: 1;
 }
 .b {
     -webkit-box-orient: horizontal;

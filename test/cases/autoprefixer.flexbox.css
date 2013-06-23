@@ -17,6 +17,7 @@ a {
     flex-wrap: nowrap;
     align-content: flex-start;
     align-self: flex-start;
+    flex-shrink: 1;
 }
 .b {
     flex-direction: row-reverse;
