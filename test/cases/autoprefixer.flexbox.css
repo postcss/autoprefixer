@@ -5,6 +5,7 @@ a {
 }
 .inline {
     display: inline-flex;
+    align-self: auto;
 }
 
 .a {
@@ -13,6 +14,7 @@ a {
     align-items: flex-start;
     flex-wrap: nowrap;
     align-content: flex-start;
+    align-self: flex-start;
 }
 .b {
     flex-direction: row-reverse;
@@ -20,6 +22,7 @@ a {
     align-items: flex-end;
     flex-wrap: wrap;
     align-content: flex-end;
+    align-self: flex-end;
 }
 .c {
     flex-direction: column;
@@ -27,15 +30,18 @@ a {
     align-items: center;
     flex-wrap: reverse-wrap;
     align-content: center;
+    align-self: center;
 }
 .e {
     flex-direction: column-reverse;
     justify-content: space-between;
     align-items: baseline;
     align-content: space-between;
+    align-self: baseline;
 }
 .f {
     justify-content: space-around;
     align-items: stretch;
     align-content: space-around;
+    align-self: stretch;
 }
