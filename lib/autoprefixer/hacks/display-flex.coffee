@@ -19,6 +19,7 @@ FlexDeclaration = require('./flex-declaration')
 class DisplayFlex extends FlexDeclaration
   @names = ['display']
 
+  # Normalize property name
   constructor: ->
     super
     [prefix, name] = FlexDeclaration.split(@value)

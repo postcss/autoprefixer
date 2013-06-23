@@ -19,12 +19,13 @@ FlexDeclaration = require('./flex-declaration')
 class Flex extends FlexDeclaration
   @names = ['flex', 'box-flex']
 
+  # Normalize property name
   constructor: ->
     super
     @unprefixed = 'flex'
     @prop = @prefix + @unprefixed
 
-  # Add prefix and convert spec 2009
+  # Add prefix and convert to 2009 specs
   prefixProp: (prefix) ->
     spec = @flexSpec(prefix)
     if spec.v2009

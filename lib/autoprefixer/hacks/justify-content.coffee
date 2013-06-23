@@ -25,12 +25,13 @@ class JustifyContent extends FlexDeclaration
     'space-between': 'justify'
     'space-around':  'distribute'
 
+  # Normalize property name
   constructor: ->
     super
     @unprefixed = 'justify-content'
     @prop = @prefix + @unprefixed
 
-  # Add prefix and convert spec 2009
+  # Add prefix and convert to 2009 and 2012 specs
   prefixProp: (prefix) ->
     spec     = @flexSpec(prefix)
     oldValue = JustifyContent.oldValues[@value] || @value

@@ -19,7 +19,7 @@ FlexDeclaration = require('./flex-declaration')
 class Flex extends FlexDeclaration
   @names = ['flex-grow']
 
-  # Add prefix and convert spec 2009
+  # Add prefix and convert to 2009 and 2012 specs
   prefixProp: (prefix) ->
     spec = @flexSpec(prefix)
     if spec.v2009

@@ -23,12 +23,13 @@ class AlignItems extends FlexDeclaration
     'flex-end':   'end'
     'flex-start': 'start'
 
+  # Normalize property name
   constructor: ->
     super
     @unprefixed = 'align-items'
     @prop = @prefix + @unprefixed
 
-  # Add prefix and convert spec 2009
+  # Add prefix and convert to 2009 and 2012 specs
   prefixProp: (prefix) ->
     spec     = @flexSpec(prefix)
     oldValue = AlignItems.oldValues[@value] || @value

@@ -25,12 +25,13 @@ class AlignContent extends FlexDeclaration
     'space-between': 'justify'
     'space-around':  'distribute'
 
+  # Normalize property name
   constructor: ->
     super
     @unprefixed = 'align-content'
     @prop = @prefix + @unprefixed
 
-  # Add prefix and convert spec 2009
+  # Add prefix and convert to 2012 spec
   prefixProp: (prefix) ->
     spec = @flexSpec(prefix)
     if spec.v2012

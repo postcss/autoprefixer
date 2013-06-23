@@ -19,7 +19,7 @@ FlexDeclaration = require('./flex-declaration')
 class FlexFlow extends FlexDeclaration
   @names = ['flex-flow']
 
-  # Add prefix and convert spec 2009
+  # Don't add prefix for 2009 spec
   prefixProp: (prefix) ->
     spec = @flexSpec(prefix)
     if spec.v2012

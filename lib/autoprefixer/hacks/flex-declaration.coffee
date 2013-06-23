@@ -16,6 +16,7 @@
 
 Declaration = require('../declaration')
 
+# Common code from flexbox declarations hacks
 class FlexDeclaration extends Declaration
 
   # Return flexbox spec versions by prefix

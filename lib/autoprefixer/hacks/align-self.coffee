@@ -23,12 +23,13 @@ class AlignSelf extends FlexDeclaration
     'flex-end':   'end'
     'flex-start': 'start'
 
+  # Normalize property name
   constructor: ->
     super
     @unprefixed = 'align-self'
     @prop = @prefix + @unprefixed
 
-  # Add prefix and convert spec 2009
+  # Add prefix and convert to 2012 specs
   prefixProp: (prefix) ->
     spec = @flexSpec(prefix)
     if spec.v2012

@@ -19,6 +19,7 @@ Declaration = require('../declaration')
 class Filter extends Declaration
   @names = ['filter']
 
+  # Check is it Inetrenet Explorer filter
   constructor: ->
     super
     if @value.match(/DXImageTransform\.Microsoft/)
