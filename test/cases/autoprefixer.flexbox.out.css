@@ -106,6 +106,10 @@ a {
     -webkit-align-self: flex-end;
     -ms-flex-item-align: end;
     align-self: flex-end;
+
+    -webkit-flex-basis: auto;
+    -ms-flex: 0 1 auto;
+    flex-basis: auto;
 }
 .c {
     -webkit-box-orient: vertical;

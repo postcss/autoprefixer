@@ -26,6 +26,7 @@ a {
     flex-wrap: wrap;
     align-content: flex-end;
     align-self: flex-end;
+    flex-basis: auto;
 }
 .c {
     flex-direction: column;
