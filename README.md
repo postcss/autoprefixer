@@ -23,6 +23,9 @@ a {
 }
 ```
 
+Twitter account for news and releases:
+[@autoprefixer](https://twitter.com/autoprefixer).
+
 Sponsored by [Evil Martians](http://evilmartians.com/).
 
 ## Translations
