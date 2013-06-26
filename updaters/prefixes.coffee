@@ -128,4 +128,10 @@ updater.caniuse 'features-json/background-img-opts.json', (data) ->
   prefix 'background-clip', 'background-origin', 'background-size',
           browsers: browsers(data)
 
+# Font feature settings
+updater.caniuse 'features-json/font-feature.json', (data) ->
+  prefix 'font-feature-settings', 'font-variant-ligatures',
+         'font-language-override','font-kerning',
+          browsers: browsers(data)
+
 updater.done -> updater.save('prefixes', prefixes)
