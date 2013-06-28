@@ -23,6 +23,9 @@
 * Add Firefox 24 data.
 * Add prefixes for font-feature-settings.
 
+20130629:
+* Fix convert flex properties to old box-flex.
+
 == 0.4 (Winter Is Coming)
 * Remove outdated prefixes.
 * Add border-radius and box-shadow properties to database.
