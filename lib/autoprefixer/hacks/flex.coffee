@@ -29,7 +29,8 @@ class Flex extends FlexDeclaration
   prefixProp: (prefix) ->
     spec = @flexSpec(prefix)
     if spec.v2009
-      @insertBefore(prefix + 'box-flex', @value)
+      first = @value.split(' ')[0]
+      @insertBefore(prefix + 'box-flex', first)
     if spec.v2012
       super
     if spec.final
