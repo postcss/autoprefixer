@@ -15,8 +15,8 @@
   },
   "devDependencies": {
     "coffee-script": "1.6.3",
-    "component":     "0.16.4",
-    "fs-extra":      "0.6.1",
+    "component":     "0.16.5",
+    "fs-extra":      "0.6.3",
     "should":        "1.2.2",
     "rework":        "0.17.0",
     "mocha":         "1.11.0",
