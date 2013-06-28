@@ -30,6 +30,10 @@ a {
     -ms-flex-item-align: auto;
     align-self: auto;
 
+    -webkit-align-content: stretch;
+    -ms-flex-line-pack: stretch;
+    align-content: stretch;
+
     -webkit-box-flex: 0;
     -webkit-flex-grow: 0;
     -moz-box-flex: 0;
