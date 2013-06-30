@@ -1,7 +1,7 @@
 {
   "name": "autoprefixer",
   "version": "0.5.20130629",
-  "description": "Parse CSS and add prefixed properties and values by actual Can I Use database",
+  "description": "Parse CSS and add vendor prefixes to CSS rules using values from the Can I Use website",
   "keywords": ["css", "prefix", "rework"],
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
   "license": "LGPL 3",

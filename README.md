@@ -1,10 +1,10 @@
 # Autoprefixer
 
-Parse CSS and add prefixed properties and values from
-[Can I Use](http://caniuse.com/) database for actual browsers.
+Parse CSS and add vendor prefixes to CSS rules using values
+from the [Can I Use](http://caniuse.com/) website.
 
-Write your usual CSS code without prefixes (forget about them at all,
-Autoprefixer will think for you):
+Write your CSS rules without vendor prefixes (in fact, forget about them
+entirely):
 
 ```js
 var css = 'a { transition: transform 1s }';
@@ -12,7 +12,7 @@ var prefixed = autoprefixer.compile(css);
 ```
 
 Autoprefixer uses a database with current browser statistics
-and properties support to add prefixes automatically:
+and properties support to apply vendor prefixes for you:
 
 ```css
 a {
@@ -47,8 +47,8 @@ Sponsored by [Evil Martians](http://evilmartians.com/).
   (from [Can I Use](http://caniuse.com/)), so prefixes will always be up-to-date
   (scripts don’t have holidays or work).
 * Removes outdated prefixes to clean libraries and legacy code.
-* It also adds prefixes to values. For example, to `calc(1em + 5px)` or
-  to property names in `transition`.
+* Adds prefixes to values. For example, to `calc(1em + 5px)` or to property
+  names in `transition`.
 
 ## Browsers
 
