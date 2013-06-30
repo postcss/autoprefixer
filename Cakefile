@@ -92,3 +92,42 @@ task 'build', 'Build standalone autoprefixer.js', ->
 
         rails = __dirname + '/../autoprefixer-rails/vendor/autoprefixer.js'
         fs.copy(result, rails) if fs.existsSync(rails)
+
+task 'bench', 'Benchmark on GitHub styles', ->
+  print = (text) -> process.stdout.write(text)
+
+  https = require('https')
+  get = (url, callback) ->
+    https.get url, (res) ->
+      data = ''
+      res.on 'data', (chunk) -> data += chunk
+      res.on 'end', -> callback(data)
+
+  loadGithubStyles = (callback) ->
+    print('Load GitHub styles')
+    get 'https://github.com', (html) ->
+      print('.')
+      styles = []
+      links  = html.match(/[^"]+\.css/g)
+      for url in links
+        get url, (css) ->
+          print('.')
+          styles.push(css)
+          if styles.length == links.length
+            print("\n")
+            callback(styles)
+
+  loadGithubStyles (styles) ->
+    autoprefixer = require(__dirname + '/lib/autoprefixer')
+    styles = styles.map (css) -> autoprefixer.compile(css, [])
+
+    print('Run 10 processors')
+    start = new Date()
+    for i in [0..10]
+      for css in styles
+        autoprefixer.compile(css)
+      print('.')
+    print("\n")
+
+    end = new Date()
+    print("Time is #{ end - start } ms\n")

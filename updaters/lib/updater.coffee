@@ -41,7 +41,7 @@ module.exports =
   caniuse: (file, callback) ->
     @requests += 1
     https.get "https://raw.github.com/Fyrd/caniuse/master/#{file}", (res) =>
-      data = '';
+      data = ''
       res.on 'data', (chunk) -> data += chunk
       res.on 'end', =>
         callback(JSON.parse(data))
