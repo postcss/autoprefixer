@@ -8,7 +8,7 @@ entirely):
 
 ```js
 var css = 'a { transition: transform 1s }';
-var prefixed = autoprefixer.compile(css);
+var prefixed = autoprefixer().compile(css);
 ```
 
 Autoprefixer uses a database with current browser statistics
@@ -55,7 +55,7 @@ Sponsored by [Evil Martians](http://evilmartians.com/).
 You can specify browsers for your project (by default, it’s `last 2 versions`):
 
 ```js
-autoprefixer.compile(css, ["last 1 version", "> 1%", "ie 8", "ie 7"]);
+autoprefixer("last 1 version", "> 1%", "ie 8", "ie 7").compile(css);
 ```
 
 * `last n versions` is last `n` versions for each browser (for example,
@@ -68,7 +68,7 @@ Blackberry and stock Android browsers will not be used in `last n versions`
 or `> n%` selects. Add them by name if you need them:
 
 ```js
-autoprefixer.compile(css, ["last 1 version", "bb 10", "android 4"]);
+autoprefixer("last 1 version", "bb 10", "android 4").compile(css);
 ```
 
 ## Usage
@@ -112,7 +112,7 @@ Use `autoprefixer` npm package:
 
 ```js
 var autoprefixer = require('autoprefixer');
-var prefixed     = autoprefixer.compile(css);
+var prefixed     = autoprefixer().compile(css);
 ```
 
 ### JavaScript

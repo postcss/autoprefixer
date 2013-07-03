@@ -68,8 +68,8 @@ task 'build', 'Build standalone autoprefixer.js', ->
 
   glob = require('glob')
 
-  npm = JSON.parse fs.readFileSync(__dirname + '/package.json').toString()
-  config  =
+  npm    = JSON.parse fs.readFileSync(__dirname + '/package.json').toString()
+  config =
     name:         npm.name
     version:      npm.version
     main:         npm.main + '.js'
@@ -118,14 +118,16 @@ task 'bench', 'Benchmark on GitHub styles', ->
             callback(styles)
 
   loadGithubStyles (styles) ->
-    autoprefixer = require(__dirname + '/lib/autoprefixer')
-    styles = styles.map (css) -> autoprefixer.compile(css, [])
-
     print('Run 10 processors')
-    start = new Date()
-    for i in [0..10]
+    autoprefixer = require(__dirname + '/lib/autoprefixer')
+
+    cleaner = autoprefixer(false)
+    styles  = styles.map (css) -> cleaner.compile(css)
+    start   = new Date()
+    compiler = autoprefixer('last 2 versions')
+    for i in [0]
       for css in styles
-        autoprefixer.compile(css)
+        compiler.compile(css)
       print('.')
     print("\n")
 

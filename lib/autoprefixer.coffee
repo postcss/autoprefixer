@@ -21,50 +21,56 @@ Browsers = require('./autoprefixer/browsers')
 Prefixes = require('./autoprefixer/prefixes')
 CSS      = require('./autoprefixer/css')
 
+inspectCache = null
+
 # Parse CSS and add prefixed properties and values by Can I Use database
 # for actual browsers.
 #
-#   var prefixed = autoprefixer.compile(css, ['> 1%', 'ie 8']);
+#   var prefixed = autoprefixer('> 1%', 'ie 8').compile(css);
 #
 # If you want to combine Autoprefixer with another Rework filters,
 # you can use it as separated filter:
 #
 #   rework(css).
-#     use(autoprefixer.rework('last 1 version')).
+#     use(autoprefixer('last 1 version').rework).
 #     toString();
-autoprefixer =
+autoprefixer = (reqs...) ->
+  if reqs.length == 0 or (reqs.length == 1 and not reqs[0]?)
+    reqs = undefined
+  else if reqs.length == 1 and reqs[0] == false
+    reqs = []
+  else if reqs.length == 1 and reqs[0] instanceof Array
+    reqs = reqs[0]
+
+  browsers = new Browsers(autoprefixer.data.browsers, reqs)
+  prefixes = new Prefixes(autoprefixer.data.prefixes, browsers)
+  new Autoprefixer(prefixes, autoprefixer.data)
+
+autoprefixer.data =
+  browsers: require('../data/browsers')
+  prefixes: require('../data/prefixes')
+
+require('./autoprefixer/deprecated').install(autoprefixer)
+
+class Autoprefixer
+  constructor: (@prefixes, @data) ->
 
   # Parse CSS and add prefixed properties for selected browsers
-  compile: (str, requirements) ->
+  compile: (str) ->
     nodes = @catchParseErrors => parse(@removeBadComments str)
-    @rework(requirements)(nodes.stylesheet)
+    @rework(nodes.stylesheet)
     @catchParseErrors => stringify(nodes)
 
   # Return Rework filter, which will add necessary prefixes
-  rework: (requirements) ->
-    browsers = new Browsers(@data.browsers, requirements)
-    prefixes = new Prefixes(@data.prefixes, browsers)
-    (stylesheet) ->
-      css = new CSS(stylesheet)
-      prefixes.processor.add(css)
-      prefixes.processor.remove(css)
-
-  data:
-    browsers: require('../data/browsers')
-    prefixes: require('../data/prefixes')
-
-  # Remove /**/ in non-IE6 declaration, until CSS parser has this issue
-  removeBadComments: (css) ->
-    css.replace(/\/\*[^\*]*\*\/\s*:/g, ':').
-        replace(/\/\*[^\*]*\{[^\*]*\*\//g, '')
+  rework: (stylesheet) =>
+    css = new CSS(stylesheet)
+    @prefixes.processor.add(css)
+    @prefixes.processor.remove(css)
 
   # Return string, what browsers selected and whar prefixes will be added
-  inspect: (requirements) ->
-    browsers = new Browsers(@data.browsers, requirements)
-    prefixes = new Prefixes(@data.prefixes, browsers)
-
-    @inspectFunc ||= require('./autoprefixer/inspect')
-    @inspectFunc(prefixes)
+  inspect: ->
+    inspectCache ||= require('./autoprefixer/inspect')
+    inspectCache(@prefixes)
 
   # Catch errors from CSS parsing and throw readable message
   catchParseErrors: (callback) ->
@@ -75,5 +81,10 @@ autoprefixer =
       error.stack = e.stack
       error.css   = true
       throw error
+
+  # Remove /**/ in non-IE6 declaration, until CSS parser has this issue
+  removeBadComments: (css) ->
+    css.replace(/\/\*[^\*]*\*\/\s*:/g, ':').
+        replace(/\/\*[^\*]*\{[^\*]*\*\//g, '')
 
 module.exports = autoprefixer

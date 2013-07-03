@@ -122,7 +122,7 @@ class Binary
 
   # Print inspect
   inspect: (done) ->
-    @print autoprefixer.inspect(@requirements)
+    @print @compiler().inspect()
     done()
 
   # Mark that there is another asyn work
@@ -134,10 +134,14 @@ class Binary
     @waiting -= 1
     @doneCallback() if @waiting <= 0
 
+  # Lazy loading for Autoprefixer instance
+  compiler: ->
+    @compilerCache ||= autoprefixer(@requirements)
+
   # Compile loaded CSS
   compileCSS: (css, file) ->
     try
-      prefixed = autoprefixer.compile(css, @requirements)
+      prefixed = @compiler().compile(css)
     catch error
       if error.autoprefixer or error.css
         @error "autoprefixer: #{ error.message }"
