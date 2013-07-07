@@ -125,7 +125,7 @@ task 'bench', 'Benchmark on GitHub styles', ->
     styles  = styles.map (css) -> cleaner.compile(css)
     start   = new Date()
     compiler = autoprefixer('last 2 versions')
-    for i in [0]
+    for i in [0..10]
       for css in styles
         compiler.compile(css)
       print('.')

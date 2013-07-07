@@ -42,7 +42,10 @@ class Value
 
   # Is declaration need to be prefixed
   check: (decl) ->
-    !!decl.value.match(@regexp)
+    if decl.value.indexOf(@name) != -1
+      !!decl.value.match(@regexp)
+    else
+      false
 
   # Return regexp to test prefixed value
   prefixed: (prefix) ->
