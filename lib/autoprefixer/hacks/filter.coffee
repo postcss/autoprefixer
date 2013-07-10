@@ -22,7 +22,7 @@ class Filter extends Declaration
   # Check is it Inetrenet Explorer filter
   constructor: ->
     super
-    if @value.match(/DXImageTransform\.Microsoft/)
+    if @value.indexOf('DXImageTransform.Microsoft') != -1
       @unprefixed = @prop = '-ms-filter'
 
 module.exports = Filter
