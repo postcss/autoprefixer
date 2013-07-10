@@ -19,7 +19,8 @@ deprecated =
   # Show deprecated warning
   warning: (method) ->
     return unless console?.warn?
-    console.warn("Method autoprefixer.#{method} is deprecated. " +
+    console.warn("Method autoprefixer.#{method} is deprecated " +
+                 "and will be removed in 0.7 version. " +
                  "Use autoprefixer(reqs).#{method} instead.")
 
   # Instance cache
