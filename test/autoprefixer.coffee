@@ -59,7 +59,7 @@ describe 'Autoprefixer', ->
       catch e
         error = e
 
-      error.message.should.eql "Can't parse CSS"
+      error.message.should.eql "Can't parse CSS: missing '}' near line 1:4"
       error.css.should.be.true
 
   describe 'rework()', ->

@@ -59,7 +59,7 @@ class Autoprefixer
   compile: (str) ->
     nodes = @catchParseErrors => parse(@removeBadComments str)
     @rework(nodes.stylesheet)
-    @catchParseErrors => stringify(nodes)
+    stringify(nodes)
 
   # Return Rework filter, which will add necessary prefixes
   rework: (stylesheet) =>
@@ -77,7 +77,7 @@ class Autoprefixer
     try
       callback()
     catch e
-      error = new Error("Can't parse CSS")
+      error = new Error("Can't parse CSS: " + e.message)
       error.stack = e.stack
       error.css   = true
       throw error

@@ -140,7 +140,7 @@ describe 'Binary', ->
     @stdin.content = 'a {'
     @exec '-b', 'chrome 25', (out, err) ->
       out.should.be.empty
-      err.should.match(/^autoprefixer: Can't parse CSS\n\n\w/)
+      err.should.match(/^autoprefixer: Can't parse CSS/)
       done()
 
 describe 'bin/autoprefixer', ->
