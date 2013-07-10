@@ -41,15 +41,21 @@ class Value
     @regexp = Value.regexp(@name)
 
   # Is declaration need to be prefixed
-  check: (decl) ->
-    if decl.value.indexOf(@name) != -1
-      !!decl.value.match(@regexp)
+  check: (value) ->
+    if value.indexOf(@name) != -1
+      !!value.match(@regexp)
     else
       false
 
-  # Return regexp to test prefixed value
-  prefixed: (prefix) ->
-    utils.regexp(prefix + @name)
+  # Return function to fast find prefixed value
+  checker: (prefix) ->
+    string = prefix + @name
+    regexp = utils.regexp(prefix + @name)
+    (value) ->
+      if value.indexOf(string) != -1
+        !!value.match(regexp)
+      else
+        false
 
   # Add prefix to values in string
   addPrefix: (prefix, string) ->

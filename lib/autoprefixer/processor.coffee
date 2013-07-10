@@ -34,7 +34,7 @@ class Processor
     # Values
     css.eachDeclaration (decl, vendor) =>
       for value in @prefixes.values('add', decl.unprefixed)
-        continue unless value.check(decl)
+        continue unless value.check(decl.value)
 
         for prefix in value.prefixes
           continue if vendor and vendor != prefix
@@ -54,8 +54,8 @@ class Processor
         return
 
       # Values
-      for value in @prefixes.values('remove', decl.unprefixed)
-        if decl.value.match(value)
+      for checker in @prefixes.values('remove', decl.unprefixed)
+        if checker(decl.value)
           decl.remove()
           return
 

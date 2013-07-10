@@ -1,5 +1,6 @@
 Prefixes = require('../lib/autoprefixer/prefixes')
 Browsers = require('../lib/autoprefixer/browsers')
+Value    = require('../lib/autoprefixer/value')
 utils    = require('../lib/autoprefixer/utils')
 
 data =
@@ -51,19 +52,20 @@ describe 'Prefixes', ->
         '*':
           values: [name: 'b', prefixes: ['-ms-'], regexp: utils.regexp('b')]
 
-      fill.remove.should.eql
+      JSON.stringify(fill.remove).should.eql JSON.stringify({
         'transition':
-          values: [utils.regexp('-webkit-a'), utils.regexp('-ms-a')]
+          values: [( -> ), ( -> )]
         'transition-property':
-          values: [utils.regexp('-webkit-a'), utils.regexp('-ms-a')]
+          values: [( -> ), ( -> )]
         '-webkit-a':
           remove: true
         '-ms-a':
           remove: true
         'a':
-          values: [utils.regexp('-moz-b')]
+          values: [( -> )]
         '*':
-          values: [utils.regexp('-moz-b')]
+          values: [( -> )]
+      })
 
   describe 'other()', ->
 
@@ -88,9 +90,9 @@ describe 'Prefixes', ->
       fill.values('add', 'a').should.eql [
         { name: 'b', prefixes: ['-ms-'], regexp: utils.regexp('b') }
       ]
-      fill.values('remove', 'a').should.eql [
-        utils.regexp('-moz-b')
-      ]
+
+      fill.values('remove', 'a').length.should.eql 1
+      fill.values('remove', 'a')[0]('-moz-b').should.be.true
 
   describe 'toRemove()', ->
 

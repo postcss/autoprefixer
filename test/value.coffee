@@ -35,19 +35,19 @@ describe 'Value', ->
   describe 'check()', ->
 
     it 'should check value in string', ->
-      @calc.check(value: 'calc(1px + 1em)'    ).should.be.true
-      @calc.check(value: '1px calc(1px + 1em)').should.be.true
-      @calc.check(value: '(calc(1px + 1em))'  ).should.be.true
+      @calc.check('calc(1px + 1em)'    ).should.be.true
+      @calc.check('1px calc(1px + 1em)').should.be.true
+      @calc.check('(calc(1px + 1em))'  ).should.be.true
 
-      @calc.check(value: '-o-calc').should.be.false
-      @calc.check(value: 'calced' ).should.be.false
+      @calc.check('-o-calc').should.be.false
+      @calc.check('calced' ).should.be.false
 
-  describe 'prefixed()', ->
+  describe 'checker()', ->
 
     it 'should check prefixed value', ->
-      regexp = @calc.prefixed('-o-')
-      regexp.test('1px -o-calc(1px)').should.be.true
-      regexp.test('1px calc(1px)').should.be.false
+      checked = @calc.checker('-o-')
+      checked('1px -o-calc(1px)').should.be.true
+      checked('1px calc(1px)').should.be.false
 
   describe 'addPrefix()', ->
 

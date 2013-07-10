@@ -63,6 +63,23 @@ class Gradient extends Value
     "#{param}deg"
 
   # Remove old WebKit gradient too
+  checker: (prefix) ->
+    if prefix == '-webkit-'
+      type   = if @name == 'linear-gradient' then 'linear' else 'radial'
+      string = '-gradient'
+      regexp = utils.regexp("-webkit-(#{type}-gradient|gradient\\(\\s*#{type})",
+                            false)
+    else
+      string = prefix + @name
+      regexp = utils.regexp(prefix + @name)
+
+    (value) ->
+      if value.indexOf(string) != -1
+        !!value.match(regexp)
+      else
+        false
+
+  # Remove old WebKit gradient too
   prefixed: (prefix) ->
     if prefix == '-webkit-'
       type = if @name == 'linear-gradient' then 'linear' else 'radial'
