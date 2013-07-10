@@ -22,6 +22,9 @@ deprecated =
     console.warn("Method autoprefixer.#{method} is deprecated. " +
                  "Use autoprefixer(reqs).#{method} instead.")
 
+  # Instance cache
+  cache: { }
+
   # Convert browsers list and create Autoprefixer instance
   create: (autoprefixer, browsers) ->
     if not browsers?
@@ -31,7 +34,9 @@ deprecated =
     else if browsers.length == 0
       browsers = [false]
 
-    autoprefixer.apply(autoprefixer, browsers)
+    key = browsers.toString()
+
+    @cache[key] ||= autoprefixer.apply(autoprefixer, browsers)
 
   # Install old deprecated compile, rework and inspect to Autoprefixer
   install: (autoprefixer) ->

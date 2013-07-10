@@ -121,13 +121,12 @@ task 'bench', 'Benchmark on GitHub styles', ->
     print('Run 10 processors')
     autoprefixer = require(__dirname + '/lib/autoprefixer')
 
-    cleaner = autoprefixer(false)
-    styles  = styles.map (css) -> cleaner.compile(css)
-    start   = new Date()
-    compiler = autoprefixer('last 2 versions')
+    cleaner  = autoprefixer(false)
+    styles   = styles.map (css) -> cleaner.compile(css)
+    start    = new Date()
     for i in [0..10]
       for css in styles
-        compiler.compile(css)
+        autoprefixer.compile(css)
       print('.')
     print("\n")
 

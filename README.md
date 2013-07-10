@@ -8,7 +8,7 @@ entirely):
 
 ```js
 var css = 'a { transition: transform 1s }';
-var prefixed = autoprefixer().compile(css);
+var prefixed = autoprefixer.compile(css);
 ```
 
 Autoprefixer uses a database with current browser statistics
@@ -121,7 +121,7 @@ Use `autoprefixer` npm package:
 
 ```js
 var autoprefixer = require('autoprefixer');
-var prefixed     = autoprefixer().compile(css);
+var prefixed     = autoprefixer.compile(css);
 ```
 
 ### JavaScript
