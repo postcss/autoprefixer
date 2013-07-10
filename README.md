@@ -71,6 +71,15 @@ or `> n%` selects. Add them by name if you need them:
 autoprefixer("last 1 version", "bb 10", "android 4").compile(css);
 ```
 
+## Inspect
+
+You can check, what browsers is selected and what properties will be prefixes:
+
+```js
+inspect = autoprefixer("last 1 version").inspect();
+console.log(inspect);
+```
+
 ## Usage
 
 ### Ruby on Rails
