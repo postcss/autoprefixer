@@ -12,7 +12,7 @@ data =
     popularity: [1, 0.5, 0.1]
   opera:
     prefix:     '-o-'
-    versions:   [4, 3, 2]
+    versions:   [15, 4, 3, 2]
     popularity: [0.5, 0.1, 0.1]
     minor:      true
   bb:
@@ -73,6 +73,11 @@ describe 'Browsers', ->
     it 'should return browser prefix', ->
       browsers = new Browsers(data)
       browsers.prefix('chrome 3').should == '-webkit-'
+
+    it 'should return webkit prefix for Opera 15', ->
+      browsers = new Browsers(data)
+      browsers.prefix('opera 4').should  == '-o-'
+      browsers.prefix('opera 15').should == '-webkit-'
 
   describe 'isSelected()', ->
 
