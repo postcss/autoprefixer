@@ -40,8 +40,9 @@ class Rule
   each: (callback) ->
     @number = 0
     while @number < @declarations.length
-      if @declarations[@number].property
-        decl = Declaration.load(@, @number, @declarations[@number])
+      item = @declarations[@number]
+      if item.property
+        decl = Declaration.load(@, @number, item)
         callback(decl, decl.prefix || @prefix)
       @number += 1
     false

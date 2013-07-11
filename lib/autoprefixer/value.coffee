@@ -49,9 +49,11 @@ class Value
 
   # Return function to fast find prefixed value
   checker: (prefix) ->
-    string = prefix + @name
-    regexp = utils.regexp(prefix + @name)
-    (value) ->
+    string  = prefix + @name
+    regexp  = utils.regexp(prefix + @name)
+
+    name:  string
+    check: (value) ->
       if value.indexOf(string) != -1
         !!value.match(regexp)
       else

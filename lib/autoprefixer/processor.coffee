@@ -55,7 +55,7 @@ class Processor
 
       # Values
       for checker in @prefixes.values('remove', decl.unprefixed)
-        if checker(decl.value)
+        if checker.check(decl.value)
           decl.remove()
           return
 

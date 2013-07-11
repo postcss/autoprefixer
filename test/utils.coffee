@@ -19,7 +19,7 @@ describe 'utils', ->
   describe '.uniq()', ->
 
     it 'should filter doubles in array', ->
-      utils.uniq([1, 1, 2, 3, 3]).should.eql [1, 2, 3]
+      utils.uniq(['1', '1', '2', '3', '3']).should.eql ['1', '2', '3']
 
   describe '.clone()', ->
 

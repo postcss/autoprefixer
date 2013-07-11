@@ -107,9 +107,13 @@ class Prefixes
   values: (type, prop) ->
     data = @[type]
 
-    values = data['*']?.values || []
-    values = values.concat(data[prop].values) if data[prop]?.values
-    utils.uniq values
+    global = data['*']?.values
+    values = data[prop]?.values
+
+    if global and values
+      utils.uniq global.concat(values)
+    else
+      global || values || []
 
   # Is prefixed property must be removed
   toRemove: (prop) ->

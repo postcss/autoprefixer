@@ -29,6 +29,7 @@ class CSS
       if rule.keyframes
         callback(new Keyframes(@, @number, rule))
       @number += 1
+    false
 
   # Is CSS contain keyframes with this name and prefix
   containKeyframes: (rule) ->
@@ -59,5 +60,6 @@ class CSS
       if i.declarations
         rule = new Rule(i.declarations, i.vendor)
         rule.each(callback)
+    false
 
 module.exports = CSS

@@ -45,9 +45,10 @@ describe 'Value', ->
   describe 'checker()', ->
 
     it 'should check prefixed value', ->
-      checked = @calc.checker('-o-')
-      checked('1px -o-calc(1px)').should.be.true
-      checked('1px calc(1px)').should.be.false
+      checker = @calc.checker('-o-')
+      checker.name.should.eql '-o-calc'
+      checker.check('1px -o-calc(1px)').should.be.true
+      checker.check('1px calc(1px)').should.be.false
 
   describe 'addPrefix()', ->
 

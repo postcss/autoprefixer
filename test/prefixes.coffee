@@ -54,17 +54,19 @@ describe 'Prefixes', ->
 
       JSON.stringify(fill.remove).should.eql JSON.stringify({
         'transition':
-          values: [( -> ), ( -> )]
+          values: [{ name: '-webkit-a', check: ( -> ) },
+                   { name: '-ms-a',     check: ( -> ) }]
         'transition-property':
-          values: [( -> ), ( -> )]
+          values: [{ name: '-webkit-a', check: ( -> ) },
+                   { name: '-ms-a',     check: ( -> ) }]
         '-webkit-a':
           remove: true
         '-ms-a':
           remove: true
         'a':
-          values: [( -> )]
+          values: [{ name: '-moz-b', check: ( -> ) }]
         '*':
-          values: [( -> )]
+          values: [{ name: '-moz-b', check: ( -> ) }]
       })
 
   describe 'other()', ->
@@ -91,8 +93,7 @@ describe 'Prefixes', ->
         { name: 'b', prefixes: ['-ms-'], regexp: utils.regexp('b') }
       ]
 
-      fill.values('remove', 'a').length.should.eql 1
-      fill.values('remove', 'a')[0]('-moz-b').should.be.true
+      fill.values('remove', 'a').map( (i) -> i.name ).should.eql ['-moz-b']
 
   describe 'toRemove()', ->
 

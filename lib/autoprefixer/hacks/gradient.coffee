@@ -73,7 +73,8 @@ class Gradient extends Value
       string = prefix + @name
       regexp = utils.regexp(prefix + @name)
 
-    (value) ->
+    name:  prefix + @name
+    check: (value) ->
       if value.indexOf(string) != -1
         !!value.match(regexp)
       else
