@@ -27,8 +27,11 @@ class Value
 
   # Detect right class by value name and create it instance
   @load: (name, prefixes) ->
-    klass = @hacks[name] || Value
-    new klass(name, prefixes)
+    klass = @hacks[name]
+    if klass
+      new klass(name, prefixes)
+    else
+      new Value(name, prefixes)
 
   # Cached regexps
   @regexps = { }
