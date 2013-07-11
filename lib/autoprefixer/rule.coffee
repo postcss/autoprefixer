@@ -44,6 +44,7 @@ class Rule
         decl = Declaration.load(@, @number, @declarations[@number])
         callback(decl, decl.prefix || @prefix)
       @number += 1
+    false
 
   # Is current list contain rule with same property and value
   contain: (prop, value) ->

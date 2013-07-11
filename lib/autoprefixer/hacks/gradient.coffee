@@ -36,7 +36,7 @@ class Gradient extends Value
       if params.length > 0
         if params[0][0..2] == 'to '
           params[0] = @fixDirection(params[0])
-        else if prefix == '-webkit-' and params[0].match(/^-?\d+deg/)
+        else if prefix == '-webkit-' and params[0].indexOf('deg') != -1
           params[0] = @fixAngle(params[0])
       before + prefix + @name + '(' + params.join(', ') + ')'
 

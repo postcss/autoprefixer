@@ -28,13 +28,16 @@ class Declaration
   # Detect right class by value name and create it instance
   @load: (rule, number, node) ->
     [prefix, unprefixed] = @split(node.property)
-    klass = @hacks[unprefixed] || Declaration
-    new klass(rule, number, node, prefix, unprefixed)
+    klass = @hacks[unprefixed]
+    if klass
+      new klass(rule, number, node, prefix, unprefixed)
+    else
+      new Declaration(rule, number, node, prefix, unprefixed)
 
   # Split prefix and unprefixed part of property
   @split: (prop) ->
     if prop[0] == '-'
-      separator   = prop.indexOf('-', 1) + 1
+      separator  = prop.indexOf('-', 1) + 1
       prefix     = prop[0...separator]
       unprefixed = prop[separator..-1]
       [prefix, unprefixed]
