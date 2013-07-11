@@ -1,5 +1,6 @@
-Value = require('../lib/autoprefixer/value')
-utils = require('../lib/autoprefixer/utils')
+OldValue = require('../lib/autoprefixer/old-value')
+Value    = require('../lib/autoprefixer/value')
+utils    = require('../lib/autoprefixer/utils')
 
 describe 'Value', ->
   beforeEach ->
@@ -42,14 +43,10 @@ describe 'Value', ->
       @calc.check('-o-calc').should.be.false
       @calc.check('calced' ).should.be.false
 
-  describe 'checker()', ->
+  describe 'old()', ->
 
     it 'should check prefixed value', ->
-      checker = @calc.checker('-o-')
-      checker.name.should.eql '-o-calc'
-      checker.check('1px -o-calc(1px)').should.be.true
-      checker.check('1px calc(1px)').should.be.false
-
+      @calc.old('-o-').should.eql new OldValue('-o-calc')
   describe 'addPrefix()', ->
 
     it 'should add prefix to value', ->

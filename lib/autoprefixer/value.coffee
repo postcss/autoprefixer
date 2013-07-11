@@ -14,7 +14,8 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program.  If not, see <http:#www.gnu.org/licenses/>.
 
-utils = require('./utils')
+utils    = require('./utils')
+OldValue = require('./old-value')
 
 class Value
   # Add hack to selected names
@@ -51,16 +52,8 @@ class Value
       false
 
   # Return function to fast find prefixed value
-  checker: (prefix) ->
-    string  = prefix + @name
-    regexp  = utils.regexp(prefix + @name)
-
-    name:  string
-    check: (value) ->
-      if value.indexOf(string) != -1
-        !!value.match(regexp)
-      else
-        false
+  old: (prefix) ->
+    new OldValue(prefix + @name)
 
   # Add prefix to values in string
   addPrefix: (prefix, string) ->

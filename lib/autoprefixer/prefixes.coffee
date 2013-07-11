@@ -80,11 +80,11 @@ class Prefixes
       if props
         value = Value.load(name)
         for prefix in prefixes
-          checker = value.checker(prefix)
+          old = value.old(prefix)
           for prop in props
             remove[prop] = { }       unless remove[prop]
             remove[prop].values = [] unless remove[prop].values
-            remove[prop].values.push(checker)
+            remove[prop].values.push(old)
 
       unless @data[name].props
         for prefix in prefixes

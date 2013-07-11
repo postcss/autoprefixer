@@ -14,8 +14,9 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program.  If not, see <http:#www.gnu.org/licenses/>.
 
-Value = require('../value')
-utils = require('../utils')
+OldValue = require('../old-value')
+Value    = require('../value')
+utils    = require('../utils')
 
 class Gradient extends Value
   @names = ['linear-gradient', 'repeating-linear-gradient',
@@ -63,29 +64,15 @@ class Gradient extends Value
     "#{param}deg"
 
   # Remove old WebKit gradient too
-  checker: (prefix) ->
+  old: (prefix) ->
     if prefix == '-webkit-'
       type   = if @name == 'linear-gradient' then 'linear' else 'radial'
       string = '-gradient'
-      regexp = utils.regexp("-webkit-(#{type}-gradient|gradient\\(\\s*#{type})",
-                            false)
-    else
-      string = prefix + @name
-      regexp = utils.regexp(prefix + @name)
+      regexp = utils.regexp(
+        "-webkit-(#{type}-gradient|gradient\\(\\s*#{type})", false)
 
-    name:  prefix + @name
-    check: (value) ->
-      if value.indexOf(string) != -1
-        !!value.match(regexp)
-      else
-        false
-
-  # Remove old WebKit gradient too
-  prefixed: (prefix) ->
-    if prefix == '-webkit-'
-      type = if @name == 'linear-gradient' then 'linear' else 'radial'
-      utils.regexp("-webkit-(#{type}-gradient|gradient\\(\\s*#{type})", false)
+      new OldValue(prefix + @name, string, regexp)
     else
-      super
+      new OldValue(prefix + @name)
 
 module.exports = Gradient
