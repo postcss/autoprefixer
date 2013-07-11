@@ -987,7 +987,6 @@ module.exports =
       "bb 7"
       "bb 10"
     ]
-    transition: true
 
   "background-clip":
     browsers: [
@@ -1242,7 +1241,6 @@ module.exports =
       "bb 7"
       "bb 10"
     ]
-    transition: true
 
   "break-before":
     browsers: [
@@ -1325,7 +1323,6 @@ module.exports =
       "bb 7"
       "bb 10"
     ]
-    transition: true
 
   "break-inside":
     browsers: [
@@ -1408,7 +1405,6 @@ module.exports =
       "bb 7"
       "bb 10"
     ]
-    transition: true
 
   calc:
     props: [
@@ -1521,7 +1517,6 @@ module.exports =
       "bb 7"
       "bb 10"
     ]
-    transition: true
 
   "column-fill":
     browsers: [
@@ -1604,7 +1599,6 @@ module.exports =
       "bb 7"
       "bb 10"
     ]
-    transition: true
 
   "column-gap":
     browsers: [
@@ -1936,7 +1930,6 @@ module.exports =
       "bb 7"
       "bb 10"
     ]
-    transition: true
 
   "column-rule-width":
     browsers: [
@@ -2102,7 +2095,6 @@ module.exports =
       "bb 7"
       "bb 10"
     ]
-    transition: true
 
   "column-width":
     browsers: [
@@ -3938,7 +3930,6 @@ module.exports =
       "bb 7"
       "bb 10"
     ]
-    transition: true
 
   transition:
     browsers: [

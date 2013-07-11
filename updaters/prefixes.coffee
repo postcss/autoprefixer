@@ -70,10 +70,12 @@ updater.caniuse 'features-json/css-transitions.json', (data) ->
 
 # Transform
 updater.caniuse 'features-json/transforms2d.json', (data) ->
-  prefix 'transform', 'transform-origin', 'transform-style',
-         'perspective', 'perspective-origin', 'backface-visibility',
+  prefix 'transform', 'transform-origin', 'perspective', 'perspective-origin',
           browsers:   browsers(data)
           transition: true
+
+  prefix 'transform-style', 'backface-visibility',
+          browsers: browsers(data)
 
 # Gradients
 updater.caniuse 'features-json/css-gradients.json', (data) ->
@@ -95,12 +97,14 @@ updater.caniuse 'features-json/css-filters.json', (data) ->
 
 # Multicolumns
 updater.caniuse 'features-json/multicolumn.json', (data) ->
-  prefix 'columns', 'column-width', 'column-count', 'column-gap',
-         'column-rule', 'column-rule-color', 'column-rule-style',
-         'column-rule-width', 'break-before', 'break-after', 'break-inside',
-         'column-span', 'column-fill',
+  prefix 'columns', 'column-width', 'column-gap',
+         'column-rule', 'column-rule-color', 'column-rule-width',
           browsers:   browsers(data)
           transition: true
+
+  prefix 'column-count', 'column-rule-style', 'column-span', 'column-fill',
+         'break-before', 'break-after', 'break-inside',
+          browsers:   browsers(data)
 
 # User select
 updater.caniuse 'features-json/user-select-none.json', (data) ->
