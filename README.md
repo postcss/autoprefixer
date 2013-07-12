@@ -12,7 +12,7 @@ var prefixed = autoprefixer.compile(css);
 ```
 
 Autoprefixer uses a database with current browser statistics
-and properties support to apply vendor prefixes for you:
+and properties support to apply prefixes for you:
 
 ```css
 a {
@@ -62,6 +62,7 @@ autoprefixer("last 1 version", "> 1%", "ie 8", "ie 7").compile(css);
   [Google also uses](http://support.google.com/a/bin/answer.py?answer=33864)
   “last 2 versions” strategy).
 * `> n%` is browser versions, whose global usage statistics is more than `n`%.
+* `none` don’t set any browsers to clean CSS from any vendor prefixes.
 * You can also set browsers directly.
 
 Blackberry and stock Android browsers will not be used in `last n versions`
