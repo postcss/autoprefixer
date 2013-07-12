@@ -37,8 +37,6 @@ inspectCache = null
 autoprefixer = (reqs...) ->
   if reqs.length == 0 or (reqs.length == 1 and not reqs[0]?)
     reqs = undefined
-  else if reqs.length == 1 and reqs[0] == false
-    reqs = []
   else if reqs.length == 1 and reqs[0] instanceof Array
     reqs = reqs[0]
 
@@ -54,6 +52,7 @@ require('./autoprefixer/deprecated').install(autoprefixer)
 
 class Autoprefixer
   constructor: (@prefixes, @data) ->
+    @browsers = @prefixes.browsers.selected
 
   # Parse CSS and add prefixed properties for selected browsers
   compile: (str) ->

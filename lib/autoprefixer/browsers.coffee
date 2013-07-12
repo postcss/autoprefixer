@@ -38,6 +38,10 @@ class Browsers
   # Available requirements to select browsers
   requirements:
 
+    none:
+      regexp: /^none$/i
+      select: -> []
+
     lastVersions:
       regexp: /^last (\d+) versions?$/i
       select: (versions) ->

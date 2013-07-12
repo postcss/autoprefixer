@@ -30,11 +30,11 @@ describe 'Browsers', ->
       browsers.selected.should.eql ['ie 3', 'ie 2', 'chrome 3', 'chrome 2']
 
     it 'should convert browsers to array', ->
-      browsers = new Browsers(data, 'last 2 versions')
+      browsers = new Browsers(data, ['last 2 versions'])
       browsers.selected.should.eql ['ie 3', 'ie 2', 'chrome 3', 'chrome 2']
 
     it 'should allow to select no browsers', ->
-      browsers = new Browsers(data, [])
+      browsers = new Browsers(data, ['none'])
       browsers.selected.should.be.empty
 
     it 'should raise error on unknown requirement', ->

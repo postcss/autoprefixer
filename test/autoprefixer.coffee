@@ -1,12 +1,13 @@
 autoprefixer = require('../lib/autoprefixer')
+Browsers     = require('../lib/autoprefixer/browsers')
 cases        = require('./lib/cases')
 
-cleaner   = autoprefixer(false)
+cleaner   = autoprefixer('none')
 compiler  = autoprefixer('chrome 25', 'opera 12')
 borderer  = autoprefixer('safari 4', 'ff 3.6')
 flexboxer = autoprefixer('chrome 25', 'ff 21', 'ie 10')
 
-describe 'Autoprefixer', ->
+describe 'autoprefixer', ->
   compare = (from, to) ->
     cases.clean(from).should.eql cases.clean(to)
 
@@ -15,6 +16,19 @@ describe 'Autoprefixer', ->
     output = cases.read('autoprefixer.' + to)
     css    = compiler.compile(input)
     compare(css, output)
+
+  describe '()', ->
+
+    it 'should set browsers', ->
+      compiler.browsers.should.eql ['chrome 25', 'opera 12']
+
+    it 'should receive array', ->
+      autoprefixer(['chrome 25', 'opera 12']).browsers.
+        should.eql ['chrome 25', 'opera 12']
+
+    it 'should set default', ->
+      defalt = new Browsers(autoprefixer.data.browsers)
+      autoprefixer().browsers.should.eql defalt.selected
 
   describe 'compile()', ->
 

@@ -32,8 +32,6 @@ deprecated =
       browsers = []
     else if not (browsers instanceof Array)
       browsers = [browsers]
-    else if browsers.length == 0
-      browsers = [false]
 
     key = browsers.toString()
 
