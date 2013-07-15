@@ -49,7 +49,7 @@ with Sass, Stylus of LESS preprocessors.
 ### Actual data from Can I Use
 
 Autoprefixer use latest database from [Can I Use](http://caniuse.com/),
-understand what browsers is actual and popular and add only necessary prefixes.
+understand what browsers is actual and popular and add only necessary prefixes.
 
 Also it clean your CSS from old prefixes (like unnecessary `border-radius`
 from a lot of CSS libraries):
@@ -112,7 +112,7 @@ autoprefixer("last 1 version", "> 1%", "ie 8", "ie 7").compile(css);
 * You can also set browsers directly.
 
 Blackberry and stock Android browsers will not be used in `last n versions`.
-Add them by name if you need them:
+You can add them by name:
 
 ```js
 autoprefixer("last 1 version", "bb 10", "android 4").compile(css);
