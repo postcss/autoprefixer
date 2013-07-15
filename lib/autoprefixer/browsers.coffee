@@ -45,7 +45,8 @@ class Browsers
     lastVersions:
       regexp: /^last (\d+) versions?$/i
       select: (versions) ->
-        @browsers (data) -> data.versions[0...versions]
+        @browsers (data) ->
+          if data.minor then [] else data.versions[0...versions]
 
     globalStatistics:
       regexp: /^> (\d+(\.\d+)?)%$/
@@ -73,7 +74,6 @@ class Browsers
   browsers: (criteria) ->
     selected = []
     for browser, data of @data
-      continue if data.minor
       versions = criteria(data).map (version) -> "#{browser} #{version}"
       selected = selected.concat(versions)
     selected

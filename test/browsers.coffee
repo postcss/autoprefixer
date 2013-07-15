@@ -13,7 +13,7 @@ data =
   opera:
     prefix:     '-o-'
     versions:   [15, 4, 3, 2]
-    popularity: [0.5, 0.1, 0.1]
+    popularity: [0.3, 0.1, 0.1]
     minor:      true
   bb:
     prefix:     '-webkit-'
@@ -47,8 +47,10 @@ describe 'Browsers', ->
       browsers.selected.should.eql ['ie 3', 'chrome 3']
 
     it 'should select by popularity', ->
-      browsers = new Browsers(data, ['> 0.4%'])
-      browsers.selected.should.eql ['ie 3', 'chrome 3', 'chrome 2']
+      browsers = new Browsers(data, ['> 0.2%'])
+      browsers.selected.should.eql ['ie 3', 'ie 2',
+                                    'chrome 3', 'chrome 2',
+                                    'opera 15']
 
     it 'should select directly', ->
       browsers = new Browsers(data, ['chrome 5', 'opera 4'])
