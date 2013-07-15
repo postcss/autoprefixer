@@ -11,7 +11,7 @@ var css = 'a { transition: transform 1s }';
 var prefixed = autoprefixer.compile(css);
 ```
 
-Autoprefixer uses a database with current browser statistics
+Autoprefixer uses a database with current browser popularity
 and properties support to apply prefixes for you:
 
 ```css
@@ -34,21 +34,67 @@ Sponsored by [Evil Martians](http://evilmartians.com/).
 
 ## Features
 
-* You write normal CSS (or use Autoprefixer after Sass, Stylus
-  or another preprocessor).
-* You write normal properties (not special mixins), so you don’t need
-  to remember which properties needs to be prefixed.
-* Autoprefixer uses only necessary prefixes. You choose which browsers
-  (by default the last 2 versions for each browser).
-  Did you know, that prefixes for `border-radius`
-  [have not been necessary](http://caniuse.com/border-radius)
-  for a long time now?
-* The properties and browsers database is updated automatically
-  (from [Can I Use](http://caniuse.com/)), so prefixes will always be up-to-date
-  (scripts don’t have holidays or work).
-* Removes outdated prefixes to clean libraries and legacy code.
-* Adds prefixes to values. For example, to `calc(1em + 5px)` or to property
-  names in `transition`.
+### Forget about prefixes
+
+Best tool, is a tool, that you can’t see, but it’s work.
+This is main idea behind Autoprefixer.
+
+So Autoprefixer interface is simple: just forget about vendor prefixes
+and write normal CSS by latest W3C specs. You don’t need
+special language (like Sass) and special mixins.
+
+Because Autoprefixer doesn’t depend on styles language, you can also use it
+with Sass, Stylus of LESS preprocessors.
+
+### Actual data from Can I Use
+
+Autoprefixer use latest database from [Can I Use](http://caniuse.com/),
+understand what browsers is actual and popular and add only necessary prefixes.
+
+Also it clean your CSS from old prefixes (like unnecessary `border-radius`
+from a lot of CSS libraries):
+
+```css
+a {
+  webkit-border-radius: 5px;
+  border-radius: 5px
+}
+```
+
+compiles to:
+
+```css
+a {
+  border-radius: 5px
+}
+```
+
+### Rewrite syntax too
+
+Flexbox or gradients have different syntaxes in different browsers
+(sometimes you need to recalculate agles, sometimes you need 2 old properties
+instead of new one), but Autoprefixer can hide this from you.
+
+Just write code by latest W3C specs and Autoprefixer write code
+for old browsers:
+
+```css
+a {
+  display: flex;
+}
+```
+
+compiles to:
+
+```css
+a {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex
+}
+```
 
 ## Browsers
 
@@ -58,15 +104,15 @@ You can specify browsers for your project (by default, it’s `last 2 versions`)
 autoprefixer("last 1 version", "> 1%", "ie 8", "ie 7").compile(css);
 ```
 
-* `last n versions` is last `n` versions for each browser (for example,
-  [Google also uses](http://support.google.com/a/bin/answer.py?answer=33864)
-  “last 2 versions” strategy).
-* `> n%` is browser versions, whose global usage statistics is more than `n`%.
+* `last n versions` is last versions for each browser. Like “last 2 versions”
+  [strategy]((http://support.google.com/a/bin/answer.py?answer=33864) in
+  Google.
+* `> n%` is browser versions, selected by global usage statistics.
 * `none` don’t set any browsers to clean CSS from any vendor prefixes.
 * You can also set browsers directly.
 
-Blackberry and stock Android browsers will not be used in `last n versions`
-or `> n%` selects. Add them by name if you need them:
+Blackberry and stock Android browsers will not be used in `last n versions`.
+Add them by name if you need them:
 
 ```js
 autoprefixer("last 1 version", "bb 10", "android 4").compile(css);
