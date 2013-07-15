@@ -73,7 +73,7 @@ a {
 ### Rewrite syntax
 
 Flexbox or gradients have different syntaxes in different browsers
-(sometimes you need to recalculate agles, sometimes you need 2 old properties
+(sometimes you need to recalculate angles, sometimes you need 2 old properties
 instead of new one), but Autoprefixer hides this from you.
 
 Just write code by latest W3C specs and Autoprefixer write code
