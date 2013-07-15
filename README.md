@@ -37,7 +37,7 @@ Sponsored by [Evil Martians](http://evilmartians.com/).
 ### Forget about prefixes
 
 Best tool, is a tool, that you can’t see, but it’s work.
-This is main idea behind Autoprefixer.
+This is a main idea behind Autoprefixer.
 
 So Autoprefixer interface is simple: just forget about vendor prefixes
 and write normal CSS by latest W3C specs. You don’t need
@@ -48,10 +48,11 @@ with Sass, Stylus of LESS preprocessors.
 
 ### Actual data from Can I Use
 
-Autoprefixer use latest database from [Can I Use](http://caniuse.com/),
-understand what browsers is actual and popular and add only necessary prefixes.
+Autoprefixer uses latest database from [Can I Use](http://caniuse.com/),
+understands what browsers is actual and popular and adds only necessary
+vendor prefixes.
 
-Also it clean your CSS from old prefixes (like unnecessary `border-radius`
+Also it cleans your CSS from old prefixes (like unnecessary `border-radius`
 from a lot of CSS libraries):
 
 ```css
@@ -73,7 +74,7 @@ a {
 
 Flexbox or gradients have different syntaxes in different browsers
 (sometimes you need to recalculate agles, sometimes you need 2 old properties
-instead of new one), but Autoprefixer can hide this from you.
+instead of new one), but Autoprefixer hides this from you.
 
 Just write code by latest W3C specs and Autoprefixer write code
 for old browsers:
