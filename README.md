@@ -49,7 +49,7 @@ with Sass, Stylus of LESS preprocessors.
 ### Actual data from Can I Use
 
 Autoprefixer use latest database from [Can I Use](http://caniuse.com/),
-understand what browsers is actual and popular and add only necessary prefixes.
+understand what browsers is actual and popular and add only necessary prefixes.
 
 Also it clean your CSS from old prefixes (like unnecessary `border-radius`
 from a lot of CSS libraries):
@@ -69,7 +69,7 @@ a {
 }
 ```
 
-### Rewrite syntax too
+### Rewrite syntax
 
 Flexbox or gradients have different syntaxes in different browsers
 (sometimes you need to recalculate agles, sometimes you need 2 old properties
