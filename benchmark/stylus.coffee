@@ -1,8 +1,6 @@
 fs   = require('fs')
 exec = require('child_process').exec
 
-Css2Stylus = require('css2stylus')
-
 module.exports = (css, callback) ->
   path = __dirname + '/../node_modules/.bin/stylus'
   file = __dirname + '/test.styl'
