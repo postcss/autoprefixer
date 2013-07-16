@@ -94,6 +94,8 @@ task 'build', 'Build standalone autoprefixer.js', ->
         fs.copy(result, rails) if fs.existsSync(rails)
 
 task 'bench', 'Benchmark on GitHub styles', ->
+  invoke('compile')
+
   print = (text) -> process.stdout.write(text)
 
   https = require('https')
@@ -103,32 +105,49 @@ task 'bench', 'Benchmark on GitHub styles', ->
       res.on 'data', (chunk) -> data += chunk
       res.on 'end', -> callback(data)
 
+  capitalize = (text) ->
+    text[0].toUpperCase() + text[1..-1]
+
   loadGithubStyles = (callback) ->
-    print('Load GitHub styles')
+    print("Load GitHub styles\n")
     get 'https://github.com', (html) ->
-      print('.')
       styles = []
-      links  = html.match(/[^"]+\.css/g)
-      for url in links
-        get url, (css) ->
-          print('.')
-          styles.push(css)
-          if styles.length == links.length
-            print("\n")
-            callback(styles)
+      link   = html.match(/[^"]+\.css/g)[0]
+      get link, (css) ->
+        autoprefixer = require(__dirname + '/lib/autoprefixer')
+        cleaner      = autoprefixer('none')
+        callback(cleaner.compile(css))
 
-  loadGithubStyles (styles) ->
-    print('Run 10 processors')
-    autoprefixer = require(__dirname + '/lib/autoprefixer')
+  loadGithubStyles (css) ->
+    times = { }
+    tests = fs.readdirSync(__dirname + '/benchmark').filter (file) ->
+      file.match(/\.coffee$/)
 
-    cleaner  = autoprefixer('none')
-    styles   = styles.map (css) -> cleaner.compile(css)
-    start    = new Date()
-    for i in [0..10]
-      for css in styles
-        autoprefixer.compile(css)
-      print('.')
-    print("\n")
+    tick = ->
+      if tests.length == 0
+        fs.removeSync(__dirname + '/build/')
+        return
 
-    end = new Date()
-    print("Time is #{ end - start } ms\n")
+      file = tests.shift()
+      code = file.replace('.coffee', '')
+      name = capitalize code
+      print(name + ': ')
+
+      indent = 'Autoprefixer'.length - name.length
+      for i in [0...indent]
+        print(' ')
+
+      test = require('./benchmark/' + file)
+      test css, (time) ->
+        print(time + " ms")
+        times[code] = time
+        if code != 'autoprefixer'
+          slower = time / times.autoprefixer
+          if slower < 1
+            print(" (#{ (1 / slower).toFixed(1) } times faster)")
+          else
+            print(" (#{ slower.toFixed(1) } times slower)")
+        print("\n")
+        tick()
+
+    tick()

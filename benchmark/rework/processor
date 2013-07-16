@@ -1,0 +1,22 @@
+#!/usr/bin/env node
+
+var rework = require('rework');
+var fs     = require('fs');
+
+var path = __dirname + '/../test.css';
+var css  = fs.readFileSync(path).toString();
+
+var prefixed = rework(css).
+    vendors(['-ms-', '-moz-', '-webkit-']).
+    use(rework.keyframes()).
+    use(rework.prefixValue('linear-gradient')).
+    use(rework.prefixValue('radial-gradient')).
+    use(rework.prefixValue('repeating-linear-gradient')).
+    use(rework.prefixValue('repeating-radial-gradient')).
+    use(rework.prefixValue('transform')).
+    use(rework.prefixValue('transform-origin')).
+    use(rework.prefixValue('filter')).
+    use(rework.prefix(rework.properties)).
+    toString()
+
+fs.writeFileSync(path, prefixed);
