@@ -44,7 +44,7 @@ and write normal CSS by latest W3C specs. You don’t need
 special language (like Sass) and special mixins.
 
 Because Autoprefixer is postprocessor and doesn’t depend on styles language,
-you can also use it with Sass, Stylus or LESS preprocessors.
+you can also use it with Sass, Stylus or LESS preprocessors.
 
 ### Actual data from Can I Use
 
