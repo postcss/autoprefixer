@@ -3,7 +3,7 @@
 Parse CSS and add vendor prefixes to CSS rules using values
 from the [Can I Use](http://caniuse.com/) website.
 
-Write your CSS rules without vendor prefixes (in fact, forget about them
+Write your CSS rules without vendor prefixes (in fact, forget about them
 entirely):
 
 ```js
@@ -12,7 +12,7 @@ var prefixed = autoprefixer.compile(css);
 ```
 
 Autoprefixer uses a database with current browser popularity
-and properties support to apply prefixes for you:
+and properties support to apply prefixes for you:
 
 ```css
 a {
@@ -36,15 +36,15 @@ Sponsored by [Evil Martians](http://evilmartians.com/).
 
 ### Forget about prefixes
 
-Best tool, is a tool, that you can’t see, but it’s work.
+Best tool, is a tool, that you can’t see, but it’s work.
 This is a main idea behind Autoprefixer.
 
 So Autoprefixer interface is simple: just forget about vendor prefixes
-and write normal CSS by latest W3C specs. You don’t need
+and write normal CSS by latest W3C specs. You don’t need
 special language (like Sass) and special mixins.
 
 Because Autoprefixer doesn’t depend on styles language, you can also use it
-with Sass, Stylus of LESS preprocessors.
+with Sass, Stylus or LESS preprocessors.
 
 ### Actual data from Can I Use
 
@@ -53,7 +53,7 @@ understands what browsers is actual and popular and adds only necessary
 vendor prefixes.
 
 Also it cleans your CSS from old prefixes (like unnecessary `border-radius`
-from a lot of CSS libraries):
+from a lot of CSS libraries):
 
 ```css
 a {
@@ -75,7 +75,7 @@ a {
 Autoprefixer is about 50 times faster, than Compass and 10 times faster,
 than Stylus.
 
-On Core i7, 10 GB RAM and SSD, benchmark with GitHub styles is:
+On Core i7, 10 GB RAM and SSD, benchmark with GitHub styles is:
 
 ```
 ~/Dev/autoprefixer$ ./node_modules/.bin/cake bench
@@ -88,11 +88,11 @@ Stylus:       2596 ms  (10.1 times slower)
 
 ### Rewrite syntax
 
-Flexbox or gradients have different syntaxes in different browsers
-(sometimes you need to recalculate angles, sometimes you need 2 old properties
+Flexbox or gradients have different syntaxes in different browsers
+(sometimes you need to recalculate angles, sometimes you need 2 old properties
 instead of new one), but Autoprefixer hides this from you.
 
-Just write code by latest W3C specs and Autoprefixer write code
+Just write code by latest W3C specs and Autoprefixer write code
 for old browsers:
 
 ```css
@@ -115,7 +115,7 @@ a {
 
 ## Browsers
 
-You can specify browsers for your project (by default, it’s `last 2 versions`):
+You can specify browsers for your project (by default, it’s `last 2 versions`):
 
 ```js
 autoprefixer("last 1 version", "> 1%", "ie 8", "ie 7").compile(css);
@@ -124,7 +124,7 @@ autoprefixer("last 1 version", "> 1%", "ie 8", "ie 7").compile(css);
 * `last n versions` is last versions for each browser. Like “last 2 versions”
   [strategy]((http://support.google.com/a/bin/answer.py?answer=33864) in
   Google.
-* `> n%` is browser versions, selected by global usage statistics.
+* `> n%` is browser versions, selected by global usage statistics.
 * `none` don’t set any browsers to clean CSS from any vendor prefixes.
 * You can also set browsers directly.
 
@@ -137,7 +137,7 @@ autoprefixer("last 1 version", "bb 10", "android 4").compile(css);
 
 ## Inspect
 
-You can check, what browsers is selected and what properties will be prefixes:
+You can check, what browsers is selected and what properties will be prefixes:
 
 ```js
 inspect = autoprefixer("last 1 version").inspect();
@@ -149,7 +149,7 @@ console.log(inspect);
 ### Ruby on Rails
 
 Add [autoprefixer-rails](https://github.com/ai/autoprefixer-rails) gem
-to `Gemfile` and write CSS in usual way:
+to `Gemfile` and write CSS in usual way:
 
 ```ruby
 gem "autoprefixer-rails"
@@ -157,8 +157,8 @@ gem "autoprefixer-rails"
 
 ### Ruby
 
-You can integrate Autoprefixer into your Sprockets environment
-by `autoprefixer-rails` gem:
+You can integrate Autoprefixer into your Sprockets environment
+by `autoprefixer-rails` gem:
 
 ```ruby
 AutoprefixerRails.install(sprockets_env)
@@ -196,7 +196,7 @@ with [standalone version](https://raw.github.com/ai/autoprefixer-rails/master/ve
 ### Rework
 
 Autoprefixer can be also as [Rework](https://github.com/visionmedia/rework)
-filter, so you can can combine it with other filters:
+filter, so you can combine it with other filters:
 
 ```js
 rework(css).
@@ -218,6 +218,6 @@ See `autoprefixer -h` for help.
 
 ### Sublime Text
 
-You can process your styles directly in Sublime Text by
+You can process your styles directly in Sublime Text by
 [sublime-autoprefixer](https://github.com/sindresorhus/sublime-autoprefixer)
 plugin.
