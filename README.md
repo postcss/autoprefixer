@@ -52,7 +52,7 @@ Autoprefixer uses latest database from [Can I Use](http://caniuse.com/),
 understands what browsers is actual and popular and adds only necessary
 vendor prefixes.
 
-Also it cleans your CSS from old prefixes (like unnecessary `border-radius`
+Also it cleans your CSS from old prefixes (like unnecessary `border-radius`
 from a lot of CSS libraries):
 
 ```css
@@ -129,7 +129,7 @@ autoprefixer("last 1 version", "> 1%", "ie 8", "ie 7").compile(css);
 * You can also set browsers directly.
 
 Blackberry and stock Android browsers will not be used in `last n versions`.
-You can add them by name:
+You can add them by name:
 
 ```js
 autoprefixer("last 1 version", "bb 10", "android 4").compile(css);
@@ -157,7 +157,7 @@ gem "autoprefixer-rails"
 
 ### Ruby
 
-You can integrate Autoprefixer into your Sprockets environment
+You can integrate Autoprefixer into your Sprockets environment
 by `autoprefixer-rails` gem:
 
 ```ruby
