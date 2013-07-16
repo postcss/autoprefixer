@@ -43,8 +43,8 @@ So Autoprefixer interface is simple: just forget about vendor prefixes
 and write normal CSS by latest W3C specs. You don’t need
 special language (like Sass) and special mixins.
 
-Because Autoprefixer doesn’t depend on styles language, you can also use it
-with Sass, Stylus or LESS preprocessors.
+Because Autoprefixer is postprocessor and doesn’t depend on styles language,
+you can also use it with Sass, Stylus or LESS preprocessors.
 
 ### Actual data from Can I Use
 
