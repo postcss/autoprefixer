@@ -49,11 +49,11 @@ with Sass, Stylus or LESS preprocessors.
 ### Actual data from Can I Use
 
 Autoprefixer uses latest database from [Can I Use](http://caniuse.com/),
-understands what browsers is actual and popular and adds only necessary
-vendor prefixes.
+understands what browsers is actual and popular and adds only necessary
+vendor prefixes.
 
 Also it cleans your CSS from old prefixes (like unnecessary `border-radius`
-from a lot of CSS libraries):
+from a lot of CSS libraries):
 
 ```css
 a {
@@ -72,8 +72,8 @@ a {
 
 ### Fast
 
-Autoprefixer is about 50 times faster, than Compass and 10 times faster,
-than Stylus.
+Autoprefixer is about 50 times faster, than Compass and 10 times faster,
+than Stylus.
 
 On Core i7, 10 GB RAM and SSD, benchmark with GitHub styles is:
 
@@ -121,14 +121,14 @@ You can specify browsers for your project (by default, it’s `last 2 versions`
 autoprefixer("last 1 version", "> 1%", "ie 8", "ie 7").compile(css);
 ```
 
-* `last n versions` is last versions for each browser. Like “last 2 versions”
+* `last n versions` is last versions for each browser. Like “last 2 versions”
   [strategy]((http://support.google.com/a/bin/answer.py?answer=33864) in
   Google.
 * `> n%` is browser versions, selected by global usage statistics.
 * `none` don’t set any browsers to clean CSS from any vendor prefixes.
 * You can also set browsers directly.
 
-Blackberry and stock Android browsers will not be used in `last n versions`.
+Blackberry and stock Android browsers will not be used in `last n versions`.
 You can add them by name:
 
 ```js
@@ -190,7 +190,7 @@ var prefixed     = autoprefixer.compile(css);
 
 ### JavaScript
 
-You can use Autoprefixer in browser or non-node JS runtime
+You can use Autoprefixer in browser or non-node JS runtime
 with [standalone version](https://raw.github.com/ai/autoprefixer-rails/master/vendor/autoprefixer.js).
 
 ### Rework
@@ -205,6 +205,13 @@ rework(css).
     toString();
 ```
 
+### Sublime Text
+
+You can process your styles directly in Sublime Text by
+[sublime-autoprefixer](https://github.com/sindresorhus/sublime-autoprefixer)
+plugin.
+
+
 ### Others
 
 You can use `autoprefixer` binary to process CSS files in any assets manager:
@@ -215,9 +222,3 @@ autoprefixer *.css
 ```
 
 See `autoprefixer -h` for help.
-
-### Sublime Text
-
-You can process your styles directly in Sublime Text by
-[sublime-autoprefixer](https://github.com/sindresorhus/sublime-autoprefixer)
-plugin.
