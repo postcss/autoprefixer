@@ -40,7 +40,7 @@ Best tool, is a tool, that you can’t see, but it’s work.
 This is a main idea behind Autoprefixer.
 
 So Autoprefixer interface is simple: just forget about vendor prefixes
-and write normal CSS by latest W3C specs. You don’t need
+and write normal CSS by latest W3C specs. You don’t need
 special language (like Sass) and special mixins.
 
 Because Autoprefixer doesn’t depend on styles language, you can also use it
@@ -53,7 +53,7 @@ understands what browsers is actual and popular and adds only necessary
 vendor prefixes.
 
 Also it cleans your CSS from old prefixes (like unnecessary `border-radius`
-from a lot of CSS libraries):
+from a lot of CSS libraries):
 
 ```css
 a {
@@ -92,7 +92,7 @@ Flexbox or gradients have different syntaxes in different browsers
 (sometimes you need to recalculate angles, sometimes you need 2 old properties
 instead of new one), but Autoprefixer hides this from you.
 
-Just write code by latest W3C specs and Autoprefixer write code
+Just write code by latest W3C specs and Autoprefixer write code
 for old browsers:
 
 ```css
@@ -157,7 +157,7 @@ gem "autoprefixer-rails"
 
 ### Ruby
 
-You can integrate Autoprefixer into your Sprockets environment
+You can integrate Autoprefixer into your Sprockets environment
 by `autoprefixer-rails` gem:
 
 ```ruby
