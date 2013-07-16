@@ -118,6 +118,11 @@ task 'bench', 'Benchmark on GitHub styles', ->
         cleaner      = autoprefixer('none')
         callback(cleaner.compile(css))
 
+  indent = (max, current) ->
+    diff = max.toString().length - current.toString().length
+    for i in [0...diff]
+      print(' ')
+
   loadGithubStyles (css) ->
     times = { }
     tests = fs.readdirSync(__dirname + '/benchmark').filter (file) ->
@@ -133,20 +138,20 @@ task 'bench', 'Benchmark on GitHub styles', ->
       name = capitalize code
       print(name + ': ')
 
-      indent = 'Autoprefixer'.length - name.length
-      for i in [0...indent]
-        print(' ')
+      indent('Autoprefixer', name)
 
       test = require('./benchmark/' + file)
       test css, (time) ->
         print(time + " ms")
-        times[code] = time
-        if code != 'autoprefixer'
+        if times.compass
+          indent(times.compass, time)
+        if times.autoprefixer
           slower = time / times.autoprefixer
           if slower < 1
             print(" (#{ (1 / slower).toFixed(1) } times faster)")
           else
             print(" (#{ slower.toFixed(1) } times slower)")
+        times[code] = time
         print("\n")
         tick()
 
