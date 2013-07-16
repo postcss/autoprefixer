@@ -1,3 +1,11 @@
+== 0.6 (As High As Honor)
+* New faster API, which cache preprocessed data. Old API is deprecated.
+* A lot of perfomance improvements.
+* Add Opera 15 -webkit- prefix support.
+* Update Chrome 29 and Safari 7 prefixes data.
+* Add minor browsers in popularity select.
+* Better syntax error messages.
+
 == 0.5 (Ours is the Fury)
 * Rewrite Autoprefixer to be more flexible.
 * Use css, instead of Rework, to fix CSS parsing errors faster.
