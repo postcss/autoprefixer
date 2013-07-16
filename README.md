@@ -70,6 +70,22 @@ a {
 }
 ```
 
+### Fast
+
+Autoprefixer is about 50 times faster, than Compass and 10 times faster,
+than Stylus.
+
+On Core i7, 10 GB RAM and SSD, benchmark with GitHub styles is:
+
+```
+~/Dev/autoprefixer$ ./node_modules/.bin/cake bench
+Load GitHub styles
+Autoprefixer: 257 ms
+Compass:      13626 ms (53.0 times slower)
+Rework:       213 ms   (1.2 times faster)
+Stylus:       2596 ms  (10.1 times slower)
+```
+
 ### Rewrite syntax
 
 Flexbox or gradients have different syntaxes in different browsers
