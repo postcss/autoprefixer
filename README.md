@@ -57,7 +57,7 @@ from a lot of CSS libraries):
 
 ```css
 a {
-  webkit-border-radius: 5px;
+  -webkit-border-radius: 5px;
   border-radius: 5px
 }
 ```
