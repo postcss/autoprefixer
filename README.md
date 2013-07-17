@@ -1,5 +1,7 @@
 # Autoprefixer
 
+<img align="right" width="100" src="http://ai.github.io/autoprefixer/logo.svg">
+
 Parse CSS and add vendor prefixes to CSS rules using values
 from the [Can I Use](http://caniuse.com/) website.
 
