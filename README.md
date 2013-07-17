@@ -72,7 +72,7 @@ a {
 
 ### Fast
 
-Autoprefixer is about 50 times faster, than Compass and 10 times faster,
+Autoprefixer is about 50 times faster than Compass and 10 times faster
 than Stylus.
 
 On Core i7, 10 GB RAM and SSD, benchmark with GitHub styles is:
