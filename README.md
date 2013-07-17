@@ -124,7 +124,7 @@ autoprefixer("last 1 version", "> 1%", "ie 8", "ie 7").compile(css);
 ```
 
 * `last n versions` is last versions for each browser. Like “last 2 versions”
-  [strategy]((http://support.google.com/a/bin/answer.py?answer=33864) in
+  [strategy](http://support.google.com/a/bin/answer.py?answer=33864) in
   Google.
 * `> n%` is browser versions, selected by global usage statistics.
 * `none` don’t set any browsers to clean CSS from any vendor prefixes.
