@@ -157,6 +157,20 @@ to `Gemfile` and write CSS in usual way:
 gem "autoprefixer-rails"
 ```
 
+### Middleman
+
+Add [middleman-autoprefixer](https://github.com/porada/middleman-autoprefixer) gem to `Gemfile`:
+
+```ruby
+gem "middleman-autoprefixer"
+```
+
+and activate the extension in your project’s `config.rb`:
+
+```ruby
+activate :autoprefixer
+```
+
 ### Ruby
 
 You can integrate Autoprefixer into your Sprockets environment
