@@ -6,6 +6,9 @@
 * Add minor browsers in popularity select.
 * Better syntax error messages.
 
+20130721:
+* Add Chrome 30 data.
+
 == 0.5 (Ours is the Fury)
 * Rewrite Autoprefixer to be more flexible.
 * Use css, instead of Rework, to fix CSS parsing errors faster.
