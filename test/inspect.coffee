@@ -28,7 +28,7 @@ data =
 
 describe 'inspect', ->
 
-  it 'should return selected browsers and prefixes', ->
+  it 'returns selected browsers and prefixes', ->
     browsers = new Browsers(data.browsers, ['chrome 1', 'ff 2', 'ff 1', 'ie 2'])
     prefixes = new Prefixes(data.prefixes, browsers)
 
@@ -46,7 +46,7 @@ describe 'inspect', ->
                                  "  b: moz, ms\n" +
                                  "  c: moz\n"
 
-  it 'should not show transitions if it is not necessary', ->
+  it "doesn't show transitions unless they are necessary", ->
     browsers = new Browsers(data.browsers, ['chrome 1', 'ff 1', 'ie 2'])
     prefixes = new Prefixes(data.prefixes, browsers)
 
@@ -61,14 +61,14 @@ describe 'inspect', ->
                                  "Values:\n" +
                                  "  b: moz, ms\n"
 
-  it 'should return string for empty prefixes', ->
+  it 'returns string for empty prefixes', ->
     browsers = new Browsers(data.browsers, ['ie 1'])
     prefixes = new Prefixes(data.prefixes, browsers)
 
     inspect(prefixes).should.eql "Browsers:\n" +
                                  "  IE: 1\n"
 
-  it 'should return string for empty browsers', ->
+  it 'returns string for empty browsers', ->
     browsers = new Browsers(data.browsers, [])
     prefixes = new Prefixes(data.prefixes, browsers)
 

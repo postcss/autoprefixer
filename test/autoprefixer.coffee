@@ -19,24 +19,24 @@ describe 'autoprefixer', ->
 
   describe '()', ->
 
-    it 'should set browsers', ->
+    it 'sets browsers', ->
       compiler.browsers.should.eql ['chrome 25', 'opera 12']
 
-    it 'should receive array', ->
+    it 'receives array', ->
       autoprefixer(['chrome 25', 'opera 12']).browsers.
         should.eql ['chrome 25', 'opera 12']
 
-    it 'should set default', ->
+    it 'sets default browser', ->
       defalt = new Browsers(autoprefixer.data.browsers)
       autoprefixer().browsers.should.eql defalt.selected
 
   describe 'compile()', ->
 
-    it 'should prefix transition', -> test('transition', 'transition.out')
-    it 'should prefix values',     -> test('values', 'values.out')
-    it 'should prefix @keyframes', -> test('keyframes', 'keyframes.out')
+    it 'prefixes transition', -> test('transition', 'transition.out')
+    it 'prefixes values',     -> test('values', 'values.out')
+    it 'prefixes @keyframes', -> test('keyframes', 'keyframes.out')
 
-    it 'should remove unnecessary prefixes', ->
+    it 'removes unnecessary prefixes', ->
       for type in ['transition', 'values', 'keyframes', 'gradient', 'filter',
                    'border-radius', 'flexbox']
         input  = cases.read('autoprefixer.' + type + '.out')
@@ -49,7 +49,7 @@ describe 'autoprefixer', ->
       css    = cleaner.compile(input)
       compare(css, output)
 
-    it 'should not double prefixes', ->
+    it "doesn't double prefixes", ->
       check = (type, instansce) ->
         input  = cases.read('autoprefixer.' + type)
         output = cases.read('autoprefixer.' + type + '.out')
@@ -61,12 +61,12 @@ describe 'autoprefixer', ->
       check('border-radius', borderer)
       check('flexbox',       flexboxer)
 
-    it 'should parse difficult files', ->
+    it 'parses difficult files', ->
       input  = cases.read('autoprefixer.syntax')
       output = cleaner.compile(input)
       compare(input.replace('/**/', '').replace('/*{}*/', ''), output)
 
-    it 'should mark parsing error', ->
+    it 'marks parsing errors', ->
       error = null
       try
         cleaner.compile('a {')
@@ -78,7 +78,7 @@ describe 'autoprefixer', ->
 
   describe 'rework()', ->
 
-    it 'should be a Rework filter', ->
+    it 'is a Rework filter', ->
       rework = require('rework')
       for type in ['transition', 'values', 'keyframes', 'gradient', 'filter']
         ideal = cases.read('autoprefixer.' + type + '.out')
@@ -89,21 +89,21 @@ describe 'autoprefixer', ->
 
   describe 'inspect()', ->
 
-    it 'should return inspect string', ->
+    it 'returns inspect string', ->
       autoprefixer('chrome 25').inspect().should.match(/Browsers:\s+Chrome: 25/)
 
   describe 'hacks', ->
 
-    it 'should change angles in gradients',  -> test('gradient', 'gradient.out')
-    it 'should not prefix IE filter',        -> test('filter',   'filter.out')
+    it 'changes angles in gradients',  -> test('gradient', 'gradient.out')
+    it "doesn't prefix IE filter",     -> test('filter',   'filter.out')
 
-    it 'should support old Mozilla prefixe', ->
+    it 'supports old Mozilla prefixes', ->
       input  = cases.read('autoprefixer.border-radius')
       output = cases.read('autoprefixer.border-radius.out')
       css    = borderer.compile(input)
       compare(css, output)
 
-    it 'should support all flexbox syntaxes', ->
+    it 'supports all flexbox syntaxes', ->
       input  = cases.read('autoprefixer.flexbox')
       output = cases.read('autoprefixer.flexbox.out')
       css    = flexboxer.compile(input)
