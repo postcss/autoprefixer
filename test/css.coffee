@@ -9,14 +9,14 @@ describe 'CSS', ->
 
   describe 'eachKeyframes()', ->
 
-    it 'should iterate all keyframes', ->
+    it 'iterates over all keyframes', ->
       names = []
       @css.eachKeyframes (i) -> names.push(i.rule.name)
       names.should.eql ['coloring', 'moving']
 
   describe 'containKeyframes()', ->
 
-    it 'should find keyframes with same name and prefix', ->
+    it 'finds keyframes with the same name and prefix', ->
       css = new CSS(cases.load('css.prefix').stylesheet)
 
       css.containKeyframes(name: 'one').should.be.true
@@ -27,13 +27,13 @@ describe 'CSS', ->
 
   describe 'addKeyframes()', ->
 
-    it 'should add keyframes in iteration', ->
+    it 'adds keyframes to iteration', ->
       @css.eachKeyframes (i) =>
         clone = utils.clone(i.rule, name: i.rule.name + '1')
         @css.addKeyframes(i.number, clone)
       cases.compare(@nodes, 'css.double')
 
-    it 'should not double keyframes', ->
+    it "doesn't double keyframes", ->
       @css.eachKeyframes (i) =>
         clone = utils.clone(i.rule, name: i.rule.name + '1')
         @css.addKeyframes(i.number, clone)
@@ -42,7 +42,7 @@ describe 'CSS', ->
 
   describe 'removeKeyframes()', ->
 
-    it 'should remove keyframes in interation', ->
+    it 'removes keyframes from interation', ->
       names = []
 
       @css.eachKeyframes (i) =>
@@ -54,7 +54,7 @@ describe 'CSS', ->
 
   describe 'eachDeclaration()', ->
 
-    it 'should iterate declarations', ->
+    it 'iterates over declarations', ->
       nodes = cases.load('css.declarations')
       css   = new CSS(nodes.stylesheet)
 
@@ -68,11 +68,9 @@ describe 'CSS', ->
                         'width 320px'
                         'width 1000px']
 
-    it 'should set prefix to rule', ->
+    it 'sets prefix to rule', ->
       css      = new CSS(cases.load('css.prefix').stylesheet)
       prefixes = []
 
       css.eachDeclaration (i) -> prefixes.push(i.rule.prefix)
       prefixes.should.eql ['-webkit-', undefined]
-
-
