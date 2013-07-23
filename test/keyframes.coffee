@@ -12,7 +12,7 @@ describe 'Keyframes', ->
 
   describe 'clone()', ->
 
-    it 'should clone node', ->
+    it 'clones node', ->
       @rules[0].one = 1
       @rules[0].keyframes[0].one = 1
       clone = @keyframes.clone()
@@ -22,7 +22,7 @@ describe 'Keyframes', ->
 
   describe 'cloneWithPrefix()', ->
 
-    it 'should add prefix to clone', ->
+    it 'adds prefix to cloned one', ->
       @keyframes.cloneWithPrefix('-moz-')
 
       @rules.length.should.eql(4)
@@ -30,6 +30,6 @@ describe 'Keyframes', ->
 
   describe 'remove()', ->
 
-    it 'should remove node', ->
+    it 'removes node', ->
       @keyframes.remove()
       @rules.length.should.eql(2)

@@ -24,13 +24,13 @@ describe 'Declaration', ->
 
   describe '.split()', ->
 
-    it 'should split prefix', ->
+    it 'splits prefix', ->
       Declaration.split('color').should.eql ['', 'color']
       Declaration.split('-webkit-filter').should.eql ['-webkit-', 'filter']
 
   describe '.load()', ->
 
-    it 'should load class by property', ->
+    it 'loads class by property', ->
       class Hacked
         @names = ['hacked', 'hhacked']
       Declaration.register(Hacked)
@@ -46,35 +46,35 @@ describe 'Declaration', ->
 
   describe 'unprefixed', ->
 
-    it 'should split prefix and property name', ->
+    it 'splits prefix and property name', ->
       decl(0).unprefixed.should.eql 'transform'
       decl(0).prefix.should.eql     '-moz-'
       decl(0).prop.should.eql       '-moz-transform'
 
   describe 'valueContain()', ->
 
-    it 'should check value to contain ant of strings', ->
+    it 'checks value to contain any of the strings', ->
       decl(0).valueContain(['-webkit-', '-moz-']).should.be.true
       decl(0).valueContain(['-ms-', '-o-']).should.be.false
 
   describe 'prefixProp()', ->
 
-    it 'should insert new rule with prefix', ->
+    it 'inserts a new rule with prefix', ->
       decl(1).prefixProp('-webkit-')
       cases.compare(@nodes, 'declaration.prefix')
 
-    it 'should not insert double prefixed value', ->
+    it "doesn't insert double prefixed values", ->
       decl(1).insertBefore('-webkit-display', 'inline')
       decl(2).prefixProp('-webkit-')
       @list.length.should.eql 4
 
-    it 'should not doucle prefixes', ->
+    it "doesn't double prefixes", ->
       decl(0).prefixProp('-webkit-')
       decl(0).prop.should.eql('-webkit-transform')
 
   describe 'insertBefore()', ->
 
-    it 'should insert clone before', ->
+    it 'inserts clone before', ->
       display = decl(1)
       display.node.one = 1
       display.insertBefore('color', 'black')
@@ -85,19 +85,19 @@ describe 'Declaration', ->
 
       @list.length.should.eql 4
 
-    it 'should not insert same declaration', ->
+    it "doesn't insert the same declaration twice", ->
       decl(1).insertBefore('display', 'block')
       cases.compare(@nodes, 'declaration')
 
   describe 'remove()', ->
 
-    it 'should remove self', ->
+    it 'removes self', ->
       decl(0).remove()
       cases.compare(@nodes, 'declaration.remove')
 
   describe 'setValue()', ->
 
-    it 'should update local and node values', ->
+    it 'updates local and node values', ->
       margin = decl(2)
       margin.setValue('0')
       margin.value.should.eql '0'
@@ -105,7 +105,7 @@ describe 'Declaration', ->
 
   describe 'prefixValue()', ->
 
-    it 'should combine value changes', ->
+    it 'combines value changes', ->
       margin = decl(2)
       calc   = new Value('calc', ['-moz-', '-o-'])
       step   = new Value('step', ['-o-'])
@@ -117,7 +117,7 @@ describe 'Declaration', ->
 
       cases.compare(@nodes, 'declaration.values')
 
-    it 'should combine value changes', ->
+    it 'combines prefix value changes', ->
       @rule.prefix = '-o-'
       margin = decl(2)
       calc   = new Value('calc', ['-o-'])

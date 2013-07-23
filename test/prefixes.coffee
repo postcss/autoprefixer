@@ -30,7 +30,7 @@ describe 'Prefixes', ->
 
   describe 'select()', ->
 
-    it 'should select necessary prefixes', ->
+    it 'selects necessary prefixes', ->
       fill.select(data.prefixes).should.eql
         add:
           a: ['-moz-']
@@ -41,7 +41,7 @@ describe 'Prefixes', ->
 
   describe 'preprocess()', ->
 
-    it 'should preprocess prefixes data', ->
+    it 'preprocesses prefixes data', ->
       fill.add.should.eql
         'transition':
           values: [name: 'a', prefixes: ['-moz-'], regexp: utils.regexp('a')]
@@ -70,24 +70,24 @@ describe 'Prefixes', ->
 
   describe 'other()', ->
 
-    it 'should return prefixes', ->
+    it 'returns prefixes', ->
       empty.other('-moz-').should.eql ['-webkit-', '-ms-']
 
   describe 'each()', ->
 
-    it 'should iterate all prefixes to add', ->
+    it 'iterates all prefixes for addition', ->
       all = []
       fill.each('a', (i) -> all.push(i) )
       all.should.eql ['-moz-']
 
-    it 'should not iterate if prefixes in unnecessary', ->
+    it "doesn't iterate if prefixes are unnecessary", ->
       all = []
       fill.each('c', (i) -> all.push(i) )
       all.should.eql []
 
   describe 'values()', ->
 
-    it 'should return values for this and all properties', ->
+    it 'returns values for this and all properties', ->
       fill.values('add', 'a').should.eql [
         { name: 'b', prefixes: ['-ms-'], regexp: utils.regexp('b') }
       ]
@@ -96,6 +96,6 @@ describe 'Prefixes', ->
 
   describe 'toRemove()', ->
 
-    it 'should return true if we need to remove this property', ->
+    it 'returns true property needs to be removed', ->
       (!!fill.toRemove('-ms-a')).should.be.true
       (!!fill.toRemove('a')).should.be.false
