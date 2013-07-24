@@ -3,7 +3,7 @@
 <img align="right" width="94" src="http://ai.github.io/autoprefixer/logo.svg">
 
 Parse CSS and add vendor prefixes to CSS rules using values
-from the [Can I Use](http://caniuse.com/) website.
+from the [Can I Use](http://caniuse.com/).
 
 Write your CSS rules without vendor prefixes (in fact, forget about them
 entirely):
@@ -87,6 +87,9 @@ Compass:      13626 ms (53.0 times slower)
 Rework:       213 ms   (1.2 times faster)
 Stylus:       2596 ms  (10.1 times slower)
 ```
+
+Instead of -prefix-free Autoprefixer compile CSS once on deploy,
+so it is better for client performance.
 
 ### Rewrite syntax
 
