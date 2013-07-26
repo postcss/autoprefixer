@@ -19,7 +19,7 @@ Declaration = require('../declaration')
 class Filter extends Declaration
   @names = ['filter']
 
-  # Check is it Inetrenet Explorer filter
+  # Check is it Internet Explorer filter
   constructor: ->
     super
     if @value.indexOf('DXImageTransform.Microsoft') != -1

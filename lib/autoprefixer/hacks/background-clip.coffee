@@ -19,7 +19,7 @@ Declaration = require('../declaration')
 class BackgroundClip extends Declaration
   @names = ['background-clip']
 
-  # Check is it Inetrenet Explorer filter
+  # Check is it a WebKit properietary text clip
   constructor: ->
     super
     if @value.indexOf('text') != -1
