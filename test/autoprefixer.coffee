@@ -7,6 +7,8 @@ compiler  = autoprefixer('chrome 25', 'opera 12')
 borderer  = autoprefixer('safari 4', 'ff 3.6')
 flexboxer = autoprefixer('chrome 25', 'ff 21', 'ie 10')
 
+commons = ['transition', 'values', 'keyframes', 'gradient', 'filter', 'clip']
+
 describe 'autoprefixer', ->
   compare = (from, to) ->
     cases.clean(from).should.eql cases.clean(to)
@@ -56,7 +58,7 @@ describe 'autoprefixer', ->
         css    = instansce.compile( instansce.compile(input) )
         compare(css, output)
 
-      for i in ['transition', 'values', 'keyframes', 'gradient', 'filter']
+      for i in commons
         check(i, compiler)
       check('border-radius', borderer)
       check('flexbox',       flexboxer)
@@ -80,7 +82,7 @@ describe 'autoprefixer', ->
 
     it 'is a Rework filter', ->
       rework = require('rework')
-      for type in ['transition', 'values', 'keyframes', 'gradient', 'filter']
+      for type in commons
         ideal = cases.read('autoprefixer.' + type + '.out')
         real  = rework(cases.read('autoprefixer.' + type)).
           use(compiler.rework).
@@ -94,8 +96,9 @@ describe 'autoprefixer', ->
 
   describe 'hacks', ->
 
-    it 'changes angles in gradients',  -> test('gradient', 'gradient.out')
-    it "doesn't prefix IE filter",     -> test('filter',   'filter.out')
+    it 'changes angles in gradients', -> test('gradient', 'gradient.out')
+    it "doesn't prefix IE filter",    -> test('filter', 'filter.out')
+    it "doesn't remove text clip",    -> test('clip', 'clip.out')
 
     it 'supports old Mozilla prefixes', ->
       input  = cases.read('autoprefixer.border-radius')

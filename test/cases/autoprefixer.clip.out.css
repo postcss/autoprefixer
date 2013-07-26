@@ -1,0 +1,8 @@
+a {
+    color: black;
+}
+
+div {
+    color: black;
+    -webkit-background-clip: text;
+}
