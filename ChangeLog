@@ -9,6 +9,10 @@
 20130721:
 * Add Chrome 30 data.
 
+20130728:
+* Don’t remove non-standard -webkit-background-clip: text.
+* Don’t remove IE hack on CSS parse.
+
 == 0.5 (Ours is the Fury)
 * Rewrite Autoprefixer to be more flexible.
 * Use css, instead of Rework, to fix CSS parsing errors faster.
