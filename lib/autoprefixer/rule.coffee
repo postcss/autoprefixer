@@ -35,7 +35,7 @@ Declaration.register require('./hacks/justify-content')
 Declaration.register require('./hacks/background-clip')
 
 class Rule
-  constructor: (@declarations, @prefix) ->
+  constructor: (@declarations = [], @prefix) ->
 
   # Execute callback on every property: value declarations
   each: (callback) ->

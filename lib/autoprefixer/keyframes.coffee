@@ -24,8 +24,8 @@ class Keyframes
   clone: ->
     utils.clone @rule,
       keyframes: @rule.keyframes.map (i) ->
-        if i.type is 'keyframe'
-          result = utils.clone i,
+        if i.type == 'keyframe'
+          utils.clone i,
             values:       i.values.slice()
             declarations: i.declarations.map (decl) -> utils.clone(decl)
         else
