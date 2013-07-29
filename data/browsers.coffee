@@ -205,6 +205,9 @@ module.exports =
 
   opera:
     prefix: "-o-"
+    future: [
+      16
+    ]
     versions: [
       15
       12.1
