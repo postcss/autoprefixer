@@ -56,9 +56,15 @@ class Gradient extends Value
       @directions[value.toLowerCase()] || value
     param.join(' ')
 
+  # Round float and save digits under dot
+  roundFloat: (float, digits) ->
+    parseFloat(float.toFixed(digits))
+
   # Add 90 degrees
   fixAngle: (param) ->
-    param = parseFloat((Math.abs(450 - parseFloat(param)) % 360).toFixed(3))
+    param = parseFloat(param)
+    param = Math.abs(450 - param) % 360
+    param = @roundFloat(param, 3)
     "#{param}deg"
 
   # Remove old WebKit gradient too
