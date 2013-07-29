@@ -1,12 +1,15 @@
 a {
-    background: -webkit-linear-gradient(80deg, white, black),
-                -webkit-linear-gradient(-40deg, black, white),
+    background: -webkit-linear-gradient(99.5deg, white, black),
+                -webkit-linear-gradient(220deg, black, white),
+                -webkit-linear-gradient(45deg, black, white),
                 -webkit-linear-gradient(black, white);
-    background: -o-linear-gradient(350deg, white, black),
-                -o-linear-gradient(-130deg, black, white),
+    background: -o-linear-gradient(99.5deg, white, black),
+                -o-linear-gradient(220deg, black, white),
+                -o-linear-gradient(45deg, black, white),
                 -o-linear-gradient(black, white);
-    background: linear-gradient(350deg, white, black),
+    background: linear-gradient(350.5deg, white, black),
                 linear-gradient(-130deg, black, white),
+                linear-gradient(45deg, black, white),
                 linear-gradient(black, white);
 }
 
