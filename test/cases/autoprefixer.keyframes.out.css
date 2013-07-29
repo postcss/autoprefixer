@@ -1,13 +1,22 @@
 @-webkit-keyframes anim {
+    /* Single line comment */
     from {
+        /* Another single line comment */
         top: -webkit-calc(10% + 10px);
         top: calc(10% + 10px);
         -webkit-transform: rotate(10deg);
         transform: rotate(10deg);
     }
+
+    /*
+        Multi
+        line
+        comment
+      */
     50% {
         top: 0;
     }
+
     to {
         top: -webkit-calc(10%);
         top: calc(10%);
@@ -17,14 +26,23 @@
 }
 
 @-o-keyframes anim {
+    /* Single line comment */
     from {
+        /* Another single line comment */
         top: calc(10% + 10px);
         -o-transform: rotate(10deg);
         transform: rotate(10deg);
     }
+
+    /*
+        Multi
+        line
+        comment
+      */
     50% {
         top: 0;
     }
+
     to {
         top: calc(10%);
         -o-transform: rotate(0);
@@ -33,16 +51,25 @@
 }
 
 @keyframes anim {
+    /* Single line comment */
     from {
+        /* Another single line comment */
         top: -webkit-calc(10% + 10px);
         top: calc(10% + 10px);
         -webkit-transform: rotate(10deg);
         -o-transform: rotate(10deg);
         transform: rotate(10deg);
     }
+
+    /*
+        Multi
+        line
+        comment
+      */
     50% {
         top: 0;
     }
+
     to {
         top: -webkit-calc(10%);
         top: calc(10%);

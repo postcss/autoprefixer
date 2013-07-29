@@ -54,7 +54,10 @@ class CSS
 
       if i.keyframes
         for keyframe in i.keyframes
-          rule = new Rule(keyframe.declarations, i.vendor)
+          if keyframe.type is 'keyframe'
+            rule = new Rule(keyframe.declarations, i.vendor)
+          else
+            rule = new Rule([], undefined)
           rule.each(callback)
 
       if i.declarations
