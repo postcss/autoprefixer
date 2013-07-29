@@ -10,7 +10,7 @@ module.exports =
     parse(@read(file))
 
   clean: (string) ->
-    string.trim().replace(/\s+/g, ' ')
+    string.trim().replace(/\s+/g, ' ').replace(/\/\*.*?\*\/\ /g, '')
 
   compare: (nodes, file) ->
     ideal = @clean @read(file)
