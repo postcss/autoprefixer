@@ -13,6 +13,10 @@
 * Don’t remove non-standard -webkit-background-clip: text.
 * Don’t remove IE hack on CSS parse.
 
+20130729:
+* Add Opera 16 data.
+* Fix “Invalid range in character class” error on Firefox.
+
 == 0.5 (Ours is the Fury)
 * Rewrite Autoprefixer to be more flexible.
 * Use css, instead of Rework, to fix CSS parsing errors faster.
