@@ -37,7 +37,7 @@ class Gradient extends Value
       if params.length > 0
         if params[0][0..2] == 'to '
           params[0] = @fixDirection(params[0])
-        else if prefix == '-webkit-' and params[0].indexOf('deg') != -1
+        else if params[0].indexOf('deg') != -1
           params[0] = @fixAngle(params[0])
       before + prefix + @name + '(' + params.join(', ') + ')'
 
@@ -58,9 +58,7 @@ class Gradient extends Value
 
   # Add 90 degrees
   fixAngle: (param) ->
-    param  = parseInt(param)
-    param += 90
-    param -= 360 if param > 360
+    param = parseFloat((Math.abs(450 - parseFloat(param)) % 360).toFixed(3))
     "#{param}deg"
 
   # Remove old WebKit gradient too
