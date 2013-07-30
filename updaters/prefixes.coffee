@@ -25,7 +25,7 @@ browsers = (data) ->
   for browser, versions of data.stats
     for interval, support of versions
       for version in interval.split('-')
-        if updater.browsers[browser] and support.match(/\sx$/)
+        if updater.browsers[browser] and support.match(/\sx($|\s)/)
           version = version.replace(/\.0$/, '')
           need.push(updater.browsers[browser] + ' ' + version)
   need
