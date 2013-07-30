@@ -17,6 +17,10 @@
 * Add Opera 16 data.
 * Fix “Invalid range in character class” error on Firefox.
 
+20130730:
+* Fix correct clone comments inside keyframes (by Alexey Plutalov).
+* Fix angle recalculation in gradients (by Roman Komarov).
+
 == 0.5 (Ours is the Fury)
 * Rewrite Autoprefixer to be more flexible.
 * Use css, instead of Rework, to fix CSS parsing errors faster.
