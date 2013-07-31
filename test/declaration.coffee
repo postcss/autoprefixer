@@ -11,7 +11,7 @@ describe 'Declaration', ->
   beforeEach ->
     @hacks = utils.clone Declaration.hacks
 
-    @nodes = cases.load('declaration')
+    @nodes = cases.load('declaration/declaration')
     @list  = @nodes.stylesheet.rules[0].declarations
     @rule  = new Rule(@list)
 
@@ -61,7 +61,7 @@ describe 'Declaration', ->
 
     it 'inserts a new rule with prefix', ->
       decl(1).prefixProp('-webkit-')
-      cases.compare(@nodes, 'declaration.prefix')
+      cases.compare(@nodes, 'declaration/prefix')
 
     it "doesn't insert double prefixed values", ->
       decl(1).insertBefore('-webkit-display', 'inline')
@@ -91,13 +91,13 @@ describe 'Declaration', ->
 
     it "doesn't insert the same declaration twice", ->
       decl(1).insertBefore('display', 'block')
-      cases.compare(@nodes, 'declaration')
+      cases.compare(@nodes, 'declaration/declaration')
 
   describe 'remove()', ->
 
     it 'removes self', ->
       decl(0).remove()
-      cases.compare(@nodes, 'declaration.remove')
+      cases.compare(@nodes, 'declaration/remove')
 
   describe 'setValue()', ->
 
@@ -119,7 +119,7 @@ describe 'Declaration', ->
       margin.prefixValue('-o-',   step)
       margin.saveValues()
 
-      cases.compare(@nodes, 'declaration.values')
+      cases.compare(@nodes, 'declaration/values')
 
     it 'combines prefix value changes', ->
       @rule.prefix = '-o-'
@@ -129,4 +129,4 @@ describe 'Declaration', ->
       margin.prefixValue('-o-', calc)
       margin.saveValues()
 
-      cases.compare(@nodes, 'declaration.prefix-value')
+      cases.compare(@nodes, 'declaration/prefix-value')

@@ -4,7 +4,7 @@ cases     = require('./lib/cases')
 
 describe 'Keyframes', ->
   beforeEach ->
-    @nodes      = cases.load('css')
+    @nodes      = cases.load('css/css')
     @rules      = @nodes.stylesheet.rules
     @css        = new CSS(@nodes.stylesheet)
     @css.number = 0

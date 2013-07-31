@@ -4,7 +4,7 @@ utils = require('../lib/autoprefixer/utils')
 
 describe 'Rule', ->
   beforeEach ->
-    @nodes = cases.load('rule')
+    @nodes = cases.load('rule/rule')
     @rule  = new Rule(@nodes.stylesheet.rules[0].declarations)
 
   describe 'each()', ->
@@ -15,7 +15,7 @@ describe 'Rule', ->
       decls.should.eql ['color black', 'top 1px', 'left 2px']
 
     it 'sets declaration prefix', ->
-      nodes = cases.load('rule.prefix')
+      nodes = cases.load('rule/prefix')
       rule  = new Rule(nodes.stylesheet.rules[0].declarations)
 
       prefixes = []
@@ -23,7 +23,7 @@ describe 'Rule', ->
       prefixes.should.eql [undefined, '-webkit-']
 
     it 'sets keyframes prefix', ->
-      nodes = cases.load('rule.prefix')
+      nodes = cases.load('rule/prefix')
       rule  = new Rule(nodes.stylesheet.rules[0].declarations, '-moz-')
 
       prefixes = []
@@ -43,7 +43,7 @@ describe 'Rule', ->
 
     it 'adds declaration in interation', ->
       @rule.each (i) => @rule.add(i.number, utils.clone(i.node))
-      cases.compare(@nodes, 'rule.double')
+      cases.compare(@nodes, 'rule/double')
 
   describe 'byProp()', ->
 
@@ -60,5 +60,5 @@ describe 'Rule', ->
         decls.push(i.prop + ' ' + i.value)
         @rule.remove(i.number) if i.prop == 'top'
 
-      cases.compare(@nodes, 'rule.remove')
+      cases.compare(@nodes, 'rule/remove')
       decls.should.eql ['color black', 'top 1px', 'left 2px']
