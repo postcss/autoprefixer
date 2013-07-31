@@ -1,0 +1,4 @@
+a {
+    -o-border-image: url('a.png') 20% stretch stretch;
+    border-image: url('a.png') 20% fill stretch stretch;
+}

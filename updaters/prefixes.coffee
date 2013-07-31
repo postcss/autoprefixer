@@ -81,7 +81,7 @@ updater.caniuse 'features-json/transforms2d.json', (data) ->
 updater.caniuse 'features-json/css-gradients.json', (data) ->
   prefix 'linear-gradient', 'repeating-linear-gradient',
          'radial-gradient', 'repeating-radial-gradient',
-          props:   ['background', 'background-image']
+          props:   ['background', 'background-image', 'border-image']
           browsers:  browsers(data)
 
 # Box sizing
@@ -136,6 +136,11 @@ updater.caniuse 'features-json/background-img-opts.json', (data) ->
 updater.caniuse 'features-json/font-feature.json', (data) ->
   prefix 'font-feature-settings', 'font-variant-ligatures',
          'font-language-override','font-kerning',
+          browsers: browsers(data)
+
+# Border image
+updater.caniuse 'features-json/border-image.json', (data) ->
+  prefix 'border-image',
           browsers: browsers(data)
 
 updater.done -> updater.save('prefixes', prefixes)

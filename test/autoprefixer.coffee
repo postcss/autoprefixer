@@ -96,9 +96,10 @@ describe 'autoprefixer', ->
 
   describe 'hacks', ->
 
-    it 'changes angles in gradients', -> test('gradient', 'gradient.out')
-    it "doesn't prefix IE filter",    -> test('filter', 'filter.out')
-    it "doesn't remove text clip",    -> test('clip', 'clip.out')
+    it 'changes angle in gradient',  -> test('gradient',     'gradient.out')
+    it "doesn't prefix IE filter",   -> test('filter',       'filter.out')
+    it "doesn't remove text clip",   -> test('clip',         'clip.out')
+    it 'change border image syntax', -> test('border-image', 'border-image.out')
 
     it 'supports old Mozilla prefixes', ->
       input  = cases.read('autoprefixer.border-radius')

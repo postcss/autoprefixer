@@ -1073,6 +1073,61 @@ module.exports =
     ]
     transition: true
 
+  "border-image":
+    browsers: [
+      "ff 4"
+      "ff 5"
+      "ff 6"
+      "ff 7"
+      "ff 8"
+      "ff 9"
+      "ff 10"
+      "ff 11"
+      "ff 12"
+      "ff 13"
+      "ff 14"
+      "ff 3.5"
+      "ff 3.6"
+      "chrome 4"
+      "chrome 5"
+      "chrome 6"
+      "chrome 7"
+      "chrome 8"
+      "chrome 9"
+      "chrome 10"
+      "chrome 11"
+      "chrome 12"
+      "chrome 13"
+      "chrome 14"
+      "chrome 15"
+      "safari 4"
+      "safari 5"
+      "safari 3.1"
+      "safari 3.2"
+      "safari 5.1"
+      "opera 11"
+      "opera 12"
+      "opera 11.1"
+      "opera 11.5"
+      "opera 11.6"
+      "opera 12.1"
+      "ios 3.2"
+      "ios 4"
+      "ios 4.1"
+      "ios 4.2"
+      "ios 4.3"
+      "ios 5"
+      "ios 5.1"
+      "android 3"
+      "android 4"
+      "android 2.1"
+      "android 2.2"
+      "android 2.3"
+      "android 4.1"
+      "android 4.2"
+      "bb 7"
+    ]
+
   "border-radius":
     browsers: [
       "ff 2"
@@ -3252,6 +3307,7 @@ module.exports =
     props: [
       "background"
       "background-image"
+      "border-image"
     ]
     browsers: [
       "ff 4"
@@ -3566,6 +3622,7 @@ module.exports =
     props: [
       "background"
       "background-image"
+      "border-image"
     ]
     browsers: [
       "ff 4"
@@ -3636,6 +3693,7 @@ module.exports =
     props: [
       "background"
       "background-image"
+      "border-image"
     ]
     browsers: [
       "ff 4"
@@ -3706,6 +3764,7 @@ module.exports =
     props: [
       "background"
       "background-image"
+      "border-image"
     ]
     browsers: [
       "ff 4"
