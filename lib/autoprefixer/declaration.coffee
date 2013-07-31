@@ -82,9 +82,9 @@ class Declaration
   saveValues: ->
     for prefix, value of @valuesCache
       continue if @rule.prefix and prefix != @rule.prefix
-      if prefixed = @rule.byProp(prefix + @unprefixed)
-        prefixed.setValue(value)
-      else
+      if prefix == @prefix
+        @setValue(value)
+      else if not @rule.byProp(prefix + @unprefixed)
         @insertBefore(@prop, value)
 
 module.exports = Declaration
