@@ -54,9 +54,9 @@ class Declaration
     strings.some (i) => @value.indexOf(i) != -1
 
   # Add another declaration with prefixed property
-  prefixProp: (prefix) ->
+  prefixProp: (prefix, value = @value) ->
     return if @rule.contain(prefix + @unprefixed)
-    @insertBefore(prefix + @unprefixed, @value)
+    @insertBefore(prefix + @unprefixed, value)
 
   # Insert new declaration before current one
   insertBefore: (prop, value) ->

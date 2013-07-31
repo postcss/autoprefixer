@@ -72,6 +72,10 @@ describe 'Declaration', ->
       decl(0).prefixProp('-webkit-')
       decl(0).prop.should.eql('-webkit-transform')
 
+    it "should change value", ->
+      decl(0).prefixProp('-webkit-', '1')
+      decl(0).value.should.eql('1')
+
   describe 'insertBefore()', ->
 
     it 'inserts clone before', ->

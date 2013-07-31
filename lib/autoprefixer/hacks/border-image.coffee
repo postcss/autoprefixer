@@ -21,8 +21,6 @@ class BorderImage extends Declaration
 
   # Remove fill parameter for prefixed declarations
   prefixProp: (prefix) ->
-    return if @rule.contain(prefix + @unprefixed)
-    value = @value.replace(/\s+fill(\s)/, '$1')
-    @insertBefore(prefix + @unprefixed, value)
+    super(prefix, @value.replace(/\s+fill(\s)/, '$1'))
 
 module.exports = BorderImage
