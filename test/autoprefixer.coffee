@@ -88,11 +88,10 @@ describe 'Autoprefixer', ->
       for type in commons
         instansce = prefixer(type)
 
-        ideal = cases.read('autoprefixer/' + type + '.out')
-        real  = rework(cases.read('autoprefixer/' + type)).
+        real = rework(cases.read('autoprefixer/' + type)).
           use(instansce.rework).
           toString()
-        compare(ideal, real)
+        compare(real, cases.read('autoprefixer/' + type + '.out'))
 
   describe 'inspect()', ->
 
