@@ -87,8 +87,8 @@ Rework:       213 ms   (1.2 times faster)
 Stylus:       2596 ms  (10.1 times slower)
 ```
 
-Unlike -prefix-free Autoprefixer compiles CSS once on deploy
-and doesn't hit client performance.
+Unlike -prefix-free Autoprefixer compiles CSS once on deploy and doesn’t hit
+client performance.
 
 ### Rewrite syntax
 
