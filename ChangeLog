@@ -21,6 +21,9 @@
 * Fix correct clone comments inside keyframes (by Alexey Plutalov).
 * Fix angle recalculation in gradients (by Roman Komarov).
 
+20130731:
+* Add border-image support.
+
 == 0.5 (Ours is the Fury)
 * Rewrite Autoprefixer to be more flexible.
 * Use css, instead of Rework, to fix CSS parsing errors faster.
