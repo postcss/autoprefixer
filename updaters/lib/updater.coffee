@@ -61,7 +61,7 @@ module.exports =
 
       processed = []
       for key, value of obj
-        key = "\"#{key}\"" if key.match(/'|-|@/)
+        key = "\"#{key}\"" if key.match(/'|-|@|:/)
         value = @stringify(value, local)
         value = ' ' + value unless value[0] == "\n"
         processed.push(key + ':' + value)
