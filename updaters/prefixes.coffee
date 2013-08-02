@@ -31,7 +31,7 @@ browsers = (data) ->
   need
 
 # Border Radius
-updater.caniuse 'features-json/border-radius.json', (data) ->
+updater.feature 'border-radius.json', (data) ->
   prefix 'border-radius',
           browsers:   browsers(data)
           transition: true
@@ -49,13 +49,13 @@ updater.caniuse 'features-json/border-radius.json', (data) ->
           transition: true
 
 # Box Shadow
-updater.caniuse 'features-json/css-boxshadow.json', (data) ->
+updater.feature 'css-boxshadow.json', (data) ->
   prefix 'box-shadow',
           browsers:   browsers(data)
           transition: true
 
 # Animation
-updater.caniuse 'features-json/css-animation.json', (data) ->
+updater.feature 'css-animation.json', (data) ->
   prefix 'animation', 'animation-name', 'animation-duration',
          'animation-delay', 'animation-direction', 'animation-fill-mode',
          'animation-iteration-count', 'animation-play-state',
@@ -63,13 +63,13 @@ updater.caniuse 'features-json/css-animation.json', (data) ->
           browsers: browsers(data)
 
 # Transition
-updater.caniuse 'features-json/css-transitions.json', (data) ->
+updater.feature 'css-transitions.json', (data) ->
   prefix 'transition', 'transition-property', 'transition-duration',
          'transition-delay', 'transition-timing-function',
           browsers: browsers(data)
 
 # Transform
-updater.caniuse 'features-json/transforms2d.json', (data) ->
+updater.feature 'transforms2d.json', (data) ->
   prefix 'transform', 'transform-origin', 'perspective', 'perspective-origin',
           browsers:   browsers(data)
           transition: true
@@ -78,25 +78,25 @@ updater.caniuse 'features-json/transforms2d.json', (data) ->
           browsers: browsers(data)
 
 # Gradients
-updater.caniuse 'features-json/css-gradients.json', (data) ->
+updater.feature 'css-gradients.json', (data) ->
   prefix 'linear-gradient', 'repeating-linear-gradient',
          'radial-gradient', 'repeating-radial-gradient',
           props:   ['background', 'background-image', 'border-image']
           browsers:  browsers(data)
 
 # Box sizing
-updater.caniuse 'features-json/css3-boxsizing.json', (data) ->
+updater.feature 'css3-boxsizing.json', (data) ->
   prefix 'box-sizing',
           browsers: browsers(data)
 
 # Filter Effects
-updater.caniuse 'features-json/css-filters.json', (data) ->
+updater.feature 'css-filters.json', (data) ->
   prefix 'filter',
           browsers:   browsers(data)
           transition: true
 
 # Multicolumns
-updater.caniuse 'features-json/multicolumn.json', (data) ->
+updater.feature 'multicolumn.json', (data) ->
   prefix 'columns', 'column-width', 'column-gap',
          'column-rule', 'column-rule-color', 'column-rule-width',
           browsers:   browsers(data)
@@ -107,12 +107,12 @@ updater.caniuse 'features-json/multicolumn.json', (data) ->
           browsers:   browsers(data)
 
 # User select
-updater.caniuse 'features-json/user-select-none.json', (data) ->
+updater.feature 'user-select-none.json', (data) ->
   prefix 'user-select',
           browsers: browsers(data)
 
 # Flexible Box Layout
-updater.caniuse 'features-json/flexbox.json', (data) ->
+updater.feature 'flexbox.json', (data) ->
   prefix 'display-flex',
           browsers: browsers(data)
 
@@ -122,30 +122,30 @@ updater.caniuse 'features-json/flexbox.json', (data) ->
           browsers: browsers(data)
 
 # calc() unit
-updater.caniuse 'features-json/calc.json', (data) ->
+updater.feature 'calc.json', (data) ->
   prefix 'calc',
           props:  ['*']
           browsers: browsers(data)
 
 # Background options
-updater.caniuse 'features-json/background-img-opts.json', (data) ->
+updater.feature 'background-img-opts.json', (data) ->
   prefix 'background-clip', 'background-origin', 'background-size',
           browsers: browsers(data)
 
 # Font feature settings
-updater.caniuse 'features-json/font-feature.json', (data) ->
+updater.feature 'font-feature.json', (data) ->
   prefix 'font-feature-settings', 'font-variant-ligatures',
          'font-language-override','font-kerning',
           browsers: browsers(data)
 
 # Border image
-updater.caniuse 'features-json/border-image.json', (data) ->
+updater.feature 'border-image.json', (data) ->
   prefix 'border-image',
           browsers: browsers(data)
 
 # Selection selector
 # Wait for https://github.com/Fyrd/caniuse/pull/269
-updater.fork 'porada/patch-1', 'features-json/css-selection.json', (data) ->
+updater.fork 'porada/patch-1', 'css-selection.json', (data) ->
   prefix '::selection',
           selector: true,
           browsers: browsers(data)

@@ -52,10 +52,14 @@ module.exports =
   caniuse: (file, callback) ->
     @github("Fyrd/caniuse/master/#{file}", callback)
 
-  # Get Can I Use file from another user fork
+  # Can I Use shortcut to request files in features/ dir.
+  feature: (file, callback) ->
+    @caniuse("features-json/#{file}", callback)
+
+  # Get Can I Use features from another user fork
   fork: (fork, file, callback) ->
     [user, branch] = fork.split('/')
-    @github("#{user}/caniuse/#{branch}/#{file}", callback)
+    @github("#{user}/caniuse/#{branch}/features-json/#{file}", callback)
 
   # Return string of object. Like `JSON.stringify`, but output CoffeeScript.
   stringify: (obj, indent = '') ->
