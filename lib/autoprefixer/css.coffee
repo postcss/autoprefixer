@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program.  If not, see <http:#www.gnu.org/licenses/>.
 
-Rule        = require('./rule')
+Rules       = require('./rules')
 Keyframes   = require('./keyframes')
 Declaration = require('./declaration')
 
@@ -47,22 +47,12 @@ class CSS
     @stylesheet.rules.splice(position, 1)
     @number -= 1
 
+  # Execute callback on every rule
+  eachRule: (callback) ->
+    Rules.each(@stylesheet.rules, callback)
+
   # Execute callback on every property: value declaration in CSS tree
-  eachDeclaration: (callback, node = @stylesheet) ->
-    for i in node.rules
-      @eachDeclaration(callback, i) if i.rules
-
-      if i.keyframes
-        for keyframe in i.keyframes
-          if keyframe.type == 'keyframe'
-            rule = new Rule(keyframe.declarations, i.vendor)
-          else
-            rule = new Rule()
-          rule.each(callback)
-
-      if i.declarations
-        rule = new Rule(i.declarations, i.vendor)
-        rule.each(callback)
-    false
+  eachDeclaration: (callback) ->
+    @eachRule (rule) -> rule.each(callback)
 
 module.exports = CSS

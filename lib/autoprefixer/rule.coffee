@@ -36,7 +36,11 @@ Declaration.register require('./hacks/justify-content')
 Declaration.register require('./hacks/background-clip')
 
 class Rule
-  constructor: (@declarations = [], @prefix) ->
+  constructor: (@rules, @number, @node, @prefix) ->
+    @type         = @node.type
+    @declarations = @node.declarations
+    if @type == 'rule'
+      @selectors  = @node.selectors.join(', ')
 
   # Execute callback on every property: value declarations
   each: (callback) ->
@@ -70,8 +74,7 @@ class Rule
 
   # Remove declaration in selected position
   remove: (position) ->
-    @declarations.splice(@number, 1)
+    @declarations.splice(position, 1)
     @number -= 1
-
 
 module.exports = Rule

@@ -2,6 +2,7 @@ cases        = require('./lib/cases')
 utils        = require('../lib/autoprefixer/utils')
 
 Rule         = require('../lib/autoprefixer/rule')
+Rules        = require('../lib/autoprefixer/rules')
 Value        = require('../lib/autoprefixer/value')
 Declaration  = require('../lib/autoprefixer/declaration')
 
@@ -13,11 +14,12 @@ describe 'Declaration', ->
 
     @nodes = cases.load('declaration/declaration')
     @list  = @nodes.stylesheet.rules[0].declarations
-    @rule  = new Rule(@list)
+    @rules = new Rules(@nodes.stylesheet)
+    @rule  = new Rule(@rules, 0, @nodes.stylesheet.rules[0])
 
     decl = (number) =>
       @rule.number = number
-      Declaration.load(@rule, number, @list[number])
+      Declaration.load(@rule, number, @rule.declarations[number])
 
   afterEach ->
     Declaration.hachs = @hacks

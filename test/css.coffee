@@ -52,6 +52,28 @@ describe 'CSS', ->
       cases.compare(@nodes, 'css/remove')
       names.should.eql ['coloring', 'moving']
 
+  describe 'eachRule()', ->
+
+    it 'iterates over rules', ->
+      nodes = cases.load('css/declarations')
+      css   = new CSS(nodes.stylesheet)
+
+      rules = []
+      css.eachRule (i) -> rules.push [i.type, i.selectors]
+
+      rules.should.eql [['keyframe', undefined],
+                        ['keyframe', undefined],
+                        ['rule',    'a.one'],
+                        ['rule',    'a.two']
+                        ['rule',    'a.three, a']]
+
+    it 'sets prefix to rule', ->
+      css      = new CSS(cases.load('css/prefix').stylesheet)
+      prefixes = []
+
+      css.eachRule (i) -> prefixes.push(i.prefix)
+      prefixes.should.eql ['-webkit-', undefined]
+
   describe 'eachDeclaration()', ->
 
     it 'iterates over declarations', ->
@@ -67,10 +89,3 @@ describe 'CSS', ->
                         'position relative'
                         'width 320px'
                         'width 1000px']
-
-    it 'sets prefix to rule', ->
-      css      = new CSS(cases.load('css/prefix').stylesheet)
-      prefixes = []
-
-      css.eachDeclaration (i) -> prefixes.push(i.rule.prefix)
-      prefixes.should.eql ['-webkit-', undefined]

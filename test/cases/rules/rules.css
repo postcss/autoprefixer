@@ -1,0 +1,14 @@
+@-moz-keyframes moving {
+    to {
+        top: 100px;
+    }
+}
+
+a {
+    color: red;
+    position: relative;
+}
+
+div {
+    color: black;
+}

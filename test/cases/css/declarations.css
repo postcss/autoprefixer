@@ -7,17 +7,17 @@
     }
 }
 
-a {
+a.one {
     color: red;
     position: relative;
 }
 
 @media all and (max-width: 320px) {
-    a {
+    a.two {
         width: 320px;
     }
 }
 
-a {
+a.three, a {
     width: 1000px;
 }

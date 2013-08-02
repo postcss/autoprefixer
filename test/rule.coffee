@@ -1,11 +1,13 @@
 Rule  = require('../lib/autoprefixer/rule')
+Rules = require('../lib/autoprefixer/rules')
 cases = require('./lib/cases')
 utils = require('../lib/autoprefixer/utils')
 
 describe 'Rule', ->
   beforeEach ->
     @nodes = cases.load('rule/rule')
-    @rule  = new Rule(@nodes.stylesheet.rules[0].declarations)
+    @rules = new Rules(@nodes.stylesheet)
+    @rule  = new Rule(@rules, 0, @nodes.stylesheet.rules[0])
 
   describe 'each()', ->
 
@@ -16,7 +18,8 @@ describe 'Rule', ->
 
     it 'sets declaration prefix', ->
       nodes = cases.load('rule/prefix')
-      rule  = new Rule(nodes.stylesheet.rules[0].declarations)
+      rules = new Rules(nodes.stylesheet)
+      rule  = new Rule(rules, 0, nodes.stylesheet.rules[0])
 
       prefixes = []
       rule.each (i, prefix) -> prefixes.push(prefix)
@@ -24,7 +27,8 @@ describe 'Rule', ->
 
     it 'sets keyframes prefix', ->
       nodes = cases.load('rule/prefix')
-      rule  = new Rule(nodes.stylesheet.rules[0].declarations, '-moz-')
+      rules = new Rules(nodes.stylesheet)
+      rule  = new Rule(rules, 0, nodes.stylesheet.rules[0], '-moz-')
 
       prefixes = []
       rule.each (i, prefix) -> prefixes.push(prefix)
