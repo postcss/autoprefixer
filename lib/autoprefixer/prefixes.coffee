@@ -20,7 +20,8 @@ Processor = require('./processor')
 Selector  = require('./selector')
 Value     = require('./value')
 
-Value.register require('./hacks/gradient')
+Value.register    require('./hacks/gradient')
+Selector.register require('./hacks/placeholder')
 
 class Prefixes
   constructor: (@data, @browsers) ->
@@ -56,7 +57,7 @@ class Prefixes
     add = { selectors: [] }
     for name, prefixes of selected.add
       if @data[name].selector
-        add.selectors.push(new Selector(name, prefixes))
+        add.selectors.push(Selector.load(name, prefixes))
 
       else
         props = if @data[name].transition
@@ -78,7 +79,7 @@ class Prefixes
     remove = { selectors: [] }
     for name, prefixes of selected.remove
       if @data[name].selector
-        selector = new Selector(name, prefixes)
+        selector = Selector.load(name, prefixes)
         for prefix in prefixes
           remove.selectors.push(selector.prefixed(prefix))
 

@@ -29,7 +29,8 @@ test = (from, instansce = prefixer(from)) ->
   compare(css, output)
 
 commons = ['transition', 'values', 'keyframes', 'gradient', 'filter', 'flexbox',
-            'border-image', 'border-radius', 'background-clip', 'selectors']
+            'border-image', 'border-radius', 'background-clip', 'selectors',
+            'placeholder']
 
 describe 'autoprefixer()', ->
 
@@ -110,3 +111,4 @@ describe 'Autoprefixer', ->
     it 'change border image syntax',    -> test('border-image')
     it 'supports old Mozilla prefixes', -> test('border-radius', borderer)
     it 'supports all flexbox syntaxes', -> test('flexbox',       flexboxer)
+    it 'supports all placeholders',     -> test('placeholder')
