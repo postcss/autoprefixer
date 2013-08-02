@@ -1,5 +1,6 @@
 Prefixes = require('../lib/autoprefixer/prefixes')
 Browsers = require('../lib/autoprefixer/browsers')
+Selector = require('../lib/autoprefixer/selector')
 OldValue = require('../lib/autoprefixer/old-value')
 Value    = require('../lib/autoprefixer/value')
 utils    = require('../lib/autoprefixer/utils')
@@ -22,6 +23,10 @@ data =
     b:
       browsers: ['ie 2', 'ff 1']
       props:    ['a', '*']
+    c:
+      browsers: ['ie 2', 'ff 1']
+      selector: true
+
 empty = new Prefixes({ }, new Browsers(data.browsers, []))
 fill  = new Prefixes(data.prefixes,
                      new Browsers(data.browsers, ['ff 2', 'ie 2']))
@@ -35,14 +40,17 @@ describe 'Prefixes', ->
         add:
           a: ['-moz-']
           b: ['-ms-']
+          c: ['-ms-']
         remove:
           a: ['-webkit-', '-ms-']
           b: ['-moz-']
+          c: ['-moz-']
 
   describe 'preprocess()', ->
 
     it 'preprocesses prefixes data', ->
       fill.add.should.eql
+        '_selectors': [new Selector('c', ['-ms-'])]
         'transition':
           values: [name: 'a', prefixes: ['-moz-'], regexp: utils.regexp('a')]
         'transition-property':
@@ -54,6 +62,7 @@ describe 'Prefixes', ->
           values: [name: 'b', prefixes: ['-ms-'], regexp: utils.regexp('b')]
 
       JSON.stringify(fill.remove).should.eql JSON.stringify({
+        '_selectors': ['-moz-c']
         'transition':
           values: [new OldValue('-webkit-a'), new OldValue('-ms-a')]
         'transition-property':

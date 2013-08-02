@@ -17,6 +17,7 @@
 utils = require('./utils')
 
 Processor = require('./processor')
+Selector  = require('./selector')
 Value     = require('./value')
 
 Value.register require('./hacks/gradient')
@@ -52,45 +53,55 @@ class Prefixes
 
   # Cache prefixes data to fast CSS processing
   preprocess: (selected) ->
-    add = { }
+    add = { _selectors: [] }
     for name, prefixes of selected.add
-      props = if @data[name].transition
-        @transitionProps
+      if @data[name].selector
+        add._selectors.push(new Selector(name, prefixes))
+
       else
-        @data[name].props
+        props = if @data[name].transition
+          @transitionProps
+        else
+          @data[name].props
 
-      if props
-        value = Value.load(name, prefixes)
-        for prop in props
-          add[prop] = { }       unless add[prop]
-          add[prop].values = [] unless add[prop].values
-          add[prop].values.push(value)
-
-      unless @data[name].props
-        add[name] = { } unless add[name]
-        add[name].prefixes = prefixes
-
-    remove = { }
-    for name, prefixes of selected.remove
-      props = if @data[name].transition
-        @transitionProps
-      else
-        @data[name].props
-
-      if props
-        value = Value.load(name)
-        for prefix in prefixes
-          old = value.old(prefix)
+        if props
+          value = Value.load(name, prefixes)
           for prop in props
-            remove[prop] = { }       unless remove[prop]
-            remove[prop].values = [] unless remove[prop].values
-            remove[prop].values.push(old)
+            add[prop] = { }       unless add[prop]
+            add[prop].values = [] unless add[prop].values
+            add[prop].values.push(value)
 
-      unless @data[name].props
+        unless @data[name].props
+          add[name] = { } unless add[name]
+          add[name].prefixes = prefixes
+
+    remove = { _selectors: [] }
+    for name, prefixes of selected.remove
+      if @data[name].selector
+        selector = new Selector(name, prefixes)
         for prefix in prefixes
-          prefixed = prefix + name
-          remove[prefixed] = {} unless remove[prefixed]
-          remove[prefixed].remove = true
+          remove._selectors.push(selector.prefixed(prefix))
+
+      else
+        props = if @data[name].transition
+          @transitionProps
+        else
+          @data[name].props
+
+        if props
+          value = Value.load(name)
+          for prefix in prefixes
+            old = value.old(prefix)
+            for prop in props
+              remove[prop] = { }       unless remove[prop]
+              remove[prop].values = [] unless remove[prop].values
+              remove[prop].values.push(old)
+
+        unless @data[name].props
+          for prefix in prefixes
+            prefixed = prefix + name
+            remove[prefixed] = {} unless remove[prefixed]
+            remove[prefixed].remove = true
 
     [add, remove]
 
