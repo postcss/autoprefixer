@@ -143,6 +143,10 @@ updater.fork 'porada/patch-1', 'css-selection.json', (browsers) ->
 
 # Placeholder selector
 updater.all (browsers) ->
+  browsers = browsers.filter (i) ->
+    [name, version] = i.split(' ')
+    name != 'opera' || parseFloat(version) >= 15
+
   prefix '::placeholder',
           selector: true,
           browsers: browsers
