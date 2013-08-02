@@ -7,7 +7,7 @@ sh = (cmd, callback) ->
     callback()
 
 task 'update', 'Update browsers and properties data', ->
-  for i in fs.readdirSync(__dirname + '/updaters')
+  for i in fs.readdirSync(__dirname + '/updaters').sort()
     require('./updaters/' + i) if i.match(/\.coffee$/)
 
 task 'clean', 'Remove all temporary files', ->
