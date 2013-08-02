@@ -17,7 +17,7 @@
 updater = require('./lib/updater')
 minor   = ['bb', 'android']
 
-updater.caniuse 'data.json', (data) ->
+updater.github 'Fyrd/caniuse/master/data.json', (data) ->
   normalize = (array) -> array.reverse().filter (i) -> i
 
   intervals = (array) ->

@@ -20,134 +20,125 @@ prefixes = { }
 prefix   = (names..., data) ->
   for name in names
     prefixes[name] = data
-browsers = (data) ->
-  need = []
-  for browser, versions of data.stats
-    for interval, support of versions
-      for version in interval.split('-')
-        if updater.browsers[browser] and support.match(/\sx($|\s)/)
-          version = version.replace(/\.0$/, '')
-          need.push(updater.browsers[browser] + ' ' + version)
-  need
 
 # Border Radius
-updater.feature 'border-radius.json', (data) ->
+updater.feature 'border-radius.json', (browsers) ->
   prefix 'border-radius',
-          browsers:   browsers(data)
+          browsers:   browsers
           transition: true
   prefix 'border-top-left-radius',
-          browsers:   browsers(data)
+          browsers:   browsers
           transition: true
   prefix 'border-top-right-radius',
-          browsers:   browsers(data)
+          browsers:   browsers
           transition: true
   prefix 'border-bottom-right-radius',
-          browsers:   browsers(data)
+          browsers:   browsers
           transition: true
   prefix 'border-bottom-left-radius',
-          browsers:   browsers(data)
+          browsers:   browsers
           transition: true
 
 # Box Shadow
-updater.feature 'css-boxshadow.json', (data) ->
+updater.feature 'css-boxshadow.json', (browsers) ->
   prefix 'box-shadow',
-          browsers:   browsers(data)
+          browsers:   browsers
           transition: true
 
 # Animation
-updater.feature 'css-animation.json', (data) ->
+updater.feature 'css-animation.json', (browsers) ->
   prefix 'animation', 'animation-name', 'animation-duration',
          'animation-delay', 'animation-direction', 'animation-fill-mode',
          'animation-iteration-count', 'animation-play-state',
          'animation-timing-function', '@keyframes',
-          browsers: browsers(data)
+          browsers: browsers
 
 # Transition
-updater.feature 'css-transitions.json', (data) ->
+updater.feature 'css-transitions.json', (browsers) ->
   prefix 'transition', 'transition-property', 'transition-duration',
          'transition-delay', 'transition-timing-function',
-          browsers: browsers(data)
+          browsers: browsers
 
 # Transform
-updater.feature 'transforms2d.json', (data) ->
+updater.feature 'transforms2d.json', (browsers) ->
   prefix 'transform', 'transform-origin', 'perspective', 'perspective-origin',
-          browsers:   browsers(data)
+          browsers:   browsers
           transition: true
 
   prefix 'transform-style', 'backface-visibility',
-          browsers: browsers(data)
+          browsers: browsers
 
 # Gradients
-updater.feature 'css-gradients.json', (data) ->
+updater.feature 'css-gradients.json', (browsers) ->
   prefix 'linear-gradient', 'repeating-linear-gradient',
          'radial-gradient', 'repeating-radial-gradient',
           props:   ['background', 'background-image', 'border-image']
-          browsers:  browsers(data)
+          browsers:  browsers
 
 # Box sizing
-updater.feature 'css3-boxsizing.json', (data) ->
+updater.feature 'css3-boxsizing.json', (browsers) ->
   prefix 'box-sizing',
-          browsers: browsers(data)
+          browsers: browsers
 
 # Filter Effects
-updater.feature 'css-filters.json', (data) ->
+updater.feature 'css-filters.json', (browsers) ->
   prefix 'filter',
-          browsers:   browsers(data)
+          browsers:   browsers
           transition: true
 
 # Multicolumns
-updater.feature 'multicolumn.json', (data) ->
+updater.feature 'multicolumn.json', (browsers) ->
   prefix 'columns', 'column-width', 'column-gap',
          'column-rule', 'column-rule-color', 'column-rule-width',
-          browsers:   browsers(data)
+          browsers:   browsers
           transition: true
 
   prefix 'column-count', 'column-rule-style', 'column-span', 'column-fill',
          'break-before', 'break-after', 'break-inside',
-          browsers:   browsers(data)
+          browsers:   browsers
 
 # User select
-updater.feature 'user-select-none.json', (data) ->
+updater.feature 'user-select-none.json', (browsers) ->
   prefix 'user-select',
-          browsers: browsers(data)
+          browsers: browsers
 
 # Flexible Box Layout
-updater.feature 'flexbox.json', (data) ->
+updater.feature 'flexbox.json', (browsers) ->
   prefix 'display-flex',
-          browsers: browsers(data)
+          browsers: browsers
 
   prefix 'flex', 'flex-direction', 'flex-wrap', 'flex-flow', 'flex-grow',
          'flex-shrink', 'flex-basis', 'justify-content', 'order',
          'align-items', 'align-self', 'align-content',
-          browsers: browsers(data)
+          browsers: browsers
 
 # calc() unit
-updater.feature 'calc.json', (data) ->
+updater.feature 'calc.json', (browsers) ->
   prefix 'calc',
           props:  ['*']
-          browsers: browsers(data)
+          browsers: browsers
 
 # Background options
-updater.feature 'background-img-opts.json', (data) ->
+updater.feature 'background-img-opts.json', (browsers) ->
   prefix 'background-clip', 'background-origin', 'background-size',
-          browsers: browsers(data)
+          browsers: browsers
 
 # Font feature settings
-updater.feature 'font-feature.json', (data) ->
+updater.feature 'font-feature.json', (browsers) ->
   prefix 'font-feature-settings', 'font-variant-ligatures',
          'font-language-override','font-kerning',
-          browsers: browsers(data)
+          browsers: browsers
 
 # Border image
-updater.feature 'border-image.json', (data) ->
+updater.feature 'border-image.json', (browsers) ->
   prefix 'border-image',
-          browsers: browsers(data)
+          browsers: browsers
 
 # Selection selector
 # Wait for https://github.com/Fyrd/caniuse/pull/269
-updater.fork 'porada/patch-1', 'css-selection.json', (data) ->
+updater.fork 'porada/patch-1', 'css-selection.json', (browsers) ->
   prefix '::selection',
           selector: true,
-          browsers: browsers(data)
+          browsers: browsers
 
 updater.done -> updater.save('prefixes', prefixes)

@@ -48,18 +48,27 @@ module.exports =
         @requests -= 1
         @doneCallback?() if @requests == 0
 
-  # Load file from Can I Use repository and run `callback` with JSON content.
-  caniuse: (file, callback) ->
-    @github("Fyrd/caniuse/master/#{file}", callback)
+  # Parse browsers list in feature file
+  parse: (data) ->
+    need = []
+    for browser, versions of data.stats
+      for interval, support of versions
+        for version in interval.split('-')
+          if @browsers[browser] and support.match(/\sx($|\s)/)
+            version = version.replace(/\.0$/, '')
+            need.push(@browsers[browser] + ' ' + version)
+    need
 
   # Can I Use shortcut to request files in features/ dir.
   feature: (file, callback) ->
-    @caniuse("features-json/#{file}", callback)
+    url = "Fyrd/caniuse/master/features-json/#{file}"
+    @github url, (data) => callback @parse(data)
 
   # Get Can I Use features from another user fork
   fork: (fork, file, callback) ->
     [user, branch] = fork.split('/')
-    @github("#{user}/caniuse/#{branch}/features-json/#{file}", callback)
+    url = "#{user}/caniuse/#{branch}/features-json/#{file}"
+    @github url, (data) => callback @parse(data)
 
   # Return string of object. Like `JSON.stringify`, but output CoffeeScript.
   stringify: (obj, indent = '') ->
