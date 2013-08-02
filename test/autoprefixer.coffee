@@ -3,30 +3,33 @@ Browsers     = require('../lib/autoprefixer/browsers')
 cases        = require('./lib/cases')
 rework       = require('rework')
 
-cleaner   = autoprefixer('none')
-compiler  = autoprefixer('chrome 25', 'opera 12')
-borderer  = autoprefixer('safari 4', 'ff 3.6')
-flexboxer = autoprefixer('chrome 25', 'ff 21', 'ie 10')
+cleaner     = autoprefixer('none')
+compiler    = autoprefixer('chrome 25', 'opera 12')
+borderer    = autoprefixer('safari 4', 'ff 3.6')
+flexboxer   = autoprefixer('chrome 25', 'ff 21', 'ie 10')
+selectioner = autoprefixer('ff 22')
 
 prefixer = (name) ->
   if name == 'border-radius'
     borderer
   else if name == 'flexbox'
     flexboxer
+  else if name == 'selectors'
+    selectioner
   else
     compiler
 
 compare = (from, to) ->
   cases.clean(from).should.eql cases.clean(to)
 
-test = (from, instansce = compiler) ->
+test = (from, instansce = prefixer(from)) ->
   input  = cases.read('autoprefixer/' + from)
   output = cases.read('autoprefixer/' + from + '.out')
   css    = instansce.compile(input)
   compare(css, output)
 
 commons = ['transition', 'values', 'keyframes', 'gradient', 'filter', 'flexbox',
-            'border-image', 'border-radius', 'background-clip']
+            'border-image', 'border-radius', 'background-clip', 'selectors']
 
 describe 'autoprefixer()', ->
 
@@ -48,6 +51,7 @@ describe 'Autoprefixer', ->
     it 'prefixes transition', -> test('transition')
     it 'prefixes values',     -> test('values')
     it 'prefixes @keyframes', -> test('keyframes')
+    it 'prefixes selectors',  -> test('selectors', selectioner)
 
     it 'removes unnecessary prefixes', ->
       test('old', cleaner)

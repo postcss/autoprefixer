@@ -1,12 +1,13 @@
-Rule  = require('../lib/autoprefixer/rule')
-Rules = require('../lib/autoprefixer/rules')
-cases = require('./lib/cases')
-utils = require('../lib/autoprefixer/utils')
+Rule     = require('../lib/autoprefixer/rule')
+Rules    = require('../lib/autoprefixer/rules')
+Selector = require('../lib/autoprefixer/selector')
+cases    = require('./lib/cases')
+utils    = require('../lib/autoprefixer/utils')
 
 describe 'Rule', ->
   beforeEach ->
     @nodes = cases.load('rule/rule')
-    @rules = new Rules(@nodes.stylesheet)
+    @rules = new Rules(@nodes.stylesheet.rules)
     @rule  = new Rule(@rules, 0, @nodes.stylesheet.rules[0])
 
   describe 'each()', ->
@@ -55,14 +56,33 @@ describe 'Rule', ->
       @rule.byProp('top').value.should.eql '1px'
       (!!@rule.byProp('position')).should.be.false
 
-  describe 'remove()', ->
+  describe 'removeDecl()', ->
 
     it 'removes declaration in interation', ->
       decls = []
 
       @rule.each (i) =>
         decls.push(i.prop + ' ' + i.value)
-        @rule.remove(i.number) if i.prop == 'top'
+        @rule.removeDecl(i.number) if i.prop == 'top'
 
       cases.compare(@nodes, 'rule/remove')
       decls.should.eql ['color black', 'top 1px', 'left 2px']
+
+  describe 'prefixSelector()', ->
+
+    it 'clone itself with prefixed selectors', ->
+      selector = new Selector('a', ['-moz-', '-webkit-'])
+      @rule.prefixSelector(selector)
+      cases.compare(@nodes, 'rule/selector')
+
+    it "don't clone twice", ->
+      selector = new Selector('a', ['-moz-', '-webkit-'])
+      @rule.prefixSelector(selector)
+      @rule.prefixSelector(selector)
+      cases.compare(@nodes, 'rule/selector')
+
+  describe 'remove()', ->
+
+    it 'removes itself', ->
+      @rule.remove()
+      @nodes.stylesheet.rules.should.be.empty

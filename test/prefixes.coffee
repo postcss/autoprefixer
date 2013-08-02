@@ -50,7 +50,7 @@ describe 'Prefixes', ->
 
     it 'preprocesses prefixes data', ->
       fill.add.should.eql
-        '_selectors': [new Selector('c', ['-ms-'])]
+        'selectors': [new Selector('c', ['-ms-'])]
         'transition':
           values: [name: 'a', prefixes: ['-moz-'], regexp: utils.regexp('a')]
         'transition-property':
@@ -62,7 +62,7 @@ describe 'Prefixes', ->
           values: [name: 'b', prefixes: ['-ms-'], regexp: utils.regexp('b')]
 
       JSON.stringify(fill.remove).should.eql JSON.stringify({
-        '_selectors': ['-moz-c']
+        'selectors': ['-moz-c']
         'transition':
           values: [new OldValue('-webkit-a'), new OldValue('-ms-a')]
         'transition-property':

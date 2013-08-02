@@ -46,4 +46,21 @@ class Rules
       @number += 1
     false
 
+  # Is rules list contain rule with this selector
+  contain: (selector) ->
+    for i in @list
+      continue unless i.selectors
+      return true if i.selectors.join(', ') == selector
+    false
+
+  # Add new rule at selected position
+  add: (position, rule) ->
+    @list.splice(position, 0, rule)
+    @number += 1
+
+  # Remove rule in selected position
+  remove: (position) ->
+    @list.splice(position, 1)
+    @number -= 1
+
 module.exports = Rules

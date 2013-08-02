@@ -53,10 +53,10 @@ class Prefixes
 
   # Cache prefixes data to fast CSS processing
   preprocess: (selected) ->
-    add = { _selectors: [] }
+    add = { selectors: [] }
     for name, prefixes of selected.add
       if @data[name].selector
-        add._selectors.push(new Selector(name, prefixes))
+        add.selectors.push(new Selector(name, prefixes))
 
       else
         props = if @data[name].transition
@@ -75,12 +75,12 @@ class Prefixes
           add[name] = { } unless add[name]
           add[name].prefixes = prefixes
 
-    remove = { _selectors: [] }
+    remove = { selectors: [] }
     for name, prefixes of selected.remove
       if @data[name].selector
         selector = new Selector(name, prefixes)
         for prefix in prefixes
-          remove._selectors.push(selector.prefixed(prefix))
+          remove.selectors.push(selector.prefixed(prefix))
 
       else
         props = if @data[name].transition

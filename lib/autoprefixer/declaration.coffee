@@ -67,7 +67,7 @@ class Declaration
 
   # Remove this declaration
   remove: ->
-    @rule.remove(@number)
+    @rule.removeDecl(@number)
 
   # Add to cache, that we need to add new property with prefixed value
   prefixValue: (prefix, value) ->

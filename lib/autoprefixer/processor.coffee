@@ -19,10 +19,18 @@ class Processor
 
   # Add necessary prefixes
   add: (css) ->
+    # Keyframes
     css.eachKeyframes (keyframes) =>
       return if keyframes.prefix
       @prefixes.each '@keyframes', (prefix) ->
         keyframes.cloneWithPrefix(prefix)
+
+    # Selectors
+    for selector in @prefixes.add.selectors
+      css.eachRule (rule) =>
+        return unless rule.selectors
+        if selector.check(rule.selectors)
+          rule.prefixSelector(selector)
 
     # Properties
     css.eachDeclaration (decl, vendor) =>
@@ -43,9 +51,17 @@ class Processor
 
   # Remove unnecessary pefixes
   remove: (css) ->
+    # Keyframes
     css.eachKeyframes (keyframes) =>
       if @prefixes.toRemove(keyframes.prefix + '@keyframes')
         keyframes.remove()
+
+    # Selectors
+    for selector in @prefixes.remove.selectors
+      css.eachRule (rule) =>
+        return unless rule.selectors
+        if rule.selectors.indexOf(selector) != -1
+          rule.remove()
 
     css.eachDeclaration (decl, vendor) =>
       # Properties
