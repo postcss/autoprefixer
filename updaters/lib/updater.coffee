@@ -48,6 +48,18 @@ module.exports =
         @requests -= 1
         @doneCallback?() if @requests == 0
 
+  # Correct sort by float versions
+  sort: (browsers) ->
+    browsers.sort (a, b) ->
+      a = a.split(' ')
+      b = b.split(' ')
+      if a[0] > b[0]
+        1
+      else if a[0] < b[0]
+        -1
+      else
+        parseFloat(a[1]) - parseFloat(b[1])
+
   # Parse browsers list in feature file
   parse: (data) ->
     need = []
@@ -57,7 +69,7 @@ module.exports =
           if @browsers[browser] and support.match(/\sx($|\s)/)
             version = version.replace(/\.0$/, '')
             need.push(@browsers[browser] + ' ' + version)
-    need
+    @sort(need)
 
   # Can I Use shortcut to request files in features/ dir.
   feature: (file, callback) ->
@@ -77,7 +89,7 @@ module.exports =
     for name, data of browsers
       for version in data.versions
         list.push(name + ' ' + version)
-    callback(list)
+    callback(@sort list)
 
   # Return string of object. Like `JSON.stringify`, but output CoffeeScript.
   stringify: (obj, indent = '') ->
