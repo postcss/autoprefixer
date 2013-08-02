@@ -4,6 +4,22 @@ describe 'Selector', ->
   beforeEach ->
     @selector = new Selector('::selection')
 
+  describe '.load()', ->
+
+    it 'loads class by value', ->
+      class Hacked
+        @names = ['hacked', 'hhacked']
+        constructor: (@name, @prefixes) ->
+      Selector.register(Hacked)
+
+      hacked = Selector.load('hacked', ['-o-'])
+      hacked.should.be.an.instanceof(Hacked)
+      hacked.name.should.eql 'hacked'
+      hacked.prefixes.should.eql ['-o-']
+
+      Selector.load('hhacked').should.be.an.instanceof(Hacked)
+      Selector.load('b').should.be.an.instanceof(Selector)
+
   describe 'prefixed()', ->
 
     it 'adds prefix after non-letters symbols', ->

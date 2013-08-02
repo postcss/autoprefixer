@@ -17,6 +17,22 @@
 utils = require('./utils')
 
 class Selector
+  # Add hack to selected names
+  @register: (klass) ->
+    for name in klass.names
+      @hacks[name] = klass
+
+  # Override classes for special values
+  @hacks: { }
+
+  # Detect right class by value name and create it instance
+  @load: (name, prefixes) ->
+    klass = @hacks[name]
+    if klass
+      new klass(name, prefixes)
+    else
+      new Selector(name, prefixes)
+
   constructor: (@name, @prefixes) ->
 
   # Is rule selectors need to be prefixed
