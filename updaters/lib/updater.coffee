@@ -70,6 +70,15 @@ module.exports =
     url = "#{user}/caniuse/#{branch}/features-json/#{file}"
     @github url, (data) => callback @parse(data)
 
+  # Call callback with list of all browsers
+  all: (callback) ->
+    browsers = require('../../data/browsers')
+    list = []
+    for name, data of browsers
+      for version in data.versions
+        list.push(name + ' ' + version)
+    callback(list)
+
   # Return string of object. Like `JSON.stringify`, but output CoffeeScript.
   stringify: (obj, indent = '') ->
     if obj instanceof Array

@@ -141,4 +141,10 @@ updater.fork 'porada/patch-1', 'css-selection.json', (browsers) ->
           selector: true,
           browsers: browsers
 
+# Placeholder selector
+updater.all (browsers) ->
+  prefix '::placeholder',
+          selector: true,
+          browsers: browsers
+
 updater.done -> updater.save('prefixes', prefixes)
