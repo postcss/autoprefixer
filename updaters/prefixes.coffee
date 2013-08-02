@@ -142,11 +142,8 @@ updater.fork 'porada/patch-1', 'css-selection.json', (browsers) ->
           browsers: browsers
 
 # Placeholder selector
-updater.all (browsers) ->
-  browsers = browsers.filter (i) ->
-    [name, version] = i.split(' ')
-    name != 'opera' || parseFloat(version) >= 15
-
+# Wait for https://github.com/Fyrd/caniuse/pull/272
+updater.fork 'ai/css-placeholder', 'css-placeholder.json', (browsers) ->
   prefix '::placeholder',
           selector: true,
           browsers: browsers
