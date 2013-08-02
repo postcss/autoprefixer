@@ -143,4 +143,10 @@ updater.caniuse 'features-json/border-image.json', (data) ->
   prefix 'border-image',
           browsers: browsers(data)
 
+# Selection selector
+updater.caniuse 'features-json/css-selection.json', (data) ->
+  prefix '::selection',
+          selector: true,
+          browsers: browsers(data)
+
 updater.done -> updater.save('prefixes', prefixes)

@@ -2,6 +2,12 @@
 # See updaters/ dir for generator. Run bin/update to update.
 
 module.exports =
+  "::selection":
+    selector: true
+    browsers: [
+      
+    ]
+
   "@keyframes":
     browsers: [
       "ff 5"
