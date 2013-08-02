@@ -144,7 +144,8 @@ updater.caniuse 'features-json/border-image.json', (data) ->
           browsers: browsers(data)
 
 # Selection selector
-updater.caniuse 'features-json/css-selection.json', (data) ->
+# Wait for https://github.com/Fyrd/caniuse/pull/269
+updater.fork 'porada/patch-1', 'features-json/css-selection.json', (data) ->
   prefix '::selection',
           selector: true,
           browsers: browsers(data)

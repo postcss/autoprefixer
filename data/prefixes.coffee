@@ -5,7 +5,31 @@ module.exports =
   "::selection":
     selector: true
     browsers: [
-      
+      "ff 2"
+      "ff 3"
+      "ff 4"
+      "ff 5"
+      "ff 6"
+      "ff 7"
+      "ff 8"
+      "ff 9"
+      "ff 10"
+      "ff 11"
+      "ff 12"
+      "ff 13"
+      "ff 14"
+      "ff 15"
+      "ff 16"
+      "ff 17"
+      "ff 18"
+      "ff 19"
+      "ff 20"
+      "ff 21"
+      "ff 22"
+      "ff 23"
+      "ff 24"
+      "ff 3.5"
+      "ff 3.6"
     ]
 
   "@keyframes":

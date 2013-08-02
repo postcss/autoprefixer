@@ -37,16 +37,25 @@ module.exports =
   done: (callback) ->
     @doneCallback = callback
 
-  # Load file from Can I Use repository and run `callback` with JSON content.
-  caniuse: (file, callback) ->
+  # Load file from GitHub RAWs
+  github: (path, callback) ->
     @requests += 1
-    https.get "https://raw.github.com/Fyrd/caniuse/master/#{file}", (res) =>
+    https.get "https://raw.github.com/#{path}", (res) =>
       data = ''
       res.on 'data', (chunk) -> data += chunk
       res.on 'end', =>
         callback(JSON.parse(data))
         @requests -= 1
         @doneCallback?() if @requests == 0
+
+  # Load file from Can I Use repository and run `callback` with JSON content.
+  caniuse: (file, callback) ->
+    @github("Fyrd/caniuse/master/#{file}", callback)
+
+  # Get Can I Use file from another user fork
+  fork: (fork, file, callback) ->
+    [user, branch] = fork.split('/')
+    @github("#{user}/caniuse/#{branch}/#{file}", callback)
 
   # Return string of object. Like `JSON.stringify`, but output CoffeeScript.
   stringify: (obj, indent = '') ->
