@@ -135,15 +135,13 @@ updater.feature 'border-image.json', (browsers) ->
           browsers: browsers
 
 # Selection selector
-# Wait for https://github.com/Fyrd/caniuse/pull/269
-updater.fork 'porada/patch-1', 'css-selection.json', (browsers) ->
+updater.feature 'css-selection.json', (browsers) ->
   prefix '::selection',
           selector: true,
           browsers: browsers
 
 # Placeholder selector
-# Wait for https://github.com/Fyrd/caniuse/pull/272
-updater.fork 'ai/css-placeholder', 'css-placeholder.json', (browsers) ->
+updater.feature 'css-placeholder.json', (browsers) ->
   prefix '::placeholder',
           selector: true,
           browsers: browsers
