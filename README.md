@@ -2,8 +2,7 @@
 
 <img align="right" width="94" src="http://ai.github.io/autoprefixer/logo.svg">
 
-Parse CSS and add vendor prefixes to CSS rules using values
-from the [Can I Use](http://caniuse.com/).
+Autoprefixer parses CSS and adds vendor-prefixed CSS properties using the [Can I Use](http://caniuse.com/) database.
 
 Write your CSS rules without vendor prefixes (in fact, forget about them
 entirely):
@@ -13,7 +12,7 @@ var css = 'a { transition: transform 1s }';
 var prefixed = autoprefixer.compile(css);
 ```
 
-Autoprefixer uses a database with current browser popularity
+Autoprefixer uses the data on current browser popularity
 and properties support to apply prefixes for you:
 
 ```css
@@ -37,24 +36,24 @@ Sponsored by [Evil Martians](http://evilmartians.com/).
 
 ### Forget about prefixes
 
-Best tool, is a tool, that you can’t see, but it’s work.
-This is a main idea behind Autoprefixer.
+The best tool is a tool you can't see that does the work for you.
+This is the main idea behind Autoprefixer.
 
-So Autoprefixer interface is simple: just forget about vendor prefixes
-and write normal CSS by latest W3C specs. You don’t need
-special language (like Sass) and special mixins.
+Autoprefixer interface is simple: just forget about vendor prefixes
+and write normal CSS according to latest W3C specs. You don’t need
+a special language (like Sass) or special mixins.
 
-Because Autoprefixer is postprocessor and doesn’t depend on styles language,
-you can also use it with Sass, Stylus or LESS preprocessors.
+Because Autoprefixer is a postprocessor for CSS,
+you can also use it with preprocessors, such as Sass, Stylus or LESS.
 
 ### Actual data from Can I Use
 
-Autoprefixer uses latest database from [Can I Use](http://caniuse.com/),
-understands what browsers is actual and popular and adds only necessary
+Autoprefixer uses the most recent data from [Can I Use](http://caniuse.com/),
+understands which browsers are actual and popular and adds only the necessary
 vendor prefixes.
 
-Also it cleans your CSS from old prefixes (like unnecessary `border-radius`
-from a lot of CSS libraries):
+It also cleans your CSS from old prefixes (like prefixed `border-radius`, produced
+by many CSS libraries):
 
 ```css
 a {
@@ -76,7 +75,7 @@ a {
 Autoprefixer is about 50 times faster than Compass and 10 times faster
 than Stylus.
 
-On Core i7, 10 GB RAM and SSD, benchmark with GitHub styles is:
+On a Core i7 with 10 GB of RAM and SSD, benchmark with GitHub styles is:
 
 ```
 ~/Dev/autoprefixer$ ./node_modules/.bin/cake bench
@@ -87,8 +86,8 @@ Rework:       213 ms   (1.2 times faster)
 Stylus:       2596 ms  (10.1 times slower)
 ```
 
-Unlike -prefix-free Autoprefixer compiles CSS once on deploy and doesn’t hit
-client performance.
+Unlike -prefix-free, Autoprefixer compiles CSS once on deploy and doesn’t hit
+client-side performance.
 
 ### Rewrite syntax
 
@@ -96,7 +95,7 @@ Flexbox or gradients have different syntaxes in different browsers
 (sometimes you need to recalculate angles, sometimes you need 2 old properties
 instead of new one), but Autoprefixer hides this from you.
 
-Just write code by latest W3C specs and Autoprefixer write code
+Just code by latest W3C specs and Autoprefixer will produce the code
 for old browsers:
 
 ```css
@@ -119,7 +118,7 @@ a {
 
 ## Browsers
 
-You can specify browsers for your project (by default, it’s `last 2 versions`):
+You can specify the browsers you want to target in your project (by default, it’s `last 2 versions`):
 
 ```js
 autoprefixer("last 1 version", "> 1%", "ie 8", "ie 7").compile(css);
@@ -141,7 +140,7 @@ autoprefixer("last 1 version", "bb 10", "android 4").compile(css);
 
 ## Inspect
 
-You can check, what browsers is selected and what properties will be prefixes:
+You can check which browsers are selected and which properties will be prefixed:
 
 ```js
 inspect = autoprefixer("last 1 version").inspect();
@@ -153,7 +152,7 @@ console.log(inspect);
 ### Ruby on Rails
 
 Add [autoprefixer-rails](https://github.com/ai/autoprefixer-rails) gem
-to `Gemfile` and write CSS in usual way:
+to `Gemfile` and write CSS in a usual way:
 
 ```ruby
 gem "autoprefixer-rails"
@@ -190,8 +189,8 @@ prefixed = AutoprefixerRails.compile(css)
 
 ### Grunt
 
-You can use [grunt-autoprefixer](https://github.com/nDmitry/grunt-autoprefixer)
-plugin for Grunt. Install npm package and add it to Gruntfile:
+You can use the [grunt-autoprefixer](https://github.com/nDmitry/grunt-autoprefixer)
+plugin for Grunt. Install the npm package and add it to Gruntfile:
 
 ```js
 grunt.loadNpmTasks('grunt-autoprefixer');
@@ -208,12 +207,12 @@ var prefixed     = autoprefixer.compile(css);
 
 ### JavaScript
 
-You can use Autoprefixer in browser or non-node JS runtime
+You can use Autoprefixer in the browser or a non-Node.js runtime
 with [standalone version](https://raw.github.com/ai/autoprefixer-rails/master/vendor/autoprefixer.js).
 
 ### Rework
 
-Autoprefixer can be also as [Rework](https://github.com/visionmedia/rework)
+Autoprefixer can be also used as a [Rework](https://github.com/visionmedia/rework)
 filter, so you can combine it with other filters:
 
 ```js
@@ -225,14 +224,14 @@ rework(css).
 
 ### Sublime Text
 
-You can process your styles directly in Sublime Text by
+You can process your styles directly in Sublime Text with the
 [sublime-autoprefixer](https://github.com/sindresorhus/sublime-autoprefixer)
 plugin.
 
 
 ### Others
 
-You can use `autoprefixer` binary to process CSS files in any assets manager:
+You can use the `autoprefixer` binary to process CSS files using any assets manager:
 
 ```
 sudo npm install --global autoprefixer
