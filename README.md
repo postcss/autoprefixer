@@ -2,7 +2,8 @@
 
 <img align="right" width="94" src="http://ai.github.io/autoprefixer/logo.svg">
 
-Autoprefixer parses CSS and adds vendor-prefixed CSS properties using the [Can I Use](http://caniuse.com/) database.
+Parse CSS and add vendor prefixes to CSS rules using values
+from the [Can I Use](http://caniuse.com/).
 
 Write your CSS rules without vendor prefixes (in fact, forget about them
 entirely):
@@ -52,8 +53,8 @@ Autoprefixer uses the most recent data from [Can I Use](http://caniuse.com/),
 understands which browsers are actual and popular and adds only the necessary
 vendor prefixes.
 
-It also cleans your CSS from old prefixes (like prefixed `border-radius`, produced
-by many CSS libraries):
+It also cleans your CSS from old prefixes (like prefixed `border-radius`,
+produced by many CSS libraries):
 
 ```css
 a {
@@ -118,7 +119,8 @@ a {
 
 ## Browsers
 
-You can specify the browsers you want to target in your project (by default, it’s `last 2 versions`):
+You can specify the browsers you want to target in your project
+(by default, it’s `last 2 versions`):
 
 ```js
 autoprefixer("last 1 version", "> 1%", "ie 8", "ie 7").compile(css);
