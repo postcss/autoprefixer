@@ -1,3 +1,9 @@
+== 0.7 (We Do Not Sow)
+* Add vendor prefixes to selectors.
+* Add ::selection and ::placeholder selectors support.
+* Allow to load support data from Can I Use pull requests.
+* Remove deprecated API.
+
 == 0.6 (As High As Honor)
 * New faster API, which cache preprocessed data. Old API is deprecated.
 * A lot of perfomance improvements.
