@@ -48,8 +48,6 @@ autoprefixer.data =
   browsers: require('../data/browsers')
   prefixes: require('../data/prefixes')
 
-require('./autoprefixer/deprecated').install(autoprefixer)
-
 class Autoprefixer
   constructor: (@prefixes, @data) ->
     @browsers = @prefixes.browsers.selected
@@ -84,5 +82,21 @@ class Autoprefixer
   # Remove /**/ in non-IE6 declaration, until CSS parser has this issue
   removeBadComments: (css) ->
     css.replace(/\/\*[^\*]*\{[^\*]*\*\//g, '')
+
+# Lazy load for Autoprefixer with default browsers
+autoprefixer.default = ->
+  @instance ||= autoprefixer()
+
+# Compile with default Autoprefixer
+autoprefixer.compile = (str) ->
+  @default().compile(str)
+
+# Rework with default Autoprefixer
+autoprefixer.rework = (stylesheet) ->
+  @default().rework(stylesheet)
+
+# Inspect with default Autoprefixer
+autoprefixer.inspect = ->
+  @default().inspect()
 
 module.exports = autoprefixer
