@@ -146,4 +146,9 @@ updater.feature 'css-placeholder.json', (browsers) ->
           selector: true,
           browsers: browsers
 
+# Hyphenation
+updater.feature 'css-hyphens.json', (browsers) ->
+  prefix 'hyphens',
+          browsers: browsers
+
 updater.done -> updater.save('prefixes', prefixes)

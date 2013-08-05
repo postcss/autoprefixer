@@ -3320,6 +3320,41 @@ module.exports =
       "safari 7"
     ]
 
+  hyphens:
+    browsers: [
+      "ff 6"
+      "ff 7"
+      "ff 8"
+      "ff 9"
+      "ff 10"
+      "ff 11"
+      "ff 12"
+      "ff 13"
+      "ff 14"
+      "ff 15"
+      "ff 16"
+      "ff 17"
+      "ff 18"
+      "ff 19"
+      "ff 20"
+      "ff 21"
+      "ff 22"
+      "ff 23"
+      "ff 24"
+      "ie 10"
+      "ie 11"
+      "ios 4.2"
+      "ios 4.3"
+      "ios 5"
+      "ios 5.1"
+      "ios 6"
+      "ios 6.1"
+      "ios 7"
+      "safari 5.1"
+      "safari 6"
+      "safari 7"
+    ]
+
   "justify-content":
     browsers: [
       "android 2.1"
