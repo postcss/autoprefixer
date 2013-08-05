@@ -18,7 +18,7 @@
     "component":     "0.17.0",
     "fs-extra":      "0.6.3",
     "should":        "1.2.2",
-    "stylus":        "0.35.0",
+    "stylus":        "0.36.0",
     "rework":        "0.17.3",
     "mocha":         "1.12.0",
     "glob":          "3.2.6",
