@@ -198,6 +198,15 @@ plugin for Grunt. Install the npm package and add it to Gruntfile:
 grunt.loadNpmTasks('grunt-autoprefixer');
 ```
 
+### Mincer
+
+To use Autoprefixer in [Mincer](https://github.com/nodeca/mincer),
+install `autoprefixer` npm package and enable it:
+
+```js
+environment.enable("autoprefixer");
+```
+
 ### Node.js
 
 Use `autoprefixer` npm package:
