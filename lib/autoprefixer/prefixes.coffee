@@ -22,6 +22,7 @@ Value     = require('./value')
 
 Value.register    require('./hacks/gradient')
 Selector.register require('./hacks/placeholder')
+Selector.register require('./hacks/fullscreen')
 
 class Prefixes
   constructor: (@data, @browsers) ->

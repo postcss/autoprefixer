@@ -151,4 +151,10 @@ updater.feature 'css-hyphens.json', (browsers) ->
   prefix 'hyphens',
           browsers: browsers
 
+# Fullscreen selector
+updater.feature 'fullscreen.json', (browsers) ->
+  prefix ':fullscreen',
+          selector: true,
+          browsers: browsers
+
 updater.done -> updater.save('prefixes', prefixes)

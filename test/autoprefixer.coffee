@@ -30,7 +30,7 @@ test = (from, instansce = prefixer(from)) ->
 
 commons = ['transition', 'values', 'keyframes', 'gradient', 'filter', 'flexbox',
             'border-image', 'border-radius', 'background-clip', 'selectors',
-            'placeholder']
+            'placeholder', 'fullscreen']
 
 describe 'autoprefixer()', ->
 
@@ -112,3 +112,4 @@ describe 'Autoprefixer', ->
     it 'supports old Mozilla prefixes', -> test('border-radius', borderer)
     it 'supports all flexbox syntaxes', -> test('flexbox',       flexboxer)
     it 'supports all placeholders',     -> test('placeholder')
+    it 'supports all fullscreens',      -> test('fullscreen')

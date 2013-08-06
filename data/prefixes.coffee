@@ -99,6 +99,48 @@ module.exports =
       "ff 24"
     ]
 
+  ":fullscreen":
+    selector: true
+    browsers: [
+      "chrome 15"
+      "chrome 16"
+      "chrome 17"
+      "chrome 18"
+      "chrome 19"
+      "chrome 20"
+      "chrome 21"
+      "chrome 22"
+      "chrome 23"
+      "chrome 24"
+      "chrome 25"
+      "chrome 26"
+      "chrome 27"
+      "chrome 28"
+      "chrome 29"
+      "chrome 30"
+      "ff 10"
+      "ff 11"
+      "ff 12"
+      "ff 13"
+      "ff 14"
+      "ff 15"
+      "ff 16"
+      "ff 17"
+      "ff 18"
+      "ff 19"
+      "ff 20"
+      "ff 21"
+      "ff 22"
+      "ff 23"
+      "ff 24"
+      "ie 11"
+      "opera 15"
+      "opera 16"
+      "safari 5.1"
+      "safari 6"
+      "safari 7"
+    ]
+
   "@keyframes":
     browsers: [
       "android 2.1"
