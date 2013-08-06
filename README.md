@@ -162,7 +162,8 @@ gem "autoprefixer-rails"
 
 ### Middleman
 
-Add [middleman-autoprefixer](https://github.com/porada/middleman-autoprefixer) gem to `Gemfile`:
+Add [middleman-autoprefixer](https://github.com/porada/middleman-autoprefixer)
+gem to `Gemfile`:
 
 ```ruby
 gem "middleman-autoprefixer"
@@ -191,7 +192,8 @@ prefixed = AutoprefixerRails.compile(css)
 
 ### Grunt
 
-You can use the [grunt-autoprefixer](https://github.com/nDmitry/grunt-autoprefixer)
+You can use the
+[grunt-autoprefixer](https://github.com/nDmitry/grunt-autoprefixer)
 plugin for Grunt. Install the npm package and add it to Gruntfile:
 
 ```js
@@ -223,7 +225,8 @@ with [standalone version](https://raw.github.com/ai/autoprefixer-rails/master/ve
 
 ### Rework
 
-Autoprefixer can be also used as a [Rework](https://github.com/visionmedia/rework)
+Autoprefixer can be also used as a
+[Rework](https://github.com/visionmedia/rework)
 filter, so you can combine it with other filters:
 
 ```js
@@ -242,7 +245,8 @@ plugin.
 
 ### Others
 
-You can use the `autoprefixer` binary to process CSS files using any assets manager:
+You can use the `autoprefixer` binary to process CSS files using
+any assets manager:
 
 ```
 sudo npm install --global autoprefixer
