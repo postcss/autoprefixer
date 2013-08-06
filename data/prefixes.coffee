@@ -4005,6 +4005,40 @@ module.exports =
       "safari 6"
     ]
 
+  "tab-size":
+    browsers: [
+      "ff 4"
+      "ff 5"
+      "ff 6"
+      "ff 7"
+      "ff 8"
+      "ff 9"
+      "ff 10"
+      "ff 11"
+      "ff 12"
+      "ff 13"
+      "ff 14"
+      "ff 15"
+      "ff 16"
+      "ff 17"
+      "ff 18"
+      "ff 19"
+      "ff 20"
+      "ff 21"
+      "ff 22"
+      "ff 23"
+      "ff 24"
+      "opera 10.6"
+      "opera 11"
+      "opera 11.1"
+      "opera 11.5"
+      "opera 11.6"
+      "opera 12"
+      "opera 12.1"
+      "opera 15"
+      "opera 16"
+    ]
+
   transform:
     browsers: [
       "android 2.1"

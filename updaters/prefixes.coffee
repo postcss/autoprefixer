@@ -157,4 +157,9 @@ updater.feature 'fullscreen.json', (browsers) ->
           selector: true,
           browsers: browsers
 
+# Tab size
+updater.feature 'css3-tabsize.json', (browsers) ->
+  prefix 'tab-size',
+          browsers: browsers
+
 updater.done -> updater.save('prefixes', prefixes)
