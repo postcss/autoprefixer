@@ -26,6 +26,6 @@ class Placeholder extends Selector
     else if '-ms-' == prefix
       ':-ms-input-placeholder'
     else
-      "::#{ prefix }-placeholder"
+      "::#{ prefix }placeholder"
 
 module.exports = Placeholder
