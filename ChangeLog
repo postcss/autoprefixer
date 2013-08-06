@@ -4,6 +4,9 @@
 * Allow to load support data from Can I Use pull requests.
 * Remove deprecated API.
 
+20130806:
+* Add hyphens support.
+
 == 0.6 (As High As Honor)
 * New faster API, which cache preprocessed data. Old API is deprecated.
 * A lot of perfomance improvements.
