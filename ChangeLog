@@ -11,6 +11,10 @@
 * Add tab-size support.
 * Add :fullscreen support.
 
+20130808:
+* Allow to select browser versions by > and >= operator.
+* Fix flex properties in transition.
+
 == 0.6 (As High As Honor)
 * New faster API, which cache preprocessed data. Old API is deprecated.
 * A lot of perfomance improvements.
