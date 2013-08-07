@@ -201,6 +201,26 @@ plugin for Grunt. Install the npm package and add it to Gruntfile:
 grunt.loadNpmTasks('grunt-autoprefixer');
 ```
 
+### Compass
+
+If you use Compass binary to compile your styles, you can easy integrate
+Autoprefixer with it. Install `autoprefixer-rails` gem:
+
+```
+gem install autoprefixer-rails
+```
+
+and add post-compile hook to `config.rb`:
+
+```ruby
+require 'autoprefixer-rails'
+
+on_stylesheet_saved do |file|
+  css = File.read(file)
+  File.open(file, 'w') { |io| io << AutoprefixerRails.compile(css) }
+end
+```
+
 ### Mincer
 
 To use Autoprefixer in [Mincer](https://github.com/nodeca/mincer),
