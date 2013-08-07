@@ -2704,6 +2704,7 @@ module.exports =
     ]
 
   "flex-basis":
+    transition: true
     browsers: [
       "android 2.1"
       "android 2.2"
@@ -2944,6 +2945,7 @@ module.exports =
     ]
 
   "flex-grow":
+    transition: true
     browsers: [
       "android 2.1"
       "android 2.2"
@@ -3024,6 +3026,7 @@ module.exports =
     ]
 
   "flex-shrink":
+    transition: true
     browsers: [
       "android 2.1"
       "android 2.2"
