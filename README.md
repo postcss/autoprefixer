@@ -130,6 +130,7 @@ autoprefixer("last 1 version", "> 1%", "ie 8", "ie 7").compile(css);
   [strategy](http://support.google.com/a/bin/answer.py?answer=33864) in
   Google.
 * `> n%` is browser versions, selected by global usage statistics.
+* `ff > 20` and `ff >= 20` is Firefox versions newer, that 20.
 * `none` don’t set any browsers to clean CSS from any vendor prefixes.
 * You can also set browsers directly.
 

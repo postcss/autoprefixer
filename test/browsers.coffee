@@ -52,6 +52,14 @@ describe 'Browsers', ->
                                     'chrome 3', 'chrome 2',
                                     'opera 15']
 
+    it 'selects by older version', ->
+      browsers = new Browsers(data, ['opera > 3'])
+      browsers.selected.should.eql ['opera 15', 'opera 4']
+
+    it 'selects by older version inclusive', ->
+      browsers = new Browsers(data, ['opera >= 3'])
+      browsers.selected.should.eql ['opera 15', 'opera 4', 'opera 3']
+
     it 'follows explicit requirements', ->
       browsers = new Browsers(data, ['chrome 5', 'opera 4'])
       browsers.selected.should.eql ['chrome 5', 'opera 4']

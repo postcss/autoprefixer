@@ -54,6 +54,19 @@ class Browsers
         @browsers (data) ->
           data.versions.filter (version, i) -> data.popularity[i] > popularity
 
+    newerThen:
+      regexp: /^(\w+) (>=?)\s*([\d\.]+)/
+      select: (browser, sign, version) ->
+        data    = @data[browser]
+        version = parseFloat(version)
+        utils.error("Unknown browser #{browser}") unless data
+
+        if sign == '>'
+          filter = (v) -> v > version
+        else if sign == '>='
+          filter = (v) -> v >= version
+        data.versions.filter(filter).map (v) -> "#{browser} #{v}"
+
     direct:
       regexp: /^(\w+) ([\d\.]+)$/
       select: (browser, version) ->
