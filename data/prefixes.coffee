@@ -4035,8 +4035,6 @@ module.exports =
       "opera 11.6"
       "opera 12"
       "opera 12.1"
-      "opera 15"
-      "opera 16"
     ]
 
   transform:
