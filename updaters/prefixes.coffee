@@ -107,9 +107,13 @@ updater.feature 'flexbox.json', (browsers) ->
   prefix 'display-flex',
           browsers: browsers
 
-  prefix 'flex', 'flex-direction', 'flex-wrap', 'flex-flow', 'flex-grow',
-         'flex-shrink', 'flex-basis', 'justify-content', 'order',
-         'align-items', 'align-self', 'align-content',
+  prefix 'flex',
+          transition: true
+          browsers: browsers
+
+  prefix 'flex-direction', 'flex-wrap', 'flex-flow', 'flex-grow', 'flex-shrink',
+         'flex-basis', 'justify-content', 'order', 'align-items', 'align-self',
+         'align-content',
           browsers: browsers
 
 # calc() unit

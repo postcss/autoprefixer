@@ -2623,6 +2623,7 @@ module.exports =
     transition: true
 
   flex:
+    transition: true
     browsers: [
       "android 2.1"
       "android 2.2"
