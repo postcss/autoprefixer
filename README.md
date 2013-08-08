@@ -204,7 +204,7 @@ grunt.loadNpmTasks('grunt-autoprefixer');
 ### Prepros
 
 I you want to build your assets in GUI, try
-[Prepros](https://github.com/sbspk/Prepros). Just set “Auto Prefix CSS”
+[Prepros](http://alphapixels.com/prepros/). Just set “Auto Prefix CSS”
 [checkbox](https://f.cloud.github.com/assets/3478693/930798/faa29892-0016-11e3-8901-87850de7aed2.jpg)
 in right panel.
 
