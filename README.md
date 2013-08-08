@@ -201,6 +201,13 @@ plugin for Grunt. Install the npm package and add it to Gruntfile:
 grunt.loadNpmTasks('grunt-autoprefixer');
 ```
 
+### Prepros
+
+I you want to build your assets in GUI, try
+[Prepros](https://github.com/sbspk/Prepros). Just set “Auto Prefix CSS”
+[checkbox](https://f.cloud.github.com/assets/3478693/930798/faa29892-0016-11e3-8901-87850de7aed2.jpg)
+in right panel.
+
 ### Compass
 
 If you use Compass binary to compile your styles, you can easy integrate
