@@ -123,7 +123,7 @@ You can specify the browsers you want to target in your project
 (by default, it’s `last 2 versions`):
 
 ```js
-autoprefixer("last 1 version", "> 1%", "ie 8", "ie 7").compile(css);
+autoprefixer.compile(css, "last 1 version", "> 1%", "ie 8", "ie 7");
 ```
 
 * `last n versions` is last versions for each browser. Like “last 2 versions”
@@ -138,7 +138,7 @@ Blackberry and stock Android browsers will not be used in `last n versions`.
 You can add them by name:
 
 ```js
-autoprefixer("last 1 version", "bb 10", "android 4").compile(css);
+autoprefixer.compile(css, "last 1 version", "bb 10", "android 4");
 ```
 
 ## Inspect
@@ -146,7 +146,7 @@ autoprefixer("last 1 version", "bb 10", "android 4").compile(css);
 You can check which browsers are selected and which properties will be prefixed:
 
 ```js
-inspect = autoprefixer("last 1 version").inspect();
+inspect = autoprefixer.inspect("last 1 version");
 console.log(inspect);
 ```
 
