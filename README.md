@@ -141,8 +141,18 @@ You can add them by name:
 autoprefixer("last 1 version", "bb 10", "android 4").compile(css);
 ```
 
+Browsers names are:
+
 You can get browsers codenames in
-[data file](https://github.com/ai/autoprefixer/blob/master/data/browsers.coffee).
+[data file](https://github.com/ai/autoprefixer/blob/master/data/browsers.coffee):
+* `android` for old Android stock browser.
+* `bb` for Blackberry browser.
+* `chrome` for Google Chrome.
+* `ff` for Mozilla Firefox.
+* `ie` for Internet Explorer.
+* `ios` for iOS Safari.
+* `opera` for Opera.
+* `safari` for desktop Safari.
 
 ## Inspect
 
