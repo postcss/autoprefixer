@@ -13,7 +13,10 @@
 
 20130808:
 * Allow to select browser versions by > and >= operator.
-* Fix flex properties in transition.
+* Fix flex properties in transition.q
+
+20130810:
+* Add Firefox 25 data.
 
 == 0.6 (As High As Honor)
 * New faster API, which cache preprocessed data. Old API is deprecated.
