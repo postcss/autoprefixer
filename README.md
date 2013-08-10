@@ -141,6 +141,9 @@ You can add them by name:
 autoprefixer("last 1 version", "bb 10", "android 4").compile(css);
 ```
 
+You can get browsers codenames in
+[data file](https://github.com/ai/autoprefixer/blob/master/data/browsers.coffee).
+
 ## Inspect
 
 You can check which browsers are selected and which properties will be prefixed:
