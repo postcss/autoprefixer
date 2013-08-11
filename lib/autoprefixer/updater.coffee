@@ -32,21 +32,30 @@ module.exports =
     android: 'android'
 
   # Run all updater scrips
-  run: (callback) ->
+  run: ->
     updaters = __dirname + '/../../updaters/'
     for i in fs.readdirSync(updaters).sort()
       continue unless i.match(/\.(coffee|js)$/)
       require(updaters + i).apply(@)
 
-    @done(callback)
-
   # Count of loading HTTP requests
   requests: 0
 
-  # Execute `callback`, when all `caniuse` request will be finished.
+  # Callbacks from done() method
+  doneCallbacks: []
+
+  # Callbacks from request() method
+  requestCallbacks: []
+
+  # Execute `callback`, when all `caniuse` request will be finished
   done: (callback) ->
     @doneCallbacks ||= []
     @doneCallbacks.push(callback)
+
+  # Execute `callback`, when HTTP request will be finished
+  request: (callback) ->
+    @requestCallbacks ||= []
+    @requestCallbacks.push(callback)
 
   # Load file from GitHub RAWs
   github: (path, callback) ->
@@ -56,9 +65,11 @@ module.exports =
       res.on 'data', (chunk) -> data += chunk
       res.on 'end', =>
         callback(JSON.parse(data))
+
         @requests -= 1
+        func() for func in @requestCallbacks
         if @requests == 0
-          done() for done in @doneCallbacks
+          func() for func in @doneCallbacks.reverse()
 
   # Correct sort by float versions
   sort: (browsers) ->

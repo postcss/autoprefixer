@@ -136,7 +136,14 @@ class Binary
       @error "Install coffee-script npm package"
       return done()
 
-    require('./updater').run(done)
+    updater = require('./updater')
+
+    updater.request => @stdout.write('.')
+    updater.done =>
+      @print ''
+      done()
+
+    updater.run()
 
   # Mark that there is another asyn work
   startWork: ->
