@@ -6,10 +6,6 @@ sh = (cmd, callback) ->
     process.exit(1) if error
     callback()
 
-task 'update', 'Update browsers and properties data', ->
-  for i in fs.readdirSync(__dirname + '/updaters').sort()
-    require('./updaters/' + i) if i.match(/\.coffee$/)
-
 task 'clean', 'Remove all temporary files', ->
   fs.removeSync(__dirname + '/build')
   fs.removeSync(__dirname + '/autoprefixer.js')

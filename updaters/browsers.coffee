@@ -14,33 +14,33 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-updater = require('./lib/updater')
-minor   = ['bb', 'android']
+module.exports = ->
+  minor = ['bb', 'android']
 
-updater.github 'Fyrd/caniuse/master/data.json', (data) ->
-  normalize = (array) -> array.reverse().filter (i) -> i
+  @github 'Fyrd/caniuse/master/data.json', (data) =>
+    normalize = (array) -> array.reverse().filter (i) -> i
 
-  intervals = (array) ->
-    result = []
-    for interval in array
-      splited = interval.split('-')
-      sub     = ([i, interval, splited.length] for i in splited)
-      result  = result.concat(sub)
-    result
+    intervals = (array) ->
+      result = []
+      for interval in array
+        splited = interval.split('-')
+        sub     = ([i, interval, splited.length] for i in splited)
+        result  = result.concat(sub)
+      result
 
-  agent = (name) ->
-    info     = data.agents[name]
-    future   = normalize(info.versions[-2..-1]).map (i) -> parseFloat(i)
-    versions = intervals(normalize(info.versions[0..-3]))
-    result   = prefix: "-#{info.prefix}-"
-    result.minor      = true   if minor.indexOf(name) != -1
-    result.future     = future if future.length
-    result.versions   = versions.map (i) -> parseFloat(i[0])
-    result.popularity = versions.map (i) -> info.usage_global[i[1]] / i[2]
-    result
+    agent = (name) ->
+      info     = data.agents[name]
+      future   = normalize(info.versions[-2..-1]).map (i) -> parseFloat(i)
+      versions = intervals(normalize(info.versions[0..-3]))
+      result   = prefix: "-#{info.prefix}-"
+      result.minor      = true   if minor.indexOf(name) != -1
+      result.future     = future if future.length
+      result.versions   = versions.map (i) -> parseFloat(i[0])
+      result.popularity = versions.map (i) -> info.usage_global[i[1]] / i[2]
+      result
 
-  browsers = { }
-  for caniuse, internal of updater.browsers
-    browsers[internal] = agent(caniuse)
+    browsers = { }
+    for caniuse, internal of @browsers
+      browsers[internal] = agent(caniuse)
 
-  updater.save('browsers', browsers)
+    @save('browsers', browsers)

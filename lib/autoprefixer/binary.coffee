@@ -92,6 +92,9 @@ class Binary
       else if arg == '-i' or arg == '--inspect'
         @command = 'inspect'
 
+      else if arg == '-u' or arg == '--update'
+        @command = 'update'
+
       else if arg == '-b' or arg == '--browsers'
         @requirements = args.shift().split(',').map (i) -> i.trim()
 
@@ -124,6 +127,16 @@ class Binary
   inspect: (done) ->
     @print @compiler().inspect()
     done()
+
+  # Update data
+  update: (done) ->
+    try
+      coffee = require('coffee-script')
+    catch
+      @error "Install coffee-script npm package"
+      return done()
+
+    require('./updater').run(done)
 
   # Mark that there is another asyn work
   startWork: ->
