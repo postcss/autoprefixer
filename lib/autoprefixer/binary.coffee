@@ -141,6 +141,10 @@ class Binary
     updater.request => @stdout.write('.')
     updater.done =>
       @print ''
+      if updater.changed.length == 0
+        @print 'Everything up-to-date'
+      else
+        @print 'Update ' + updater.changed.join(' and ') + ' data'
       done()
 
     updater.run()
