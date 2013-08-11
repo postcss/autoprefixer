@@ -2,7 +2,7 @@
 
 node_modules
 build
-art
+logo.svg
 
 test
 .travis.yml
