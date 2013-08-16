@@ -272,7 +272,7 @@ filter, so you can combine it with other filters:
 
 ```js
 rework(css).
-    use( autoprefixer.rework(['> 1%', 'opera 12.5']) ).
+    use( autoprefixer(['> 1%', 'opera 12.5']).rework ).
     use( rework.references() ).
     toString();
 ```
