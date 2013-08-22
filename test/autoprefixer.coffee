@@ -75,7 +75,7 @@ describe 'Autoprefixer', ->
     it 'parses difficult files', ->
       input  = cases.read('autoprefixer/syntax')
       output = cleaner.compile(input)
-      compare(input.replace('/*{}*/', ''), output)
+      compare(input.replace(/\/\*[\{\}]+\*\//g, ''), output)
 
     it 'marks parsing errors', ->
       error = null
