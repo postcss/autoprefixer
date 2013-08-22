@@ -22,6 +22,10 @@ prefixer = (name) ->
 compare = (from, to) ->
   cases.clean(from).should.eql cases.clean(to)
 
+compareWithoutComments = (from, to) ->
+  clean = (string) -> string.replace(/\/\*[^\*]*\*\//g, '')
+  compare(clean(from), clean(to))
+
 test = (from, instansce = prefixer(from)) ->
   input  = cases.read('autoprefixer/' + from)
   output = cases.read('autoprefixer/' + from + '.out')
@@ -75,7 +79,7 @@ describe 'Autoprefixer', ->
     it 'parses difficult files', ->
       input  = cases.read('autoprefixer/syntax')
       output = cleaner.compile(input)
-      compare(input.replace(/\/\*[\{\}]+\*\//g, ''), output)
+      compareWithoutComments(input, output)
 
     it 'marks parsing errors', ->
       error = null
