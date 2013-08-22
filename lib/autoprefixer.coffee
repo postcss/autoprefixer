@@ -81,7 +81,7 @@ class Autoprefixer
 
   # Remove /**/ in non-IE6 declaration, until CSS parser has this issue
   removeBadComments: (css) ->
-    css.replace(/\/\*[^\*]*\{[^\*]*\*\//g, '')
+    css.replace(/\/\*[^\*]*\}[^\*]*\*\//g, '')
 
 # Lazy load for Autoprefixer with default browsers
 autoprefixer.default = ->
