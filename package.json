@@ -18,11 +18,11 @@
     "component":     "0.17.0",
     "fs-extra":      "0.6.3",
     "should":        "1.2.2",
-    "stylus":        "0.36.1",
-    "rework":        "0.17.3",
+    "stylus":        "0.37.0",
+    "rework":        "0.17.4",
     "mocha":         "1.12.0",
     "glob":          "3.2.6",
-    "nib":           "0.9.2"
+    "nib":           "1.0.1"
   },
   "bin": {
     "autoprefixer": "./bin/autoprefixer"
