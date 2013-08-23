@@ -1,6 +1,6 @@
 {
   "name": "autoprefixer",
-  "version": "0.7.20130810",
+  "version": "0.7.20130824",
   "description": "Parse CSS and add vendor prefixes to CSS rules using values from the Can I Use website",
   "keywords": ["css", "prefix", "rework"],
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
