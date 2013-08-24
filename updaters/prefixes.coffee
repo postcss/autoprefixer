@@ -164,4 +164,11 @@ module.exports = (updater) ->
     prefix 'tab-size',
             browsers: browsers
 
+  # Intrinsic & Extrinsic Sizing
+  @feature 'intrinsic-width.json', (browsers) ->
+    prefix 'max-content', 'min-content', 'fit-content', 'fill-available',
+            props:  ['width', 'min-width', 'max-width',
+                     'height', 'min-height', 'max-height']
+            browsers: browsers
+
   @done => @save('prefixes', prefixes)
