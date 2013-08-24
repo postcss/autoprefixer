@@ -96,7 +96,7 @@ module.exports =
 
   # Can I Use shortcut to request files in features/ dir.
   feature: (file, callback) ->
-    url = "Fyrd/caniuse/master/features-json/#{file}"
+    url = "Fyrd/caniuse/master/features-json/#{file}.json"
     @github url, (data) => callback @parse(data)
 
   # Get Can I Use features from another user fork
