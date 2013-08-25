@@ -167,7 +167,7 @@ module.exports = (updater) ->
   # Intrinsic & Extrinsic Sizing
   @feature 'intrinsic-width', (browsers) ->
     prefix 'max-content', 'min-content', 'fit-content', 'fill-available',
-            props:  ['width', 'min-width', 'max-width',
+            props:  ['width',  'min-width',  'max-width',
                      'height', 'min-height', 'max-height']
             browsers: browsers
 

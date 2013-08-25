@@ -77,6 +77,6 @@ class Gradient extends Value
 
       new OldValue(prefix + @name, string, regexp)
     else
-      new OldValue(prefix + @name)
+      super
 
 module.exports = Gradient

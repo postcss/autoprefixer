@@ -1,0 +1,7 @@
+a {
+    width: fill-available;
+}
+
+b {
+    height: max-content;
+}

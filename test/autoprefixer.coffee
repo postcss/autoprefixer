@@ -5,8 +5,9 @@ rework       = require('rework')
 
 cleaner     = autoprefixer('none')
 compiler    = autoprefixer('chrome 25', 'opera 12')
-borderer    = autoprefixer('safari 4', 'ff 3.6')
+borderer    = autoprefixer('safari 4',  'ff 3.6')
 flexboxer   = autoprefixer('chrome 25', 'ff 21', 'ie 10')
+intrinsicer = autoprefixer('chrome 25', 'ff 22')
 selectioner = autoprefixer('ff 22')
 
 prefixer = (name) ->
@@ -16,6 +17,8 @@ prefixer = (name) ->
     flexboxer
   else if name == 'selectors'
     selectioner
+  else if name == 'intrinsic'
+    intrinsicer
   else
     compiler
 
@@ -34,7 +37,7 @@ test = (from, instansce = prefixer(from)) ->
 
 commons = ['transition', 'values', 'keyframes', 'gradient', 'filter', 'flexbox',
             'border-image', 'border-radius', 'background-clip', 'selectors',
-            'placeholder', 'fullscreen']
+            'placeholder', 'fullscreen', 'intrinsic']
 
 describe 'autoprefixer()', ->
 
@@ -117,3 +120,4 @@ describe 'Autoprefixer', ->
     it 'supports all flexbox syntaxes', -> test('flexbox',       flexboxer)
     it 'supports all placeholders',     -> test('placeholder')
     it 'supports all fullscreens',      -> test('fullscreen')
+    it 'supports intrinsic sizing',     -> test('intrinsic', intrinsicer)

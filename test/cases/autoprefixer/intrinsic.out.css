@@ -1,0 +1,11 @@
+a {
+    width: -webkit-fill-available;
+    width: -moz-available;
+    width: fill-available;
+}
+
+b {
+    height: -webkit-max-content;
+    height: -moz-max-content;
+    height: max-content;
+}
