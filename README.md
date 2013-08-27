@@ -215,7 +215,7 @@ grunt.loadNpmTasks('grunt-autoprefixer');
 ```
 
 If you use Sass with `compress` output style and worry, that Autoprefixer
-uncompress CSS, try [csso-grunt](https://github.com/t32k/grunt-csso).
+uncompress CSS, try [grunt-csso](https://github.com/t32k/grunt-csso).
 It compress CSS back, but did it much better than Sass.
 
 ### Prepros
