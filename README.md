@@ -292,6 +292,18 @@ rework(css).
     toString();
 ```
 
+### PHP
+
+You can use Autoprefixer in PHP by
+[autoprefixer-php](https://github.com/vladkens/autoprefixer-php) library:
+
+
+```php
+$autoprefixer = new Autoprefixer();
+$css          = 'a { transition: transform 1s }';
+$prefixed     = $autoprefixer->compile($css);
+```
+
 ### Sublime Text
 
 You can process your styles directly in Sublime Text with the
