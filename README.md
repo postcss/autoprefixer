@@ -87,8 +87,8 @@ Rework:       213 ms   (1.2 times faster)
 Stylus:       2596 ms  (10.1 times slower)
 ```
 
-Unlike [-prefix-free](http://leaverou.github.io/prefixfree/), Autoprefixer compiles CSS once on deploy and doesn’t hit
-client-side performance.
+Unlike [-prefix-free](http://leaverou.github.io/prefixfree/), Autoprefixer
+compiles CSS once on deploy and doesn’t hit client-side performance.
 
 ### Rewrite syntax
 
@@ -141,8 +141,7 @@ You can add them by name:
 autoprefixer("last 1 version", "bb 10", "android 4").compile(css);
 ```
 
-You can find the browsers codenames in Autoprefixer’s
-[data file](https://github.com/ai/autoprefixer/blob/master/data/browsers.coffee):
+You can find the browsers codenames in [data file](data/browsers.coffee):
 * `android` for old Android stock browser.
 * `bb` for Blackberry browser.
 * `chrome` for Google Chrome.
@@ -321,17 +320,17 @@ autoprefixer *.css
 
 See `autoprefixer -h` for help.
 
-## In-package update
+## In-package Update
 
 It’s highly recommended that you always use the latest version of Autoprefixer.
-If by any chance you or your company are not able to update the package (e.g.
-in case of long test periods before any library updates), you can still update
-the very browser data that Autoprefixer fetches from Can I Use:
+If by any chance you or your company are not able to update the package
+(e.g. in case of long test periods before any library updates), you can still
+update the very browser data that Autoprefixer fetches from Can I Use:
 
 ```
 autoprefixer --update
 ```
 
-Note that the in-package update doesn’t get any code fixes nor the implementation
-of new features. It just keeps the browser popularity and support data up to date,
-and adds new browser versions.
+Note that the in-package update doesn’t get any code fixes nor the
+implementation of new features. It just keeps the browser popularity and
+support data up to date, and adds new browser versions.
