@@ -323,15 +323,17 @@ autoprefixer *.css
 
 See `autoprefixer -h` for help.
 
-## In-package Update
+## In-package update
 
-I highly recommend to always have latest version of Autoprefixer.
-But, some company has long test period before any libraries updater.
-For this cases, you can update Can I Use data inside npm package:
+It’s highly recommended that you always use the latest version of Autoprefixer.
+If by any chance you or your company are not able to update the package (e.g.
+in case of long test periods before any library updates), you can still update
+the very browser data that Autoprefixer fetches from Can I Use:
 
 ```
 autoprefixer --update
 ```
 
-Note, that in-package update doesn’t get new properties or code fixes. It update
-only browsers popularity and propeties support in new browsers versions.
+Note that the in-package update doesn’t get any code fixes nor the implementation
+of new features. It just keeps the browser popularity and support data up to date,
+and adds new browser versions.
