@@ -23,7 +23,8 @@ module.exports = (updater) ->
   # Border Radius
   @feature 'border-radius', (browsers) ->
     prefix 'border-radius', 'border-top-left-radius', 'border-top-right-radius',
-           'border-bottom-right-radius', 'border-bottom-left-radius'
+           'border-bottom-right-radius', 'border-bottom-left-radius',
+            mistakes:   ['-ms-']
             browsers:   browsers
             transition: true
 

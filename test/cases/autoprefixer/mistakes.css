@@ -1,5 +1,6 @@
 a {
     color: black;
     -ms-transition: all 1s;
-    background: -ms-linear-gradient(white, black)
+    -ms-border-radius: 5px;
+    background: -ms-linear-gradient(white, black);
 }

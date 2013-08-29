@@ -1214,6 +1214,9 @@ module.exports =
     ]
 
   "border-bottom-left-radius":
+    mistakes: [
+      "-ms-"
+    ]
     browsers: [
       "android 2.1"
       "chrome 4"
@@ -1229,6 +1232,9 @@ module.exports =
     transition: true
 
   "border-bottom-right-radius":
+    mistakes: [
+      "-ms-"
+    ]
     browsers: [
       "android 2.1"
       "chrome 4"
@@ -1299,6 +1305,9 @@ module.exports =
     ]
 
   "border-radius":
+    mistakes: [
+      "-ms-"
+    ]
     browsers: [
       "android 2.1"
       "chrome 4"
@@ -1314,6 +1323,9 @@ module.exports =
     transition: true
 
   "border-top-left-radius":
+    mistakes: [
+      "-ms-"
+    ]
     browsers: [
       "android 2.1"
       "chrome 4"
@@ -1329,6 +1341,9 @@ module.exports =
     transition: true
 
   "border-top-right-radius":
+    mistakes: [
+      "-ms-"
+    ]
     browsers: [
       "android 2.1"
       "chrome 4"
