@@ -35,10 +35,12 @@ inspectCache = null
 #     use(autoprefixer('last 1 version').rework).
 #     toString();
 autoprefixer = (reqs...) ->
-  if reqs.length == 0 or (reqs.length == 1 and not reqs[0]?)
-    reqs = undefined
-  else if reqs.length == 1 and reqs[0] instanceof Array
+  if reqs.length == 1 and reqs[0] instanceof Array
     reqs = reqs[0]
+  else if reqs.length == 0 or (reqs.length == 1 and not reqs[0]?)
+    reqs = undefined
+
+  reqs = autoprefixer.default unless reqs?
 
   browsers = new Browsers(autoprefixer.data.browsers, reqs)
   prefixes = new Prefixes(autoprefixer.data.prefixes, browsers)
@@ -83,20 +85,23 @@ class Autoprefixer
   removeBadComments: (css) ->
     css.replace(/\/\*[^\*]*\}[^\*]*\*\//g, '')
 
+# Autoprefixer default browsers
+autoprefixer.default = ['last 2 versions']
+
 # Lazy load for Autoprefixer with default browsers
-autoprefixer.default = ->
-  @instance ||= autoprefixer()
+autoprefixer.loadDefault = ->
+  @defaultCache ||= autoprefixer(@default)
 
 # Compile with default Autoprefixer
 autoprefixer.compile = (str) ->
-  @default().compile(str)
+  @loadDefault().compile(str)
 
 # Rework with default Autoprefixer
 autoprefixer.rework = (stylesheet) ->
-  @default().rework(stylesheet)
+  @loadDefault().rework(stylesheet)
 
 # Inspect with default Autoprefixer
 autoprefixer.inspect = ->
-  @default().inspect()
+  @loadDefault().inspect()
 
 module.exports = autoprefixer

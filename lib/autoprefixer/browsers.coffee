@@ -22,7 +22,6 @@ class Browsers
 
   # Return browsers selected by requirements
   parse: (requirements) ->
-    requirements = ['last 2 versions'] if not requirements?
     requirements = [requirements] unless requirements instanceof Array
     selected = []
 

@@ -48,9 +48,12 @@ describe 'autoprefixer()', ->
     autoprefixer(['chrome 25', 'opera 12']).browsers.
       should.eql ['chrome 25', 'opera 12']
 
+  it 'has default browsers', ->
+    autoprefixer.default.should.eql(['last 2 versions'])
+
   it 'sets default browser', ->
-    defalt = new Browsers(autoprefixer.data.browsers)
-    autoprefixer().browsers.should.eql defalt.selected
+    browsers = new Browsers(autoprefixer.data.browsers, autoprefixer.default)
+    autoprefixer().browsers.should.eql(browsers.selected)
 
 describe 'Autoprefixer', ->
 

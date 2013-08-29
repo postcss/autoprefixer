@@ -25,10 +25,6 @@ describe 'Browsers', ->
 
   describe 'parse()', ->
 
-    it 'uses 2 last versions by default', ->
-      browsers = new Browsers(data)
-      browsers.selected.should.eql ['ie 3', 'ie 2', 'chrome 3', 'chrome 2']
-
     it 'converts browsers to array', ->
       browsers = new Browsers(data, ['last 2 versions'])
       browsers.selected.should.eql ['ie 3', 'ie 2', 'chrome 3', 'chrome 2']
@@ -39,7 +35,7 @@ describe 'Browsers', ->
 
     it 'raises an error on unknown requirement', ->
       ( ->
-        new Browsers(data, 'unknown')
+        new Browsers(data, ['unknown'])
       ).should.throw('Unknown browser requirement `unknown`')
 
     it 'prefers latest versions', ->
@@ -75,17 +71,17 @@ describe 'Browsers', ->
   describe 'prefixes()', ->
 
     it 'returns all prefixes', ->
-      browsers = new Browsers(data)
+      browsers = new Browsers(data, ['none'])
       browsers.prefixes().should.eql ['-webkit-', '-ms-', '-o-']
 
   describe 'prefix()', ->
 
     it 'returns browser prefix', ->
-      browsers = new Browsers(data)
+      browsers = new Browsers(data, ['chrome 3'])
       browsers.prefix('chrome 3').should == '-webkit-'
 
     it 'returns webkit prefix for Opera 15', ->
-      browsers = new Browsers(data)
+      browsers = new Browsers(data, ['opera > 4'])
       browsers.prefix('opera 4').should  == '-o-'
       browsers.prefix('opera 15').should == '-webkit-'
 
