@@ -3638,6 +3638,9 @@ module.exports =
       "background-image"
       "border-image"
     ]
+    mistakes: [
+      "-ms-"
+    ]
     browsers: [
       "android 2.1"
       "android 2.2"
@@ -4053,6 +4056,9 @@ module.exports =
       "background-image"
       "border-image"
     ]
+    mistakes: [
+      "-ms-"
+    ]
     browsers: [
       "android 2.1"
       "android 2.2"
@@ -4124,6 +4130,9 @@ module.exports =
       "background-image"
       "border-image"
     ]
+    mistakes: [
+      "-ms-"
+    ]
     browsers: [
       "android 2.1"
       "android 2.2"
@@ -4194,6 +4203,9 @@ module.exports =
       "background"
       "background-image"
       "border-image"
+    ]
+    mistakes: [
+      "-ms-"
     ]
     browsers: [
       "android 2.1"
@@ -4542,6 +4554,9 @@ module.exports =
     ]
 
   transition:
+    mistakes: [
+      "-ms-"
+    ]
     browsers: [
       "android 2.1"
       "android 2.2"
@@ -4611,6 +4626,9 @@ module.exports =
     ]
 
   "transition-delay":
+    mistakes: [
+      "-ms-"
+    ]
     browsers: [
       "android 2.1"
       "android 2.2"
@@ -4680,6 +4698,9 @@ module.exports =
     ]
 
   "transition-duration":
+    mistakes: [
+      "-ms-"
+    ]
     browsers: [
       "android 2.1"
       "android 2.2"
@@ -4749,6 +4770,9 @@ module.exports =
     ]
 
   "transition-property":
+    mistakes: [
+      "-ms-"
+    ]
     browsers: [
       "android 2.1"
       "android 2.2"
@@ -4818,6 +4842,9 @@ module.exports =
     ]
 
   "transition-timing-function":
+    mistakes: [
+      "-ms-"
+    ]
     browsers: [
       "android 2.1"
       "android 2.2"

@@ -44,7 +44,9 @@ class Prefixes
         map(     (i) => @browsers.prefix(i) ).
         sort( (a, b) -> b.length - a.length )
 
-      all = utils.uniq data.browsers.map( (i) => @browsers.prefix(i) )
+      all = data.browsers.map( (i) => @browsers.prefix(i) )
+      all = all.concat(data.mistakes) if data.mistakes
+      all = utils.uniq(all)
       if add.length
         add = utils.uniq(add)
         selected.add[name] = add

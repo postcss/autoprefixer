@@ -37,7 +37,7 @@ test = (from, instansce = prefixer(from)) ->
 
 commons = ['transition', 'values', 'keyframes', 'gradient', 'filter', 'flexbox',
             'border-image', 'border-radius', 'background-clip', 'selectors',
-            'placeholder', 'fullscreen', 'intrinsic']
+            'placeholder', 'fullscreen', 'intrinsic', 'mistakes']
 
 describe 'autoprefixer()', ->
 
@@ -56,15 +56,16 @@ describe 'Autoprefixer', ->
 
   describe 'compile()', ->
 
-    it 'prefixes transition', -> test('transition')
-    it 'prefixes values',     -> test('values')
-    it 'prefixes @keyframes', -> test('keyframes')
-    it 'prefixes selectors',  -> test('selectors', selectioner)
+    it 'prefixes transition',     -> test('transition')
+    it 'prefixes values',         -> test('values')
+    it 'prefixes @keyframes',     -> test('keyframes')
+    it 'prefixes selectors',      -> test('selectors', selectioner)
+    it 'removes common mistakes', -> test('mistakes')
 
     it 'removes unnecessary prefixes', ->
       test('old', cleaner)
       for type in commons
-        continue if type == 'background-clip'
+        continue if type == 'background-clip' or type == 'mistakes'
         input  = cases.read('autoprefixer/' + type + '.out')
         output = cases.read('autoprefixer/' + type)
         css    = cleaner.compile(input)

@@ -22,6 +22,7 @@ data =
       transition: true
     b:
       browsers: ['ie 2', 'ff 1']
+      mistakes: ['-webkit-']
       props:    ['a', '*']
     c:
       browsers: ['ie 2', 'ff 1']
@@ -43,7 +44,7 @@ describe 'Prefixes', ->
           c: ['-ms-']
         remove:
           a: ['-webkit-', '-ms-']
-          b: ['-moz-']
+          b: ['-moz-', '-webkit-']
           c: ['-moz-']
 
   describe 'preprocess()', ->
@@ -72,9 +73,9 @@ describe 'Prefixes', ->
         '-ms-a':
           remove: true
         'a':
-          values: [new OldValue('-moz-b')]
+          values: [new OldValue('-moz-b'), new OldValue('-webkit-b')]
         '*':
-          values: [new OldValue('-moz-b')]
+          values: [new OldValue('-moz-b'), new OldValue('-webkit-b')]
       })
 
   describe 'other()', ->
@@ -101,7 +102,8 @@ describe 'Prefixes', ->
         { name: 'b', prefixes: ['-ms-'], regexp: utils.regexp('b') }
       ]
 
-      fill.values('remove', 'a').should.eql [new OldValue('-moz-b')]
+      fill.values('remove', 'a').should.eql [new OldValue('-moz-b'),
+                                             new OldValue('-webkit-b')]
 
   describe 'toRemove()', ->
 

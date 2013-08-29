@@ -56,6 +56,7 @@ module.exports = (updater) ->
   @feature 'css-transitions', (browsers) ->
     prefix 'transition', 'transition-property', 'transition-duration',
            'transition-delay', 'transition-timing-function',
+            mistakes: ['-ms-']
             browsers: browsers
 
   # Transform
@@ -71,8 +72,9 @@ module.exports = (updater) ->
   @feature 'css-gradients', (browsers) ->
     prefix 'linear-gradient', 'repeating-linear-gradient',
            'radial-gradient', 'repeating-radial-gradient',
-            props:   ['background', 'background-image', 'border-image']
-            browsers:  browsers
+            props:    ['background', 'background-image', 'border-image']
+            mistakes: ['-ms-']
+            browsers: browsers
 
   # Box sizing
   @feature 'css3-boxsizing', (browsers) ->
