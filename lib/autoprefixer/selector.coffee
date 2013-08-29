@@ -33,7 +33,8 @@ class Selector
     else
       new Selector(name, prefixes)
 
-  constructor: (@name, @prefixes) ->
+  constructor: (@name, @prefixes = []) ->
+    @prefixes = @prefixes.sort (a, b) -> a.length - b.length
 
   # Is rule selectors need to be prefixed
   check: (selectors) ->

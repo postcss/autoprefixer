@@ -71,7 +71,7 @@ describe 'Rule', ->
   describe 'prefixSelector()', ->
 
     it 'clone itself with prefixed selectors', ->
-      selector = new Selector('a', ['-moz-', '-webkit-'])
+      selector = new Selector('a', ['-webkit-', '-moz-'])
       @rule.prefixSelector(selector)
       cases.compare(@nodes, 'rule/selector')
 
