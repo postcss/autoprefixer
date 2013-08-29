@@ -8,15 +8,15 @@ compiler    = autoprefixer('chrome 25', 'opera 12')
 borderer    = autoprefixer('safari 4',  'ff 3.6')
 flexboxer   = autoprefixer('chrome 25', 'ff 21', 'ie 10')
 intrinsicer = autoprefixer('chrome 25', 'ff 22')
-selectioner = autoprefixer('ff 22')
+selectorer  = autoprefixer('chrome 25', 'ff 22', 'ie 10')
 
 prefixer = (name) ->
   if name == 'border-radius'
     borderer
   else if name == 'flexbox'
     flexboxer
-  else if name == 'selectors'
-    selectioner
+  else if name == 'selectors' or name == 'placeholder'
+    selectorer
   else if name == 'intrinsic'
     intrinsicer
   else
@@ -59,7 +59,7 @@ describe 'Autoprefixer', ->
     it 'prefixes transition',     -> test('transition')
     it 'prefixes values',         -> test('values')
     it 'prefixes @keyframes',     -> test('keyframes')
-    it 'prefixes selectors',      -> test('selectors', selectioner)
+    it 'prefixes selectors',      -> test('selectors')
     it 'removes common mistakes', -> test('mistakes')
 
     it 'removes unnecessary prefixes', ->
@@ -117,8 +117,8 @@ describe 'Autoprefixer', ->
     it "doesn't prefix IE filter",      -> test('filter')
     it "doesn't remove text clip",      -> test('background-clip')
     it 'change border image syntax',    -> test('border-image')
-    it 'supports old Mozilla prefixes', -> test('border-radius', borderer)
-    it 'supports all flexbox syntaxes', -> test('flexbox',       flexboxer)
+    it 'supports old Mozilla prefixes', -> test('border-radius')
+    it 'supports all flexbox syntaxes', -> test('flexbox')
     it 'supports all placeholders',     -> test('placeholder')
     it 'supports all fullscreens',      -> test('fullscreen')
-    it 'supports intrinsic sizing',     -> test('intrinsic', intrinsicer)
+    it 'supports intrinsic sizing',     -> test('intrinsic')
