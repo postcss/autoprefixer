@@ -22,19 +22,8 @@ module.exports = (updater) ->
 
   # Border Radius
   @feature 'border-radius', (browsers) ->
-    prefix 'border-radius',
-            browsers:   browsers
-            transition: true
-    prefix 'border-top-left-radius',
-            browsers:   browsers
-            transition: true
-    prefix 'border-top-right-radius',
-            browsers:   browsers
-            transition: true
-    prefix 'border-bottom-right-radius',
-            browsers:   browsers
-            transition: true
-    prefix 'border-bottom-left-radius',
+    prefix 'border-radius', 'border-top-left-radius', 'border-top-right-radius',
+           'border-bottom-right-radius', 'border-bottom-left-radius'
             browsers:   browsers
             transition: true
 
