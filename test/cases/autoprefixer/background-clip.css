@@ -1,9 +1,0 @@
-a {
-    -webkit-background-clip: border-box;
-    background-clip: border-box;
-}
-
-div {
-    -webkit-background-clip: text;
-    background-clip: text;
-}

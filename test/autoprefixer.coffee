@@ -43,10 +43,9 @@ test = (from, instansce = prefixer(from)) ->
   css    = instansce.compile(input)
   compare(css, output)
 
-commons = ['transition', 'values', 'keyframes', 'gradient', 'filter', 'flexbox',
-            'border-image', 'border-radius', 'background-clip', 'selectors',
-            'placeholder', 'fullscreen', 'intrinsic', 'mistakes', 'notes',
-            'flex-rewrite']
+commons = ['transition', 'values', 'keyframes', 'gradient', 'filter', 'notes',
+           'flexbox', 'flex-rewrite', 'border-image', 'border-radius',
+           'selectors', 'placeholder', 'fullscreen', 'intrinsic', 'mistakes']
 
 describe 'autoprefixer()', ->
 
@@ -80,8 +79,7 @@ describe 'Autoprefixer', ->
       test('old', cleaner)
 
       for type in commons
-        continue if type == 'background-clip' or type == 'mistakes' or
-                    type == 'flex-rewrite'
+        continue if type == 'mistakes' or type == 'flex-rewrite'
         input  = cases.read('autoprefixer/' + type + '.out')
         output = cases.read('autoprefixer/' + type)
         css    = cleaner.compile(input)
@@ -131,7 +129,6 @@ describe 'Autoprefixer', ->
 
     it 'changes angle in gradient',     -> test('gradient')
     it "doesn't prefix IE filter",      -> test('filter')
-    it "doesn't remove text clip",      -> test('background-clip')
     it 'change border image syntax',    -> test('border-image')
     it 'supports old Mozilla prefixes', -> test('border-radius')
     it 'supports all flexbox syntaxes', -> test('flexbox')
