@@ -136,3 +136,8 @@ describe 'Autoprefixer', ->
     it 'supports all placeholders',     -> test('placeholder')
     it 'supports all fullscreens',      -> test('fullscreen')
     it 'supports intrinsic sizing',     -> test('intrinsic')
+
+    it 'ignores transform in transition for IE', ->
+      input  = cases.read('autoprefixer/ie-transition')
+      output = autoprefixer('ie > 0').compile(input)
+      compare(input, output)
