@@ -35,7 +35,7 @@ class Processor
     # Properties
     css.eachDeclaration (decl, vendor) =>
      @prefixes.each decl.prop, (prefix) =>
-       return if vendor and vendor != prefix
+       return if vendor and vendor != prefix.split('~')[0]
        return if decl.valueContain(@prefixes.other(prefix))
        decl.prefixProp(prefix)
 
@@ -45,7 +45,7 @@ class Processor
         continue unless value.check(decl.value)
 
         for prefix in value.prefixes
-          continue if vendor and vendor != prefix
+          continue if vendor and vendor != prefix.split('~')[0]
           decl.prefixValue(prefix, value)
       decl.saveValues()
 

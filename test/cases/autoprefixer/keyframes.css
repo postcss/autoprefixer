@@ -12,6 +12,7 @@
     */
     50% {
         top: 0;
+        flex: 0;
     }
     to {
         top: calc(10%);

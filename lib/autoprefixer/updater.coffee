@@ -114,6 +114,14 @@ module.exports =
         list.push(name + ' ' + version)
     callback(@sort list)
 
+  # Change browser array
+  map: (browsers, callback) ->
+    for browser in browsers
+      [name, version] = browser.split(' ')
+      version = parseFloat(version)
+
+      callback(browser, name, version)
+
   # Return string of object. Like `JSON.stringify`, but output CoffeeScript.
   stringify: (obj, indent = '') ->
     if obj instanceof Array

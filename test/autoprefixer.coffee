@@ -5,13 +5,16 @@ rework       = require('rework')
 
 cleaner     = autoprefixer('none')
 compiler    = autoprefixer('chrome 25', 'opera 12')
+keyframer   = autoprefixer('safari 6',  'chrome 25', 'opera 12')
 borderer    = autoprefixer('safari 4',  'ff 3.6')
-flexboxer   = autoprefixer('chrome 25', 'ff 21', 'ie 10')
+flexboxer   = autoprefixer('safari 6',  'chrome 25', 'ff 21', 'ie 10')
 intrinsicer = autoprefixer('chrome 25', 'ff 22')
 selectorer  = autoprefixer('chrome 25', 'ff 22', 'ie 10')
 
 prefixer = (name) ->
-  if name == 'border-radius'
+  if name == 'keyframes'
+    keyframer
+  else if name == 'border-radius'
     borderer
   else if name == 'flexbox'
     flexboxer
@@ -37,7 +40,7 @@ test = (from, instansce = prefixer(from)) ->
 
 commons = ['transition', 'values', 'keyframes', 'gradient', 'filter', 'flexbox',
             'border-image', 'border-radius', 'background-clip', 'selectors',
-            'placeholder', 'fullscreen', 'intrinsic', 'mistakes']
+            'placeholder', 'fullscreen', 'intrinsic', 'mistakes', 'notes']
 
 describe 'autoprefixer()', ->
 
@@ -64,6 +67,7 @@ describe 'Autoprefixer', ->
     it 'prefixes @keyframes',     -> test('keyframes')
     it 'prefixes selectors',      -> test('selectors')
     it 'removes common mistakes', -> test('mistakes')
+    it 'read notes for prefixes', -> test('notes')
 
     it 'removes unnecessary prefixes', ->
       test('old', cleaner)

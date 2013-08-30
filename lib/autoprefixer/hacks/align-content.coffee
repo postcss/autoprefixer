@@ -33,7 +33,7 @@ class AlignContent extends FlexDeclaration
 
   # Add prefix and convert to 2012 spec
   prefixProp: (prefix) ->
-    spec = @flexSpec(prefix)
+    [spec, prefix] = @flexSpec(prefix)
     if spec.v2012
       oldValue = AlignContent.oldValues[@value] || @value
       @insertBefore(prefix + 'flex-line-pack', oldValue)

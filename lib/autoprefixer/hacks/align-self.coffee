@@ -31,7 +31,7 @@ class AlignSelf extends FlexDeclaration
 
   # Add prefix and convert to 2012 specs
   prefixProp: (prefix) ->
-    spec = @flexSpec(prefix)
+    [spec, prefix] = @flexSpec(prefix)
     if spec.v2012
       oldValue = AlignSelf.oldValues[@value] || @value
       @insertBefore(prefix + 'flex-item-align', oldValue)

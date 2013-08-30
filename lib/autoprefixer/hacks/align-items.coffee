@@ -31,7 +31,7 @@ class AlignItems extends FlexDeclaration
 
   # Add prefix and convert to 2009 and 2012 specs
   prefixProp: (prefix) ->
-    spec     = @flexSpec(prefix)
+    [spec, prefix] = @flexSpec(prefix)
     oldValue = AlignItems.oldValues[@value] || @value
     if spec.v2009
       @insertBefore(prefix + 'box-align', oldValue)

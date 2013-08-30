@@ -27,7 +27,7 @@ class Flex extends FlexDeclaration
 
   # Add prefix and convert to 2009 specs
   prefixProp: (prefix) ->
-    spec = @flexSpec(prefix)
+    [spec, prefix] = @flexSpec(prefix)
     if spec.v2009
       first = @value.split(' ')[0]
       @insertBefore(prefix + 'box-flex', first)

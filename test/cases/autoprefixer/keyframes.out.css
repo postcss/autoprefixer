@@ -15,6 +15,9 @@
       */
     50% {
         top: 0;
+        -webkit-box-flex: 0;
+        -webkit-flex: 0;
+        flex: 0;
     }
 
     to {
@@ -41,6 +44,7 @@
       */
     50% {
         top: 0;
+        flex: 0;
     }
 
     to {
@@ -68,6 +72,9 @@
       */
     50% {
         top: 0;
+        -webkit-box-flex: 0;
+        -webkit-flex: 0;
+        flex: 0;
     }
 
     to {

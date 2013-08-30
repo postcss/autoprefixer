@@ -39,16 +39,24 @@ class Prefixes
     selected = { add: { }, remove: { } }
 
     for name, data of list
-      add = data.browsers.
-        filter(  (i) => @browsers.isSelected(i) ).
-        map(     (i) => @browsers.prefix(i) ).
-        sort( (a, b) -> b.length - a.length )
+      add = data.browsers.map (i) ->
+        params = i.split('~')
+        browser: params[0], note: params[1]
+
+      add = add.filter( (i) => @browsers.isSelected(i.browser) ).map (i) =>
+        prefix = @browsers.prefix(i.browser)
+        if i.note
+          prefix + '~' + i.note
+        else
+          prefix
+
+      add = utils.uniq(add).sort( (a, b) -> b.length - a.length )
 
       all = data.browsers.map( (i) => @browsers.prefix(i) )
       all = all.concat(data.mistakes) if data.mistakes
       all = utils.uniq(all)
+
       if add.length
-        add = utils.uniq(add)
         selected.add[name] = add
         if add.length < all.length
           selected.remove[name] = all.filter (i) -> add.indexOf(i) == -1
