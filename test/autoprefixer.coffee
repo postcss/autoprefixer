@@ -87,11 +87,11 @@ describe 'Autoprefixer', ->
 
     it "doesn't double prefixes", ->
       for type in commons
-        instansce = prefixer(type)
+        instance = prefixer(type)
 
         input  = cases.read('autoprefixer/' + type)
         output = cases.read('autoprefixer/' + type + '.out')
-        css    = instansce.compile( instansce.compile(input) )
+        css    = instance.compile( instance.compile(input) )
         compare(css, output)
 
     it 'parses difficult files', ->
@@ -113,10 +113,10 @@ describe 'Autoprefixer', ->
 
     it 'is a Rework filter', ->
       for type in commons
-        instansce = prefixer(type)
+        instance = prefixer(type)
 
         real = rework(cases.read('autoprefixer/' + type)).
-          use(instansce.rework).
+          use(instance.rework).
           toString()
         compare(real, cases.read('autoprefixer/' + type + '.out'))
 
