@@ -1,0 +1,19 @@
+.a {
+    -webkit-box-flex: 0;
+    -webkit-flex-grow: 0;
+    -moz-box-flex: 0;
+    -ms-flex: 0;
+    flex-grow: 0;
+}
+
+.b {
+    -webkit-flex-shrink: 1;
+    -ms-flex: 0 1;
+    flex-shrink: 1;
+}
+
+.c {
+    -webkit-flex-basis: auto;
+    -ms-flex: 0 1 auto;
+    flex-basis: auto;
+}

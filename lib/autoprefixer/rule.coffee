@@ -71,9 +71,10 @@ class Rule
 
   # Get declaration by property name
   byProp: (prop) ->
-    for decl, i in @declarations
-      if decl.property == prop
-        return Declaration.load(@, i, decl)
+    for node, i in @declarations
+      if node.property
+        decl = Declaration.load(@, i, node)
+        return decl if decl.prop == prop
     return null
 
   # Remove this rule

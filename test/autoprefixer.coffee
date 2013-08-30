@@ -17,9 +17,11 @@ prefixer = (name) ->
     keyframer
   else if name == 'border-radius'
     borderer
+  else if name == 'vendor-hack' or name == 'mistakes'
+    cleaner
   else if name == 'gradient'
     gradienter
-  else if name == 'flexbox'
+  else if name == 'flexbox' or name == 'flex-rewrite'
     flexboxer
   else if name == 'selectors' or name == 'placeholder'
     selectorer
@@ -43,7 +45,8 @@ test = (from, instansce = prefixer(from)) ->
 
 commons = ['transition', 'values', 'keyframes', 'gradient', 'filter', 'flexbox',
             'border-image', 'border-radius', 'background-clip', 'selectors',
-            'placeholder', 'fullscreen', 'intrinsic', 'mistakes', 'notes']
+            'placeholder', 'fullscreen', 'intrinsic', 'mistakes', 'notes',
+            'flex-rewrite']
 
 describe 'autoprefixer()', ->
 
@@ -65,17 +68,20 @@ describe 'Autoprefixer', ->
 
   describe 'compile()', ->
 
-    it 'prefixes transition',     -> test('transition')
-    it 'prefixes values',         -> test('values')
-    it 'prefixes @keyframes',     -> test('keyframes')
-    it 'prefixes selectors',      -> test('selectors')
-    it 'removes common mistakes', -> test('mistakes')
-    it 'read notes for prefixes', -> test('notes')
+    it 'prefixes transition',         -> test('transition')
+    it 'prefixes values',             -> test('values')
+    it 'prefixes @keyframes',         -> test('keyframes')
+    it 'prefixes selectors',          -> test('selectors')
+    it 'removes common mistakes',     -> test('mistakes')
+    it 'reads notes for prefixes',    -> test('notes')
+    it 'keeps vendor-specific hacks', -> test('vendor-hack')
 
     it 'removes unnecessary prefixes', ->
       test('old', cleaner)
+
       for type in commons
-        continue if type == 'background-clip' or type == 'mistakes'
+        continue if type == 'background-clip' or type == 'mistakes' or
+                    type == 'flex-rewrite'
         input  = cases.read('autoprefixer/' + type + '.out')
         output = cases.read('autoprefixer/' + type)
         css    = cleaner.compile(input)
@@ -129,6 +135,7 @@ describe 'Autoprefixer', ->
     it 'change border image syntax',    -> test('border-image')
     it 'supports old Mozilla prefixes', -> test('border-radius')
     it 'supports all flexbox syntaxes', -> test('flexbox')
+    it 'supports map flexbox props',    -> test('flex-rewrite')
     it 'supports all placeholders',     -> test('placeholder')
     it 'supports all fullscreens',      -> test('fullscreen')
     it 'supports intrinsic sizing',     -> test('intrinsic')

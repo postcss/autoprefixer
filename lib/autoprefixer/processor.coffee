@@ -68,8 +68,9 @@ class Processor
     css.eachDeclaration (decl, vendor) =>
       # Properties
       if @prefixes.toRemove(decl.prop)
-        decl.remove()
-        return
+        if decl.rule.byProp(decl.unprefixed)
+          decl.remove()
+          return
 
       # Values
       for checker in @prefixes.values('remove', decl.unprefixed)
