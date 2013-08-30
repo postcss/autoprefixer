@@ -71,25 +71,6 @@ a {
 }
 ```
 
-### Fast
-
-Autoprefixer is about 50 times faster than Compass and 10 times faster
-than Stylus.
-
-On a Core i7 with 10 GB of RAM and SSD, benchmark with GitHub styles is:
-
-```
-~/Dev/autoprefixer$ ./node_modules/.bin/cake bench
-Load GitHub styles
-Autoprefixer: 257 ms
-Compass:      13626 ms (53.0 times slower)
-Rework:       213 ms   (1.2 times faster)
-Stylus:       2596 ms  (10.1 times slower)
-```
-
-Unlike [-prefix-free](http://leaverou.github.io/prefixfree/), Autoprefixer
-compiles CSS once on deploy and doesn’t hit client-side performance.
-
 ### Rewrite syntax
 
 Flexbox or gradients have different syntaxes in different browsers
@@ -116,6 +97,25 @@ a {
   display: flex
 }
 ```
+
+### Fast
+
+Autoprefixer is about 50 times faster than Compass and 10 times faster
+than Stylus.
+
+On a Core i7 with 10 GB of RAM and SSD, benchmark with GitHub styles is:
+
+```
+~/Dev/autoprefixer$ ./node_modules/.bin/cake bench
+Load GitHub styles
+Autoprefixer: 257 ms
+Compass:      13626 ms (53.0 times slower)
+Rework:       213 ms   (1.2 times faster)
+Stylus:       2596 ms  (10.1 times slower)
+```
+
+Unlike [-prefix-free](http://leaverou.github.io/prefixfree/), Autoprefixer
+compiles CSS once on deploy and doesn’t hit client-side performance.
 
 ## Browsers
 
