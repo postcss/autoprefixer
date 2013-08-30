@@ -38,6 +38,10 @@ module.exports =
       clone[key] = value
     clone
 
+  # Return "-webkit-" on "-webkit-~old"
+  removeNote: (string) ->
+    string.split('~')[0]
+
   # Escape RegExp symbols
   escapeRegexp: (string) ->
     string.replace(/([.?*+\^\$\[\]\\(){}|\-])/g, "\\$1")

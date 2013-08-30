@@ -81,7 +81,7 @@ class Declaration
   # Add new propertirs with prefixed by prefixValue() values
   saveValues: ->
     for prefix, value of @valuesCache
-      vendor = prefix.split('~')[0]
+      vendor = utils.removeNote(prefix)
       continue if @rule.prefix and vendor != @rule.prefix
       if vendor == @prefix
         @setValue(value)

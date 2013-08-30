@@ -14,6 +14,8 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program.  If not, see <http:#www.gnu.org/licenses/>.
 
+utils = require('./utils')
+
 class Processor
   constructor: (@prefixes) ->
 
@@ -35,7 +37,7 @@ class Processor
     # Properties
     css.eachDeclaration (decl, vendor) =>
      @prefixes.each decl.prop, (prefix) =>
-       return if vendor and vendor != prefix.split('~')[0]
+       return if vendor and vendor != utils.removeNote(prefix)
        return if decl.valueContain(@prefixes.other(prefix))
        decl.prefixProp(prefix)
 
@@ -45,7 +47,7 @@ class Processor
         continue unless value.check(decl.value)
 
         for prefix in value.prefixes
-          continue if vendor and vendor != prefix.split('~')[0]
+          continue if vendor and vendor != utils.removeNote(prefix)
           decl.prefixValue(prefix, value)
       decl.saveValues()
 

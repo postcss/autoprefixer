@@ -38,6 +38,12 @@ describe 'utils', ->
         b: 'B'
         c: 'C'
 
+  describe '.removeNote()', ->
+
+    it 'removes note', ->
+      utils.removeNote('-webkit-~note').should.eql('-webkit-')
+      utils.removeNote('-webkit-').should.eql('-webkit-')
+
   describe '.escapeRegexp()', ->
 
     it 'escapes RegExp symbols', ->
