@@ -81,10 +81,11 @@ class Declaration
   # Add new propertirs with prefixed by prefixValue() values
   saveValues: ->
     for prefix, value of @valuesCache
-      continue if @rule.prefix and prefix != @rule.prefix
-      if prefix == @prefix
+      vendor = prefix.split('~')[0]
+      continue if @rule.prefix and vendor != @rule.prefix
+      if vendor == @prefix
         @setValue(value)
-      else if not @rule.byProp(prefix + @unprefixed)
+      else if not @rule.byProp(vendor + @unprefixed)
         @insertBefore(@prop, value)
 
 module.exports = Declaration

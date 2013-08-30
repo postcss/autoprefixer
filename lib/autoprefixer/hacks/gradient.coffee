@@ -34,12 +34,21 @@ class Gradient extends Value
   addPrefix: (prefix, string) ->
     string.replace @regexp, (all, before, params) =>
       params = params.trim().split(/\s*,\s*/)
-      if params.length > 0
-        if params[0][0..2] == 'to '
-          params[0] = @fixDirection(params[0])
-        else if params[0].indexOf('deg') != -1
-          params[0] = @fixAngle(params[0])
-      before + prefix + @name + '(' + params.join(', ') + ')'
+      if prefix == '-webkit-~old'
+        return all if @name != 'linear-gradient'
+        return all if params[0] and params[0].indexOf('deg') != -1
+
+        params = @oldDirection(params)
+        params = @colorStops(params)
+
+        '-webkit-gradient(linear, ' + params.join(', ') + ')'
+      else
+        if params.length > 0
+          if params[0][0..2] == 'to '
+            params[0] = @fixDirection(params[0])
+          else if params[0].indexOf('deg') != -1
+            params[0] = @fixAngle(params[0])
+        before + prefix + @name + '(' + params.join(', ') + ')'
 
   # Direction to replace
   directions:
@@ -47,6 +56,13 @@ class Gradient extends Value
     left:   'right'
     bottom: 'top'
     right:  'left'
+
+  # Direction to replace
+  oldDirections:
+    top:    'bottom left, top left'
+    left:   'top right, top left'
+    bottom: 'top left, bottom left'
+    right:  'top left, top right'
 
   # Replace `to top left` to `bottom right`
   fixDirection: (param) ->
@@ -66,6 +82,31 @@ class Gradient extends Value
     param = Math.abs(450 - param) % 360
     param = @roundFloat(param, 3)
     "#{param}deg"
+
+  oldDirection: (params) ->
+    params if params.length == 0
+
+    if params[0].indexOf('to ') != -1
+      direction = params[0].replace(/^to\s+/, '')
+      direction = @oldDirections[direction]
+      params[0] = direction
+      params
+    else
+      direction = @oldDirections.bottom
+      [direction].concat(params)
+
+  # Change colors syntax to old webkit
+  colorStops: (params) ->
+    params.map (param, i) ->
+      [color, position] = param.split(' ')
+      if i == 0
+        param
+      else if i == 1
+        "from(#{color})"
+      else if i == params.length - 1
+        "to(#{color})"
+      else
+        "color-stop(#{position}, #{color})"
 
   # Remove old WebKit gradient too
   old: (prefix) ->

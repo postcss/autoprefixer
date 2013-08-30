@@ -60,6 +60,12 @@ module.exports = (updater) ->
 
   # Gradients
   @feature 'css-gradients', (browsers) =>
+    browsers = @map browsers, (browser, name, version) ->
+      if name == 'android' and version < 4
+        browser + '~old'
+      else
+        browser
+
     prefix 'linear-gradient', 'repeating-linear-gradient',
            'radial-gradient', 'repeating-radial-gradient',
             props:    ['background', 'background-image', 'border-image']

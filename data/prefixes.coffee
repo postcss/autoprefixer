@@ -3701,10 +3701,10 @@ module.exports =
       "-ms-"
     ]
     browsers: [
-      "android 2.1"
-      "android 2.2"
-      "android 2.3"
-      "android 3"
+      "android 2.1~old"
+      "android 2.2~old"
+      "android 2.3~old"
+      "android 3~old"
       "android 4"
       "android 4.1"
       "android 4.2"
@@ -4124,10 +4124,10 @@ module.exports =
       "-ms-"
     ]
     browsers: [
-      "android 2.1"
-      "android 2.2"
-      "android 2.3"
-      "android 3"
+      "android 2.1~old"
+      "android 2.2~old"
+      "android 2.3~old"
+      "android 3~old"
       "android 4"
       "android 4.1"
       "android 4.2"
@@ -4198,10 +4198,10 @@ module.exports =
       "-ms-"
     ]
     browsers: [
-      "android 2.1"
-      "android 2.2"
-      "android 2.3"
-      "android 3"
+      "android 2.1~old"
+      "android 2.2~old"
+      "android 2.3~old"
+      "android 3~old"
       "android 4"
       "android 4.1"
       "android 4.2"
@@ -4272,10 +4272,10 @@ module.exports =
       "-ms-"
     ]
     browsers: [
-      "android 2.1"
-      "android 2.2"
-      "android 2.3"
-      "android 3"
+      "android 2.1~old"
+      "android 2.2~old"
+      "android 2.3~old"
+      "android 3~old"
       "android 4"
       "android 4.1"
       "android 4.2"

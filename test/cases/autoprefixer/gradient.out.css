@@ -1,16 +1,13 @@
 a {
     background: -webkit-linear-gradient(99.5deg, white, black),
                 -webkit-linear-gradient(220deg, black, white),
-                -webkit-linear-gradient(45deg, black, white),
-                -webkit-linear-gradient(black, white);
+                -webkit-linear-gradient(45deg, black, white);
     background: -o-linear-gradient(99.5deg, white, black),
                 -o-linear-gradient(220deg, black, white),
-                -o-linear-gradient(45deg, black, white),
-                -o-linear-gradient(black, white);
+                -o-linear-gradient(45deg, black, white);
     background: linear-gradient(350.5deg, white, black),
                 linear-gradient(-130deg, black, white),
-                linear-gradient(45deg, black, white),
-                linear-gradient(black, white);
+                linear-gradient(45deg, black, white);
 }
 
 div {
@@ -23,4 +20,19 @@ div {
   background-image: radial-gradient(to left, white black),
                     repeating-linear-gradient(to bottom right, black, white),
                     repeating-radial-gradient(to top, aqua, red);
+}
+
+
+.simple1 {
+    background: -webkit-gradient(linear, top left, bottom left, from(black), to(white));
+    background: -webkit-linear-gradient(black, white);
+    background: -o-linear-gradient(black, white);
+    background: linear-gradient(black, white);
+}
+
+.simple2 {
+    background: -webkit-gradient(linear, top right, top left, from(black), color-stop(50%, gray), to(white));
+    background: -webkit-linear-gradient(right, black 0%, gray 50%, white 100%);
+    background: -o-linear-gradient(right, black 0%, gray 50%, white 100%);
+    background: linear-gradient(to left, black 0%, gray 50%, white 100%);
 }

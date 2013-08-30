@@ -5,17 +5,20 @@ rework       = require('rework')
 
 cleaner     = autoprefixer('none')
 compiler    = autoprefixer('chrome 25', 'opera 12')
-keyframer   = autoprefixer('safari 6',  'chrome 25', 'opera 12')
 borderer    = autoprefixer('safari 4',  'ff 3.6')
+keyframer   = autoprefixer('safari 6',  'chrome 25', 'opera 12')
 flexboxer   = autoprefixer('safari 6',  'chrome 25', 'ff 21', 'ie 10')
-intrinsicer = autoprefixer('chrome 25', 'ff 22')
+gradienter  = autoprefixer('chrome 25', 'opera 12', 'android 2.3')
 selectorer  = autoprefixer('chrome 25', 'ff 22', 'ie 10')
+intrinsicer = autoprefixer('chrome 25', 'ff 22')
 
 prefixer = (name) ->
   if name == 'keyframes'
     keyframer
   else if name == 'border-radius'
     borderer
+  else if name == 'gradient'
+    gradienter
   else if name == 'flexbox'
     flexboxer
   else if name == 'selectors' or name == 'placeholder'
