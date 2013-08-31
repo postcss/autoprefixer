@@ -40,7 +40,10 @@ module.exports =
 
   # Return "-webkit-" on "-webkit-~old"
   removeNote: (string) ->
-    string.split('~')[0]
+    if string.indexOf('~') == -1
+      string
+    else
+      string.split('~')[0]
 
   # Escape RegExp symbols
   escapeRegexp: (string) ->
