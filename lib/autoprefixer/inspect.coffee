@@ -43,6 +43,7 @@ module.exports = (prefixes) ->
 
   out  = "Browsers:\n"
   for browser, list of versions
+    list = list.sort (a, b) -> parseFloat(b) - parseFloat(a)
     out += '  ' + browser + ': ' + list.join(', ') + "\n"
 
   values = ''
