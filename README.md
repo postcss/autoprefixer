@@ -118,8 +118,7 @@ compiles CSS once on deploy and doesn’t hit client-side performance.
 
 ## Browsers
 
-You can specify the browsers you want to target in your project
-(by default, it’s `last 2 versions`):
+You can specify the browsers you want to target in your project:
 
 ```js
 autoprefixer("last 1 version", "> 1%", "ie 8", "ie 7").compile(css);
@@ -149,6 +148,12 @@ You can find the browsers codenames in [data file](data/browsers.coffee):
 * `ios` for iOS Safari.
 * `opera` for Opera.
 * `safari` for desktop Safari.
+
+By default, Autoprefixer uses `> 1%, last 2 versions, ff 17, opera 12.1`:
+* Firefox 17 is a latest [ESR].
+* Opera 12.1 will be in list until Opera supports non-Blink 12.x branch.
+
+[ESR]: http://www.mozilla.org/en/firefox/organizations/faq/
 
 ## Inspect
 
