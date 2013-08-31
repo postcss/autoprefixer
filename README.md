@@ -19,7 +19,6 @@ and properties support to apply prefixes for you:
 ```css
 a {
   -webkit-transition: -webkit-transform 1s;
-  transition: -ms-transform 1s;
   transition: transform 1s
 }
 ```
