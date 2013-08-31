@@ -164,6 +164,12 @@ inspect = autoprefixer("last 1 version").inspect();
 console.log(inspect);
 ```
 
+Or by CLI command:
+
+```sh
+autoprefixer -i
+```
+
 ## Usage
 
 ### Ruby on Rails
