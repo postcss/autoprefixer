@@ -73,12 +73,6 @@ describe 'Binary', ->
       out.should.match(/Browsers:/)
       done()
 
-  it 'uses 2 last browsers by default', (done) ->
-    chrome = autoprefixer.data.browsers.chrome.versions
-    @exec '-i', (out, err) ->
-      out.should.include("Chrome: #{ chrome[0] }, #{ chrome[1] }")
-      done()
-
   it 'changes browsers', (done) ->
     @exec '-i', '-b', 'ie 6', (out, err) ->
       out.should.match(/IE: 6/)

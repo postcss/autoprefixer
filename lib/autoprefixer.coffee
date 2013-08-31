@@ -86,7 +86,7 @@ class Autoprefixer
     css.replace(/\/\*[^\*]*\}[^\*]*\*\//g, '')
 
 # Autoprefixer default browsers
-autoprefixer.default = ['last 2 versions']
+autoprefixer.default = ['> 1%', 'last 2 versions', 'ff 17', 'opera 12.1']
 
 # Lazy load for Autoprefixer with default browsers
 autoprefixer.loadDefault = ->

@@ -57,7 +57,7 @@ describe 'autoprefixer()', ->
       should.eql ['chrome 25', 'opera 12']
 
   it 'has default browsers', ->
-    autoprefixer.default.should.eql(['last 2 versions'])
+    autoprefixer.default.should.be.an.instanceOf(Array)
 
   it 'sets default browser', ->
     browsers = new Browsers(autoprefixer.data.browsers, autoprefixer.default)
