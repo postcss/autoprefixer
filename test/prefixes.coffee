@@ -21,7 +21,7 @@ data =
       browsers: ['ff 2', 'ff 1', 'chrome 1', 'ie 1']
       transition: true
     b:
-      browsers: ['ie 2', 'ff 1']
+      browsers: ['ie 2 new', 'ff 1']
       mistakes: ['-webkit-']
       props:    ['a', '*']
     c:
@@ -32,6 +32,8 @@ empty = new Prefixes({ }, new Browsers(data.browsers, []))
 fill  = new Prefixes(data.prefixes,
                      new Browsers(data.browsers, ['ff 2', 'ie 2']))
 
+old = (name) -> new OldValue(name)
+
 describe 'Prefixes', ->
 
   describe 'select()', ->
@@ -40,11 +42,11 @@ describe 'Prefixes', ->
       fill.select(data.prefixes).should.eql
         add:
           a: ['-moz-']
-          b: ['-ms-']
+          b: ['-ms- new']
           c: ['-ms-']
         remove:
           a: ['-webkit-', '-ms-']
-          b: ['-moz-', '-webkit-']
+          b: ['-ms-', '-moz-', '-webkit-']
           c: ['-moz-']
 
   describe 'preprocess()', ->
@@ -58,24 +60,24 @@ describe 'Prefixes', ->
           values: [name: 'a', prefixes: ['-moz-'], regexp: utils.regexp('a')]
         'a':
           prefixes: ['-moz-']
-          values: [name: 'b', prefixes: ['-ms-'], regexp: utils.regexp('b')]
+          values: [name: 'b', prefixes: ['-ms- new'], regexp: utils.regexp('b')]
         '*':
-          values: [name: 'b', prefixes: ['-ms-'], regexp: utils.regexp('b')]
+          values: [name: 'b', prefixes: ['-ms- new'], regexp: utils.regexp('b')]
 
       JSON.stringify(fill.remove).should.eql JSON.stringify({
         'selectors': ['-moz-c']
         'transition':
-          values: [new OldValue('-webkit-a'), new OldValue('-ms-a')]
+          values: [old('-webkit-a'), old('-ms-a')]
         'transition-property':
-          values: [new OldValue('-webkit-a'), new OldValue('-ms-a')]
+          values: [old('-webkit-a'), old('-ms-a')]
         '-webkit-a':
           remove: true
         '-ms-a':
           remove: true
         'a':
-          values: [new OldValue('-moz-b'), new OldValue('-webkit-b')]
+          values: [old('-ms-b'), old('-moz-b'), old('-webkit-b')]
         '*':
-          values: [new OldValue('-moz-b'), new OldValue('-webkit-b')]
+          values: [old('-ms-b'), old('-moz-b'), old('-webkit-b')]
       })
 
   describe 'other()', ->
@@ -99,11 +101,12 @@ describe 'Prefixes', ->
 
     it 'returns values for this and all properties', ->
       fill.values('add', 'a').should.eql [
-        { name: 'b', prefixes: ['-ms-'], regexp: utils.regexp('b') }
+        { name: 'b', prefixes: ['-ms- new'], regexp: utils.regexp('b') }
       ]
 
-      fill.values('remove', 'a').should.eql [new OldValue('-moz-b'),
-                                             new OldValue('-webkit-b')]
+      fill.values('remove', 'a').should.eql [old('-ms-b'),
+                                             old('-moz-b'),
+                                             old('-webkit-b')]
 
   describe 'toRemove()', ->
 
