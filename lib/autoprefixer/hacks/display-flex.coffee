@@ -39,11 +39,11 @@ class DisplayFlex extends FlexDeclaration
       super
     else
       [spec, prefix] = @flexSpec(prefix)
-      if spec.v2009
+      if spec == '2009'
         @prefixDisplay(prefix, 'box') unless @inline
-      if spec.v2012
+      else if spec == '2012'
         @prefixDisplay(prefix, if @inline then 'inline-flexbox' else 'flexbox')
-      if spec.final
+      else if spec ==  'final'
         @prefixDisplay(prefix, if @inline then 'inline-flex' else 'flex')
 
   # Prefix value

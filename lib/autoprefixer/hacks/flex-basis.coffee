@@ -22,9 +22,9 @@ class FlexBasis extends FlexDeclaration
   # Add prefix and convert to 2012 specs
   prefixProp: (prefix) ->
     [spec, prefix] = @flexSpec(prefix)
-    if spec.v2012
+    if spec == '2012'
       @insertBefore(prefix + 'flex', '0 1 ' + @value)
-    if spec.final
+    else if spec == 'final'
       super
 
 module.exports = FlexBasis

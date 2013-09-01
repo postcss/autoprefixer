@@ -28,12 +28,12 @@ class Flex extends FlexDeclaration
   # Add prefix and convert to 2009 specs
   prefixProp: (prefix) ->
     [spec, prefix] = @flexSpec(prefix)
-    if spec.v2009
+    if spec == '2009'
       first = @value.split(' ')[0]
       @insertBefore(prefix + 'box-flex', first)
-    if spec.v2012
+    else if spec == '2012'
       super
-    if spec.final
+    else if spec == 'final'
       super
 
 module.exports = Flex

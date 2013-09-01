@@ -34,10 +34,10 @@ class AlignContent extends FlexDeclaration
   # Add prefix and convert to 2012 spec
   prefixProp: (prefix) ->
     [spec, prefix] = @flexSpec(prefix)
-    if spec.v2012
+    if spec == '2012'
       oldValue = AlignContent.oldValues[@value] || @value
       @insertBefore(prefix + 'flex-line-pack', oldValue)
-    if spec.final
+    else if spec == 'final'
       super
 
 module.exports = AlignContent

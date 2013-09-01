@@ -28,12 +28,12 @@ class Order extends FlexDeclaration
   # Add prefix and convert to 2009 and 2012 specs
   prefixProp: (prefix) ->
     [spec, prefix] = @flexSpec(prefix)
-    if spec.v2009
+    if spec == '2009'
       oldValue = parseInt(@value) + 1
       @insertBefore(prefix + 'box-ordinal-group', oldValue.toString())
-    if spec.v2012
+    else if spec == '2012'
       @insertBefore(prefix + 'flex-order', @value)
-    if spec.final
+    else if spec == 'final'
       super
 
 module.exports = Order

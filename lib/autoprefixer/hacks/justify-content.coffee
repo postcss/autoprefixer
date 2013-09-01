@@ -35,11 +35,11 @@ class JustifyContent extends FlexDeclaration
   prefixProp: (prefix) ->
     [spec, prefix] = @flexSpec(prefix)
     oldValue = JustifyContent.oldValues[@value] || @value
-    if spec.v2009
+    if spec == '2009'
       @insertBefore(prefix + 'box-pack', oldValue) if @value != 'space-around'
-    if spec.v2012
+    else if spec == '2012'
       @insertBefore(prefix + 'flex-pack', oldValue)
-    if spec.final
+    else if spec == 'final'
       super
 
 module.exports = JustifyContent

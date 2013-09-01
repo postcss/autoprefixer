@@ -33,11 +33,11 @@ class AlignItems extends FlexDeclaration
   prefixProp: (prefix) ->
     [spec, prefix] = @flexSpec(prefix)
     oldValue = AlignItems.oldValues[@value] || @value
-    if spec.v2009
+    if spec == '2009'
       @insertBefore(prefix + 'box-align', oldValue)
-    if spec.v2012
+    else if spec == '2012'
       @insertBefore(prefix + 'flex-align', oldValue)
-    if spec.final
+    else if spec == 'final'
       super
 
 module.exports = AlignItems
