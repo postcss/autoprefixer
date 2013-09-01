@@ -34,7 +34,7 @@ class Gradient extends Value
   addPrefix: (prefix, string) ->
     string.replace @regexp, (all, before, params) =>
       params = params.trim().split(/\s*,\s*/)
-      if prefix == '-webkit-~old'
+      if prefix == '-webkit- old'
         return all if @name != 'linear-gradient'
         return all if params[0] and params[0].indexOf('deg') != -1
 

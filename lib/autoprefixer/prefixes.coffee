@@ -40,13 +40,13 @@ class Prefixes
 
     for name, data of list
       add = data.browsers.map (i) ->
-        params = i.split('~')
-        browser: params[0], note: params[1]
+        params = i.split(' ')
+        browser: params[0] + ' ' + params[1], note: params[2]
 
       add = add.filter( (i) => @browsers.isSelected(i.browser) ).map (i) =>
         prefix = @browsers.prefix(i.browser)
         if i.note
-          prefix + '~' + i.note
+          prefix + ' ' + i.note
         else
           prefix
 

@@ -41,7 +41,7 @@ describe 'utils', ->
   describe '.removeNote()', ->
 
     it 'removes note', ->
-      utils.removeNote('-webkit-~note').should.eql('-webkit-')
+      utils.removeNote('-webkit- note').should.eql('-webkit-')
       utils.removeNote('-webkit-').should.eql('-webkit-')
 
   describe '.escapeRegexp()', ->

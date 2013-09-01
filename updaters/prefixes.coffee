@@ -62,7 +62,7 @@ module.exports = (updater) ->
   @feature 'css-gradients', (browsers) =>
     browsers = @map browsers, (browser, name, version) ->
       if name == 'android' and version < 4
-        browser + '~old'
+        browser + ' old'
       else
         browser
 
@@ -103,9 +103,9 @@ module.exports = (updater) ->
   @feature 'flexbox', (browsers) =>
     browsers = @map browsers, (browser, name, version) ->
       if (name == 'safari' or name == 'ios') and version < 7
-        browser + '~2009'
+        browser + ' 2009'
       else if name == 'chrome' and version < 21
-        browser + '~2009'
+        browser + ' 2009'
       else
         browser
 
