@@ -29,14 +29,11 @@ class FlexDirection extends FlexDeclaration
   prefixProp: (prefix) ->
     [spec, prefix] = @flexSpec(prefix)
     if spec == '2009'
-      @insertBefore(prefix + 'box-orient', if @value.indexOf('row') != -1
-        'horizontal'
-      else
-        'vertical')
-      @insertBefore(prefix + 'box-direction', if @value.indexOf('reverse') != -1
-        'reverse'
-      else
-        'normal')
+      orient = if @value.indexOf('row') != -1 then 'horizontal' else 'vertical'
+      @insertBefore(prefix + 'box-orient', orient)
+
+      dir = if @value.indexOf('reverse') != -1 then 'reverse' else 'normal'
+      @insertBefore(prefix + 'box-direction', dir)
     else
       super
 
