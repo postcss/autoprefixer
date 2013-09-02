@@ -1,3 +1,16 @@
+== 0.8 (Unbowed, Unbent, Unbroken)
+* Add more browsers to defaults ("> 1%, last 2 versions, ff 17, opera 12.1"
+  instead of just "last 2 browsers").
+* Keep vendor prefixes without unprefixed version (like vendor-specific hacks).
+* Convert gradients to old WebKit syntax (actual for Android 2.3).
+* Better support for several syntaxes with one prefix (like Flexbox and
+  gradients in WebKit).
+* Add intrinsic and extrinsic sizing values support.
+* Remove never existed prefixes from common mistakes (like -ms-transition).
+* Add Opera 17 data.
+* Fix selector prefixes order.
+* Fix browser versions order in inspect.
+
 == 0.7 (We Do Not Sow)
 * Add vendor prefixes to selectors.
 * Add ::selection and ::placeholder selectors support.
