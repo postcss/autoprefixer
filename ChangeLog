@@ -11,6 +11,10 @@
 * Fix selector prefixes order.
 * Fix browser versions order in inspect.
 
+20130903:
+* Fix old WebKit gradients convertor on rgba() colors.
+* Allow to write old direction syntax in gradients.
+
 == 0.7 (We Do Not Sow)
 * Add vendor prefixes to selectors.
 * Add ::selection and ::placeholder selectors support.
