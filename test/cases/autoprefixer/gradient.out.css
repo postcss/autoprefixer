@@ -22,6 +22,11 @@ div {
                     repeating-radial-gradient(to top, aqua, red);
 }
 
+.radial {
+    background: -webkit-radial-gradient(ellipse farthest-corner, black, white);
+    background: -o-radial-gradient(ellipse farthest-corner, black, white);
+    background: radial-gradient(ellipse farthest-corner, black, white);
+}
 
 .simple1 {
     background: -webkit-gradient(linear, top left, bottom left, from(black), to(white));
@@ -35,4 +40,11 @@ div {
     background: -webkit-linear-gradient(right, black 0%, rgba(0, 0, 0, 0.5) 50%, white 100%);
     background: -o-linear-gradient(right, black 0%, rgba(0, 0, 0, 0.5) 50%, white 100%);
     background: linear-gradient(to left, black 0%, rgba(0, 0, 0, 0.5) 50%, white 100%);
+}
+
+.direction {
+    background: -webkit-gradient(linear, top left, bottom right, from(black), color-stop(rgba(0, 0, 0, 0.5)), to(white));
+    background: -webkit-linear-gradient(top left, black, rgba(0, 0, 0, 0.5), white);
+    background: -o-linear-gradient(top left, black, rgba(0, 0, 0, 0.5), white);
+    background: linear-gradient(top left, black, rgba(0, 0, 0, 0.5), white);
 }

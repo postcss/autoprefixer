@@ -10,10 +10,18 @@ div {
                     repeating-radial-gradient(to top, aqua, red);
 }
 
+.radial {
+    background: radial-gradient(ellipse farthest-corner, black, white);
+}
+
 .simple1 {
     background: linear-gradient(black, white);
 }
 
 .simple2 {
     background: linear-gradient(to left, black 0%, rgba(0, 0, 0, 0.5) 50%, white 100%);
+}
+
+.direction {
+    background: linear-gradient(top left, black, rgba(0, 0, 0, 0.5), white);
 }
