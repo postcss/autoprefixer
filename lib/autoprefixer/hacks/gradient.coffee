@@ -18,6 +18,8 @@ OldValue = require('../old-value')
 Value    = require('../value')
 utils    = require('../utils')
 
+isDirection = new RegExp('(top|left|right|bottom)', 'gi')
+
 class Gradient extends Value
   @names = ['linear-gradient', 'repeating-linear-gradient',
             'radial-gradient', 'repeating-radial-gradient']
@@ -32,11 +34,15 @@ class Gradient extends Value
 
   # Change degrees for webkit prefix
   addPrefix: (prefix, string) ->
-    string.replace @regexp, (all, before, params) =>
-      params = @splitParams(params)
+    string.replace @regexp, (all, before, args) =>
+      params = @splitParams(args)
+      params = @newDirection(params)
+
       if prefix == '-webkit- old'
         return all if @name != 'linear-gradient'
         return all if params[0] and params[0].indexOf('deg') != -1
+        return all if args.indexOf('-corner') != -1
+        return all if args.indexOf('-side')   != -1
 
         params = @oldDirection(params)
         params = @colorStops(params)
@@ -59,10 +65,15 @@ class Gradient extends Value
 
   # Direction to replace
   oldDirections:
-    top:    'bottom left, top left'
-    left:   'top right, top left'
-    bottom: 'top left, bottom left'
-    right:  'top left, top right'
+    'top':    'bottom left, top left'
+    'left':   'top right, top left'
+    'bottom': 'top left, bottom left'
+    'right':  'top left, top right'
+
+    'top right':    'bottom left, top right'
+    'top left':     'bottom right, top left'
+    'bottom right': 'top left, bottom right'
+    'bottom left':  'top right, bottom left'
 
   splitParams: (params) ->
     array = []
@@ -86,6 +97,18 @@ class Gradient extends Value
 
     array.push(param.trim())
     array
+
+  # Replace old direction to new
+  newDirection: (params) ->
+    first = params[0]
+
+    if first.indexOf('to ') == -1 and isDirection.test(first)
+      first = first.split(' ')
+      first = for value in first
+        @directions[value.toLowerCase()] || value
+      params[0] = 'to ' + first.join(' ')
+
+    params
 
   # Replace `to top left` to `bottom right`
   fixDirection: (param) ->
@@ -121,29 +144,28 @@ class Gradient extends Value
   # Change colors syntax to old webkit
   colorStops: (params) ->
     params.map (param, i) ->
-      if i == 0
-        param
+      return param if i == 0
+
+      separator = param.lastIndexOf(' ')
+      if separator == -1
+        color    = param
+        position = undefined
       else
-        separator = param.lastIndexOf(' ')
-        if separator == -1
-          color    = param
-          position = undefined
-        else
-          color     = param[0...separator]
-          position  = param[(separator + 1)..-1]
+        color     = param[0...separator]
+        position  = param[(separator + 1)..-1]
 
-        if position and position.indexOf(')') != -1
-          color   += ' ' + position
-          position = undefined
+      if position and position.indexOf(')') != -1
+        color   += ' ' + position
+        position = undefined
 
-        if i == 1
-          "from(#{color})"
-        else if i == params.length - 1
-          "to(#{color})"
-        else if position
-          "color-stop(#{position}, #{color})"
-        else
-          "color-stop(#{color})"
+      if i == 1
+        "from(#{color})"
+      else if i == params.length - 1
+        "to(#{color})"
+      else if position
+        "color-stop(#{position}, #{color})"
+      else
+        "color-stop(#{color})"
 
   # Remove old WebKit gradient too
   old: (prefix) ->
