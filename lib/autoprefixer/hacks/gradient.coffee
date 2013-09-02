@@ -24,7 +24,7 @@ class Gradient extends Value
 
   @regexps = { }
   for i in @names
-    @regexps[i] = new RegExp('(^|\\s|,)' + i + '\\(([^)]+)\\)', 'gi')
+    @regexps[i] = new RegExp('(^|\\s|,)' + i + '\\((.+)\\)', 'gi')
 
   # Cache regexp to parse params
   constructor: (@name, @prefixes) ->
@@ -33,7 +33,7 @@ class Gradient extends Value
   # Change degrees for webkit prefix
   addPrefix: (prefix, string) ->
     string.replace @regexp, (all, before, params) =>
-      params = params.trim().split(/\s*,\s*/)
+      params = @splitParams(params)
       if prefix == '-webkit- old'
         return all if @name != 'linear-gradient'
         return all if params[0] and params[0].indexOf('deg') != -1
@@ -63,6 +63,29 @@ class Gradient extends Value
     left:   'top right, top left'
     bottom: 'top left, bottom left'
     right:  'top left, top right'
+
+  splitParams: (params) ->
+    array = []
+    param = ''
+    func  = 0
+
+    for char in params
+      if char == ')' and func > 0
+        func  -= 1
+        param += char
+      else if char == '('
+        param += char
+        func  += 1
+      else if func > 0
+        param += char
+      else if char == ','
+        array.push(param.trim())
+        param = ''
+      else
+        param += char
+
+    array.push(param.trim())
+    array
 
   # Replace `to top left` to `bottom right`
   fixDirection: (param) ->
@@ -98,15 +121,29 @@ class Gradient extends Value
   # Change colors syntax to old webkit
   colorStops: (params) ->
     params.map (param, i) ->
-      [color, position] = param.split(' ')
       if i == 0
         param
-      else if i == 1
-        "from(#{color})"
-      else if i == params.length - 1
-        "to(#{color})"
       else
-        "color-stop(#{position}, #{color})"
+        separator = param.lastIndexOf(' ')
+        if separator == -1
+          color    = param
+          position = undefined
+        else
+          color     = param[0...separator]
+          position  = param[(separator + 1)..-1]
+
+        if position and position.indexOf(')') != -1
+          color   += ' ' + position
+          position = undefined
+
+        if i == 1
+          "from(#{color})"
+        else if i == params.length - 1
+          "to(#{color})"
+        else if position
+          "color-stop(#{position}, #{color})"
+        else
+          "color-stop(#{color})"
 
   # Remove old WebKit gradient too
   old: (prefix) ->

@@ -31,8 +31,8 @@ div {
 }
 
 .simple2 {
-    background: -webkit-gradient(linear, top right, top left, from(black), color-stop(50%, gray), to(white));
-    background: -webkit-linear-gradient(right, black 0%, gray 50%, white 100%);
-    background: -o-linear-gradient(right, black 0%, gray 50%, white 100%);
-    background: linear-gradient(to left, black 0%, gray 50%, white 100%);
+    background: -webkit-gradient(linear, top right, top left, from(black), color-stop(50%, rgba(0, 0, 0, 0.5)), to(white));
+    background: -webkit-linear-gradient(right, black 0%, rgba(0, 0, 0, 0.5) 50%, white 100%);
+    background: -o-linear-gradient(right, black 0%, rgba(0, 0, 0, 0.5) 50%, white 100%);
+    background: linear-gradient(to left, black 0%, rgba(0, 0, 0, 0.5) 50%, white 100%);
 }
