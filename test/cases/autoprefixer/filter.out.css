@@ -6,3 +6,7 @@ a {
 div {
     filter: progid:DXImageTransform.Microsoft.Alpha(opacity=50);
 }
+
+b {
+    filter: alpha(opacity=100);
+}

@@ -22,7 +22,8 @@ class Filter extends Declaration
   # Check is it Internet Explorer filter
   constructor: ->
     super
-    if @value.indexOf('DXImageTransform.Microsoft') != -1
+    if @value.indexOf('DXImageTransform.Microsoft') != -1 or
+       @value.indexOf('alpha(') != -1
       @unprefixed = @prop = '-ms-filter'
 
 module.exports = Filter
