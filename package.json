@@ -15,11 +15,11 @@
   },
   "devDependencies": {
     "coffee-script": "1.6.3",
-    "component":     "0.17.0",
-    "fs-extra":      "0.6.3",
+    "component":     "0.17.2",
+    "fs-extra":      "0.6.4",
     "should":        "1.2.2",
     "stylus":        "0.37.0",
-    "rework":        "0.17.4",
+    "rework":        "0.18.1",
     "mocha":         "1.12.1",
     "glob":          "3.2.6",
     "nib":           "1.0.1"
