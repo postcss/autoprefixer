@@ -15,6 +15,10 @@
 * Fix old WebKit gradients convertor on rgba() colors.
 * Allow to write old direction syntax in gradients.
 
+20130906:
+* Fix direction syntax in radial gradients.
+* Don’t prefix IE filter with modern syntax.
+
 == 0.7 (We Do Not Sow)
 * Add vendor prefixes to selectors.
 * Add ::selection and ::placeholder selectors support.
