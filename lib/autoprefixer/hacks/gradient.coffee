@@ -54,6 +54,8 @@ class Gradient extends Value
             params[0] = @fixDirection(params[0])
           else if params[0].indexOf('deg') != -1
             params[0] = @fixAngle(params[0])
+          else if params[0].indexOf(' at ') != -1
+            @fixRadial(params)
         before + prefix + @name + '(' + params.join(', ') + ')'
 
   # Direction to replace
@@ -128,6 +130,11 @@ class Gradient extends Value
     param = Math.abs(450 - param) % 360
     param = @roundFloat(param, 3)
     "#{param}deg"
+
+  # Fix radial direction syntax
+  fixRadial: (params) ->
+    first = params[0].split(/\s+at\s+/)
+    params.splice(0, 1, first[1], first[0])
 
   oldDirection: (params) ->
     params if params.length == 0

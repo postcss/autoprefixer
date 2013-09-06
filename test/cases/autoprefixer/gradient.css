@@ -25,3 +25,7 @@ div {
 .direction {
     background: linear-gradient(top left, black, rgba(0, 0, 0, 0.5), white);
 }
+
+.radial {
+    background: radial-gradient(farthest-side at 0 50%, white, black);
+}
