@@ -49,6 +49,8 @@ class Rule
     while @number < @declarations.length
       item = @declarations[@number]
       if item.property
+        # Remove when css-parse accept github.com/visionmedia/css-parse/pull/51
+        item.property = item.property.trim()
         decl = Declaration.load(@, @number, item)
         callback(decl, decl.prefix || @prefix)
       @number += 1
