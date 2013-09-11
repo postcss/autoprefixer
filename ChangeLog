@@ -19,6 +19,9 @@
 * Fix direction syntax in radial gradients.
 * Don’t prefix IE filter with modern syntax.
 
+20130911:
+* Fix parsing property name with spaces.
+
 == 0.7 (We Do Not Sow)
 * Add vendor prefixes to selectors.
 * Add ::selection and ::placeholder selectors support.
