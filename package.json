@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "coffee-script": "1.6.3",
-    "component":     "0.17.2",
+    "component":     "0.17.3",
     "fs-extra":      "0.6.4",
     "should":        "1.2.2",
     "stylus":        "0.37.0",
