@@ -31,37 +31,34 @@ class Binary
     @parseArguments()
 
   # Quick help message
-  help: ->
-    h = []
-    h.push 'Usage: autoprefixer [OPTION...] FILES'
-    h.push ''
-    h.push 'Parse CSS files and add prefixed properties and values.'
-    h.push ''
-    h.push 'Options:'
-    h.push '  -b, --browsers BROWSERS  add prefixes for selected browsers'
-    h.push '  -o, --output FILE        set output CSS file'
-    h.push '  -i, --inspect            show selected browsers and properties'
-    h.push '  -h, --help               show help text'
-    h.push '  -v, --version            print program version'
-    h.join("\n")
+  help: -> '''
+    Usage: autoprefixer [OPTION...] FILES
+
+    Parse CSS files and add prefixed properties and values.
+
+    Options:
+      -b, --browsers BROWSERS  add prefixes for selected browsers
+      -o, --output FILE        set output CSS file
+      -i, --inspect            show selected browsers and properties
+      -h, --help               show help text
+      -v, --version            print program version
+    '''
 
   # Options description
-  desc: ->
-    h = []
-    h.push 'Files:'
-    h.push "  By default, prefixed CSS will rewrite original files."
-    h.push "  If you didn't set input files, " +
-           "autoprefixer will read from stdin stream."
-    h.push "  Output CSS will be written to stdout stream on " +
-           "`-o -' argument or stdin input."
-    h.push ''
-    h.push 'Browsers:'
-    h.push '  Separate browsers by comma. For example, ' +
-           "`-b \"> 1%, opera 12\"."
-    h.push "  You can set browsers by global usage statictics: " +
-           "`-b \"> 1%\"'"
-    h.push "  or last version: `-b \"last 2 versions\"' (by default)."
-    h.join("\n")
+  desc: -> '''
+    Files:
+      By default, prefixed CSS will rewrite original files.
+      If you didn't set input files, autoprefixer will +
+        read from stdin stream.
+      Output CSS will be written to stdout stream on +
+        `-o -' argument or stdin input.
+
+    Browsers:
+      Separate browsers by comma. For example, `-b "> 1%, opera 12"'.
+      You can set browsers by global usage statictics: `-b \"> 1%\"'.
+      or last version: `-b "last 2 versions"' (by default).
+    '''
+    .replace(/\+\s+/g, '')
 
   # Print to stdout
   print: (str) ->
@@ -83,33 +80,37 @@ class Binary
     while args.length > 0
       arg = args.shift()
 
-      if arg == '-h' or arg == '--help'
-        @command = 'showHelp'
+      switch arg
+        when '-h', '--help'
+          @command = 'showHelp'
 
-      else if arg == '-v' or arg == '--version'
-        @command = 'showVersion'
+        when '-v', '--version'
+          @command = 'showVersion'
 
-      else if arg == '-i' or arg == '--inspect'
-        @command = 'inspect'
+        when '-i', '--inspect'
+          @command = 'inspect'
 
-      else if arg == '-u' or arg == '--update'
-        @command = 'update'
+        when '-u', '--update'
+          @command = 'update'
 
-      else if arg == '-b' or arg == '--browsers'
-        @requirements = args.shift().split(',').map (i) -> i.trim()
+        when '-b', '--browsers'
+          @requirements = args.shift().split(',').map (i) -> i.trim()
 
-      else if arg == '-o' or arg == '--output'
-        @outputFile = args.shift()
+        when '-o', '--output'
+          @outputFile = args.shift()
 
-      else if ( arg.match(/^-\w$/) || arg.match(/^--\w[\w-]+$/) )
-        @command = undefined
+        else
+          if arg.match(/^-\w$/) || arg.match(/^--\w[\w-]+$/)
+            @command = undefined
 
-        @error "autoprefixer: Unknown argument #{ arg }"
-        @error ''
-        @error @help()
+            @error "autoprefixer: Unknown argument #{ arg }"
+            @error ''
+            @error @help()
 
-      else
-        @inputFiles.push(arg)
+          else
+            @inputFiles.push(arg)
+
+    return
 
   # Print help
   showHelp: (done) ->
@@ -149,7 +150,7 @@ class Binary
 
     updater.run()
 
-  # Mark that there is another asyn work
+  # Mark that there is another async work
   startWork: ->
     @waiting += 1
 
