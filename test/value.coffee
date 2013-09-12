@@ -47,6 +47,7 @@ describe 'Value', ->
 
     it 'check prefixed value', ->
       @calc.old('-o-').should.eql new OldValue('-o-calc')
+
   describe 'addPrefix()', ->
 
     it 'adds prefix to value', ->
