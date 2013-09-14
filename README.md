@@ -1,6 +1,6 @@
 # Autoprefixer
 
-<img align="right" width="94" src="http://ai.github.io/autoprefixer/logo.svg">
+<img align="right" width="94" src="http://ai.github.io/autoprefixer/logo.svg" title="Autoprefixer logo by Anton Lovchikov">
 
 Parse CSS and add vendor prefixes to CSS rules using values
 from the [Can I Use](http://caniuse.com/).
