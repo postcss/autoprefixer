@@ -97,6 +97,15 @@ describe 'Binary', ->
       read('b.css').should.eql prefixed
       done()
 
+  it 'concats several files to one output', (done) ->
+    write('a.css', css)
+    write('b.css', 'a { color: black; }')
+    @exec '-b', 'chrome 25', 'a.css', 'b.css', '-o', 'c.css', (out, err) ->
+      err.should.be.false
+      out.should.eql ''
+      read('c.css').should.eql prefixed + "a {\n  color: black;\n}"
+      done()
+
   it 'outputs to stdout', (done) ->
     write('a.css', css)
     @exec '-b', 'chrome 25', '-o', '-', 'a.css', (out, err) ->

@@ -179,14 +179,25 @@ class Binary
           @error error.stack
     return @endWork() unless prefixed
 
-    if file == '-'
+    if @outputFile == '-'
       @print prefixed
       @endWork()
-    else
-       fs.writeFile file, prefixed, (error) =>
-          @error "autoprefixer: #{ error }" if error
-          @endWork()
 
+    else if @outputFile
+      try
+        unless @outputInited
+          @outputInited = true
+          fs.writeFileSync(@outputFile, '')
+        fs.appendFileSync(@outputFile, prefixed)
+
+      catch error
+        @error "autoprefixer: #{ error.message }"
+      @endWork()
+
+    else if file
+      fs.writeFile file, prefixed, (error) =>
+        @error "autoprefixer: #{ error }" if error
+        @endWork()
 
   # Compile selected files
   compile: (done) ->
@@ -200,23 +211,25 @@ class Binary
       css = ''
       @stdin.resume()
       @stdin.on 'data', (chunk) -> css += chunk
-      @stdin.on 'end', => @compileCSS(css, @outputFile)
+      @stdin.on 'end', => @compileCSS(css)
     else
-      fs = require('fs')
       for file in @inputFiles
         @startWork()
+
+      for file in @inputFiles
         unless fs.existsSync(file)
           @error "autoprefixer: File #{ file } doesn't exists"
           @endWork()
-          return
+          continue
 
-        do (file) =>
-          fs.readFile file, (error, css) =>
-            if error
-              @error "autoprefixer: #{ error }"
-            else
-              css = css.toString()
-              @compileCSS(css, @outputFile || file)
+        try
+          css = fs.readFileSync(file).toString()
+        catch error
+          @error "autoprefixer: #{ error.message }"
+          @endWork()
+          continue
+
+        @compileCSS(css, file)
 
   # Execute command selected by arguments
   run: (done) ->
