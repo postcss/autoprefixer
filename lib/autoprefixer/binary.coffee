@@ -159,6 +159,11 @@ class Binary
     @waiting -= 1
     @doneCallback() if @waiting <= 0
 
+  # Write error to stderr and finish work
+  workError: (str) ->
+    @error(str)
+    @endWork()
+
   # Lazy loading for Autoprefixer instance
   compiler: ->
     @compilerCache ||= autoprefixer(@requirements)
@@ -189,10 +194,10 @@ class Binary
           @outputInited = true
           fs.writeFileSync(@outputFile, '')
         fs.appendFileSync(@outputFile, prefixed)
+        @endWork()
 
       catch error
-        @error "autoprefixer: #{ error.message }"
-      @endWork()
+        @workError "autoprefixer: #{ error.message }"
 
     else if file
       fs.writeFile file, prefixed, (error) =>
@@ -218,15 +223,13 @@ class Binary
 
       for file in @inputFiles
         unless fs.existsSync(file)
-          @error "autoprefixer: File #{ file } doesn't exists"
-          @endWork()
+          @workError "autoprefixer: File #{ file } doesn't exists"
           continue
 
         try
           css = fs.readFileSync(file).toString()
         catch error
-          @error "autoprefixer: #{ error.message }"
-          @endWork()
+          @workError "autoprefixer: #{ error.message }"
           continue
 
         @compileCSS(css, file)
