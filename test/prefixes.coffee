@@ -97,6 +97,12 @@ describe 'Prefixes', ->
       fill.each('c', (i) -> all.push(i) )
       all.should.eql []
 
+  describe 'isCustom()', ->
+
+    it 'returns true browser prefixes', ->
+      fill.isCustom('-moz-').should.be.false
+      fill.isCustom('-evil-').should.be.true
+
   describe 'values()', ->
 
     it 'returns values for this and all properties', ->

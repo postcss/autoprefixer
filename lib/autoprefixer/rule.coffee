@@ -36,16 +36,12 @@ Declaration.register require('./hacks/align-content')
 Declaration.register require('./hacks/flex-direction')
 Declaration.register require('./hacks/justify-content')
 
-Declaration.prefixes = ['-ms-', '-moz-', '-webkit-', '-o-']
-
 class Rule
   constructor: (@rules, @number, @node, @prefix) ->
     @type         = @node.type
     @declarations = @node.declarations
     if @type == 'rule'
       @selectors  = @node.selectors.join(', ')
-    if Declaration.prefixes.indexOf(@prefix) == -1
-      @prefix = undefined
 
   # Execute callback on every property: value declarations
   each: (callback) ->

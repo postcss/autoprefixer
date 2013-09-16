@@ -36,13 +36,17 @@ class Processor
 
     # Properties
     css.eachDeclaration (decl, vendor) =>
-     @prefixes.each decl.prop, (prefix) =>
-       return if vendor and vendor != utils.removeNote(prefix)
-       return if decl.valueContain(@prefixes.other(prefix))
-       decl.prefixProp(prefix)
+      vendor = null if @prefixes.isCustom(vendor)
+
+      @prefixes.each decl.prop, (prefix) =>
+        return if vendor and vendor != utils.removeNote(prefix)
+        return if decl.valueContain(@prefixes.other(prefix))
+        decl.prefixProp(prefix)
 
     # Values
     css.eachDeclaration (decl, vendor) =>
+      vendor = null if @prefixes.isCustom(vendor)
+
       for value in @prefixes.values('add', decl.unprefixed)
         continue unless value.check(decl.value)
 

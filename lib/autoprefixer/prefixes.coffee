@@ -128,6 +128,10 @@ class Prefixes
     if @add[prop] and @add[prop].prefixes
       callback(prefix) for prefix in @add[prop].prefixes
 
+  # Is it custom framework prefix, not browser prefix
+  isCustom: (prefix) ->
+    @browsers.prefixes().indexOf(prefix) == -1
+
   # Return values, which must be prefixed in selected property
   values: (type, prop) ->
     data = @[type]

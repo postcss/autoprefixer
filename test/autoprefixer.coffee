@@ -43,9 +43,10 @@ test = (from, instansce = prefixer(from)) ->
   css    = instansce.compile(input)
   compare(css, output)
 
-commons = ['transition', 'values', 'keyframes', 'gradient', 'filter', 'notes',
-           'flexbox', 'flex-rewrite', 'border-image', 'border-radius',
-           'selectors', 'placeholder', 'fullscreen', 'intrinsic', 'mistakes']
+commons = ['transition', 'values', 'keyframes', 'gradient', 'flex-rewrite',
+           'flexbox', 'filter', 'border-image', 'border-radius', 'notes',
+           'selectors', 'placeholder', 'fullscreen', 'intrinsic', 'mistakes',
+           'custom-prefix']
 
 describe 'autoprefixer()', ->
 
@@ -136,6 +137,7 @@ describe 'Autoprefixer', ->
     it 'supports all placeholders',     -> test('placeholder')
     it 'supports all fullscreens',      -> test('fullscreen')
     it 'supports intrinsic sizing',     -> test('intrinsic')
+    it 'supports custom prefixes',      -> test('custom-prefix')
 
     it 'ignores transform in transition for IE', ->
       input  = cases.read('autoprefixer/ie-transition')
