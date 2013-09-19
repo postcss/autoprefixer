@@ -182,10 +182,8 @@ module.exports =
 
   ios:
     prefix: "-webkit-"
-    future: [
-      7
-    ]
     versions: [
+      7
       6
       6.1
       5
@@ -197,6 +195,7 @@ module.exports =
       3.2
     ]
     popularity: [
+      0
       3.477105
       3.477105
       0.306353
