@@ -233,6 +233,7 @@ class Binary
           continue
 
         @compileCSS(css, file)
+      false
 
   # Execute command selected by arguments
   run: (done) ->
