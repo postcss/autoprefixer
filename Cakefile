@@ -53,7 +53,7 @@ task 'compile', 'Compile CoffeeScript to JS', ->
   compile()
 
 task 'publish', 'Publish new version to npm', ->
-  invoke('compile')
+  invoke('compile', /binary.coffee/)
   build = __dirname + '/build/'
   sh "npm publish #{build}", ->
     fs.removeSync(build)
@@ -73,7 +73,9 @@ task 'build', 'Build standalone autoprefixer.js', ->
 
   for name, version of npm.dependencies
     config.dependencies["visionmedia/#{name}"] = version.replace(/[^\d\.]/g, '')
-  config.scripts = glob.sync(build + '**/*.js').map (i) -> i.replace(build, '')
+  config.scripts = glob.sync(build + '**/*.js').
+    filter( (i) -> !/binary\.js/.test(i) ).
+    map (i) -> i.replace(build, '')
 
   fs.writeFileSync(build + 'component.json', JSON.stringify(config))
 
