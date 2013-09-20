@@ -121,7 +121,7 @@ compiles CSS once on deploy and doesn’t hit client-side performance.
 You can specify the browsers you want to target in your project:
 
 ```js
-autoprefixer("last 1 version", "> 1%", "ie 8", "ie 7").compile(css);
+autoprefixer("last 1 versions", "> 1%", "ie 8", "ie 7").compile(css);
 ```
 
 * `last n versions` is last versions for each browser. Like “last 2 versions”
@@ -136,7 +136,7 @@ Blackberry and stock Android browsers will not be used in `last n versions`.
 You can add them by name:
 
 ```js
-autoprefixer("last 1 version", "bb 10", "android 4").compile(css);
+autoprefixer("last 1 versions", "bb 10", "android 4").compile(css);
 ```
 
 You can find the browsers codenames in [data file](data/browsers.coffee):
@@ -160,7 +160,7 @@ By default, Autoprefixer uses `> 1%, last 2 versions, ff 17, opera 12.1`:
 You can check which browsers are selected and which properties will be prefixed:
 
 ```js
-inspect = autoprefixer("last 1 version").inspect();
+inspect = autoprefixer("last 1 versions").inspect();
 console.log(inspect);
 ```
 
