@@ -29,6 +29,9 @@
 * iOS 7 is moved to released versions.
 * Clean up binary code (by Simon Lydell).
 
+20130923:
+* Firefox 24 is moved to released versions.
+
 == 0.7 (We Do Not Sow)
 * Add vendor prefixes to selectors.
 * Add ::selection and ::placeholder selectors support.
