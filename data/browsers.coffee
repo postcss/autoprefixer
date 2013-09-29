@@ -102,7 +102,6 @@ module.exports =
   ff:
     prefix: "-moz-"
     future: [
-      26
       25
     ]
     versions: [
