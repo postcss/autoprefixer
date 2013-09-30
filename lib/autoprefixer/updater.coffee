@@ -64,7 +64,6 @@ module.exports =
       data = ''
       res.on 'data', (chunk) -> data += chunk
       res.on 'end', =>
-        console.log data
         callback(JSON.parse(data))
 
         @requests -= 1
