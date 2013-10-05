@@ -40,9 +40,9 @@ module.exports =
     prefix: "-webkit-"
     future: [
       31
-      30
     ]
     versions: [
+      30
       29
       28
       27
@@ -71,6 +71,7 @@ module.exports =
       4
     ]
     popularity: [
+      0.16438
       27.9775
       1.36435
       0.468483
