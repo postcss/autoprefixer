@@ -35,6 +35,9 @@
 20131001:
 * Add support for grab, grabbing, zoom-in and zoom-out cursor values.
 
+20131006:
+* Chrome 30 is moved to released versions.
+
 == 0.7 (We Do Not Sow)
 * Add vendor prefixes to selectors.
 * Add ::selection and ::placeholder selectors support.
