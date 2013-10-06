@@ -38,6 +38,9 @@
 20131006:
 * Chrome 30 is moved to released versions.
 
+20131007:
+* Don’t add another prefixes in rule with prefixed selector.
+
 == 0.7 (We Do Not Sow)
 * Add vendor prefixes to selectors.
 * Add ::selection and ::placeholder selectors support.
