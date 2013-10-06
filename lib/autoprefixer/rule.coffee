@@ -42,6 +42,9 @@ class Rule
     @declarations = @node.declarations
     if @type == 'rule'
       @selectors  = @node.selectors.join(', ')
+      unless @prefix
+        match   = @selectors.match(/(^|\s|:)(-(\w+)-)/)
+        @prefix = match[2] if match
 
   # Execute callback on every property: value declarations
   each: (callback) ->

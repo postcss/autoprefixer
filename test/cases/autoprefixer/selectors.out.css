@@ -1,7 +1,13 @@
-::-moz-selection {
-    background: red;
+:-webkit-full-screen a {
+    box-sizing: border-box;
 }
 
-::selection {
-    background: red;
+:-moz-full-screen a {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+:fullscreen a {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }

@@ -1,14 +1,32 @@
 Rule     = require('../lib/autoprefixer/rule')
 Rules    = require('../lib/autoprefixer/rules')
 Selector = require('../lib/autoprefixer/selector')
-cases    = require('./lib/cases')
 utils    = require('../lib/autoprefixer/utils')
+cases    = require('./lib/cases')
 
 describe 'Rule', ->
   beforeEach ->
     @nodes = cases.load('rule/rule')
     @rules = new Rules(@nodes.stylesheet.rules)
     @rule  = new Rule(@rules, 0, @nodes.stylesheet.rules[0])
+
+  describe 'prefix', ->
+
+    it 'can be taken from selectors', ->
+      nodes = cases.load('rule/selector')
+      rules = new Rules(nodes.stylesheet.rules)
+
+      rule = new Rule(rules, 0, nodes.stylesheet.rules[0])
+      rule.prefix.should.eql('-ms-')
+
+      rule = new Rule(rules, 1, nodes.stylesheet.rules[1])
+      rule.prefix.should.eql('-moz-')
+
+      rule = new Rule(rules, 2, nodes.stylesheet.rules[2])
+      rule.prefix.should.eql('-webkit-')
+
+      rule = new Rule(rules, 0, nodes.stylesheet.rules[0], '-o-')
+      rule.prefix.should.eql('-o-')
 
   describe 'each()', ->
 
@@ -73,13 +91,13 @@ describe 'Rule', ->
     it 'clone itself with prefixed selectors', ->
       selector = new Selector('a', ['-webkit-', '-moz-'])
       @rule.prefixSelector(selector)
-      cases.compare(@nodes, 'rule/selector')
+      cases.compare(@nodes, 'rule/prefix-selector')
 
     it "don't clone twice", ->
       selector = new Selector('a', ['-moz-', '-webkit-'])
       @rule.prefixSelector(selector)
       @rule.prefixSelector(selector)
-      cases.compare(@nodes, 'rule/selector')
+      cases.compare(@nodes, 'rule/prefix-selector')
 
   describe 'remove()', ->
 

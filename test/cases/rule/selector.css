@@ -1,17 +1,8 @@
--webkit-a {
-    color: black;
-    top: 1px;
-    left: 2px;
+-ms-a {
 }
 
--moz-a {
-    color: black;
-    top: 1px;
-    left: 2px;
+::-moz-a {
 }
 
-a {
-    color: black;
-    top: 1px;
-    left: 2px;
+a -webkit-a {
 }
