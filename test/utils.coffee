@@ -38,6 +38,13 @@ describe 'utils', ->
         b: 'B'
         c: 'C'
 
+    it 'clones arrays inside', ->
+      a = { arr: [1, 2] }
+      b = utils.clone(a)
+
+      b.arr.push(3)
+      a.arr.should.eql [1, 2]
+
   describe '.removeNote()', ->
 
     it 'removes note', ->

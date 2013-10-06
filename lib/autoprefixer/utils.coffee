@@ -33,7 +33,11 @@ module.exports =
   clone: (obj, changes = { }) ->
     clone = { }
     for key, value of obj
-      clone[key] = value unless changes[key]
+      unless changes[key]
+        if value instanceof Array
+          clone[key] = value.slice(0)
+        else
+          clone[key] = value
     for key, value of changes
       clone[key] = value
     clone
