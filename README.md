@@ -9,7 +9,7 @@ Write your CSS rules without vendor prefixes (in fact, forget about them
 entirely):
 
 ```js
-var css = 'a { transition: transform 1s }';
+var css = ':fullscreen a { transition: transform 1s }';
 var prefixed = autoprefixer.compile(css);
 ```
 
@@ -17,9 +17,18 @@ Autoprefixer uses the data on current browser popularity
 and properties support to apply prefixes for you:
 
 ```css
-a {
+:-webkit-full-screen a {
   -webkit-transition: -webkit-transform 1s;
-  transition: transform 1s
+  transition: transform 1s;
+}
+
+:-moz-full-screen a {
+  transition: transform 1s;
+}
+
+:fullscreen a {
+  -webkit-transition: -webkit-transform 1s;
+  transition: transform 1s;
 }
 ```
 
