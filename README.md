@@ -8,13 +8,20 @@ from the [Can I Use](http://caniuse.com/).
 Write your CSS rules without vendor prefixes (in fact, forget about them
 entirely):
 
+```css
+:fullscreen a {
+  transition: transform 1s
+}
+```
+
+Process your CSS by Autoprefixer:
+
 ```js
-var css = ':fullscreen a { transition: transform 1s }';
 var prefixed = autoprefixer.compile(css);
 ```
 
-Autoprefixer uses the data on current browser popularity
-and properties support to apply prefixes for you:
+It will use the data on current browser popularity and properties support
+to apply prefixes for you:
 
 ```css
 :-webkit-full-screen a {
