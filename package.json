@@ -16,7 +16,7 @@
   "devDependencies": {
     "coffee-script": "1.6.3",
     "component":     "0.17.6",
-    "fs-extra":      "0.6.4",
+    "fs-extra":      "0.7.0",
     "should":        "1.3.0",
     "stylus":        "0.38.0",
     "rework":        "0.18.1",
