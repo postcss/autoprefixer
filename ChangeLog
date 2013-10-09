@@ -41,6 +41,9 @@
 20131007:
 * Don’t add another prefixes in rule with prefixed selector.
 
+20131009:
+* Opera 17 is moved to released versions.
+
 == 0.7 (We Do Not Sow)
 * Add vendor prefixes to selectors.
 * Add ::selection and ::placeholder selectors support.
