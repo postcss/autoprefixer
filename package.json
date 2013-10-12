@@ -29,6 +29,6 @@
   },
   "main": "lib/autoprefixer",
   "scripts": {
-    "test": "mocha --reporter spec --require should --compilers coffee:coffee-script"
+    "test": "mocha"
   }
 }
