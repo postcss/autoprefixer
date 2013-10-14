@@ -227,6 +227,19 @@ or process CSS from plain Ruby:
 prefixed = AutoprefixerRails.compile(css)
 ```
 
+### Stylus
+
+You can use the [autoprefixer-stylus](https://github.com/jenius/autoprefixer-stylus) npm package as a stylus plugin. Just install the npm package and `use()` it.
+
+```
+var stylus = require('stylus');
+var autoprefixer = require('autoprefixer-stylus');
+
+stylus(css)
+  .use(autoprefixer())
+  .render(function(err, output){ console.log(output); });
+```
+
 ### Grunt
 
 You can use the
