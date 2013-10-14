@@ -227,19 +227,6 @@ or process CSS from plain Ruby:
 prefixed = AutoprefixerRails.compile(css)
 ```
 
-### Stylus
-
-You can use the [autoprefixer-stylus](https://github.com/jenius/autoprefixer-stylus) npm package as a stylus plugin. Just install the npm package and `use()` it.
-
-```
-var stylus = require('stylus');
-var autoprefixer = require('autoprefixer-stylus');
-
-stylus(css)
-  .use(autoprefixer())
-  .render(function(err, output){ console.log(output); });
-```
-
 ### Grunt
 
 You can use the
@@ -292,13 +279,24 @@ If you need uncompressed CSS, remove `Csso.optimize` method call.
 
 You can set browsers array as second argument in `AutoprefixerRails.compile`.
 
+### Stylus
+
+If you use Stylus CLI, you can add Autoprefixer by
+[autoprefixer-stylus](https://github.com/jenius/autoprefixer-stylus) plugin.
+
+Just install npm package and use it in `-u` option:
+
+```
+stylus -u autoprefixer-stylus file.css
+```
+
 ### Mincer
 
 To use Autoprefixer in [Mincer](https://github.com/nodeca/mincer),
 install `autoprefixer` npm package and enable it:
 
 ```js
-environment.enable("autoprefixer");
+environment.enable('autoprefixer');
 ```
 
 ### Node.js
