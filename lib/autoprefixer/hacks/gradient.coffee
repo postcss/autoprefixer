@@ -28,35 +28,46 @@ class Gradient extends Value
   for i in @names
     @regexps[i] = new RegExp('(^|\\s|,)' + i + '\\((.+)\\)', 'gi')
 
+  @startRegexp = new RegExp('(^|\\s*)' + @names.join('|'), 'i')
+
   # Cache regexp to parse params
   constructor: (@name, @prefixes) ->
     @regexp = Gradient.regexps[@name]
+    @gradientStartRegexp = Gradient.startRegexp
 
   # Change degrees for webkit prefix
   addPrefix: (prefix, string) ->
     string.replace @regexp, (all, before, args) =>
-      params = @splitParams(args)
-      params = @newDirection(params)
 
-      if prefix == '-webkit- old'
-        return all if @name != 'linear-gradient'
-        return all if params[0] and params[0].indexOf('deg') != -1
-        return all if args.indexOf('-corner') != -1
-        return all if args.indexOf('-side')   != -1
+      decls = @splitDecls(all)
+      prefixedDecls = []
 
-        params = @oldDirection(params)
-        params = @colorStops(params)
+      for decl in decls
+        prefixedDecls.push decl.replace @regexp, (all, before, args) =>
+          params = @splitParams(args)
+          params = @newDirection(params)
 
-        '-webkit-gradient(linear, ' + params.join(', ') + ')'
-      else
-        if params.length > 0
-          if params[0][0..2] == 'to '
-            params[0] = @fixDirection(params[0])
-          else if params[0].indexOf('deg') != -1
-            params[0] = @fixAngle(params[0])
-          else if params[0].indexOf(' at ') != -1
-            @fixRadial(params)
-        before + prefix + @name + '(' + params.join(', ') + ')'
+          if prefix == '-webkit- old'
+            return all if @name != 'linear-gradient'
+            return all if params[0] and params[0].indexOf('deg') != -1
+            return all if args.indexOf('-corner') != -1
+            return all if args.indexOf('-side')   != -1
+
+            params = @oldDirection(params)
+            params = @colorStops(params)
+
+            '-webkit-gradient(linear, ' + params.join(', ') + ')'
+          else
+            if params.length > 0
+              if params[0][0..2] == 'to '
+                params[0] = @fixDirection(params[0])
+              else if params[0].indexOf('deg') != -1
+                params[0] = @fixAngle(params[0])
+              else if params[0].indexOf(' at ') != -1
+                @fixRadial(params)
+            before + prefix + @name + '(' + params.join(', ') + ')'
+
+      prefixedDecls.join ','
 
   # Direction to replace
   directions:
@@ -76,6 +87,27 @@ class Gradient extends Value
     'top left':     'bottom right, top left'
     'bottom right': 'top left, bottom right'
     'bottom left':  'top right, bottom left'
+
+  splitDecls: (decl) ->
+    chunks = decl.split ','
+    decls = []
+    currentDecl = []
+    for i in chunks
+      # chunks starts with gradient declaration
+      if @gradientStartRegexp.test i
+        if currentDecl.length == 0
+          # start new decl
+          currentDecl.push i
+        else
+          # save current decl and start new one
+          decls.push currentDecl.join ','
+          currentDecl = [i]
+      else
+        currentDecl.push i
+
+    # save last parsed decl
+    decls.push currentDecl.join ','
+    decls
 
   splitParams: (params) ->
     array = []
