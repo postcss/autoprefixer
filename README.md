@@ -315,6 +315,22 @@ rework(css).
     toString();
 ```
 
+### Stylus
+
+Autoprefix can be integrated into the [Stylus]() pipeline
+as well:
+
+```js
+var stylus = require('stylus');
+var autoprefixer = require('autoprefixer');
+
+stylus(css)
+  .use(autoprefixer.stylus)
+  .render(function(err, output){
+    console.log(output);
+  });
+```
+
 ### PHP
 
 You can use Autoprefixer in PHP by
