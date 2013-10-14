@@ -25,24 +25,22 @@ class Gradient extends Value
             'radial-gradient', 'repeating-radial-gradient']
 
   @regexps = { }
+  @starts  = { }
   for i in @names
     @regexps[i] = new RegExp('(^|\\s|,)' + i + '\\((.+)\\)', 'gi')
-
-  @startRegexp = new RegExp('(^|\\s*)' + @names.join('|'), 'i')
+    @starts[i]  = new RegExp('(^|\\s*)' + i, 'i')
 
   # Cache regexp to parse params
   constructor: (@name, @prefixes) ->
-    @regexp = Gradient.regexps[@name]
-    @gradientStartRegexp = Gradient.startRegexp
+    @regexp      = Gradient.regexps[@name]
+    @startRegexp = Gradient.starts[@name]
 
   # Change degrees for webkit prefix
   addPrefix: (prefix, string) ->
     string.replace @regexp, (all, before, args) =>
-
-      decls = @splitDecls(all)
       prefixedDecls = []
 
-      for decl in decls
+      for decl in @splitDecls(all)
         prefixedDecls.push decl.replace @regexp, (all, before, args) =>
           params = @splitParams(args)
           params = @newDirection(params)
@@ -67,7 +65,7 @@ class Gradient extends Value
                 @fixRadial(params)
             before + prefix + @name + '(' + params.join(', ') + ')'
 
-      prefixedDecls.join ','
+      prefixedDecls.join(',')
 
   # Direction to replace
   directions:
@@ -88,27 +86,29 @@ class Gradient extends Value
     'bottom right': 'top left, bottom right'
     'bottom left':  'top right, bottom left'
 
+  # Split gradients in background value
   splitDecls: (decl) ->
-    chunks = decl.split ','
-    decls = []
+    decls       = []
+    chunks      = decl.split(',')
     currentDecl = []
     for i in chunks
       # chunks starts with gradient declaration
-      if @gradientStartRegexp.test i
+      if @startRegexp.test i
         if currentDecl.length == 0
           # start new decl
-          currentDecl.push i
+          currentDecl.push(i)
         else
           # save current decl and start new one
           decls.push currentDecl.join ','
           currentDecl = [i]
       else
-        currentDecl.push i
+        currentDecl.push(i)
 
     # save last parsed decl
-    decls.push currentDecl.join ','
+    decls.push( currentDecl.join(',') )
     decls
 
+  # Split params in gradient
   splitParams: (params) ->
     array = []
     param = ''
