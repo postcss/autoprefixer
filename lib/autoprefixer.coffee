@@ -100,6 +100,11 @@ autoprefixer.compile = (str) ->
 autoprefixer.rework = (stylesheet) ->
   @loadDefault().rework(stylesheet)
 
+# Stylus with default Autoprefixer
+autoprefixer.stylus = (style) ->
+  style.on 'end', (css, cb) =>
+    cb(null, @loadDefault().compile(css))
+
 # Inspect with default Autoprefixer
 autoprefixer.inspect = ->
   @loadDefault().inspect()
