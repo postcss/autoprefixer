@@ -10,6 +10,12 @@ a {
                 linear-gradient(45deg, black, white);
 }
 
+b {
+    background-image: -webkit-gradient(linear, top left, bottom left, from(rgba(0,0,0,1)), to(white)),-webkit-gradient(linear, top left, bottom left, from(white), to(black));
+    background-image: -webkit-linear-gradient(rgba(0,0,0,1), white), -webkit-linear-gradient(white, black);
+    background-image: -o-linear-gradient(rgba(0,0,0,1), white), -o-linear-gradient(white, black);
+    background-image: linear-gradient(rgba(0,0,0,1), white), linear-gradient(white, black);
+}
 div {
   background-image: -webkit-radial-gradient(right, white black),
                     -webkit-repeating-linear-gradient(top left, black, white),

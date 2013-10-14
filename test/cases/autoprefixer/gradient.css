@@ -4,6 +4,10 @@ a {
                 linear-gradient(45deg, black, white);
 }
 
+b {
+    background-image: linear-gradient(rgba(0,0,0,1), white), linear-gradient(white, black);
+}
+
 div {
   background-image: radial-gradient(to left, white black),
                     repeating-linear-gradient(to bottom right, black, white),
