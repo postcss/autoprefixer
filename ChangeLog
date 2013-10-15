@@ -44,6 +44,9 @@
 20131009:
 * Opera 17 is moved to released versions.
 
+20131015:
+* Fix converting multiple gradients to old webkit syntax (by Aleksei Androsov).
+
 == 0.7 (We Do Not Sow)
 * Add vendor prefixes to selectors.
 * Add ::selection and ::placeholder selectors support.
