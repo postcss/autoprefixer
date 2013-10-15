@@ -24,16 +24,14 @@ class Gradient extends Value
   @names = ['linear-gradient', 'repeating-linear-gradient',
             'radial-gradient', 'repeating-radial-gradient']
 
+  @starts  = new RegExp('(^|\\s*)' + @names.join('|'), 'i')
   @regexps = { }
-  @starts  = { }
   for i in @names
     @regexps[i] = new RegExp('(^|\\s|,)' + i + '\\((.+)\\)', 'gi')
-    @starts[i]  = new RegExp('(^|\\s*)' + i, 'i')
 
   # Cache regexp to parse params
   constructor: (@name, @prefixes) ->
     @regexp      = Gradient.regexps[@name]
-    @startRegexp = Gradient.starts[@name]
 
   # Change degrees for webkit prefix
   addPrefix: (prefix, string) ->
@@ -93,7 +91,7 @@ class Gradient extends Value
     currentDecl = []
     for i in chunks
       # chunks starts with gradient declaration
-      if @startRegexp.test i
+      if Gradient.starts.test(i)
         if currentDecl.length == 0
           # start new decl
           currentDecl.push(i)
