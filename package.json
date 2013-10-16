@@ -10,7 +10,7 @@
     "url": "https://github.com/ai/autoprefixer.git"
   },
   "dependencies": {
-    "css-parse":     "~> 1.5.3",
+    "css-parse":     "~> 1.6.0",
     "css-stringify": "~> 1.3.1"
   },
   "devDependencies": {
@@ -19,7 +19,7 @@
     "fs-extra":      "0.8.0",
     "should":        "2.0.1",
     "stylus":        "0.38.0",
-    "rework":        "0.18.1",
+    "rework":        "0.18.2",
     "mocha":         "1.13.0",
     "glob":          "3.2.6",
     "nib":           "1.0.1"
