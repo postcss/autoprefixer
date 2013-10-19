@@ -6,8 +6,8 @@ module.exports =
     prefix: "-webkit-"
     minor: true
     versions: [
-      4.2
       4.3
+      4.2
       4.1
       4
       3
@@ -187,14 +187,14 @@ module.exports =
     prefix: "-webkit-"
     versions: [
       7
-      6
       6.1
-      5
+      6
       5.1
-      4.2
+      5
       4.3
-      4
+      4.2
       4.1
+      4
       3.2
     ]
     popularity: [
@@ -227,10 +227,10 @@ module.exports =
       11
       10.6
       10.5
-      10
       10.1
-      9.5
+      10
       9.6
+      9.5
     ]
     popularity: [
       0.008219
