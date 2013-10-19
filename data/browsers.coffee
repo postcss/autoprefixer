@@ -7,6 +7,7 @@ module.exports =
     minor: true
     versions: [
       4.2
+      4.3
       4.1
       4
       3
@@ -15,7 +16,8 @@ module.exports =
       2.1
     ]
     popularity: [
-      0.486015
+      0.2430075
+      0.2430075
       2.09273
       1.24077
       0.00571783
@@ -162,10 +164,8 @@ module.exports =
 
   ie:
     prefix: "-ms-"
-    future: [
-      11
-    ]
     versions: [
+      11
       10
       9
       8
@@ -174,6 +174,7 @@ module.exports =
       5.5
     ]
     popularity: [
+      0.025037
       10.1483
       4.94898
       7.96177
@@ -211,6 +212,9 @@ module.exports =
 
   opera:
     prefix: "-o-"
+    future: [
+      18
+    ]
     versions: [
       17
       16
