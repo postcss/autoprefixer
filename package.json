@@ -11,15 +11,15 @@
   },
   "dependencies": {
     "css-parse":     "~> 1.6.0",
-    "css-stringify": "~> 1.3.1"
+    "css-stringify": "~> 1.3.2"
   },
   "devDependencies": {
     "coffee-script": "1.6.3",
-    "component":     "0.17.6",
+    "component":     "0.18.0",
     "fs-extra":      "0.8.0",
     "should":        "2.0.1",
     "stylus":        "0.38.0",
-    "rework":        "0.18.2",
+    "rework":        "0.18.3",
     "mocha":         "1.13.0",
     "glob":          "3.2.6",
     "nib":           "1.0.1"
