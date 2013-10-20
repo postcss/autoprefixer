@@ -50,6 +50,12 @@
 20131017:
 * Fix @host at-rule parsing.
 
+20131020:
+* IE 11 and Andrid 4.3 is moved to released versions.
+* Add Opera 18 data.
+* Add @namespace support.
+* Sort browser versions in data file.
+
 == 0.7 (We Do Not Sow)
 * Add vendor prefixes to selectors.
 * Add ::selection and ::placeholder selectors support.
