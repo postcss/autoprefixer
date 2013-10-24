@@ -109,7 +109,6 @@ task 'bench', 'Benchmark on GitHub styles', ->
   loadGithubStyles = (callback) ->
     print("Load GitHub styles\n")
     get 'https://github.com', (html) ->
-      styles = []
       link   = html.match(/[^"]+\.css/g)[0]
       get link, (css) ->
         autoprefixer = require(__dirname + '/lib/autoprefixer')
