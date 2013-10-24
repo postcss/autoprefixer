@@ -34,6 +34,10 @@ class Browsers
 
     utils.uniq(selected)
 
+  # Aliases for browser names
+  aliases:
+    fx: 'ff'
+
   # Available requirements to select browsers
   requirements:
 
@@ -56,6 +60,7 @@ class Browsers
     newerThen:
       regexp: /^(\w+) (>=?)\s*([\d\.]+)/
       select: (browser, sign, version) ->
+        browser = @aliases[browser] || browser
         data    = @data[browser]
         version = parseFloat(version)
         utils.error("Unknown browser #{browser}") unless data
@@ -69,6 +74,7 @@ class Browsers
     direct:
       regexp: /^(\w+) ([\d\.]+)$/
       select: (browser, version) ->
+        browser = @aliases[browser] || browser
         data    = @data[browser]
         version = parseFloat(version)
         utils.error("Unknown browser #{browser}") unless data

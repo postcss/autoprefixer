@@ -10,6 +10,11 @@ data =
     future:     [5, 4]
     versions:   [3, 2, 1]
     popularity: [1, 0.5, 0.1]
+  ff:
+    prefix:     '-moz-'
+    versions:   [1]
+    popularity: [0]
+    minor:      true
   opera:
     prefix:     '-o-'
     versions:   [15, 4, 3, 2]
@@ -68,11 +73,15 @@ describe 'Browsers', ->
       browsers = new Browsers(data, ['last 2 versions', '> 0.4%'])
       browsers.selected.should.eql ['ie 3', 'ie 2', 'chrome 3', 'chrome 2']
 
+    it 'has aliases', ->
+      ( new Browsers(data, ['fx 1']) ).selected.should.eql ['ff 1']
+      ( new Browsers(data, ['fx >= 1']) ).selected.should.eql ['ff 1']
+
   describe 'prefixes()', ->
 
     it 'returns all prefixes', ->
       browsers = new Browsers(data, ['none'])
-      browsers.prefixes().should.eql ['-webkit-', '-ms-', '-o-']
+      browsers.prefixes().should.eql ['-webkit-', '-moz-', '-ms-', '-o-']
 
   describe 'prefix()', ->
 
