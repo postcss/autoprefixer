@@ -252,10 +252,9 @@ module.exports =
 
   safari:
     prefix: "-webkit-"
-    future: [
-      7
-    ]
     versions: [
+      7
+      6.1
       6
       5.1
       5
@@ -264,6 +263,8 @@ module.exports =
       3.1
     ]
     popularity: [
+      0.008219
+      0
       2.09584
       1.28216
       0.312322

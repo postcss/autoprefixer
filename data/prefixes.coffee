@@ -70,6 +70,7 @@ module.exports =
       "safari 5"
       "safari 5.1"
       "safari 6"
+      "safari 6.1"
       "safari 7"
     ]
 
@@ -150,6 +151,7 @@ module.exports =
       "opera 18"
       "safari 5.1"
       "safari 6"
+      "safari 6.1"
       "safari 7"
     ]
 
@@ -224,6 +226,7 @@ module.exports =
       "safari 5"
       "safari 5.1"
       "safari 6"
+      "safari 6.1"
       "safari 7"
     ]
 
@@ -305,6 +308,7 @@ module.exports =
       "safari 5 2009"
       "safari 5.1 2009"
       "safari 6 2009"
+      "safari 6.1 2009"
       "safari 7"
     ]
 
@@ -386,6 +390,7 @@ module.exports =
       "safari 5 2009"
       "safari 5.1 2009"
       "safari 6 2009"
+      "safari 6.1 2009"
       "safari 7"
     ]
 
@@ -467,6 +472,7 @@ module.exports =
       "safari 5 2009"
       "safari 5.1 2009"
       "safari 6 2009"
+      "safari 6.1 2009"
       "safari 7"
     ]
 
@@ -541,6 +547,7 @@ module.exports =
       "safari 5"
       "safari 5.1"
       "safari 6"
+      "safari 6.1"
       "safari 7"
     ]
 
@@ -615,6 +622,7 @@ module.exports =
       "safari 5"
       "safari 5.1"
       "safari 6"
+      "safari 6.1"
       "safari 7"
     ]
 
@@ -689,6 +697,7 @@ module.exports =
       "safari 5"
       "safari 5.1"
       "safari 6"
+      "safari 6.1"
       "safari 7"
     ]
 
@@ -763,6 +772,7 @@ module.exports =
       "safari 5"
       "safari 5.1"
       "safari 6"
+      "safari 6.1"
       "safari 7"
     ]
 
@@ -837,6 +847,7 @@ module.exports =
       "safari 5"
       "safari 5.1"
       "safari 6"
+      "safari 6.1"
       "safari 7"
     ]
 
@@ -911,6 +922,7 @@ module.exports =
       "safari 5"
       "safari 5.1"
       "safari 6"
+      "safari 6.1"
       "safari 7"
     ]
 
@@ -985,6 +997,7 @@ module.exports =
       "safari 5"
       "safari 5.1"
       "safari 6"
+      "safari 6.1"
       "safari 7"
     ]
 
@@ -1059,6 +1072,7 @@ module.exports =
       "safari 5"
       "safari 5.1"
       "safari 6"
+      "safari 6.1"
       "safari 7"
     ]
 
@@ -1133,6 +1147,7 @@ module.exports =
       "safari 5"
       "safari 5.1"
       "safari 6"
+      "safari 6.1"
       "safari 7"
     ]
 
@@ -1219,6 +1234,7 @@ module.exports =
       "safari 5"
       "safari 5.1"
       "safari 6"
+      "safari 6.1"
       "safari 7"
     ]
 
@@ -1564,6 +1580,7 @@ module.exports =
       "safari 5"
       "safari 5.1"
       "safari 6"
+      "safari 6.1"
       "safari 7"
     ]
 
@@ -1655,6 +1672,7 @@ module.exports =
       "safari 5"
       "safari 5.1"
       "safari 6"
+      "safari 6.1"
       "safari 7"
     ]
 
@@ -1746,6 +1764,7 @@ module.exports =
       "safari 5"
       "safari 5.1"
       "safari 6"
+      "safari 6.1"
       "safari 7"
     ]
 
@@ -1867,6 +1886,7 @@ module.exports =
       "safari 5"
       "safari 5.1"
       "safari 6"
+      "safari 6.1"
       "safari 7"
     ]
 
@@ -1958,6 +1978,7 @@ module.exports =
       "safari 5"
       "safari 5.1"
       "safari 6"
+      "safari 6.1"
       "safari 7"
     ]
 
@@ -2049,6 +2070,7 @@ module.exports =
       "safari 5"
       "safari 5.1"
       "safari 6"
+      "safari 6.1"
       "safari 7"
     ]
     transition: true
@@ -2141,6 +2163,7 @@ module.exports =
       "safari 5"
       "safari 5.1"
       "safari 6"
+      "safari 6.1"
       "safari 7"
     ]
     transition: true
@@ -2233,6 +2256,7 @@ module.exports =
       "safari 5"
       "safari 5.1"
       "safari 6"
+      "safari 6.1"
       "safari 7"
     ]
     transition: true
@@ -2325,6 +2349,7 @@ module.exports =
       "safari 5"
       "safari 5.1"
       "safari 6"
+      "safari 6.1"
       "safari 7"
     ]
 
@@ -2416,6 +2441,7 @@ module.exports =
       "safari 5"
       "safari 5.1"
       "safari 6"
+      "safari 6.1"
       "safari 7"
     ]
     transition: true
@@ -2508,6 +2534,7 @@ module.exports =
       "safari 5"
       "safari 5.1"
       "safari 6"
+      "safari 6.1"
       "safari 7"
     ]
 
@@ -2599,6 +2626,7 @@ module.exports =
       "safari 5"
       "safari 5.1"
       "safari 6"
+      "safari 6.1"
       "safari 7"
     ]
     transition: true
@@ -2691,6 +2719,7 @@ module.exports =
       "safari 5"
       "safari 5.1"
       "safari 6"
+      "safari 6.1"
       "safari 7"
     ]
     transition: true
@@ -2773,6 +2802,7 @@ module.exports =
       "safari 5 2009"
       "safari 5.1 2009"
       "safari 6 2009"
+      "safari 6.1 2009"
       "safari 7"
     ]
 
@@ -2826,6 +2856,7 @@ module.exports =
       "opera 16"
       "opera 17"
       "opera 18"
+      "safari 6.1"
       "safari 7"
     ]
 
@@ -2855,6 +2886,7 @@ module.exports =
       "opera 17"
       "opera 18"
       "safari 6"
+      "safari 6.1"
       "safari 7"
     ]
     transition: true
@@ -2909,6 +2941,7 @@ module.exports =
       "opera 16"
       "opera 17"
       "opera 18"
+      "safari 6.1"
       "safari 7"
     ]
 
@@ -2991,6 +3024,7 @@ module.exports =
       "safari 5 2009"
       "safari 5.1 2009"
       "safari 6 2009"
+      "safari 6.1 2009"
       "safari 7"
     ]
 
@@ -3073,6 +3107,7 @@ module.exports =
       "safari 5 2009"
       "safari 5.1 2009"
       "safari 6 2009"
+      "safari 6.1 2009"
       "safari 7"
     ]
 
@@ -3154,6 +3189,7 @@ module.exports =
       "safari 5 2009"
       "safari 5.1 2009"
       "safari 6 2009"
+      "safari 6.1 2009"
       "safari 7"
     ]
 
@@ -3235,6 +3271,7 @@ module.exports =
       "safari 5 2009"
       "safari 5.1 2009"
       "safari 6 2009"
+      "safari 6.1 2009"
       "safari 7"
     ]
 
@@ -3317,6 +3354,7 @@ module.exports =
       "safari 5 2009"
       "safari 5.1 2009"
       "safari 6 2009"
+      "safari 6.1 2009"
       "safari 7"
     ]
 
@@ -3399,6 +3437,7 @@ module.exports =
       "safari 5 2009"
       "safari 5.1 2009"
       "safari 6 2009"
+      "safari 6.1 2009"
       "safari 7"
     ]
 
@@ -3480,6 +3519,7 @@ module.exports =
       "safari 5 2009"
       "safari 5.1 2009"
       "safari 6 2009"
+      "safari 6.1 2009"
       "safari 7"
     ]
 
@@ -3531,6 +3571,7 @@ module.exports =
       "opera 16"
       "opera 17"
       "opera 18"
+      "safari 6.1"
       "safari 7"
     ]
 
@@ -3582,6 +3623,7 @@ module.exports =
       "opera 16"
       "opera 17"
       "opera 18"
+      "safari 6.1"
       "safari 7"
     ]
 
@@ -3633,6 +3675,7 @@ module.exports =
       "opera 16"
       "opera 17"
       "opera 18"
+      "safari 6.1"
       "safari 7"
     ]
 
@@ -3684,6 +3727,7 @@ module.exports =
       "opera 16"
       "opera 17"
       "opera 18"
+      "safari 6.1"
       "safari 7"
     ]
 
@@ -3755,6 +3799,7 @@ module.exports =
       "safari 5"
       "safari 5.1"
       "safari 6"
+      "safari 6.1"
       "safari 7"
     ]
 
@@ -3826,6 +3871,7 @@ module.exports =
       "safari 5"
       "safari 5.1"
       "safari 6"
+      "safari 6.1"
       "safari 7"
     ]
 
@@ -3863,6 +3909,7 @@ module.exports =
       "ios 7"
       "safari 5.1"
       "safari 6"
+      "safari 6.1"
       "safari 7"
     ]
 
@@ -3944,6 +3991,7 @@ module.exports =
       "safari 5 2009"
       "safari 5.1 2009"
       "safari 6 2009"
+      "safari 6.1 2009"
       "safari 7"
     ]
 
@@ -4071,6 +4119,7 @@ module.exports =
       "opera 16"
       "opera 17"
       "opera 18"
+      "safari 6.1"
       "safari 7"
     ]
 
@@ -4124,6 +4173,7 @@ module.exports =
       "opera 16"
       "opera 17"
       "opera 18"
+      "safari 6.1"
       "safari 7"
     ]
 
@@ -4205,6 +4255,7 @@ module.exports =
       "safari 5 2009"
       "safari 5.1 2009"
       "safari 6 2009"
+      "safari 6.1 2009"
       "safari 7"
     ]
 
@@ -4291,6 +4342,7 @@ module.exports =
       "safari 5"
       "safari 5.1"
       "safari 6"
+      "safari 6.1"
       "safari 7"
     ]
     transition: true
@@ -4378,6 +4430,7 @@ module.exports =
       "safari 5"
       "safari 5.1"
       "safari 6"
+      "safari 6.1"
       "safari 7"
     ]
     transition: true
@@ -4721,6 +4774,7 @@ module.exports =
       "safari 5"
       "safari 5.1"
       "safari 6"
+      "safari 6.1"
       "safari 7"
     ]
     transition: true
@@ -4808,6 +4862,7 @@ module.exports =
       "safari 5"
       "safari 5.1"
       "safari 6"
+      "safari 6.1"
       "safari 7"
     ]
     transition: true
@@ -4895,6 +4950,7 @@ module.exports =
       "safari 5"
       "safari 5.1"
       "safari 6"
+      "safari 6.1"
       "safari 7"
     ]
 
@@ -5351,6 +5407,7 @@ module.exports =
       "safari 5"
       "safari 5.1"
       "safari 6"
+      "safari 6.1"
       "safari 7"
     ]
 
@@ -5422,6 +5479,7 @@ module.exports =
       "safari 5"
       "safari 5.1"
       "safari 6"
+      "safari 6.1"
       "safari 7"
     ]
 
@@ -5493,6 +5551,7 @@ module.exports =
       "safari 5"
       "safari 5.1"
       "safari 6"
+      "safari 6.1"
       "safari 7"
     ]
 
