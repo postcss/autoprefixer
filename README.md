@@ -46,7 +46,7 @@ Sponsored by [Evil Martians](http://evilmartians.com/).
 
 ## Translations
 
-Документация на русском: [habrahabr.ru/company/evilmartians/blog/176909](http://habrahabr.ru/company/evilmartians/blog/176909/)
+На русском: [статья про Автопрефиксер на Хабрахабре](http://habrahabr.ru/company/evilmartians/blog/176909/)
 
 ## Features
 
