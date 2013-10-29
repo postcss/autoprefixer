@@ -56,6 +56,10 @@
 * Add @namespace support.
 * Sort browser versions in data file.
 
+20131029:
+* Add Safari 6.1 data.
+* Add fx alias for Firefox.
+
 == 0.7 (We Do Not Sow)
 * Add vendor prefixes to selectors.
 * Add ::selection and ::placeholder selectors support.
