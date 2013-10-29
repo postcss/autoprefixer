@@ -52,6 +52,11 @@ module.exports =
     @doneCallbacks ||= []
     @doneCallbacks.push(callback)
 
+  # Print error end exit from process
+  error: (message) ->
+    process.stderr.write("\n" + message + "\n")
+    process.exit(1)
+
   # Execute `callback`, when HTTP request will be finished
   request: (callback) ->
     @requestCallbacks ||= []
@@ -64,7 +69,14 @@ module.exports =
       data = ''
       res.on 'data', (chunk) -> data += chunk
       res.on 'end', =>
-        callback(JSON.parse(data))
+        try
+          callback(JSON.parse(data))
+        catch e
+          title = data.match(/<title>([^<]+)<\/title>/)
+          if title
+            @error("#{ title[1] } on #{ path }")
+          else
+            @error("Parsing error in #{ path }:\n#{ e.message }")
 
         @requests -= 1
         func() for func in @requestCallbacks
