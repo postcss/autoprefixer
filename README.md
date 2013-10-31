@@ -43,6 +43,7 @@ Twitter account for news and releases:
 [@autoprefixer](https://twitter.com/autoprefixer).
 
 Sponsored by [Evil Martians](http://evilmartians.com/).
+Based on [PostCSS](https://github.com/ai/postcss) framework.
 
 ## Translations
 
@@ -371,17 +372,16 @@ var prefixed     = autoprefixer.compile(css);
 You can use Autoprefixer in the browser or a non-Node.js runtime
 with [standalone version](https://raw.github.com/ai/autoprefixer-rails/master/vendor/autoprefixer.js).
 
-### Rework
+### PostCSS
 
-Autoprefixer can be also used as a
-[Rework](https://github.com/visionmedia/rework)
+Autoprefixer can be also used as a [PostCSS](https://github.com/ai/postcss)
 filter, so you can combine it with other filters:
 
 ```js
-rework(css).
-    use( autoprefixer(['> 1%', 'opera 12.5']).rework ).
-    use( rework.references() ).
-    toString();
+postcss().
+    use( autoprefixer(['> 1%', 'opera 12.5']).postcss ).
+    use( compressor ).
+    process(css);
 ```
 
 ### PHP
