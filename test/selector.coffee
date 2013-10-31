@@ -30,3 +30,9 @@ describe 'Selector', ->
       @selector.process(css.rules[1])
       css.toString().should.eql(
         'b ::-moz-selection{} b ::-ms-selection{} b ::selection{}')
+
+    it 'checks parents prefix', ->
+      css = parse('@-moz-page { ::selection{} }')
+      @selector.process(css.rules[0].rules[0])
+      css.toString().should.eql(
+        '@-moz-page { ::-moz-selection{} ::selection{} }')
