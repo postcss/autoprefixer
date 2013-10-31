@@ -23,11 +23,13 @@ class Prefix
     node._autoprefixerPrefix = prefix
 
   # Clone node with prefixes
-  add: (node) ->
+  process: (node) ->
+    return unless @check(node)
+
     parent = @parentPrefix(node.parent)
 
     for prefix in @prefixes
       continue if parent and parent != prefix
-      @addPrefix(node, prefix)
+      @add(node, prefix)
 
 module.exports = Prefix

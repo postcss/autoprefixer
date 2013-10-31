@@ -2,8 +2,12 @@ Prefix = require('./prefix')
 
 class KeyframesPrefix extends Prefix
 
+  # Prefix only @keyframes
+  check: (atRule) ->
+    atRule.name == 'keyframes'
+
   # Clone and add prefixes for at-rule
-  addPrefix: (atRule, prefix) ->
+  add: (atRule, prefix) ->
     prefixed = prefix + atRule.name
 
     already = atRule.parent.some (i) ->
