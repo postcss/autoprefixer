@@ -1,7 +1,6 @@
 autoprefixer = require('../lib/autoprefixer')
 Browsers     = require('../lib/autoprefixer/browsers')
 cases        = require('./lib/cases')
-rework       = require('rework')
 
 cleaner     = autoprefixer('none')
 compiler    = autoprefixer('chrome 25', 'opera 12')
@@ -81,8 +80,8 @@ describe 'Autoprefixer', ->
 
       for type in commons
         continue if type == 'mistakes' or type == 'flex-rewrite'
-        input  = cases.read('autoprefixer/' + type + '.out')
-        output = cases.read('autoprefixer/' + type)
+        input  = cases.read(type + '.out')
+        output = cases.read(type)
         css    = cleaner.compile(input)
         compare(css, output)
 
@@ -90,13 +89,13 @@ describe 'Autoprefixer', ->
       for type in commons
         instance = prefixer(type)
 
-        input  = cases.read('autoprefixer/' + type)
-        output = cases.read('autoprefixer/' + type + '.out')
+        input  = cases.read(type)
+        output = cases.read(type + '.out')
         css    = instance.compile( instance.compile(input) )
         compare(css, output)
 
     it 'parses difficult files', ->
-      input  = cases.read('autoprefixer/syntax')
+      input  = cases.read('syntax')
       output = cleaner.compile(input)
       compareWithoutComments(input, output)
 
@@ -110,16 +109,13 @@ describe 'Autoprefixer', ->
       error.message.should.eql "Can't parse CSS: missing '}' near line 1:4"
       error.css.should.be.true
 
-  describe 'rework()', ->
+  describe 'postcss()', ->
 
     it 'is a Rework filter', ->
-      for type in commons
-        instance = prefixer(type)
 
-        real = rework(cases.read('autoprefixer/' + type)).
-          use(instance.rework).
-          toString()
-        compare(real, cases.read('autoprefixer/' + type + '.out'))
+      input  = cases.read(type)
+      output = postcss( compiler.postcss ).process(input)
+      compare(output, cases.read(type + '.out'))
 
   describe 'inspect()', ->
 
@@ -140,6 +136,6 @@ describe 'Autoprefixer', ->
     it 'supports custom prefixes',      -> test('custom-prefix')
 
     it 'ignores transform in transition for IE', ->
-      input  = cases.read('autoprefixer/ie-transition')
+      input  = cases.read('ie-transition')
       output = autoprefixer('ie > 0').compile(input)
       compare(input, output)
