@@ -13,19 +13,6 @@ module.exports =
       filtered.push(i) if filtered.indexOf(i) == -1
     filtered
 
-  # Clone object and make some changes
-  clone: (obj, changes = { }) ->
-    clone = { }
-    for key, value of obj
-      unless changes[key]
-        if value instanceof Array
-          clone[key] = value.slice(0)
-        else
-          clone[key] = value
-    for key, value of changes
-      clone[key] = value
-    clone
-
   # Return "-webkit-" on "-webkit- old"
   removeNote: (string) ->
     if string.indexOf(' ') == -1

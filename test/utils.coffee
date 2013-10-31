@@ -21,30 +21,6 @@ describe 'utils', ->
     it 'filters doubles in array', ->
       utils.uniq(['1', '1', '2', '3', '3']).should.eql ['1', '2', '3']
 
-  describe '.clone()', ->
-
-    it 'creates independent copy', ->
-      a = { one: 1 }
-      b = utils.clone(a)
-
-      a.should.eql(b)
-
-      a.one = 2
-      b.one.should.eql(1)
-
-    it 'changes clone', ->
-      utils.clone({ a: 'a', b: 'b' }, { b: 'B', c: 'C' }).should.eql
-        a: 'a'
-        b: 'B'
-        c: 'C'
-
-    it 'clones arrays inside', ->
-      a = { arr: [1, 2] }
-      b = utils.clone(a)
-
-      b.arr.push(3)
-      a.arr.should.eql [1, 2]
-
   describe '.removeNote()', ->
 
     it 'removes note', ->
