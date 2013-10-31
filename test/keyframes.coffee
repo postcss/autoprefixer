@@ -1,9 +1,9 @@
-KeyframesPrefix = require('../lib/autoprefixer/keyframes_prefix')
-parse           = require('postcss/lib/parse')
+Keyframes = require('../lib/autoprefixer/keyframes')
+parse     = require('postcss/lib/parse')
 
-describe 'KeyframesPrefix', ->
+describe 'Keyframes', ->
   beforeEach ->
-    @keyframes = new KeyframesPrefix('@keyframes', ['-moz-', '-ms-'])
+    @keyframes = new Keyframes('@keyframes', ['-moz-', '-ms-'])
 
   describe 'check()', ->
 

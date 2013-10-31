@@ -1,12 +1,12 @@
-Prefix = require('../lib/autoprefixer/prefix')
-parse  = require('postcss/lib/parse')
+Prefixer = require('../lib/autoprefixer/prefixer')
+parse    = require('postcss/lib/parse')
 
-describe 'Prefix', ->
+describe 'Prefixer', ->
 
   describe 'parentPrefix', ->
 
     beforeEach ->
-      @prefix = new Prefix()
+      @prefix = new Prefixer()
       @css = parse('@-ms-keyframes a { to { } } :-moz-full-screen { } a { }')
 
     it 'works with root node', ->

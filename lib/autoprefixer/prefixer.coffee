@@ -1,6 +1,7 @@
 vendor = require('postcss/lib/vendor')
+utils  = require('./utils')
 
-class Prefix
+class Prefixer
   constructor: (@name, @prefixes) ->
 
   # Find prefix in node parents
@@ -29,7 +30,7 @@ class Prefix
     parent = @parentPrefix(node.parent)
 
     for prefix in @prefixes
-      continue if parent and parent != prefix
+      continue if parent and parent != utils.removeNote(prefix)
       @add(node, prefix)
 
-module.exports = Prefix
+module.exports = Prefixer

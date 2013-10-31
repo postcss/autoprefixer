@@ -1,9 +1,9 @@
-SelectorPrefix = require('../lib/autoprefixer/selector_prefix')
-parse          = require('postcss/lib/parse')
+Selector = require('../lib/autoprefixer/selector')
+parse    = require('postcss/lib/parse')
 
-describe 'SelectorPrefix', ->
+describe 'Selector', ->
   beforeEach ->
-    @selector = new SelectorPrefix('::selection', ['-moz-', '-ms-'])
+    @selector = new Selector('::selection', ['-moz-', '-ms-'])
 
   describe 'prefixed()', ->
 

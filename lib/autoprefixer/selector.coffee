@@ -1,7 +1,7 @@
-Prefix = require('./prefix')
-utils  = require('./utils')
+Prefixer = require('./prefixer')
+utils    = require('./utils')
 
-class SelectorPrefix extends Prefix
+class Selector extends Prefixer
 
   # Is rule selectors need to be prefixed
   check: (rule) ->
@@ -28,4 +28,4 @@ class SelectorPrefix extends Prefix
   replace: (selector, prefix) ->
     selector.replace(@regexp(), @prefixed(prefix))
 
-module.exports = SelectorPrefix
+module.exports = Selector

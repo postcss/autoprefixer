@@ -1,6 +1,6 @@
-Prefix = require('./prefix')
+Prefixer = require('./prefixer')
 
-class KeyframesPrefix extends Prefix
+class Keyframes extends Prefixer
 
   # Prefix only @keyframes
   check: (atRule) ->
@@ -17,4 +17,4 @@ class KeyframesPrefix extends Prefix
     clone = atRule.clone(name: prefixed)
     atRule.parent.insertBefore(atRule, clone)
 
-module.exports = KeyframesPrefix
+module.exports = Keyframes
