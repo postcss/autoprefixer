@@ -1,5 +1,5 @@
 Prefix = require('../lib/autoprefixer/prefix')
-parse  = require('postcss/lib/postcss/parse')
+parse  = require('postcss/lib/parse')
 
 describe 'Prefix', ->
 

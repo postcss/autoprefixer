@@ -1,4 +1,4 @@
-vendor = require('postcss/lib/postcss/vendor')
+vendor = require('postcss/lib/vendor')
 
 class Prefix
   constructor: (@name, @prefixes) ->

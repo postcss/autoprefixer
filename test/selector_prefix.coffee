@@ -1,5 +1,5 @@
 SelectorPrefix = require('../lib/autoprefixer/selector_prefix')
-parse = require('postcss/lib/postcss/parse')
+parse          = require('postcss/lib/parse')
 
 describe 'SelectorPrefix', ->
   beforeEach ->
