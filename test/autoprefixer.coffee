@@ -38,8 +38,8 @@ compareWithoutComments = (from, to) ->
   compare(clean(from), clean(to))
 
 test = (from, instansce = prefixer(from)) ->
-  input  = cases.read('autoprefixer/' + from)
-  output = cases.read('autoprefixer/' + from + '.out')
+  input  = cases.read(from)
+  output = cases.read(from + '.out')
   css    = instansce.compile(input)
   compare(css, output)
 
