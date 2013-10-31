@@ -7,15 +7,6 @@ class Selector extends Prefixer
   check: (rule) ->
     rule.selector.indexOf(@name) != -1
 
-  # Clone and add prefixes for at-rule
-  add: (rule, prefix) ->
-    prefixed = @replace(rule.selector, prefix)
-
-    return if rule.parent.some (i) -> i.selector == prefixed
-
-    clone = rule.clone(selector: prefixed)
-    rule.parent.insertBefore(rule, clone)
-
   # Return prefixed version of selector
   prefixed: (prefix) ->
     @name.replace(/^([^\w]*)/, '$1' + prefix)
@@ -27,5 +18,14 @@ class Selector extends Prefixer
   # Replace selectors by prefixed one
   replace: (selector, prefix) ->
     selector.replace(@regexp(), @prefixed(prefix))
+
+  # Clone and add prefixes for at-rule
+  add: (rule, prefix) ->
+    prefixed = @replace(rule.selector, prefix)
+
+    return if rule.parent.some (i) -> i.selector == prefixed
+
+    clone = rule.clone(selector: prefixed)
+    rule.parent.insertBefore(rule, clone)
 
 module.exports = Selector
