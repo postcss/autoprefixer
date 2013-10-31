@@ -1,6 +1,0 @@
-a {
-    -moz-transform: translateX(-moz-calc(1px + 1em));
-    display: block;
-    margin: -o-calc(0) step(1);
-    margin: calc(0) step(1);
-}
