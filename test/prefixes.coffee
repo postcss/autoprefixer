@@ -85,18 +85,6 @@ describe 'Prefixes', ->
     it 'returns prefixes', ->
       empty.other('-moz-').should.eql ['-webkit-', '-ms-']
 
-  describe 'each()', ->
-
-    it 'iterates all prefixes for addition', ->
-      all = []
-      fill.each('a', (i) -> all.push(i) )
-      all.should.eql ['-moz-']
-
-    it "doesn't iterate if prefixes are unnecessary", ->
-      all = []
-      fill.each('c', (i) -> all.push(i) )
-      all.should.eql []
-
   describe 'isCustom()', ->
 
     it 'returns true browser prefixes', ->
@@ -113,9 +101,3 @@ describe 'Prefixes', ->
       fill.values('remove', 'a').should.eql [old('-ms-b'),
                                              old('-moz-b'),
                                              old('-webkit-b')]
-
-  describe 'toRemove()', ->
-
-    it 'returns true property needs to be removed', ->
-      (!!fill.toRemove('-ms-a')).should.be.true
-      (!!fill.toRemove('a')).should.be.false

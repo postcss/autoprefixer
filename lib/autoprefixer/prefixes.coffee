@@ -107,11 +107,6 @@ class Prefixes
   other: (prefix) ->
     @otherCache[prefix] ||= @browsers.prefixes().filter( (i) -> i != prefix )
 
-  # Execute callback on every prefix for selected property
-  each: (prop, callback) ->
-    if @add[prop] and @add[prop].prefixes
-      callback(prefix) for prefix in @add[prop].prefixes
-
   # Is it custom framework prefix, not browser prefix
   isCustom: (prefix) ->
     @browsers.prefixes().indexOf(prefix) == -1
@@ -127,9 +122,5 @@ class Prefixes
       utils.uniq global.concat(values)
     else
       global || values || []
-
-  # Is prefixed property must be removed
-  toRemove: (prop) ->
-    @remove[prop]?.remove
 
 module.exports = Prefixes
