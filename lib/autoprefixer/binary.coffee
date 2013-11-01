@@ -157,7 +157,7 @@ class Binary
     try
       prefixed = @compiler().compile(css)
     catch error
-      if error.autoprefixer or error.css
+      if error.autoprefixer or error.message.match(/^Can't parse CSS/)
         @error "autoprefixer: #{ error.message }"
       else
         @error 'autoprefixer: Internal error'

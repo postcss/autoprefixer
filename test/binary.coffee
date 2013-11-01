@@ -52,8 +52,8 @@ describe 'Binary', ->
   afterEach ->
     fs.removeSync(tempDir) if fs.existsSync(tempDir)
 
-  css      = 'a { transition: all 1s; }'
-  prefixed = "a {\n  -webkit-transition: all 1s;\n  transition: all 1s;\n}"
+  css      = 'a { transition: all 1s }'
+  prefixed = "a { -webkit-transition: all 1s; transition: all 1s }"
 
   it 'shows autoprefixer version', (done) ->
     @exec '-v', (out, err) ->
@@ -85,7 +85,7 @@ describe 'Binary', ->
       err.should.be.false
       out.should.eql ''
       read('a.css').should.eql prefixed
-      read('b.css').should.eql prefixed + "\n\n" + prefixed
+      read('b.css').should.eql prefixed + prefixed
       done()
 
   it 'changes output file', (done) ->
@@ -99,11 +99,11 @@ describe 'Binary', ->
 
   it 'concats several files to one output', (done) ->
     write('a.css', css)
-    write('b.css', 'a { color: black; }')
+    write('b.css', 'a { color: black }')
     @exec '-b', 'chrome 25', 'a.css', 'b.css', '-o', 'c.css', (out, err) ->
       err.should.be.false
       out.should.eql ''
-      read('c.css').should.eql prefixed + "a {\n  color: black;\n}"
+      read('c.css').should.eql prefixed + "a { color: black }"
       done()
 
   it 'outputs to stdout', (done) ->
