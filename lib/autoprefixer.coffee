@@ -1,9 +1,7 @@
-parse     = require('css-parse')
-stringify = require('css-stringify')
+postcss  = require('postcss')
 
 Browsers = require('./autoprefixer/browsers')
 Prefixes = require('./autoprefixer/prefixes')
-CSS      = require('./autoprefixer/css')
 
 inspectCache = null
 
@@ -12,12 +10,11 @@ inspectCache = null
 #
 #   var prefixed = autoprefixer('> 1%', 'ie 8').compile(css);
 #
-# If you want to combine Autoprefixer with another Rework filters,
-# you can use it as separated filter:
+# If you want to combine Autoprefixer with another PostCSS processor:
 #
-#   rework(css).
-#     use(autoprefixer('last 1 version').rework).
-#     toString();
+#   postcss.use(autoprefixer('last 1 version').postcss).
+#           use(compressor).
+#           process(css);
 autoprefixer = (reqs...) ->
   if reqs.length == 1 and reqs[0] instanceof Array
     reqs = reqs[0]
@@ -40,13 +37,10 @@ class Autoprefixer
 
   # Parse CSS and add prefixed properties for selected browsers
   compile: (str) ->
-    nodes = @catchParseErrors => parse(@removeBadComments str)
-    @rework(nodes.stylesheet)
-    stringify(nodes)
+    @processor().process(str)
 
-  # Return Rework filter, which will add necessary prefixes
-  rework: (stylesheet) =>
-    css = new CSS(stylesheet)
+  # Return PostCSS processor, which will add necessary prefixes
+  postcss: (css) =>
     @prefixes.processor.add(css)
     @prefixes.processor.remove(css)
 
@@ -55,19 +49,9 @@ class Autoprefixer
     inspectCache ||= require('./autoprefixer/inspect')
     inspectCache(@prefixes)
 
-  # Catch errors from CSS parsing and throw readable message
-  catchParseErrors: (callback) ->
-    try
-      callback()
-    catch e
-      error = new Error("Can't parse CSS: " + e.message)
-      error.stack = e.stack
-      error.css   = true
-      throw error
-
-  # Remove /**/ in non-IE6 declaration, until CSS parser has this issue
-  removeBadComments: (css) ->
-    css.replace(/\/\*[^\*]*\}[^\*]*\*\//g, '')
+  # Cache PostCSS processor
+  processor: ->
+    @processorCache ||= postcss(@postcss)
 
 # Autoprefixer default browsers
 autoprefixer.default = ['> 1%', 'last 2 versions', 'ff 24', 'opera 12.1']
@@ -80,9 +64,9 @@ autoprefixer.loadDefault = ->
 autoprefixer.compile = (str) ->
   @loadDefault().compile(str)
 
-# Rework with default Autoprefixer
-autoprefixer.rework = (stylesheet) ->
-  @loadDefault().rework(stylesheet)
+# PostCSS with default Autoprefixer
+autoprefixer.postcss = (css) ->
+  @loadDefault().postcss(css)
 
 # Inspect with default Autoprefixer
 autoprefixer.inspect = ->

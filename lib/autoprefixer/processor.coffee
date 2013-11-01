@@ -1,3 +1,4 @@
+Value = require('./value')
 utils = require('./utils')
 
 class Processor
@@ -6,64 +7,50 @@ class Processor
   # Add necessary prefixes
   add: (css) ->
     # Keyframes
-    css.eachKeyframes (keyframes) =>
-      return if keyframes.prefix
-      @prefixes.each '@keyframes', (prefix) ->
-        keyframes.cloneWithPrefix(prefix)
+    prefixes = @prefixes.add['@keyframes']
+    css.eachAtRule( (rule) -> prefixes.process(rule) ) if prefixes
 
     # Selectors
     for selector in @prefixes.add.selectors
-      css.eachRule (rule) =>
-        return unless rule.selectors
-        if selector.check(rule.selectors)
-          rule.prefixSelector(selector)
+      css.eachRule (rule) -> selector.process(rule)
 
     # Properties
-    css.eachDeclaration (decl, vendor) =>
-      vendor = null if @prefixes.isCustom(vendor)
-
-      @prefixes.each decl.prop, (prefix) =>
-        return if vendor and vendor != utils.removeNote(prefix)
-        return if decl.valueContain(@prefixes.other(prefix))
-        decl.prefixProp(prefix)
+    css.eachDecl (decl) =>
+      prefix = @prefixes.add[decl.prop]
+      prefix.process(decl) if prefix and prefix.prefixes
 
     # Values
-    css.eachDeclaration (decl, vendor) =>
-      vendor = null if @prefixes.isCustom(vendor)
-
+    css.eachDecl (decl) =>
       for value in @prefixes.values('add', decl.unprefixed)
-        continue unless value.check(decl.value)
-
-        for prefix in value.prefixes
-          continue if vendor and vendor != utils.removeNote(prefix)
-          decl.prefixValue(prefix, value)
-      decl.saveValues()
+        value.process(decl)
+      Value.save(decl)
 
   # Remove unnecessary pefixes
   remove: (css) ->
     # Keyframes
-    css.eachKeyframes (keyframes) =>
-      if @prefixes.toRemove(keyframes.prefix + '@keyframes')
-        keyframes.remove()
+    css.eachAtRule (rule, i) =>
+      if @prefixes.remove['@' + rule.name]
+        rule.parent.remove(i)
 
     # Selectors
     for selector in @prefixes.remove.selectors
-      css.eachRule (rule) =>
-        return unless rule.selectors
-        if rule.selectors.indexOf(selector) != -1
-          rule.remove()
+      css.eachRule (rule, i) =>
+        if rule.selector.indexOf(selector) != -1
+          rule.parent.remove(i)
 
-    css.eachDeclaration (decl, vendor) =>
+    css.eachDecl (decl, i) =>
+      rule = decl.parent
+
       # Properties
-      if @prefixes.toRemove(decl.prop)
-        if decl.rule.byProp(decl.unprefixed)
-          decl.remove()
+      if @prefixes.remove[decl.prop]?.remove
+        if rule.every( (i) -> i.prop != decl.unprefixed )
+          rule.remove(i)
           return
 
       # Values
       for checker in @prefixes.values('remove', decl.unprefixed)
         if checker.check(decl.value)
-          decl.remove()
+          rule.remove(i)
           return
 
 module.exports = Processor

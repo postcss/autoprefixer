@@ -1,6 +1,7 @@
 autoprefixer = require('../lib/autoprefixer')
 Browsers     = require('../lib/autoprefixer/browsers')
-cases        = require('./lib/cases')
+postcss      = require('postcss')
+fs           = require('fs')
 
 cleaner     = autoprefixer('none')
 compiler    = autoprefixer('chrome 25', 'opera 12')
@@ -29,18 +30,14 @@ prefixer = (name) ->
   else
     compiler
 
-compare = (from, to) ->
-  cases.clean(from).should.eql cases.clean(to)
-
-compareWithoutComments = (from, to) ->
-  clean = (string) -> string.replace(/\/\*[^\*]*\*\//g, '')
-  compare(clean(from), clean(to))
+read = (name) ->
+  fs.readFileSync(__dirname + "/cases/#{ name }.css").toString()
 
 test = (from, instansce = prefixer(from)) ->
-  input  = cases.read(from)
-  output = cases.read(from + '.out')
+  input  = read(from)
+  output = read(from + '.out')
   css    = instansce.compile(input)
-  compare(css, output)
+  css.should.eql(output)
 
 commons = ['transition', 'values', 'keyframes', 'gradient', 'flex-rewrite',
            'flexbox', 'filter', 'border-image', 'border-radius', 'notes',
@@ -80,24 +77,24 @@ describe 'Autoprefixer', ->
 
       for type in commons
         continue if type == 'mistakes' or type == 'flex-rewrite'
-        input  = cases.read(type + '.out')
-        output = cases.read(type)
+        input  = read(type + '.out')
+        output = read(type)
         css    = cleaner.compile(input)
-        compare(css, output)
+        css.should.eql(output)
 
     it "doesn't double prefixes", ->
       for type in commons
         instance = prefixer(type)
 
-        input  = cases.read(type)
-        output = cases.read(type + '.out')
+        input  = read(type)
+        output = read(type + '.out')
         css    = instance.compile( instance.compile(input) )
-        compare(css, output)
+        css.should.eql(output)
 
     it 'parses difficult files', ->
-      input  = cases.read('syntax')
+      input  = read('syntax')
       output = cleaner.compile(input)
-      compareWithoutComments(input, output)
+      input.should.eql(output)
 
     it 'marks parsing errors', ->
       error = null
@@ -106,16 +103,13 @@ describe 'Autoprefixer', ->
       catch e
         error = e
 
-      error.message.should.eql "Can't parse CSS: missing '}' near line 1:4"
-      error.css.should.be.true
+      error.message.should.eql "Can't parse CSS: Unclosed block at line 1:1"
 
   describe 'postcss()', ->
 
-    it 'is a Rework filter', ->
-
-      input  = cases.read(type)
-      output = postcss( compiler.postcss ).process(input)
-      compare(output, cases.read(type + '.out'))
+    it 'is a PostCSS filter', ->
+      processor = postcss( compiler.postcss )
+      processor.process( read('values') ).should.eql( read('values.out') )
 
   describe 'inspect()', ->
 
@@ -136,6 +130,6 @@ describe 'Autoprefixer', ->
     it 'supports custom prefixes',      -> test('custom-prefix')
 
     it 'ignores transform in transition for IE', ->
-      input  = cases.read('ie-transition')
+      input  = read('ie-transition')
       output = autoprefixer('ie > 0').compile(input)
-      compare(input, output)
+      input.should.eql(output)

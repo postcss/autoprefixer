@@ -10,8 +10,7 @@
     "url": "https://github.com/ai/autoprefixer.git"
   },
   "dependencies": {
-    "css-parse":     "~> 1.6.0",
-    "css-stringify": "~> 1.4.1"
+    "postcss": "0.0.1"
   },
   "devDependencies": {
     "coffee-script": "1.6.3",
