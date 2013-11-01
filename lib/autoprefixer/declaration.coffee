@@ -25,7 +25,7 @@ class Declaration extends Prefixer
     return if decl.parent.some (i) -> i.prop == prefixed
     return if @otherPrefixes(decl.value, prefix)
 
-    clone = decl.clone(prop: prefixed)
-    decl.parent.insertBefore(decl, clone)
+    cloned = @clone(decl, prop: prefixed)
+    decl.parent.insertBefore(decl, cloned)
 
 module.exports = Declaration

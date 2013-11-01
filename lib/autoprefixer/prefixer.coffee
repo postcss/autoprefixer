@@ -7,12 +7,22 @@ class Prefixer
   @load: (name, prefixes) ->
     new this(name, prefixes)
 
+  # Clone node and clean autprefixer custom caches
+  @clone: (node, overrides) ->
+    cloned = node.clone(overrides)
+    delete cloned._autoprefixerPrefix
+    delete cloned._autoprefixerValues
+    cloned
+
   constructor: (@name, @prefixes) ->
 
   # Find prefix in node parents
   parentPrefix: (node) ->
     prefix = if node._autoprefixerPrefix?
       node._autoprefixerPrefix
+
+    else if node.type == 'decl' and node.prefix
+      node.prefix
 
     else if node.type == 'root'
       false
@@ -33,10 +43,14 @@ class Prefixer
   process: (node) ->
     return unless @check(node)
 
-    parent = @parentPrefix(node.parent)
+    parent = @parentPrefix(node)
 
     for prefix in @prefixes
       continue if parent and parent != utils.removeNote(prefix)
       @add(node, prefix)
+
+  # Shortcut for Prefixer.clone
+  clone: (node, overrides) ->
+    Prefixer.clone(node, overrides)
 
 module.exports = Prefixer

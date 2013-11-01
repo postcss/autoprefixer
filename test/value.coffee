@@ -80,3 +80,14 @@ describe 'Value', ->
       @calc.process(width)
       width._autoprefixerValues.should.eql
         '-moz-': '-moz-calc(1%)'
+
+    it 'checks property prefix', ->
+      css   = parse('a { -moz-width: calc(1%); -o-width: calc(1%) }')
+      decls = css.rules[0].decls
+
+      @calc.process(decls[0])
+      decls[0]._autoprefixerValues.should.eql
+        '-moz-': '-moz-calc(1%)'
+
+      @calc.process(decls[1])
+      (decls[1]._autoprefixerValues == undefined).should.be.true

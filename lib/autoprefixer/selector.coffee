@@ -25,7 +25,7 @@ class Selector extends Prefixer
 
     return if rule.parent.some (i) -> i.selector == prefixed
 
-    clone = rule.clone(selector: prefixed)
-    rule.parent.insertBefore(rule, clone)
+    cloned = @clone(rule, selector: prefixed)
+    rule.parent.insertBefore(rule, cloned)
 
 module.exports = Selector

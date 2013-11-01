@@ -8,6 +8,19 @@ describe 'Prefixer', ->
                  ':-moz-full-screen { } a { } ' +
                  '@-dev-keyframes s { to { } }')
 
+  describe '.clone()', ->
+
+    it 'cleans custom properties', ->
+      rule = @css.rules[0].rules[0]
+      rule._autoprefixerPrefix = '-ms-'
+      rule._autoprefixerValues = { '-ms-': 1 }
+
+      cloned = Prefixer.clone(rule, selector: 'from')
+      cloned.selector.should.eql('from')
+
+      (cloned._autoprefixerPrefix == undefined).should.be.true
+      (cloned._autoprefixerValues == undefined).should.be.true
+
   describe 'parentPrefix', ->
 
     it 'works with root node', ->

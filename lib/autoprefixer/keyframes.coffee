@@ -14,7 +14,7 @@ class Keyframes extends Prefixer
       i.name == prefixed and i.params == atRule.params
     return if already
 
-    clone = atRule.clone(name: prefixed)
-    atRule.parent.insertBefore(atRule, clone)
+    cloned = @clone(atRule, name: prefixed)
+    atRule.parent.insertBefore(atRule, cloned)
 
 module.exports = Keyframes
