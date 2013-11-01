@@ -30,9 +30,6 @@ describe 'Browsers', ->
 
   describe '.prefixes()', ->
 
-    it 'returns browsers prefixes', ->
-      Browsers.prefixes(data).should.eql ['-webkit-', '-moz-', '-ms-', '-o-']
-
     it 'returns prefixes by default data', ->
       Browsers.prefixes().should.eql ['-webkit-', '-moz-', '-ms-', '-o-']
 

@@ -3,7 +3,7 @@ utils = require('./utils')
 class Browsers
 
   # Return all prefixes for default browser data
-  @prefixes: (data) ->
+  @prefixes: ->
     return @prefixesCache if @prefixesCache
 
     data = require('../../data/browsers')

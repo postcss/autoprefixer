@@ -1,12 +1,17 @@
-vendor = require('postcss/lib/vendor')
-utils  = require('./utils')
+Browsers = require('./browsers')
+vendor   = require('postcss/lib/vendor')
+utils    = require('./utils')
 
 class Prefixer
+  # Load hacks for some names
+  @load: (name, prefixes) ->
+    new this(name, prefixes)
+
   constructor: (@name, @prefixes) ->
 
   # Find prefix in node parents
   parentPrefix: (node) ->
-    prefix = if node._autoprefixerPrefix
+    prefix = if node._autoprefixerPrefix?
       node._autoprefixerPrefix
 
     else if node.type == 'root'
@@ -21,6 +26,7 @@ class Prefixer
     else
       @parentPrefix(node.parent)
 
+    prefix = false if Browsers.prefixes().indexOf(prefix) == -1
     node._autoprefixerPrefix = prefix
 
   # Clone node with prefixes
