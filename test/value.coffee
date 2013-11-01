@@ -1,56 +1,82 @@
 OldValue = require('../lib/autoprefixer/old-value')
 Value    = require('../lib/autoprefixer/value')
-utils    = require('../lib/autoprefixer/utils')
+parse    = require('postcss/lib/parse')
 
 describe 'Value', ->
   beforeEach ->
-    @calc  = new Value('calc', ['-o-'])
-    @hacks = Value.hacks
-    Value.hacks = { }
+    @calc = new Value('calc', ['-moz-', '-ms-'])
 
-  afterEach ->
-    Value.hachs = @hacks
+  describe '.save()', ->
 
-  describe '.regexp()', ->
+    it 'clones declaration', ->
+      css   = parse('a { prop: v }')
+      width = css.rules[0].decls[0]
 
-    it 'caches RegExp', ->
-      Object.keys(Value.regexps).should.not.include('rg')
-      Value.regexp('rg').should.eql Value.regexps.rg
-      Object.keys(Value.regexps).should.include('rg')
+      width._autoprefixerValues = { '-ms-': '-ms-v' }
+      Value.save(width)
 
-  describe '.load()', ->
+      css.toString().should.eql('a { prop: -ms-v; prop: v }')
 
-    it 'loads class by value', ->
-      class Hacked
-        @names = ['hacked', 'hhacked']
-        constructor: (@name, @prefixes) ->
-      Value.register(Hacked)
+    it 'updates declaration with prefix', ->
+      css   = parse('a { -ms-prop: v }')
+      width = css.rules[0].decls[0]
 
-      hacked = Value.load('hacked', ['-o-'])
-      hacked.should.be.an.instanceof(Hacked)
-      hacked.name.should.eql 'hacked'
-      hacked.prefixes.should.eql ['-o-']
+      width._autoprefixerValues = { '-ms-': '-ms-v' }
+      Value.save(width)
 
-      Value.load('hhacked').should.be.an.instanceof(Hacked)
-      Value.load('b').should.be.an.instanceof(Value)
+      css.toString().should.eql('a { -ms-prop: -ms-v }')
+
+    it 'ignores on another prefix property', ->
+      css   = parse('a { -ms-prop: v; prop: v }')
+      width = css.rules[0].decls[1]
+
+      width._autoprefixerValues = { '-ms-': '-ms-v' }
+      Value.save(width)
+
+      css.toString().should.eql('a { -ms-prop: v; prop: v }')
 
   describe 'check()', ->
 
     it 'checks value in string', ->
-      @calc.check('calc(1px + 1em)'    ).should.be.true
-      @calc.check('1px calc(1px + 1em)').should.be.true
-      @calc.check('(calc(1px + 1em))'  ).should.be.true
+      css = parse('a { 0: calc(1px + 1em); ' +
+                      '1: 1px calc(1px + 1em); ' +
+                      '2: (calc(1px + 1em)); ' +
+                      '3: -ms-calc; ' +
+                      '4: calced; }')
 
-      @calc.check('-o-calc').should.be.false
-      @calc.check('calced' ).should.be.false
+      @calc.check(css.rules[0].decls[0]).should.be.true
+      @calc.check(css.rules[0].decls[1]).should.be.true
+      @calc.check(css.rules[0].decls[2]).should.be.true
+
+      @calc.check(css.rules[0].decls[3]).should.be.false
+      @calc.check(css.rules[0].decls[4]).should.be.false
 
   describe 'old()', ->
 
     it 'check prefixed value', ->
-      @calc.old('-o-').should.eql new OldValue('-o-calc')
+      @calc.old('-ms-').should.eql new OldValue('-ms-calc')
 
-  describe 'addPrefix()', ->
+  describe 'replace()', ->
 
     it 'adds prefix to value', ->
-      @calc.addPrefix('-o-', '1px calc(1em)').should.eql '1px -o-calc(1em)'
-      @calc.addPrefix('-o-', '1px,calc(1em)').should.eql '1px,-o-calc(1em)'
+      @calc.replace('1px calc(1em)', '-ms-').should.eql('1px -ms-calc(1em)')
+      @calc.replace('1px,calc(1em)', '-ms-').should.eql('1px,-ms-calc(1em)')
+
+  describe 'process()', ->
+
+    it 'adds prefixes', ->
+      css   = parse('a { width: calc(1em) calc(1%) }')
+      width = css.rules[0].decls[0]
+
+      @calc.process(width)
+      width._autoprefixerValues.should.eql
+        '-moz-': '-moz-calc(1em) -moz-calc(1%)'
+        '-ms-':   '-ms-calc(1em) -ms-calc(1%)'
+
+    it 'checks parents prefix', ->
+      css   = parse('::-moz-fullscreen a { width: calc(1%) }')
+      width = css.rules[0].decls[0]
+
+      @calc.process(width)
+      width._autoprefixerValues.should.eql
+        '-moz-': '-moz-calc(1%)'

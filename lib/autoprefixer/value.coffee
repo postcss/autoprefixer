@@ -1,46 +1,43 @@
-utils    = require('./utils')
+Prefixer = require('./prefixer')
 OldValue = require('./old-value')
+utils    = require('./utils')
 
-class Value
-  # Add hack to selected names
-  @register: (klass) ->
-    for name in klass.names
-      @hacks[name] = klass
+class Value extends Prefixer
 
-  # Override classes for special values
-  @hacks: { }
-
-  # Detect right class by value name and create it instance
-  @load: (name, prefixes) ->
-    klass = @hacks[name]
-    if klass
-      new klass(name, prefixes)
-    else
-      new Value(name, prefixes)
-
-  # Cached regexps
-  @regexps = { }
-
-  # Generate or get cached regexp
-  @regexp = (name) ->
-    @regexps[name] ||= utils.regexp(name)
-
-  constructor: (@name, @prefixes) ->
-    @regexp = Value.regexp(@name)
+  # Clone decl for each prefixed values
+  @save: (decl) ->
+    for prefix, value of decl._autoprefixerValues
+      prefix = utils.removeNote(prefix)
+      if decl.prefix == prefix
+        decl.value = value
+      else if decl.parent.every( (i) -> i.prop != prefix + decl.unprefixed )
+        clone = decl.clone(value: value)
+        decl.parent.insertBefore(decl, clone)
 
   # Is declaration need to be prefixed
-  check: (value) ->
+  check: (decl) ->
+    value = decl.value
     if value.indexOf(@name) != -1
-      !!value.match(@regexp)
+      !!value.match(@regexp())
     else
       false
+
+  # Lazy regexp loading
+  regexp: ->
+    @regexpCache ||= utils.regexp(@name)
+
+  # Add prefix to values in string
+  replace: (string, prefix) ->
+    string.replace(@regexp(), '$1' + prefix + '$2')
+
+  # Save values with next prefixed token
+  add: (decl, prefix) ->
+    decl._autoprefixerValues ||= { }
+    value = decl._autoprefixerValues[prefix] || decl.value
+    decl._autoprefixerValues[prefix] = @replace(value, prefix)
 
   # Return function to fast find prefixed value
   old: (prefix) ->
     new OldValue(prefix + @name)
-
-  # Add prefix to values in string
-  addPrefix: (prefix, string) ->
-    string.replace(@regexp, '$1' + prefix + '$2')
 
 module.exports = Value
