@@ -1,9 +1,7 @@
 Prefixer = require('./prefixer')
+Browsers = require('./browsers')
 
 class Declaration extends Prefixer
-
-  # All vendor prefixes
-  @prefixes: []
 
   # Always true, because we already get prefixer by property name
   check: (decl) ->
@@ -15,7 +13,7 @@ class Declaration extends Prefixer
 
   # Check `value`, that it contain other prefixes, rather than `prefix`
   otherPrefixes: (value, prefix) ->
-    for other in Declaration.prefixes
+    for other in Browsers.prefixes()
       continue if other == prefix
       return true if value.indexOf(other) != -1
     return false

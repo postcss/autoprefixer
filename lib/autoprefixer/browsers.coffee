@@ -1,6 +1,15 @@
 utils = require('./utils')
 
 class Browsers
+
+  # Return all prefixes for default browser data
+  @prefixes: (data) ->
+    return @prefixesCache if @prefixesCache
+
+    data = require('../../data/browsers')
+    @prefixesCache = utils.uniq(i.prefix for name, i of data).
+                          sort (a, b) -> b.length - a.length
+
   constructor: (@data, requirements) ->
     @selected = @parse(requirements)
 
@@ -79,11 +88,6 @@ class Browsers
       versions = criteria(data).map (version) -> "#{browser} #{version}"
       selected = selected.concat(versions)
     selected
-
-  # Return all prefixes
-  prefixes: ->
-    @prefixesCache ||= utils.uniq(i.prefix for name, i of @data).
-                             sort (a, b) -> b.length - a.length
 
   # Return prefix for selected browser
   prefix: (browser) ->

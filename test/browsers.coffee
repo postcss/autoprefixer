@@ -28,6 +28,14 @@ data =
 
 describe 'Browsers', ->
 
+  describe '.prefixes()', ->
+
+    it 'returns browsers prefixes', ->
+      Browsers.prefixes(data).should.eql ['-webkit-', '-moz-', '-ms-', '-o-']
+
+    it 'returns prefixes by default data', ->
+      Browsers.prefixes().should.eql ['-webkit-', '-moz-', '-ms-', '-o-']
+
   describe 'parse()', ->
 
     it 'converts browsers to array', ->
@@ -76,12 +84,6 @@ describe 'Browsers', ->
     it 'has aliases', ->
       ( new Browsers(data, ['fx 1']) ).selected.should.eql ['ff 1']
       ( new Browsers(data, ['fx >= 1']) ).selected.should.eql ['ff 1']
-
-  describe 'prefixes()', ->
-
-    it 'returns all prefixes', ->
-      browsers = new Browsers(data, ['none'])
-      browsers.prefixes().should.eql ['-webkit-', '-moz-', '-ms-', '-o-']
 
   describe 'prefix()', ->
 

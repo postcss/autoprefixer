@@ -3,12 +3,7 @@ parse       = require('postcss/lib/parse')
 
 describe 'Declaration', ->
   beforeEach ->
-    @tabsize  = new Declaration('tab-size', ['-moz-', '-ms-'])
-    @prefixes = Declaration.prefixes
-    Declaration.prefixes = ['-webkit-', '-moz-', '-ms-']
-
-  afterEach ->
-    Declaration.prefixes = @prefixes
+    @tabsize = new Declaration('tab-size', ['-moz-', '-ms-'])
 
   describe 'otherPrefixes()', ->
 
