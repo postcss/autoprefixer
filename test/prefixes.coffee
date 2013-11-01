@@ -1,9 +1,9 @@
-Prefixes = require('../lib/autoprefixer/prefixes')
-Browsers = require('../lib/autoprefixer/browsers')
-Selector = require('../lib/autoprefixer/selector')
-OldValue = require('../lib/autoprefixer/old-value')
-Value    = require('../lib/autoprefixer/value')
-utils    = require('../lib/autoprefixer/utils')
+Declaration = require('../lib/autoprefixer/declaration')
+Prefixes    = require('../lib/autoprefixer/prefixes')
+Browsers    = require('../lib/autoprefixer/browsers')
+Selector    = require('../lib/autoprefixer/selector')
+OldValue    = require('../lib/autoprefixer/old-value')
+Value       = require('../lib/autoprefixer/value')
 
 data =
   browsers:
@@ -32,6 +32,12 @@ empty = new Prefixes({ }, new Browsers(data.browsers, []))
 fill  = new Prefixes(data.prefixes,
                      new Browsers(data.browsers, ['ff 2', 'ie 2']))
 
+cSel  = new Selector('c', ['-ms-'])
+aVal  = new Value('a', ['-moz-'])
+bVal  = new Value('b', ['-ms- new'])
+aProp = new Declaration('a', ['-moz-'])
+aProp.values = [bVal]
+
 old = (name) -> new OldValue(name)
 
 describe 'Prefixes', ->
@@ -53,16 +59,14 @@ describe 'Prefixes', ->
 
     it 'preprocesses prefixes data', ->
       fill.add.should.eql
-        'selectors': [new Selector('c', ['-ms-'])]
+        'selectors': [cSel]
         'transition':
-          values: [name: 'a', prefixes: ['-moz-'], regexp: utils.regexp('a')]
+          values: [aVal]
         'transition-property':
-          values: [name: 'a', prefixes: ['-moz-'], regexp: utils.regexp('a')]
-        'a':
-          prefixes: ['-moz-']
-          values: [name: 'b', prefixes: ['-ms- new'], regexp: utils.regexp('b')]
+          values: [aVal]
+        'a': aProp
         '*':
-          values: [name: 'b', prefixes: ['-ms- new'], regexp: utils.regexp('b')]
+          values: [bVal]
 
       JSON.stringify(fill.remove).should.eql JSON.stringify({
         'selectors': ['-moz-c']
@@ -80,23 +84,10 @@ describe 'Prefixes', ->
           values: [old('-ms-b'), old('-moz-b'), old('-webkit-b')]
       })
 
-  describe 'other()', ->
-
-    it 'returns prefixes', ->
-      empty.other('-moz-').should.eql ['-webkit-', '-ms-']
-
-  describe 'isCustom()', ->
-
-    it 'returns true browser prefixes', ->
-      fill.isCustom('-moz-').should.be.false
-      fill.isCustom('-evil-').should.be.true
-
   describe 'values()', ->
 
     it 'returns values for this and all properties', ->
-      fill.values('add', 'a').should.eql [
-        { name: 'b', prefixes: ['-ms- new'], regexp: utils.regexp('b') }
-      ]
+      fill.values('add', 'a').should.eql [bVal]
 
       fill.values('remove', 'a').should.eql [old('-ms-b'),
                                              old('-moz-b'),

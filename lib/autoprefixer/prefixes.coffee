@@ -1,14 +1,10 @@
 utils = require('./utils')
 
-Processor = require('./processor')
-Selector  = require('./selector')
-Value     = require('./value')
-
-Value.register    require('./hacks/gradient')
-Value.register    require('./hacks/fill-available')
-
-Selector.register require('./hacks/fullscreen')
-Selector.register require('./hacks/placeholder')
+Processor   = require('./processor')
+Declaration = require('./declaration')
+Keyframes   = require('./keyframes')
+Selector    = require('./selector')
+Value       = require('./value')
 
 class Prefixes
   constructor: (@data, @browsers) ->
@@ -53,7 +49,10 @@ class Prefixes
   preprocess: (selected) ->
     add = { selectors: [] }
     for name, prefixes of selected.add
-      if @data[name].selector
+      if name == '@keyframes'
+        add[name] = new Keyframes(name, prefixes)
+
+      else if @data[name].selector
         add.selectors.push(Selector.load(name, prefixes))
 
       else
@@ -65,13 +64,13 @@ class Prefixes
         if props
           value = Value.load(name, prefixes)
           for prop in props
-            add[prop] = { }       unless add[prop]
-            add[prop].values = [] unless add[prop].values
+            add[prop] = { values: [] } unless add[prop]
             add[prop].values.push(value)
 
         unless @data[name].props
-          add[name] = { } unless add[name]
-          add[name].prefixes = prefixes
+          values = add[name]?.values || []
+          add[name] = Declaration.load(name, prefixes)
+          add[name].values = values
 
     remove = { selectors: [] }
     for name, prefixes of selected.remove
@@ -102,14 +101,6 @@ class Prefixes
             remove[prefixed].remove = true
 
     [add, remove]
-
-  # Return all possible prefixes, expect selected
-  other: (prefix) ->
-    @otherCache[prefix] ||= @browsers.prefixes().filter( (i) -> i != prefix )
-
-  # Is it custom framework prefix, not browser prefix
-  isCustom: (prefix) ->
-    @browsers.prefixes().indexOf(prefix) == -1
 
   # Return values, which must be prefixed in selected property
   values: (type, prop) ->
