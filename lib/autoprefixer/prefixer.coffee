@@ -11,7 +11,7 @@ class Prefixer
 
   # Load hacks for some names
   @load: (name, prefixes) ->
-    klass = @hacks[name]
+    klass = @hacks?[name]
     if klass
       new klass(name, prefixes)
     else

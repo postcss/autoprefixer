@@ -6,6 +6,9 @@ Keyframes   = require('./keyframes')
 Selector    = require('./selector')
 Value       = require('./value')
 
+Selector.hack require('./hacks/fullscreen')
+Selector.hack require('./hacks/placeholder')
+
 class Prefixes
   constructor: (@data, @browsers) ->
     [@add, @remove] = @preprocess(@select(@data))
