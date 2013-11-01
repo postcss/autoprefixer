@@ -8,6 +8,30 @@ describe 'Prefixer', ->
                  ':-moz-full-screen { } a { } ' +
                  '@-dev-keyframes s { to { } }')
 
+  describe '.hack()', ->
+
+    it 'registers hacks for subclasses', ->
+      class A extends Prefixer
+
+      class Hack extends A
+        @names = ['a', 'b']
+      A.hack(Hack)
+
+      A.hacks.should.eql { a: Hack, b: Hack }
+      (Prefixer.hacks == undefined).should.be.true
+
+  describe '.load()', ->
+
+    it 'loads hacks', ->
+      class A extends Prefixer
+        klass: 'a'
+      class Hack extends A
+        klass: 'hack'
+      A.hacks = { hacked: Hack }
+
+      A.load('hacked').klass.should.eql('hack')
+      A.load('a').klass.should.eql('a')
+
   describe '.clone()', ->
 
     it 'cleans custom properties', ->

@@ -3,9 +3,19 @@ vendor   = require('postcss/lib/vendor')
 utils    = require('./utils')
 
 class Prefixer
+  # Add hack to selected names
+  @hack: (klass) ->
+    @hacks ||= { }
+    for name in klass.names
+      @hacks[name] = klass
+
   # Load hacks for some names
   @load: (name, prefixes) ->
-    new this(name, prefixes)
+    klass = @hacks[name]
+    if klass
+      new klass(name, prefixes)
+    else
+      new this(name, prefixes)
 
   # Clone node and clean autprefixer custom caches
   @clone: (node, overrides) ->
