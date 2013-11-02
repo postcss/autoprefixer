@@ -1,9 +1,12 @@
-::-webkit-input-placeholder{
+::-webkit-input-placeholder {
     color: #999
-}::-moz-placeholder{
+}
+::-moz-placeholder {
     color: #999
-}:-ms-input-placeholder{
+}
+:-ms-input-placeholder {
     color: #999
-}::placeholder {
+}
+::placeholder {
     color: #999
 }

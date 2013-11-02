@@ -1,9 +1,11 @@
-:-webkit-full-screen a{
+:-webkit-full-screen a {
     box-sizing: border-box;
-}:-moz-full-screen a{
+}
+:-moz-full-screen a {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-}:fullscreen a {
+}
+:fullscreen a {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }

@@ -3,6 +3,7 @@
     from {
         /* Another single line comment */
         top: -webkit-calc(10% + 10px);
+        /* Another single line comment */
         top: calc(10% + 10px);
         -webkit-transform: rotate(10deg);
         transform: rotate(10deg);
@@ -27,7 +28,6 @@
         transform: rotate(0);
     }
 }
-
 @-o-keyframes anim {
     /* Single line comment */
     from {
@@ -53,12 +53,12 @@
         transform: rotate(0);
     }
 }
-
 @keyframes anim {
     /* Single line comment */
     from {
         /* Another single line comment */
         top: -webkit-calc(10% + 10px);
+        /* Another single line comment */
         top: calc(10% + 10px);
         -webkit-transform: rotate(10deg);
         -o-transform: rotate(10deg);
