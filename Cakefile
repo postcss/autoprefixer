@@ -107,10 +107,11 @@ task 'bench', 'Benchmark on GitHub styles', ->
     text[0].toUpperCase() + text[1..-1]
 
   loadGithubStyles = (callback) ->
-    print("Load GitHub styles\n")
+    print("Load GitHub styles")
     get 'https://github.com', (html) ->
       link   = html.match(/[^"]+\.css/g)[0]
       get link, (css) ->
+        print("\n")
         autoprefixer = require(__dirname + '/lib/autoprefixer')
         cleaner      = autoprefixer('none')
         callback(cleaner.compile(css))
