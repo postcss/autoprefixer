@@ -1,15 +1,8 @@
 @keyframes anim {
-    /* Single line comment */
     from {
-        /* Another single line comment */
         top: calc(10% + 10px);
         transform: rotate(10deg);
     }
-    /*
-      Multi
-      line
-      comment
-    */
     50% {
         top: 0;
         flex: 0;
