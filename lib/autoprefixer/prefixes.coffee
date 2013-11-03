@@ -9,6 +9,8 @@ Value       = require('./value')
 Selector.hack require('./hacks/fullscreen')
 Selector.hack require('./hacks/placeholder')
 
+Declaration.hack require('./hacks/filter')
+
 Value.hack require('./hacks/gradient')
 
 class Prefixes
