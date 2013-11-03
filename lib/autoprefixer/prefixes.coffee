@@ -13,6 +13,7 @@ Declaration.hack require('./hacks/filter')
 
 Value.hack require('./hacks/gradient')
 Value.hack require('./hacks/transform')
+Value.hack require('./hacks/fill-available')
 
 class Prefixes
   constructor: (@data, @browsers) ->

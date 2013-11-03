@@ -1,14 +1,13 @@
 OldValue = require('../old-value')
 Value    = require('../value')
-utils    = require('../utils')
 
 class FillAvailable extends Value
   @names = ['fill-available']
 
   # Different prefix for -moz-available
-  addPrefix: (prefix, string) ->
+  replace: (string, prefix) ->
     if prefix == '-moz-'
-      string.replace(@regexp, '$1-moz-available$3')
+      string.replace(@regexp(), '$1-moz-available$3')
     else
       super
 
