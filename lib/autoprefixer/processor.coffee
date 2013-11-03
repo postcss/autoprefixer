@@ -1,5 +1,6 @@
-Value = require('./value')
-utils = require('./utils')
+vendor = require('postcss/lib/vendor')
+Value  = require('./value')
+utils  = require('./utils')
 
 class Processor
   constructor: (@prefixes) ->
@@ -21,9 +22,10 @@ class Processor
 
     # Values
     css.eachDecl (decl) =>
-      for value in @prefixes.values('add', decl.unprefixed)
+      unprefixed = @prefixes.unprefixed(decl.prop)
+      for value in @prefixes.values('add', unprefixed)
         value.process(decl)
-      Value.save(decl)
+      Value.save(@prefixes, decl)
 
   # Remove unnecessary pefixes
   remove: (css) ->
@@ -39,16 +41,17 @@ class Processor
           rule.parent.remove(i)
 
     css.eachDecl (decl, i) =>
-      rule = decl.parent
+      rule       = decl.parent
+      unprefixed = @prefixes.unprefixed(decl.prop)
 
       # Properties
       if @prefixes.remove[decl.prop]?.remove
-        if rule.some( (other) -> other.prop == decl.unprefixed )
+        if rule.some( (other) -> other.prop == unprefixed )
           rule.remove(i)
           return
 
       # Values
-      for checker in @prefixes.values('remove', decl.unprefixed)
+      for checker in @prefixes.values('remove', unprefixed)
         if checker.check(decl.value)
           rule.remove(i)
           return

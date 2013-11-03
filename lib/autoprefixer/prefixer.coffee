@@ -31,8 +31,8 @@ class Prefixer
     prefix = if node._autoprefixerPrefix?
       node._autoprefixerPrefix
 
-    else if node.type == 'decl' and node.prefix
-      node.prefix
+    else if node.type == 'decl' and node.prop[0] == '-'
+      vendor.split(node.prop).prefix
 
     else if node.type == 'root'
       false

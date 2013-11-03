@@ -80,7 +80,7 @@ describe 'Autoprefixer', ->
         css    = cleaner.compile(input)
         css.should.eql(output)
 
-    it "doesn't double prefixes", ->
+    it 'prevents doubling prefixes', ->
       for type in commons
         instance = prefixer(type)
 
@@ -117,7 +117,7 @@ describe 'Autoprefixer', ->
   describe 'hacks', ->
 
     it 'changes angle in gradient',     -> test('gradient')
-    it "doesn't prefix IE filter",      -> test('filter')
+    it 'ignores prefix IE filter',      -> test('filter')
     it 'change border image syntax',    -> test('border-image')
     it 'supports old Mozilla prefixes', -> test('border-radius')
     it 'supports all flexbox syntaxes', -> test('flexbox')

@@ -2,9 +2,9 @@ Declaration = require('../declaration')
 
 class BorderRadius extends Declaration
   @names     = ['border-radius']
+
   @toMozilla = { }
   @toNormal  = { }
-
   for ver in ['top', 'bottom']
     for hor in ['left', 'right']
       normal  = "border-#{ver}-#{hor}-radius"
@@ -16,20 +16,15 @@ class BorderRadius extends Declaration
       @toMozilla[normal] = mozilla
       @toNormal[mozilla] = normal
 
-  # Normalize property name to understand old Mozilla syntax
-  constructor: ->
-    super
-    if @prefix == '-moz-'
-      @unprefixed = BorderRadius.toNormal[@unprefixed] || @unprefixed
-      @prop = @prefix + @unprefixed
-
   # Change syntax, when add Mozilla prefix
-  prefixProp: (prefix) ->
+  prefixed: (prop, prefix) ->
     if prefix == '-moz-'
-      prop = BorderRadius.toMozilla[@unprefixed] || @unprefixed
-      return if @rule.contain(prefix + prop)
-      @insertBefore(prefix + prop, @value)
+      prefix + (BorderRadius.toMozilla[prop] || prop)
     else
       super
+
+  # Return unprefixed version of property
+  normalize: (prop) ->
+    BorderRadius.toNormal[prop] || prop
 
 module.exports = BorderRadius

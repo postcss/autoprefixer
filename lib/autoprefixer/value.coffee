@@ -1,20 +1,23 @@
 Prefixer = require('./prefixer')
 OldValue = require('./old-value')
+vendor   = require('postcss/lib/vendor')
 utils    = require('./utils')
 
 class Value extends Prefixer
 
   # Clone decl for each prefixed values
-  @save: (decl) ->
+  @save: (prefixes, decl) ->
     for prefix, value of decl._autoprefixerValues
       continue if value == decl.value
-      prefix = utils.removeNote(prefix)
+      declPrefix = vendor.split(decl.prop).prefix
 
-      if decl.prefix == prefix
+      if declPrefix == utils.removeNote(prefix)
         decl.value = value
-      else if decl.parent.every( (i) -> i.prop != prefix + decl.unprefixed )
-        cloned = @clone(decl, value: value)
-        decl.parent.insertBefore(decl, cloned)
+      else
+        prefixed = prefixes.prefixed(decl.prop, prefix)
+        if decl.parent.every( (i) -> i.prop != prefixed)
+          cloned = @clone(decl, value: value)
+          decl.parent.insertBefore(decl, cloned)
 
   # Is declaration need to be prefixed
   check: (decl) ->

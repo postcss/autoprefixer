@@ -1,4 +1,5 @@
-utils = require('./utils')
+utils  = require('./utils')
+vendor = require('postcss/lib/vendor')
 
 Processor   = require('./processor')
 Declaration = require('./declaration')
@@ -10,15 +11,18 @@ Selector.hack require('./hacks/fullscreen')
 Selector.hack require('./hacks/placeholder')
 
 Declaration.hack require('./hacks/filter')
+Declaration.hack require('./hacks/border-radius')
 
 Value.hack require('./hacks/gradient')
 Value.hack require('./hacks/transform')
 Value.hack require('./hacks/fill-available')
 
+declsCache = { }
+
 class Prefixes
+
   constructor: (@data, @browsers) ->
     [@add, @remove] = @preprocess(@select(@data))
-    @otherCache     = { }
     @processor      = new Processor(@)
 
   transitionProps: ['transition', 'transition-property']
@@ -105,11 +109,30 @@ class Prefixes
 
         unless @data[name].props
           for prefix in prefixes
-            prefixed = prefix + name
+            prefixed = @prefixed(name, prefix)
             remove[prefixed] = {} unless remove[prefixed]
             remove[prefixed].remove = true
 
     [add, remove]
+
+  # Declaration loader with caching
+  decl: (prop) ->
+    decl = declsCache[prop]
+
+    if decl
+      decl
+    else
+      declsCache[prop] = Declaration.load(prop)
+
+  # Return unprefixed version of property
+  unprefixed: (prop) ->
+    prop = vendor.split(prop).name
+    @decl(prop).normalize(prop)
+
+  # Return prefixed version of property
+  prefixed: (prop, prefix) ->
+    prop = vendor.split(prop).name
+    @decl(prop).prefixed(prop, prefix)
 
   # Return values, which must be prefixed in selected property
   values: (type, prop) ->

@@ -1,5 +1,6 @@
 Prefixer = require('./prefixer')
 Browsers = require('./browsers')
+vendor   = require('postcss/lib/vendor')
 
 class Declaration extends Prefixer
 
@@ -8,8 +9,12 @@ class Declaration extends Prefixer
     true
 
   # Return prefixed version of property
-  prefixed: (prefix) ->
-    prefix + @name
+  prefixed: (prop, prefix) ->
+    prefix + prop
+
+  # Return unprefixed version of property
+  normalize: (prop) ->
+    prop
 
   # Check `value`, that it contain other prefixes, rather than `prefix`
   otherPrefixes: (value, prefix) ->
@@ -20,7 +25,7 @@ class Declaration extends Prefixer
 
   # Clone and add prefixes for declaration
   add: (decl, prefix) ->
-    prefixed = @prefixed(prefix)
+    prefixed = @prefixed(decl.prop, prefix)
 
     return if decl.parent.some (i) -> i.prop == prefixed
     return if @otherPrefixes(decl.value, prefix)

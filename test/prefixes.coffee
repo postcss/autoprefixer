@@ -57,7 +57,7 @@ describe 'Prefixes', ->
 
   describe 'preprocess()', ->
 
-    it 'preprocesses prefixes data', ->
+    it 'preprocesses prefixes add data', ->
       fill.add.should.eql
         'selectors': [cSel]
         'transition':
@@ -67,6 +67,8 @@ describe 'Prefixes', ->
         'a': aProp
         '*':
           values: [bVal]
+
+    it 'preprocesses prefixes remove data', ->
 
       JSON.stringify(fill.remove).should.eql JSON.stringify({
         'selectors': ['-moz-c']
@@ -83,6 +85,27 @@ describe 'Prefixes', ->
         '*':
           values: [old('-ms-b'), old('-moz-b'), old('-webkit-b')]
       })
+
+  describe '.decl()', ->
+
+    it 'loads declarations by property', ->
+      empty.decl('a').should.eql(new Declaration('a'))
+
+    it 'caches values', ->
+      empty.decl('a').should.exactly empty.decl('a')
+
+  describe '.unprefixed()', ->
+
+    it 'returns unprefixed version', ->
+      empty.unprefixed('-moz-a').should.eql('a')
+
+  describe '.prefixed()', ->
+
+    it 'adds prefix', ->
+      empty.prefixed('a', '-ms-').should.eql('-ms-a')
+
+    it 'changes prefix', ->
+      empty.prefixed('a', '-ms-').should.eql('-ms-a')
 
   describe 'values()', ->
 

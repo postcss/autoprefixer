@@ -16,7 +16,14 @@ describe 'Declaration', ->
   describe 'prefixed()', ->
 
     it 'returns prefixed property', ->
-      @tabsize.prefixed('-moz-').should.eql('-moz-tab-size')
+      css  = parse('a { tab-size: 2 }')
+      decl = css.rules[0].decls[0]
+      @tabsize.prefixed(decl.prop, '-moz-').should.eql('-moz-tab-size')
+
+  describe 'normalize()', ->
+
+    it 'returns property name by specification', ->
+      @tabsize.normalize('tab-size').should.eql('tab-size')
 
   describe 'process()', ->
 

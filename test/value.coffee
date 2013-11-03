@@ -2,7 +2,11 @@ OldValue = require('../lib/autoprefixer/old-value')
 Value    = require('../lib/autoprefixer/value')
 parse    = require('postcss/lib/parse')
 
+Prefixes = require('../lib/autoprefixer/prefixes')
+prefixes = new Prefixes()
+
 describe 'Value', ->
+
   beforeEach ->
     @calc = new Value('calc', ['-moz-', '-ms-'])
 
@@ -13,7 +17,7 @@ describe 'Value', ->
       width = css.rules[0].decls[0]
 
       width._autoprefixerValues = { '-ms-': '-ms-v' }
-      Value.save(width)
+      Value.save(prefixes, width)
 
       css.toString().should.eql('a { prop: -ms-v; prop: v }')
 
@@ -22,7 +26,7 @@ describe 'Value', ->
       width = css.rules[0].decls[0]
 
       width._autoprefixerValues = { '-ms-': '-ms-v' }
-      Value.save(width)
+      Value.save(prefixes, width)
 
       css.toString().should.eql('a { -ms-prop: -ms-v }')
 
@@ -31,7 +35,7 @@ describe 'Value', ->
       width = css.rules[0].decls[1]
 
       width._autoprefixerValues = { '-ms-': '-ms-v' }
-      Value.save(width)
+      Value.save(prefixes, width)
 
       css.toString().should.eql('a { -ms-prop: v; prop: v }')
 
@@ -40,7 +44,7 @@ describe 'Value', ->
       width = css.rules[0].decls[0]
 
       width._autoprefixerValues = { '-ms-': 'v' }
-      Value.save(width)
+      Value.save(prefixes, width)
 
       css.toString().should.eql('a { prop: v }')
 
