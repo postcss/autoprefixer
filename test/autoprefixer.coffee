@@ -73,8 +73,6 @@ describe 'Autoprefixer', ->
     it 'keeps vendor-specific hacks', -> test('vendor-hack')
 
     it 'removes unnecessary prefixes', ->
-      test('old', cleaner)
-
       for type in commons
         continue if type == 'mistakes' or type == 'flex-rewrite'
         input  = read(type + '.out')
