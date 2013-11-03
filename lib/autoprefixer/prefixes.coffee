@@ -9,6 +9,8 @@ Value       = require('./value')
 Selector.hack require('./hacks/fullscreen')
 Selector.hack require('./hacks/placeholder')
 
+Value.hack require('./hacks/gradient')
+
 class Prefixes
   constructor: (@data, @browsers) ->
     [@add, @remove] = @preprocess(@select(@data))

@@ -16,6 +16,7 @@ b {
     background-image: -o-linear-gradient(rgba(0,0,0,1), white), -o-linear-gradient(white, black);
     background-image: linear-gradient(rgba(0,0,0,1), white), linear-gradient(white, black);
 }
+
 div {
   background-image: -webkit-radial-gradient(right, white black),
                     -webkit-repeating-linear-gradient(top left, black, white),

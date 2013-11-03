@@ -7,7 +7,9 @@ class Value extends Prefixer
   # Clone decl for each prefixed values
   @save: (decl) ->
     for prefix, value of decl._autoprefixerValues
+      continue if value == decl.value
       prefix = utils.removeNote(prefix)
+
       if decl.prefix == prefix
         decl.value = value
       else if decl.parent.every( (i) -> i.prop != prefix + decl.unprefixed )

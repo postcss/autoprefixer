@@ -2,28 +2,26 @@ OldValue = require('../old-value')
 Value    = require('../value')
 utils    = require('../utils')
 
+names = ['linear-gradient', 'repeating-linear-gradient',
+         'radial-gradient', 'repeating-radial-gradient']
+
 isDirection = new RegExp('(top|left|right|bottom)', 'gi')
+starts      = new RegExp('(^|\\s*)' + names.join('|'), 'i')
 
 class Gradient extends Value
-  @names = ['linear-gradient', 'repeating-linear-gradient',
-            'radial-gradient', 'repeating-radial-gradient']
+  @names = names
 
-  @starts  = new RegExp('(^|\\s*)' + @names.join('|'), 'i')
-  @regexps = { }
-  for i in @names
-    @regexps[i] = new RegExp('(^|\\s|,)' + i + '\\((.+)\\)', 'gi')
-
-  # Cache regexp to parse params
-  constructor: (@name, @prefixes) ->
-    @regexp      = Gradient.regexps[@name]
+  # Smarter regexp for gradients
+  regexp: ->
+    @regexpCache ||= new RegExp('(^|\\s|,)' + @name + '\\((.+)\\)', 'gi')
 
   # Change degrees for webkit prefix
-  addPrefix: (prefix, string) ->
-    string.replace @regexp, (all, before, args) =>
+  replace: (string, prefix) ->
+    string.replace @regexp(), (all, before, args) =>
       prefixedDecls = []
 
       for decl in @splitDecls(all)
-        prefixedDecls.push decl.replace @regexp, (all, before, args) =>
+        prefixedDecls.push decl.replace @regexp(), (all, before, args) =>
           params = @splitParams(args)
           params = @newDirection(params)
 
@@ -75,7 +73,7 @@ class Gradient extends Value
     currentDecl = []
     for i in chunks
       # chunks starts with gradient declaration
-      if Gradient.starts.test(i)
+      if starts.test(i)
         if currentDecl.length == 0
           # start new decl
           currentDecl.push(i)

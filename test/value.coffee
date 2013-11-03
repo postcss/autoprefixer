@@ -35,6 +35,15 @@ describe 'Value', ->
 
       css.toString().should.eql('a { -ms-prop: v; prop: v }')
 
+    it 'ignores prefixes without changes', ->
+      css   = parse('a { prop: v }')
+      width = css.rules[0].decls[0]
+
+      width._autoprefixerValues = { '-ms-': 'v' }
+      Value.save(width)
+
+      css.toString().should.eql('a { prop: v }')
+
   describe 'check()', ->
 
     it 'checks value in string', ->
