@@ -12,6 +12,7 @@ Selector.hack require('./hacks/placeholder')
 Declaration.hack require('./hacks/filter')
 
 Value.hack require('./hacks/gradient')
+Value.hack require('./hacks/transform')
 
 class Prefixes
   constructor: (@data, @browsers) ->
