@@ -43,7 +43,7 @@ class Processor
 
       # Properties
       if @prefixes.remove[decl.prop]?.remove
-        if rule.every( (i) -> i.prop != decl.unprefixed )
+        if rule.some( (other) -> other.prop == decl.unprefixed )
           rule.remove(i)
           return
 
