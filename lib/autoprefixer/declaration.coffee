@@ -23,6 +23,11 @@ class Declaration extends Prefixer
       return true if value.indexOf(other) != -1
     return false
 
+  # Set prefix to declaration
+  set: (decl, prefix) ->
+    decl.prop = @prefixed(decl.prop, prefix)
+    decl
+
   # Clone and add prefixes for declaration
   add: (decl, prefix) ->
     prefixed = @prefixed(decl.prop, prefix)
@@ -30,7 +35,7 @@ class Declaration extends Prefixer
     return if decl.parent.some (i) -> i.prop == prefixed
     return if @otherPrefixes(decl.value, prefix)
 
-    cloned = @clone(decl, prop: prefixed)
+    cloned = @set(@clone(decl), prefix)
     decl.parent.insertBefore(decl, cloned)
 
 module.exports = Declaration

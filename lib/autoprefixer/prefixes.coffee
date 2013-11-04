@@ -11,6 +11,7 @@ Selector.hack require('./hacks/fullscreen')
 Selector.hack require('./hacks/placeholder')
 
 Declaration.hack require('./hacks/filter')
+Declaration.hack require('./hacks/border-image')
 Declaration.hack require('./hacks/border-radius')
 
 Value.hack require('./hacks/gradient')
