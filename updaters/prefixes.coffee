@@ -95,7 +95,7 @@ module.exports = (updater) ->
       else
         browser
 
-    prefix 'display-flex', 'inline-flex'
+    prefix 'display-flex', 'inline-flex',
             props:  ['display']
             browsers: browsers
 
