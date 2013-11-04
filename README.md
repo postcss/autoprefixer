@@ -225,7 +225,7 @@ You can check current status of this feature in
 ### Why Autoprefixer plugin for text editor change my indents?
 
 [Rework](https://github.com/visionmedia/rework), which is used now as CSS parser
-in Autoprefixer, doesn‘t save indents, because it was created for Grunt
+in Autoprefixer, doesn‘t save indents, because it was created for Grunt
 and other build tools.
 
 But next 1.0 version will use [PostCSS](https://github.com/ai/postcss) parser,
