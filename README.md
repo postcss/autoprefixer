@@ -186,6 +186,42 @@ Or by CLI command:
 autoprefixer -i
 ```
 
+## FAQ
+
+### Does it add polyfills for old browsers?
+
+No. Autoprefixer is only about prefixes, not polyfills. There is two reasons:
+
+1. Prefixes and polyfills is very differents and need different API.
+   Two separated libraries will be much better.
+2. Most of IE polyfills is very bad for client perfomance. They use slow hacks
+   and old IEs is mostly used on old hardware. Most of CSS 3 features, that is
+   used only for styling, should be ignored in old IEs as it is recommended in
+   Graceful Degradation.
+
+### Seems Autoprefixer is not working?
+
+Often developers are surprised, how many prefixes are not required right now.
+So, if Autoprefixer doesn’t add prefixes for your CSS, check is them still
+required on [Can I Use](http://caniuse.com/).
+
+If prefix is required, but Autoprefixer doesn’t add it (or adds it wrong),
+please report [about issue](https://github.com/ai/autoprefixer/issues/new)
+with your CSS and expected output.
+
+### Does it support Source Map?
+
+Unfortunately, Autoprefixer right now doesn’t support Source Map.
+But this feature will be in next 1.0 version, which is
+[under hard development](https://github.com/ai/autoprefixer/tree/v1.0)
+right now. Version 1.0 will be released around middle of December 2013.
+
+Right now you can use lydell’s fork with
+Source Map support: [lydell/autoprefixer](https://github.com/lydell/autoprefixer/tree/source-maps#nodejs).
+
+You can check current status of this feature in
+[autoprefixer#37](https://github.com/ai/autoprefixer/issues/37).
+
 ## Usage
 
 ### Ruby on Rails
