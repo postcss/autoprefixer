@@ -18,7 +18,7 @@ data =
       versions: ['ie 2', 'ie 1']
   prefixes:
     a:
-      browsers: ['ff 2', 'ff 1', 'chrome 1', 'ie 1']
+      browsers: ['ff 2', 'ff 1 old', 'chrome 1', 'ie 1']
       transition: true
     b:
       browsers: ['ie 2 new', 'ff 1']
@@ -51,7 +51,7 @@ describe 'Prefixes', ->
           b: ['-ms- new']
           c: ['-ms-']
         remove:
-          a: ['-webkit-', '-ms-']
+          a: ['-webkit-', '-ms-', '-moz- old']
           b: ['-ms-', '-moz-', '-webkit-']
           c: ['-moz-']
 
@@ -73,12 +73,14 @@ describe 'Prefixes', ->
       JSON.stringify(fill.remove).should.eql JSON.stringify({
         'selectors': ['-moz-c']
         'transition':
-          values: [old('-webkit-a'), old('-ms-a')]
+          values: [old('-webkit-a'), old('-ms-a'), old('-moz- olda')]
         'transition-property':
-          values: [old('-webkit-a'), old('-ms-a')]
+          values: [old('-webkit-a'), old('-ms-a'), old('-moz- olda')]
         '-webkit-a':
           remove: true
         '-ms-a':
+          remove: true
+        '-moz- olda':
           remove: true
         'a':
           values: [old('-ms-b'), old('-moz-b'), old('-webkit-b')]

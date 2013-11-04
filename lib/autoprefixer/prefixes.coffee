@@ -37,6 +37,10 @@ class Prefixes
         params = i.split(' ')
         browser: params[0] + ' ' + params[1], note: params[2]
 
+      notes = add.filter( (i) -> i.note ).map (i) =>
+        @browsers.prefix(i.browser) + ' ' + i.note
+      notes = utils.uniq(notes)
+
       add = add.filter( (i) => @browsers.isSelected(i.browser) ).map (i) =>
         prefix = @browsers.prefix(i.browser)
         if i.note
@@ -48,6 +52,7 @@ class Prefixes
 
       all = data.browsers.map( (i) => @browsers.prefix(i) )
       all = all.concat(data.mistakes) if data.mistakes
+      all = all.concat(notes)
       all = utils.uniq(all)
 
       if add.length
