@@ -202,7 +202,7 @@ No. Autoprefixer only adds prefixes, not polyfills. There are two reasons:
 ### Why doesn’t Autoprefixer do anything?
 
 Developers are often surprised by how few prefixes are required today.
-If Autoprefixer doesn’t add prefixes to your CSS, check if they’re still
+If Autoprefixer doesn’t add prefixes to your CSS, check if they’re still
 required on [Can I Use](http://caniuse.com/).
 
 If a prefix is required, but Autoprefixer doesn’t add it or adds it
@@ -213,9 +213,9 @@ and include your source CSS and expected output.
 ### Does it support source maps?
 
 Unfortunately, right now Autoprefixer doesn’t support source maps.
-However, this feature will be included in the next version, 1.0, which is
-currently [under development](https://github.com/ai/autoprefixer/tree/v1.0).
-It is planned for release in mid-December 2013.
+However, this feature will be included in the next version, 1.0, which is
+currently [under development](https://github.com/ai/autoprefixer/tree/v1.0)
+and is planned for release in mid-December 2013.
 
 Right now you can use lydell’s fork with source map support:
 [lydell/autoprefixer](https://github.com/lydell/autoprefixer/tree/source-maps#nodejs).
@@ -223,7 +223,7 @@ Right now you can use lydell’s fork with source map support:
 You can check the current status of this feature in
 [autoprefixer#37](https://github.com/ai/autoprefixer/issues/37).
 
-### Why does an Autoprefixer plugin for my text editor change indentation?
+### Why Autoprefixer plugin for text editor changed my indents?
 
 [Rework](https://github.com/visionmedia/rework), which Autoprefixer currently
 uses for parsing CSS, doesn’t save indents, because it was created for Grunt
