@@ -126,12 +126,12 @@ class Prefixes
 
   # Return unprefixed version of property
   unprefixed: (prop) ->
-    prop = vendor.split(prop).name
+    prop = vendor.unprefixed(prop)
     @decl(prop).normalize(prop)
 
   # Return prefixed version of property
   prefixed: (prop, prefix) ->
-    prop = vendor.split(prop).name
+    prop = vendor.unprefixed(prop)
     @decl(prop).prefixed(prop, prefix)
 
   # Return values, which must be prefixed in selected property

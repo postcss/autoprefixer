@@ -32,7 +32,7 @@ class Prefixer
       node._autoprefixerPrefix
 
     else if node.type == 'decl' and node.prop[0] == '-'
-      vendor.split(node.prop).prefix
+      vendor.prefix(node.prop)
 
     else if node.type == 'root'
       false
@@ -41,7 +41,7 @@ class Prefixer
       node.selector.match(/:(-\w+-)/)[1]
 
     else if node.type == 'atrule' and node.name[0] == '-'
-      vendor.split(node.name).prefix
+      vendor.prefix(node.name)
 
     else
       @parentPrefix(node.parent)
