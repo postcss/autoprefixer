@@ -190,46 +190,47 @@ autoprefixer -i
 
 ### Does it add polyfills for old browsers?
 
-No. Autoprefixer is only about prefixes, not polyfills. There is two reasons:
+No. Autoprefixer only adds prefixes, not polyfills. There are two reasons:
 
-1. Prefixes and polyfills are very different and need different API.
-   Two separated libraries will be much better.
+1. Prefixes and polyfills are very different and need a different API.
+   Two separate libraries would be much better.
 2. Most of IE polyfills are very bad for client perfomance. They use slow hacks
-   and old IEs is mostly used on old hardware. Most of CSS 3 features, that is
-   used only for styling, should be ignored in old IEs as it is recommended in
+   and old IE is mostly used on old hardware. Most of CSS 3 features that is
+   only used for styling should be ignored in old IEs as it is recommended in
    Graceful Degradation.
 
-### Autoprefixer seems not working?
+### Why doesn't Autoprefixer do anything?
 
-Often developers are surprised, how many prefixes are not required right now.
-So, if Autoprefixer doesn’t add prefixes for your CSS, check is them still
+Developers are often surprised by how few prefixes are required today.
+If Autoprefixer doesn't add prefixes to your CSS, check if they're still
 required on [Can I Use](http://caniuse.com/).
 
-If prefix is required, but Autoprefixer doesn’t add it (or add it wrongly),
-please report [about the issue](https://github.com/ai/autoprefixer/issues/new)
-with your CSS and expected output.
+If a prefix is required, but Autoprefixer doesn't add it or adds it
+incorrectly, please [report an issue](https://github.com/ai/autoprefixer/issues/new)
+and include your source CSS and expected output.
 
-### Does it support Source Map?
+### Does it support source maps?
 
-Unfortunately, Autoprefixer doesn’t support Source Map right now.
-But this feature will be in next 1.0 version, which is
-[under hard development](https://github.com/ai/autoprefixer/tree/v1.0)
-right now. Version 1.0 will be released around the middle of December 2013.
+Unfortunately, right now Autoprefixer doesn’t support source maps.
+However, this feature will be included in the next version, 1.0, which is
+currently [under development](https://github.com/ai/autoprefixer/tree/v1.0).
+It is planned for release in mid-December 2013.
 
-Right now you can use lydell’s fork with
-Source Map support: [lydell/autoprefixer](https://github.com/lydell/autoprefixer/tree/source-maps#nodejs).
+Right now you can use lydell’s fork with source map support: 
+[lydell/autoprefixer](https://github.com/lydell/autoprefixer/tree/source-maps#nodejs).
 
-You can check current status of this feature in
+You can check the current status of this feature in
 [autoprefixer#37](https://github.com/ai/autoprefixer/issues/37).
 
-### Why Autoprefixer plugin for text editor changed my indents?
+### Why does an Autoprefixer plugin for my text editor change indentation?
 
-[Rework](https://github.com/visionmedia/rework), which is used now as CSS parser
-in Autoprefixer, doesn‘t save indents, because it was created for Grunt
+[Rework](https://github.com/visionmedia/rework), which Autoprefixer currently
+uses for parsing CSS, doesn‘t save indents, because it was created for Grunt
 and other build tools.
 
-But next 1.0 version will use [PostCSS](https://github.com/ai/postcss) parser,
-which save indents and your code style.
+After version 1.0 Autoprefixed will switch to the
+[PostCSS](https://github.com/ai/postcss)parser, which preserves formatting
+of the code.
 
 ## Usage
 
