@@ -3,35 +3,35 @@
         top: -webkit-calc(10% + 10px);
         top: calc(10% + 10px);
         -webkit-transform: rotate(10deg);
-        transform: rotate(10deg);
+        transform: rotate(10deg)
     }
     50% {
         top: 0;
-        -webkit-box-flex: 0;
-        -webkit-flex: 0;
-        flex: 0;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex
     }
     to {
         top: -webkit-calc(10%);
         top: calc(10%);
         -webkit-transform: rotate(0);
-        transform: rotate(0);
+        transform: rotate(0)
     }
 }
 @-o-keyframes anim {
     from {
         top: calc(10% + 10px);
         -o-transform: rotate(10deg);
-        transform: rotate(10deg);
+        transform: rotate(10deg)
     }
     50% {
         top: 0;
-        flex: 0;
+        display: flex
     }
     to {
         top: calc(10%);
         -o-transform: rotate(0);
-        transform: rotate(0);
+        transform: rotate(0)
     }
 }
 @keyframes anim {
@@ -40,19 +40,19 @@
         top: calc(10% + 10px);
         -webkit-transform: rotate(10deg);
         -o-transform: rotate(10deg);
-        transform: rotate(10deg);
+        transform: rotate(10deg)
     }
     50% {
         top: 0;
-        -webkit-box-flex: 0;
-        -webkit-flex: 0;
-        flex: 0;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex
     }
     to {
         top: -webkit-calc(10%);
         top: calc(10%);
         -webkit-transform: rotate(0);
         -o-transform: rotate(0);
-        transform: rotate(0);
+        transform: rotate(0)
     }
 }

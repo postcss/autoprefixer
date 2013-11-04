@@ -16,6 +16,7 @@ Declaration.hack require('./hacks/border-radius')
 
 Value.hack require('./hacks/gradient')
 Value.hack require('./hacks/transform')
+Value.hack require('./hacks/display-flex')
 Value.hack require('./hacks/fill-available')
 
 declsCache = { }

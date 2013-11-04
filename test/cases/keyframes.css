@@ -1,14 +1,14 @@
 @keyframes anim {
     from {
         top: calc(10% + 10px);
-        transform: rotate(10deg);
+        transform: rotate(10deg)
     }
     50% {
         top: 0;
-        flex: 0;
+        display: flex
     }
     to {
         top: calc(10%);
-        transform: rotate(0);
+        transform: rotate(0)
     }
 }

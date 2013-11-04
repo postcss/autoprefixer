@@ -1,37 +1,41 @@
-FlexDeclaration = require('./flex-declaration')
+flexSpec = require('./flex-spec')
+OldValue = require('../old-value')
+Value    = require('../value')
 
-class DisplayFlex extends FlexDeclaration
-  @names = ['display']
+class OldDisplayFlex extends OldValue
+  constructor: (@name) ->
 
-  # Normalize property name
-  constructor: ->
+  # Faster check
+  check: (value) ->
+    value == @name
+
+class DisplayFlex extends Value
+  @names = ['display-flex', 'inline-flex']
+
+  constructor: (name, prefixes) ->
     super
-    [prefix, name] = FlexDeclaration.split(@value)
-    if name == 'flex' or name == 'box' or name == 'flexbox'
-      @prefix     = prefix
-      @unprefixed = 'display-flex'
-      @prop       = @prefix + @unprefixed
-    else if name == 'inline-flex' or name == 'inline-flexbox'
-      @prefix     = prefix
-      @unprefixed = 'display-flex'
-      @prop       = @prefix + @unprefixed
-      @inline     = true
+    @name = 'flex' if name == 'display-flex'
+
+  # Faster check for flex value
+  check: (decl) ->
+    decl.value == @name
+
+  # Return value by spec
+  prefixed: (prefix) ->
+    [spec, prefix] = flexSpec(prefix)
+    prefix + if spec == '2009'
+      if @name == 'flex' then 'box' else 'inline-flexbox'
+    else if spec == '2012'
+      if @name == 'flex' then 'flexbox' else 'inline-flexbox'
+    else if spec ==  'final'
+      @name
 
   # Add prefix to value depend on flebox spec version
-  prefixProp: (prefix) ->
-    if @unprefixed != 'display-flex'
-      super
-    else
-      [spec, prefix] = @flexSpec(prefix)
-      if spec == '2009'
-        @prefixDisplay(prefix, 'box') unless @inline
-      else if spec == '2012'
-        @prefixDisplay(prefix, if @inline then 'inline-flexbox' else 'flexbox')
-      else if spec ==  'final'
-        @prefixDisplay(prefix, if @inline then 'inline-flex' else 'flex')
+  replace: (string, prefix) ->
+    @prefixed(prefix)
 
-  # Prefix value
-  prefixDisplay: (prefix, name) ->
-    @insertBefore('display', prefix + name)
+  # Change value for old specs
+  old: (prefix) ->
+    new OldValue(@prefixed(prefix))
 
 module.exports = DisplayFlex
