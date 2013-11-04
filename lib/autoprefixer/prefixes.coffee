@@ -99,6 +99,11 @@ class Prefixes
         for prefix in prefixes
           remove.selectors.push(selector.prefixed(prefix))
 
+      else if name[0] == '@'
+        for prefix in prefixes
+          prefixed = '@' + prefix + name[1..-1]
+          remove[prefixed] = { remove: true }
+
       else
         props = if @data[name].transition
           @transitionProps
