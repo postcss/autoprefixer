@@ -9,36 +9,22 @@ class Gradient extends Value
   @names = ['linear-gradient', 'repeating-linear-gradient',
             'radial-gradient', 'repeating-radial-gradient']
 
-  # Smarter regexp for gradients
-  regexp: ->
-    @regexpCache ||= new RegExp('(^|\\s|,)' + @name + '\\((.+)\\)', 'gi')
-
   # Change degrees for webkit prefix
   replace: (string, prefix) ->
     values = list.comma(string).map (value) =>
-      value.replace @regexp(), (all, before, args) =>
-        params = list.comma(args)
-        params = @newDirection(params)
+      return value if value[0..@name.length] != @name + '('
 
-        if prefix == '-webkit- old'
-          return all if @name != 'linear-gradient'
-          return all if params[0] and params[0].indexOf('deg') != -1
-          return all if args.indexOf('-corner') != -1
-          return all if args.indexOf('-side')   != -1
+      close  = value.lastIndexOf(')')
+      after  = value[close + 1..-1]
+      args   = value[@name.length + 1..close - 1]
+      params = list.comma(args)
+      params = @newDirection(params)
 
-          params = @oldDirection(params)
-          params = @colorStops(params)
-
-          '-webkit-gradient(linear, ' + params.join(', ') + ')'
-        else
-          if params.length > 0
-            if params[0][0..2] == 'to '
-              params[0] = @fixDirection(params[0])
-            else if params[0].indexOf('deg') != -1
-              params[0] = @fixAngle(params[0])
-            else if params[0].indexOf(' at ') != -1
-              @fixRadial(params)
-          before + prefix + @name + '(' + params.join(', ') + ')'
+      if prefix == '-webkit- old'
+        @oldWebkit(value, args, params, after)
+      else
+        @convertDirection(params)
+        prefix + @name + '(' + params.join(', ') + ')' + after
 
     values.join(', ')
 
@@ -73,6 +59,28 @@ class Gradient extends Value
 
     params
 
+  # Convert to old webkit syntax
+  oldWebkit: (value, args, params, after) ->
+    return value if @name != 'linear-gradient'
+    return value if params[0] and params[0].indexOf('deg') != -1
+    return value if args.indexOf('-corner') != -1
+    return value if args.indexOf('-side')   != -1
+
+    params = @oldDirection(params)
+    params = @colorStops(params)
+
+    '-webkit-gradient(linear, ' + params.join(', ') + ')' + after
+
+  # Change new direction to old
+  convertDirection: (params) ->
+    if params.length > 0
+      if params[0][0..2] == 'to '
+        params[0] = @fixDirection(params[0])
+      else if params[0].indexOf('deg') != -1
+        params[0] = @fixAngle(params[0])
+      else if params[0].indexOf(' at ') != -1
+        @fixRadial(params)
+
   # Replace `to top left` to `bottom right`
   fixDirection: (param) ->
     param = param.split(' ')
@@ -91,11 +99,6 @@ class Gradient extends Value
     param = Math.abs(450 - param) % 360
     param = @roundFloat(param, 3)
     "#{param}deg"
-
-  # Fix radial direction syntax
-  fixRadial: (params) ->
-    first = params[0].split(/\s+at\s+/)
-    params.splice(0, 1, first[1], first[0])
 
   oldDirection: (params) ->
     params if params.length == 0
@@ -134,6 +137,11 @@ class Gradient extends Value
         "color-stop(#{position}, #{color})"
       else
         "color-stop(#{color})"
+
+  # Fix radial direction syntax
+  fixRadial: (params) ->
+    first = params[0].split(/\s+at\s+/)
+    params.splice(0, 1, first[1], first[0])
 
   # Remove old WebKit gradient too
   old: (prefix) ->
