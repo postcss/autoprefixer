@@ -195,8 +195,8 @@ No. Autoprefixer is only about prefixes, not polyfills. There is two reasons:
 1. Prefixes and polyfills is very differents and need different API.
    Two separated libraries will be much better.
 2. Most of IE polyfills is very bad for client perfomance. They use slow hacks
-   and old IEs is mostly used on old hardware. Most of CSS 3 features, that is
-   used only for styling, should be ignored in old IEs as it is recommended in
+   and old IEs is mostly used on old hardware. Most of CSS 3 features, that is
+   used only for styling, should be ignored in old IEs as it is recommended in
    Graceful Degradation.
 
 ### Seems Autoprefixer is not working?
@@ -221,6 +221,15 @@ Source Map support: [lydell/autoprefixer](https://github.com/lydell/autoprefixer
 
 You can check current status of this feature in
 [autoprefixer#37](https://github.com/ai/autoprefixer/issues/37).
+
+### Why Autoprefixer plugin for text editor change my indents?
+
+[Rework](https://github.com/visionmedia/rework), which is used now as CSS parser
+in Autoprefixer, doesn‘t save indents, because it was created for Grunt
+and other build tools.
+
+But next 1.0 version will use [PostCSS](https://github.com/ai/postcss) parser,
+which save indents and your code style.
 
 ## Usage
 
