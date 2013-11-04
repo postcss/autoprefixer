@@ -10,9 +10,21 @@ Value       = require('./value')
 Selector.hack require('./hacks/fullscreen')
 Selector.hack require('./hacks/placeholder')
 
+Declaration.hack require('./hacks/flex')
+Declaration.hack require('./hacks/order')
 Declaration.hack require('./hacks/filter')
+Declaration.hack require('./hacks/flex-flow')
+Declaration.hack require('./hacks/flex-grow')
+Declaration.hack require('./hacks/flex-wrap')
+Declaration.hack require('./hacks/align-self')
+Declaration.hack require('./hacks/flex-basis')
+Declaration.hack require('./hacks/align-items')
+Declaration.hack require('./hacks/flex-shrink')
 Declaration.hack require('./hacks/border-image')
+Declaration.hack require('./hacks/align-content')
 Declaration.hack require('./hacks/border-radius')
+Declaration.hack require('./hacks/flex-direction')
+Declaration.hack require('./hacks/justify-content')
 
 Value.hack require('./hacks/gradient')
 Value.hack require('./hacks/transform')
@@ -114,16 +126,19 @@ class Prefixes
           value = Value.load(name)
           for prefix in prefixes
             old = value.old(prefix)
-            for prop in props
-              remove[prop] = { }       unless remove[prop]
-              remove[prop].values = [] unless remove[prop].values
-              remove[prop].values.push(old)
+            if old
+              for prop in props
+                remove[prop] = { }       unless remove[prop]
+                remove[prop].values = [] unless remove[prop].values
+                remove[prop].values.push(old)
 
         unless @data[name].props
           for prefix in prefixes
-            prefixed = @prefixed(name, prefix)
-            remove[prefixed] = {} unless remove[prefixed]
-            remove[prefixed].remove = true
+            prop = vendor.unprefixed(name)
+            olds = @decl(name).old(name, prefix)
+            for prefixed in olds
+              remove[prefixed] = {} unless remove[prefixed]
+              remove[prefixed].remove = true
 
     [add, remove]
 

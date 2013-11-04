@@ -1,23 +1,30 @@
-FlexDeclaration = require('./flex-declaration')
+flexSpec    = require('./flex-spec')
+Declaration = require('../declaration')
 
-class Order extends FlexDeclaration
+class Order extends Declaration
   @names = ['order', 'flex-order', 'box-ordinal-group']
 
-  # Normalize property name
-  constructor: ->
-    super
-    @unprefixed = 'order'
-    @prop = @prefix + @unprefixed
+  # Change property name for 2009 and 2012 specs
+  prefixed: (prop, prefix) ->
+    [spec, prefix] = flexSpec(prefix)
+    if spec == 2009
+      prefix + 'box-ordinal-group'
+    else if spec == 2012
+      prefix + 'flex-order'
+    else
+      super
 
-  # Add prefix and convert to 2009 and 2012 specs
-  prefixProp: (prefix) ->
-    [spec, prefix] = @flexSpec(prefix)
-    if spec == '2009'
-      oldValue = parseInt(@value) + 1
-      @insertBefore(prefix + 'box-ordinal-group', oldValue.toString())
-    else if spec == '2012'
-      @insertBefore(prefix + 'flex-order', @value)
-    else if spec == 'final'
+  # Return property name by final spec
+  normalize: (prop) ->
+    'order'
+
+  # Fix value for 2009 spec
+  set: (decl, prefix) ->
+    spec = flexSpec(prefix)[0]
+    if spec == 2009
+      decl.value = (parseInt(decl.value) + 1).toString()
+      super(decl, prefix)
+    else
       super
 
 module.exports = Order

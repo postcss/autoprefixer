@@ -38,7 +38,8 @@ class Value extends Prefixer
   add: (decl, prefix) ->
     decl._autoprefixerValues ||= { }
     value = decl._autoprefixerValues[prefix] || decl.value
-    decl._autoprefixerValues[prefix] = @replace(value, prefix)
+    value = @replace(value, prefix)
+    decl._autoprefixerValues[prefix] = value if value
 
   # Return function to fast find prefixed value
   old: (prefix) ->

@@ -1,15 +1,18 @@
-FlexDeclaration = require('./flex-declaration')
+flexSpec    = require('./flex-spec')
+Declaration = require('../declaration')
 
-class Flex extends FlexDeclaration
+class Flex extends Declaration
   @names = ['flex-grow']
 
-  # Add prefix and convert to 2009 and 2012 specs
-  prefixProp: (prefix) ->
-    [spec, prefix] = @flexSpec(prefix)
-    if spec == '2009'
-      @insertBefore(prefix + 'box-flex', @value)
-    else if spec == '2012'
-      @insertBefore(prefix + 'flex', @value)
+  # Use flex property for 2009 and 2012 specs
+  set: (decl, prefix) ->
+    [spec, prefix] = flexSpec(prefix)
+    if spec == 2009
+      decl.prop = prefix + 'box-flex'
+      decl
+    else if spec == 2012
+      decl.prop = prefix + 'flex'
+      decl
     else if spec == 'final'
       super
 

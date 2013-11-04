@@ -1,6 +1,7 @@
-FlexDeclaration = require('./flex-declaration')
+flexSpec    = require('./flex-spec')
+Declaration = require('../declaration')
 
-class AlignContent extends FlexDeclaration
+class AlignContent extends Declaration
   @names = ['align-content', 'flex-line-pack']
 
   @oldValues =
@@ -9,18 +10,24 @@ class AlignContent extends FlexDeclaration
     'space-between': 'justify'
     'space-around':  'distribute'
 
-  # Normalize property name
-  constructor: ->
-    super
-    @unprefixed = 'align-content'
-    @prop = @prefix + @unprefixed
+  # Change property name for 2012 spec
+  prefixed: (prop, prefix) ->
+    [spec, prefix] = flexSpec(prefix)
+    if spec == 2012
+      prefix + 'flex-line-pack'
+    else
+      super
 
-  # Add prefix and convert to 2012 spec
-  prefixProp: (prefix) ->
-    [spec, prefix] = @flexSpec(prefix)
-    if spec == '2012'
-      oldValue = AlignContent.oldValues[@value] || @value
-      @insertBefore(prefix + 'flex-line-pack', oldValue)
+  # Return property name by final spec
+  normalize: (prop) ->
+    'align-content'
+
+  # Change value for 2012 spec and ignore prefix for 2009
+  set: (decl, prefix) ->
+    spec = flexSpec(prefix)[0]
+    if spec == 2012
+      decl.value = AlignContent.oldValues[decl.value] || decl.value
+      super(decl, prefix)
     else if spec == 'final'
       super
 

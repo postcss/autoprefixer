@@ -1,23 +1,38 @@
-FlexDeclaration = require('./flex-declaration')
+flexSpec    = require('./flex-spec')
+Declaration = require('../declaration')
 
-class FlexDirection extends FlexDeclaration
+class FlexDirection extends Declaration
   @names = ['flex-direction', 'box-direction', 'box-orient']
 
-  # Normalize property name
-  constructor: ->
-    super
-    @unprefixed = 'flex-direction'
-    @prop = @prefix + @unprefixed
+  # Return property name by final spec
+  normalize: (prop) ->
+    'flex-direction'
 
-  # Add prefix and convert to 2009 specs
-  prefixProp: (prefix) ->
-    [spec, prefix] = @flexSpec(prefix)
-    if spec == '2009'
-      orient = if @value.indexOf('row') != -1 then 'horizontal' else 'vertical'
-      @insertBefore(prefix + 'box-orient', orient)
+  # Use two properties for 2009 spec
+  insert: (decl, prefix) ->
+    [spec, prefix] = flexSpec(prefix)
+    if spec == 2009
+      value  = decl.value
+      orient = if value.indexOf('row') != -1 then 'horizontal' else 'vertical'
+      dir    = if value.indexOf('reverse') != -1 then 'reverse' else 'normal'
 
-      dir = if @value.indexOf('reverse') != -1 then 'reverse' else 'normal'
-      @insertBefore(prefix + 'box-direction', dir)
+      cloned = @clone(decl)
+      cloned.prop  = prefix + 'box-orient'
+      cloned.value = orient
+      decl.parent.insertBefore(decl, cloned)
+
+      cloned = @clone(decl)
+      cloned.prop  = prefix + 'box-direction'
+      cloned.value = dir
+      decl.parent.insertBefore(decl, cloned)
+    else
+      super
+
+  # Clean two properties for 2009 spec
+  old: (prop, prefix) ->
+    [spec, prefix] = flexSpec(prefix)
+    if spec == 2009
+      [prefix + 'box-orient', prefix + 'box-direction']
     else
       super
 

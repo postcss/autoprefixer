@@ -1,12 +1,13 @@
-FlexDeclaration = require('./flex-declaration')
+flexSpec    = require('./flex-spec')
+Declaration = require('../declaration')
 
-class FlexFlow extends FlexDeclaration
+class FlexFlow extends Declaration
   @names = ['flex-flow']
 
   # Don't add prefix for 2009 spec
-  prefixProp: (prefix) ->
-    [spec, prefix] = @flexSpec(prefix)
-    if spec == '2012'
+  set: (decl, prefix) ->
+    [spec, prefix] = flexSpec(prefix)
+    if spec == 2012
       super
     else if spec == 'final'
       super

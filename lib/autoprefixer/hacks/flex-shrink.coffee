@@ -1,13 +1,16 @@
-FlexDeclaration = require('./flex-declaration')
+flexSpec    = require('./flex-spec')
+Declaration = require('../declaration')
 
-class FlexShrink extends FlexDeclaration
+class FlexShrink extends Declaration
   @names = ['flex-shrink']
 
-  # Add prefix and convert to 2012 specs
-  prefixProp: (prefix) ->
-    [spec, prefix] = @flexSpec(prefix)
-    if spec == '2012'
-      @insertBefore(prefix + 'flex', '0 ' + @value)
+  # Ignore 2009 spec and use flex property for 2012
+  set: (decl, prefix) ->
+    [spec, prefix] = flexSpec(prefix)
+    if spec == 2012
+      decl.prop  = prefix + 'flex'
+      decl.value = '0 ' + decl.value
+      decl
     else if spec == 'final'
       super
 

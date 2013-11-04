@@ -44,3 +44,8 @@ describe 'Declaration', ->
       @tabsize.process(css.rules[0].decls[0])
       css.toString().should.eql(
         'a { -ms-tab-size: -ms-calc(2); tab-size: -ms-calc(2) }')
+
+  describe 'old()', ->
+
+    it 'returns list of prefixeds', ->
+      @tabsize.old('tab-size', '-moz-').should.eql ['-moz-tab-size']

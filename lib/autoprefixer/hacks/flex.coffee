@@ -1,23 +1,28 @@
-FlexDeclaration = require('./flex-declaration')
+flexSpec    = require('./flex-spec')
+Declaration = require('../declaration')
 
-class Flex extends FlexDeclaration
+class Flex extends Declaration
   @names = ['flex', 'box-flex']
 
-  # Normalize property name
-  constructor: ->
-    super
-    @unprefixed = 'flex'
-    @prop = @prefix + @unprefixed
-
-  # Add prefix and convert to 2009 specs
-  prefixProp: (prefix) ->
-    [spec, prefix] = @flexSpec(prefix)
-    if spec == '2009'
-      first = @value.split(' ')[0]
-      @insertBefore(prefix + 'box-flex', first)
-    else if spec == '2012'
+  # Change property name for 2009 spec
+  prefixed: (prop, prefix) ->
+    [spec, prefix] = flexSpec(prefix)
+    if spec == 2009
+      prefix + 'box-flex'
+    else
       super
-    else if spec == 'final'
+
+  # Return property name by final spec
+  normalize: (prop) ->
+    'flex'
+
+  # Spec 2009 supports only first argument
+  set: (decl, prefix) ->
+    spec = flexSpec(prefix)[0]
+    if spec == 2009
+      decl.value = decl.value.split(' ')[0]
+      super(decl, prefix)
+    else
       super
 
 module.exports = Flex
