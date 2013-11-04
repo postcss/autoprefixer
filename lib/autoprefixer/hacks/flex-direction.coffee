@@ -12,6 +12,10 @@ class FlexDirection extends Declaration
   insert: (decl, prefix) ->
     [spec, prefix] = flexSpec(prefix)
     if spec == 2009
+      already = decl.parent.some (i) ->
+        i.prop == prefix + 'box-orient' or i.prop == prefix + 'box-direction'
+      return if already
+
       value  = decl.value
       orient = if value.indexOf('row') != -1 then 'horizontal' else 'vertical'
       dir    = if value.indexOf('reverse') != -1 then 'reverse' else 'normal'

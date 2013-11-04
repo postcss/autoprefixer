@@ -14,9 +14,11 @@ class Value extends Prefixer
         decl.value = value
       else
         prefixed = prefixes.prefixed(decl.prop, prefix)
-        if decl.parent.every( (i) -> i.prop != prefixed)
-          cloned = @clone(decl, value: value)
-          decl.parent.insertBefore(decl, cloned)
+        rule     = decl.parent
+        if rule.every( (i) -> i.prop != prefixed )
+          if rule.every( (i) -> i.prop != decl.prop or i.value != value )
+            cloned = @clone(decl, value: value)
+            decl.parent.insertBefore(decl, cloned)
 
   # Is declaration need to be prefixed
   check: (decl) ->
