@@ -1,4 +1,4 @@
-Prefixer = require('../lib/autoprefixer/prefixer')
+Prefixer = require('../lib/prefixer')
 parse    = require('postcss/lib/parse')
 
 describe 'Prefixer', ->

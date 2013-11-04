@@ -1,4 +1,4 @@
-Keyframes = require('../lib/autoprefixer/keyframes')
+Keyframes = require('../lib/keyframes')
 parse     = require('postcss/lib/parse')
 
 describe 'Keyframes', ->

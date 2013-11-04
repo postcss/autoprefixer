@@ -1,4 +1,4 @@
-OldValue = require('../lib/autoprefixer/old-value')
+OldValue = require('../lib/old-value')
 
 describe 'OldValue', ->
 

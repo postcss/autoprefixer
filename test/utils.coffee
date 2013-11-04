@@ -1,4 +1,4 @@
-utils = require('../lib/autoprefixer/utils')
+utils = require('../lib/utils')
 
 describe 'utils', ->
 

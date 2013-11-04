@@ -1,6 +1,6 @@
 #!./node_modules/.bin/coffee
 
-Binary = require('../lib/autoprefixer/binary')
+Binary = require('../lib/binary')
 
 binary = new Binary(process)
 binary.run -> process.exit(binary.status)

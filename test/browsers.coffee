@@ -1,4 +1,4 @@
-Browsers = require('../lib/autoprefixer/browsers')
+Browsers = require('../lib/browsers')
 
 data =
   ie:

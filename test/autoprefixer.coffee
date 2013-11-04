@@ -1,5 +1,5 @@
 autoprefixer = require('../lib/autoprefixer')
-Browsers     = require('../lib/autoprefixer/browsers')
+Browsers     = require('../lib/browsers')
 postcss      = require('postcss')
 fs           = require('fs')
 

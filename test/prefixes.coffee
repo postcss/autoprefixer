@@ -1,9 +1,9 @@
-Declaration = require('../lib/autoprefixer/declaration')
-Prefixes    = require('../lib/autoprefixer/prefixes')
-Browsers    = require('../lib/autoprefixer/browsers')
-Selector    = require('../lib/autoprefixer/selector')
-OldValue    = require('../lib/autoprefixer/old-value')
-Value       = require('../lib/autoprefixer/value')
+Declaration = require('../lib/declaration')
+Prefixes    = require('../lib/prefixes')
+Browsers    = require('../lib/browsers')
+Selector    = require('../lib/selector')
+OldValue    = require('../lib/old-value')
+Value       = require('../lib/value')
 
 data =
   browsers:

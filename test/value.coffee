@@ -1,8 +1,8 @@
-OldValue = require('../lib/autoprefixer/old-value')
-Value    = require('../lib/autoprefixer/value')
+OldValue = require('../lib/old-value')
+Value    = require('../lib//value')
 parse    = require('postcss/lib/parse')
 
-Prefixes = require('../lib/autoprefixer/prefixes')
+Prefixes = require('../lib/prefixes')
 prefixes = new Prefixes()
 
 describe 'Value', ->

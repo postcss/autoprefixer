@@ -1,7 +1,7 @@
 postcss  = require('postcss')
 
-Browsers = require('./autoprefixer/browsers')
-Prefixes = require('./autoprefixer/prefixes')
+Browsers = require('./browsers')
+Prefixes = require('./prefixes')
 
 inspectCache = null
 
@@ -46,7 +46,7 @@ class Autoprefixer
 
   # Return string, what browsers selected and whar prefixes will be added
   inspect: ->
-    inspectCache ||= require('./autoprefixer/inspect')
+    inspectCache ||= require('./inspect')
     inspectCache(@prefixes)
 
   # Cache PostCSS processor

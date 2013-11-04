@@ -6,7 +6,7 @@ class Browsers
   @prefixes: ->
     return @prefixesCache if @prefixesCache
 
-    data = require('../../data/browsers')
+    data = require('../data/browsers')
     @prefixesCache = utils.uniq(i.prefix for name, i of data).
                           sort (a, b) -> b.length - a.length
 

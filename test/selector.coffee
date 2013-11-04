@@ -1,4 +1,4 @@
-Selector = require('../lib/autoprefixer/selector')
+Selector = require('../lib/selector')
 parse    = require('postcss/lib/parse')
 
 describe 'Selector', ->

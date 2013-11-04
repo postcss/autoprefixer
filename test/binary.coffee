@@ -1,5 +1,5 @@
 autoprefixer = require('../lib/autoprefixer')
-Binary       = require('../lib/autoprefixer/binary')
+Binary       = require('../lib/binary')
 
 fs    = require('fs-extra')
 child = require('child_process')

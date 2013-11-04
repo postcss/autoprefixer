@@ -1,4 +1,4 @@
-autoprefixer = require('../autoprefixer')
+autoprefixer = require('./autoprefixer')
 fs           = require('fs')
 
 class Binary
@@ -56,7 +56,7 @@ class Binary
 
   # Get current version
   version: ->
-    require('../../package.json').version
+    require('../package.json').version
 
   # Parse arguments
   parseArguments: ->

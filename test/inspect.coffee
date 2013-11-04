@@ -1,6 +1,6 @@
-Browsers = require('../lib/autoprefixer/browsers')
-Prefixes = require('../lib/autoprefixer/prefixes')
-inspect  = require('../lib/autoprefixer/inspect')
+Browsers = require('../lib/browsers')
+Prefixes = require('../lib/prefixes')
+inspect  = require('../lib/inspect')
 
 data =
   browsers:

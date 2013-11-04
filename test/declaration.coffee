@@ -1,4 +1,4 @@
-Declaration = require('../lib/autoprefixer/declaration')
+Declaration = require('../lib/declaration')
 parse       = require('postcss/lib/parse')
 
 describe 'Declaration', ->
