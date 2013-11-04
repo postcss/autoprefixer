@@ -5,8 +5,7 @@ class BorderImage extends Declaration
 
   # Remove fill parameter for prefixed declarations
   set: (decl, prefix) ->
-    decl = super
     decl.value = decl.value.replace(/\s+fill(\s)/, '$1')
-    decl
+    super(decl, prefix)
 
 module.exports = BorderImage
