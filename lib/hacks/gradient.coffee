@@ -1,15 +1,13 @@
 OldValue = require('../old-value')
 Value    = require('../value')
 utils    = require('../utils')
-
-names = ['linear-gradient', 'repeating-linear-gradient',
-         'radial-gradient', 'repeating-radial-gradient']
+list     = require('postcss/lib/list')
 
 isDirection = new RegExp('(top|left|right|bottom)', 'gi')
-starts      = new RegExp('(^|\\s*)' + names.join('|'), 'i')
 
 class Gradient extends Value
-  @names = names
+  @names = ['linear-gradient', 'repeating-linear-gradient',
+            'radial-gradient', 'repeating-radial-gradient']
 
   # Smarter regexp for gradients
   regexp: ->
@@ -17,35 +15,32 @@ class Gradient extends Value
 
   # Change degrees for webkit prefix
   replace: (string, prefix) ->
-    string.replace @regexp(), (all, before, args) =>
-      prefixedDecls = []
+    values = list.comma(string).map (value) =>
+      value.replace @regexp(), (all, before, args) =>
+        params = list.comma(args)
+        params = @newDirection(params)
 
-      for decl in @splitDecls(all)
-        prefixedDecls.push decl.replace @regexp(), (all, before, args) =>
-          params = @splitParams(args)
-          params = @newDirection(params)
+        if prefix == '-webkit- old'
+          return all if @name != 'linear-gradient'
+          return all if params[0] and params[0].indexOf('deg') != -1
+          return all if args.indexOf('-corner') != -1
+          return all if args.indexOf('-side')   != -1
 
-          if prefix == '-webkit- old'
-            return all if @name != 'linear-gradient'
-            return all if params[0] and params[0].indexOf('deg') != -1
-            return all if args.indexOf('-corner') != -1
-            return all if args.indexOf('-side')   != -1
+          params = @oldDirection(params)
+          params = @colorStops(params)
 
-            params = @oldDirection(params)
-            params = @colorStops(params)
+          '-webkit-gradient(linear, ' + params.join(', ') + ')'
+        else
+          if params.length > 0
+            if params[0][0..2] == 'to '
+              params[0] = @fixDirection(params[0])
+            else if params[0].indexOf('deg') != -1
+              params[0] = @fixAngle(params[0])
+            else if params[0].indexOf(' at ') != -1
+              @fixRadial(params)
+          before + prefix + @name + '(' + params.join(', ') + ')'
 
-            '-webkit-gradient(linear, ' + params.join(', ') + ')'
-          else
-            if params.length > 0
-              if params[0][0..2] == 'to '
-                params[0] = @fixDirection(params[0])
-              else if params[0].indexOf('deg') != -1
-                params[0] = @fixAngle(params[0])
-              else if params[0].indexOf(' at ') != -1
-                @fixRadial(params)
-            before + prefix + @name + '(' + params.join(', ') + ')'
-
-      prefixedDecls.join(',')
+    values.join(', ')
 
   # Direction to replace
   directions:
@@ -65,52 +60,6 @@ class Gradient extends Value
     'top left':     'right bottom, left top'
     'bottom right': 'left top, right bottom'
     'bottom left':  'right top, left bottom'
-
-  # Split gradients in background value
-  splitDecls: (decl) ->
-    decls       = []
-    chunks      = decl.split(',')
-    currentDecl = []
-    for i in chunks
-      # chunks starts with gradient declaration
-      if starts.test(i)
-        if currentDecl.length == 0
-          # start new decl
-          currentDecl.push(i)
-        else
-          # save current decl and start new one
-          decls.push currentDecl.join ','
-          currentDecl = [i]
-      else
-        currentDecl.push(i)
-
-    # save last parsed decl
-    decls.push( currentDecl.join(',') )
-    decls
-
-  # Split params in gradient
-  splitParams: (params) ->
-    array = []
-    param = ''
-    func  = 0
-
-    for char in params
-      if char == ')' and func > 0
-        func  -= 1
-        param += char
-      else if char == '('
-        param += char
-        func  += 1
-      else if func > 0
-        param += char
-      else if char == ','
-        array.push(param.trim())
-        param = ''
-      else
-        param += char
-
-    array.push(param.trim())
-    array
 
   # Replace old direction to new
   newDirection: (params) ->

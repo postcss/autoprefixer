@@ -1,32 +1,20 @@
 a {
-    background: -webkit-linear-gradient(99.5deg, white, black),
-                -webkit-linear-gradient(220deg, black, white),
-                -webkit-linear-gradient(45deg, black, white);
-    background: -o-linear-gradient(99.5deg, white, black),
-                -o-linear-gradient(220deg, black, white),
-                -o-linear-gradient(45deg, black, white);
-    background: linear-gradient(350.5deg, white, black),
-                linear-gradient(-130deg, black, white),
-                linear-gradient(45deg, black, white);
+    background: -webkit-linear-gradient(99.5deg, white, black), -webkit-linear-gradient(220deg, black, white), -webkit-linear-gradient(45deg, black, white);
+    background: -o-linear-gradient(99.5deg, white, black), -o-linear-gradient(220deg, black, white), -o-linear-gradient(45deg, black, white);
+    background: linear-gradient(350.5deg, white, black), linear-gradient(-130deg, black, white), linear-gradient(45deg, black, white);
 }
 
 b {
-    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(white)),-webkit-gradient(linear, left top, left bottom, from(white), to(black));
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(white)), -webkit-gradient(linear, top left, bottom left, from(white), to(black));
     background-image: -webkit-linear-gradient(rgba(0,0,0,1), white), -webkit-linear-gradient(white, black);
     background-image: -o-linear-gradient(rgba(0,0,0,1), white), -o-linear-gradient(white, black);
     background-image: linear-gradient(rgba(0,0,0,1), white), linear-gradient(white, black);
 }
 
 div {
-  background-image: -webkit-radial-gradient(right, white black),
-                    -webkit-repeating-linear-gradient(top left, black, white),
-                    -webkit-repeating-radial-gradient(bottom, aqua, red);
-  background-image: -o-radial-gradient(right, white black),
-                    -o-repeating-linear-gradient(top left, black, white),
-                    -o-repeating-radial-gradient(bottom, aqua, red);
-  background-image: radial-gradient(to left, white black),
-                    repeating-linear-gradient(to bottom right, black, white),
-                    repeating-radial-gradient(to top, aqua, red);
+  background-image: -webkit-radial-gradient(right, white black), -webkit-repeating-linear-gradient(top left, black, white), -webkit-repeating-radial-gradient(bottom, aqua, red);
+  background-image: -o-radial-gradient(right, white black), -o-repeating-linear-gradient(top left, black, white), -o-repeating-radial-gradient(bottom, aqua, red);
+  background-image: radial-gradient(to left, white black), repeating-linear-gradient(to bottom right, black, white), repeating-radial-gradient(to top, aqua, red);
 }
 
 .radial {
