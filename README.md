@@ -195,18 +195,19 @@ No. Autoprefixer only adds prefixes, not polyfills. There are two reasons:
 1. Prefixes and polyfills are very different and need a different API.
    Two separate libraries would be much better.
 2. Most of IE polyfills are very bad for client perfomance. They use slow hacks
-   and old IE is mostly used on old hardware. Most of CSS 3 features that is
+   and old IEs is mostly used on old hardware. Most of CSS 3 features that is
    only used for styling should be ignored in old IEs as it is recommended in
    Graceful Degradation.
 
-### Why doesn't Autoprefixer do anything?
+### Why doesn’t Autoprefixer do anything?
 
 Developers are often surprised by how few prefixes are required today.
-If Autoprefixer doesn't add prefixes to your CSS, check if they're still
+If Autoprefixer doesn’t add prefixes to your CSS, check if they’re still
 required on [Can I Use](http://caniuse.com/).
 
-If a prefix is required, but Autoprefixer doesn't add it or adds it
-incorrectly, please [report an issue](https://github.com/ai/autoprefixer/issues/new)
+If a prefix is required, but Autoprefixer doesn’t add it or adds it
+incorrectly, please
+[report an issue](https://github.com/ai/autoprefixer/issues/new)
 and include your source CSS and expected output.
 
 ### Does it support source maps?
@@ -216,7 +217,7 @@ However, this feature will be included in the next version, 1.0, which is
 currently [under development](https://github.com/ai/autoprefixer/tree/v1.0).
 It is planned for release in mid-December 2013.
 
-Right now you can use lydell’s fork with source map support: 
+Right now you can use lydell’s fork with source map support:
 [lydell/autoprefixer](https://github.com/lydell/autoprefixer/tree/source-maps#nodejs).
 
 You can check the current status of this feature in
@@ -225,11 +226,11 @@ You can check the current status of this feature in
 ### Why does an Autoprefixer plugin for my text editor change indentation?
 
 [Rework](https://github.com/visionmedia/rework), which Autoprefixer currently
-uses for parsing CSS, doesn‘t save indents, because it was created for Grunt
+uses for parsing CSS, doesn’t save indents, because it was created for Grunt
 and other build tools.
 
-After version 1.0 Autoprefixed will switch to the
-[PostCSS](https://github.com/ai/postcss)parser, which preserves formatting
+In version 1.0 Autoprefixed will switch to the
+[PostCSS](https://github.com/ai/postcss) parser, which preserves formatting
 of the code.
 
 ## Usage
