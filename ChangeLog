@@ -11,6 +11,12 @@
 * Fix selector prefixes order.
 * Fix browser versions order in inspect.
 
+20131104:
+* Update Android future version to 4.4
+* Google Chrome 32 added to future versions list
+* Firefox 25 now is actual version, 27 and 28 added to future versions
+* Browsers statistics are updated
+
 20130903:
 * Fix old WebKit gradients convertor on rgba() colors.
 * Allow to write old direction syntax in gradients.
