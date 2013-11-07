@@ -52,7 +52,7 @@ Sponsored by [Evil Martians](http://evilmartians.com/).
 
 ### Forget about prefixes
 
-The best tool is a tool you can't see that does the work for you.
+The best tool is a tool you can't see and one that does the work for you.
 This is the main idea behind Autoprefixer.
 
 Autoprefixer interface is simple: just forget about vendor prefixes
@@ -284,20 +284,20 @@ plugin for Grunt. Install the npm package and add it to Gruntfile:
 grunt.loadNpmTasks('grunt-autoprefixer');
 ```
 
-If you use Sass with `compress` output style and worry, that Autoprefixer
+If you use Sass with `compress` output style and worry that Autoprefixer might
 uncompress CSS, try [grunt-csso](https://github.com/t32k/grunt-csso).
-It compress CSS back, but did it much better than Sass.
+It will compress the CSS back, but does the compression much better than Sass.
 
 ### Prepros
 
-I you want to build your assets in GUI, try
+If you want to build your assets in GUI, try
 [Prepros](http://alphapixels.com/prepros/). Just set “Auto Prefix CSS”
 [checkbox](https://f.cloud.github.com/assets/3478693/930798/faa29892-0016-11e3-8901-87850de7aed2.jpg)
 in right panel.
 
 ### Compass
 
-If you use Compass binary to compile your styles, you can easy integrate
+If you use Compass binary to compile your styles, you can easily integrate
 Autoprefixer with it. Install `autoprefixer-rails` gem:
 
 ```
