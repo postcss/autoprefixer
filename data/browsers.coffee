@@ -44,10 +44,11 @@ module.exports =
   chrome:
     prefix: "-webkit-"
     future: [
+      33
       32
-      31
     ]
     versions: [
+      31
       30
       29
       28
@@ -77,6 +78,7 @@ module.exports =
       4
     ]
     popularity: [
+      0.16058
       24.6089
       5.08236
       0.610204
