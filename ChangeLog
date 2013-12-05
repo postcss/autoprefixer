@@ -11,6 +11,10 @@
 * Fix selector prefixes order.
 * Fix browser versions order in inspect.
 
+20131205:
+* Google Chrome v33 added to future releases list.
+* Google Chrome v31 moved to current releases list.
+
 20131104:
 * Update Android future version to 4.4
 * Google Chrome 32 added to future versions list
