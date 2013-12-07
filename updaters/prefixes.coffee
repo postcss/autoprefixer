@@ -61,7 +61,9 @@ module.exports = (updater) ->
   # Gradients
   @feature 'css-gradients', (browsers) =>
     browsers = @map browsers, (browser, name, version) ->
-      if name == 'android' and version < 4
+      if name == 'android' and version < 4   or
+         name == 'safari'  and version < 5.1 or
+         name == 'ios'     and version < 4.3
         browser + ' old'
       else
         browser
