@@ -57,3 +57,8 @@
         transform: rotate(0)
     }
 }
+@media screen {
+    @-webkit-keyframes inside {}
+    @-o-keyframes inside {}
+    @keyframes inside {}
+}

@@ -13,3 +13,6 @@
         transform: rotate(0)
     }
 }
+@media screen {
+    @keyframes inside {}
+}
