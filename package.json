@@ -11,17 +11,17 @@
   },
   "dependencies": {
     "css-parse":     "~> 1.6.0",
-    "css-stringify": "~> 1.3.2"
+    "css-stringify": "~> 1.4.0"
   },
   "devDependencies": {
     "coffee-script": "1.6.3",
     "component":     "0.18.0",
     "fs-extra":      "0.8.1",
-    "should":        "2.0.2",
-    "stylus":        "0.39.4",
+    "should":        "2.1.1",
+    "stylus":        "0.41.0",
     "rework":        "0.18.3",
-    "mocha":         "1.14.0",
-    "glob":          "3.2.6",
+    "mocha":         "1.15.1",
+    "glob":          "3.2.7",
     "nib":           "1.0.1"
   },
   "bin": {
