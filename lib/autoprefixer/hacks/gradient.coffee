@@ -74,15 +74,15 @@ class Gradient extends Value
 
   # Direction to replace
   oldDirections:
-    'top':    'bottom left, top left'
-    'left':   'top right, top left'
-    'bottom': 'top left, bottom left'
-    'right':  'top left, top right'
+    'top':    'left bottom, left top'
+    'left':   'right top, left top'
+    'bottom': 'left top, left bottom'
+    'right':  'left top, right top'
 
-    'top right':    'bottom left, top right'
-    'top left':     'bottom right, top left'
-    'bottom right': 'top left, bottom right'
-    'bottom left':  'top right, bottom left'
+    'top right':    'left bottom, right top'
+    'top left':     'right bottom, left top'
+    'bottom right': 'left top, right bottom'
+    'bottom left':  'right top, left bottom'
 
   # Split gradients in background value
   splitDecls: (decl) ->
