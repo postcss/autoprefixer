@@ -229,7 +229,7 @@ You can check the current status of this feature in
 uses for parsing CSS, doesn’t save indents, because it was created for Grunt
 and other build tools.
 
-In version 1.0 Autoprefixed will switch to the
+In version 1.0 Autoprefixer will switch to the
 [PostCSS](https://github.com/ai/postcss) parser, which preserves formatting
 of the code.
 
