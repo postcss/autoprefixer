@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "css-parse":     "~> 1.6.0",
-    "css-stringify": "~> 1.4.0"
+    "css-stringify": "~> 1.4.1"
   },
   "devDependencies": {
     "coffee-script": "1.6.3",
