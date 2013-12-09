@@ -11,16 +11,6 @@
 * Fix selector prefixes order.
 * Fix browser versions order in inspect.
 
-20131205:
-* Google Chrome v33 added to future releases list.
-* Google Chrome v31 moved to current releases list.
-
-20131104:
-* Update Android future version to 4.4
-* Google Chrome 32 added to future versions list
-* Firefox 25 now is actual version, 27 and 28 added to future versions
-* Browsers statistics are updated
-
 20130903:
 * Fix old WebKit gradients convertor on rgba() colors.
 * Allow to write old direction syntax in gradients.
@@ -69,6 +59,16 @@
 20131029:
 * Add Safari 6.1 data.
 * Add fx alias for Firefox.
+
+20131104:
+* Update Android future version to 4.4.
+* Google Chrome 32 added to future versions list.
+* Firefox 25 now is actual version, 27 and 28 added to future versions.
+* Browsers statistics are updated.
+
+20131205:
+* Google Chrome 33 added to future releases list.
+* Google Chrome 31 moved to current releases list.
 
 == 0.7 (We Do Not Sow)
 * Add vendor prefixes to selectors.
