@@ -31,7 +31,7 @@ describe 'Binary', ->
 
     @exec = (args..., callback) ->
       args = args.map (i) ->
-        if i.match(/\.css/)
+        if i.match(/\.css/) or i.match(/\/$/)
           "#{tempDir}/#{i}"
         else
           i
@@ -97,13 +97,20 @@ describe 'Binary', ->
       read('b.css').should.eql prefixed
       done()
 
-  it 'concats several files to one output', (done) ->
+  it 'outputs to dir', (done) ->
     write('a.css', css)
-    write('b.css', 'a { color: black }')
-    @exec '-b', 'chrome 25', 'a.css', 'b.css', '-o', 'c.css', (out, err) ->
+    write('b.css', css + css)
+    fs.mkdir(tempDir + '/out/')
+
+    @exec '-b', 'chrome 25', 'a.css', 'b.css', '-o', 'out/', (out, err) ->
       err.should.be.false
       out.should.eql ''
-      read('c.css').should.eql prefixed + "a { color: black }"
+
+      read('a.css').should.eql css
+      read('b.css').should.eql css + css
+      read('out/a.css').should.eql prefixed
+      read('out/b.css').should.eql prefixed + prefixed
+
       done()
 
   it 'outputs to stdout', (done) ->
@@ -125,6 +132,14 @@ describe 'Binary', ->
     @exec 'a', (out, err) ->
       out.should.be.empty
       err.should.match(/autoprefixer: File a doesn't exists/)
+      done()
+
+  it 'raises on several inputs and one output', (done) ->
+    write('a.css', css)
+    write('b.css', css)
+    @exec 'a.css', 'b.css', '-o', 'c.css', (out, err) ->
+      out.should.be.empty
+      err.should.match(/You can specify only output dir for several files/)
       done()
 
   it 'raises an error when unknown arguments are given', (done) ->

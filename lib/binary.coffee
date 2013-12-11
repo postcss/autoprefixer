@@ -1,4 +1,5 @@
 autoprefixer = require('./autoprefixer')
+path         = require('path')
 fs           = require('fs')
 
 class Binary
@@ -22,7 +23,7 @@ class Binary
 
     Options:
       -b, --browsers BROWSERS  add prefixes for selected browsers
-      -o, --output FILE        set output CSS file
+      -o, --output FILE|DIR    set output
       -i, --inspect            show selected browsers and properties
       -h, --help               show help text
       -v, --version            print program version
@@ -31,16 +32,21 @@ class Binary
   # Options description
   desc: -> '''
     Files:
-      By default, prefixed CSS will rewrite original files.
       If you didn't set input files, autoprefixer will +
         read from stdin stream.
+
+      By default, prefixed CSS will rewrite original files.
+
+      You can specify output file or directory by `-o` argument.
+      For several input files you can specify only output directory.
+
       Output CSS will be written to stdout stream on +
         `-o -' argument or stdin input.
 
     Browsers:
       Separate browsers by comma. For example, `-b "> 1%, opera 12"'.
       You can set browsers by global usage statictics: `-b \"> 1%\"'.
-      or last version: `-b "last 2 versions"' (by default).
+      or last version: `-b "last 2 versions"'.
     '''
     .replace(/\+\s+/g, '')
 
@@ -81,7 +87,7 @@ class Binary
           @requirements = args.shift().split(',').map (i) -> i.trim()
 
         when '-o', '--output'
-          @outputFile = args.shift()
+          @output = args.shift()
 
         else
           if arg.match(/^-\w$/) || arg.match(/^--\w[\w-]+$/)
@@ -153,7 +159,7 @@ class Binary
     @compilerCache ||= autoprefixer(@requirements)
 
   # Compile loaded CSS
-  compileCSS: (css, file) ->
+  compileCSS: (css, output) ->
     try
       prefixed = @compiler().compile(css)
     catch error
@@ -166,57 +172,77 @@ class Binary
         if error.stack?
           @error ''
           @error error.stack
+
     return @endWork() unless prefixed
 
-    if @outputFile == '-'
+    if output == '-'
       @print prefixed
       @endWork()
-
-    else if @outputFile
-      try
-        unless @outputInited
-          @outputInited = true
-          fs.writeFileSync(@outputFile, '')
-        fs.appendFileSync(@outputFile, prefixed)
-        @endWork()
-
-      catch error
-        @workError "autoprefixer: #{ error.message }"
-
-    else if file
-      fs.writeFile file, prefixed, (error) =>
+    else
+      fs.writeFile output, prefixed, (error) =>
         @error "autoprefixer: #{ error }" if error
         @endWork()
+
+  # Shortcut for directory check
+  isDir: (path) ->
+    try
+      fs.statSync(path).isDirectory()
+    catch
+      false
+
+  # Return input and output files array
+  files: ->
+    if @inputFiles.length == 0
+      @output ||= '-'
+
+    if @output == '-'
+      [file, @output] for file in @inputFiles
+
+    else if not @output
+      [file, file] for file in @inputFiles
+
+    else if @isDir(@output)
+      for file in @inputFiles
+        [file, path.join(@output, path.basename(file))]
+
+    else if @inputFiles.length > 1
+      @error "autoprefixer: You can specify only output dir for several files"
+      return
+
+    else
+      [ [@inputFiles[0], @output] ]
 
   # Compile selected files
   compile: (done) ->
     @waiting      = 0
     @doneCallback = done
 
-    if @inputFiles.length == 0
+    files = @files()
+    return done() unless files
+
+    if files.length == 0
       @startWork()
-      @outputFile ||= '-'
 
       css = ''
       @stdin.resume()
       @stdin.on 'data', (chunk) -> css += chunk
-      @stdin.on 'end', => @compileCSS(css)
+      @stdin.on 'end', => @compileCSS(css, @output)
     else
-      for file in @inputFiles
+      for file in files
         @startWork()
 
-      for file in @inputFiles
-        unless fs.existsSync(file)
-          @workError "autoprefixer: File #{ file } doesn't exists"
+      for [input, output] in files
+        unless fs.existsSync(input)
+          @workError "autoprefixer: File #{ input } doesn't exists"
           continue
 
-        try
-          css = fs.readFileSync(file).toString()
-        catch error
-          @workError "autoprefixer: #{ error.message }"
-          continue
+        do (input, output) =>
+          fs.readFile input, (error, css) =>
+            if error
+              @workError "autoprefixer: #{ error.message }"
+            else
+              @compileCSS(css, output)
 
-        @compileCSS(css, file)
       false
 
   # Execute command selected by arguments
