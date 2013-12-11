@@ -8,8 +8,8 @@ class Processor
   # Add necessary prefixes
   add: (css) ->
     # Keyframes
-    prefixes = @prefixes.add['@keyframes']
-    css.eachAtRule( (rule) -> prefixes.process(rule) ) if prefixes
+    prefixer = @prefixes.add['@keyframes']
+    css.eachAtRule( (rule) -> prefixer.process(rule) ) if prefixer
 
     # Selectors
     for selector in @prefixes.add.selectors
@@ -46,7 +46,9 @@ class Processor
 
       # Properties
       if @prefixes.remove[decl.prop]?.remove
-        if rule.some( (other) -> other.prop == unprefixed )
+        notHack = @prefixes.group(decl).down (i) -> i.prop == unprefixed
+
+        if notHack
           rule.remove(i)
           return
 

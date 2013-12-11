@@ -4,6 +4,10 @@ Declaration = require('../declaration')
 class FlexBasis extends Declaration
   @names = ['flex-basis']
 
+  # Return property name by final spec
+  normalize: ->
+    'flex'
+
   # Return flex property for 2012 spec
   prefixed: (prop, prefix) ->
     [spec, prefix] = flexSpec(prefix)

@@ -82,10 +82,10 @@ class Prefixes
     add = { selectors: [] }
     for name, prefixes of selected.add
       if name == '@keyframes'
-        add[name] = new Keyframes(name, prefixes)
+        add[name] = new Keyframes(name, prefixes, @)
 
       else if @data[name].selector
-        add.selectors.push(Selector.load(name, prefixes))
+        add.selectors.push(Selector.load(name, prefixes, @))
 
       else
         props = if @data[name].transition
@@ -94,14 +94,14 @@ class Prefixes
           @data[name].props
 
         if props
-          value = Value.load(name, prefixes)
+          value = Value.load(name, prefixes, @)
           for prop in props
             add[prop] = { values: [] } unless add[prop]
             add[prop].values.push(value)
 
         unless @data[name].props
           values = add[name]?.values || []
-          add[name] = Declaration.load(name, prefixes)
+          add[name] = Declaration.load(name, prefixes, @)
           add[name].values = values
 
     remove = { selectors: [] }
@@ -172,5 +172,31 @@ class Prefixes
       utils.uniq global.concat(values)
     else
       global || values || []
+
+  # Group declaration by unprefixed property to check them
+  group: (decl) ->
+    rule       = decl.parent
+    index      = rule.index(decl)
+    length     = rule.decls.length
+    unprefixed = @unprefixed(decl.prop)
+
+    checker = (step, callback) =>
+      index += step
+      while index >= 0 and index < length
+        other  = rule.decls[index]
+
+        if @unprefixed(other.prop) != unprefixed
+          break
+
+        else if callback(other) == true
+          return true
+
+        index += step
+      return false
+
+    {
+      up:   (callback) -> checker(-1, callback)
+      down: (callback) -> checker(+1, callback)
+    }
 
 module.exports = Prefixes

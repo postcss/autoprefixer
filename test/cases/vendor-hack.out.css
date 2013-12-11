@@ -1,7 +1,12 @@
-a {
+.a {
   transform: scale(.9999);
 }
 
-b {
+.b {
   -moz-transform: scale(.9999);
+}
+
+.c {
+  transform: scale(1);
+  -moz-transform: scale(2);
 }

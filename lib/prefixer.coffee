@@ -10,12 +10,12 @@ class Prefixer
       @hacks[name] = klass
 
   # Load hacks for some names
-  @load: (name, prefixes) ->
+  @load: (name, prefixes, all) ->
     klass = @hacks?[name]
     if klass
-      new klass(name, prefixes)
+      new klass(name, prefixes, all)
     else
-      new this(name, prefixes)
+      new this(name, prefixes, all)
 
   # Clone node and clean autprefixer custom caches
   @clone: (node, overrides) ->
@@ -24,7 +24,7 @@ class Prefixer
     delete cloned._autoprefixerValues
     cloned
 
-  constructor: (@name, @prefixes) ->
+  constructor: (@name, @prefixes, @all) ->
 
   # Find prefix in node parents
   parentPrefix: (node) ->

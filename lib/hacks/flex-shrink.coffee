@@ -4,6 +4,10 @@ Declaration = require('../declaration')
 class FlexShrink extends Declaration
   @names = ['flex-shrink']
 
+  # Return property name by final spec
+  normalize: ->
+    'flex'
+
   # Return flex property for 2012 spec
   prefixed: (prop, prefix) ->
     [spec, prefix] = flexSpec(prefix)

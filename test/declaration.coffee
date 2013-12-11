@@ -1,9 +1,11 @@
 Declaration = require('../lib/declaration')
+Prefixes    = require('../lib/prefixes')
 parse       = require('postcss/lib/parse')
 
 describe 'Declaration', ->
   beforeEach ->
-    @tabsize = new Declaration('tab-size', ['-moz-', '-ms-'])
+    prefixes = new Prefixes({ }, { })
+    @tabsize = new Declaration('tab-size', ['-moz-', '-ms-'], prefixes)
 
   describe 'otherPrefixes()', ->
 

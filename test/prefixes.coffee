@@ -4,6 +4,7 @@ Browsers    = require('../lib/browsers')
 Selector    = require('../lib/selector')
 OldValue    = require('../lib/old-value')
 Value       = require('../lib/value')
+parse       = require('postcss/lib/parse')
 
 data =
   browsers:
@@ -32,10 +33,10 @@ empty = new Prefixes({ }, new Browsers(data.browsers, []))
 fill  = new Prefixes(data.prefixes,
                      new Browsers(data.browsers, ['ff 2', 'ie 2']))
 
-cSel  = new Selector('c', ['-ms-'])
-aVal  = new Value('a', ['-moz-'])
-bVal  = new Value('b', ['-ms- new'])
-aProp = new Declaration('a', ['-moz-'])
+cSel  = new Selector('c', ['-ms-'], fill)
+aVal  = new Value('a',    ['-moz-'], fill)
+bVal  = new Value('b', ['-ms- new'], fill)
+aProp = new Declaration('a', ['-moz-'], fill)
 aProp.values = [bVal]
 
 old = (name) -> new OldValue(name)
@@ -69,7 +70,6 @@ describe 'Prefixes', ->
           values: [bVal]
 
     it 'preprocesses prefixes remove data', ->
-
       JSON.stringify(fill.remove).should.eql JSON.stringify({
         'selectors': ['-moz-c']
         'transition':
@@ -117,3 +117,37 @@ describe 'Prefixes', ->
       fill.values('remove', 'a').should.eql [old('-ms-b'),
                                              old('-moz-b'),
                                              old('-webkit-b')]
+
+  describe 'group()', ->
+
+    describe 'down()', ->
+
+      it 'checks prefix group', ->
+        css   = parse('a { -ms-a: 1; -o-a: 1; a: 1; b: 2 }')
+        props = []
+
+        empty.group(css.rules[0].decls[0]).down (i) -> props.push(i.prop)
+        props.should.eql ['-o-a', 'a']
+
+      it 'returns check decls inside group', ->
+        css  = parse('a { -moz-a: 1; -ms-a: 1; -o-a: 1; a: 1 }')
+        decl = css.rules[0].decls[0]
+
+        empty.group(decl).down( (i) -> i.prop == '-o-a' ).should.be.true
+        empty.group(decl).down( (i) -> i.prop == '-o-b' ).should.be.false
+
+    describe 'up()', ->
+
+      it 'checks prefix group', ->
+        css   = parse('a { b: 2; -ms-a: 1; -o-a: 1; a: 1 }')
+        props = []
+
+        empty.group(css.rules[0].decls[3]).up (i) -> props.push(i.prop)
+        props.should.eql ['-o-a', '-ms-a']
+
+      it 'returns check decls inside group', ->
+        css  = parse('a { -moz-a: 1; -ms-a: 1; -o-a: 1; a: 1 }')
+        decl = css.rules[0].decls[3]
+
+        empty.group(decl).up( (i) -> i.prop == '-ms-a' ).should.be.true
+        empty.group(decl).up( (i) -> i.prop == '-ms-b' ).should.be.false
