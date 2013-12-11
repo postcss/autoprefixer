@@ -9,9 +9,12 @@ class Value extends Prefixer
   @save: (prefixes, decl) ->
     for prefix, value of decl._autoprefixerValues
       continue if value == decl.value
+      propPrefix = vendor.prefix(decl.prop)
 
-      if vendor.prefix(decl.prop) == utils.removeNote(prefix)
+      if propPrefix == utils.removeNote(prefix)
         decl.value = value
+      else if propPrefix == '-pie-'
+        continue
       else
         prefixed = prefixes.prefixed(decl.prop, prefix)
         rule     = decl.parent

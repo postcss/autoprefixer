@@ -8,7 +8,7 @@ class Browsers
 
     data = require('../data/browsers')
     @prefixesCache = utils.uniq(i.prefix for name, i of data).
-                          sort (a, b) -> b.length - a.length
+                           sort (a, b) -> b.length - a.length
 
   constructor: (@data, requirements) ->
     @selected = @parse(requirements)

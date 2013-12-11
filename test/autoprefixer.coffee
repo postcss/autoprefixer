@@ -131,3 +131,8 @@ describe 'Autoprefixer', ->
       input  = read('ie-transition')
       output = autoprefixer('ie > 0').compile(input)
       input.should.eql(output)
+
+    it 'ignores values for CSS3PIE props', ->
+      input  = read('pie')
+      output = compiler.compile(input)
+      input.should.eql(output)
