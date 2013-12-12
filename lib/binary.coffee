@@ -1,6 +1,6 @@
 autoprefixer = require('./autoprefixer')
 path         = require('path')
-fs           = require('fs')
+fs           = require('fs-extra')
 
 class Binary
   constructor: (process) ->
@@ -23,7 +23,8 @@ class Binary
 
     Options:
       -b, --browsers BROWSERS  add prefixes for selected browsers
-      -o, --output FILE|DIR    set output
+      -o, --output FILE        set output file
+      -d, --dir DIR            set output dir
       -i, --inspect            show selected browsers and properties
       -h, --help               show help text
       -v, --version            print program version
@@ -38,7 +39,7 @@ class Binary
       By default, prefixed CSS will rewrite original files.
 
       You can specify output file or directory by `-o` argument.
-      For several input files you can specify only output directory.
+      For several input files you can specify only output directory by `-d`.
 
       Output CSS will be written to stdout stream on +
         `-o -' argument or stdin input.
@@ -87,7 +88,10 @@ class Binary
           @requirements = args.shift().split(',').map (i) -> i.trim()
 
         when '-o', '--output'
-          @output = args.shift()
+          @outputFile = args.shift()
+
+        when '-d', '--dir'
+          @outputDir = args.shift()
 
         else
           if arg.match(/^-\w$/) || arg.match(/^--\w[\w-]+$/)
@@ -173,44 +177,48 @@ class Binary
           @error ''
           @error error.stack
 
-    return @endWork() unless prefixed
+    return @endWork() unless prefixed?
 
     if output == '-'
       @print prefixed
       @endWork()
     else
-      fs.writeFile output, prefixed, (error) =>
-        @error "autoprefixer: #{ error }" if error
-        @endWork()
-
-  # Shortcut for directory check
-  isDir: (path) ->
-    try
-      fs.statSync(path).isDirectory()
-    catch
-      false
+      fs.mkdirs path.dirname(output), (error) =>
+        if error
+          @error "autoprefixer: #{ error }"
+        else
+          fs.writeFile output, prefixed, (error) =>
+            @error "autoprefixer: #{ error }" if error
+            @endWork()
 
   # Return input and output files array
   files: ->
     if @inputFiles.length == 0
-      @output ||= '-'
+      @outputFile ||= '-'
 
-    if @output == '-'
-      [file, @output] for file in @inputFiles
+    if @outputDir
+      if @inputFiles.length == 0
+        @error "autoprefixer: For STDIN input you need to specify output " +
+               "file (by `-o FILE`),\nnot output dir"
+        return
 
-    else if not @output
-      [file, file] for file in @inputFiles
+      if fs.existsSync(@outputDir) and not fs.statSync(@outputDir).isDirectory()
+        @error "autoprefixer: Path #{ @outputDir } is a file, not directory"
+        return
 
-    else if @isDir(@output)
       for file in @inputFiles
-        [file, path.join(@output, path.basename(file))]
+        [file, path.join(@outputDir, path.basename(file))]
 
-    else if @inputFiles.length > 1
-      @error "autoprefixer: You can specify only output dir for several files"
-      return
+    else if @outputFile
+      if @inputFiles.length > 1
+        @error "autoprefixer: For several files you can specify only output " +
+               "dir (by `-d DIR`),\nnot one output file"
+        return
+
+      [file, @outputFile] for file in @inputFiles
 
     else
-      [ [@inputFiles[0], @output] ]
+      [file, file] for file in @inputFiles
 
   # Compile selected files
   compile: (done) ->
@@ -226,7 +234,7 @@ class Binary
       css = ''
       @stdin.resume()
       @stdin.on 'data', (chunk) -> css += chunk
-      @stdin.on 'end', => @compileCSS(css, @output)
+      @stdin.on 'end', => @compileCSS(css, @outputFile)
     else
       for file in files
         @startWork()

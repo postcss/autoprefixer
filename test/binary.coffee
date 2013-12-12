@@ -75,6 +75,7 @@ describe 'Binary', ->
 
   it 'changes browsers', (done) ->
     @exec '-i', '-b', 'ie 6', (out, err) ->
+      err.should.be.false
       out.should.match(/IE: 6/)
       done()
 
@@ -97,12 +98,19 @@ describe 'Binary', ->
       read('b.css').should.eql prefixed
       done()
 
+  it 'creates dirs for output file', (done) ->
+    write('a.css', '')
+    @exec 'a.css', '-o', 'one/two/b.css', (out, err) ->
+      err.should.be.false
+      out.should.eql ''
+      read('one/two/b.css').should.eql ''
+      done()
+
   it 'outputs to dir', (done) ->
     write('a.css', css)
     write('b.css', css + css)
-    fs.mkdir(tempDir + '/out/')
 
-    @exec '-b', 'chrome 25', 'a.css', 'b.css', '-o', 'out/', (out, err) ->
+    @exec '-b', 'chrome 25', 'a.css', 'b.css', '-d', 'out/', (out, err) ->
       err.should.be.false
       out.should.eql ''
 
@@ -129,17 +137,30 @@ describe 'Binary', ->
       done()
 
   it "raises an error when files doesn't exists", (done) ->
-    @exec 'a', (out, err) ->
+    @exec 'not.css', (out, err) ->
       out.should.be.empty
-      err.should.match(/autoprefixer: File a doesn't exists/)
+      err.should.match(/doesn't exists/)
       done()
 
-  it 'raises on several inputs and one output', (done) ->
+  it 'raises on several inputs and one output file', (done) ->
     write('a.css', css)
     write('b.css', css)
     @exec 'a.css', 'b.css', '-o', 'c.css', (out, err) ->
       out.should.be.empty
-      err.should.match(/You can specify only output dir for several files/)
+      err.should.match(/For several files you can specify only output dir/)
+      done()
+
+  it 'raises on STDIN and output dir', (done) ->
+    @exec '-d', 'out/', (out, err) ->
+      out.should.be.empty
+      err.should.match(/For STDIN input you need to specify output file/)
+      done()
+
+  it 'raises file in output dir', (done) ->
+    write('b.css', '')
+    @exec 'a.css', '-d', 'b.css', (out, err) ->
+      out.should.be.empty
+      err.should.match(/is a file, not directory/)
       done()
 
   it 'raises an error when unknown arguments are given', (done) ->
