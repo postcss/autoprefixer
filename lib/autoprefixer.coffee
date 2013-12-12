@@ -36,8 +36,8 @@ class Autoprefixer
     @browsers = @prefixes.browsers.selected
 
   # Parse CSS and add prefixed properties for selected browsers
-  compile: (str) ->
-    @processor().process(str)
+  compile: (str, options = {}) ->
+    @processor().process(str, options)
 
   # Return PostCSS processor, which will add necessary prefixes
   postcss: (css) =>
@@ -61,8 +61,8 @@ autoprefixer.loadDefault = ->
   @defaultCache ||= autoprefixer(@default)
 
 # Compile with default Autoprefixer
-autoprefixer.compile = (str) ->
-  @loadDefault().compile(str)
+autoprefixer.compile = (str, options = {}) ->
+  @loadDefault().compile(str, options)
 
 # PostCSS with default Autoprefixer
 autoprefixer.postcss = (css) ->
