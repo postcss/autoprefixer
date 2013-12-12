@@ -49,6 +49,17 @@ describe 'Binary', ->
           error = @stderr.content
         callback(@stdout.content, error)
 
+    @run = (args..., callback) ->
+      @exec args..., (out, err) ->
+        err.should.be.false
+        callback(out)
+
+    @raise = (args..., error, done) ->
+      @exec args..., (out, err) ->
+        out.should.be.empty
+        err.should.match(error)
+        done()
+
   afterEach ->
     fs.removeSync(tempDir) if fs.existsSync(tempDir)
 
@@ -56,34 +67,29 @@ describe 'Binary', ->
   prefixed = "a { -webkit-transition: all 1s; transition: all 1s }"
 
   it 'shows autoprefixer version', (done) ->
-    @exec '-v', (out, err) ->
-      err.should.be.false
+    @run '-v', (out) ->
       out.should.match(/^autoprefixer [\d\.]+\n$/)
       done()
 
   it 'shows help instructions', (done) ->
-    @exec '-h', (out, err) ->
-      err.should.be.false
+    @run '-h', (out) ->
       out.should.match(/Usage:/)
       done()
 
   it 'shows selected browsers and properties', (done) ->
-    @exec '-i', (out, err) ->
-      err.should.be.false
+    @run '-i', (out) ->
       out.should.match(/Browsers:/)
       done()
 
   it 'changes browsers', (done) ->
-    @exec '-i', '-b', 'ie 6', (out, err) ->
-      err.should.be.false
+    @run '-i', '-b', 'ie 6', (out) ->
       out.should.match(/IE: 6/)
       done()
 
   it 'rewrites several files', (done) ->
     write('a.css', css)
     write('b.css', css + css)
-    @exec '-b', 'chrome 25', 'a.css', 'b.css', (out, err) ->
-      err.should.be.false
+    @run '-b', 'chrome 25', 'a.css', 'b.css', (out) ->
       out.should.eql ''
       read('a.css').should.eql prefixed
       read('b.css').should.eql prefixed + prefixed
@@ -91,8 +97,7 @@ describe 'Binary', ->
 
   it 'changes output file', (done) ->
     write('a.css', css)
-    @exec '-b', 'chrome 25', 'a.css', '-o', 'b.css', (out, err) ->
-      err.should.be.false
+    @run '-b', 'chrome 25', 'a.css', '-o', 'b.css', (out) ->
       out.should.eql ''
       read('a.css').should.eql css
       read('b.css').should.eql prefixed
@@ -100,8 +105,7 @@ describe 'Binary', ->
 
   it 'creates dirs for output file', (done) ->
     write('a.css', '')
-    @exec 'a.css', '-o', 'one/two/b.css', (out, err) ->
-      err.should.be.false
+    @run 'a.css', '-o', 'one/two/b.css', (out) ->
       out.should.eql ''
       read('one/two/b.css').should.eql ''
       done()
@@ -110,8 +114,7 @@ describe 'Binary', ->
     write('a.css', css)
     write('b.css', css + css)
 
-    @exec '-b', 'chrome 25', 'a.css', 'b.css', '-d', 'out/', (out, err) ->
-      err.should.be.false
+    @run '-b', 'chrome 25', 'a.css', 'b.css', '-d', 'out/', (out) ->
       out.should.eql ''
 
       read('a.css').should.eql css
@@ -123,64 +126,47 @@ describe 'Binary', ->
 
   it 'outputs to stdout', (done) ->
     write('a.css', css)
-    @exec '-b', 'chrome 25', '-o', '-', 'a.css', (out, err) ->
-      err.should.be.false
+    @run '-b', 'chrome 25', '-o', '-', 'a.css', (out) ->
       out.should.eql prefixed + "\n"
       read('a.css').should.eql css
       done()
 
   it 'reads from stdin', (done) ->
     @stdin.content = css
-    @exec '-b', 'chrome 25', (out, err) ->
-      err.should.be.false
+    @run '-b', 'chrome 25', (out) ->
       out.should.eql prefixed + "\n"
       done()
 
   it "raises an error when files doesn't exists", (done) ->
-    @exec 'not.css', (out, err) ->
-      out.should.be.empty
-      err.should.match(/doesn't exists/)
-      done()
+    @raise('not.css',
+           /doesn't exists/, done)
 
   it 'raises on several inputs and one output file', (done) ->
     write('a.css', css)
     write('b.css', css)
-    @exec 'a.css', 'b.css', '-o', 'c.css', (out, err) ->
-      out.should.be.empty
-      err.should.match(/For several files you can specify only output dir/)
-      done()
+    @raise('a.css', 'b.css', '-o', 'c.css',
+           /For several files you can specify only output dir/, done)
 
   it 'raises on STDIN and output dir', (done) ->
-    @exec '-d', 'out/', (out, err) ->
-      out.should.be.empty
-      err.should.match(/For STDIN input you need to specify output file/)
-      done()
+    @raise('-d', 'out/',
+           /For STDIN input you need to specify output file/, done)
 
   it 'raises file in output dir', (done) ->
     write('b.css', '')
-    @exec 'a.css', '-d', 'b.css', (out, err) ->
-      out.should.be.empty
-      err.should.match(/is a file, not directory/)
-      done()
+    @raise('a.css', '-d', 'b.css',
+           /is a file, not directory/, done)
 
   it 'raises an error when unknown arguments are given', (done) ->
-    @exec '-x', (out, err) ->
-      out.should.be.empty
-      err.should.match(/autoprefixer: Unknown argument -x/)
-      done()
+    @raise('-x',
+           /autoprefixer: Unknown argument -x/, done)
 
   it 'prints errors', (done) ->
-    @exec '-b', 'ie', (out, err) ->
-      out.should.be.empty
-      err.should.eql("autoprefixer: Unknown browser requirement `ie`\n")
-      done()
+    @raise('-b', 'ie',
+           /autoprefixer: Unknown browser requirement `ie`/, done)
 
   it 'prints parsing errors', (done) ->
     @stdin.content = 'a {'
-    @exec '-b', 'chrome 25', (out, err) ->
-      out.should.be.empty
-      err.should.match(/^autoprefixer: Can't parse CSS/)
-      done()
+    @raise(/^autoprefixer: Can't parse CSS/, done)
 
 describe 'bin/autoprefixer', ->
 
