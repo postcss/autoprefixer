@@ -75,6 +75,11 @@
 * Fix direction conversion for old webkit gradients (by Chad von Nau).
 * Update browsers popularity statistics.
 
+20131213:
+* Firefox ESR in default browsers was changed to 24 version.
+* Firefox 26 was moved to current releases list.
+* Firefox 28 was added to future releases list.
+
 == 0.7 (We Do Not Sow)
 * Add vendor prefixes to selectors.
 * Add ::selection and ::placeholder selectors support.
