@@ -165,8 +165,8 @@ You can find the browsers codenames in [data file](data/browsers.coffee):
 * `opera` for Opera.
 * `safari` for desktop Safari.
 
-By default, Autoprefixer uses `> 1%, last 2 versions, ff 17, opera 12.1`:
-* Firefox 17 is a latest [ESR].
+By default, Autoprefixer uses `> 1%, last 2 versions, ff 24, opera 12.1`:
+* Firefox 24 is a latest [ESR].
 * Opera 12.1 will be in list until Opera supports non-Blink 12.x branch.
 
 [ESR]: http://www.mozilla.org/en/firefox/organizations/faq/
