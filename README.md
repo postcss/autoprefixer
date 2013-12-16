@@ -210,6 +210,13 @@ incorrectly, please
 [report an issue](https://github.com/ai/autoprefixer/issues/new)
 and include your source CSS and expected output.
 
+### Why Autoprefixer doesn’t support `appearance`?
+
+Instead of `transition`, `appearance` property is not a part of
+any specification. Firefox and webkits have this property, but use different
+values. So there is no `appearance`, only `-moz-appearance`
+and `-webkit-appearance`.
+
 ### Does it support source maps?
 
 Unfortunately, right now Autoprefixer doesn’t support source maps.
