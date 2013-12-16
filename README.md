@@ -214,9 +214,7 @@ and include your source CSS and expected output.
 
 Instead of `transition`, `appearance` property is not a part of
 any specification. So there is no `appearance`, only `-moz-appearance`
-and `-webkit-appearance`.
-
-Quote from [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/-moz-appearance):
+and `-webkit-appearance`. Quote from [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/-moz-appearance):
 
 > Do not use this property on Web sites: not only is it non-standard, but its
 > behavior changes from one browser to another. Even the keyword `none` does not
