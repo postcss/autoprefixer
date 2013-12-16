@@ -60,36 +60,19 @@ task 'publish', 'Publish new version to npm', ->
 
 task 'build', 'Build standalone autoprefixer.js', ->
   invoke('compile')
-  build = __dirname + '/build/'
 
-  glob = require('glob')
+  browserify = require('browserify')
+  builder    = browserify(basedir: __dirname + '/build/')
+  builder.add('./lib/autoprefixer.js')
 
-  npm    = JSON.parse fs.readFileSync(__dirname + '/package.json').toString()
-  config =
-    name:         npm.name
-    version:      npm.version
-    main:         npm.main + '.js'
-    dependencies: { }
+  result = __dirname + '/autoprefixer.js'
+  output = fs.createWriteStream(result)
+  builder.bundle standalone: 'autoprefixer', (error, build) ->
+    fs.removeSync(__dirname + '/build/')
 
-  for name, version of npm.dependencies
-    config.dependencies["visionmedia/#{name}"] = version.replace(/[^\d\.]/g, '')
-  config.scripts = glob.sync(build + '**/*.js').
-    filter( (i) -> !/binary\.js/.test(i) ).
-    map (i) -> i.replace(build, '')
-
-  fs.writeFileSync(build + 'component.json', JSON.stringify(config))
-
-  component = (command, callback) ->
-    sh("cd \"#{build}\"; ../node_modules/.bin/component #{command}", callback)
-
-  component 'install', ->
-    component 'build --standalone autoprefixer', ->
-      result = __dirname + '/autoprefixer.js'
-      fs.copy build + 'build/build.js', result, ->
-        fs.removeSync(build)
-
-        rails = __dirname + '/../autoprefixer-rails/vendor/autoprefixer.js'
-        fs.copy(result, rails) if fs.existsSync(rails)
+    rails = __dirname + '/../autoprefixer-rails/vendor/autoprefixer.js'
+    fs.writeFile(result, build)
+    fs.writeFile(rails,  build) if fs.existsSync(rails)
 
 task 'bench', 'Benchmark on GitHub styles', ->
   invoke('compile')

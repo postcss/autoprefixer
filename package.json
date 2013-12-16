@@ -14,7 +14,7 @@
   },
   "devDependencies": {
     "coffee-script": "1.6.3",
-    "component":     "0.18.0",
+    "browserify":    "3.4.0",
     "fs-extra":      "0.8.1",
     "should":        "2.1.1",
     "stylus":        "0.41.3",
