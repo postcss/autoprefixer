@@ -218,7 +218,10 @@ and `-webkit-appearance`.
 
 Quote from [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/-moz-appearance):
 
-    Do not use this property on Web sites: not only is it non-standard, but its behavior changes from one browser to another. Even the keyword none does not have the same behavior on each form element across different browsers, and some do not support it at all.
+> Do not use this property on Web sites: not only is it non-standard, but its
+> behavior changes from one browser to another. Even the keyword `none` does not
+> have the same behavior on each form element across different browsers, and
+> some do not support it at all.
 
 ### Does it support source maps?
 
