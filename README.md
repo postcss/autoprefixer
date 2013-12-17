@@ -39,6 +39,8 @@ to apply prefixes for you:
 }
 ```
 
+Autoprefixer is based on [PostCSS](https://github.com/ai/postcss) framework.
+
 Twitter account for news and releases:
 [@autoprefixer](https://twitter.com/autoprefixer).
 
