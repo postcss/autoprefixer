@@ -39,6 +39,17 @@ class Autoprefixer
   process: (str, options = {}) ->
     @processor().process(str, options)
 
+  # Old deprecated API from Autoprefixer 0.x
+  compile: (str, options = {}) ->
+    fixed = { }
+    for name, value of options
+      name == 'from' if name == 'file'
+      fixed[name] = value
+
+    console?.warn('autoprefixer: replace compile() to process(). ' +
+                  'Method compile() is deprecated and will be removed in 1.1.')
+    @process(str, options).css
+
   # Return PostCSS processor, which will add necessary prefixes
   postcss: (css) =>
     @prefixes.processor.add(css)
@@ -63,6 +74,10 @@ autoprefixer.loadDefault = ->
 # Compile with default Autoprefixer
 autoprefixer.process = (str, options = {}) ->
   @loadDefault().process(str, options)
+
+# Old deprecated API from Autoprefixer 0.x
+autoprefixer.compile = (str, options = {}) ->
+  @loadDefault().compile(str, options)
 
 # PostCSS with default Autoprefixer
 autoprefixer.postcss = (css) ->
