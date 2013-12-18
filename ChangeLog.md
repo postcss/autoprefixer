@@ -1,4 +1,4 @@
-== 0.8 (Unbowed, Unbent, Unbroken)
+## 0.8 “Unbowed, Unbent, Unbroken”
 * Add more browsers to defaults ("> 1%, last 2 versions, ff 17, opera 12.1"
   instead of just "last 2 browsers").
 * Keep vendor prefixes without unprefixed version (like vendor-specific hacks).
@@ -80,7 +80,7 @@
 * Firefox 26 was moved to current releases list.
 * Firefox 28 was added to future releases list.
 
-== 0.7 (We Do Not Sow)
+## 0.7 “We Do Not Sow”
 * Add vendor prefixes to selectors.
 * Add ::selection and ::placeholder selectors support.
 * Allow to load support data from Can I Use pull requests.
@@ -104,7 +104,7 @@
 * Add Chrome 31 and 30 data.
 * Fix CSS comments parsing (by vladkens).
 
-== 0.6 (As High As Honor)
+## 0.6 “As High As Honor”
 * New faster API, which cache preprocessed data. Old API is deprecated.
 * A lot of perfomance improvements.
 * Add Opera 15 -webkit- prefix support.
@@ -130,7 +130,7 @@
 20130731:
 * Add border-image support.
 
-== 0.5 (Ours is the Fury)
+## 0.5 “Ours is the Fury”
 * Rewrite Autoprefixer to be more flexible.
 * Use css, instead of Rework, to fix CSS parsing errors faster.
 * Fix a lot of CSS parsing errors.
@@ -158,7 +158,7 @@
 20130629:
 * Fix convert flex properties to old box-flex.
 
-== 0.4 (Winter Is Coming)
+## 0.4 “Winter Is Coming”
 * Remove outdated prefixes.
 * Add border-radius and box-shadow properties to database.
 * Change degrees in webkit gradients.
@@ -186,7 +186,7 @@
 * Use latest Rework 0.15 with a lot of CSS parsing fixes.
 * Update browsers usage statistics.
 
-== 0.3 (Growing Strong)
+## 0.3 “Growing Strong”
 * Rename `autoprefixer.filter()` to `autoprefixer.rework()`.
 * Use own filters instead of Rework’s `prefix` and `prefixValue`.
 * Smarter value prefixer without false match “order” in “border”.
@@ -209,10 +209,10 @@
 * Don’t add -webkit- prefix to IE filter.
 * Don’t duplicate prefixes on second run.
 
-== 0.2 (Hear Me Roar!)
+## 0.2 “Hear Me Roar!”
 * Update parse libraries.
 * Use component package manager to build standalone script.
 * Add inspect to standalone script.
 
-== 0.1 (Fire and Blood)
+## 0.1 “Fire and Blood”
 * Initial release.
