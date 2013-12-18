@@ -210,9 +210,11 @@ class Binary
           fs.writeFile output, result.css, (error) =>
             @error "autoprefixer: #{ error }" if error
 
-            fs.writeFile output + '.map', result.map, (error) =>
-              @error "autoprefixer: #{ error }" if error
-
+            if result.map
+              fs.writeFile output + '.map', result.map, (error) =>
+                @error "autoprefixer: #{ error }" if error
+                @endWork()
+            else
               @endWork()
 
   # Return input and output files array

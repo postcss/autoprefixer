@@ -139,7 +139,13 @@ describe 'Binary', ->
       out.should.eql prefixed + "\n"
       done()
 
-  it 'generates source map', (done) ->
+  it 'skip source map by default', (done) ->
+    write('a.css', css)
+    @run '-b', 'chrome 25', '-o', 'b.css', 'a.css', ->
+      fs.existsSync( path('b.css.map') ).should.be.false
+      done()
+
+  it 'generates source map on -m argument', (done) ->
     write('a.css', css)
     @run '-b', 'chrome 25', '-m', '-o', 'b.css', 'a.css', ->
       map = JSON.parse(read('b.css.map'))
