@@ -16,12 +16,14 @@ class StringBuffer
 
 tempDir = __dirname + '/fixtures'
 
+path = (file) -> "#{tempDir}/#{file}"
+
 write = (file, css) ->
   fs.mkdirSync(tempDir) unless fs.existsSync(tempDir)
-  fs.writeFileSync("#{tempDir}/#{file}", css)
+  fs.writeFileSync(path(file), css)
 
 read = (file) ->
-  fs.readFileSync("#{tempDir}/#{file}").toString()
+  fs.readFileSync(path(file)).toString()
 
 describe 'Binary', ->
   beforeEach ->
@@ -30,11 +32,11 @@ describe 'Binary', ->
     @stdin  = new StringBuffer()
 
     @exec = (args..., callback) ->
-      args = args.map (i) ->
-        if i.match(/\.css/) or i.match(/\/$/)
-          "#{tempDir}/#{i}"
+      args = args.map (arg) ->
+        if arg.match(/\.css/) or arg.match(/\/$/)
+          path(arg)
         else
-          i
+          arg
 
       binary = new Binary
         argv:   ['', ''].concat(args)
@@ -136,6 +138,26 @@ describe 'Binary', ->
     @run '-b', 'chrome 25', (out) ->
       out.should.eql prefixed + "\n"
       done()
+
+  it 'generates source map', (done) ->
+    write('a.css', css)
+    @run '-b', 'chrome 25', '-m', '-o', 'b.css', 'a.css', ->
+      map = JSON.parse(read('b.css.map'))
+
+      map.version.should.eql  3
+      map.file.should.eql     path('b.css')
+      map.sources.should.eql [path('a.css')]
+      done()
+
+  it 'modify source map', (done) ->
+    write('a.css', css)
+    @run '-b', 'chrome 25', '-m', '-o', 'b.css', 'a.css', =>
+      @run '-b', 'chrome 25', '-m', '-o', 'c.css', 'b.css', ->
+        map = JSON.parse(read('c.css.map'))
+
+        map.file.should.eql     path('c.css')
+        map.sources.should.eql [path('a.css')]
+        done()
 
   it "raises an error when files doesn't exists", (done) ->
     @raise('not.css',

@@ -25,6 +25,7 @@ class Binary
       -b, --browsers BROWSERS  add prefixes for selected browsers
       -o, --output FILE        set output file
       -d, --dir DIR            set output dir
+      -m, --map                generate source map
       -i, --info               show selected browsers and properties
       -h, --help               show help text
       -v, --version            print program version
@@ -43,6 +44,14 @@ class Binary
 
       Output CSS will be written to stdout stream on +
         `-o -' argument or stdin input.
+
+    Source maps:
+      On `-m` argument Autoprefixer will generate source map for changes near
+      output CSS (for out/main.css it generates out/main.css.map).
+
+      If previous source map will be near input files (for example, in/main.css
+      and in/main.css.map) Autoprefixer will apply previous map to output
+      source map.
 
     Browsers:
       Separate browsers by comma. For example, `-b "> 1%, opera 12"'.
@@ -83,6 +92,9 @@ class Binary
 
         when '-u', '--update'
           @command = 'update'
+
+        when '-m', '--map'
+          @sourceMap = true
 
         when '-b', '--browsers'
           @requirements = args.shift().split(',').map (i) -> i.trim()
@@ -163,9 +175,17 @@ class Binary
     @compilerCache ||= autoprefixer(@requirements)
 
   # Compile loaded CSS
-  compileCSS: (css, output) ->
+  compileCSS: (css, output, input) ->
+    opts = { }
+    opts.from = input  if input
+    opts.to   = output if output != '-'
+    opts.map  = true   if @sourceMap
+
+    if opts.map and input and fs.existsSync(input + '.map')
+      opts.map = fs.readFileSync(input + '.map').toString()
+
     try
-      prefixed = @compiler().process(css)
+      result = @compiler().process(css, opts)
     catch error
       if error.autoprefixer or error.message.match(/^Can't parse CSS/)
         @error "autoprefixer: #{ error.message }"
@@ -177,19 +197,23 @@ class Binary
           @error ''
           @error error.stack
 
-    return @endWork() unless prefixed?
+    return @endWork() unless result?
 
     if output == '-'
-      @print prefixed.css
+      @print result.css
       @endWork()
     else
       fs.mkdirs path.dirname(output), (error) =>
         if error
           @error "autoprefixer: #{ error }"
         else
-          fs.writeFile output, prefixed.css, (error) =>
+          fs.writeFile output, result.css, (error) =>
             @error "autoprefixer: #{ error }" if error
-            @endWork()
+
+            fs.writeFile output + '.map', result.map, (error) =>
+              @error "autoprefixer: #{ error }" if error
+
+              @endWork()
 
   # Return input and output files array
   files: ->
@@ -249,7 +273,7 @@ class Binary
             if error
               @workError "autoprefixer: #{ error.message }"
             else
-              @compileCSS(css, output)
+              @compileCSS(css, output, input)
 
       false
 
