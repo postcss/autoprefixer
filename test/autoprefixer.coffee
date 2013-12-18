@@ -36,7 +36,7 @@ read = (name) ->
 test = (from, instansce = prefixer(from)) ->
   input  = read(from)
   output = read(from + '.out')
-  result = instansce.compile(input)
+  result = instansce.process(input)
   result.css.should.eql(output)
 
 commons = ['transition', 'values', 'keyframes', 'gradient', 'flex-rewrite',
@@ -62,7 +62,7 @@ describe 'autoprefixer()', ->
 
 describe 'Autoprefixer', ->
 
-  describe 'compile()', ->
+  describe 'process()', ->
 
     it 'prefixes transition',         -> test('transition')
     it 'prefixes values',             -> test('values')
@@ -77,7 +77,7 @@ describe 'Autoprefixer', ->
         continue if type == 'mistakes' or type == 'flex-rewrite'
         input  = read(type + '.out')
         output = read(type)
-        result = cleaner.compile(input)
+        result = cleaner.process(input)
         result.css.should.eql(output)
 
     it 'prevents doubling prefixes', ->
@@ -86,21 +86,21 @@ describe 'Autoprefixer', ->
 
         input  = read(type)
         output = read(type + '.out')
-        result = instance.compile( instance.compile(input) )
+        result = instance.process( instance.process(input) )
         result.css.should.eql(output)
 
     it 'parses difficult files', ->
       input  = read('syntax')
-      result = cleaner.compile(input)
+      result = cleaner.process(input)
       result.css.should.eql(input)
 
     it 'marks parsing errors', ->
       ( ->
-        cleaner.compile('a {')
+        cleaner.process('a {')
       ).should.throw("Can't parse CSS: Unclosed block at line 1:1")
 
     it 'shows file name in parse error', ->
-      ( -> cleaner.compile('a {', from: 'a.css') ).should.throw(/in a.css$/)
+      ( -> cleaner.process('a {', from: 'a.css') ).should.throw(/in a.css$/)
 
   describe 'postcss()', ->
 
@@ -128,10 +128,10 @@ describe 'Autoprefixer', ->
 
     it 'ignores transform in transition for IE', ->
       input  = read('ie-transition')
-      result = autoprefixer('ie > 0').compile(input)
+      result = autoprefixer('ie > 0').process(input)
       result.css.should.eql(input)
 
     it 'ignores values for CSS3PIE props', ->
       input  = read('pie')
-      result = compiler.compile(input)
+      result = compiler.process(input)
       result.css.should.eql(input)

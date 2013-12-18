@@ -8,7 +8,7 @@ infoCache = null
 # Parse CSS and add prefixed properties and values by Can I Use database
 # for actual browsers.
 #
-#   var prefixed = autoprefixer('> 1%', 'ie 8').compile(css);
+#   var prefixed = autoprefixer('> 1%', 'ie 8').process(css);
 #
 # If you want to combine Autoprefixer with another PostCSS processor:
 #
@@ -36,7 +36,7 @@ class Autoprefixer
     @browsers = @prefixes.browsers.selected
 
   # Parse CSS and add prefixed properties for selected browsers
-  compile: (str, options = {}) ->
+  process: (str, options = {}) ->
     @processor().process(str, options)
 
   # Return PostCSS processor, which will add necessary prefixes
@@ -61,8 +61,8 @@ autoprefixer.loadDefault = ->
   @defaultCache ||= autoprefixer(@default)
 
 # Compile with default Autoprefixer
-autoprefixer.compile = (str, options = {}) ->
-  @loadDefault().compile(str, options)
+autoprefixer.process = (str, options = {}) ->
+  @loadDefault().process(str, options)
 
 # PostCSS with default Autoprefixer
 autoprefixer.postcss = (css) ->

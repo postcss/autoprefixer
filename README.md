@@ -17,7 +17,7 @@ entirely):
 Process your CSS by Autoprefixer:
 
 ```js
-var prefixed = autoprefixer.compile(css).css;
+var prefixed = autoprefixer.process(css).css;
 ```
 
 It will use the data on current browser popularity and properties support
@@ -140,7 +140,7 @@ compiles CSS once on deploy and doesn’t hit client-side performance.
 You can specify the browsers you want to target in your project:
 
 ```js
-autoprefixer("last 1 version", "> 1%", "ie 8", "ie 7").compile(css).css;
+autoprefixer("last 1 version", "> 1%", "ie 8", "ie 7").process(css).css;
 ```
 
 * `last n versions` is last versions for each browser. Like “last 2 versions”
@@ -155,7 +155,7 @@ Blackberry and stock Android browsers will not be used in `last n versions`.
 You can add them by name:
 
 ```js
-autoprefixer("last 1 version", "bb 10", "android 4").compile(css).css;
+autoprefixer("last 1 version", "bb 10", "android 4").process(css).css;
 ```
 
 You can find the browsers codenames in [data file](data/browsers.coffee):
@@ -182,7 +182,7 @@ You must set input and output CSS files paths (by `from` and `to` options)
 to generate correct map.
 
 ```js
-var result = autoprefixer.compile(css, {
+var result = autoprefixer.process(css, {
     map:  true,
     from: 'main.css',
     to:   'main.out.css'
@@ -199,7 +199,7 @@ compilation). Just set original source map content (as string or JS object)
 to `map` option:
 
 ```js
-var result = autoprefixer.compile(css, {
+var result = autoprefixer.process(css, {
     map:   fs.readFileSync('main.sass.map'),
     from: 'main.sass.css',
     to:   'main.min.css'
@@ -377,7 +377,7 @@ Use `autoprefixer` npm package:
 
 ```js
 var autoprefixer = require('autoprefixer');
-var prefixed     = autoprefixer.compile(css).css;
+var prefixed     = autoprefixer.process(css).css;
 ```
 
 ### JavaScript

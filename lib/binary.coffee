@@ -165,7 +165,7 @@ class Binary
   # Compile loaded CSS
   compileCSS: (css, output) ->
     try
-      prefixed = @compiler().compile(css)
+      prefixed = @compiler().process(css)
     catch error
       if error.autoprefixer or error.message.match(/^Can't parse CSS/)
         @error "autoprefixer: #{ error.message }"
