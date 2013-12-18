@@ -260,45 +260,6 @@ and `-webkit-appearance`. Quote from [MDN](https://developer.mozilla.org/en-US/d
 
 ## Usage
 
-### Ruby on Rails
-
-Add [autoprefixer-rails](https://github.com/ai/autoprefixer-rails) gem
-to `Gemfile` and write CSS in a usual way:
-
-```ruby
-gem "autoprefixer-rails"
-```
-
-### Middleman
-
-Add [middleman-autoprefixer](https://github.com/porada/middleman-autoprefixer)
-gem to `Gemfile`:
-
-```ruby
-gem "middleman-autoprefixer"
-```
-
-and activate the extension in your project’s `config.rb`:
-
-```ruby
-activate :autoprefixer
-```
-
-### Ruby
-
-You can integrate Autoprefixer into your Sprockets environment
-by `autoprefixer-rails` gem:
-
-```ruby
-AutoprefixerRails.install(sprockets_env)
-```
-
-or process CSS from plain Ruby:
-
-```ruby
-prefixed = AutoprefixerRails.compile(css)
-```
-
 ### Grunt
 
 You can use the
@@ -312,13 +273,6 @@ grunt.loadNpmTasks('grunt-autoprefixer');
 If you use Sass with `compress` output style and worry that Autoprefixer might
 uncompress CSS, try [grunt-csso](https://github.com/t32k/grunt-csso).
 It will compress the CSS back, but does the compression much better than Sass.
-
-### Prepros
-
-If you want to build your assets in GUI, try
-[Prepros](http://alphapixels.com/prepros/). Just set “Auto Prefix CSS”
-[checkbox](https://f.cloud.github.com/assets/3478693/930798/faa29892-0016-11e3-8901-87850de7aed2.jpg)
-in right panel.
 
 ### Compass
 
@@ -362,6 +316,52 @@ Just install npm package and use it in `-u` option:
 stylus -u autoprefixer-stylus file.css
 ```
 
+### Ruby on Rails
+
+Add [autoprefixer-rails](https://github.com/ai/autoprefixer-rails) gem
+to `Gemfile` and write CSS in a usual way:
+
+```ruby
+gem "autoprefixer-rails"
+```
+
+### Ruby
+
+You can integrate Autoprefixer into your Sprockets environment
+by `autoprefixer-rails` gem:
+
+```ruby
+AutoprefixerRails.install(sprockets_env)
+```
+
+or process CSS from plain Ruby:
+
+```ruby
+prefixed = AutoprefixerRails.compile(css)
+```
+
+### Middleman
+
+Add [middleman-autoprefixer](https://github.com/porada/middleman-autoprefixer)
+gem to `Gemfile`:
+
+```ruby
+gem "middleman-autoprefixer"
+```
+
+and activate the extension in your project’s `config.rb`:
+
+```ruby
+activate :autoprefixer
+```
+
+### Prepros
+
+If you want to build your assets in GUI, try
+[Prepros](http://alphapixels.com/prepros/). Just set “Auto Prefix CSS”
+[checkbox](https://f.cloud.github.com/assets/3478693/930798/faa29892-0016-11e3-8901-87850de7aed2.jpg)
+in right panel.
+
 ### Mincer
 
 To use Autoprefixer in [Mincer](https://github.com/nodeca/mincer),
@@ -380,6 +380,18 @@ var autoprefixer = require('autoprefixer');
 var prefixed     = autoprefixer.process(css).css;
 ```
 
+### PHP
+
+You can use Autoprefixer in PHP by
+[autoprefixer-php](https://github.com/vladkens/autoprefixer-php) library:
+
+
+```php
+$autoprefixer = new Autoprefixer();
+$css          = 'a { transition: transform 1s }';
+$prefixed     = $autoprefixer->compile($css);
+```
+
 ### JavaScript
 
 You can use Autoprefixer in the browser or a non-Node.js runtime
@@ -395,18 +407,6 @@ postcss().
     use( autoprefixer(['> 1%', 'opera 12.5']).postcss ).
     use( compressor ).
     process(css);
-```
-
-### PHP
-
-You can use Autoprefixer in PHP by
-[autoprefixer-php](https://github.com/vladkens/autoprefixer-php) library:
-
-
-```php
-$autoprefixer = new Autoprefixer();
-$css          = 'a { transition: transform 1s }';
-$prefixed     = $autoprefixer->compile($css);
 ```
 
 ### Sublime Text
