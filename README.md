@@ -17,7 +17,7 @@ entirely):
 Process your CSS by Autoprefixer:
 
 ```js
-var prefixed = autoprefixer.compile(css);
+var prefixed = autoprefixer.compile(css).css;
 ```
 
 It will use the data on current browser popularity and properties support
@@ -140,7 +140,7 @@ compiles CSS once on deploy and doesn’t hit client-side performance.
 You can specify the browsers you want to target in your project:
 
 ```js
-autoprefixer("last 1 version", "> 1%", "ie 8", "ie 7").compile(css);
+autoprefixer("last 1 version", "> 1%", "ie 8", "ie 7").compile(css).css;
 ```
 
 * `last n versions` is last versions for each browser. Like “last 2 versions”
@@ -155,7 +155,7 @@ Blackberry and stock Android browsers will not be used in `last n versions`.
 You can add them by name:
 
 ```js
-autoprefixer("last 1 version", "bb 10", "android 4").compile(css);
+autoprefixer("last 1 version", "bb 10", "android 4").compile(css).css;
 ```
 
 You can find the browsers codenames in [data file](data/browsers.coffee):
@@ -173,6 +173,40 @@ By default, Autoprefixer uses `> 1%, last 2 versions, ff 24, opera 12.1`:
 * Opera 12.1 will be in list until Opera supports non-Blink 12.x branch.
 
 [ESR]: http://www.mozilla.org/en/firefox/organizations/faq/
+
+## Source Map
+
+Autoprefixer will generate source map, if you set `map` option to `true`.
+
+You must set input and output CSS files paths (by `from` and `to` options)
+to generate correct map.
+
+```js
+var result = autoprefixer.compile(css, {
+    map:  true,
+    from: 'main.css',
+    to:   'main.out.css'
+});
+
+result.css //=> Prefixed CSS
+result.map //=> Source map content
+
+fs.writeFileSync('main.out.map', result.map);
+```
+
+Autoprefixer can also modify previous source map (for example, from Sass
+compilation). Just set original source map content (as string or JS object)
+to `map` option:
+
+```js
+var result = autoprefixer.compile(css, {
+    map:   fs.readFileSync('main.sass.map'),
+    from: 'main.sass.css',
+    to:   'main.min.css'
+});
+
+result.map //=> Source map from main.sass to main.min.css
+```
 
 ## Inspect
 
@@ -223,29 +257,6 @@ and `-webkit-appearance`. Quote from [MDN](https://developer.mozilla.org/en-US/d
 > behavior changes from one browser to another. Even the keyword `none` does not
 > have the same behavior on each form element across different browsers, and
 > some do not support it at all.
-
-### Does it support source maps?
-
-Unfortunately, right now Autoprefixer doesn’t support source maps.
-However, this feature will be included in the next version, 1.0, which is
-currently [under development](https://github.com/ai/autoprefixer/tree/v1.0)
-and is planned for release in mid-December 2013.
-
-Right now you can use lydell’s fork with source map support:
-[lydell/autoprefixer](https://github.com/lydell/autoprefixer/tree/source-maps#nodejs).
-
-You can check the current status of this feature in
-[autoprefixer#37](https://github.com/ai/autoprefixer/issues/37).
-
-### Why Autoprefixer plugin for text editor changed my indents?
-
-[Rework](https://github.com/visionmedia/rework), which Autoprefixer currently
-uses for parsing CSS, doesn’t save indents, because it was created for Grunt
-and other build tools.
-
-In version 1.0 Autoprefixer will switch to the
-[PostCSS](https://github.com/ai/postcss) parser, which preserves formatting
-of the code.
 
 ## Usage
 
@@ -366,7 +377,7 @@ Use `autoprefixer` npm package:
 
 ```js
 var autoprefixer = require('autoprefixer');
-var prefixed     = autoprefixer.compile(css);
+var prefixed     = autoprefixer.compile(css).css;
 ```
 
 ### JavaScript
