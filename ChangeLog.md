@@ -11,71 +11,71 @@
 * Fix selector prefixes order.
 * Fix browser versions order in inspect.
 
-20130903:
+### 20130903:
 * Fix old WebKit gradients convertor on rgba() colors.
 * Allow to write old direction syntax in gradients.
 
-20130906:
+### 20130906:
 * Fix direction syntax in radial gradients.
 * Don’t prefix IE filter with modern syntax.
 
-20130911:
+### 20130911:
 * Fix parsing property name with spaces.
 
-20130919:
+### 20130919:
 * Fix processing custom framework prefixes (by Johannes J. Schmidt).
 * Concat outputs if several files compiled to one output.
 * Decrease standalone build size by removing unnecessary Binary class.
 * iOS 7 is moved to released versions.
 * Clean up binary code (by Simon Lydell).
 
-20130923:
+### 20130923:
 * Firefox 24 is moved to released versions.
 
-20131001:
+### 20131001:
 * Add support for grab, grabbing, zoom-in and zoom-out cursor values.
 
-20131006:
+### 20131006:
 * Chrome 30 is moved to released versions.
 
-20131007:
+### 20131007:
 * Don’t add another prefixes in rule with prefixed selector.
 
-20131009:
+### 20131009:
 * Opera 17 is moved to released versions.
 
-20131015:
+### 20131015:
 * Fix converting multiple gradients to old webkit syntax (by Aleksei Androsov).
 
-20131017:
+### 20131017:
 * Fix @host at-rule parsing.
 
-20131020:
+### 20131020:
 * IE 11 and Andrid 4.3 is moved to released versions.
 * Add Opera 18 data.
 * Add @namespace support.
 * Sort browser versions in data file.
 
-20131029:
+### 20131029:
 * Add Safari 6.1 data.
 * Add fx alias for Firefox.
 
-20131104:
+### 20131104:
 * Update Android future version to 4.4.
 * Google Chrome 32 added to future versions list.
 * Firefox 25 now is actual version, 27 and 28 added to future versions.
 * Browsers statistics are updated.
 
-20131205:
+### 20131205:
 * Google Chrome 33 added to future releases list.
 * Google Chrome 31 moved to current releases list.
 
-20131209:
+### 20131209:
 * Use old webkit gradients for old iOS and Safari (by Chad von Nau).
 * Fix direction conversion for old webkit gradients (by Chad von Nau).
 * Update browsers popularity statistics.
 
-20131213:
+### 20131213:
 * Firefox ESR in default browsers was changed to 24 version.
 * Firefox 26 was moved to current releases list.
 * Firefox 28 was added to future releases list.
@@ -86,21 +86,21 @@
 * Allow to load support data from Can I Use pull requests.
 * Remove deprecated API.
 
-20130806:
+### 20130806:
 * Add hyphens support.
 
-20130807:
+### 20130807:
 * Add tab-size support.
 * Add :fullscreen support.
 
-20130808:
+### 20130808:
 * Allow to select browser versions by > and >= operator.
 * Fix flex properties in transition.
 
-20130810:
+### 20130810:
 * Add Firefox 25 data.
 
-20130824:
+### 20130824:
 * Add Chrome 31 and 30 data.
 * Fix CSS comments parsing (by vladkens).
 
@@ -112,22 +112,22 @@
 * Add minor browsers in popularity select.
 * Better syntax error messages.
 
-20130721:
+### 20130721:
 * Add Chrome 30 data.
 
-20130728:
+### 20130728:
 * Don’t remove non-standard -webkit-background-clip: text.
 * Don’t remove IE hack on CSS parse.
 
-20130729:
+### 20130729:
 * Add Opera 16 data.
 * Fix “Invalid range in character class” error on Firefox.
 
-20130730:
+### 20130730:
 * Fix correct clone comments inside keyframes (by Alexey Plutalov).
 * Fix angle recalculation in gradients (by Roman Komarov).
 
-20130731:
+### 20130731:
 * Add border-image support.
 
 ## 0.5 “Ours is the Fury”
@@ -135,27 +135,27 @@
 * Use css, instead of Rework, to fix CSS parsing errors faster.
 * Fix a lot of CSS parsing errors.
 
-20130616:
+### 20130616:
 * More useful message for CSS parsing errors.
 * Remove old WebKit gradient syntax.
 * Fix parsing error on comment with braces.
 
-20130617:
+### 20130617:
 * Remove old Mozilla border-radius.
 * Don’t prefix old IE filter.
 * Remove old background-clip, background-size and background-origin prefixes.
 * Speed up regexps in values.
 * Allow to hack property declarations.
 
-20130625:
+### 20130625:
 * Convert flexbox properties to 2009 and 2012 specifications.
 * Improve messages on syntax errors.
 
-20130626:
+### 20130626:
 * Add Firefox 24 data.
 * Add prefixes for font-feature-settings.
 
-20130629:
+### 20130629:
 * Fix convert flex properties to old box-flex.
 
 ## 0.4 “Winter Is Coming”
@@ -163,26 +163,26 @@
 * Add border-radius and box-shadow properties to database.
 * Change degrees in webkit gradients.
 
-20130515:
+### 20130515:
 * Add old syntax in gradient direction.
 * Add old syntax for display: flex.
 * Update browser global usage statistics.
 
-20130521:
+### 20130521:
 * Add Firefox 23 data.
 
-20130524:
+### 20130524:
 * Add Chrome 29 data.
 
-20130528:
+### 20130528:
 * Fix compatibilty with Rework from git master.
 * Add minor browsers to data, which can be selected only directly.
 
-20130530:
+### 20130530:
 * Add Opera 15 and iOS 6.1 data.
 * Fix iOS versions in properties and values data.
 
-20130603:
+### 20130603:
 * Use latest Rework 0.15 with a lot of CSS parsing fixes.
 * Update browsers usage statistics.
 
@@ -197,15 +197,15 @@
 * Add main to component config (by Jonathan Ong).
 * Fix documentation (by Sergey Leschina and Mark Vasilkov).
 
-20130424:
+### 20130424:
 * Fix value override in prefixer.
 
-20130427:
+### 20130427:
 * Prefix several same values in one property.
 * Fix Windows support in binary.
 * Improve print errors in binary.
 
-20130502:
+### 20130502:
 * Don’t add -webkit- prefix to IE filter.
 * Don’t duplicate prefixes on second run.
 
