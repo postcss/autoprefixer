@@ -97,7 +97,7 @@ task 'bench', 'Benchmark on GitHub styles', ->
         print("\n")
         autoprefixer = require(__dirname + '/lib/autoprefixer')
         cleaner      = autoprefixer('none')
-        callback(cleaner.compile(css))
+        callback(cleaner.compile(css).css)
 
   indent = (max, current) ->
     diff = max.toString().length - current.toString().length

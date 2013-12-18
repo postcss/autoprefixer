@@ -36,8 +36,8 @@ read = (name) ->
 test = (from, instansce = prefixer(from)) ->
   input  = read(from)
   output = read(from + '.out')
-  css    = instansce.compile(input)
-  css.should.eql(output)
+  result = instansce.compile(input)
+  result.css.should.eql(output)
 
 commons = ['transition', 'values', 'keyframes', 'gradient', 'flex-rewrite',
            'flexbox', 'filter', 'border-image', 'border-radius', 'notes',
@@ -77,8 +77,8 @@ describe 'Autoprefixer', ->
         continue if type == 'mistakes' or type == 'flex-rewrite'
         input  = read(type + '.out')
         output = read(type)
-        css    = cleaner.compile(input)
-        css.should.eql(output)
+        result = cleaner.compile(input)
+        result.css.should.eql(output)
 
     it 'prevents doubling prefixes', ->
       for type in commons
@@ -86,13 +86,13 @@ describe 'Autoprefixer', ->
 
         input  = read(type)
         output = read(type + '.out')
-        css    = instance.compile( instance.compile(input) )
-        css.should.eql(output)
+        result = instance.compile( instance.compile(input) )
+        result.css.should.eql(output)
 
     it 'parses difficult files', ->
       input  = read('syntax')
-      output = cleaner.compile(input)
-      input.should.eql(output)
+      result = cleaner.compile(input)
+      result.css.should.eql(input)
 
     it 'marks parsing errors', ->
       ( ->
@@ -100,13 +100,13 @@ describe 'Autoprefixer', ->
       ).should.throw("Can't parse CSS: Unclosed block at line 1:1")
 
     it 'shows file name in parse error', ->
-      ( -> cleaner.compile('a {', file: 'a.css') ).should.throw(/in a.css$/)
+      ( -> cleaner.compile('a {', from: 'a.css') ).should.throw(/in a.css$/)
 
   describe 'postcss()', ->
 
     it 'is a PostCSS filter', ->
       processor = postcss( compiler.postcss )
-      processor.process( read('values') ).should.eql( read('values.out') )
+      processor.process( read('values') ).css.should.eql( read('values.out') )
 
   describe 'inspect()', ->
 
@@ -128,10 +128,10 @@ describe 'Autoprefixer', ->
 
     it 'ignores transform in transition for IE', ->
       input  = read('ie-transition')
-      output = autoprefixer('ie > 0').compile(input)
-      input.should.eql(output)
+      result = autoprefixer('ie > 0').compile(input)
+      result.css.should.eql(input)
 
     it 'ignores values for CSS3PIE props', ->
       input  = read('pie')
-      output = compiler.compile(input)
-      input.should.eql(output)
+      result = compiler.compile(input)
+      result.css.should.eql(input)

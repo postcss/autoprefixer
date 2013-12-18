@@ -180,14 +180,14 @@ class Binary
     return @endWork() unless prefixed?
 
     if output == '-'
-      @print prefixed
+      @print prefixed.css
       @endWork()
     else
       fs.mkdirs path.dirname(output), (error) =>
         if error
           @error "autoprefixer: #{ error }"
         else
-          fs.writeFile output, prefixed, (error) =>
+          fs.writeFile output, prefixed.css, (error) =>
             @error "autoprefixer: #{ error }" if error
             @endWork()
 
