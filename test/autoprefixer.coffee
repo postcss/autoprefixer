@@ -108,10 +108,10 @@ describe 'Autoprefixer', ->
       processor = postcss( compiler.postcss )
       processor.process( read('values') ).css.should.eql( read('values.out') )
 
-  describe 'inspect()', ->
+  describe 'info()', ->
 
     it 'returns inspect string', ->
-      autoprefixer('chrome 25').inspect().should.match(/Browsers:\s+Chrome: 25/)
+      autoprefixer('chrome 25').info().should.match(/Browsers:\s+Chrome: 25/)
 
   describe 'hacks', ->
 

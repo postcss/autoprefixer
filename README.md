@@ -208,13 +208,13 @@ var result = autoprefixer.compile(css, {
 result.map //=> Source map from main.sass to main.min.css
 ```
 
-## Inspect
+## Debug
 
 You can check which browsers are selected and which properties will be prefixed:
 
 ```js
-inspect = autoprefixer("last 1 version").inspect();
-console.log(inspect);
+info = autoprefixer("last 1 version").info();
+console.log(info);
 ```
 
 Or by CLI command:

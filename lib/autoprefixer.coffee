@@ -3,7 +3,7 @@ postcss  = require('postcss')
 Browsers = require('./browsers')
 Prefixes = require('./prefixes')
 
-inspectCache = null
+infoCache = null
 
 # Parse CSS and add prefixed properties and values by Can I Use database
 # for actual browsers.
@@ -45,9 +45,9 @@ class Autoprefixer
     @prefixes.processor.remove(css)
 
   # Return string, what browsers selected and whar prefixes will be added
-  inspect: ->
-    inspectCache ||= require('./inspect')
-    inspectCache(@prefixes)
+  info: ->
+    infoCache ||= require('./info')
+    infoCache(@prefixes)
 
   # Cache PostCSS processor
   processor: ->
@@ -69,7 +69,7 @@ autoprefixer.postcss = (css) ->
   @loadDefault().postcss(css)
 
 # Inspect with default Autoprefixer
-autoprefixer.inspect = ->
-  @loadDefault().inspect()
+autoprefixer.info = ->
+  @loadDefault().info()
 
 module.exports = autoprefixer

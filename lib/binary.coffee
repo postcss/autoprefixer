@@ -25,7 +25,7 @@ class Binary
       -b, --browsers BROWSERS  add prefixes for selected browsers
       -o, --output FILE        set output file
       -d, --dir DIR            set output dir
-      -i, --inspect            show selected browsers and properties
+      -i, --info               show selected browsers and properties
       -h, --help               show help text
       -v, --version            print program version
     '''
@@ -78,8 +78,8 @@ class Binary
         when '-v', '--version'
           @command = 'showVersion'
 
-        when '-i', '--inspect'
-          @command = 'inspect'
+        when '-i', '--info'
+          @command = 'info'
 
         when '-u', '--update'
           @command = 'update'
@@ -119,8 +119,8 @@ class Binary
     done()
 
   # Print inspect
-  inspect: (done) ->
-    @print @compiler().inspect()
+  info: (done) ->
+    @print @compiler().info()
     done()
 
   # Update data
