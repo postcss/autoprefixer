@@ -6,7 +6,7 @@ module.exports = (css, callback) ->
   file = __dirname + '/test.styl'
 
   css = css.replace('@charset "UTF-8";', "@import 'nib';")
-  css = css.split('}')[0..2000].join('}') + '}'
+  css = css.replace(/\}/g, "}\n").replace(/(\w)\[[^\]]+\]/g, '$1')
   fs.writeFileSync(file, css)
 
   start = new Date()
