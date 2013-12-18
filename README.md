@@ -191,7 +191,7 @@ var result = autoprefixer.process(css, {
 result.css //=> Prefixed CSS
 result.map //=> Source map content
 
-fs.writeFileSync('main.out.map', result.map);
+fs.writeFileSync('main.out.css.map', result.map);
 ```
 
 Autoprefixer can also modify previous source map (for example, from Sass
@@ -200,7 +200,7 @@ to `map` option:
 
 ```js
 var result = autoprefixer.process(css, {
-    map:   fs.readFileSync('main.sass.map'),
+    map:   fs.readFileSync('main.sass.css.map'),
     from: 'main.sass.css',
     to:   'main.min.css'
 });
