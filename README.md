@@ -340,6 +340,24 @@ or process CSS from plain Ruby:
 prefixed = AutoprefixerRails.compile(css)
 ```
 
+### Prepros
+
+If you want to build your assets in GUI, try
+[Prepros](http://alphapixels.com/prepros/). Just set “Auto Prefix CSS”
+[checkbox](https://f.cloud.github.com/assets/3478693/930798/faa29892-0016-11e3-8901-87850de7aed2.jpg)
+in right panel.
+
+<img src="http://alphapixels.com/prepros/static/img/prepros.jpg" width="550" height="340" />
+
+### Mincer
+
+To use Autoprefixer in [Mincer](https://github.com/nodeca/mincer),
+install `autoprefixer` npm package and enable it:
+
+```js
+environment.enable('autoprefixer');
+```
+
 ### Middleman
 
 Add [middleman-autoprefixer](https://github.com/porada/middleman-autoprefixer)
@@ -353,22 +371,6 @@ and activate the extension in your project’s `config.rb`:
 
 ```ruby
 activate :autoprefixer
-```
-
-### Prepros
-
-If you want to build your assets in GUI, try
-[Prepros](http://alphapixels.com/prepros/). Just set “Auto Prefix CSS”
-[checkbox](https://f.cloud.github.com/assets/3478693/930798/faa29892-0016-11e3-8901-87850de7aed2.jpg)
-in right panel.
-
-### Mincer
-
-To use Autoprefixer in [Mincer](https://github.com/nodeca/mincer),
-install `autoprefixer` npm package and enable it:
-
-```js
-environment.enable('autoprefixer');
 ```
 
 ### Node.js
@@ -400,7 +402,7 @@ with [standalone version](https://raw.github.com/ai/autoprefixer-rails/master/ve
 ### PostCSS
 
 Autoprefixer can be also used as a [PostCSS](https://github.com/ai/postcss)
-filter, so you can combine it with other filters:
+processor, so you can combine it with other processors and parse CSS only once:
 
 ```js
 postcss().
