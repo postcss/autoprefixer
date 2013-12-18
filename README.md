@@ -47,10 +47,6 @@ Twitter account for news and releases:
 Sponsored by [Evil Martians](http://evilmartians.com/).
 Based on [PostCSS](https://github.com/ai/postcss) framework.
 
-## Translations
-
-На русском: [статья про Автопрефиксер на Хабрахабре](http://habrahabr.ru/company/evilmartians/blog/176909/)
-
 ## Features
 
 ### Forget about prefixes
