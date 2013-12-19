@@ -230,7 +230,7 @@ No. Autoprefixer only adds prefixes, not polyfills. There are two reasons:
    only used for styling should be ignored in old IEs as it is recommended in
    Graceful Degradation.
 
-### Why doesn’t Autoprefixer do anything?
+### Why Autoprefixer doesn’t add prefixes to `border-radius`?
 
 Developers are often surprised by how few prefixes are required today.
 If Autoprefixer doesn’t add prefixes to your CSS, check if they’re still
