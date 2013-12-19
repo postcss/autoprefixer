@@ -264,17 +264,13 @@ plugin for Grunt. Install the npm package and add it to Gruntfile:
 grunt.loadNpmTasks('grunt-autoprefixer');
 ```
 
-If you use Sass with `compress` output style and worry that Autoprefixer might
-uncompress CSS, try [grunt-csso](https://github.com/t32k/grunt-csso).
-It will compress the CSS back, but does the compression much better than Sass.
-
 ### Compass
 
 If you use Compass binary to compile your styles, you can easily integrate
 Autoprefixer with it. Install `autoprefixer-rails` gem:
 
 ```
-gem install autoprefixer-rails csso-rails
+gem install autoprefixer-rails
 ```
 
 and add post-compile hook to `config.rb`:
@@ -286,16 +282,10 @@ require 'csso'
 on_stylesheet_saved do |file|
   css = File.read(file)
   File.open(file, 'w') do |io|
-    io << Csso.optimize( AutoprefixerRails.compile(css) )
+    io << AutoprefixerRails.compile(css)
   end
 end
 ```
-
-If you use `compress` output style, Autoprefixer will uncompress CSS.
-For this reason, we use [csso-rails](https://github.com/Vasfed/csso-rails)
-to compress CSS back (it compress much better than Sass).
-
-If you need uncompressed CSS, remove `Csso.optimize` method call.
 
 You can set browsers array as second argument in `AutoprefixerRails.compile`.
 
