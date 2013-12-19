@@ -29,7 +29,9 @@ class Browsers
 
   # Aliases for browser names
   aliases:
-    fx: 'ff'
+    fx:         'ff'
+    firefox:    'ff'
+    blackberry: 'bb'
 
   # Available requirements to select browsers
   requirements:
