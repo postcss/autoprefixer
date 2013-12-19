@@ -55,24 +55,20 @@ class Browsers
     newerThen:
       regexp: /^(\w+) (>=?)\s*([\d\.]+)/
       select: (browser, sign, version) ->
-        browser = @aliases[browser] || browser
-        data    = @data[browser]
+        data    = @byName(browser)
         version = parseFloat(version)
-        utils.error("Unknown browser #{browser}") unless data
 
         if sign == '>'
           filter = (v) -> v > version
         else if sign == '>='
           filter = (v) -> v >= version
-        data.versions.filter(filter).map (v) -> "#{browser} #{v}"
+        data.versions.filter(filter).map (v) -> "#{data.name} #{v}"
 
     direct:
       regexp: /^(\w+) ([\d\.]+)$/
       select: (browser, version) ->
-        browser = @aliases[browser] || browser
-        data    = @data[browser]
+        data    = @byName(browser)
         version = parseFloat(version)
-        utils.error("Unknown browser #{browser}") unless data
 
         last  = if data.future then data.future[0] else data.versions[0]
         first = data.versions[data.versions.length - 1]
@@ -81,7 +77,7 @@ class Browsers
         else if version < first
           version = first
 
-        ["#{browser} #{version}"]
+        ["#{data.name} #{version}"]
 
   # Select major browsers versions by criteria
   browsers: (criteria) ->
@@ -102,5 +98,15 @@ class Browsers
   # Is browser is selected by requirements
   isSelected: (browser) ->
     @selected.indexOf(browser) != -1
+
+  # Return browser data by it name
+  byName: (name) ->
+    name = name.toLowerCase()
+    name = @aliases[name] || name
+    data = @data[name]
+
+    utils.error("Unknown browser #{browser}") unless data
+    data.name = name
+    data
 
 module.exports = Browsers
