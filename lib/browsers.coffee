@@ -46,6 +46,12 @@ class Browsers
         @browsers (data) ->
           if data.minor then [] else data.versions[0...versions]
 
+    lastByBrowser:
+      regexp: /^last (\d+) (\w+) versions?$/i
+      select: (versions, browser) ->
+        data = @byName(browser)
+        data.versions[0...versions].map (v) -> "#{data.name} #{v}"
+
     globalStatistics:
       regexp: /^> (\d+(\.\d+)?)%$/
       select: (popularity) ->

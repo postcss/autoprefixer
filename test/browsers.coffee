@@ -48,11 +48,15 @@ describe 'Browsers', ->
         new Browsers(data, ['unknown'])
       ).should.throw('Unknown browser requirement `unknown`')
 
-    it 'prefers latest versions', ->
+    it 'selects by latest versions', ->
       browsers = new Browsers(data, ['last 1 version'])
       browsers.selected.should.eql ['ie 3', 'chrome 3']
 
-    it 'sorts by popularity', ->
+    it 'selects by latest versions by browser', ->
+      browsers = new Browsers(data, ['last 2 chrome versions'])
+      browsers.selected.should.eql ['chrome 3', 'chrome 2']
+
+    it 'selects by popularity', ->
       browsers = new Browsers(data, ['> 0.2%'])
       browsers.selected.should.eql ['ie 3', 'ie 2',
                                     'chrome 3', 'chrome 2',
