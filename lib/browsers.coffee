@@ -31,6 +31,7 @@ class Browsers
   aliases:
     fx:         'ff'
     firefox:    'ff'
+    explorer:   'ie'
     blackberry: 'bb'
 
   # Available requirements to select browsers
