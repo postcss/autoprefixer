@@ -71,8 +71,8 @@ produced by many CSS libraries):
 
 ```css
 a {
-  -webkit-border-radius: 5px;
-  border-radius: 5px
+    -webkit-border-radius: 5px;
+    border-radius: 5px
 }
 ```
 
@@ -80,7 +80,7 @@ compiles to:
 
 ```css
 a {
-  border-radius: 5px
+    border-radius: 5px
 }
 ```
 
@@ -95,7 +95,7 @@ for old browsers:
 
 ```css
 a {
-  display: flex;
+    display: flex;
 }
 ```
 
@@ -103,11 +103,11 @@ compiles to:
 
 ```css
 a {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex
 }
 ```
 
