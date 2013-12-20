@@ -83,12 +83,10 @@ describe 'Browsers', ->
       browsers.selected.should.eql ['ie 3', 'ie 2', 'chrome 3', 'chrome 2']
 
     it 'has aliases', ->
-      ( new Browsers(data, ['fx 1'])    ).selected.should.eql ['ff 1']
       ( new Browsers(data, ['fx >= 1']) ).selected.should.eql ['ff 1']
 
     it 'ignores case', ->
-      ( new Browsers(data, ['Firefox 1'])    ).selected.should.eql ['ff 1']
-      ( new Browsers(data, ['Firefox >= 1']) ).selected.should.eql ['ff 1']
+      ( new Browsers(data, ['Firefox 1']) ).selected.should.eql ['ff 1']
 
   describe 'prefix()', ->
 
