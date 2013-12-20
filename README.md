@@ -137,11 +137,11 @@ You can specify the browsers you want to target in your project:
 autoprefixer("last 1 version", "> 1%", "ie 8", "ie 7").process(css).css;
 ```
 
-* `last n versions` is last versions for each browser. Like “last 2 versions”
+* `last 2 versions` is last versions for each browser. Like “last 2 versions”
   [strategy](http://support.google.com/a/bin/answer.py?answer=33864) in
   Google.
-* `last n ff versions` is last versions of Firefox.
-* `> n%` is browser versions, selected by global usage statistics.
+* `last 2 chrome versions` is last versions of specify browser.
+* `> 5%` is browser versions, selected by global usage statistics.
 * `ff > 20` and `ff >= 20` is Firefox versions newer, that 20.
 * `none` don’t set any browsers to clean CSS from any vendor prefixes.
 * You can also set browsers directly.
