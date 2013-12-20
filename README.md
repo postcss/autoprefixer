@@ -134,7 +134,7 @@ compiles CSS once on deploy and doesn’t hit client-side performance.
 You can specify the browsers you want to target in your project:
 
 ```js
-autoprefixer("last 1 version", "> 1%", "ie 8", "ie 7").process(css).css;
+autoprefixer("last 1 version", "> 1%", "explorer 7").process(css).css;
 ```
 
 * `last 2 versions` is last versions for each browser. Like “last 2 versions”
@@ -142,7 +142,7 @@ autoprefixer("last 1 version", "> 1%", "ie 8", "ie 7").process(css).css;
   Google.
 * `last 2 chrome versions` is last versions of specify browser.
 * `> 5%` is browser versions, selected by global usage statistics.
-* `ff > 20` and `ff >= 20` is Firefox versions newer, that 20.
+* `firefox > 20` and `firefox >= 20` is Firefox versions newer, that 20.
 * `none` don’t set any browsers to clean CSS from any vendor prefixes.
 * You can also set browsers directly.
 
@@ -150,20 +150,20 @@ Blackberry and stock Android browsers will not be used in `last n versions`.
 You can add them by name:
 
 ```js
-autoprefixer("last 1 version", "bb 10", "android 4").process(css).css;
+autoprefixer("last 1 version", "blackberry 10", "android 4").process(css).css;
 ```
 
-You can find the browsers codenames in [data file](data/browsers.coffee):
+Browsers names (case insensitive):
 * `android` for old Android stock browser.
-* `bb` for Blackberry browser.
+* `blackberry` or `bb` for Blackberry browser.
 * `chrome` for Google Chrome.
-* `ff` for Mozilla Firefox.
-* `ie` for Internet Explorer.
+* `firefox` or `ff` for Mozilla Firefox.
+* `explorer` or `ie` for Internet Explorer.
 * `ios` for iOS Safari.
 * `opera` for Opera.
 * `safari` for desktop Safari.
 
-By default, Autoprefixer uses `> 1%, last 2 versions, ff 24, opera 12.1`:
+By default, Autoprefixer uses `> 1%, last 2 versions, firefox 24, opera 12.1`:
 * Firefox 24 is a latest [ESR].
 * Opera 12.1 will be in list until Opera supports non-Blink 12.x branch.
 
