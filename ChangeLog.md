@@ -1,3 +1,23 @@
+## 1.0 “Plus ultra”
+* Source map support.
+* Save origin indents and code formatting.
+* Change CSS parser to PostCSS.
+* Rename compile() to process() and return result object, instead of CSS string.
+* Rename inspect() to info().
+* Add in binary -d option to specify output directory.
+* Binary now will not concat output files.
+* Allow to select last versions for specified browser.
+* Add full browser names aliases: `firefox`, `explorer` and `blackberry`.
+* Ignore case in browser names.
+* Change license to MIT.
+* Add prefixes inside custom at-rules.
+* Add only necessary prefixes to selector inside prefixed at-rule.
+* Safer backgrounds list parser in gradient hack.
+* Prefix @keyframes inside @media.
+* Don’t prefix values for CSS3 PIE properties.
+* Binary now shows file name in syntax error.
+* Use browserify to build standalone version.
+
 ## 0.8 “Unbowed, Unbent, Unbroken”
 * Add more browsers to defaults ("> 1%, last 2 versions, ff 17, opera 12.1"
   instead of just "last 2 browsers").
