@@ -203,19 +203,15 @@ class Binary
       @print result.css
       @endWork()
     else
-      fs.mkdirs path.dirname(output), (error) =>
-        if error
-          @error "autoprefixer: #{ error }"
-        else
-          fs.writeFile output, result.css, (error) =>
-            @error "autoprefixer: #{ error }" if error
+      fs.outputFile output, result.css, (error) =>
+        @error "autoprefixer: #{ error }" if error
 
-            if result.map
-              fs.writeFile output + '.map', result.map, (error) =>
-                @error "autoprefixer: #{ error }" if error
-                @endWork()
-            else
-              @endWork()
+        if result.map
+          fs.writeFile output + '.map', result.map, (error) =>
+            @error "autoprefixer: #{ error }" if error
+            @endWork()
+        else
+          @endWork()
 
   # Return input and output files array
   files: ->
