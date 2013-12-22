@@ -402,6 +402,12 @@ You can process your styles directly in Sublime Text with the
 [sublime-autoprefixer](https://github.com/sindresorhus/sublime-autoprefixer)
 plugin.
 
+### Brackets
+
+Styles can processed automatically in Brackets using the
+[brackets-autoprefixer](https://github.com/mikaeljorhult/brackets-autoprefixer)
+extension.
+
 
 ### Others
 
