@@ -364,6 +364,7 @@ Use `autoprefixer` npm package:
 
 ```js
 var autoprefixer = require('autoprefixer');
+var css          = 'a { transition: transform 1s }';
 var prefixed     = autoprefixer.process(css).css;
 ```
 
