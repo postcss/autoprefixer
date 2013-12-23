@@ -2,7 +2,7 @@
 * Source map support.
 * Save origin indents and code formatting.
 * Change CSS parser to PostCSS.
-* Preserve vendor-prefixed rules put right after unprefixed ones.
+* Preserve vendor-prefixed properties put right after unprefixed ones.
 * Rename compile() to process() and return result object, instead of CSS string.
 * Rename inspect() to info().
 * Add in binary -d option to specify output directory.
