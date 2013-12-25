@@ -43,12 +43,12 @@ class Autoprefixer
   compile: (str, options = {}) ->
     fixed = { }
     for name, value of options
-      name == 'from' if name == 'file'
+      name = 'from' if name == 'file'
       fixed[name] = value
 
     console?.warn('autoprefixer: replace compile() to process(). ' +
                   'Method compile() is deprecated and will be removed in 1.1.')
-    @process(str, options).css
+    @process(str, fixed).css
 
   # Return PostCSS processor, which will add necessary prefixes
   postcss: (css) =>
