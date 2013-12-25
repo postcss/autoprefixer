@@ -9,7 +9,7 @@ borderer    = autoprefixer('safari 4',  'ff 3.6')
 keyframer   = autoprefixer('safari 6',  'chrome 25', 'opera 12')
 flexboxer   = autoprefixer('safari 6',  'chrome 25', 'ff 21', 'ie 10')
 gradienter  = autoprefixer('chrome 25', 'opera 12', 'android 2.3')
-selectorer  = autoprefixer('chrome 25', 'ff 22', 'ie 10')
+selectorer  = autoprefixer('chrome 25', 'ff > 17', 'ie 10')
 intrinsicer = autoprefixer('chrome 25', 'ff 22')
 
 prefixer = (name) ->

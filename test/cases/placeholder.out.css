@@ -1,4 +1,7 @@
 
+:-moz-placeholder {
+    color: #999
+}
 ::-webkit-input-placeholder {
     color: #999
 }

@@ -9,6 +9,8 @@ class Placeholder extends Selector
       '::-webkit-input-placeholder'
     else if '-ms-' == prefix
       ':-ms-input-placeholder'
+    else if '-moz- old' == prefix
+      ':-moz-placeholder'
     else
       "::#{ prefix }placeholder"
 

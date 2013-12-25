@@ -137,6 +137,12 @@ module.exports = (updater) ->
 
   # Placeholder selector
   @feature 'css-placeholder', (browsers) =>
+    browsers = @map browsers, (browser, name, version) ->
+      if name == 'ff' and version <= 18
+        browser + ' old'
+      else
+        browser
+
     prefix '::placeholder',
             selector: true,
             browsers: browsers
