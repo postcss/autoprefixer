@@ -61,7 +61,7 @@ class Prefixes
         else
           prefix
 
-      add = utils.uniq(add).sort( (a, b) -> b.length - a.length )
+      add = @sort utils.uniq(add)
 
       all = data.browsers.map( (i) => @browsers.prefix(i) )
       all = all.concat(data.mistakes) if data.mistakes
@@ -76,6 +76,17 @@ class Prefixes
         selected.remove[name] = all
 
     selected
+
+  # Sort vendor prefixes
+  sort: (prefixes) ->
+    prefixes.sort (a, b) ->
+      aLength = utils.removeNote(a).length
+      bLength = utils.removeNote(b).length
+
+      if aLength == bLength
+        b.length - a.length
+      else
+        bLength - aLength
 
   # Cache prefixes data to fast CSS processing
   preprocess: (selected) ->
