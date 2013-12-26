@@ -124,8 +124,6 @@ task 'bench', 'Benchmark on GitHub styles', ->
       test = require('./benchmark/' + file)
       test css, (time) ->
         print(time + " ms")
-        if times.compass
-          indent(times.compass, time)
         if times.autoprefixer
           slower = time / times.autoprefixer
           if slower < 1
