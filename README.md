@@ -121,9 +121,9 @@ On a Core i7 with 10 GB of RAM and SSD, benchmark with GitHub styles is:
 ```
 ~/Dev/autoprefixer$ ./node_modules/.bin/cake bench
 Load GitHub styles
-Autoprefixer: 522 ms
-Compass:      4901 ms (9.4 times slower)
-Stylus:       4544 ms (8.7 times slower)
+Autoprefixer: 489 ms
+Compass:      4156 ms (8.5 times slower)
+Stylus:       4165 ms (8.5 times slower)
 ```
 
 Unlike [-prefix-free](http://leaverou.github.io/prefixfree/), Autoprefixer
