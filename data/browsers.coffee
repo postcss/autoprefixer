@@ -224,6 +224,7 @@ module.exports =
   opera:
     prefix: "-o-"
     future: [
+      19
       18
     ]
     versions: [
