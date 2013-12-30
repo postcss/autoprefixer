@@ -84,7 +84,7 @@ a {
 }
 ```
 
-### Rewrite syntax
+### Flexbox, Gradients, etc.
 
 Flexbox or gradients have different syntaxes in different browsers
 (sometimes you need to recalculate angles, sometimes you need 2 old properties
@@ -110,6 +110,10 @@ a {
     display: flex
 }
 ```
+
+Autoprefixer has [22 special hack] to fix browser’s differences.
+
+[22 special hack]: https://github.com/ai/autoprefixer/tree/master/lib/hacks
 
 ### Fast
 
