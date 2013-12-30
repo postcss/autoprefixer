@@ -84,6 +84,10 @@ a {
 }
 ```
 
+Note, that Autoprefixer doesn’t load Can I Use data every time. This data
+is already packed to release, so with same Autoprefixer version you always will
+have same output result.
+
 ### Flexbox, Gradients, etc.
 
 Flexbox or gradients have different syntaxes in different browsers
