@@ -163,13 +163,14 @@ module.exports = (updater) ->
     prefix 'tab-size',
             browsers: browsers
 
-  # Intrinsic & Extrinsic Sizing
+  # Intrinsic & extrinsic sizing
   @feature 'intrinsic-width', (browsers) =>
     prefix 'max-content', 'min-content', 'fit-content', 'fill-available',
             props:  ['width',  'min-width',  'max-width',
                      'height', 'min-height', 'max-height']
             browsers: browsers
 
+  # Zoom and grub cursos
   @feature 'css3-cursors-newer', (browsers) =>
     prefix 'zoom-in', 'zoom-out', 'grab', 'grabbing',
             props:  ['cursor']
