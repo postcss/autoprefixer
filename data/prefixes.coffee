@@ -4910,6 +4910,18 @@ module.exports =
       "safari 6"
     ]
 
+  sticky:
+    props: [
+      "position"
+    ]
+    browsers: [
+      "ios 6"
+      "ios 6.1"
+      "ios 7"
+      "safari 6.1"
+      "safari 7"
+    ]
+
   "tab-size":
     browsers: [
       "ff 4"
