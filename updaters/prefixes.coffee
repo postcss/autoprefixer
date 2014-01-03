@@ -177,7 +177,7 @@ module.exports = (updater) ->
             browsers: browsers
 
   # Sticky position
-  @fork 'ai:sticky', 'css-sticky', (browsers) =>
+  @feature 'css-sticky', (browsers) =>
     prefix 'sticky',
             props:  ['position']
             browsers: browsers
