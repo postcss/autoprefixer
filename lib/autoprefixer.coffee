@@ -52,8 +52,8 @@ class Autoprefixer
 
   # Return PostCSS processor, which will add necessary prefixes
   postcss: (css) =>
-    @prefixes.processor.add(css)
     @prefixes.processor.remove(css)
+    @prefixes.processor.add(css)
 
   # Return string, what browsers selected and whar prefixes will be added
   info: ->
