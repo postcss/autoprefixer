@@ -23,6 +23,11 @@ data =
     c:
       browsers: ['ff 2']
       props:    ['c']
+    d:
+      browsers: ['ff 2']
+      selector:   true
+    '@keyframes':
+      browsers: ['ff 2']
     transition:
       browsers: ['ff 2']
 
@@ -36,6 +41,12 @@ describe 'info', ->
                               "  Chrome: 1\n" +
                               "  Firefox: 2, 1\n" +
                               "  IE: 2\n" +
+                              "\n" +
+                              "At-Rules:\n" +
+                              "  @keyframes: moz\n" +
+                              "\n" +
+                              "Selectors:\n" +
+                              "  d: moz\n" +
                               "\n" +
                               "Properties:\n" +
                               "  transition: moz\n" +

@@ -30,12 +30,24 @@ module.exports = (prefixes) ->
     list = list.sort (a, b) -> parseFloat(b) - parseFloat(a)
     out += '  ' + browser + ': ' + list.join(', ') + "\n"
 
+  atrules = ''
+  for name, data of prefixes.add
+    if name[0] == '@' and data.prefixes
+      atrules += prefix(name, false, data.prefixes)
+  out += "\nAt-Rules:\n" + atrules if atrules  != ''
+
+  selectors = ''
+  for selector in prefixes.add.selectors
+    if selector.prefixes
+      selectors += prefix(selector.name, false, selector.prefixes)
+  out += "\nSelectors:\n" + selectors if selectors  != ''
+
   values = ''
   props  = ''
   useTransition  = false
   needTransition = prefixes.add.transition?.prefixes
   for name, data of prefixes.add
-    if data.prefixes
+    if name[0] != '@' and data.prefixes
       transitionProp = needTransition and prefixes.data[name].transition
       useTransition  = true if transitionProp
       props += prefix(name, transitionProp, data.prefixes)
@@ -50,7 +62,7 @@ module.exports = (prefixes) ->
   if useTransition
     props += "  * - can be used in transition\n"
 
-  out += "\nProperties:\n"+ props if props  != ''
-  out += "\nValues:\n" + values   if values != ''
+  out += "\nProperties:\n" + props  if props  != ''
+  out += "\nValues:\n"     + values if values != ''
 
   out
