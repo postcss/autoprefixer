@@ -15,12 +15,11 @@
   },
   "devDependencies": {
     "coffee-script": "1.6.3",
-    "browserify":    "3.18.0",
+    "browserify":    "3.19.1",
     "should":        "2.1.1",
-    "stylus":        "0.41.3",
-    "mocha":         "1.16.2",
-    "glob":          "3.2.7",
-    "nib":           "1.0.1"
+    "stylus":        "0.42.0",
+    "mocha":         "1.17.0",
+    "nib":           "1.0.2"
   },
   "bin": {
     "autoprefixer": "./bin/autoprefixer"
