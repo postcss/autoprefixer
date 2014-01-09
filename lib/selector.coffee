@@ -2,22 +2,35 @@ Prefixer = require('./prefixer')
 utils    = require('./utils')
 
 class Selector extends Prefixer
+  constructor: (@name, @prefixes, @all) ->
+    @regexpCache = { }
 
   # Is rule selectors need to be prefixed
-  check: (rule) ->
-    rule.selector.indexOf(@name) != -1
+  check: (rule, prefix) ->
+    name = if prefix then @prefixed(prefix) else @name
+    if rule.selector.indexOf(name) != -1
+      !!rule.selector.match(@regexp(prefix))
+    else
+      false
+
+  # Return function to find prefixed selector
+  checker: (prefix) ->
+    (rule) => @check(rule, prefix)
 
   # Return prefixed version of selector
   prefixed: (prefix) ->
     @name.replace(/^([^\w]*)/, '$1' + prefix)
 
   # Lazy loadRegExp for name
-  regexp: ->
-    @regexpCache ||= new RegExp(utils.escapeRegexp(@name), 'gi')
+  regexp: (prefix) ->
+    return @regexpCache[prefix] if @regexpCache[prefix]
+
+    name = if prefix then @prefixed(prefix) else @name
+    @regexpCache = new RegExp('(^|[^:])' + utils.escapeRegexp(name), 'gi')
 
   # Replace selectors by prefixed one
   replace: (selector, prefix) ->
-    selector.replace(@regexp(), @prefixed(prefix))
+    selector.replace(@regexp(), '$1' + @prefixed(prefix))
 
   # Clone and add prefixes for at-rule
   add: (rule, prefix) ->

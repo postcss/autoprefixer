@@ -35,10 +35,9 @@ class Processor
         rule.parent.remove(i)
 
     # Selectors
-    for selector in @prefixes.remove.selectors
+    for checker in @prefixes.remove.selectors
       css.eachRule (rule, i) =>
-        if rule.selector.indexOf(selector) != -1
-          rule.parent.remove(i)
+        rule.parent.remove(i) if checker(rule)
 
     css.eachDecl (decl, i) =>
       rule       = decl.parent

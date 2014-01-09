@@ -13,9 +13,19 @@ describe 'Selector', ->
   describe 'check()', ->
 
     it 'shecks rule selectors', ->
-      css = parse('body .selection {}, body ::selection {}')
+      css = parse('body .selection {}, :::selection {}, body ::selection {}')
       @selector.check(css.rules[0]).should.be.false
-      @selector.check(css.rules[1]).should.be.true
+      @selector.check(css.rules[1]).should.be.false
+      @selector.check(css.rules[2]).should.be.true
+
+  describe 'checker()', ->
+
+    it 'returns function to find prefixed selector', ->
+      css = parse(':::-moz-selection {}, body::-moz-selection {}')
+      checker = @selector.checker('-moz-')
+
+      checker(css.rules[0]).should.be.false
+      checker(css.rules[1]).should.be.true
 
   describe 'replace()', ->
 
