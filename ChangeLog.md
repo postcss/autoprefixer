@@ -29,6 +29,11 @@
 * Add webkit prefix for sticky position.
 * Update browsers popularity statistics.
 
+### 20140109:
+
+* Add selectors and at-rules sections to debug info.
+* Fix outdated prefixes cleaning.
+
 ## 0.8 “Unbowed, Unbent, Unbroken”
 * Add more browsers to defaults ("> 1%, last 2 versions, ff 17, opera 12.1"
   instead of just "last 2 browsers").
