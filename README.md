@@ -148,9 +148,10 @@ autoprefixer("last 1 version", "> 1%", "explorer 7").process(css).css;
 * `last 2 versions` is last versions for each browser. Like “last 2 versions”
   [strategy](http://support.google.com/a/bin/answer.py?answer=33864) in
   Google.
-* `last 2 chrome versions` is last versions of specify browser.
+* `last 2 Chrome versions` is last versions of specify browser.
 * `> 5%` is browser versions, selected by global usage statistics.
-* `firefox > 20` and `firefox >= 20` is Firefox versions newer, that 20.
+* `Firefox > 20` and `Firefox >= 20` is Firefox versions newer, that 20.
+* `Firefix ESR` is latest [Firefox ESR] version.
 * `none` don’t set any browsers to clean CSS from any vendor prefixes.
 * You can also set browsers directly.
 
@@ -158,7 +159,7 @@ Blackberry and stock Android browsers will not be used in `last n versions`.
 You can add them by name:
 
 ```js
-autoprefixer("last 1 version", "blackberry 10", "android 4").process(css).css;
+autoprefixer("last 1 version", "BlackBerry 10", "Android 4").process(css).css;
 ```
 
 Browsers names (case insensitive):
@@ -171,11 +172,11 @@ Browsers names (case insensitive):
 * `opera` for Opera.
 * `safari` for desktop Safari.
 
-By default, Autoprefixer uses `> 1%, last 2 versions, firefox 24, opera 12.1`:
-* Firefox 24 is a latest [ESR].
+By default, Autoprefixer uses `> 1%, last 2 versions, Firefox ESR, Opera 12.1`:
+* Latest [Firefox ESR] is a 24 version.
 * Opera 12.1 will be in list until Opera supports non-Blink 12.x branch.
 
-[ESR]: http://www.mozilla.org/en/firefox/organizations/faq/
+[Firefox ESR]: http://www.mozilla.org/en/firefox/organizations/faq/
 
 ## Source Map
 
