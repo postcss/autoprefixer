@@ -34,6 +34,12 @@
 * Add selectors and at-rules sections to debug info.
 * Fix outdated prefixes cleaning.
 
+### 20140110:
+
+* Add `Firefox ESR` browser requirement.
+* Opera 18 is moved to released versions.
+* Add Opera 20 data.
+
 ## 0.8 “Unbowed, Unbent, Unbroken”
 * Add more browsers to defaults ("> 1%, last 2 versions, ff 17, opera 12.1"
   instead of just "last 2 browsers").
