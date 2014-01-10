@@ -224,10 +224,11 @@ module.exports =
   opera:
     prefix: "-o-"
     future: [
+      20
       19
-      18
     ]
     versions: [
+      18
       17
       16
       15
@@ -245,6 +246,7 @@ module.exports =
       9.5
     ]
     popularity: [
+      0.321678
       0.038295
       0.022977
       0.022977
