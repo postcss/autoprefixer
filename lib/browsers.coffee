@@ -71,6 +71,11 @@ class Browsers
           filter = (v) -> v >= version
         data.versions.filter(filter).map (v) -> "#{data.name} #{v}"
 
+    esr:
+      regexp: /^(firefox|ff|fx) esr$/i
+      select: ->
+        ['ff 24']
+
     direct:
       regexp: /^(\w+) ([\d\.]+)$/
       select: (browser, version) ->

@@ -65,7 +65,7 @@ class Autoprefixer
     @processorCache ||= postcss(@postcss)
 
 # Autoprefixer default browsers
-autoprefixer.default = ['> 1%', 'last 2 versions', 'ff 24', 'opera 12.1']
+autoprefixer.default = ['> 1%', 'last 2 versions', 'ff esr', 'opera 12.1']
 
 # Lazy load for Autoprefixer with default browsers
 autoprefixer.loadDefault = ->
