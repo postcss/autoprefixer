@@ -142,7 +142,7 @@ compiles CSS once on deploy and doesn’t hit client-side performance.
 You can specify the browsers you want to target in your project:
 
 ```js
-autoprefixer("last 1 version", "> 1%", "explorer 7").process(css).css;
+autoprefixer("last 1 version", "> 1%", "Explorer 7").process(css).css;
 ```
 
 * `last 2 versions` is last versions for each browser. Like “last 2 versions”
@@ -163,14 +163,14 @@ autoprefixer("last 1 version", "BlackBerry 10", "Android 4").process(css).css;
 ```
 
 Browsers names (case insensitive):
-* `android` for old Android stock browser.
-* `blackberry` or `bb` for Blackberry browser.
-* `chrome` for Google Chrome.
-* `firefox` or `ff` for Mozilla Firefox.
-* `explorer` or `ie` for Internet Explorer.
-* `ios` for iOS Safari.
-* `opera` for Opera.
-* `safari` for desktop Safari.
+* `Android` for old Android stock browser.
+* `BlackBerry` or `bb` for Blackberry browser.
+* `Chrome` for Google Chrome.
+* `Firefox` or `ff` for Mozilla Firefox.
+* `Explorer` or `ie` for Internet Explorer.
+* `iOS` for iOS Safari.
+* `Opera` for Opera.
+* `Safari` for desktop Safari.
 
 By default, Autoprefixer uses `> 1%, last 2 versions, Firefox ESR, Opera 12.1`:
 * Latest [Firefox ESR] is a 24 version.
