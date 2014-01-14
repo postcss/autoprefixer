@@ -240,6 +240,23 @@ No. Autoprefixer only adds prefixes, not polyfills. There are two reasons:
    only used for styling should be ignored in old IEs as it is recommended in
    Graceful Degradation.
 
+### Why gradients doesn’t work in Firefox?
+
+Check, that you use correct [direction syntax]. For example, you should use
+`to bottom` instead of `top`:
+
+```css
+a {
+  background: linear-gradient(to bottom, white, black)
+}
+```
+
+Unfortunately, unprefixed gradients use different direction syntax, that most
+of old gradients examples, so be careful and use always latest W3C specs with
+Autoprefixer.
+
+[direction syntax]: https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient
+
 ### Why Autoprefixer doesn’t add prefixes to `border-radius`?
 
 Developers are often surprised by how few prefixes are required today.
