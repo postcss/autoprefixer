@@ -234,7 +234,7 @@ autoprefixer -i
 No. Autoprefixer only adds prefixes, not polyfills. There are two reasons:
 
 1. Prefixes and polyfills are very different and need a different API.
-   Two separate libraries would be much better.
+   Two separate libraries would be much better.
 2. Most of IE polyfills are very bad for client perfomance. They use slow hacks
    and old IEs is mostly used on old hardware. Most of CSS 3 features that is
    only used for styling should be ignored in old IEs as it is recommended in
