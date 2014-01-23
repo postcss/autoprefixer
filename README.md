@@ -150,7 +150,7 @@ autoprefixer("last 1 version", "> 1%", "Explorer 7").process(css).css;
   Google.
 * `last 2 Chrome versions` is last versions of specify browser.
 * `> 5%` is browser versions, selected by global usage statistics.
-* `Firefox > 20` and `Firefox >= 20` is Firefox versions newer than v20.
+* `Firefox > 20` and `Firefox >= 20` is Firefox versions newer than 20.
 * `Firefix ESR` is latest [Firefox ESR] version.
 * `none` don’t set any browsers to clean CSS from any vendor prefixes.
 * You can also set browsers directly.
@@ -314,10 +314,10 @@ on_stylesheet_saved do |file|
 end
 ```
 
-You can set browsers array as second argument in `AutoprefixerRails.process`:
+You can set browsers array as second argument in `process` method:
 
 ```ruby
-io << AutoprefixerRails.process(css, ["last 1 version", "> 1%", "Explorer 7"]);
+io << AutoprefixerRails.process(css, ["last 1 version", "> 1%", "Explorer 7"])
 ```
 
 ### Stylus
