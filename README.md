@@ -150,7 +150,7 @@ autoprefixer("last 1 version", "> 1%", "Explorer 7").process(css).css;
   Google.
 * `last 2 Chrome versions` is last versions of specify browser.
 * `> 5%` is browser versions, selected by global usage statistics.
-* `Firefox > 20` and `Firefox >= 20` is Firefox versions newer, that 20.
+* `Firefox > 20` and `Firefox >= 20` is Firefox versions newer than v20.
 * `Firefix ESR` is latest [Firefox ESR] version.
 * `none` don’t set any browsers to clean CSS from any vendor prefixes.
 * You can also set browsers directly.
@@ -180,10 +180,10 @@ By default, Autoprefixer uses `> 1%, last 2 versions, Firefox ESR, Opera 12.1`:
 
 ## Source Map
 
-Autoprefixer will generate source map, if you set `map` option to `true`.
+Autoprefixer will generate a source map if you set `map` option to `true`.
 
 You must set input and output CSS files paths (by `from` and `to` options)
-to generate correct map.
+to generate a correct map.
 
 ```js
 var result = autoprefixer.process(css, {
@@ -240,9 +240,9 @@ No. Autoprefixer only adds prefixes, not polyfills. There are two reasons:
    only used for styling should be ignored in old IEs as it is recommended in
    Graceful Degradation.
 
-### Why gradients doesn’t work in Firefox?
+### Why don’t gradients work in Firefox?
 
-Check, that you use correct [direction syntax]. For example, you should use
+Check that you use correct [direction syntax]. For example, you should use
 `to bottom` instead of `top`:
 
 ```css
@@ -257,7 +257,7 @@ Autoprefixer.
 
 [direction syntax]: https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient
 
-### Why Autoprefixer doesn’t add prefixes to `border-radius`?
+### Why doesn’t Autoprefixer add prefixes to `border-radius`?
 
 Developers are often surprised by how few prefixes are required today.
 If Autoprefixer doesn’t add prefixes to your CSS, check if they’re still
@@ -268,9 +268,9 @@ incorrectly, please
 [report an issue](https://github.com/ai/autoprefixer/issues/new)
 and include your source CSS and expected output.
 
-### Why Autoprefixer doesn’t support `appearance`?
+### Why doesn’t Autoprefixer support `appearance`?
 
-Instead of `transition`, `appearance` property is not a part of
+Unlike `transition`, the `appearance` property is not a part of
 any specification. So there is no `appearance`, only `-moz-appearance`
 and `-webkit-appearance`. Quote from [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/-moz-appearance):
 
@@ -309,12 +309,16 @@ require 'csso'
 on_stylesheet_saved do |file|
   css = File.read(file)
   File.open(file, 'w') do |io|
-    io << AutoprefixerRails.compile(css)
+    io << AutoprefixerRails.process(css)
   end
 end
 ```
 
-You can set browsers array as second argument in `AutoprefixerRails.compile`.
+You can set browsers array as second argument in `AutoprefixerRails.process`:
+
+```ruby
+io << AutoprefixerRails.process(css, ["last 1 version", "> 1%", "Explorer 7"]);
+```
 
 ### Stylus
 
