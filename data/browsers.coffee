@@ -5,8 +5,10 @@ module.exports =
   android:
     prefix: "-webkit-"
     minor: true
-    versions: [
+    future: [
       4.4
+    ]
+    versions: [
       4.3
       4.2
       4.1
@@ -17,7 +19,6 @@ module.exports =
       2.1
     ]
     popularity: [
-      0.0682337
       0.53036
       0.53036
       2.31995
@@ -45,9 +46,9 @@ module.exports =
     future: [
       35
       34
+      33
     ]
     versions: [
-      33
       32
       31
       30
@@ -79,7 +80,6 @@ module.exports =
       4
     ]
     popularity: [
-      0.214452
       0.513153
       30.1841
       0.628038
@@ -116,9 +116,9 @@ module.exports =
     future: [
       29
       28
+      27
     ]
     versions: [
-      27
       26
       25
       24
@@ -148,7 +148,6 @@ module.exports =
       2
     ]
     popularity: [
-      0.260406
       4.77922
       7.50582
       0.359973
@@ -230,9 +229,9 @@ module.exports =
     prefix: "-o-"
     future: [
       20
+      19
     ]
     versions: [
-      19
       18
       17
       16
@@ -251,7 +250,6 @@ module.exports =
       9.5
     ]
     popularity: [
-      0.007659
       0.321678
       0.038295
       0.022977

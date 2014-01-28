@@ -15,8 +15,8 @@ module.exports = ->
 
     agent = (name) ->
       info     = data.agents[name]
-      future   = normalize(info.versions[-2..-1]).map (i) -> parseFloat(i)
-      versions = intervals(normalize(info.versions[0..-3]))
+      future   = normalize(info.versions[-3..-1]).map (i) -> parseFloat(i)
+      versions = intervals(normalize(info.versions[0..-4]))
       result   = prefix: "-#{info.prefix}-"
       result.minor      = true   if minor.indexOf(name) != -1
       result.future     = future if future.length
