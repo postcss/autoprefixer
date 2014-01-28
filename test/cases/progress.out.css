@@ -1,0 +1,12 @@
+
+progress {
+    background: black
+}
+
+progress::-moz-progress-bar {
+    background: white
+}
+
+progress::-webkit-progress-value {
+    background: white
+}

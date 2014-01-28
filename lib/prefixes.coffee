@@ -9,6 +9,7 @@ Value       = require('./value')
 
 Selector.hack require('./hacks/fullscreen')
 Selector.hack require('./hacks/placeholder')
+Selector.hack require('./hacks/progress')
 
 Declaration.hack require('./hacks/flex')
 Declaration.hack require('./hacks/order')
