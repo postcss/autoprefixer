@@ -1567,7 +1567,6 @@ module.exports =
       "ff 26"
       "ff 27"
       "ff 28"
-      "ff 29"
       "ios 3.2"
       "ios 4"
       "ios 4.1"
