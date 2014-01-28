@@ -42,7 +42,7 @@ test = (from, instansce = prefixer(from)) ->
 commons = ['transition', 'values', 'keyframes', 'gradient', 'flex-rewrite',
            'flexbox', 'filter', 'border-image', 'border-radius', 'notes',
            'selectors', 'placeholder', 'fullscreen', 'intrinsic', 'mistakes',
-           'custom-prefix']
+           'custom-prefix', 'progress']
 
 describe 'autoprefixer()', ->
 
@@ -125,6 +125,7 @@ describe 'Autoprefixer', ->
     it 'supports all fullscreens',      -> test('fullscreen')
     it 'supports intrinsic sizing',     -> test('intrinsic')
     it 'supports custom prefixes',      -> test('custom-prefix')
+    it 'supports progress bars',        -> test('progress')
 
     it 'ignores transform in transition for IE', ->
       input  = read('ie-transition')

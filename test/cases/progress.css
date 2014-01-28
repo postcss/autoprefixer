@@ -1,0 +1,8 @@
+
+progress {
+    background: black
+}
+
+progress::progress-bar {
+    background: white
+}

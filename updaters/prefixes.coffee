@@ -158,6 +158,12 @@ module.exports = (updater) ->
             selector: true,
             browsers: browsers
 
+  # Progress bar
+  @feature 'progressmeter', (browsers) => #TODO: doesn’t work?!
+    prefix '::progress-bar',
+            selector: true,
+            browsers: browsers
+
   # Tab size
   @feature 'css3-tabsize', (browsers) =>
     prefix 'tab-size',

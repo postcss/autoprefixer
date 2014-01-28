@@ -81,6 +81,12 @@ module.exports =
       "safari 7"
     ]
 
+  "::progress-bar":
+    selector: true
+    browsers: [
+      
+    ]
+
   "::selection":
     selector: true
     browsers: [
