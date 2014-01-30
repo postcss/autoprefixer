@@ -45,6 +45,11 @@
 * Chrome 32 is moved to released versions.
 * Add Opera 34 data.
 
+### 20140130:
+
+* Fix flexbox properties names in transitions.
+* Add Chrome 35 and Firefox 29 data.
+
 ## 0.8 “Unbowed, Unbent, Unbroken”
 * Add more browsers to defaults ("> 1%, last 2 versions, ff 17, opera 12.1"
   instead of just "last 2 browsers").
