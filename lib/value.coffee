@@ -11,7 +11,7 @@ class Value extends Prefixer
       continue if value == decl.value
       propPrefix = vendor.prefix(decl.prop)
 
-      if propPrefix == utils.removeNote(prefix)
+      if propPrefix == prefix
         decl.value = value
       else if propPrefix == '-pie-'
         continue

@@ -17,6 +17,12 @@ a {
     -moz-box-flex: 0;
     -ms-flex: 0 1 2;
     flex: 0 1 2;
+    -webkit-transition: -webkit-box-flex 200ms;
+    -webkit-transition: -webkit-flex 200ms;
+    transition: -webkit-box-flex 200ms;
+    transition: -moz-box-flex 200ms;
+    transition: -ms-flex 200ms;
+    transition: flex 200ms;
 }
 .inline {
     display: -webkit-inline-flex;

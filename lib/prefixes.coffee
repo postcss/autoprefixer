@@ -28,6 +28,7 @@ Declaration.hack require('./hacks/justify-content')
 
 Value.hack require('./hacks/gradient')
 Value.hack require('./hacks/transform')
+Value.hack require('./hacks/transition')
 Value.hack require('./hacks/display-flex')
 Value.hack require('./hacks/fill-available')
 
@@ -134,7 +135,7 @@ class Prefixes
           @data[name].props
 
         if props
-          value = Value.load(name)
+          value = Value.load(name, [], @)
           for prefix in prefixes
             old = value.old(prefix)
             if old
