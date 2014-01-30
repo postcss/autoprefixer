@@ -14,11 +14,11 @@
     "fs-extra": "~0.8.1"
   },
   "devDependencies": {
-    "coffee-script": "1.6.3",
-    "browserify":    "3.20.0",
-    "should":        "2.1.1",
-    "stylus":        "0.42.0",
-    "mocha":         "1.17.0",
+    "coffee-script": "1.7.1",
+    "browserify":    "3.24.6",
+    "should":        "3.1.2",
+    "stylus":        "0.42.1",
+    "mocha":         "1.17.1",
     "nib":           "1.0.2"
   },
   "bin": {

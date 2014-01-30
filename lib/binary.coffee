@@ -57,8 +57,7 @@ class Binary
       Separate browsers by comma. For example, `-b "> 1%, opera 12"'.
       You can set browsers by global usage statictics: `-b \"> 1%\"'.
       or last version: `-b "last 2 versions"'.
-    '''
-    .replace(/\+\s+/g, '')
+    '''.replace(/\+\s+/g, '')
 
   # Print to stdout
   print: (str) ->
