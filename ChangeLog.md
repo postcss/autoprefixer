@@ -50,6 +50,11 @@
 * Fix flexbox properties names in transitions.
 * Add Chrome 35 and Firefox 29 data.
 
+### 20140203:
+* Android 4.4 stock browser and Opera 19 are moved to released versions.
+* Add Opera 21 data.
+* Update browsers usage statistics.
+
 ## 0.8 “Unbowed, Unbent, Unbroken”
 * Add more browsers to defaults ("> 1%, last 2 versions, ff 17, opera 12.1"
   instead of just "last 2 browsers").
