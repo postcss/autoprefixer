@@ -17,7 +17,9 @@ module.exports = ->
       info     = data.agents[name]
       future   = normalize(info.versions[-3..-1]).map (i) -> parseFloat(i)
       versions = intervals(normalize(info.versions[0..-4]))
-      result   = prefix: "-#{info.prefix}-"
+      result   = {}
+
+      result.prefix    = if name == 'opera' then '-o-' else "-#{info.prefix}-"
       result.minor      = true   if minor.indexOf(name) != -1
       result.future     = future if future.length
       result.versions   = versions.map (i) -> i[0]
