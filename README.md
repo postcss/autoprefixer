@@ -115,9 +115,9 @@ a {
 }
 ```
 
-Autoprefixer has [22 special hack] to fix browser’s differences.
+Autoprefixer has [22 special hacks] to fix browser’s differences.
 
-[22 special hack]: https://github.com/ai/autoprefixer/tree/master/lib/hacks
+[22 special hacks]: https://github.com/ai/autoprefixer/tree/master/lib/hacks
 
 ### Fast
 
