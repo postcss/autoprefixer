@@ -3,7 +3,7 @@ Value    = require('../value')
 utils    = require('../utils')
 list     = require('postcss/lib/list')
 
-isDirection = new RegExp('(top|left|right|bottom)', 'gi')
+isDirection = /top|left|right|bottom/gi
 
 class Gradient extends Value
   @names = ['linear-gradient', 'repeating-linear-gradient',

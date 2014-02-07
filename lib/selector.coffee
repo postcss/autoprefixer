@@ -26,7 +26,7 @@ class Selector extends Prefixer
     return @regexpCache[prefix] if @regexpCache[prefix]
 
     name = if prefix then @prefixed(prefix) else @name
-    @regexpCache = new RegExp('(^|[^:])' + utils.escapeRegexp(name), 'gi')
+    @regexpCache = /// (^|[^:]) #{ utils.escapeRegexp(name) } ///gi
 
   # Replace selectors by prefixed one
   replace: (selector, prefix) ->
