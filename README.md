@@ -40,6 +40,10 @@ to apply prefixes for you:
 }
 ```
 
+You can play with your CSS in
+[interactive demo](http://fiddle.jshell.net/simevidas/Y9X3N/3/show/light/)
+of Autoprefixer.
+
 Twitter account for news and releases:
 [@autoprefixer](https://twitter.com/autoprefixer).
 
