@@ -34,7 +34,7 @@ class Binary
   # Options description
   desc: -> '''
     Files:
-      If you didn't set input files, autoprefixer will +
+      If you didn't set input files, autoprefixer will \
         read from stdin stream.
 
       By default, prefixed CSS will rewrite original files.
@@ -42,7 +42,7 @@ class Binary
       You can specify output file or directory by `-o` argument.
       For several input files you can specify only output directory by `-d`.
 
-      Output CSS will be written to stdout stream on +
+      Output CSS will be written to stdout stream on \
         `-o -' argument or stdin input.
 
     Source maps:
@@ -57,7 +57,7 @@ class Binary
       Separate browsers by comma. For example, `-b "> 1%, opera 12"'.
       You can set browsers by global usage statictics: `-b \"> 1%\"'.
       or last version: `-b "last 2 versions"'.
-    '''.replace(/\+\s+/g, '')
+    '''
 
   # Print to stdout
   print: (str) ->
@@ -150,7 +150,7 @@ class Binary
       if updater.changed.length == 0
         @print 'Everything up-to-date'
       else
-        @print 'Update ' + updater.changed.join(' and ') + ' data'
+        @print "Update #{ updater.changed.join(' and ') } data"
       done()
 
     updater.run()
@@ -219,8 +219,9 @@ class Binary
 
     if @outputDir
       if @inputFiles.length == 0
-        @error "autoprefixer: For STDIN input you need to specify output " +
-               "file (by `-o FILE`),\nnot output dir"
+        @error """autoprefixer: For STDIN input you need to specify output \
+                    file (by `-o FILE`),
+                  not output dir"""
         return
 
       if fs.existsSync(@outputDir) and not fs.statSync(@outputDir).isDirectory()
@@ -232,8 +233,9 @@ class Binary
 
     else if @outputFile
       if @inputFiles.length > 1
-        @error "autoprefixer: For several files you can specify only output " +
-               "dir (by `-d DIR`),\nnot one output file"
+        @error """autoprefixer: For several files you can specify only output \
+                    dir (by `-d DIR`),
+                  not one output file"""
         return
 
       [file, @outputFile] for file in @inputFiles
