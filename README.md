@@ -40,15 +40,16 @@ to apply prefixes for you:
 }
 ```
 
-You can play with your CSS in
-[interactive demo](http://fiddle.jshell.net/simevidas/Y9X3N/3/show/light/)
-of Autoprefixer.
+You can play with your CSS in [interactive demo] of Autoprefixer.
 
-Twitter account for news and releases:
-[@autoprefixer](https://twitter.com/autoprefixer).
+Twitter account for news and releases: [@autoprefixer].
 
-Sponsored by [Evil Martians](http://evilmartians.com/).
-Based on [PostCSS](https://github.com/ai/postcss) framework.
+Sponsored by [Evil Martians]. Based on [PostCSS] framework.
+
+[interactive demo]: http://fiddle.jshell.net/simevidas/Y9X3N/3/show/light/
+[@autoprefixer]:    https://twitter.com/autoprefixer
+[Evil Martians]:    http://evilmartians.com/
+[PostCSS]:          https://github.com/ai/postcss
 
 ## Features
 
