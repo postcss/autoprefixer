@@ -22,9 +22,9 @@ module.exports =
 
   # Escape RegExp symbols
   escapeRegexp: (string) ->
-    string.replace(/([.?*+\^\$\[\]\\(){}|\-])/g, "\\$1")
+    string.replace(/[.?*+\^\$\[\]\\(){}|\-]/g, '\\$&')
 
   # Return regexp to check, that CSS string contain word
   regexp: (word, escape = true) ->
     word = @escapeRegexp(word) if escape
-    new RegExp('(^|\\s|,|\\()(' + word + '($|\\s|\\(|,))', 'gi')
+    /// (^|[\s,(]) ( #{ word } ($|[\s(,]) ) ///gi
