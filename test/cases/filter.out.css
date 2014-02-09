@@ -10,3 +10,7 @@ div {
 b {
     filter: alpha(opacity=100);
 }
+
+em {
+    filter: Alpha(opacity=100);
+}
