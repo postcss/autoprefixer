@@ -68,6 +68,10 @@ task 'build', 'Build standalone autoprefixer.js', ->
   result = __dirname + '/autoprefixer.js'
   output = fs.createWriteStream(result)
   builder.bundle standalone: 'autoprefixer', (error, build) ->
+    if error
+      process.stderr.write(error.toString() + "\n")
+      process.exit(1)
+
     fs.removeSync(__dirname + '/build/')
 
     rails = __dirname + '/../autoprefixer-rails/vendor/autoprefixer.js'
