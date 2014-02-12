@@ -20,7 +20,6 @@
 * Use browserify to build standalone version.
 
 ### 20131225:
-
 * Fix deprecated API convertor.
 * Add ::placeholder support for Firefix >= 18.
 * Fix vendor prefixes order.
@@ -30,23 +29,19 @@
 * Update browsers popularity statistics.
 
 ### 20140109:
-
 * Add selectors and at-rules sections to debug info.
 * Fix outdated prefixes cleaning.
 
 ### 20140110:
-
 * Add `Firefox ESR` browser requirement.
 * Opera 18 is moved to released versions.
 * Add Opera 20 data.
 
 ### 20140117:
-
 * Chrome 32 is moved to released versions.
 * Add Opera 34 data.
 
 ### 20140130:
-
 * Fix flexbox properties names in transitions.
 * Add Chrome 35 and Firefox 29 data.
 
@@ -54,6 +49,12 @@
 * Android 4.4 stock browser and Opera 19 are moved to released versions.
 * Add Opera 21 data.
 * Update browsers usage statistics.
+
+### 20140213
+* Add case insensitive to IE’s filter hack (by Dominik Schilling).
+* Improve selector prefixing in some rare cases (by Simon Lydell).
+* Firefox 27 is moved to released versions.
+* Add Firefox 30 data.
 
 ## 0.8 “Unbowed, Unbent, Unbroken”
 * Add more browsers to defaults ("> 1%, last 2 versions, ff 17, opera 12.1"
