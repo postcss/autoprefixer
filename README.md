@@ -186,27 +186,13 @@ By default, Autoprefixer uses `> 1%, last 2 versions, Firefox ESR, Opera 12.1`:
 
 ## Source Map
 
-Autoprefixer will generate a source map if you set `map` option to `true`.
-
 You must set input and output CSS files paths (by `from` and `to` options)
 to generate a correct map.
 
-```js
-var result = autoprefixer.process(css, {
-    map:  true,
-    from: 'main.css',
-    to:   'main.out.css'
-});
-
-result.css //=> Prefixed CSS
-result.map //=> Source map content
-
-fs.writeFileSync('main.out.css.map', result.map);
-```
-
-Autoprefixer can also modify previous source map (for example, from Sass
-compilation). Just set original source map content (as string or JS object)
-to `map` option:
+Autoprefixer can modify previous source map (for example, from Sass).
+it will autodetect previous map if it will be in annotation comment or in file
+near input CSS. You can disable source map with `map: false` or set previous
+source map content manually to `map` option (as string or JS object).
 
 ```js
 var result = autoprefixer.process(css, {
@@ -215,8 +201,18 @@ var result = autoprefixer.process(css, {
     to:   'main.min.css'
 });
 
+result.css //=> CSS with source map annotation comment
 result.map //=> Source map from main.sass to main.min.css
+
+fs.writeFileSync('main.min.css.map', result.map);
 ```
+
+Autoprefixer supports inline source maps too. If input CSS contains annotation
+from previous step with map in `data:uri`, Autoprefixer will update source map
+with prefixes changes and inine new map back to output CSS.
+
+You can read more about source map options in
+[PostCSS documentation](https://github.com/ai/postcss#source-map-1).
 
 ## Debug
 

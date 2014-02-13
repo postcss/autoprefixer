@@ -13,6 +13,7 @@ class Binary
     @command    = 'compile'
     @inputFiles = []
 
+    @options = { }
     @parseArguments()
 
   # Quick help message
@@ -26,6 +27,9 @@ class Binary
       -o, --output FILE        set output file
       -d, --dir DIR            set output dir
       -m, --map                generate source map
+          --no-map             skip source map even if previous map exists
+      -I, --inline-map         inline map by data:uri to annotation comment
+          --no-map-annotation  skip source map annotation comment is CSS
       -i, --info               show selected browsers and properties
       -h, --help               show help text
       -v, --version            print program version
@@ -93,7 +97,16 @@ class Binary
           @command = 'update'
 
         when '-m', '--map'
-          @sourceMap = true
+          @options.map = true
+
+        when       '--no-map'
+          @options.map = false
+
+        when '-I', '--inline-map'
+          @options.inlineMap = true
+
+        when       '--no-map-annotation'
+          @options.mapAnnotation = false
 
         when '-b', '--browsers'
           @requirements = args.shift().split(',').map (i) -> i.trim()
@@ -176,9 +189,9 @@ class Binary
   # Compile loaded CSS
   compileCSS: (css, output, input) ->
     opts = { }
+    opts[name] = value for name, value of @options
     opts.from = input  if input
     opts.to   = output if output != '-'
-    opts.map  = true   if @sourceMap
 
     if opts.map and input and fs.existsSync(input + '.map')
       opts.map = fs.readFileSync(input + '.map').toString()

@@ -141,29 +141,51 @@ describe 'Binary', ->
 
   it 'skip source map by default', (done) ->
     write('a.css', css)
-    @run '-b', 'chrome 25', '-o', 'b.css', 'a.css', ->
+    @run '-o', 'b.css', 'a.css', ->
       fs.existsSync( path('b.css.map') ).should.be.false
       done()
 
   it 'generates source map on -m argument', (done) ->
     write('a.css', css)
-    @run '-b', 'chrome 25', '-m', '-o', 'b.css', 'a.css', ->
-      map = JSON.parse(read('b.css.map'))
+    @run '-m', '-o', 'b.css', 'a.css', ->
+      read('b.css').should.match(/\n\/\*# sourceMappingURL=/)
 
+      map = JSON.parse(read('b.css.map'))
       map.version.should.eql  3
-      map.file.should.eql     path('b.css')
-      map.sources.should.eql [path('a.css')]
+      map.file.should.eql     'b.css'
+      map.sources.should.eql ['a.css']
+      done()
+
+  it 'inlines source map', (done) ->
+    write('a.css', css)
+    @run '-I', '-o', 'b.css', 'a.css', ->
+      read('b.css').should.match(/\n\/\*# sourceMappingURL=data:/)
+      fs.existsSync( path('b.css.map') ).should.be.false
       done()
 
   it 'modify source map', (done) ->
     write('a.css', css)
-    @run '-b', 'chrome 25', '-m', '-o', 'b.css', 'a.css', =>
-      @run '-b', 'chrome 25', '-m', '-o', 'c.css', 'b.css', ->
+    @run '-m', '-o', 'b.css', 'a.css', =>
+      @run '-o', 'c.css', 'b.css', ->
         map = JSON.parse(read('c.css.map'))
 
-        map.file.should.eql     path('c.css')
-        map.sources.should.eql [path('a.css')]
+        map.file.should.eql     'c.css'
+        map.sources.should.eql ['a.css']
         done()
+
+  it 'ignore previous source map on request', (done) ->
+    write('a.css', css)
+    @run '-m', '-o', 'b.css', 'a.css', =>
+      @run '--no-map', '-o', 'c.css', 'b.css', ->
+        fs.existsSync( path('c.css.map') ).should.be.false
+        done()
+
+  it 'skips annotation on request', (done) ->
+    write('a.css', css)
+    @run '-m', '--no-map-annotation', '-o', 'b.css', 'a.css', ->
+      read('b.css').should.not.match(/\n\/\*# sourceMappingURL=/)
+      fs.existsSync( path('b.css.map') ).should.be.true
+      done()
 
   it "raises an error when files doesn't exists", (done) ->
     @raise('not.css',
