@@ -1,0 +1,10 @@
+a {
+    /* transition */
+    -webkit-transition: all 1s;
+    -o-transition: all 1s;
+    transition: all 1s;
+}
+
+/* placeholder */
+::-webkit-input-placeholder { }
+::placeholder { }

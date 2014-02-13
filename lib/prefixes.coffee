@@ -195,13 +195,14 @@ class Prefixes
     checker = (step, callback) =>
       index += step
       while index >= 0 and index < length
-        other  = rule.decls[index]
+        other = rule.decls[index]
+        if other.type == 'decl'
 
-        if @unprefixed(other.prop) != unprefixed
-          break
+          if @unprefixed(other.prop) != unprefixed
+            break
 
-        else if callback(other) == true
-          return true
+          else if callback(other) == true
+            return true
 
         index += step
       return false

@@ -71,6 +71,7 @@ describe 'Autoprefixer', ->
     it 'removes common mistakes',     -> test('mistakes')
     it 'reads notes for prefixes',    -> test('notes')
     it 'keeps vendor-specific hacks', -> test('vendor-hack')
+    it 'works with comments',         -> test('comments')
 
     it 'removes unnecessary prefixes', ->
       for type in commons
