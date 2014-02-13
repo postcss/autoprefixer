@@ -310,7 +310,6 @@ and add post-compile hook to `config.rb`:
 
 ```ruby
 require 'autoprefixer-rails'
-require 'csso'
 
 on_stylesheet_saved do |file|
   css = File.read(file)
