@@ -223,13 +223,13 @@ of prefixes. You need to send `cascade: true` option to processor constructor:
 autoprefixer("> 1 %", "last 2 version", cascade: true).process(css).css
 ```
 
-and output will be like:
+and, if CSS will be uncompressed, output would be like:
 
 ```css
 a {
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box
 }
 ```
 
