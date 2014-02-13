@@ -1,0 +1,13 @@
+a {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+       -moz-box-orient: horizontal;
+       -moz-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-transition: all 1s;
+            transition: all 1s
+}
+
+b { -webkit-transition: all 1s; transition: all 1s }

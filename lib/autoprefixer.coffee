@@ -4,6 +4,8 @@ Browsers = require('./browsers')
 Prefixes = require('./prefixes')
 
 infoCache = null
+isPlainObject = (obj) ->
+  Object.prototype.toString.apply(obj) == '[object Object]'
 
 # Parse CSS and add prefixed properties and values by Can I Use database
 # for actual browsers.
@@ -16,15 +18,21 @@ infoCache = null
 #           use(compressor).
 #           process(css);
 autoprefixer = (reqs...) ->
-  if reqs.length == 1 and reqs[0] instanceof Array
-    reqs = reqs[0]
+  if reqs.length == 1 and isPlainObject(reqs[0])
+    options = reqs[0]
+    reqs    = undefined
   else if reqs.length == 0 or (reqs.length == 1 and not reqs[0]?)
     reqs = undefined
+  else if reqs.length <= 2 and (reqs[0] instanceof Array or not reqs[0]?)
+    options = reqs[1]
+    reqs    = reqs[0]
+  else if typeof(reqs[reqs.length - 1]) == 'object'
+    options = reqs.pop()
 
   reqs = autoprefixer.default unless reqs?
 
   browsers = new Browsers(autoprefixer.data.browsers, reqs)
-  prefixes = new Prefixes(autoprefixer.data.prefixes, browsers)
+  prefixes = new Prefixes(autoprefixer.data.prefixes, browsers, options)
   new Autoprefixer(prefixes, autoprefixer.data)
 
 autoprefixer.data =
@@ -32,7 +40,7 @@ autoprefixer.data =
   prefixes: require('../data/prefixes')
 
 class Autoprefixer
-  constructor: (@prefixes, @data) ->
+  constructor: (@prefixes, @data, @options = { }) ->
     @browsers = @prefixes.browsers.selected
 
   # Parse CSS and add prefixed properties for selected browsers

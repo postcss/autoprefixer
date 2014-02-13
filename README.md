@@ -214,6 +214,25 @@ with prefixes changes and inine new map back to output CSS.
 You can read more about source map options in
 [PostCSS documentation](https://github.com/ai/postcss#source-map-1).
 
+## Visual Cascade
+
+Autoprefixer can change CSS indentation to create nice visual cascade
+of prefixes. You need to send `cascade: true` option to processor constructor:
+
+```js
+autoprefixer("> 1 %", "last 2 version", cascade: true).process(css).css
+```
+
+and output will be like:
+
+```css
+a {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+```
+
 ## Debug
 
 You can check which browsers are selected and which properties will be prefixed:

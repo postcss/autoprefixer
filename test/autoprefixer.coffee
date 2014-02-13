@@ -6,10 +6,11 @@ fs           = require('fs')
 cleaner     = autoprefixer('none')
 compiler    = autoprefixer('chrome 25', 'opera 12')
 borderer    = autoprefixer('safari 4',  'ff 3.6')
-keyframer   = autoprefixer('safari 6',  'chrome 25', 'opera 12')
-flexboxer   = autoprefixer('safari 6',  'chrome 25', 'ff 21', 'ie 10')
-gradienter  = autoprefixer('chrome 25', 'opera 12', 'android 2.3')
-selectorer  = autoprefixer('chrome 25', 'ff > 17', 'ie 10')
+cascader    = autoprefixer('chrome > 19', 'ff 21', 'ie 10', cascade: true)
+keyframer   = autoprefixer('chrome > 19', 'opera 12')
+flexboxer   = autoprefixer('chrome > 19', 'ff 21', 'ie 10')
+gradienter  = autoprefixer('chrome 25', 'opera 12',  'android 2.3')
+selectorer  = autoprefixer('chrome 25', 'ff > 17',   'ie 10')
 intrinsicer = autoprefixer('chrome 25', 'ff 22')
 
 prefixer = (name) ->
@@ -27,6 +28,8 @@ prefixer = (name) ->
     selectorer
   else if name == 'intrinsic'
     intrinsicer
+  else if name == 'cascade'
+    cascader
   else
     compiler
 
@@ -42,23 +45,45 @@ test = (from, instansce = prefixer(from)) ->
 commons = ['transition', 'values', 'keyframes', 'gradient', 'flex-rewrite',
            'flexbox', 'filter', 'border-image', 'border-radius', 'notes',
            'selectors', 'placeholder', 'fullscreen', 'intrinsic', 'mistakes',
-           'custom-prefix']
+           'custom-prefix', 'cascade']
 
 describe 'autoprefixer()', ->
 
   it 'sets browsers', ->
     compiler.browsers.should.eql ['chrome 25', 'opera 12']
+    compiler.prefixes.options.should.eql({ })
+
+  it 'sets options', ->
+    processor = autoprefixer('chrome 25', 'opera 12', cascade: true)
+    processor.prefixes.options.should.eql(cascade: true)
+    processor.browsers.should.eql(['chrome 25', 'opera 12'])
+
+  it 'sets only options', ->
+    defaults  = new Browsers(autoprefixer.data.browsers, autoprefixer.default)
+    processor = autoprefixer(cascade: true)
+    processor.prefixes.options.should.eql(cascade: true)
+    processor.browsers.should.eql(defaults.selected)
+
+    processor = autoprefixer(undefined, cascade: true)
+    processor.prefixes.options.should.eql(cascade: true)
+    processor.browsers.should.eql(defaults.selected)
 
   it 'receives array', ->
-    autoprefixer(['chrome 25', 'opera 12']).browsers.
-      should.eql ['chrome 25', 'opera 12']
+    processor = autoprefixer(['chrome 25', 'opera 12'])
+    processor.browsers.should.eql ['chrome 25', 'opera 12']
+
+    processor = autoprefixer(['chrome 25', 'opera 12'], cascade: true)
+    processor.browsers.should.eql ['chrome 25', 'opera 12']
+    processor.prefixes.options.should.eql(cascade: true)
 
   it 'has default browsers', ->
     autoprefixer.default.should.be.an.instanceOf(Array)
 
   it 'sets default browser', ->
-    browsers = new Browsers(autoprefixer.data.browsers, autoprefixer.default)
-    autoprefixer().browsers.should.eql(browsers.selected)
+    defaults  = new Browsers(autoprefixer.data.browsers, autoprefixer.default)
+    processor = autoprefixer()
+    processor.browsers.should.eql(defaults.selected)
+    processor.prefixes.options.should.eql({ })
 
 describe 'Autoprefixer', ->
 
@@ -72,10 +97,13 @@ describe 'Autoprefixer', ->
     it 'reads notes for prefixes',    -> test('notes')
     it 'keeps vendor-specific hacks', -> test('vendor-hack')
     it 'works with comments',         -> test('comments')
+    it 'uses visual cascade',         -> test('cascade')
 
     it 'removes unnecessary prefixes', ->
       for type in commons
-        continue if type == 'mistakes' or type == 'flex-rewrite'
+        continue if type == 'mistakes'
+        continue if type == 'flex-rewrite'
+        continue if type == 'cascade'
         input  = read(type + '.out')
         output = read(type)
         result = cleaner.process(input)

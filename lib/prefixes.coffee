@@ -36,7 +36,7 @@ declsCache = { }
 
 class Prefixes
 
-  constructor: (@data, @browsers) ->
+  constructor: (@data, @browsers, @options = { }) ->
     [@add, @remove] = @preprocess(@select(@data))
     @processor      = new Processor(@)
 

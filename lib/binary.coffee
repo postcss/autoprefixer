@@ -13,7 +13,8 @@ class Binary
     @command    = 'compile'
     @inputFiles = []
 
-    @options = { }
+    @processOptions   = { }
+    @processorOptions = { }
     @parseArguments()
 
   # Quick help message
@@ -30,6 +31,7 @@ class Binary
           --no-map             skip source map even if previous map exists
       -I, --inline-map         inline map by data:uri to annotation comment
           --no-map-annotation  skip source map annotation comment is CSS
+      -c, --cascade            create nice visual cascade of prefixes
       -i, --info               show selected browsers and properties
       -h, --help               show help text
       -v, --version            print program version
@@ -97,16 +99,19 @@ class Binary
           @command = 'update'
 
         when '-m', '--map'
-          @options.map = true
+          @processOptions.map = true
 
         when       '--no-map'
-          @options.map = false
+          @processOptions.map = false
 
         when '-I', '--inline-map'
-          @options.inlineMap = true
+          @processOptions.inlineMap = true
 
         when       '--no-map-annotation'
-          @options.mapAnnotation = false
+          @processOptions.mapAnnotation = false
+
+        when '-c', '--cascade'
+          @processorOptions.cascade = true
 
         when '-b', '--browsers'
           @requirements = args.shift().split(',').map (i) -> i.trim()
@@ -184,12 +189,12 @@ class Binary
 
   # Lazy loading for Autoprefixer instance
   compiler: ->
-    @compilerCache ||= autoprefixer(@requirements)
+    @compilerCache ||= autoprefixer(@requirements, @processorOptions)
 
   # Compile loaded CSS
   compileCSS: (css, output, input) ->
     opts = { }
-    opts[name] = value for name, value of @options
+    opts[name] = value for name, value of @processOptions
     opts.from = input  if input
     opts.to   = output if output != '-'
 

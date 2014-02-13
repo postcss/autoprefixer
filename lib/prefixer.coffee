@@ -53,11 +53,17 @@ class Prefixer
   process: (node) ->
     return unless @check(node)
 
-    parent = @parentPrefix(node)
+    parent   = @parentPrefix(node)
+    prefixes = []
 
     for prefix in @prefixes
       continue if parent and parent != utils.removeNote(prefix)
-      @add(node, prefix)
+      prefixes.push(prefix)
+
+    for prefix in prefixes
+      @add(node, prefix, prefixes)
+
+    prefixes
 
   # Shortcut for Prefixer.clone
   clone: (node, overrides) ->

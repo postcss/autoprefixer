@@ -9,7 +9,7 @@ class FlexDirection extends Declaration
     'flex-direction'
 
   # Use two properties for 2009 spec
-  insert: (decl, prefix) ->
+  insert: (decl, prefix, prefixes) ->
     [spec, prefix] = flexSpec(prefix)
     if spec == 2009
       already = decl.parent.some (i) ->
@@ -23,11 +23,15 @@ class FlexDirection extends Declaration
       cloned = @clone(decl)
       cloned.prop  = prefix + 'box-orient'
       cloned.value = orient
+      if @needCascade(decl)
+        cloned.before = @calcBefore(prefixes, decl, prefix)
       decl.parent.insertBefore(decl, cloned)
 
       cloned = @clone(decl)
       cloned.prop  = prefix + 'box-direction'
       cloned.value = dir
+      if @needCascade(decl)
+        cloned.before = @calcBefore(prefixes, decl, prefix)
       decl.parent.insertBefore(decl, cloned)
     else
       super

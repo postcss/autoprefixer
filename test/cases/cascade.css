@@ -1,0 +1,6 @@
+a {
+    flex-direction: row;
+    transition: all 1s
+}
+
+b { transition: all 1s }
