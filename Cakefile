@@ -99,6 +99,7 @@ task 'bench', 'Benchmark on GitHub styles', ->
       link   = html.match(/[^"]+\.css/g)[0]
       get link, (css) ->
         print("\n")
+        require('coffee-script/register')
         autoprefixer = require(__dirname + '/lib/autoprefixer')
         cleaner      = autoprefixer('none')
         callback(cleaner.process(css).css)
