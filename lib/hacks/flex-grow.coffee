@@ -2,7 +2,7 @@ flexSpec    = require('./flex-spec')
 Declaration = require('../declaration')
 
 class Flex extends Declaration
-  @names = ['flex-grow']
+  @names = ['flex-grow', 'flex-positive']
 
   # Return property name by final spec
   normalize: ->
@@ -14,7 +14,7 @@ class Flex extends Declaration
     if spec == 2009
       prefix + 'box-flex'
     else if spec == 2012
-      prefix + 'flex'
+      prefix + 'flex-positive'
     else
       super
 

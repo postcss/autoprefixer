@@ -13,7 +13,7 @@ class Flex extends Declaration
       super
 
   # Return property name by final spec
-  normalize: (prop) ->
+  normalize: ->
     'flex'
 
   # Spec 2009 supports only first argument

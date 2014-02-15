@@ -26,6 +26,7 @@ a {
     flex-wrap: wrap;
     align-content: flex-end;
     align-self: flex-end;
+    flex-shrink: 1;
 }
 .c {
     flex-direction: column;
@@ -34,6 +35,7 @@ a {
     flex-wrap: reverse-wrap;
     align-content: center;
     align-self: center;
+    flex-basis: auto;
 }
 .e {
     flex-direction: column-reverse;

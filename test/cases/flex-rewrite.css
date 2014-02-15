@@ -1,11 +1,3 @@
 .a {
     flex-grow: 0;
 }
-
-.b {
-    flex-shrink: 1;
-}
-
-.c {
-    flex-basis: auto;
-}

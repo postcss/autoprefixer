@@ -91,6 +91,9 @@ a {
     -webkit-align-self: flex-end;
     -ms-flex-item-align: end;
     align-self: flex-end;
+    -webkit-flex-shrink: 1;
+    -ms-flex-negative: 1;
+    flex-shrink: 1;
 }
 .c {
     -webkit-box-orient: vertical;
@@ -119,6 +122,9 @@ a {
     -webkit-align-self: center;
     -ms-flex-item-align: center;
     align-self: center;
+    -webkit-flex-basis: auto;
+    -ms-flex-preferred-size: auto;
+    flex-basis: auto;
 }
 .e {
     -webkit-box-orient: vertical;
