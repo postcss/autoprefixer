@@ -4,8 +4,8 @@ parse       = require('postcss/lib/parse')
 
 describe 'Declaration', ->
   beforeEach ->
-    prefixes = new Prefixes({ }, { })
-    @tabsize = new Declaration('tab-size', ['-moz-', '-ms-'], prefixes)
+    @prefixes = new Prefixes({ }, { })
+    @tabsize  = new Declaration('tab-size', ['-moz-', '-ms-'], @prefixes)
 
   describe 'otherPrefixes()', ->
 
@@ -14,6 +14,45 @@ describe 'Declaration', ->
       @tabsize.otherPrefixes('-moz-black', '-moz-').should.be.false
       @tabsize.otherPrefixes('-dev-black', '-moz-').should.be.false
       @tabsize.otherPrefixes('-ms-black',  '-moz-').should.be.true
+
+  describe 'needCascade()', ->
+    after -> @prefixes.options.cascade = false
+
+    it 'returns true on option', ->
+      css = parse("a {\n  tab-size: 4 }")
+      @tabsize.needCascade(css.rules[0].decls[0]).should.be.false
+
+      @prefixes.options.cascade = true
+      @tabsize.needCascade(css.rules[0].decls[0]).should.be.true
+
+    it 'returns true on option', ->
+      @prefixes.options.cascade = true
+      css = parse("a { tab-size: 4 } a {\n  tab-size: 4 }")
+
+      @tabsize.needCascade(css.rules[0].decls[0]).should.be.false
+      @tabsize.needCascade(css.rules[1].decls[0]).should.be.true
+
+  describe 'maxPrefixed()', ->
+
+    it 'returns max prefix length', ->
+      decl     = parse('a { tab-size: 4 }').rules[0].decls[0]
+      prefixes = ['-webkit-', '-webkit- old', '-moz-']
+      @tabsize.maxPrefixed(prefixes, decl).should.eql 8
+
+  describe 'calcBefore()', ->
+
+    it 'returns before with cascade', ->
+      decl     = parse('a { tab-size: 4 }').rules[0].decls[0]
+      prefixes = ['-webkit-', '-moz- old', '-moz-']
+      @tabsize.calcBefore(prefixes, decl, '-moz- old').should.eql '    '
+
+  describe 'restoreBefore()', ->
+
+    it 'removes cascade', ->
+      css  = parse("a {\n  -moz-tab-size: 4;\n       tab-size: 4 }")
+      decl = css.rules[0].decls[1]
+      @tabsize.restoreBefore(decl)
+      decl.before.should.eql("\n  ")
 
   describe 'prefixed()', ->
 

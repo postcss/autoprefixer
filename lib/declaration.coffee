@@ -31,8 +31,8 @@ class Declaration extends Prefixer
 
   # Should we use visual cascade for prefixes
   needCascade: (decl) ->
-    decl._autoprefixerCascade ||= @all.options.cascade and
-                                  decl.before.indexOf("\n") != -1
+    decl._autoprefixerCascade ||= !!@all.options.cascade and
+                                    decl.before.indexOf("\n") != -1
 
   # Return maximum length of possible prefixed property
   maxPrefixed: (prefixes, decl) ->
