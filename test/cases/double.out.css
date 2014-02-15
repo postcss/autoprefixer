@@ -1,0 +1,8 @@
+a {
+    -webkit-flex-basis: 8.33333%;
+    -ms-flex-preferred-size: 8.33333%;
+    flex-basis: 8.33333%;
+    -webkit-flex-basis: -webkit-calc(100% / 12 * 1);
+    -ms-flex-preferred-size: calc(100% / 12 * 1);
+    flex-basis: calc(100% / 12 * 1)
+}

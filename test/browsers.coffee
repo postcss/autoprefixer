@@ -33,6 +33,12 @@ describe 'Browsers', ->
     it 'returns prefixes by default data', ->
       Browsers.prefixes().should.eql ['-webkit-', '-moz-', '-ms-', '-o-']
 
+  describe '.withPrefix()', ->
+
+    it 'finds possible prefix', ->
+      Browsers.withPrefix('1 -o-calc(1)').should.be.true
+      Browsers.withPrefix('1 calc(1)').should.be.false
+
   describe 'parse()', ->
 
     it 'converts browsers to array', ->

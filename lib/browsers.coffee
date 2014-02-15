@@ -10,6 +10,13 @@ class Browsers
     @prefixesCache = utils.uniq(i.prefix for name, i of data).
                            sort (a, b) -> b.length - a.length
 
+  # Check is value contain any possibe prefix
+  @withPrefix: (value) ->
+    unless @prefixesRegexp
+      @prefixesRegexp = /// #{ @prefixes().join('|') } ///
+
+    @prefixesRegexp.test(value)
+
   constructor: (@data, requirements) ->
     @selected = @parse(requirements)
 

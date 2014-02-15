@@ -1,9 +1,10 @@
 utils  = require('./utils')
 vendor = require('postcss/lib/vendor')
 
-Processor   = require('./processor')
 Declaration = require('./declaration')
+Processor   = require('./processor')
 Keyframes   = require('./keyframes')
+Browsers    = require('./browsers')
 Selector    = require('./selector')
 Value       = require('./value')
 
@@ -198,11 +199,17 @@ class Prefixes
         other = rule.decls[index]
         if other.type == 'decl'
 
+          if step == -1 and other.prop == unprefixed
+            break unless Browsers.withPrefix(other.value)
+
           if @unprefixed(other.prop) != unprefixed
             break
 
           else if callback(other) == true
             return true
+
+          if step == +1 and other.prop == unprefixed
+            break unless Browsers.withPrefix(other.value)
 
         index += step
       return false

@@ -22,7 +22,7 @@ prefixer = (name) ->
     cleaner
   else if name == 'gradient'
     gradienter
-  else if name == 'flexbox' or name == 'flex-rewrite'
+  else if name == 'flexbox' or name == 'flex-rewrite' or name == 'double'
     flexboxer
   else if name == 'selectors' or name == 'placeholder'
     selectorer
@@ -45,7 +45,7 @@ test = (from, instansce = prefixer(from)) ->
 commons = ['transition', 'values', 'keyframes', 'gradient', 'flex-rewrite',
            'flexbox', 'filter', 'border-image', 'border-radius', 'notes',
            'selectors', 'placeholder', 'fullscreen', 'intrinsic', 'mistakes',
-           'custom-prefix', 'cascade']
+           'custom-prefix', 'cascade', 'double']
 
 describe 'autoprefixer()', ->
 
@@ -98,6 +98,7 @@ describe 'Autoprefixer', ->
     it 'keeps vendor-specific hacks', -> test('vendor-hack')
     it 'works with comments',         -> test('comments')
     it 'uses visual cascade',         -> test('cascade')
+    it 'works with properties near',  -> test('double')
 
     it 'removes unnecessary prefixes', ->
       for type in commons
