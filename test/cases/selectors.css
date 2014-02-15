@@ -2,5 +2,13 @@
 [href=:fullscreen] {}
 
 :fullscreen a {
-    box-sizing: border-box;
+    box-sizing: border-box
+}
+
+:fullscreen a {
+    color: black
+}
+
+:-moz-full-screen a {
+    transform: translate3d(0, 0, 0);
 }

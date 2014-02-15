@@ -3,6 +3,10 @@ Selector = require('../selector')
 class Placeholder extends Selector
   @names = ['::placeholder']
 
+  # Add old mozilla to possible prefixes
+  possible: ->
+    super.concat('-moz- old')
+
   # Return different selectors depend on prefix
   prefixed: (prefix) ->
     if '-webkit-' == prefix

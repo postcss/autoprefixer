@@ -1,21 +1,18 @@
-Prefixer = require('./prefixer')
-utils    = require('./utils')
+OldSelector = require('./old-selector')
+Prefixer    = require('./prefixer')
+Browsers    = require('./browsers')
+utils       = require('./utils')
 
 class Selector extends Prefixer
   constructor: (@name, @prefixes, @all) ->
     @regexpCache = { }
 
   # Is rule selectors need to be prefixed
-  check: (rule, prefix) ->
-    name = if prefix then @prefixed(prefix) else @name
-    if rule.selector.indexOf(name) != -1
-      !!rule.selector.match(@regexp(prefix))
+  check: (rule) ->
+    if rule.selector.indexOf(@name) != -1
+      !!rule.selector.match(@regexp())
     else
       false
-
-  # Return function to find prefixed selector
-  checker: (prefix) ->
-    (rule) => @check(rule, prefix)
 
   # Return prefixed version of selector
   prefixed: (prefix) ->
@@ -26,7 +23,44 @@ class Selector extends Prefixer
     return @regexpCache[prefix] if @regexpCache[prefix]
 
     name = if prefix then @prefixed(prefix) else @name
-    @regexpCache = /// (^|[^:"'=]) #{ utils.escapeRegexp(name) } ///gi
+    @regexpCache[prefix] = /// (^|[^:"'=]) #{ utils.escapeRegexp(name) } ///gi
+
+  # All possible prefixes
+  possible: ->
+    Browsers.prefixes()
+
+  # Return all possible selector prefixes
+  prefixeds: (rule) ->
+    return rule._autoprefixerPrefixeds if rule._autoprefixerPrefixeds
+
+    prefixeds = { }
+    for prefix in @possible()
+      prefixeds[prefix] = @replace(rule.selector, prefix)
+
+    rule._autoprefixerPrefixeds = prefixeds
+
+  # Is rule already prefixed before
+  already: (rule, prefixeds, prefix) ->
+    index = rule.parent.index(rule) - 1
+
+    while index >= 0
+      before = rule.parent.rules[index]
+
+      return false if before.type != 'rule'
+
+      some = false
+      for key, prefixed of prefixeds
+        if before.selector == prefixed
+          if prefix == key
+            return true
+          else
+            some = true
+            break
+      return false unless some
+
+      index -= 1
+
+    false
 
   # Replace selectors by prefixed one
   replace: (selector, prefix) ->
@@ -34,11 +68,15 @@ class Selector extends Prefixer
 
   # Clone and add prefixes for at-rule
   add: (rule, prefix) ->
-    prefixed = @replace(rule.selector, prefix)
+    prefixeds = @prefixeds(rule)
 
-    return if rule.parent.some (i) -> i.selector == prefixed
+    return if @already(rule, prefixeds, prefix)
 
-    cloned = @clone(rule, selector: prefixed)
+    cloned = @clone(rule, selector: prefixeds[prefix])
     rule.parent.insertBefore(rule, cloned)
+
+  # Return function to fast find prefixed selector
+  old: (prefix) ->
+    new OldSelector(@, prefix)
 
 module.exports = Selector

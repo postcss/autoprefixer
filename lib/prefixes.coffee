@@ -121,7 +121,7 @@ class Prefixes
       if @data[name].selector
         selector = Selector.load(name, prefixes)
         for prefix in prefixes
-          remove.selectors.push(selector.checker(prefix))
+          remove.selectors.push(selector.old(prefix))
 
       else if name[0] == '@'
         for prefix in prefixes

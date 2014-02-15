@@ -70,11 +70,8 @@ describe 'Prefixes', ->
           values: [bVal]
 
     it 'preprocesses prefixes remove data', ->
-      fill.remove.selectors[0](selector: '-moz-c').should.be.true
-      fill.remove.selectors[0](selector: '-ms-c').should.be.false
-
       JSON.stringify(fill.remove).should.eql JSON.stringify({
-        'selectors': [null]
+        'selectors': [cSel.old('-moz-')]
         'transition':
           values: [old('-webkit-a'), old('-ms-a'), old('-moz- olda')]
         'transition-property':
