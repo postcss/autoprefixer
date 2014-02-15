@@ -220,7 +220,7 @@ Autoprefixer can change CSS indentation to create nice visual cascade
 of prefixes. You need to send `cascade: true` option to processor constructor:
 
 ```js
-autoprefixer("> 1 %", "last 2 version", cascade: true).process(css).css
+autoprefixer("> 1 %", "last 2 version", { cascade: true }).process(css).css
 ```
 
 and, if CSS will be uncompressed, output would be like:
