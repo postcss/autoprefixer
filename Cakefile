@@ -114,6 +114,14 @@ task 'bench', 'Benchmark on GitHub styles', ->
     tests = fs.readdirSync(__dirname + '/benchmark').filter (file) ->
       file.match(/\.coffee$/)
 
+    result = (code, time) ->
+      print(time + " ms")
+      if times.autoprefixer
+        slower = time / times.autoprefixer
+        print(" (#{ slower.toFixed(1) } times slower)")
+      times[code] = time
+      print("\n")
+
     tick = ->
       if tests.length == 0
         fs.removeSync(__dirname + '/build/')
@@ -127,16 +135,17 @@ task 'bench', 'Benchmark on GitHub styles', ->
       indent('Autoprefixer', name)
 
       test = require('./benchmark/' + file)
-      test css, (time) ->
-        print(time + " ms")
-        if times.autoprefixer
-          slower = time / times.autoprefixer
-          if slower < 1
-            print(" (#{ (1 / slower).toFixed(1) } times faster)")
-          else
-            print(" (#{ slower.toFixed(1) } times slower)")
-        times[code] = time
-        print("\n")
-        tick()
+      test.prepare(css)
+
+      start = new Date()
+      test.run ->
+        test.run ->
+          test.run ->
+            test.run ->
+              test.run ->
+                end = new Date()
+                result code, Math.round((end - start) / 5)
+                test.clean()
+                tick()
 
     tick()

@@ -1,17 +1,21 @@
 fs   = require('fs')
 exec = require('child_process').exec
 
-module.exports = (css, callback) ->
-  path = __dirname + '/../build/bin/autoprefixer'
-  file = __dirname + '/test.css'
-  fs.writeFileSync(file, css)
+path = __dirname + '/../build/bin/autoprefixer'
+file = __dirname + '/test.css'
 
-  start = new Date()
-  exec "#{path} #{file}", (error, stdout, stderr) ->
-    now = new Date()
+module.exports =
+  prepare: (css) ->
+    fs.writeFileSync(file, css)
 
-    process.stderr.write(stderr)
-    process.exit(1) if error
+  run: (callback) ->
+    exec "#{path} #{file} -o #{file}.out", (error, stdout, stderr) ->
+      process.stderr.write(stderr)
+      process.exit(1) if error
 
+      fs.unlinkSync(file + '.out')
+
+      callback()
+
+  clean: ->
     fs.unlinkSync(file)
-    callback(now - start)
