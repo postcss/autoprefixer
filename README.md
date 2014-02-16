@@ -303,29 +303,31 @@ and `-webkit-appearance`. Quote from [MDN](https://developer.mozilla.org/en-US/d
 ### Why Autoprefixer uses CoffeeScript?
 
 JavaScript is very popular, but this is the same reason why its syntax does not
-evolve. There are entire Internet with a lot of legacy code, which browser
-developers must support. If developers will add some wrong feature, it can be
-removed in next versions, it must be supported for a very long time.
-This climate is very bad for innovation. To create new, we need to experiment
-and to choose.
+evolve. There is an entire Internet with a lot of legacy code which should
+be supported by browsers. If developers will add an inappropriate feature then
+it can’t be removed in next versions but must be supported for a very long time.
+This is very bad for innovation. To create new, we need to experiment and
+to choose.
 
-So, JavaScript haven’t event basis syntax features, which are in another
-languages like Ruby or Python. There is no string interpolation, short lambda
-syntax, foreach statement for arrays, string and arrays slicing, etc.
+As a result JavaScript doesn’t have even basic syntax features, which are
+present in other languages like Ruby or Python. There are no string
+interpolation, short lambda syntax, foreach statement for arrays, string and
+arrays slicing, etc.
 
 With JavaScript preprocessors like CoffeeScript or TypeScript we can bring
-innovation back. We can add new operator and use it right now, without
-waiting for support in any browsers.
+innovation back. We can add new operator and use it right now, without waiting
+for support in all browsers.
 
-Autoprefixer was written on pure JavaScript before. But CoffeeScript made
-Autoprefixer code much more clean and readable. Often 2 lines of code become 1.
+Autoprefixer was written in pure JavaScript before. But CoffeeScript made
+Autoprefixer code much cleaner and more readable. Often 2 lines of code
+become 1.
 
-Don’t afraid CoffeeScript. It is just a new syntax, not another language
+Don’t be afraid of CoffeeScript. It is just a new syntax, not another language
 (like ClojureScript). You can open [examples on CoffeeScript.org] and start
 to code. After a week your eyes will adjust and you will see, that CoffeeScript
-are more clean and readable.
+is cleaner and more readable.
 
-Situation with CoffeeScript and JavaScript is absolutely same as with
+Situation with CoffeeScript and JavaScript is absolutely the same as with
 CSS preprocessors and postprocessors. How we can develop CSS postprocessor
 and avoid JS preproccesor :).
 
