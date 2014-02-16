@@ -50,3 +50,9 @@ a {
     align-content: space-around;
     align-self: stretch;
 }
+.g {
+    flex: auto;
+}
+.h {
+    flex: none;
+}
