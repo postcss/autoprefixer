@@ -20,7 +20,12 @@ class Flex extends Declaration
   set: (decl, prefix) ->
     spec = flexSpec(prefix)[0]
     if spec == 2009
-      decl.value = decl.value.split(' ')[0]
+      value = decl.value.split(' ')[0]
+      if value == 'auto'
+        value = '1'
+      else if value == 'none'
+        value = '0'
+      decl.value = value
       super(decl, prefix)
     else
       super

@@ -167,3 +167,17 @@ a {
     -ms-flex-item-align: stretch;
     align-self: stretch;
 }
+.g {
+    -webkit-box-flex: 1;
+    -webkit-flex: auto;
+    -moz-box-flex: 1;
+    -ms-flex: auto;
+    flex: auto;
+}
+.h {
+    -webkit-box-flex: 0;
+    -webkit-flex: none;
+    -moz-box-flex: 0;
+    -ms-flex: none;
+    flex: none;
+}
