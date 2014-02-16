@@ -300,6 +300,37 @@ and `-webkit-appearance`. Quote from [MDN](https://developer.mozilla.org/en-US/d
 > have the same behavior on each form element across different browsers, and
 > some do not support it at all.
 
+### Why Autoprefixer uses CoffeeScript?
+
+JavaScript is very popular, but this is the same reason why its syntax does not
+evolve. There are entire Internet with a lot of legacy code, which browser
+developers must support. If developers will add some wrong feature, it can be
+removed in next versions, it must be supported for a very long time.
+This climate is very bad for innovation. To create new, we need to experiment
+and to choose.
+
+So, JavaScript haven’t event basis syntax features, which are in another
+languages like Ruby or Python. There is no string interpolation, short lambda
+syntax, foreach statmenet for arrays, string and arrays slicing, etc.
+
+With JavaScript preprocessors like CoffeeScript or TypeScript we can bring
+innovation back. We can add new operator and use it right now, without
+waiting for support in any browsers.
+
+Autoprefixer was written on pure JavaScript before. But CoffeeScript made
+Autoprefixer code much more clean and readable. Often 2 lines of code become 1.
+
+Don’t afraid CoffeeScript. It is just a new syntax, not another language
+(like ClojureScript). You can open [examples on CoffeeScript.org] and start
+to code. After a week your eyes will adjust and you will see, that CoffeeScript
+are more clean and readable.
+
+Situation with CoffeeScript and Javascript is absolutly same as with
+CSS preprocessors and postprocessors. How we can develop CSS postprocessor
+and avoid JS preproccesor :).
+
+[examples on CoffeeScript.org]: http://coffeescript.org/
+
 ## Usage
 
 ### Grunt
