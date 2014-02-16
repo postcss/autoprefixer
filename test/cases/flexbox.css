@@ -9,6 +9,7 @@ a {
     display: inline-flex;
     align-self: auto;
     align-content: stretch;
+    flex: auto;
 }
 
 .a {
@@ -18,6 +19,7 @@ a {
     flex-wrap: nowrap;
     align-content: flex-start;
     align-self: flex-start;
+    flex: none;
 }
 .b {
     flex-direction: row-reverse;
@@ -49,10 +51,4 @@ a {
     align-items: stretch;
     align-content: space-around;
     align-self: stretch;
-}
-.g {
-    flex: auto;
-}
-.h {
-    flex: none;
 }

@@ -4,6 +4,10 @@ Declaration = require('../declaration')
 class Flex extends Declaration
   @names = ['flex', 'box-flex']
 
+  @oldValues =
+    'auto': '1'
+    'none': '0'
+
   # Change property name for 2009 spec
   prefixed: (prop, prefix) ->
     [spec, prefix] = flexSpec(prefix)
@@ -20,12 +24,8 @@ class Flex extends Declaration
   set: (decl, prefix) ->
     spec = flexSpec(prefix)[0]
     if spec == 2009
-      value = decl.value.split(' ')[0]
-      if value == 'auto'
-        value = '1'
-      else if value == 'none'
-        value = '0'
-      decl.value = value
+      decl.value = decl.value.split(' ')[0]
+      decl.value = Flex.oldValues[decl.value] || decl.value
       super(decl, prefix)
     else
       super
