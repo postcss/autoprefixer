@@ -1,0 +1,26 @@
+.a {
+    -webkit-column-break-inside: auto;
+    page-break-inside: auto;
+    break-inside: auto
+}
+
+.b {
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid
+}
+
+.c {
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid-column
+}
+
+.d {
+    page-break-inside: avoid;
+    break-inside: avoid-page
+}
+
+.e {
+    break-inside: avoid-region
+}

@@ -26,7 +26,7 @@ prefixer = (name) ->
     flexboxer
   else if name == 'selectors' or name == 'placeholder'
     selectorer
-  else if name == 'intrinsic'
+  else if name == 'intrinsic' or name == 'multicolumn'
     intrinsicer
   else if name == 'cascade'
     cascader
@@ -45,7 +45,7 @@ test = (from, instansce = prefixer(from)) ->
 commons = ['transition', 'values', 'keyframes', 'gradient', 'flex-rewrite',
            'flexbox', 'filter', 'border-image', 'border-radius', 'notes',
            'selectors', 'placeholder', 'fullscreen', 'intrinsic', 'mistakes',
-           'custom-prefix', 'cascade', 'double']
+           'custom-prefix', 'cascade', 'double', 'multicolumn']
 
 describe 'autoprefixer()', ->
 
@@ -102,9 +102,9 @@ describe 'Autoprefixer', ->
 
     it 'removes unnecessary prefixes', ->
       for type in commons
+        continue if type == 'cascade'
         continue if type == 'mistakes'
         continue if type == 'flex-rewrite'
-        continue if type == 'cascade'
         input  = read(type + '.out')
         output = read(type)
         result = cleaner.process(input)
@@ -155,6 +155,7 @@ describe 'Autoprefixer', ->
     it 'supports all fullscreens',      -> test('fullscreen')
     it 'supports intrinsic sizing',     -> test('intrinsic')
     it 'supports custom prefixes',      -> test('custom-prefix')
+    it 'fix break-inside property',     -> test('multicolumn')
 
     it 'ignores transform in transition for IE', ->
       input  = read('ie-transition')
