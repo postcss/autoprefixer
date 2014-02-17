@@ -312,7 +312,10 @@ to choose.
 As a result JavaScript doesn’t have even basic syntax features, which are
 present in other languages like Ruby or Python. There are no string
 interpolation, short lambda syntax, foreach statement for arrays, string and
-arrays slicing, etc.
+arrays slicing, etc. This features are really important, so they will be in
+ECMAScript 6 (first update of JS syntax after 15 years). But this
+new specification is not still released and, of cource, we must wait until
+all browsers will support it.
 
 With JavaScript preprocessors like CoffeeScript or TypeScript we can bring
 innovation back. We can add new operator and use it right now, without waiting
