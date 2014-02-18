@@ -1,3 +1,14 @@
+## 1.1 “Nutrisco et extingo”
+* Add source map annotation comment support.
+* Add inline source map support.
+* Autodetect previous source map.
+* Fix source maps support on Windows.
+* Fix source maps support in subdirectory.
+* Add option `cascade` to create nice visual cascade of prefixes.
+* Fix flexbox support for IE 10 (by Roland Warmerdam).
+* Better `break-inside` support.
+* Fix prefixing, when two same properties are near.
+
 ## 1.0 “Plus ultra”
 * Source map support.
 * Save origin indents and code formatting.
