@@ -4,6 +4,7 @@
 * Autodetect previous source map.
 * Fix source maps support on Windows.
 * Fix source maps support in subdirectory.
+* Prefix selector even if it is already prefixed by developer.
 * Add option `cascade` to create nice visual cascade of prefixes.
 * Fix flexbox support for IE 10 (by Roland Warmerdam).
 * Better `break-inside` support.
