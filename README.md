@@ -157,7 +157,7 @@ autoprefixer("last 1 version", "> 1%", "Explorer 7").process(css).css;
 * `> 5%` is browser versions, selected by global usage statistics.
 * `Firefox > 20` is Firefox newer versions than 20.
 * `Firefox >= 20` is Firefox version 20 or newer.
-* `Firefix ESR` is latest [Firefox ESR] version.
+* `Firefox ESR` is latest [Firefox ESR] version.
 * `none` don’t set any browsers to clean CSS from any vendor prefixes.
 * You can also set browsers directly.
 
