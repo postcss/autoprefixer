@@ -62,7 +62,7 @@
 * Add Opera 21 data.
 * Update browsers usage statistics.
 
-### 20140213
+### 20140213:
 * Add case insensitive to IE’s filter hack (by Dominik Schilling).
 * Improve selector prefixing in some rare cases (by Simon Lydell).
 * Firefox 27 is moved to released versions.
