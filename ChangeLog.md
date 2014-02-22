@@ -10,6 +10,9 @@
 * Better `break-inside` support.
 * Fix prefixing, when two same properties are near.
 
+### 20140222:
+* Add `touch-action` support.
+
 ## 1.0 “Plus ultra”
 * Source map support.
 * Save origin indents and code formatting.
