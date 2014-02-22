@@ -5164,6 +5164,11 @@ module.exports =
       "opera 12.1"
     ]
 
+  "touch-action":
+    browsers: [
+      "ie 10"
+    ]
+
   transform:
     browsers: [
       "android 2.1"

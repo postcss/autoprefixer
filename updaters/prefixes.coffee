@@ -182,4 +182,9 @@ module.exports = (updater) ->
             props:  ['position']
             browsers: browsers
 
+  # Pointer Events
+  @feature 'pointer', (browsers) =>
+    prefix 'touch-action',
+            browsers: browsers
+
   @done => @save('prefixes', prefixes)
