@@ -13,6 +13,10 @@
 ### 20140222:
 * Add `touch-action` support.
 
+### 20140226:
+* Chrome 33 is moved to released versions.
+* Add Chrome 36 data.
+
 ## 1.0 “Plus ultra”
 * Source map support.
 * Save origin indents and code formatting.
