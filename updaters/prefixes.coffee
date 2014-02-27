@@ -195,7 +195,6 @@ module.exports = (updater) ->
     prefix 'text-decoration-line',
            'text-decoration-color',
             browsers: browsers
-  @fork 'ai:text-decoration', 'text-decoration', full: true, (browsers) =>
     prefix 'wavy',
             props:  ['text-decoration', 'text-decoration-style']
             browsers: browsers
