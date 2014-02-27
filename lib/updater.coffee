@@ -80,27 +80,34 @@ module.exports =
         parseFloat(a[1]) - parseFloat(b[1])
 
   # Parse browsers list in feature file
-  parse: (data) ->
-    need = []
+  parse: (data, opts) ->
+    match = if opts.full then /y\sx($|\s)/ else /\sx($|\s)/
+    need  = []
+
     for browser, versions of data.stats
       for interval, support of versions
         for version in interval.split('-')
-          if @browsers[browser] and support.match(/\sx($|\s)/)
+          if @browsers[browser] and support.match(match)
             version = version.replace(/\.0$/, '')
             need.push(@browsers[browser] + ' ' + version)
+
     @sort(need)
 
   # Can I Use shortcut to request files in features/ dir.
-  feature: (file, callback) ->
+  feature: (file, opts, callback) ->
+    [callback, opts] = [opts, { }] unless callback
+
     url = "Fyrd/caniuse/master/features-json/#{file}.json"
-    @github url, (data) => callback @parse(data)
+    @github url, (data) => callback @parse(data, opts)
 
   # Get Can I Use features from another user fork
-  fork: (fork, file, callback) ->
+  fork: (fork, file, opts, callback) ->
+    [callback, opts] = [opts, { }] unless callback
+
     [user, branch] = fork.split(':')
     branch ||= 'master'
     url = "#{user}/caniuse/#{branch}/features-json/#{file}.json"
-    @github url, (data) => callback @parse(data)
+    @github url, (data) => callback @parse(data, opts)
 
   # Call callback with list of all browsers
   all: (callback) ->

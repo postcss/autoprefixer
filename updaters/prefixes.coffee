@@ -187,4 +187,17 @@ module.exports = (updater) ->
     prefix 'touch-action',
             browsers: browsers
 
+  # Text decoration
+  @fork 'ai:text-decoration', 'text-decoration', (browsers) =>
+    prefix 'text-decoration-style',
+            browsers: browsers
+  @fork 'ai:text-decoration', 'text-decoration', full: true, (browsers) =>
+    prefix 'text-decoration-line',
+           'text-decoration-color',
+            browsers: browsers
+  @fork 'ai:text-decoration', 'text-decoration', full: true, (browsers) =>
+    prefix 'wavy',
+            props:  ['text-decoration', 'text-decoration-style']
+            browsers: browsers
+
   @done => @save('prefixes', prefixes)
