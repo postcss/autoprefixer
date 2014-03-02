@@ -10,7 +10,7 @@
     "url": "https://github.com/ai/autoprefixer.git"
   },
   "dependencies": {
-    "postcss":  "~0.3.2",
+    "postcss":  "~0.3.3",
     "fs-extra": "~0.8.1"
   },
   "devDependencies": {
