@@ -17,6 +17,11 @@
 * Chrome 33 is moved to released versions.
 * Add Chrome 36 data.
 
+### 20140302:
+* Add `text-decoration-*` properties support.
+* Update browsers usage statistics.
+* Use new PostCSS version.
+
 ## 1.0 “Plus ultra”
 * Source map support.
 * Save origin indents and code formatting.
