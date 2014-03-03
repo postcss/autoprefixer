@@ -188,10 +188,10 @@ module.exports = (updater) ->
             browsers: browsers
 
   # Text decoration
-  @fork 'ai:text-decoration', 'text-decoration', (browsers) =>
+  @feature 'text-decoration', (browsers) =>
     prefix 'text-decoration-style',
             browsers: browsers
-  @fork 'ai:text-decoration', 'text-decoration', full: true, (browsers) =>
+  @feature 'text-decoration', full: true, (browsers) =>
     prefix 'text-decoration-line',
            'text-decoration-color',
             browsers: browsers
