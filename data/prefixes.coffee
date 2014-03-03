@@ -4089,6 +4089,8 @@ module.exports =
       "cursor"
     ]
     browsers: [
+      "bb 7"
+      "bb 10"
       "chrome 4"
       "chrome 5"
       "chrome 6"
@@ -4168,6 +4170,8 @@ module.exports =
       "cursor"
     ]
     browsers: [
+      "bb 7"
+      "bb 10"
       "chrome 4"
       "chrome 5"
       "chrome 6"
@@ -6109,6 +6113,8 @@ module.exports =
       "cursor"
     ]
     browsers: [
+      "bb 7"
+      "bb 10"
       "chrome 4"
       "chrome 5"
       "chrome 6"
@@ -6188,6 +6194,8 @@ module.exports =
       "cursor"
     ]
     browsers: [
+      "bb 7"
+      "bb 10"
       "chrome 4"
       "chrome 5"
       "chrome 6"
