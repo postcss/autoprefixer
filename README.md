@@ -420,6 +420,12 @@ in right panel.
 
 <img src="http://alphapixels.com/prepros/static/img/prepros.jpg" width="550" height="340" />
 
+### Broccoli
+
+You can use the
+[broccoli-autoprefixer](https://github.com/sindresorhus/broccoli-autoprefixer)
+plugin for [Broccoli](https://github.com/joliss/broccoli).
+
 ### Mincer
 
 To use Autoprefixer in [Mincer](https://github.com/nodeca/mincer),
@@ -495,16 +501,11 @@ Styles can processed automatically in Brackets using the
 [brackets-autoprefixer](https://github.com/mikaeljorhult/brackets-autoprefixer)
 extension.
 
-### Atom
+### Atom Editor
 
 You can process your styles directly in Atom with the
 [atom-autoprefixer](https://github.com/sindresorhus/atom-autoprefixer)
 package.
-
-### Broccoli
-
-You can use the [broccoli-autoprefixer](https://github.com/sindresorhus/broccoli-autoprefixer)
-plugin for Broccoli.
 
 
 ### Others
