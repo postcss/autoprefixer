@@ -495,6 +495,17 @@ Styles can processed automatically in Brackets using the
 [brackets-autoprefixer](https://github.com/mikaeljorhult/brackets-autoprefixer)
 extension.
 
+### Atom
+
+You can process your styles directly in Atom with the
+[atom-autoprefixer](https://github.com/sindresorhus/atom-autoprefixer)
+package.
+
+### Broccoli
+
+You can use the [broccoli-autoprefixer](https://github.com/sindresorhus/broccoli-autoprefixer)
+plugin for Broccoli.
+
 
 ### Others
 
