@@ -411,6 +411,13 @@ or process CSS from plain Ruby:
 prefixed = AutoprefixerRails.compile(css)
 ```
 
+### CodeKit
+
+CodeKit since 2.0 version contains Autoprefixer. In the After Compiling section,
+there is a checkbox to enable Autoprefixer.
+Read [CodeKit docs](https://incident57.com/codekit/help.html#autoprefixer)
+for more inforamtion.
+
 ### Prepros
 
 If you want to build your assets in GUI, try
