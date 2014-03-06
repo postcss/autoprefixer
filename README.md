@@ -384,7 +384,7 @@ If you use Stylus CLI, you can add Autoprefixer by
 Just install npm package and use it in `-u` option:
 
 ```
-stylus -u autoprefixer-stylus file.css
+stylus -u autoprefixer-stylus -w file.styl
 ```
 
 ### Ruby on Rails
