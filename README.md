@@ -300,7 +300,7 @@ and `-webkit-appearance`. Quote from [MDN](https://developer.mozilla.org/en-US/d
 > have the same behavior on each form element across different browsers, and
 > some do not support it at all.
 
-### Why Autoprefixer uses CoffeeScript?
+### Why does Autoprefixer use CoffeeScript?
 
 JavaScript is very popular, but this is the same reason why its syntax does not
 evolve. There is an entire Internet with a lot of legacy code which should
