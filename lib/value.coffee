@@ -19,7 +19,11 @@ class Value extends Prefixer
         prefixed = prefixes.prefixed(decl.prop, prefix)
         rule     = decl.parent
         if rule.every( (i) -> i.prop != prefixed )
-          if rule.every( (i) -> i.prop != decl.prop or i.value != value )
+          trimmed = value.replace(/\s+/, ' ')
+          already = rule.some (i) ->
+            i.prop == decl.prop and i.value.replace(/\s+/, ' ') == trimmed
+
+          unless already
             cloned = @clone(decl, value: value)
             decl.parent.insertBefore(decl, cloned)
 

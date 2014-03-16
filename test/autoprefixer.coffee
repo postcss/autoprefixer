@@ -100,6 +100,10 @@ describe 'Autoprefixer', ->
     it 'uses visual cascade',         -> test('cascade')
     it 'works with properties near',  -> test('double')
 
+    it 'should irgnore spaces inside values', ->
+        css = read('trim')
+        flexboxer.process(css).css.should.eql(css)
+
     it 'removes unnecessary prefixes', ->
       for type in commons
         continue if type == 'cascade'
