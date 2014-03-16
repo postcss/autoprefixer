@@ -421,7 +421,7 @@ for more inforamtion.
 
 ### Prepros
 
-If you want to build your assets with GUI, try
+If you want to build your assets with a GUI, try
 [Prepros](http://alphapixels.com/prepros/). Just set “Auto Prefix CSS”
 [checkbox](https://f.cloud.github.com/assets/3478693/930798/faa29892-0016-11e3-8901-87850de7aed2.jpg)
 in right panel.
