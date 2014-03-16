@@ -3,7 +3,7 @@
 <img align="right" width="94" src="http://ai.github.io/autoprefixer/logo.svg" title="Autoprefixer logo by Anton Lovchikov">
 
 Parse CSS and add vendor prefixes to CSS rules using values
-from the [Can I Use](http://caniuse.com/).
+from [Can I Use](http://caniuse.com/).
 
 Write your CSS rules without vendor prefixes (in fact, forget about them
 entirely):
@@ -40,7 +40,7 @@ to apply prefixes for you:
 }
 ```
 
-You can play with your CSS in [interactive demo] of Autoprefixer.
+You can play with your CSS in the [interactive demo] of Autoprefixer.
 
 Twitter account for news and releases: [@autoprefixer].
 
@@ -59,7 +59,7 @@ The best tool is a tool you can't see and one that does the work for you.
 This is the main idea behind Autoprefixer.
 
 Autoprefixer interface is simple: just forget about vendor prefixes
-and write normal CSS according to latest W3C specs. You don’t need
+and write normal CSS according to the latest W3C specs. You don’t need
 a special language (like Sass) or special mixins.
 
 Because Autoprefixer is a postprocessor for CSS,
@@ -90,8 +90,8 @@ a {
 ```
 
 Note, that Autoprefixer doesn’t load Can I Use data every time. This data
-is already packed to release, so with same Autoprefixer version you always will
-have same output result.
+is already packed in the release, so the same Autoprefixer version will always 
+have same output.
 
 ### Flexbox, Gradients, etc.
 
@@ -140,7 +140,7 @@ Stylus:       3720 ms (8.3 times slower)
 ```
 
 Unlike [-prefix-free](http://leaverou.github.io/prefixfree/), Autoprefixer
-compiles CSS once on deploy and doesn’t hit client-side performance.
+compiles CSS once on deploy and doesn’t hurt client-side performance.
 
 ## Browsers
 
@@ -153,11 +153,11 @@ autoprefixer("last 1 version", "> 1%", "Explorer 7").process(css).css;
 * `last 2 versions` is last versions for each browser. Like “last 2 versions”
   [strategy](http://support.google.com/a/bin/answer.py?answer=33864) in
   Google.
-* `last 2 Chrome versions` is last versions of specify browser.
+* `last 2 Chrome versions` is last versions of the specified browser.
 * `> 5%` is browser versions, selected by global usage statistics.
-* `Firefox > 20` is Firefox newer versions than 20.
+* `Firefox > 20` is Firefox versions newer than 20.
 * `Firefox >= 20` is Firefox version 20 or newer.
-* `Firefox ESR` is latest [Firefox ESR] version.
+* `Firefox ESR` is the latest [Firefox ESR] version.
 * `none` don’t set any browsers to clean CSS from any vendor prefixes.
 * You can also set browsers directly.
 
@@ -189,10 +189,11 @@ By default, Autoprefixer uses `> 1%, last 2 versions, Firefox ESR, Opera 12.1`:
 You must set input and output CSS files paths (by `from` and `to` options)
 to generate a correct map.
 
-Autoprefixer can modify previous source map (for example, from Sass).
-it will autodetect previous map if it will be in annotation comment or in file
-near input CSS. You can disable source map with `map: false` or set previous
-source map content manually to `map` option (as string or JS object).
+Autoprefixer can modify previous source maps (for example, from Sass):
+it will autodetect a previous map if it is listed in an annotation comment or 
+in a file near the input CSS. You can disable source map with `map: false` or
+set the previous source map content manually to `map` option (as a string or a
+JS object).
 
 ```js
 var result = autoprefixer.process(css, {
@@ -208,15 +209,15 @@ fs.writeFileSync('main.min.css.map', result.map);
 ```
 
 Autoprefixer supports inline source maps too. If input CSS contains annotation
-from previous step with map in `data:uri`, Autoprefixer will update source map
-with prefixes changes and inine new map back to output CSS.
+from the previous step with map in `data:uri`, Autoprefixer will update the 
+source map with prefixes changes and inine the new map back into the output CSS.
 
 You can read more about source map options in
 [PostCSS documentation](https://github.com/ai/postcss#source-map-1).
 
 ## Visual Cascade
 
-Autoprefixer can change CSS indentation to create nice visual cascade
+Autoprefixer can change CSS indentation to create a nice visual cascade
 of prefixes. You need to send `cascade: true` option to processor constructor:
 
 ```js
@@ -257,8 +258,8 @@ No. Autoprefixer only adds prefixes, not polyfills. There are two reasons:
 1. Prefixes and polyfills are very different and need a different API.
    Two separate libraries would be much better.
 2. Most of IE polyfills are very bad for client perfomance. They use slow hacks
-   and old IEs is mostly used on old hardware. Most of CSS 3 features that is
-   only used for styling should be ignored in old IEs as it is recommended in
+   and old IEs is mostly used on old hardware. Most CSS3 features used only 
+   for styling should be ignored in old IEs as is recommended for
    Graceful Degradation.
 
 ### Why don’t gradients work in Firefox?
@@ -272,9 +273,9 @@ a {
 }
 ```
 
-Unfortunately, unprefixed gradients use different direction syntax, that most
-of old gradients examples, so be careful and use always latest W3C specs with
-Autoprefixer.
+Unfortunately, unprefixed gradients use a different direction syntax and most 
+examples you find use an old gradient syntax, so be careful and use always the 
+latest W3C specs with Autoprefixer.
 
 [direction syntax]: https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient
 
@@ -304,35 +305,35 @@ and `-webkit-appearance`. Quote from [MDN](https://developer.mozilla.org/en-US/d
 
 JavaScript is very popular, but this is the same reason why its syntax does not
 evolve. There is an entire Internet with a lot of legacy code which should
-be supported by browsers. If developers will add an inappropriate feature then
-it can’t be removed in next versions but must be supported for a very long time.
-This is very bad for innovation. To create new, we need to experiment and
-to choose.
+be supported by browsers. If developers add an inappropriate feature then
+it can’t be removed in then next versions but must be supported for a very 
+long time. This is very bad for innovation. To create new, we need to experiment 
+and to choose.
 
 As a result JavaScript doesn’t have even basic syntax features, which are
 present in other languages like Ruby or Python. There are no string
 interpolation, short lambda syntax, foreach statement for arrays, string and
-arrays slicing, etc. This features are really important, so they will be in
-ECMAScript 6 (first update of JS syntax after 15 years). But this
-new specification is not still released and, of cource, we must wait until
-all browsers will support it.
+arrays slicing, etc. This features are really important and they will be in
+ECMAScript 6 (first update of JS syntax after 15 years), but this
+new specification is still not released and, of cource, we must wait until
+all browsers support it.
 
 With JavaScript preprocessors like CoffeeScript or TypeScript we can bring
-innovation back. We can add new operator and use it right now, without waiting
+innovation back. We can add a new operator and use it right now, without waiting
 for support in all browsers.
 
 Autoprefixer was written in pure JavaScript before. But CoffeeScript made
-Autoprefixer code much cleaner and more readable. Often 2 lines of code
-become 1.
+Autoprefixer code much cleaner and more readable. Often, 2 lines of code
+became 1.
 
 Don’t be afraid of CoffeeScript. It is just a new syntax, not another language
 (like ClojureScript). You can open [examples on CoffeeScript.org] and start
-to code. After a week your eyes will adjust and you will see, that CoffeeScript
+to code. After a week your eyes will adjust and you will see that CoffeeScript
 is cleaner and more readable.
 
 Situation with CoffeeScript and JavaScript is absolutely the same as with
-CSS preprocessors and postprocessors. How we can develop CSS postprocessor
-and avoid JS preproccesor :).
+CSS preprocessors and postprocessors. How can we develop a CSS postprocessor
+and avoid using a JS preproccesor :).
 
 [examples on CoffeeScript.org]: http://coffeescript.org/
 
@@ -370,7 +371,7 @@ on_stylesheet_saved do |file|
 end
 ```
 
-You can set browsers array as second argument in `process` method:
+You can set the browser array as the second argument in `process` method:
 
 ```ruby
 io << AutoprefixerRails.process(css, ["last 1 version", "> 1%", "Explorer 7"])
@@ -413,14 +414,14 @@ prefixed = AutoprefixerRails.compile(css)
 
 ### CodeKit
 
-CodeKit since 2.0 version contains Autoprefixer. In the After Compiling section,
+CodeKit, since the 2.0 version, contains Autoprefixer. In the After Compiling section,
 there is a checkbox to enable Autoprefixer.
 Read [CodeKit docs](https://incident57.com/codekit/help.html#autoprefixer)
 for more inforamtion.
 
 ### Prepros
 
-If you want to build your assets in GUI, try
+If you want to build your assets with a GUI, try
 [Prepros](http://alphapixels.com/prepros/). Just set “Auto Prefix CSS”
 [checkbox](https://f.cloud.github.com/assets/3478693/930798/faa29892-0016-11e3-8901-87850de7aed2.jpg)
 in right panel.
@@ -481,7 +482,7 @@ $prefixed     = $autoprefixer->compile($css);
 
 ### JavaScript
 
-You can use Autoprefixer in the browser or a non-Node.js runtime
+You can use Autoprefixer in the browser or as a non-Node.js runtime
 with [standalone version](https://raw.github.com/ai/autoprefixer-rails/master/vendor/autoprefixer.js).
 
 ### PostCSS
