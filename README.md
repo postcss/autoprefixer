@@ -90,7 +90,7 @@ a {
 ```
 
 Note, that Autoprefixer doesn’t load Can I Use data every time. This data
-is already packed in the release, so the same Autoprefixer version will always 
+is already packed in the release, so the same Autoprefixer version will always
 have same output.
 
 ### Flexbox, Gradients, etc.
@@ -190,7 +190,7 @@ You must set input and output CSS files paths (by `from` and `to` options)
 to generate a correct map.
 
 Autoprefixer can modify previous source maps (for example, from Sass):
-it will autodetect a previous map if it is listed in an annotation comment or 
+it will autodetect a previous map if it is listed in an annotation comment or
 in a file near the input CSS. You can disable source map with `map: false` or
 set the previous source map content manually to `map` option (as a string or a
 JS object).
@@ -209,7 +209,7 @@ fs.writeFileSync('main.min.css.map', result.map);
 ```
 
 Autoprefixer supports inline source maps too. If input CSS contains annotation
-from the previous step with map in `data:uri`, Autoprefixer will update the 
+from the previous step with map in `data:uri`, Autoprefixer will update the
 source map with prefixes changes and inine the new map back into the output CSS.
 
 You can read more about source map options in
@@ -258,7 +258,7 @@ No. Autoprefixer only adds prefixes, not polyfills. There are two reasons:
 1. Prefixes and polyfills are very different and need a different API.
    Two separate libraries would be much better.
 2. Most of IE polyfills are very bad for client perfomance. They use slow hacks
-   and old IEs is mostly used on old hardware. Most CSS3 features used only 
+   and old IEs is mostly used on old hardware. Most CSS3 features used only
    for styling should be ignored in old IEs as is recommended for
    Graceful Degradation.
 
@@ -273,8 +273,8 @@ a {
 }
 ```
 
-Unfortunately, unprefixed gradients use a different direction syntax and most 
-examples you find use an old gradient syntax, so be careful and use always the 
+Unfortunately, unprefixed gradients use a different direction syntax and most
+examples you find use an old gradient syntax, so be careful and use always the
 latest W3C specs with Autoprefixer.
 
 [direction syntax]: https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient
@@ -306,8 +306,8 @@ and `-webkit-appearance`. Quote from [MDN](https://developer.mozilla.org/en-US/d
 JavaScript is very popular, but this is the same reason why its syntax does not
 evolve. There is an entire Internet with a lot of legacy code which should
 be supported by browsers. If developers add an inappropriate feature then
-it can’t be removed in then next versions but must be supported for a very 
-long time. This is very bad for innovation. To create new, we need to experiment 
+it can’t be removed in then next versions but must be supported for a very
+long time. This is very bad for innovation. To create new, we need to experiment
 and to choose.
 
 As a result JavaScript doesn’t have even basic syntax features, which are
@@ -414,8 +414,8 @@ prefixed = AutoprefixerRails.compile(css)
 
 ### CodeKit
 
-CodeKit, since the 2.0 version, contains Autoprefixer. In the After Compiling section,
-there is a checkbox to enable Autoprefixer.
+CodeKit, since the 2.0 version, contains Autoprefixer. In the After Compiling
+section, there is a checkbox to enable Autoprefixer.
 Read [CodeKit docs](https://incident57.com/codekit/help.html#autoprefixer)
 for more inforamtion.
 
