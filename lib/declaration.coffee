@@ -78,8 +78,9 @@ class Declaration extends Prefixer
 
   # Clone and add prefixes for declaration
   add: (decl, prefix, prefixes) ->
-    prefixed = @prefixed(decl.prop, prefix)
-    already  = @all.group(decl).up (i) -> i.prop == prefixed
+    prefixed  = @prefixed(decl.prop, prefix)
+    already   = @all.group(decl).up   (i) -> i.prop == prefixed
+    already ||= @all.group(decl).down (i) -> i.prop == prefixed
 
     return if already or @otherPrefixes(decl.value, prefix)
 

@@ -99,6 +99,7 @@ describe 'Autoprefixer', ->
     it 'works with comments',         -> test('comments')
     it 'uses visual cascade',         -> test('cascade')
     it 'works with properties near',  -> test('double')
+    it 'checks prefixed in hacks',    -> test('check-down')
 
     it 'should irgnore spaces inside values', ->
         css = read('trim')
