@@ -159,7 +159,7 @@ autoprefixer("last 1 version", "> 1%", "Explorer 7").process(css).css;
 * `Firefox >= 20` is Firefox version 20 or newer.
 * `Firefox ESR` is the latest [Firefox ESR] version.
 * `none` don’t set any browsers to clean CSS from any vendor prefixes.
-* You can also set browsers directly.
+* `ios 7` to set browser version directly.
 
 Blackberry and stock Android browsers will not be used in `last n versions`.
 You can add them by name:
