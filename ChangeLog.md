@@ -22,6 +22,13 @@
 * Update browsers usage statistics.
 * Use new PostCSS version.
 
+### 20140319:
+* Check already prefixed properties after current declaration.
+* Normalize spaces before already prefixed check.
+* Firefox 28 is moved to released versions.
+* Add Firefox 31 data.
+* Add some Blackberry data.
+
 ## 1.0 “Plus ultra”
 * Source map support.
 * Save origin indents and code formatting.
