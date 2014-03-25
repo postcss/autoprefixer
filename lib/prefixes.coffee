@@ -25,14 +25,15 @@ Declaration.hack require('./hacks/break-inside')
 Declaration.hack require('./hacks/border-image')
 Declaration.hack require('./hacks/align-content')
 Declaration.hack require('./hacks/border-radius')
+Declaration.hack require('./hacks/transform-decl')
 Declaration.hack require('./hacks/flex-direction')
 Declaration.hack require('./hacks/justify-content')
 
 Value.hack require('./hacks/gradient')
-Value.hack require('./hacks/transform')
 Value.hack require('./hacks/transition')
 Value.hack require('./hacks/display-flex')
 Value.hack require('./hacks/fill-available')
+Value.hack require('./hacks/transform-value')
 
 declsCache = { }
 

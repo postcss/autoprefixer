@@ -1,0 +1,9 @@
+a {
+    transition: transform 1s;
+}
+
+@keyframes anim {
+    from {
+        transform: rotate(90deg);
+    }
+}

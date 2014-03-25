@@ -162,8 +162,8 @@ describe 'Autoprefixer', ->
     it 'supports custom prefixes',      -> test('custom-prefix')
     it 'fix break-inside property',     -> test('multicolumn')
 
-    it 'ignores transform in transition for IE', ->
-      input  = read('ie-transition')
+    it 'ignores transform in transition and keyframes for IE', ->
+      input  = read('ie-transform')
       result = autoprefixer('ie > 0').process(input)
       result.css.should.eql(input)
 

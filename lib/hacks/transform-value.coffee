@@ -1,6 +1,6 @@
 Value = require('../value')
 
-class Transform extends Value
+class TransformValue extends Value
   @names = ['transform']
 
   # Don't prefix transform for IE
@@ -10,4 +10,4 @@ class Transform extends Value
     else
       super
 
-module.exports = Transform
+module.exports = TransformValue
