@@ -371,10 +371,10 @@ on_stylesheet_saved do |file|
 end
 ```
 
-You can set the browser array as the second argument in `process` method:
+You can set the browsers option as the second argument in `process` method:
 
 ```ruby
-io << AutoprefixerRails.process(css, ["last 1 version", "> 1%", "Explorer 7"])
+io << AutoprefixerRails.process(css, browsers: ["last 1 version", "> 1%"])
 ```
 
 ### Stylus
