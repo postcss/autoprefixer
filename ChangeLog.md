@@ -29,6 +29,11 @@
 * Add Firefox 31 data.
 * Add some Blackberry data.
 
+## 20140327:
+* Don’t use `-ms-transform` in `@keyframes`, because IE 9 doesn’t support
+  animations.
+* Update BlackBerry 10 data.
+
 ## 1.0 “Plus ultra”
 * Source map support.
 * Save origin indents and code formatting.
