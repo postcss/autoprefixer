@@ -6,6 +6,7 @@ module.exports =
     selector: true
     browsers: [
       "android 4.4"
+      "bb 10"
       "chrome 4"
       "chrome 5"
       "chrome 6"
