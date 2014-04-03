@@ -34,6 +34,11 @@
   animations.
 * Update BlackBerry 10 data.
 
+## 20140403:
+* Update browsers usage statistics.
+* Opera 20 is moved to released versions.
+* Add Opera 22 data.
+
 ## 1.0 “Plus ultra”
 * Source map support.
 * Save origin indents and code formatting.
