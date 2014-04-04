@@ -315,7 +315,7 @@ present in other languages like Ruby or Python. There are no string
 interpolation, short lambda syntax, foreach statement for arrays, string and
 arrays slicing, etc. This features are really important and they will be in
 ECMAScript 6 (first update of JS syntax after 15 years), but this
-new specification is still not released and, of cource, we must wait until
+new specification is still not released and, of course, we must wait until
 all browsers support it.
 
 With JavaScript preprocessors like CoffeeScript or TypeScript we can bring
