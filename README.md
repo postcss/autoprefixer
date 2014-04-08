@@ -408,7 +408,7 @@ AutoprefixerRails.install(sprockets_env)
 or process CSS from plain Ruby:
 
 ```ruby
-prefixed = AutoprefixerRails.compile(css)
+prefixed = AutoprefixerRails.process(css)
 ```
 
 ### CodeKit
