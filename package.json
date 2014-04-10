@@ -15,9 +15,9 @@
   },
   "devDependencies": {
     "coffee-script": "1.7.1",
-    "browserify":    "3.38.0",
-    "should":        "3.2.0",
-    "stylus":        "0.42.3",
+    "browserify":    "3.39.0",
+    "should":        "3.3.0",
+    "stylus":        "0.43.1",
     "mocha":         "1.18.2",
     "nib":           "1.0.2"
   },
