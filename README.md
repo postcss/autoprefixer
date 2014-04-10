@@ -350,7 +350,8 @@ grunt.loadNpmTasks('grunt-autoprefixer');
 
 ### Gulp
 
-You can use [gulp-autoprefixer](https://github.com/Metrime/gulp-autoprefixer) to use Autoprefixer in your Gulp build configuration.
+You can use [gulp-autoprefixer](https://github.com/Metrime/gulp-autoprefixer)
+to use Autoprefixer in your Gulp build configuration.
 
 ```js
 var prefix = require('gulp-autoprefixer');
