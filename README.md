@@ -348,6 +348,17 @@ plugin for Grunt. Install the npm package and add it to Gruntfile:
 grunt.loadNpmTasks('grunt-autoprefixer');
 ```
 
+### Gulp
+
+You can use [gulp-autoprefixer](https://github.com/Metrime/gulp-autoprefixer) to use Autoprefixer in your Gulp build configuration.
+
+```js
+var prefix = require('gulp-autoprefixer');
+gulp.src('./css/*.css')
+  .pipe(prefix(["last 1 version", "> 1%", "ie 8", "ie 7"], { cascade: true }))
+  .pipe(gulp.dest('./dist/'));
+```
+
 ### Compass
 
 If you use Compass binary to compile your styles, you can easily integrate
