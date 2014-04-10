@@ -39,6 +39,11 @@
 * Opera 20 is moved to released versions.
 * Add Opera 22 data.
 
+## 20140410:
+* Chrome 34 is moved to released versions.
+* Add Chrome 37 data.
+* Fix Chrome 36 data.
+
 ## 1.0 “Plus ultra”
 * Source map support.
 * Save origin indents and code formatting.
