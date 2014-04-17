@@ -25,7 +25,9 @@ a {
     transition: flex 200ms;
 }
 .inline {
+    display: -webkit-inline-box;
     display: -webkit-inline-flex;
+    display: -moz-inline-box;
     display: -ms-inline-flexbox;
     display: inline-flex;
     -webkit-align-self: auto;

@@ -23,10 +23,9 @@ class DisplayFlex extends Value
   # Return value by spec
   prefixed: (prefix) ->
     [spec, prefix] = flexSpec(prefix)
-    return if spec == 2009 and @name == 'inline-flex'
 
     prefix + if spec == 2009
-      'box'
+      if @name == 'flex' then 'box' else 'inline-box'
     else if spec == 2012
       if @name == 'flex' then 'flexbox' else 'inline-flexbox'
     else if spec ==  'final'
