@@ -129,9 +129,9 @@ class Gradient extends Value
         color   += ' ' + position
         position = undefined
 
-      if i == 1
+      if i == 1 and (position is undefined or position == '0%')
         "from(#{color})"
-      else if i == params.length - 1
+      else if i == params.length - 1 and (position is undefined or position == '100%')
         "to(#{color})"
       else if position
         "color-stop(#{position}, #{color})"
