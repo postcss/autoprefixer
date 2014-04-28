@@ -176,13 +176,13 @@ module.exports = (updater) ->
             props:  ['cursor']
             # Chrome added this 3.0, but is flagged as starting in 4 because
             # that was when the grab/grabbing prefixed property was added
-            browsers: browsers.push ['chrome 3']
+            browsers: browsers.concat ['chrome 3']
     prefix 'grab', 'grabbing',
             props:  ['cursor']
             # Firefox didn't unprefix the grab/grabbing cursors till v27,
             # but the caniuse data flagged it as clean in 24 because
             # the zoom-in/zoom-out version was dropped.
-            browsers: browsers.push ['ff 24', 'ff 25', 'ff 26']
+            browsers: browsers.concat ['ff 24', 'ff 25', 'ff 26']
 
   # Sticky position
   @feature 'css-sticky', (browsers) =>

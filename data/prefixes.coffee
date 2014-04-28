@@ -4251,6 +4251,9 @@ module.exports =
       "safari 6"
       "safari 6.1"
       "safari 7"
+      "ff 24"
+      "ff 25"
+      "ff 26"
     ]
 
   grabbing:
@@ -4334,6 +4337,9 @@ module.exports =
       "safari 6"
       "safari 6.1"
       "safari 7"
+      "ff 24"
+      "ff 25"
+      "ff 26"
     ]
 
   hyphens:
@@ -6296,6 +6302,7 @@ module.exports =
       "safari 6"
       "safari 6.1"
       "safari 7"
+      "chrome 3"
     ]
 
   "zoom-out":
@@ -6379,6 +6386,7 @@ module.exports =
       "safari 6"
       "safari 6.1"
       "safari 7"
+      "chrome 3"
     ]
 
 ;
