@@ -26,6 +26,10 @@ div {
     background: linear-gradient(to left, black 50%, white 100%);
 }
 
+.simple4 {
+    background: linear-gradient(to right top, black, white);
+}
+
 .direction {
     background: linear-gradient(top left, black, rgba(0, 0, 0, 0.5), white);
 }
