@@ -44,8 +44,12 @@ class Gradient extends Value
 
     'top right':    'left bottom, right top'
     'top left':     'right bottom, left top'
+    'right top':    'left bottom, right top'
+    'right bottom': 'left top, right bottom'
     'bottom right': 'left top, right bottom'
     'bottom left':  'right top, left bottom'
+    'left top':     'right bottom, left top'
+    'left bottom':  'right top, left bottom'
 
   # Replace old direction to new
   newDirection: (params) ->

@@ -44,6 +44,13 @@ div {
     background: linear-gradient(to left, black 50%, white 100%);
 }
 
+.simple4 {
+    background: -webkit-gradient(linear, left bottom, right top, from(black), to(white));
+    background: -webkit-linear-gradient(left bottom, black, white);
+    background: -o-linear-gradient(left bottom, black, white);
+    background: linear-gradient(to right top, black, white);
+}
+
 .direction {
     background: -webkit-gradient(linear, left top, right bottom, from(black), color-stop(rgba(0, 0, 0, 0.5)), to(white));
     background: -webkit-linear-gradient(top left, black, rgba(0, 0, 0, 0.5), white);
