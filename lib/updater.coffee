@@ -49,7 +49,8 @@ module.exports =
   # Load file from GitHub RAWs
   github: (path, callback) ->
     @requests += 1
-    https.get "https://raw.github.com/#{path}", (res) =>
+    url = "https://raw.githubusercontent.com/#{path}"
+    https.get url, (res) =>
       data = ''
       res.on 'data', (chunk) -> data += chunk
       res.on 'end', =>
@@ -58,9 +59,9 @@ module.exports =
         catch e
           title = data.match(/<title>([^<]+)<\/title>/)
           if title
-            @error("#{ title[1] } on #{ path }")
+            @error("#{ title[1] } on #{ url }")
           else
-            @error("Parsing error in #{ path }:\n#{ e.message }")
+            @error("Parsing error in #{ url }:\n#{ e.message }")
 
         @requests -= 1
         func() for func in @requestCallbacks
