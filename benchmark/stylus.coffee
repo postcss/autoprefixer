@@ -8,7 +8,9 @@ module.exports =
   prepare: (css) ->
     css = css.replace('@charset "UTF-8";', "@import 'nib';")
     css = css.replace(/\}/g, "}\n").replace(/(\w)\[[^\]]+\]/g, '$1')
-    css = css.replace(/filter:\s*alpha\([^;}]+;?/ig, '')
+    css = css.replace(/filter:[^;}]+;?/ig, '')
+    css = css.replace(/(@keyframes[^\{]+)\{/ig, '$1 {')
+    css = css.replace(/url\([^\)]+\)/ig, 'white')
     fs.writeFileSync(file, css)
 
   run: (callback) ->

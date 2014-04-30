@@ -126,16 +126,16 @@ Autoprefixer has [22 special hacks] to fix browser’s differences.
 
 ### Fast
 
-Autoprefixer is about 8 times faster than Compass and Stylus.
+Autoprefixer is about several times faster than Compass and Stylus.
 
 On a Core i7 with 10 GB of RAM and SSD, benchmark with GitHub styles is:
 
 ```
 ~/Dev/autoprefixer$ ./node_modules/.bin/cake bench
 Load GitHub styles
-Autoprefixer: 450 ms
-Compass:      3825 ms (8.5 times slower)
-Stylus:       3720 ms (8.3 times slower)
+Autoprefixer: 466 ms
+Compass:      2828 ms (6.1 times slower)
+Stylus:       1491 ms (3.2 times slower)
 ```
 
 Unlike [-prefix-free](http://leaverou.github.io/prefixfree/), Autoprefixer
