@@ -117,11 +117,12 @@ module.exports =
   ff:
     prefix: "-moz-"
     future: [
+      32
       31
       30
-      29
     ]
     versions: [
+      29
       28
       27
       26
@@ -153,6 +154,7 @@ module.exports =
       2
     ]
     popularity: [
+      0.134244
       1.82721
       10.2175
       0.454938
