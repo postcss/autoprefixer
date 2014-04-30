@@ -33,9 +33,15 @@ module.exports = (updater) ->
             mistakes: ['-ms-']
             browsers: browsers
 
-  # Transform
+  # Transform 2D
   @feature 'transforms2d', (browsers) =>
-    prefix 'transform', 'transform-origin', 'perspective', 'perspective-origin',
+    prefix 'transform', 'transform-origin',
+            browsers:   browsers
+            transition: true
+
+  # Transform 3D
+  @feature 'transforms3d', (browsers) =>
+    prefix 'perspective', 'perspective-origin',
             browsers:   browsers
             transition: true
 
