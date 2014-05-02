@@ -29,27 +29,27 @@
 * Add Firefox 31 data.
 * Add some Blackberry data.
 
-## 20140327:
+### 20140327:
 * Don’t use `-ms-transform` in `@keyframes`, because IE 9 doesn’t support
   animations.
 * Update BlackBerry 10 data.
 
-## 20140403:
+### 20140403:
 * Update browsers usage statistics.
 * Opera 20 is moved to released versions.
 * Add Opera 22 data.
 
-## 20140410:
+### 20140410:
 * Chrome 34 is moved to released versions.
 * Add Chrome 37 data.
 * Fix Chrome 36 data.
 
-## 20140429:
+### 20140429:
 * Fix `display: inline-flex` support by 2009 spec.
 * Fix old WebKit gradient converter (by Sergey Belov).
 * Fix CSS 3 cursors data (by Nick Schonning).
 
-## 20140430:
+### 20140430:
 * Separate 2D and 3D transform prefixes to clean unnecessary `-ms-` prefixes.
 * Firefox 29 is moved to released versions.
 * Add Firefox 32 data.
