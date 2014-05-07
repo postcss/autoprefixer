@@ -77,11 +77,11 @@
 
 ### 20131225:
 * Fix deprecated API convertor.
-* Add ::placeholder support for Firefix >= 18.
+* Add `::placeholder` support for Firefix >= 18.
 * Fix vendor prefixes order.
 
 ### 20140103:
-* Add webkit prefix for sticky position.
+* Add `-webkit-` prefix for `sticky` position.
 * Update browsers popularity statistics.
 
 ### 20140109:
