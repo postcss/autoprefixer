@@ -9,6 +9,7 @@ borderer    = autoprefixer('safari 4',  'ff 3.6')
 cascader    = autoprefixer('chrome > 19', 'ff 21', 'ie 10', cascade: true)
 keyframer   = autoprefixer('chrome > 19', 'opera 12')
 flexboxer   = autoprefixer('chrome > 19', 'ff 21', 'ie 10')
+iecompiler  = autoprefixer('ie > 0')
 gradienter  = autoprefixer('chrome 25', 'opera 12',  'android 2.3')
 selectorer  = autoprefixer('chrome 25', 'ff > 17',   'ie 10')
 intrinsicer = autoprefixer('chrome 25', 'ff 22')
@@ -30,6 +31,8 @@ prefixer = (name) ->
     intrinsicer
   else if name == 'cascade'
     cascader
+  else if name == 'ie-transform'
+    iecompiler
   else
     compiler
 
@@ -161,11 +164,7 @@ describe 'Autoprefixer', ->
     it 'supports intrinsic sizing',     -> test('intrinsic')
     it 'supports custom prefixes',      -> test('custom-prefix')
     it 'fix break-inside property',     -> test('multicolumn')
-
-    it 'ignores transform in transition and keyframes for IE', ->
-      input  = read('ie-transform')
-      result = autoprefixer('ie > 0').process(input)
-      result.css.should.eql(input)
+    it 'ignores some IE transforms',    -> test('ie-transform')
 
     it 'ignores values for CSS3PIE props', ->
       input  = read('pie')

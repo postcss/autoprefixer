@@ -3,6 +3,9 @@ Declaration = require('../declaration')
 class TransformDecl extends Declaration
   @names = ['transform', 'transform-origin']
 
+  @functions3d = ['matrix3d', 'translate3d', 'translateZ', 'scale3d', 'scaleZ',
+                  'rotate3d', 'rotateX', 'rotateY', 'rotateZ', 'perspective']
+
   # Recursively check all parents for @keyframes
   keykrameParents: (decl) ->
     parent = decl.parent
@@ -11,8 +14,18 @@ class TransformDecl extends Declaration
       parent = parent.parent
     false
 
+  # Is transform caontain 3D commands
+  contain3d: (decl) ->
+    for func in TransformDecl.functions3d
+      if decl.value.indexOf("#{ func }(") != -1
+        return true
+    false
+
   # Don't add prefix for IE in keyframes
   insert: (decl, prefix, prefixes) ->
-    super if prefix != '-ms-' or not @keykrameParents(decl)
+    if prefix == '-ms-'
+      super if not @contain3d(decl) and not @keykrameParents(decl)
+    else
+      super
 
 module.exports = TransformDecl
