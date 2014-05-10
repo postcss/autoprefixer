@@ -54,6 +54,10 @@
 * Firefox 29 is moved to released versions.
 * Add Firefox 32 data.
 
+### 20140510
+* Do not add `-ms-` prefix for `transform` with 3D functions.
+* Update browsers global usage statistics.
+
 ## 1.0 “Plus ultra”
 * Source map support.
 * Save origin indents and code formatting.
