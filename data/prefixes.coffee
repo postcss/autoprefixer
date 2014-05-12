@@ -3955,8 +3955,6 @@ module.exports =
       "opera 20"
       "opera 21"
       "opera 22"
-      "safari 6.1"
-      "safari 7"
     ]
 
   "font-kerning":
@@ -4023,8 +4021,6 @@ module.exports =
       "opera 20"
       "opera 21"
       "opera 22"
-      "safari 6.1"
-      "safari 7"
     ]
 
   "font-language-override":
@@ -4091,8 +4087,6 @@ module.exports =
       "opera 20"
       "opera 21"
       "opera 22"
-      "safari 6.1"
-      "safari 7"
     ]
 
   "font-variant-ligatures":
@@ -4159,8 +4153,6 @@ module.exports =
       "opera 20"
       "opera 21"
       "opera 22"
-      "safari 6.1"
-      "safari 7"
     ]
 
   grab:
