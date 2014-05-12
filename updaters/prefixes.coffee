@@ -209,8 +209,5 @@ module.exports = (updater) ->
     prefix 'text-decoration-line',
            'text-decoration-color',
             browsers: browsers
-    prefix 'wavy',
-            props:  ['text-decoration', 'text-decoration-style']
-            browsers: browsers
 
   @done => @save('prefixes', prefixes)

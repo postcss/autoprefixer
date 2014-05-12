@@ -6093,41 +6093,6 @@ module.exports =
       "safari 7"
     ]
 
-  wavy:
-    props: [
-      "text-decoration"
-      "text-decoration-style"
-    ]
-    browsers: [
-      "ff 6"
-      "ff 7"
-      "ff 8"
-      "ff 9"
-      "ff 10"
-      "ff 11"
-      "ff 12"
-      "ff 13"
-      "ff 14"
-      "ff 15"
-      "ff 16"
-      "ff 17"
-      "ff 18"
-      "ff 19"
-      "ff 20"
-      "ff 21"
-      "ff 22"
-      "ff 23"
-      "ff 24"
-      "ff 25"
-      "ff 26"
-      "ff 27"
-      "ff 28"
-      "ff 29"
-      "ff 30"
-      "ff 31"
-      "ff 32"
-    ]
-
   "zoom-in":
     props: [
       "cursor"
