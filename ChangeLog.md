@@ -58,6 +58,10 @@
 * Do not add `-ms-` prefix for `transform` with 3D functions.
 * Update browsers global usage statistics.
 
+### 20140512
+* Remove unnecessary `-moz-` prefix for `wavy` in `text-decoration`.
+* Update Safari data for font properties.
+
 ## 1.0 “Plus ultra”
 * Source map support.
 * Save origin indents and code formatting.
