@@ -62,6 +62,10 @@
 * Remove unnecessary `-moz-` prefix for `wavy` in `text-decoration`.
 * Update Safari data for font properties.
 
+### 20140521
+* Chrome 36 is moved to released versions.
+* Add Chrome 38 data.
+
 ## 1.0 “Plus ultra”
 * Source map support.
 * Save origin indents and code formatting.
