@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "postcss":  "~0.3.4",
-    "fs-extra": "~0.8.1"
+    "fs-extra": "~0.9.1"
   },
   "devDependencies": {
     "coffee-script": "1.7.1",
