@@ -66,6 +66,10 @@
 * Chrome 36 is moved to released versions.
 * Add Chrome 38 data.
 
+### 20140523
+* Opera 21 is moved to released versions.
+* Add Opera 23 data.
+
 ## 1.0 “Plus ultra”
 * Source map support.
 * Save origin indents and code formatting.
