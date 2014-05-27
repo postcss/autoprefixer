@@ -360,6 +360,12 @@ gulp.src('./css/*.css')
   .pipe(gulp.dest('./dist/'));
 ```
 
+### Brunch
+
+You can use the
+[autoprefixer-brunch](https://github.com/lydell/autoprefixer-brunch)
+plugin for [Brunch](http://brunch.io/).
+
 ### Compass
 
 If you use Compass binary to compile your styles, you can easily integrate
