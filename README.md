@@ -491,6 +491,11 @@ $css          = 'a { transition: transform 1s }';
 $prefixed     = $autoprefixer->compile($css);
 ```
 
+### .NET
+
+You can use Autoprefixer from .NET and BundleTransformer with the
+[Autoprefixer](https://github.com/digitalcreations/autoprefixer) NuGet package.
+
 ### JavaScript
 
 You can use Autoprefixer in the browser or as a non-Node.js runtime
@@ -525,11 +530,6 @@ extension.
 You can process your styles directly in Atom with the
 [atom-autoprefixer](https://github.com/sindresorhus/atom-autoprefixer)
 package.
-
-
-### .NET (and BundleTransformer)
-
-You can run Autoprefixer from .NET with [the `Autoprefixer` Nuget package](https://github.com/digitalcreations/autoprefixer). Also supports BundleTransformer.
 
 ### Others
 
