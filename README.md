@@ -527,6 +527,10 @@ You can process your styles directly in Atom with the
 package.
 
 
+### .NET (and BundleTransformer)
+
+You can run Autoprefixer from .NET with [the `Autoprefixer` Nuget package](https://github.com/digitalcreations/autoprefixer). Also supports BundleTransformer.
+
 ### Others
 
 You can use the `autoprefixer` binary to process CSS files using
