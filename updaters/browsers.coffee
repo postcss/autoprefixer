@@ -7,7 +7,7 @@ module.exports = ->
     intervals = (array) ->
       result = []
       for interval in array
-        splited = interval.split('-').map( (i) -> parseFloat(i) )
+        splited = interval.split('-')
         splited = splited.sort().reverse()
         sub     = ([i, interval, splited.length] for i in splited)
         result  = result.concat(sub)
@@ -15,7 +15,7 @@ module.exports = ->
 
     agent = (name) ->
       info     = data.agents[name]
-      future   = normalize(info.versions[-3..-1]).map (i) -> parseFloat(i)
+      future   = normalize(info.versions[-3..-1])
       versions = intervals(normalize(info.versions[0..-4]))
       result   = {}
 

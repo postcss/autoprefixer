@@ -6,6 +6,7 @@ module.exports =
     selector: true
     browsers: [
       "android 4.4"
+      "android 4.4.3"
       "bb 10"
       "chrome 4"
       "chrome 5"
@@ -80,12 +81,14 @@ module.exports =
       "ios 6"
       "ios 6.1"
       "ios 7"
+      "ios 8"
       "opera 15"
       "safari 5"
       "safari 5.1"
       "safari 6"
       "safari 6.1"
       "safari 7"
+      "safari 8"
     ]
 
   "::selection":
@@ -190,6 +193,7 @@ module.exports =
       "safari 6"
       "safari 6.1"
       "safari 7"
+      "safari 8"
     ]
 
   "@keyframes":
@@ -202,6 +206,7 @@ module.exports =
       "android 4.1"
       "android 4.2"
       "android 4.3"
+      "android 4.4.3"
       "android 4.4"
       "bb 7"
       "bb 10"
@@ -261,6 +266,7 @@ module.exports =
       "ios 6"
       "ios 6.1"
       "ios 7"
+      "ios 8"
       "opera 12"
       "opera 15"
       "opera 16"
@@ -277,6 +283,7 @@ module.exports =
       "safari 6"
       "safari 6.1"
       "safari 7"
+      "safari 8"
     ]
 
   "align-content":
@@ -349,6 +356,7 @@ module.exports =
       "ios 6 2009"
       "ios 6.1 2009"
       "ios 7"
+      "ios 8"
       "opera 15"
       "opera 16"
       "safari 3.1 2009"
@@ -359,6 +367,7 @@ module.exports =
       "safari 6 2009"
       "safari 6.1 2009"
       "safari 7"
+      "safari 8"
     ]
 
   "align-items":
@@ -431,6 +440,7 @@ module.exports =
       "ios 6 2009"
       "ios 6.1 2009"
       "ios 7"
+      "ios 8"
       "opera 15"
       "opera 16"
       "safari 3.1 2009"
@@ -441,6 +451,7 @@ module.exports =
       "safari 6 2009"
       "safari 6.1 2009"
       "safari 7"
+      "safari 8"
     ]
 
   "align-self":
@@ -513,6 +524,7 @@ module.exports =
       "ios 6 2009"
       "ios 6.1 2009"
       "ios 7"
+      "ios 8"
       "opera 15"
       "opera 16"
       "safari 3.1 2009"
@@ -523,6 +535,7 @@ module.exports =
       "safari 6 2009"
       "safari 6.1 2009"
       "safari 7"
+      "safari 8"
     ]
 
   animation:
@@ -535,6 +548,7 @@ module.exports =
       "android 4.1"
       "android 4.2"
       "android 4.3"
+      "android 4.4.3"
       "android 4.4"
       "bb 7"
       "bb 10"
@@ -594,6 +608,7 @@ module.exports =
       "ios 6"
       "ios 6.1"
       "ios 7"
+      "ios 8"
       "opera 12"
       "opera 15"
       "opera 16"
@@ -610,6 +625,7 @@ module.exports =
       "safari 6"
       "safari 6.1"
       "safari 7"
+      "safari 8"
     ]
 
   "animation-delay":
@@ -622,6 +638,7 @@ module.exports =
       "android 4.1"
       "android 4.2"
       "android 4.3"
+      "android 4.4.3"
       "android 4.4"
       "bb 7"
       "bb 10"
@@ -681,6 +698,7 @@ module.exports =
       "ios 6"
       "ios 6.1"
       "ios 7"
+      "ios 8"
       "opera 12"
       "opera 15"
       "opera 16"
@@ -697,6 +715,7 @@ module.exports =
       "safari 6"
       "safari 6.1"
       "safari 7"
+      "safari 8"
     ]
 
   "animation-direction":
@@ -709,6 +728,7 @@ module.exports =
       "android 4.1"
       "android 4.2"
       "android 4.3"
+      "android 4.4.3"
       "android 4.4"
       "bb 7"
       "bb 10"
@@ -768,6 +788,7 @@ module.exports =
       "ios 6"
       "ios 6.1"
       "ios 7"
+      "ios 8"
       "opera 12"
       "opera 15"
       "opera 16"
@@ -784,6 +805,7 @@ module.exports =
       "safari 6"
       "safari 6.1"
       "safari 7"
+      "safari 8"
     ]
 
   "animation-duration":
@@ -796,6 +818,7 @@ module.exports =
       "android 4.1"
       "android 4.2"
       "android 4.3"
+      "android 4.4.3"
       "android 4.4"
       "bb 7"
       "bb 10"
@@ -855,6 +878,7 @@ module.exports =
       "ios 6"
       "ios 6.1"
       "ios 7"
+      "ios 8"
       "opera 12"
       "opera 15"
       "opera 16"
@@ -871,6 +895,7 @@ module.exports =
       "safari 6"
       "safari 6.1"
       "safari 7"
+      "safari 8"
     ]
 
   "animation-fill-mode":
@@ -883,6 +908,7 @@ module.exports =
       "android 4.1"
       "android 4.2"
       "android 4.3"
+      "android 4.4.3"
       "android 4.4"
       "bb 7"
       "bb 10"
@@ -942,6 +968,7 @@ module.exports =
       "ios 6"
       "ios 6.1"
       "ios 7"
+      "ios 8"
       "opera 12"
       "opera 15"
       "opera 16"
@@ -958,6 +985,7 @@ module.exports =
       "safari 6"
       "safari 6.1"
       "safari 7"
+      "safari 8"
     ]
 
   "animation-iteration-count":
@@ -970,6 +998,7 @@ module.exports =
       "android 4.1"
       "android 4.2"
       "android 4.3"
+      "android 4.4.3"
       "android 4.4"
       "bb 7"
       "bb 10"
@@ -1029,6 +1058,7 @@ module.exports =
       "ios 6"
       "ios 6.1"
       "ios 7"
+      "ios 8"
       "opera 12"
       "opera 15"
       "opera 16"
@@ -1045,6 +1075,7 @@ module.exports =
       "safari 6"
       "safari 6.1"
       "safari 7"
+      "safari 8"
     ]
 
   "animation-name":
@@ -1057,6 +1088,7 @@ module.exports =
       "android 4.1"
       "android 4.2"
       "android 4.3"
+      "android 4.4.3"
       "android 4.4"
       "bb 7"
       "bb 10"
@@ -1116,6 +1148,7 @@ module.exports =
       "ios 6"
       "ios 6.1"
       "ios 7"
+      "ios 8"
       "opera 12"
       "opera 15"
       "opera 16"
@@ -1132,6 +1165,7 @@ module.exports =
       "safari 6"
       "safari 6.1"
       "safari 7"
+      "safari 8"
     ]
 
   "animation-play-state":
@@ -1144,6 +1178,7 @@ module.exports =
       "android 4.1"
       "android 4.2"
       "android 4.3"
+      "android 4.4.3"
       "android 4.4"
       "bb 7"
       "bb 10"
@@ -1203,6 +1238,7 @@ module.exports =
       "ios 6"
       "ios 6.1"
       "ios 7"
+      "ios 8"
       "opera 12"
       "opera 15"
       "opera 16"
@@ -1219,6 +1255,7 @@ module.exports =
       "safari 6"
       "safari 6.1"
       "safari 7"
+      "safari 8"
     ]
 
   "animation-timing-function":
@@ -1231,6 +1268,7 @@ module.exports =
       "android 4.1"
       "android 4.2"
       "android 4.3"
+      "android 4.4.3"
       "android 4.4"
       "bb 7"
       "bb 10"
@@ -1290,6 +1328,7 @@ module.exports =
       "ios 6"
       "ios 6.1"
       "ios 7"
+      "ios 8"
       "opera 12"
       "opera 15"
       "opera 16"
@@ -1306,6 +1345,7 @@ module.exports =
       "safari 6"
       "safari 6.1"
       "safari 7"
+      "safari 8"
     ]
 
   "backface-visibility":
@@ -1315,6 +1355,7 @@ module.exports =
       "android 4.1"
       "android 4.2"
       "android 4.3"
+      "android 4.4.3"
       "android 4.4"
       "bb 7"
       "bb 10"
@@ -1358,6 +1399,7 @@ module.exports =
       "ios 6"
       "ios 6.1"
       "ios 7"
+      "ios 8"
       "opera 15"
       "opera 16"
       "opera 17"
@@ -1373,6 +1415,7 @@ module.exports =
       "safari 6"
       "safari 6.1"
       "safari 7"
+      "safari 8"
     ]
 
   "background-clip":
@@ -1642,6 +1685,7 @@ module.exports =
       "android 4.2"
       "android 4.3"
       "android 4.4"
+      "android 4.4.3"
       "bb 7"
       "bb 10"
       "chrome 4"
@@ -1722,6 +1766,7 @@ module.exports =
       "ios 6"
       "ios 6.1"
       "ios 7"
+      "ios 8"
       "opera 15"
       "opera 16"
       "opera 17"
@@ -1739,6 +1784,7 @@ module.exports =
       "safari 6"
       "safari 6.1"
       "safari 7"
+      "safari 8"
     ]
 
   "break-before":
@@ -1752,6 +1798,7 @@ module.exports =
       "android 4.2"
       "android 4.3"
       "android 4.4"
+      "android 4.4.3"
       "bb 7"
       "bb 10"
       "chrome 4"
@@ -1832,6 +1879,7 @@ module.exports =
       "ios 6"
       "ios 6.1"
       "ios 7"
+      "ios 8"
       "opera 15"
       "opera 16"
       "opera 17"
@@ -1849,6 +1897,7 @@ module.exports =
       "safari 6"
       "safari 6.1"
       "safari 7"
+      "safari 8"
     ]
 
   "break-inside":
@@ -1862,6 +1911,7 @@ module.exports =
       "android 4.2"
       "android 4.3"
       "android 4.4"
+      "android 4.4.3"
       "bb 7"
       "bb 10"
       "chrome 4"
@@ -1942,6 +1992,7 @@ module.exports =
       "ios 6"
       "ios 6.1"
       "ios 7"
+      "ios 8"
       "opera 15"
       "opera 16"
       "opera 17"
@@ -1959,6 +2010,7 @@ module.exports =
       "safari 6"
       "safari 6.1"
       "safari 7"
+      "safari 8"
     ]
 
   calc:
@@ -2002,6 +2054,7 @@ module.exports =
       "android 4.2"
       "android 4.3"
       "android 4.4"
+      "android 4.4.3"
       "bb 7"
       "bb 10"
       "chrome 4"
@@ -2082,6 +2135,7 @@ module.exports =
       "ios 6"
       "ios 6.1"
       "ios 7"
+      "ios 8"
       "opera 15"
       "opera 16"
       "opera 17"
@@ -2099,6 +2153,7 @@ module.exports =
       "safari 6"
       "safari 6.1"
       "safari 7"
+      "safari 8"
     ]
 
   "column-fill":
@@ -2112,6 +2167,7 @@ module.exports =
       "android 4.2"
       "android 4.3"
       "android 4.4"
+      "android 4.4.3"
       "bb 7"
       "bb 10"
       "chrome 4"
@@ -2192,6 +2248,7 @@ module.exports =
       "ios 6"
       "ios 6.1"
       "ios 7"
+      "ios 8"
       "opera 15"
       "opera 16"
       "opera 17"
@@ -2209,6 +2266,7 @@ module.exports =
       "safari 6"
       "safari 6.1"
       "safari 7"
+      "safari 8"
     ]
 
   "column-gap":
@@ -2222,6 +2280,7 @@ module.exports =
       "android 4.2"
       "android 4.3"
       "android 4.4"
+      "android 4.4.3"
       "bb 7"
       "bb 10"
       "chrome 4"
@@ -2302,6 +2361,7 @@ module.exports =
       "ios 6"
       "ios 6.1"
       "ios 7"
+      "ios 8"
       "opera 15"
       "opera 16"
       "opera 17"
@@ -2319,6 +2379,7 @@ module.exports =
       "safari 6"
       "safari 6.1"
       "safari 7"
+      "safari 8"
     ]
     transition: true
 
@@ -2333,6 +2394,7 @@ module.exports =
       "android 4.2"
       "android 4.3"
       "android 4.4"
+      "android 4.4.3"
       "bb 7"
       "bb 10"
       "chrome 4"
@@ -2413,6 +2475,7 @@ module.exports =
       "ios 6"
       "ios 6.1"
       "ios 7"
+      "ios 8"
       "opera 15"
       "opera 16"
       "opera 17"
@@ -2430,6 +2493,7 @@ module.exports =
       "safari 6"
       "safari 6.1"
       "safari 7"
+      "safari 8"
     ]
     transition: true
 
@@ -2444,6 +2508,7 @@ module.exports =
       "android 4.2"
       "android 4.3"
       "android 4.4"
+      "android 4.4.3"
       "bb 7"
       "bb 10"
       "chrome 4"
@@ -2524,6 +2589,7 @@ module.exports =
       "ios 6"
       "ios 6.1"
       "ios 7"
+      "ios 8"
       "opera 15"
       "opera 16"
       "opera 17"
@@ -2541,6 +2607,7 @@ module.exports =
       "safari 6"
       "safari 6.1"
       "safari 7"
+      "safari 8"
     ]
     transition: true
 
@@ -2555,6 +2622,7 @@ module.exports =
       "android 4.2"
       "android 4.3"
       "android 4.4"
+      "android 4.4.3"
       "bb 7"
       "bb 10"
       "chrome 4"
@@ -2635,6 +2703,7 @@ module.exports =
       "ios 6"
       "ios 6.1"
       "ios 7"
+      "ios 8"
       "opera 15"
       "opera 16"
       "opera 17"
@@ -2652,6 +2721,7 @@ module.exports =
       "safari 6"
       "safari 6.1"
       "safari 7"
+      "safari 8"
     ]
 
   "column-rule-width":
@@ -2665,6 +2735,7 @@ module.exports =
       "android 4.2"
       "android 4.3"
       "android 4.4"
+      "android 4.4.3"
       "bb 7"
       "bb 10"
       "chrome 4"
@@ -2745,6 +2816,7 @@ module.exports =
       "ios 6"
       "ios 6.1"
       "ios 7"
+      "ios 8"
       "opera 15"
       "opera 16"
       "opera 17"
@@ -2762,6 +2834,7 @@ module.exports =
       "safari 6"
       "safari 6.1"
       "safari 7"
+      "safari 8"
     ]
     transition: true
 
@@ -2776,6 +2849,7 @@ module.exports =
       "android 4.2"
       "android 4.3"
       "android 4.4"
+      "android 4.4.3"
       "bb 7"
       "bb 10"
       "chrome 4"
@@ -2856,6 +2930,7 @@ module.exports =
       "ios 6"
       "ios 6.1"
       "ios 7"
+      "ios 8"
       "opera 15"
       "opera 16"
       "opera 17"
@@ -2873,6 +2948,7 @@ module.exports =
       "safari 6"
       "safari 6.1"
       "safari 7"
+      "safari 8"
     ]
 
   "column-width":
@@ -2886,6 +2962,7 @@ module.exports =
       "android 4.2"
       "android 4.3"
       "android 4.4"
+      "android 4.4.3"
       "bb 7"
       "bb 10"
       "chrome 4"
@@ -2966,6 +3043,7 @@ module.exports =
       "ios 6"
       "ios 6.1"
       "ios 7"
+      "ios 8"
       "opera 15"
       "opera 16"
       "opera 17"
@@ -2983,6 +3061,7 @@ module.exports =
       "safari 6"
       "safari 6.1"
       "safari 7"
+      "safari 8"
     ]
     transition: true
 
@@ -2997,6 +3076,7 @@ module.exports =
       "android 4.2"
       "android 4.3"
       "android 4.4"
+      "android 4.4.3"
       "bb 7"
       "bb 10"
       "chrome 4"
@@ -3077,6 +3157,7 @@ module.exports =
       "ios 6"
       "ios 6.1"
       "ios 7"
+      "ios 8"
       "opera 15"
       "opera 16"
       "opera 17"
@@ -3094,6 +3175,7 @@ module.exports =
       "safari 6"
       "safari 6.1"
       "safari 7"
+      "safari 8"
     ]
     transition: true
 
@@ -3170,6 +3252,7 @@ module.exports =
       "ios 6 2009"
       "ios 6.1 2009"
       "ios 7"
+      "ios 8"
       "opera 15"
       "opera 16"
       "safari 3.1 2009"
@@ -3180,6 +3263,7 @@ module.exports =
       "safari 6 2009"
       "safari 6.1 2009"
       "safari 7"
+      "safari 8"
     ]
 
   "fill-available":
@@ -3192,6 +3276,7 @@ module.exports =
       "max-height"
     ]
     browsers: [
+      "android 4.4.3"
       "android 4.4"
       "bb 10"
       "chrome 22"
@@ -3241,6 +3326,7 @@ module.exports =
       "ff 31"
       "ff 32"
       "ios 7"
+      "ios 8"
       "opera 15"
       "opera 16"
       "opera 17"
@@ -3252,10 +3338,12 @@ module.exports =
       "opera 23"
       "safari 6.1"
       "safari 7"
+      "safari 8"
     ]
 
   filter:
     browsers: [
+      "android 4.4.3"
       "android 4.4"
       "bb 10"
       "chrome 18"
@@ -3282,6 +3370,7 @@ module.exports =
       "ios 6"
       "ios 6.1"
       "ios 7"
+      "ios 8"
       "opera 15"
       "opera 16"
       "opera 17"
@@ -3294,6 +3383,7 @@ module.exports =
       "safari 6"
       "safari 6.1"
       "safari 7"
+      "safari 8"
     ]
     transition: true
 
@@ -3307,6 +3397,7 @@ module.exports =
       "max-height"
     ]
     browsers: [
+      "android 4.4.3"
       "android 4.4"
       "bb 10"
       "chrome 22"
@@ -3356,6 +3447,7 @@ module.exports =
       "ff 31"
       "ff 32"
       "ios 7"
+      "ios 8"
       "opera 15"
       "opera 16"
       "opera 17"
@@ -3367,6 +3459,7 @@ module.exports =
       "opera 23"
       "safari 6.1"
       "safari 7"
+      "safari 8"
     ]
 
   flex:
@@ -3440,6 +3533,7 @@ module.exports =
       "ios 6 2009"
       "ios 6.1 2009"
       "ios 7"
+      "ios 8"
       "opera 15"
       "opera 16"
       "safari 3.1 2009"
@@ -3450,6 +3544,7 @@ module.exports =
       "safari 6 2009"
       "safari 6.1 2009"
       "safari 7"
+      "safari 8"
     ]
 
   "flex-basis":
@@ -3523,6 +3618,7 @@ module.exports =
       "ios 6 2009"
       "ios 6.1 2009"
       "ios 7"
+      "ios 8"
       "opera 15"
       "opera 16"
       "safari 3.1 2009"
@@ -3533,6 +3629,7 @@ module.exports =
       "safari 6 2009"
       "safari 6.1 2009"
       "safari 7"
+      "safari 8"
     ]
 
   "flex-direction":
@@ -3605,6 +3702,7 @@ module.exports =
       "ios 6 2009"
       "ios 6.1 2009"
       "ios 7"
+      "ios 8"
       "opera 15"
       "opera 16"
       "safari 3.1 2009"
@@ -3615,6 +3713,7 @@ module.exports =
       "safari 6 2009"
       "safari 6.1 2009"
       "safari 7"
+      "safari 8"
     ]
 
   "flex-flow":
@@ -3687,6 +3786,7 @@ module.exports =
       "ios 6 2009"
       "ios 6.1 2009"
       "ios 7"
+      "ios 8"
       "opera 15"
       "opera 16"
       "safari 3.1 2009"
@@ -3697,6 +3797,7 @@ module.exports =
       "safari 6 2009"
       "safari 6.1 2009"
       "safari 7"
+      "safari 8"
     ]
 
   "flex-grow":
@@ -3770,6 +3871,7 @@ module.exports =
       "ios 6 2009"
       "ios 6.1 2009"
       "ios 7"
+      "ios 8"
       "opera 15"
       "opera 16"
       "safari 3.1 2009"
@@ -3780,6 +3882,7 @@ module.exports =
       "safari 6 2009"
       "safari 6.1 2009"
       "safari 7"
+      "safari 8"
     ]
 
   "flex-shrink":
@@ -3853,6 +3956,7 @@ module.exports =
       "ios 6 2009"
       "ios 6.1 2009"
       "ios 7"
+      "ios 8"
       "opera 15"
       "opera 16"
       "safari 3.1 2009"
@@ -3863,6 +3967,7 @@ module.exports =
       "safari 6 2009"
       "safari 6.1 2009"
       "safari 7"
+      "safari 8"
     ]
 
   "flex-wrap":
@@ -3935,6 +4040,7 @@ module.exports =
       "ios 6 2009"
       "ios 6.1 2009"
       "ios 7"
+      "ios 8"
       "opera 15"
       "opera 16"
       "safari 3.1 2009"
@@ -3945,10 +4051,12 @@ module.exports =
       "safari 6 2009"
       "safari 6.1 2009"
       "safari 7"
+      "safari 8"
     ]
 
   "font-feature-settings":
     browsers: [
+      "android 4.4.3"
       "android 4.4"
       "bb 10"
       "chrome 16"
@@ -4004,6 +4112,7 @@ module.exports =
       "ff 31"
       "ff 32"
       "ios 7"
+      "ios 8"
       "opera 15"
       "opera 16"
       "opera 17"
@@ -4017,6 +4126,7 @@ module.exports =
 
   "font-kerning":
     browsers: [
+      "android 4.4.3"
       "android 4.4"
       "bb 10"
       "chrome 16"
@@ -4072,6 +4182,7 @@ module.exports =
       "ff 31"
       "ff 32"
       "ios 7"
+      "ios 8"
       "opera 15"
       "opera 16"
       "opera 17"
@@ -4085,6 +4196,7 @@ module.exports =
 
   "font-language-override":
     browsers: [
+      "android 4.4.3"
       "android 4.4"
       "bb 10"
       "chrome 16"
@@ -4140,6 +4252,7 @@ module.exports =
       "ff 31"
       "ff 32"
       "ios 7"
+      "ios 8"
       "opera 15"
       "opera 16"
       "opera 17"
@@ -4153,6 +4266,7 @@ module.exports =
 
   "font-variant-ligatures":
     browsers: [
+      "android 4.4.3"
       "android 4.4"
       "bb 10"
       "chrome 16"
@@ -4208,6 +4322,7 @@ module.exports =
       "ff 31"
       "ff 32"
       "ios 7"
+      "ios 8"
       "opera 15"
       "opera 16"
       "opera 17"
@@ -4302,6 +4417,7 @@ module.exports =
       "safari 6"
       "safari 6.1"
       "safari 7"
+      "safari 8"
       "ff 24"
       "ff 25"
       "ff 26"
@@ -4390,6 +4506,7 @@ module.exports =
       "safari 6"
       "safari 6.1"
       "safari 7"
+      "safari 8"
       "ff 24"
       "ff 25"
       "ff 26"
@@ -4433,10 +4550,12 @@ module.exports =
       "ios 6"
       "ios 6.1"
       "ios 7"
+      "ios 8"
       "safari 5.1"
       "safari 6"
       "safari 6.1"
       "safari 7"
+      "safari 8"
     ]
 
   "inline-flex":
@@ -4512,6 +4631,7 @@ module.exports =
       "ios 6 2009"
       "ios 6.1 2009"
       "ios 7"
+      "ios 8"
       "opera 15"
       "opera 16"
       "safari 3.1 2009"
@@ -4522,6 +4642,7 @@ module.exports =
       "safari 6 2009"
       "safari 6.1 2009"
       "safari 7"
+      "safari 8"
     ]
 
   "justify-content":
@@ -4594,6 +4715,7 @@ module.exports =
       "ios 6 2009"
       "ios 6.1 2009"
       "ios 7"
+      "ios 8"
       "opera 15"
       "opera 16"
       "safari 3.1 2009"
@@ -4604,6 +4726,7 @@ module.exports =
       "safari 6 2009"
       "safari 6.1 2009"
       "safari 7"
+      "safari 8"
     ]
 
   "linear-gradient":
@@ -4690,6 +4813,7 @@ module.exports =
       "max-height"
     ]
     browsers: [
+      "android 4.4.3"
       "android 4.4"
       "bb 10"
       "chrome 22"
@@ -4739,6 +4863,7 @@ module.exports =
       "ff 31"
       "ff 32"
       "ios 7"
+      "ios 8"
       "opera 15"
       "opera 16"
       "opera 17"
@@ -4750,6 +4875,7 @@ module.exports =
       "opera 23"
       "safari 6.1"
       "safari 7"
+      "safari 8"
     ]
 
   "min-content":
@@ -4762,6 +4888,7 @@ module.exports =
       "max-height"
     ]
     browsers: [
+      "android 4.4.3"
       "android 4.4"
       "bb 10"
       "chrome 22"
@@ -4811,6 +4938,7 @@ module.exports =
       "ff 31"
       "ff 32"
       "ios 7"
+      "ios 8"
       "opera 15"
       "opera 16"
       "opera 17"
@@ -4822,6 +4950,7 @@ module.exports =
       "opera 23"
       "safari 6.1"
       "safari 7"
+      "safari 8"
     ]
 
   order:
@@ -4894,6 +5023,7 @@ module.exports =
       "ios 6 2009"
       "ios 6.1 2009"
       "ios 7"
+      "ios 8"
       "opera 15"
       "opera 16"
       "safari 3.1 2009"
@@ -4904,6 +5034,7 @@ module.exports =
       "safari 6 2009"
       "safari 6.1 2009"
       "safari 7"
+      "safari 8"
     ]
 
   perspective:
@@ -4913,6 +5044,7 @@ module.exports =
       "android 4.1"
       "android 4.2"
       "android 4.3"
+      "android 4.4.3"
       "android 4.4"
       "bb 7"
       "bb 10"
@@ -4956,6 +5088,7 @@ module.exports =
       "ios 6"
       "ios 6.1"
       "ios 7"
+      "ios 8"
       "opera 15"
       "opera 16"
       "opera 17"
@@ -4971,6 +5104,7 @@ module.exports =
       "safari 6"
       "safari 6.1"
       "safari 7"
+      "safari 8"
     ]
     transition: true
 
@@ -4981,6 +5115,7 @@ module.exports =
       "android 4.1"
       "android 4.2"
       "android 4.3"
+      "android 4.4.3"
       "android 4.4"
       "bb 7"
       "bb 10"
@@ -5024,6 +5159,7 @@ module.exports =
       "ios 6"
       "ios 6.1"
       "ios 7"
+      "ios 8"
       "opera 15"
       "opera 16"
       "opera 17"
@@ -5039,6 +5175,7 @@ module.exports =
       "safari 6"
       "safari 6.1"
       "safari 7"
+      "safari 8"
     ]
     transition: true
 
@@ -5272,8 +5409,10 @@ module.exports =
       "ios 6"
       "ios 6.1"
       "ios 7"
+      "ios 8"
       "safari 6.1"
       "safari 7"
+      "safari 8"
     ]
 
   "tab-size":
@@ -5449,6 +5588,7 @@ module.exports =
       "android 4.2"
       "android 4.3"
       "android 4.4"
+      "android 4.4.3"
       "bb 7"
       "bb 10"
       "chrome 4"
@@ -5508,6 +5648,7 @@ module.exports =
       "ios 6"
       "ios 6.1"
       "ios 7"
+      "ios 8"
       "opera 10.5"
       "opera 10.6"
       "opera 11"
@@ -5532,6 +5673,7 @@ module.exports =
       "safari 6"
       "safari 6.1"
       "safari 7"
+      "safari 8"
     ]
     transition: true
 
@@ -5546,6 +5688,7 @@ module.exports =
       "android 4.2"
       "android 4.3"
       "android 4.4"
+      "android 4.4.3"
       "bb 7"
       "bb 10"
       "chrome 4"
@@ -5605,6 +5748,7 @@ module.exports =
       "ios 6"
       "ios 6.1"
       "ios 7"
+      "ios 8"
       "opera 10.5"
       "opera 10.6"
       "opera 11"
@@ -5629,6 +5773,7 @@ module.exports =
       "safari 6"
       "safari 6.1"
       "safari 7"
+      "safari 8"
     ]
     transition: true
 
@@ -5639,6 +5784,7 @@ module.exports =
       "android 4.1"
       "android 4.2"
       "android 4.3"
+      "android 4.4.3"
       "android 4.4"
       "bb 7"
       "bb 10"
@@ -5682,6 +5828,7 @@ module.exports =
       "ios 6"
       "ios 6.1"
       "ios 7"
+      "ios 8"
       "opera 15"
       "opera 16"
       "opera 17"
@@ -5697,6 +5844,7 @@ module.exports =
       "safari 6"
       "safari 6.1"
       "safari 7"
+      "safari 8"
     ]
 
   transition:
@@ -6075,6 +6223,7 @@ module.exports =
       "android 4.2"
       "android 4.3"
       "android 4.4"
+      "android 4.4.3"
       "bb 7"
       "bb 10"
       "chrome 6"
@@ -6155,6 +6304,7 @@ module.exports =
       "ios 6"
       "ios 6.1"
       "ios 7"
+      "ios 8"
       "opera 15"
       "opera 16"
       "opera 17"
@@ -6172,6 +6322,7 @@ module.exports =
       "safari 6"
       "safari 6.1"
       "safari 7"
+      "safari 8"
     ]
 
   "zoom-in":
@@ -6257,6 +6408,7 @@ module.exports =
       "safari 6"
       "safari 6.1"
       "safari 7"
+      "safari 8"
       "chrome 3"
     ]
 
@@ -6343,6 +6495,7 @@ module.exports =
       "safari 6"
       "safari 6.1"
       "safari 7"
+      "safari 8"
       "chrome 3"
     ]
 
