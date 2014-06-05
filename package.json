@@ -10,15 +10,15 @@
     "url": "https://github.com/ai/autoprefixer.git"
   },
   "dependencies": {
-    "postcss":  "~0.3.4",
+    "postcss":  "~0.3.5",
     "fs-extra": "~0.9.1"
   },
   "devDependencies": {
     "coffee-script": "1.7.1",
-    "browserify":    "4.1.5",
-    "should":        "3.3.1",
-    "stylus":        "0.45.1",
-    "mocha":         "1.19.0",
+    "browserify":    "4.1.8",
+    "should":        "4.0.1",
+    "stylus":        "0.46.2",
+    "mocha":         "1.20.1",
     "nib":           "1.0.2"
   },
   "bin": {
