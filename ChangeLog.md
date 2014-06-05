@@ -70,6 +70,11 @@
 * Opera 21 is moved to released versions.
 * Add Opera 23 data.
 
+### 20140605
+* Allow to parse gradients without space between color and position.
+* Add iOS 8, Safari 8 and Android 4.4.3 data.
+* Update browsers usage statistics.
+
 ## 1.0 “Plus ultra”
 * Source map support.
 * Save origin indents and code formatting.
