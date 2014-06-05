@@ -121,13 +121,14 @@ class Gradient extends Value
     params.map (param, i) ->
       return param if i == 0
 
-      separator = param.lastIndexOf(' ')
-      if separator == -1
-        color    = param
-        position = undefined
-      else
-        color     = param[0...separator]
-        position  = param[(separator + 1)..-1]
+      [color, position] = list.space(param)
+
+      unless position?
+        # Allow to parse rgba(0,0,0,0)50%
+        match = param.match(/^(.*\))(\d.*)$/)
+        if match
+          color    = match[1]
+          position = match[2]
 
       if position and position.indexOf(')') != -1
         color   += ' ' + position
