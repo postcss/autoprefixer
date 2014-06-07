@@ -95,9 +95,6 @@ class Binary
         when '-i', '--info'
           @command = 'info'
 
-        when '-u', '--update'
-          @command = 'update'
-
         when '-m', '--map'
           @processOptions.map = true
 
@@ -151,27 +148,6 @@ class Binary
   info: (done) ->
     @print @compiler().info()
     done()
-
-  # Update data
-  update: (done) ->
-    try
-      coffee = require('coffee-script')
-    catch
-      @error "Install coffee-script npm package"
-      return done()
-
-    updater = require('./updater')
-
-    updater.request => @stdout.write('.')
-    updater.done =>
-      @print ''
-      if updater.changed.length == 0
-        @print 'Everything up-to-date'
-      else
-        @print "Update #{ updater.changed.join(' and ') } data"
-      done()
-
-    updater.run()
 
   # Mark that there is another async work
   startWork: ->

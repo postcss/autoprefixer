@@ -548,18 +548,3 @@ autoprefixer *.css
 ```
 
 See `autoprefixer -h` for help.
-
-## In-package Update
-
-It’s highly recommended that you always use the latest version of Autoprefixer.
-If by any chance you or your company are not able to update the package
-(e.g. in case of long test periods before any library updates), you can still
-update the very browser data that Autoprefixer fetches from Can I Use:
-
-```
-autoprefixer --update
-```
-
-Note that the in-package update doesn’t get any code fixes nor the
-implementation of new features. It just keeps the browser popularity and
-support data up to date, and adds new browser versions.
