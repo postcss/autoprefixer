@@ -10,9 +10,9 @@
     "url": "https://github.com/ai/autoprefixer.git"
   },
   "dependencies": {
-    "postcss":  "~0.3.5",
-    "caniuse-db": "~1.0",
-    "fs-extra": "~0.9.1"
+    "postcss":    "~0.3.5",
+    "fs-extra":   "~0.9.1",
+    "caniuse-db": "~1.0"
   },
   "devDependencies": {
     "coffee-script": "1.7.1",
