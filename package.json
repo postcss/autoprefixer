@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "postcss":  "~0.3.5",
+    "caniuse-db": "~1.0",
     "fs-extra": "~0.9.1"
   },
   "devDependencies": {
