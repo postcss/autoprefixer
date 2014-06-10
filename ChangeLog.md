@@ -1,3 +1,8 @@
+## 1.2 “Meiji”
+* Use Can I Use data from official `caniuse-db` npm package.
+* Remove package data update from binary.
+* Use increment value instead of current date in minor versions.
+
 ## 1.1 “Nutrisco et extingo”
 * Add source map annotation comment support.
 * Add inline source map support.
