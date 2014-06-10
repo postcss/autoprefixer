@@ -1,5 +1,5 @@
 caniuse = require('../lib/caniuse')
-agents  = caniuse.get('data').agents
+agents  = require('caniuse-db/data').agents
 
 # Browsers, that not be used in "last 2 version" and same selections
 minor = ['bb', 'android']

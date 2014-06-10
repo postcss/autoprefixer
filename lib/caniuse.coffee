@@ -11,10 +11,6 @@ module.exports =
     bb:      'bb'
     android: 'android'
 
-  # Load file from Can I Use package
-  get: (file) ->
-    require("caniuse-db/#{ file }")
-
   # Correct sort by float versions
   sort: (browsers) ->
     browsers.sort (a, b) ->
@@ -42,9 +38,9 @@ module.exports =
     @sort(need)
 
   # Can I Use shortcut to request files in features/ dir.
-  feature: (file, opts, callback) ->
+  feature: (data, opts, callback) ->
     [callback, opts] = [opts, { }] unless callback
-    callback @parse(@get("features-json/#{file}.json"), opts)
+    callback module.exports.parse(data, opts)
 
   # Change browser array
   map: (browsers, callback) ->
