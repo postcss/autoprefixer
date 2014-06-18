@@ -47,6 +47,13 @@ task 'compile', 'Compile CoffeeScript to JS', ->
         compiled = "#!/usr/bin/env node\n" + compiled
         fs.writeFileSync(buildPath, compiled)
         fs.chmodSync(buildPath, '775')
+      else if path == '/index.js'
+        continue
+      else if path == '/package.json'
+        data = JSON.parse(fs.readFileSync(sourcePath))
+        data['main'] = 'lib/autoprefixer'
+        delete data['dependencies']['coffee-script']
+        fs.writeFileSync(buildPath, JSON.stringify(data, null, 2))
       else
         fs.copy(sourcePath, buildPath)
 

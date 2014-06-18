@@ -10,22 +10,21 @@
     "url": "https://github.com/ai/autoprefixer.git"
   },
   "dependencies": {
-    "postcss":    "git://github.com/ai/postcss.git#v1.0",
-    "fs-extra":   "~0.9.1",
-    "caniuse-db": "1.0.20140618 - 2"
+    "coffee-script": "1.7.1",
+    "caniuse-db":    "1.0.20140618 - 2",
+    "fs-extra":      "~0.9.1",
+    "postcss":       "git://github.com/ai/postcss.git#v1.0"
   },
   "devDependencies": {
-    "coffee-script": "1.7.1",
-    "browserify":    "4.1.11",
-    "should":        "4.0.4",
-    "stylus":        "0.46.3",
-    "mocha":         "1.20.1",
-    "nib":           "1.0.2"
+    "browserify": "4.1.11",
+    "should":     "4.0.4",
+    "stylus":     "0.46.3",
+    "mocha":      "1.20.1",
+    "nib":        "1.0.2"
   },
   "bin": {
     "autoprefixer": "./bin/autoprefixer"
   },
-  "main": "lib/autoprefixer",
   "scripts": {
     "test": "mocha"
   }
