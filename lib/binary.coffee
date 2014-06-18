@@ -96,16 +96,18 @@ class Binary
           @command = 'info'
 
         when '-m', '--map'
-          @processOptions.map = true
+          @processOptions.map = { }
 
         when       '--no-map'
           @processOptions.map = false
 
         when '-I', '--inline-map'
-          @processOptions.inlineMap = true
+          @processOptions.map ||= { }
+          @processOptions.map.inline = true
 
         when       '--no-map-annotation'
-          @processOptions.mapAnnotation = false
+          @processOptions.map ||= { }
+          @processOptions.map.annotation = false
 
         when '-c', '--cascade'
           @processorOptions.cascade = true

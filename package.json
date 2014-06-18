@@ -10,7 +10,7 @@
     "url": "https://github.com/ai/autoprefixer.git"
   },
   "dependencies": {
-    "postcss":    "~0.3.5",
+    "postcss":    "git://github.com/ai/postcss.git#v1.0",
     "fs-extra":   "~0.9.1",
     "caniuse-db": "1.0.20140618 - 2"
   },
