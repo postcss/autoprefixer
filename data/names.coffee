@@ -1,9 +1,0 @@
-module.exports =
-  firefox: 'firefox'
-  chrome:  'chrome'
-  safari:  'safari'
-  ios_saf: 'ios_saf'
-  opera:   'opera'
-  ie:      'ie'
-  bb:      'bb'
-  android: 'android'

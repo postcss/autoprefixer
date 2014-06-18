@@ -1,5 +1,6 @@
-names = require('./names')
+browsers = require('./browsers')
 
+# Convert Can I Use data
 feature = (data, opts, callback) ->
   [callback, opts] = [opts, { }] unless callback
 
@@ -9,7 +10,7 @@ feature = (data, opts, callback) ->
   for browser, versions of data.stats
     for interval, support of versions
       for version in interval.split('-')
-        if names[browser] and support.match(match)
+        if browsers[browser] and support.match(match)
           version = version.replace(/\.0$/, '')
           need.push(browser + ' ' + version)
 
@@ -25,16 +26,19 @@ feature = (data, opts, callback) ->
 
   callback(sorted)
 
+# Select only special browsers
 map = (browsers, callback) ->
   for browser in browsers
     [name, version] = browser.split(' ')
     version = parseFloat(version)
     callback(browser, name, version)
 
-module.exports = { }
+# Add data for all properties
 prefix = (names..., data) ->
   for name in names
     module.exports[name] = data
+
+module.exports = { }
 
 # Border Radius
 feature require('caniuse-db/features-json/border-radius'), (browsers) ->

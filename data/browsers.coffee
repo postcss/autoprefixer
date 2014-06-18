@@ -1,5 +1,8 @@
 agents  = require('caniuse-db/data').agents
-names   = require('./names')
+
+# Browsers, which interested for Autoprefixer
+names = ['firefox', 'chrome', 'safari', 'ios_saf',
+         'opera', 'ie', 'bb', 'android']
 
 # Browsers, that not be used in "last 2 version" and same selections
 minor = ['bb', 'android']
@@ -32,5 +35,5 @@ convert = (name) ->
   result
 
 module.exports = { }
-for code, internal of names
-  module.exports[internal] = convert(code)
+for name in names
+  module.exports[name] = convert(name)
