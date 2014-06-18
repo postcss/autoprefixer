@@ -1,5 +1,5 @@
-caniuse = require('../lib/caniuse')
 agents  = require('caniuse-db/data').agents
+names   = require('./names')
 
 # Browsers, that not be used in "last 2 version" and same selections
 minor = ['bb', 'android']
@@ -32,5 +32,5 @@ convert = (name) ->
   result
 
 module.exports = { }
-for code, internal of caniuse.browsers
+for code, internal of names
   module.exports[internal] = convert(code)

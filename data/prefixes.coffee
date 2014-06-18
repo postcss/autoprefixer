@@ -1,5 +1,35 @@
-caniuse = require('../lib/caniuse')
-feature = caniuse.feature
+names = require('./names')
+
+feature = (data, opts, callback) ->
+  [callback, opts] = [opts, { }] unless callback
+
+  match = if opts.full then /y\sx($|\s)/ else /\sx($|\s)/
+  need  = []
+
+  for browser, versions of data.stats
+    for interval, support of versions
+      for version in interval.split('-')
+        if names[browser] and support.match(match)
+          version = version.replace(/\.0$/, '')
+          need.push(names[browser] + ' ' + version)
+
+  sorted = need.sort (a, b) ->
+    a = a.split(' ')
+    b = b.split(' ')
+    if a[0] > b[0]
+      1
+    else if a[0] < b[0]
+      -1
+    else
+      parseFloat(a[1]) - parseFloat(b[1])
+
+  callback(sorted)
+
+map = (browsers, callback) ->
+  for browser in browsers
+    [name, version] = browser.split(' ')
+    version = parseFloat(version)
+    callback(browser, name, version)
 
 module.exports = { }
 prefix = (names..., data) ->
@@ -52,7 +82,7 @@ feature require('caniuse-db/features-json/transforms3d'), (browsers) ->
 
 # Gradients
 feature require('caniuse-db/features-json/css-gradients'), (browsers) ->
-  browsers = caniuse.map browsers, (browser, name, version) ->
+  browsers = map browsers, (browser, name, version) ->
     if name == 'android' and version < 4   or
        name == 'safari'  and version < 5.1 or
        name == 'ios'     and version < 5
@@ -95,7 +125,7 @@ feature require('caniuse-db/features-json/user-select-none'), (browsers) ->
 
 # Flexible Box Layout
 feature require('caniuse-db/features-json/flexbox'), (browsers) ->
-  browsers = caniuse.map browsers, (browser, name, version) ->
+  browsers = map browsers, (browser, name, version) ->
     if (name == 'safari' or name == 'ios') and version < 7
       browser + ' 2009'
     else if name == 'chrome' and version < 21
@@ -145,7 +175,7 @@ feature require('caniuse-db/features-json/css-selection'), (browsers) ->
 
 # Placeholder selector
 feature require('caniuse-db/features-json/css-placeholder'), (browsers) ->
-  browsers = caniuse.map browsers, (browser, name, version) ->
+  browsers = map browsers, (browser, name, version) ->
     if name == 'ff' and version <= 18
       browser + ' old'
     else
