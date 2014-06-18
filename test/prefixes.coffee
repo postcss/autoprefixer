@@ -11,27 +11,27 @@ data =
     chrome:
       prefix:   '-webkit-'
       versions: ['chrome 1']
-    ff:
+    firefox:
       prefix:   '-moz-'
-      versions: ['ff 2', 'ff 1']
+      versions: ['firefox 2', 'firefox 1']
     ie:
       prefix:   '-ms-'
       versions: ['ie 2', 'ie 1']
   prefixes:
     a:
-      browsers: ['ff 2', 'ff 1 old', 'chrome 1', 'ie 1']
+      browsers: ['firefox 2', 'firefox 1 old', 'chrome 1', 'ie 1']
       transition: true
     b:
-      browsers: ['ie 2 new', 'ff 1']
+      browsers: ['ie 2 new', 'firefox 1']
       mistakes: ['-webkit-']
       props:    ['a', '*']
     c:
-      browsers: ['ie 2', 'ff 1']
+      browsers: ['ie 2', 'firefox 1']
       selector: true
 
 empty = new Prefixes({ }, new Browsers(data.browsers, []))
 fill  = new Prefixes(data.prefixes,
-                     new Browsers(data.browsers, ['ff 2', 'ie 2']))
+                     new Browsers(data.browsers, ['firefox 2', 'ie 2']))
 
 cSel  = new Selector('c', ['-ms-'], fill)
 aVal  = new Value('a',    ['-moz-'], fill)

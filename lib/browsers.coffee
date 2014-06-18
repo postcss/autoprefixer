@@ -36,8 +36,9 @@ class Browsers
 
   # Aliases for browser names
   aliases:
-    fx:         'ff'
-    firefox:    'ff'
+    fx:         'firefox'
+    ff:         'firefox'
+    ios:        'ios_saf'
     explorer:   'ie'
     blackberry: 'bb'
 
@@ -81,7 +82,7 @@ class Browsers
     esr:
       regexp: /^(firefox|ff|fx) esr$/i
       select: ->
-        ['ff 24']
+        ['firefox 24']
 
     direct:
       regexp: /^(\w+) ([\d\.]+)$/

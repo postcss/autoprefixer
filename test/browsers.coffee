@@ -10,7 +10,7 @@ data =
     future:     [5, 4]
     versions:   [3, 2, 1]
     popularity: [1, 0.5, 0.1]
-  ff:
+  firefox:
     prefix:     '-moz-'
     versions:   [1]
     popularity: [0]
@@ -78,7 +78,7 @@ describe 'Browsers', ->
 
     it 'selects Firefox ESR', ->
       browsers = new Browsers(data, ['Firefox ESR'])
-      browsers.selected.should.eql ['ff 24']
+      browsers.selected.should.eql ['firefox 24']
 
     it 'follows explicit requirements', ->
       browsers = new Browsers(data, ['chrome 5', 'opera 4'])
@@ -93,10 +93,11 @@ describe 'Browsers', ->
       browsers.selected.should.eql ['ie 3', 'ie 2', 'chrome 3', 'chrome 2']
 
     it 'has aliases', ->
-      ( new Browsers(data, ['fx >= 1']) ).selected.should.eql ['ff 1']
+      ( new Browsers(data, ['fx >= 1']) ).selected.should.eql ['firefox 1']
+      ( new Browsers(data, ['ff >= 1']) ).selected.should.eql ['firefox 1']
 
     it 'ignores case', ->
-      ( new Browsers(data, ['Firefox 1']) ).selected.should.eql ['ff 1']
+      ( new Browsers(data, ['Firefox 1']) ).selected.should.eql ['firefox 1']
 
   describe 'prefix()', ->
 

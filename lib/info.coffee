@@ -2,9 +2,8 @@ capitalize = (str) ->
   str.slice(0, 1).toUpperCase() + str.slice(1)
 
 names =
-  ie:  'IE'
-  ff:  'Firefox'
-  ios: 'iOS'
+  ie:      'IE'
+  ios_saf: 'iOS'
 
 prefix = (name, transition, prefixes) ->
     out  = '  ' + name + (if transition then '*' else '') + ': '

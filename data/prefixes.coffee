@@ -11,7 +11,7 @@ feature = (data, opts, callback) ->
       for version in interval.split('-')
         if names[browser] and support.match(match)
           version = version.replace(/\.0$/, '')
-          need.push(names[browser] + ' ' + version)
+          need.push(browser + ' ' + version)
 
   sorted = need.sort (a, b) ->
     a = a.split(' ')
@@ -83,9 +83,9 @@ feature require('caniuse-db/features-json/transforms3d'), (browsers) ->
 # Gradients
 feature require('caniuse-db/features-json/css-gradients'), (browsers) ->
   browsers = map browsers, (browser, name, version) ->
-    if name == 'android' and version < 4   or
-       name == 'safari'  and version < 5.1 or
-       name == 'ios'     and version < 5
+    if name == 'android' and version < 4 or
+       name == 'ios_saf' and version < 5 or
+       name == 'safari'  and version < 5.1
       browser + ' old'
     else
       browser
@@ -126,7 +126,7 @@ feature require('caniuse-db/features-json/user-select-none'), (browsers) ->
 # Flexible Box Layout
 feature require('caniuse-db/features-json/flexbox'), (browsers) ->
   browsers = map browsers, (browser, name, version) ->
-    if (name == 'safari' or name == 'ios') and version < 7
+    if (name == 'safari' or name == 'ios_saf') and version < 7
       browser + ' 2009'
     else if name == 'chrome' and version < 21
       browser + ' 2009'
@@ -176,7 +176,7 @@ feature require('caniuse-db/features-json/css-selection'), (browsers) ->
 # Placeholder selector
 feature require('caniuse-db/features-json/css-placeholder'), (browsers) ->
   browsers = map browsers, (browser, name, version) ->
-    if name == 'ff' and version <= 18
+    if name == 'firefox' and version <= 18
       browser + ' old'
     else
       browser
@@ -216,7 +216,7 @@ feature require('caniuse-db/features-json/css3-cursors-newer'), (browsers) ->
 
   prefix 'grab', 'grabbing',
           props:  ['cursor']
-          browsers: browsers.concat ['ff 24', 'ff 25', 'ff 26']
+          browsers: browsers.concat ['firefox 24', 'firefox 25', 'firefox 26']
 
 # Sticky position
 feature require('caniuse-db/features-json/css-sticky'), (browsers) ->
