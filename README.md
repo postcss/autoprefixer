@@ -89,9 +89,10 @@ a {
 }
 ```
 
-Note, that Autoprefixer doesn’t load Can I Use data every time. This data
-is already packed in the release, so the same Autoprefixer version will always
-have same output.
+Note, that Autoprefixer doesn’t load Can I Use data every time. It takes it from
+[caniuse-db](https://www.npmjs.org/package/caniuse-db) dependency.
+So, if you use Autoprefixer from `npm`, try to keep your `autoprefixer`
+and `caniuse-db` packages fresh to have only actual prefixes in your CSS.
 
 ### Flexbox, Gradients, etc.
 
