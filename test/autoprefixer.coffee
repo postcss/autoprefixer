@@ -3,16 +3,17 @@ Browsers     = require('../lib/browsers')
 postcss      = require('postcss')
 fs           = require('fs')
 
-cleaner     = autoprefixer('none')
-compiler    = autoprefixer('chrome 25', 'opera 12')
-borderer    = autoprefixer('safari 4',  'ff 3.6')
-cascader    = autoprefixer('chrome > 19', 'ff 21', 'ie 10', cascade: true)
-keyframer   = autoprefixer('chrome > 19', 'opera 12')
-flexboxer   = autoprefixer('chrome > 19', 'ff 21', 'ie 10')
-iecompiler  = autoprefixer('ie > 0')
-gradienter  = autoprefixer('chrome 25', 'opera 12',  'android 2.3')
-selectorer  = autoprefixer('chrome 25', 'ff > 17',   'ie 10')
-intrinsicer = autoprefixer('chrome 25', 'ff 22')
+cleaner      = autoprefixer('none')
+compiler     = autoprefixer('chrome 25', 'opera 12')
+borderer     = autoprefixer('safari 4',  'ff 3.6')
+cascader     = autoprefixer('chrome > 19', 'ff 21', 'ie 10', cascade: true)
+keyframer    = autoprefixer('chrome > 19', 'opera 12')
+flexboxer    = autoprefixer('chrome > 19', 'ff 21', 'ie 10')
+iecompiler   = autoprefixer('ie > 0')
+gradienter   = autoprefixer('chrome 25', 'opera 12',  'android 2.3')
+selectorer   = autoprefixer('chrome 25', 'ff > 17',   'ie 10')
+intrinsicer  = autoprefixer('chrome 25', 'ff 22')
+backgrounder = autoprefixer('ff 3.6',  'android 2.3')
 
 prefixer = (name) ->
   if name == 'keyframes'
@@ -33,6 +34,8 @@ prefixer = (name) ->
     cascader
   else if name == 'ie-transform'
     iecompiler
+  else if name == 'background-size'
+    backgrounder
   else
     compiler
 
@@ -165,6 +168,7 @@ describe 'Autoprefixer', ->
     it 'supports custom prefixes',      -> test('custom-prefix')
     it 'fix break-inside property',     -> test('multicolumn')
     it 'ignores some IE transforms',    -> test('ie-transform')
+    it 'support background-size',       -> test('background-size')
 
     it 'ignores values for CSS3PIE props', ->
       input  = read('pie')

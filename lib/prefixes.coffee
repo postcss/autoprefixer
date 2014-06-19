@@ -28,6 +28,7 @@ Declaration.hack require('./hacks/border-radius')
 Declaration.hack require('./hacks/transform-decl')
 Declaration.hack require('./hacks/flex-direction')
 Declaration.hack require('./hacks/justify-content')
+Declaration.hack require('./hacks/background-size')
 
 Value.hack require('./hacks/gradient')
 Value.hack require('./hacks/transition')
