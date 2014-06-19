@@ -210,3 +210,8 @@ feature textDecoration, full: true, (browsers) ->
   prefix 'text-decoration-line',
          'text-decoration-color',
           browsers: browsers
+
+# Text Size Adjust
+feature require('caniuse-db/features-json/text-size-adjust'), (browsers) ->
+  prefix 'text-size-adjust',
+          browsers: browsers
