@@ -64,9 +64,7 @@ describe 'Browsers', ->
 
     it 'selects by popularity', ->
       browsers = new Browsers(data, ['> 0.2%'])
-      browsers.selected.should.eql ['ie 3', 'ie 2',
-                                    'chrome 3', 'chrome 2',
-                                    'opera 15']
+      browsers.selected.should.eql ['ie 3', 'ie 2', 'chrome 3', 'chrome 2']
 
     it 'selects by older version', ->
       browsers = new Browsers(data, ['opera > 3'])

@@ -3,7 +3,8 @@ names = ['firefox', 'chrome', 'safari', 'ios_saf',
          'opera', 'ie', 'bb', 'android']
 
 # Browsers, that will be used in "last 2 version" and same selections
-major = ['firefox', 'chrome', 'safari', 'ios_saf', 'opera', 'ie']
+major = ['firefox', 'chrome', 'safari', 'ios_saf',
+         'opera', 'android', 'ie', 'ie_mob']
 
 # Normalize Can I Use versions array
 normalize = (array) -> array.reverse().filter (i) -> i

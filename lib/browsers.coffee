@@ -65,7 +65,10 @@ class Browsers
       regexp: /^> (\d+(\.\d+)?)%$/
       select: (popularity) ->
         @browsers (data) ->
-          data.versions.filter (version, i) -> data.popularity[i] > popularity
+          if data.minor
+            []
+          else
+            data.versions.filter (version, i) -> data.popularity[i] > popularity
 
     newerThen:
       regexp: /^(\w+) (>=?)\s*([\d\.]+)/
