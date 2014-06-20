@@ -3,6 +3,7 @@ capitalize = (str) ->
 
 names =
   ie:      'IE'
+  ie_mob:  'IE Mobile'
   ios_saf: 'iOS'
 
 prefix = (name, transition, prefixes) ->
