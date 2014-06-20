@@ -1,3 +1,7 @@
+## 1.3 “Tenka Fubu”
+* Add `text-size-adjust` support.
+* Add `background-size` to support Android 2.
+
 ## 1.2 “Meiji”
 * Use Can I Use data from official `caniuse-db` npm package.
 * Remove package data update from binary.
