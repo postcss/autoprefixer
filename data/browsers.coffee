@@ -1,11 +1,9 @@
-agents  = require('caniuse-db/data').agents
-
 # Browsers, which interested for Autoprefixer
 names = ['firefox', 'chrome', 'safari', 'ios_saf',
          'opera', 'ie', 'bb', 'android']
 
-# Browsers, that not be used in "last 2 version" and same selections
-minor = ['bb', 'android']
+# Browsers, that will be used in "last 2 version" and same selections
+major = ['firefox', 'chrome', 'safari', 'ios_saf', 'opera', 'ie']
 
 # Normalize Can I Use versions array
 normalize = (array) -> array.reverse().filter (i) -> i
@@ -21,19 +19,18 @@ intervals = (array) ->
   result
 
 # Convert Can I Use data to Autoprefixer’s
-convert = (name) ->
-  info     = agents[name]
-  future   = normalize(info.versions[-3..-1])
-  versions = intervals(normalize(info.versions[0..-4]))
+convert = (name, data) ->
+  future   = normalize(data.versions[-3..-1])
+  versions = intervals(normalize(data.versions[0..-4]))
   result   = {}
 
-  result.prefix    = if name == 'opera' then '-o-' else "-#{info.prefix}-"
-  result.minor      = true   if minor.indexOf(name) != -1
+  result.prefix    = if name == 'opera' then '-o-' else "-#{data.prefix}-"
+  result.minor      = true   if major.indexOf(name) == -1
   result.future     = future if future.length
   result.versions   = versions.map (i) -> i[0]
-  result.popularity = versions.map (i) -> info.usage_global[i[1]] / i[2]
+  result.popularity = versions.map (i) -> data.usage_global[i[1]] / i[2]
   result
 
 module.exports = { }
-for name in names
-  module.exports[name] = convert(name)
+for name, data of require('caniuse-db/data').agents
+  module.exports[name] = convert(name, data)
