@@ -37,3 +37,7 @@ div {
 .radial {
     background: radial-gradient(farthest-side at 0 50%, white, black);
 }
+
+.color {
+    background: red linear-gradient(red, blue);
+}

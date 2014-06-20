@@ -63,3 +63,10 @@ div {
     background: -o-radial-gradient(0 50%, farthest-side, white, black);
     background: radial-gradient(farthest-side at 0 50%, white, black);
 }
+
+.color {
+    background: red -webkit-gradient(linear, left top, left bottom, from(red), to(blue));
+    background: red -webkit-linear-gradient(red, blue);
+    background: red -o-linear-gradient(red, blue);
+    background: red linear-gradient(red, blue);
+}

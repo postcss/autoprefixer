@@ -11,22 +11,23 @@ class Gradient extends Value
 
   # Change degrees for webkit prefix
   replace: (string, prefix) ->
-    values = list.comma(string).map (value) =>
-      return value if value[0..@name.length] != @name + '('
+    list.space(string)
+      .map (value) =>
+        return value if value[0..@name.length] != @name + '('
 
-      close  = value.lastIndexOf(')')
-      after  = value[close + 1..-1]
-      args   = value[@name.length + 1..close - 1]
-      params = list.comma(args)
-      params = @newDirection(params)
+        close  = value.lastIndexOf(')')
+        after  = value[close + 1..-1]
+        args   = value[@name.length + 1..close - 1]
+        params = list.comma(args)
+        params = @newDirection(params)
 
-      if prefix == '-webkit- old'
-        @oldWebkit(value, args, params, after)
-      else
-        @convertDirection(params)
-        prefix + @name + '(' + params.join(', ') + ')' + after
+        if prefix == '-webkit- old'
+          @oldWebkit(value, args, params, after)
+        else
+          @convertDirection(params)
+          prefix + @name + '(' + params.join(', ') + ')' + after
 
-    values.join(', ')
+      .join(' ')
 
   # Direction to replace
   directions:
