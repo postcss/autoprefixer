@@ -45,9 +45,10 @@ class Processor
 
       # Properties
       if @prefixes.remove[decl.prop]?.remove
-        notHack = @prefixes.group(decl).down (i) -> i.prop == unprefixed
+        notHack = @prefixes.group(decl).down (other) -> other.prop == unprefixed
 
         if notHack
+          @reduceSpaces(decl) if decl.before.indexOf("\n") > -1
           rule.remove(i)
           return
 
@@ -56,5 +57,25 @@ class Processor
         if checker.check(decl.value)
           rule.remove(i)
           return
+
+  # Normalize spaces in cascade declaration group
+  reduceSpaces: (decl) ->
+    stop = false
+    @prefixes.group(decl).up (other) -> stop = true
+    return if stop
+
+    parts   = decl.before.split("\n")
+    prevMin = parts[parts.length - 1].length
+    diff    = false
+
+    @prefixes.group(decl).down (other) ->
+      parts = other.before.split("\n")
+      last  = parts.length - 1
+
+      if parts[last].length > prevMin
+        diff = parts[last].length - prevMin if diff == false
+        parts[last] = parts[last][0...-diff]
+
+        other.before = parts.join("\n")
 
 module.exports = Processor

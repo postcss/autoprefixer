@@ -10,6 +10,7 @@ cascader     = autoprefixer('Chrome > 19', 'Firefox 21', 'IE 10', cascade: true)
 keyframer    = autoprefixer('Chrome > 19', 'Opera 12')
 flexboxer    = autoprefixer('Chrome > 19', 'Firefox 21', 'IE 10')
 iecompiler   = autoprefixer('IE > 0')
+uncascader   = autoprefixer('Firefox 15')
 gradienter   = autoprefixer('Chrome 25', 'Opera 12', 'Android 2.3')
 selectorer   = autoprefixer('Chrome 25', 'Firefox > 17', 'Explorer 10')
 intrinsicer  = autoprefixer('Chrome 25', 'Firefox 22')
@@ -36,6 +37,8 @@ prefixer = (name) ->
     iecompiler
   else if name == 'background-size'
     backgrounder
+  else if name == 'uncascade'
+    uncascader
   else
     compiler
 
@@ -95,17 +98,18 @@ describe 'Autoprefixer', ->
 
   describe 'process()', ->
 
-    it 'prefixes transition',         -> test('transition')
-    it 'prefixes values',             -> test('values')
-    it 'prefixes @keyframes',         -> test('keyframes')
-    it 'prefixes selectors',          -> test('selectors')
-    it 'removes common mistakes',     -> test('mistakes')
-    it 'reads notes for prefixes',    -> test('notes')
-    it 'keeps vendor-specific hacks', -> test('vendor-hack')
-    it 'works with comments',         -> test('comments')
-    it 'uses visual cascade',         -> test('cascade')
-    it 'works with properties near',  -> test('double')
-    it 'checks prefixed in hacks',    -> test('check-down')
+    it 'prefixes transition',            -> test('transition')
+    it 'prefixes values',                -> test('values')
+    it 'prefixes @keyframes',            -> test('keyframes')
+    it 'prefixes selectors',             -> test('selectors')
+    it 'removes common mistakes',        -> test('mistakes')
+    it 'reads notes for prefixes',       -> test('notes')
+    it 'keeps vendor-specific hacks',    -> test('vendor-hack')
+    it 'works with comments',            -> test('comments')
+    it 'uses visual cascade',            -> test('cascade')
+    it 'works with properties near',     -> test('double')
+    it 'checks prefixed in hacks',       -> test('check-down')
+    it 'normalize cascade after remove', -> test('uncascade')
 
     it 'should irgnore spaces inside values', ->
         css = read('trim')
