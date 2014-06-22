@@ -30,6 +30,7 @@ class Binary
       -m, --map                generate source map
           --no-map             skip source map even if previous map exists
       -I, --inline-map         inline map by data:uri to annotation comment
+          --annotation PATH    change map location relative from CSS file
           --no-map-annotation  skip source map annotation comment is CSS
           --no-cascade         do not create nice visual cascade of prefixes
       -i, --info               show selected browsers and properties
@@ -104,6 +105,10 @@ class Binary
         when '-I', '--inline-map'
           @processOptions.map ||= { }
           @processOptions.map.inline = true
+
+        when       '--annotation'
+          @processOptions.map ||= { }
+          @processOptions.map.annotation = args.shift()
 
         when       '--no-map-annotation'
           @processOptions.map ||= { }
@@ -180,9 +185,6 @@ class Binary
     opts.from = input  if input
     opts.to   = output if output != '-'
 
-    if opts.map and input and fs.existsSync(input + '.map')
-      opts.map = fs.readFileSync(input + '.map').toString()
-
     try
       result = @compiler().process(css, opts)
     catch error
@@ -206,7 +208,11 @@ class Binary
         @error "autoprefixer: #{ error }" if error
 
         if result.map
-          fs.writeFile output + '.map', result.map, (error) =>
+          map = if opts.map?.annotation
+            path.resolve(path.dirname(output), opts.map.annotation)
+          else
+            output + '.map'
+          fs.writeFile map, result.map, (error) =>
             @error "autoprefixer: #{ error }" if error
             @endWork()
         else

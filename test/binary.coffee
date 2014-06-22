@@ -20,7 +20,7 @@ path = (file) -> "#{tempDir}/#{file}"
 
 write = (file, css) ->
   fs.mkdirSync(tempDir) unless fs.existsSync(tempDir)
-  fs.writeFileSync(path(file), css)
+  fs.outputFileSync(path(file), css)
 
 read = (file) ->
   fs.readFileSync(path(file)).toString()
@@ -180,13 +180,6 @@ describe 'Binary', ->
         fs.existsSync( path('c.css.map') ).should.be.false
         done()
 
-  it 'skips annotation on request', (done) ->
-    write('a.css', css)
-    @run '-m', '--no-map-annotation', '-o', 'b.css', 'a.css', ->
-      read('b.css').should.not.match(/\n\/\*# sourceMappingURL=/)
-      fs.existsSync( path('b.css.map') ).should.be.true
-      done()
-
   it 'uses cascade by default', (done) ->
     write('a.css', "a {\n  transition: 1s\n}")
     @run '-b', 'chrome 25', 'a.css', ->
@@ -199,6 +192,20 @@ describe 'Binary', ->
     @run '-b', 'chrome 25', '--no-cascade', 'a.css', ->
       read('a.css').should.eql("a {\n  -webkit-transition: 1s;\n" +
                                     "  transition: 1s\n}")
+      done()
+
+  it 'changes annotation', (done) ->
+    write('one/a.css', css)
+    @run '--annotation', '../a.map', 'one/a.css', ->
+      read('one/a.css').should.match(/\n\/\*# sourceMappingURL=..\/a.map/)
+      fs.existsSync( path('a.map') ).should.be.true
+      done()
+
+  it 'skips annotation on request', (done) ->
+    write('a.css', css)
+    @run '-m', '--no-map-annotation', '-o', 'b.css', 'a.css', ->
+      read('b.css').should.not.match(/\n\/\*# sourceMappingURL=/)
+      fs.existsSync( path('b.css.map') ).should.be.true
       done()
 
   it "raises an error when files doesn't exists", (done) ->
