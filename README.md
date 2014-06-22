@@ -26,7 +26,7 @@ to apply prefixes for you:
 ```css
 :-webkit-full-screen a {
     -webkit-transition: -webkit-transform 1s;
-    transition: transform 1s
+            transition: transform 1s
 }
 :-moz-full-screen a {
     transition: transform 1s
@@ -36,7 +36,7 @@ to apply prefixes for you:
 }
 :fullscreen a {
     -webkit-transition: -webkit-transform 1s;
-    transition: transform 1s
+            transition: transform 1s
 }
 ```
 
@@ -77,7 +77,7 @@ produced by many CSS libraries):
 ```css
 a {
     -webkit-border-radius: 5px;
-    border-radius: 5px
+            border-radius: 5px
 }
 ```
 
@@ -204,14 +204,8 @@ You can read more about source map options in
 
 ## Visual Cascade
 
-Autoprefixer can change CSS indentation to create a nice visual cascade
-of prefixes. You need to send `cascade: true` option to processor constructor:
-
-```js
-autoprefixer("> 1 %", "last 2 version", { cascade: true }).process(css).css
-```
-
-and, if CSS will be uncompressed, output would be like:
+Autoprefixer changes CSS indentation to create a nice visual cascade
+of prefixes, if CSS is uncompressed:
 
 ```css
 a {
@@ -220,6 +214,8 @@ a {
             box-sizing: border-box
 }
 ```
+
+You can disable cascade by `cascade: false` option.
 
 ## Debug
 
