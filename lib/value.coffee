@@ -1,7 +1,8 @@
 Prefixer = require('./prefixer')
 OldValue = require('./old-value')
-vendor   = require('postcss/lib/vendor')
 utils    = require('./utils')
+
+vendor = require('postcss/lib/vendor')
 
 class Value extends Prefixer
 

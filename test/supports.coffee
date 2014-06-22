@@ -41,6 +41,30 @@ describe 'Supports', ->
       decls[0].toString().should.eql('transition: -moz-a')
       decls[1].toString().should.eql('transition: a')
 
+  describe 'clean()', ->
+
+    it 'remove prefixed properties', ->
+      @supports.clean('(-moz-a: 1) or (a: 1)').should.eql('(a: 1)')
+
+    it 'remove prefixed values', ->
+      @supports.clean('(transition: -moz-a) or (transition: -a-)').
+        should.eql('(transition: -a-)')
+
+    it 'normalize brackets', ->
+      @supports.clean('((-moz-a: 1) or (a: 1))').should.eql('(a: 1)')
+
+    it 'keeps and-conditions', ->
+      @supports.clean('(-moz-a: 1) and (a: 1)')
+        .should.eql('(-moz-a: 1) and (a: 1)')
+
+    it 'keeps not-conditions', ->
+      @supports.clean('not (-moz-a: 1) or (a: 1)')
+        .should.eql('not (-moz-a: 1) or (a: 1)')
+
+    it 'allows hacks', ->
+      @supports.clean('(-moz-a: 1)').should.eql('(-moz-a: 1)')
+
+
   describe 'process()', ->
 
     it 'replaces params with prefixed property', ->

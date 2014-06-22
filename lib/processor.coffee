@@ -15,7 +15,7 @@ class Processor
       if rule.name == 'keyframes'
         keyframes?.process(rule)
       else if rule.name == 'supports'
-        supports?.process(rule)
+        supports.process(rule)
 
     # Selectors
     for selector in @prefixes.add.selectors
