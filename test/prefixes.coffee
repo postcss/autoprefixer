@@ -97,7 +97,7 @@ describe 'Prefixes', ->
 
     it 'returns Prefixes with empty browsers', ->
       cleaner = new Prefixes(data.prefixes, new Browsers(data.browsers, []))
-      fill.cleaner().add.should.eql(cleaner.add)
+      Object.keys(fill.cleaner().add).length.should.eql(2)
       fill.cleaner().remove.should.eql(cleaner.remove)
 
   describe '.decl()', ->

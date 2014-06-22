@@ -106,7 +106,7 @@ class Prefixes
 
   # Cache prefixes data to fast CSS processing
   preprocess: (selected) ->
-    add = { selectors: [] }
+    add = { selectors: [], '@supports': new Supports(@) }
     for name, prefixes of selected.add
       if name == '@keyframes'
         add[name] = new Keyframes(name, prefixes, @)
@@ -130,9 +130,6 @@ class Prefixes
           values = add[name]?.values || []
           add[name] = Declaration.load(name, prefixes, @)
           add[name].values = values
-
-    if Object.keys(add).length > 1
-      add['@supports'] = new Supports(@)
 
     remove = { selectors: [] }
     for name, prefixes of selected.remove
