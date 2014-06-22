@@ -208,6 +208,12 @@ describe 'Binary', ->
       fs.existsSync( path('b.css.map') ).should.be.true
       done()
 
+  it 'includes sources content on request', (done) ->
+    write('a.css', css)
+    @run '--sources-content', 'a.css', ->
+      read('a.css.map').should.match(/"sourcesContent":\["a {/)
+      done()
+
   it "raises an error when files doesn't exists", (done) ->
     @raise('not.css',
            /doesn't exists/, done)

@@ -32,6 +32,7 @@ class Binary
       -I, --inline-map         inline map by data:uri to annotation comment
           --annotation PATH    change map location relative from CSS file
           --no-map-annotation  skip source map annotation comment is CSS
+          --sources-content    Include origin CSS into map
           --no-cascade         do not create nice visual cascade of prefixes
       -i, --info               show selected browsers and properties
       -h, --help               show help text
@@ -113,6 +114,10 @@ class Binary
         when       '--no-map-annotation'
           @processOptions.map ||= { }
           @processOptions.map.annotation = false
+
+        when       '--sources-content'
+          @processOptions.map ||= { }
+          @processOptions.map.sourcesContent = true
 
         when '-c', '--cascade'
           @stderr.write("Cascade is enable by default in Autoprefixer 2.0., " +
