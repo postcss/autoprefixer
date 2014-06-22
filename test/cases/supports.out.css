@@ -1,0 +1,5 @@
+@supports not ((-webkit-transition: -webkit-transform) or (-o-transition: -o-transform) or (transition: transform)) and (color: black) {
+    a {
+        color: black;
+    }
+}

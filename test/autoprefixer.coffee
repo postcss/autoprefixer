@@ -110,6 +110,7 @@ describe 'Autoprefixer', ->
     it 'works with properties near',     -> test('double')
     it 'checks prefixed in hacks',       -> test('check-down')
     it 'normalize cascade after remove', -> test('uncascade')
+    it 'prefix decls in @supports',      -> test('supports')
 
     it 'should irgnore spaces inside values', ->
         css = read('trim')
