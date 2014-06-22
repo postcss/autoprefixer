@@ -16,17 +16,18 @@ describe 'Declaration', ->
       @tabsize.otherPrefixes('-ms-black',  '-moz-').should.be.true
 
   describe 'needCascade()', ->
-    after -> @prefixes.options.cascade = false
+    after -> delete @prefixes.options.cascade
 
-    it 'returns true on option', ->
+    it 'returns true by default', ->
+      css = parse("a {\n  tab-size: 4 }")
+      @tabsize.needCascade(css.rules[0].decls[0]).should.be.true
+
+    it 'return false is disabled', ->
+      @prefixes.options.cascade = false
       css = parse("a {\n  tab-size: 4 }")
       @tabsize.needCascade(css.rules[0].decls[0]).should.be.false
 
-      @prefixes.options.cascade = true
-      @tabsize.needCascade(css.rules[0].decls[0]).should.be.true
-
-    it 'returns true on option', ->
-      @prefixes.options.cascade = true
+    it 'returns false on declarations in one line', ->
       css = parse("a { tab-size: 4 } a {\n  tab-size: 4 }")
 
       @tabsize.needCascade(css.rules[0].decls[0]).should.be.false

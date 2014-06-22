@@ -5,7 +5,7 @@ a {
 
 b {
     -ms-transform: translateX(45deg);
-    transform: translateX(45deg)
+        transform: translateX(45deg)
 }
 
 @keyframes anim {

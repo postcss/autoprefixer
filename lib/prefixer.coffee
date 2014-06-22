@@ -60,10 +60,11 @@ class Prefixer
       continue if parent and parent != utils.removeNote(prefix)
       prefixes.push(prefix)
 
+    added = []
     for prefix in prefixes
-      @add(node, prefix, prefixes)
+      added.push(prefix) if @add(node, prefix, added.concat([prefix]))
 
-    prefixes
+    added
 
   # Shortcut for Prefixer.clone
   clone: (node, overrides) ->

@@ -4,7 +4,7 @@
         top: -webkit-calc(10% + 10px);
         top: calc(10% + 10px);
         -webkit-transform: rotate(10deg);
-        transform: rotate(10deg)
+                transform: rotate(10deg)
     }
     50% {
         top: 0;
@@ -16,14 +16,14 @@
         top: -webkit-calc(10%);
         top: calc(10%);
         -webkit-transform: rotate(0);
-        transform: rotate(0)
+                transform: rotate(0)
     }
 }
 @-o-keyframes anim {
     from {
         top: calc(10% + 10px);
         -o-transform: rotate(10deg);
-        transform: rotate(10deg)
+           transform: rotate(10deg)
     }
     50% {
         top: 0;
@@ -32,7 +32,7 @@
     to {
         top: calc(10%);
         -o-transform: rotate(0);
-        transform: rotate(0)
+           transform: rotate(0)
     }
 }
 @keyframes anim {
@@ -40,8 +40,8 @@
         top: -webkit-calc(10% + 10px);
         top: calc(10% + 10px);
         -webkit-transform: rotate(10deg);
-        -o-transform: rotate(10deg);
-        transform: rotate(10deg)
+             -o-transform: rotate(10deg);
+                transform: rotate(10deg)
     }
     50% {
         top: 0;
@@ -53,8 +53,8 @@
         top: -webkit-calc(10%);
         top: calc(10%);
         -webkit-transform: rotate(0);
-        -o-transform: rotate(0);
-        transform: rotate(0)
+             -o-transform: rotate(0);
+                transform: rotate(0)
     }
 }
 @media screen {
