@@ -54,7 +54,8 @@ test = (from, instansce = prefixer(from)) ->
 commons = ['transition', 'values', 'keyframes', 'gradient', 'flex-rewrite',
            'flexbox', 'filter', 'border-image', 'border-radius', 'notes',
            'selectors', 'placeholder', 'fullscreen', 'intrinsic', 'mistakes',
-           'custom-prefix', 'cascade', 'double', 'multicolumn']
+           'custom-prefix', 'cascade', 'double', 'multicolumn', 'ie-transform',
+           'background-size']
 
 describe 'autoprefixer()', ->
 
