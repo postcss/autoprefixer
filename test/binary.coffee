@@ -187,6 +187,20 @@ describe 'Binary', ->
       fs.existsSync( path('b.css.map') ).should.be.true
       done()
 
+  it 'uses cascade by default', (done) ->
+    write('a.css', "a {\n  transition: 1s\n}")
+    @run '-b', 'chrome 25', 'a.css', ->
+      read('a.css').should.eql("a {\n  -webkit-transition: 1s;\n" +
+                                    "          transition: 1s\n}")
+      done()
+
+  it 'disables cascade by request', (done) ->
+    write('a.css', "a {\n  transition: 1s\n}")
+    @run '-b', 'chrome 25', '--no-cascade', 'a.css', ->
+      read('a.css').should.eql("a {\n  -webkit-transition: 1s;\n" +
+                                    "  transition: 1s\n}")
+      done()
+
   it "raises an error when files doesn't exists", (done) ->
     @raise('not.css',
            /doesn't exists/, done)

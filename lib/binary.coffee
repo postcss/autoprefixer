@@ -31,7 +31,7 @@ class Binary
           --no-map             skip source map even if previous map exists
       -I, --inline-map         inline map by data:uri to annotation comment
           --no-map-annotation  skip source map annotation comment is CSS
-      -c, --cascade            create nice visual cascade of prefixes
+          --no-cascade         do not create nice visual cascade of prefixes
       -i, --info               show selected browsers and properties
       -h, --help               show help text
       -v, --version            print program version
@@ -110,7 +110,11 @@ class Binary
           @processOptions.map.annotation = false
 
         when '-c', '--cascade'
-          @processorOptions.cascade = true
+          @stderr.write("Cascade is enable by default in Autoprefixer 2.0., " +
+                        "so -c and --cascade options are deprecated\n")
+
+        when       '--no-cascade'
+          @processorOptions.cascade = false
 
         when '-b', '--browsers'
           @requirements = args.shift().split(',').map (i) -> i.trim()
