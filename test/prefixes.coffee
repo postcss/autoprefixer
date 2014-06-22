@@ -90,6 +90,16 @@ describe 'Prefixes', ->
           values: [old('-ms-b'), old('-moz-b'), old('-webkit-b')]
       })
 
+  describe '.cleaner()', ->
+
+    it 'returns itself is no browsers are selected', ->
+      empty.cleaner().should.eql(empty)
+
+    it 'returns Prefixes with empty browsers', ->
+      cleaner = new Prefixes(data.prefixes, new Browsers(data.browsers, []))
+      fill.cleaner().add.should.eql(cleaner.add)
+      fill.cleaner().remove.should.eql(cleaner.remove)
+
   describe '.decl()', ->
 
     it 'loads declarations by property', ->

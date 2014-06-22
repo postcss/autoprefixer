@@ -40,12 +40,22 @@ Value.hack require('./hacks/transform-value')
 declsCache = { }
 
 class Prefixes
-
   constructor: (@data, @browsers, @options = { }) ->
     [@add, @remove] = @preprocess(@select(@data))
     @processor      = new Processor(@)
 
   transitionProps: ['transition', 'transition-property']
+
+  # Return clone instance to remove all prefixes
+  cleaner: ->
+    unless @cleanerCache
+      if @browsers.selected.length
+        empty = new Browsers(@browsers.data, [])
+        @cleanerCache = new Prefixes(@data, empty, @options)
+      else
+        return this
+
+    @cleanerCache
 
   # Select prefixes from data, which is necessary for selected browsers
   select: (list) ->
