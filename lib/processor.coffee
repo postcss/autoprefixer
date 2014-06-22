@@ -7,9 +7,15 @@ class Processor
 
   # Add necessary prefixes
   add: (css) ->
-    # Keyframes
-    prefixer = @prefixes.add['@keyframes']
-    css.eachAtRule( (rule) -> prefixer.process(rule) ) if prefixer
+    # At-rules
+    keyframes = @prefixes.add['@keyframes']
+    supports  = @prefixes.add['@supports']
+
+    css.eachAtRule (rule) ->
+      if rule.name == 'keyframes'
+        keyframes?.process(rule)
+      else if rule.name == 'supports'
+        supports?.process(rule)
 
     # Selectors
     for selector in @prefixes.add.selectors

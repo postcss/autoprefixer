@@ -2,10 +2,6 @@ Prefixer = require('./prefixer')
 
 class Keyframes extends Prefixer
 
-  # Prefix only @keyframes
-  check: (atRule) ->
-    atRule.name == 'keyframes'
-
   # Clone and add prefixes for at-rule
   add: (atRule, prefix) ->
     prefixed = prefix + atRule.name
@@ -16,5 +12,13 @@ class Keyframes extends Prefixer
 
     cloned = @clone(atRule, name: prefixed)
     atRule.parent.insertBefore(atRule, cloned)
+
+  # Clone node with prefixes
+  process: (node) ->
+    parent = @parentPrefix(node)
+
+    for prefix in @prefixes
+      continue if parent and parent != prefix
+      @add(node, prefix)
 
 module.exports = Keyframes

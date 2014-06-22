@@ -1,6 +1,7 @@
 Declaration = require('../lib/declaration')
 Prefixes    = require('../lib/prefixes')
 Browsers    = require('../lib/browsers')
+Supports    = require('../lib/supports')
 Selector    = require('../lib/selector')
 OldValue    = require('../lib/old-value')
 Value       = require('../lib/value')
@@ -68,6 +69,7 @@ describe 'Prefixes', ->
         'a': aProp
         '*':
           values: [bVal]
+        '@supports': new Supports(fill)
 
     it 'preprocesses prefixes remove data', ->
       JSON.stringify(fill.remove).should.eql JSON.stringify({

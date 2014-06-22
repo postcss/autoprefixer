@@ -4,6 +4,7 @@ vendor = require('postcss/lib/vendor')
 Declaration = require('./declaration')
 Processor   = require('./processor')
 Keyframes   = require('./keyframes')
+Supports    = require('./supports')
 Browsers    = require('./browsers')
 Selector    = require('./selector')
 Value       = require('./value')
@@ -119,6 +120,9 @@ class Prefixes
           values = add[name]?.values || []
           add[name] = Declaration.load(name, prefixes, @)
           add[name].values = values
+
+    if Object.keys(add).length > 1
+      add['@supports'] = new Supports(@)
 
     remove = { selectors: [] }
     for name, prefixes of selected.remove
