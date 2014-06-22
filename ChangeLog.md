@@ -1,3 +1,6 @@
+## 1.3.1
+* Fix gradient hack, when `background` property contains color.
+
 ## 1.3 “Tenka Fubu”
 * Add `text-size-adjust` support.
 * Add `background-size` to support Android 2.
