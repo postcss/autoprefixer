@@ -13,7 +13,7 @@
     "coffee-script": "1.7.1",
     "caniuse-db":    "1.0.20140618 - 2",
     "fs-extra":      "~0.9.1",
-    "postcss":       "git://github.com/ai/postcss.git#v1.0"
+    "postcss":       "~1.0.0"
   },
   "devDependencies": {
     "browserify": "4.1.11",
