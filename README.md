@@ -179,12 +179,12 @@ to generate a correct map.
 Autoprefixer can modify previous source maps (for example, from Sass):
 it will autodetect a previous map if it is listed in an annotation comment or
 in a file near the input CSS. You can disable source map with `map: false` or
-set the previous source map content manually to `map` option (as a string or a
-JS object).
+set the previous source map content manually to `map.prev` option (as a string
+or a object).
 
 ```js
 var result = autoprefixer.process(css, {
-    map:   fs.readFileSync('main.sass.css.map'),
+    map:   { prev: fs.readFileSync('main.sass.css.map') },
     from: 'main.sass.css',
     to:   'main.min.css'
 });
