@@ -1,0 +1,6 @@
+a {
+    color : black;
+    -webkit-transition: 1s;
+         -o-transition: 1s;
+            transition: 1s
+}
