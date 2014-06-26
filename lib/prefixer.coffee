@@ -20,6 +20,7 @@ class Prefixer
   # Clone node and clean autprefixer custom caches
   @clone: (node, overrides) ->
     cloned = node.clone(overrides)
+    cloned.between = node.between
     delete cloned._autoprefixerPrefix
     delete cloned._autoprefixerValues
     cloned
