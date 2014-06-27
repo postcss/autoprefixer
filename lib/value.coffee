@@ -26,6 +26,7 @@ class Value extends Prefixer
 
           unless already
             cloned = @clone(decl, value: value)
+            cloned.between = decl.between
             decl.parent.insertBefore(decl, cloned)
 
   # Is declaration need to be prefixed
