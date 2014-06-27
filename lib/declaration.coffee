@@ -76,12 +76,6 @@ class Declaration extends Prefixer
       cloned.before = @calcBefore(prefixes, decl, prefix)
     decl.parent.insertBefore(decl, cloned)
 
-  # Save origin declaration style
-  clone: (decl, overrides) ->
-    cloned = super
-    cloned.between = decl.between
-    cloned
-
   # Clone and add prefixes for declaration
   add: (decl, prefix, prefixes) ->
     prefixed  = @prefixed(decl.prop, prefix)

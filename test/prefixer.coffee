@@ -45,6 +45,11 @@ describe 'Prefixer', ->
       (cloned._autoprefixerPrefix == undefined).should.be.true
       (cloned._autoprefixerValues == undefined).should.be.true
 
+    it 'fixed declaration between', ->
+      css = parse('a { color : black }')
+      cloned = Prefixer.clone(css.rules[0].first)
+      cloned.between.should.eql(' : ')
+
   describe 'parentPrefix', ->
 
     it 'works with root node', ->
