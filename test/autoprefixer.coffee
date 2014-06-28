@@ -39,6 +39,8 @@ prefixer = (name) ->
     backgrounder
   else if name == 'uncascade'
     uncascader
+  else if name == 'example'
+    autoprefixer
   else
     compiler
 
@@ -113,6 +115,7 @@ describe 'Autoprefixer', ->
     it 'normalize cascade after remove', -> test('uncascade')
     it 'prefix decls in @supports',      -> test('supports')
     it 'saves declaration style',        -> test('style')
+    it 'has actual example in docs',     -> test('example')
 
     it 'should irgnore spaces inside values', ->
         css = read('trim')
