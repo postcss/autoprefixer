@@ -1,3 +1,6 @@
+## 2.0.1
+* Save declaration style, when clone declaration to prefix.
+
 ## 2.0 “Hongik Ingan”
 * Based on PostCSS 1.0.
   See [options changes](https://github.com/ai/postcss/releases/tag/1.0.0).
