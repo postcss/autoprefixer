@@ -66,27 +66,27 @@ describe 'autoprefixer()', ->
     compiler.prefixes.options.should.eql({ })
 
   it 'sets options', ->
-    processor = autoprefixer('chrome 25', 'opera 12', cascade: true)
-    processor.prefixes.options.should.eql(cascade: true)
+    processor = autoprefixer('chrome 25', 'opera 12', cascade: false)
+    processor.prefixes.options.should.eql(cascade: false)
     processor.browsers.should.eql(['chrome 25', 'opera 12'])
 
   it 'sets only options', ->
     defaults  = new Browsers(autoprefixer.data.browsers, autoprefixer.default)
-    processor = autoprefixer(cascade: true)
-    processor.prefixes.options.should.eql(cascade: true)
+    processor = autoprefixer(cascade: false)
+    processor.prefixes.options.should.eql(cascade: false)
     processor.browsers.should.eql(defaults.selected)
 
-    processor = autoprefixer(undefined, cascade: true)
-    processor.prefixes.options.should.eql(cascade: true)
+    processor = autoprefixer(undefined, cascade: false)
+    processor.prefixes.options.should.eql(cascade: false)
     processor.browsers.should.eql(defaults.selected)
 
   it 'receives array', ->
     processor = autoprefixer(['chrome 25', 'opera 12'])
     processor.browsers.should.eql ['chrome 25', 'opera 12']
 
-    processor = autoprefixer(['chrome 25', 'opera 12'], cascade: true)
+    processor = autoprefixer(['chrome 25', 'opera 12'], cascade: false)
     processor.browsers.should.eql ['chrome 25', 'opera 12']
-    processor.prefixes.options.should.eql(cascade: true)
+    processor.prefixes.options.should.eql(cascade: false)
 
   it 'has default browsers', ->
     autoprefixer.default.should.be.an.instanceOf(Array)
