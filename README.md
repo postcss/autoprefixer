@@ -160,10 +160,10 @@ Browsers names (case insensitive):
 * `iOS` for iOS Safari.
 * `Opera` for Opera.
 * `Safari` for desktop Safari.
-* `op_mini` and `op_mob` for Opera Mini and Mobile.
-* `and_chr` for Chrome for Android (mostly same as common `Chrome`).
-* `and_ff` for Firefox for Android.
-* `ie_mob` for Internet Explorer Mobile.
+* `OperaMini` and `OperaMobile` for Opera Mini and Mobile.
+* `ChromeAndroid` for Chrome for Android (mostly same as common `Chrome`).
+* `FirefoxAndroid` for Firefox for Android.
+* `ExplorerMobile` for Internet Explorer Mobile.
 
 By default, Autoprefixer uses `> 1%, last 2 versions, Firefox ESR, Opera 12.1`:
 * Latest [Firefox ESR] is a 24 version.
