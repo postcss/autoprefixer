@@ -36,11 +36,16 @@ class Browsers
 
   # Aliases for browser names
   aliases:
-    fx:         'firefox'
-    ff:         'firefox'
-    ios:        'ios_saf'
-    explorer:   'ie'
-    blackberry: 'bb'
+    fx:             'firefox'
+    ff:             'firefox'
+    ios:            'ios_saf'
+    explorer:       'ie'
+    blackberry:     'bb'
+    explorermobile: 'ie_mob'
+    operamini:      'op_mini'
+    operamobile:    'op_mob'
+    chromeandroid:  'and_chr'
+    firefoxandroid: 'and_ff'
 
   # Available requirements to select browsers
   requirements:
