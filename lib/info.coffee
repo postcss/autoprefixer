@@ -5,6 +5,10 @@ names =
   ie:      'IE'
   ie_mob:  'IE Mobile'
   ios_saf: 'iOS'
+  op_mini: 'Opera Mini'
+  op_mob:  'Opera Mobile'
+  and_chr: 'Chrome for Android'
+  and_ff:  'Firefox for Android'
 
 prefix = (name, transition, prefixes) ->
     out  = '  ' + name + (if transition then '*' else '') + ': '
