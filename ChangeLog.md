@@ -1,3 +1,7 @@
+## 2.1 “Eleftheria i thanatos”
+* Add support for `clip-path` and `mask` properties.
+* Return `-webkit-` prefix to `filter` with SVG URI.
+
 ## 2.0.2
 * Add readable names for new browsers from 2.0 release.
 * Don’t add `-webkit-` prefix to `filter` with SVG URI.
