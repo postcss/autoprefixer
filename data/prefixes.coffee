@@ -249,3 +249,9 @@ feature textDecoration, full: true, (browsers) ->
 feature require('caniuse-db/features-json/text-size-adjust'), (browsers) ->
   prefix 'text-size-adjust',
           browsers: browsers
+
+# CSS Masks
+feature require('caniuse-db/features-json/css-masks'), (browsers) ->
+  prefix 'clip-path', 'mask', 'mask-clip', 'mask-composite', 'mask-image',
+         'mask-origin', 'mask-position', 'mask-repeat', 'mask-size',
+          browsers: browsers
