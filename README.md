@@ -483,8 +483,19 @@ $prefixed     = $autoprefixer->compile($css);
 
 ### .NET
 
-You can use Autoprefixer from .NET and BundleTransformer with the
-[Autoprefixer](https://github.com/digitalcreations/autoprefixer) NuGet package.
+You can use Autoprefixer in .NET by the [Autoprefixer for .NET](https://github.com/digitalcreations/autoprefixer) library. Install package via NuGet:
+
+```
+PM> Install-Package Autoprefixer
+``` 
+
+### ASP.NET
+	
+You can use Autoprefixer in ASP.NET by the official [BundleTransformer.Autoprefixer](http://www.nuget.org/packages/BundleTransformer.Autoprefixer/) plugin for [Bundle Transformer](http://bundletransformer.codeplex.com/). Install package via NuGet:
+
+```
+PM> Install-Package BundleTransformer.Autoprefixer
+```
 
 ### JavaScript
 
