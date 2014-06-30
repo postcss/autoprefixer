@@ -6,9 +6,7 @@ class Filter extends Declaration
   # Check is it Internet Explorer filter
   check: (decl) ->
     v = decl.value
-
     v.toLowerCase().indexOf('alpha(') == -1 and
-      v.indexOf('DXImageTransform.Microsoft') == -1 and
-      v.indexOf('url(') == -1
+      v.indexOf('DXImageTransform.Microsoft') == -1
 
 module.exports = Filter
