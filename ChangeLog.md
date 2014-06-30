@@ -1,3 +1,8 @@
+## 2.0.2
+* Add readable names for new browsers from 2.0 release.
+* Don’t add `-webkit-` prefix to `filter` with SVG URI.
+* Don’t add `-o-` prefix 3D transforms.
+
 ## 2.0.1
 * Save declaration style, when clone declaration to prefix.
 
