@@ -16,15 +16,20 @@ class TransformDecl extends Declaration
 
   # Is transform caontain 3D commands
   contain3d: (decl) ->
+    return false if decl.prop == 'transform-origin'
+
     for func in TransformDecl.functions3d
       if decl.value.indexOf("#{ func }(") != -1
         return true
+
     false
 
   # Don't add prefix for IE in keyframes
   insert: (decl, prefix, prefixes) ->
     if prefix == '-ms-'
       super if not @contain3d(decl) and not @keykrameParents(decl)
+    else if prefix == '-o-'
+      super if not @contain3d(decl)
     else
       super
 

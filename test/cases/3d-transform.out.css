@@ -1,0 +1,25 @@
+a {
+    -o-transition: -o-transform 1s;
+       transition: transform 1s;
+    transform: rotateX(45deg)
+}
+
+b {
+    -ms-transform: translateX(45deg);
+     -o-transform: translateX(45deg);
+        transform: translateX(45deg)
+}
+
+@-o-keyframes anim {
+    from {
+        -o-transform: rotate(90deg);
+           transform: rotate(90deg);
+    }
+}
+
+@keyframes anim {
+    from {
+        -o-transform: rotate(90deg);
+           transform: rotate(90deg);
+    }
+}

@@ -9,7 +9,7 @@ borderer     = autoprefixer('Safari 4',  'Firefox 3.6')
 cascader     = autoprefixer('Chrome > 19', 'Firefox 21', 'IE 10', cascade: true)
 keyframer    = autoprefixer('Chrome > 19', 'Opera 12')
 flexboxer    = autoprefixer('Chrome > 19', 'Firefox 21', 'IE 10')
-iecompiler   = autoprefixer('IE > 0')
+without3d    = autoprefixer('Opera 12', 'Explorer > 0')
 uncascader   = autoprefixer('Firefox 15')
 gradienter   = autoprefixer('Chrome 25', 'Opera 12', 'Android 2.3')
 selectorer   = autoprefixer('Chrome 25', 'Firefox > 17', 'Explorer 10')
@@ -33,8 +33,8 @@ prefixer = (name) ->
     intrinsicer
   else if name == 'cascade'
     cascader
-  else if name == 'ie-transform'
-    iecompiler
+  else if name == '3d-transform'
+    without3d
   else if name == 'background-size'
     backgrounder
   else if name == 'uncascade'
@@ -56,7 +56,7 @@ test = (from, instansce = prefixer(from)) ->
 commons = ['transition', 'values', 'keyframes', 'gradient', 'flex-rewrite',
            'flexbox', 'filter', 'border-image', 'border-radius', 'notes',
            'selectors', 'placeholder', 'fullscreen', 'intrinsic', 'mistakes',
-           'custom-prefix', 'cascade', 'double', 'multicolumn', 'ie-transform',
+           'custom-prefix', 'cascade', 'double', 'multicolumn', '3d-transform',
            'background-size', 'supports']
 
 describe 'autoprefixer()', ->
@@ -177,7 +177,7 @@ describe 'Autoprefixer', ->
     it 'supports intrinsic sizing',     -> test('intrinsic')
     it 'supports custom prefixes',      -> test('custom-prefix')
     it 'fix break-inside property',     -> test('multicolumn')
-    it 'ignores some IE transforms',    -> test('ie-transform')
+    it 'ignores some 3D transforms',    -> test('3d-transform')
     it 'support background-size',       -> test('background-size')
 
     it 'ignores values for CSS3PIE props', ->
