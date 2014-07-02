@@ -7,6 +7,7 @@ class Filter extends Declaration
   check: (decl) ->
     v = decl.value
     v.toLowerCase().indexOf('alpha(') == -1 and
-      v.indexOf('DXImageTransform.Microsoft') == -1
+      v.indexOf('DXImageTransform.Microsoft') == -1 and
+      v.indexOf('data:image/svg+xml') == -1
 
 module.exports = Filter
