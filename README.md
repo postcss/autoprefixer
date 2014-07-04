@@ -162,7 +162,8 @@ Browsers names (case insensitive):
 * `Safari` for desktop Safari.
 * `OperaMobile` or `op_mob` for Opera Mobile.
 * `OperaMini` or `op_mini` for Opera Mini.
-* `ChromeAndroid` or `and_chr` for Chrome for Android (mostly same as common `Chrome`).
+* `ChromeAndroid` or `and_chr` for Chrome for Android
+  (mostly same as common `Chrome`).
 * `FirefoxAndroid` or `and_ff` for Firefox for Android.
 * `ExplorerMobile` or `ie_mob` for Internet Explorer Mobile.
 
