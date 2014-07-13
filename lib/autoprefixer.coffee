@@ -72,10 +72,6 @@ autoprefixer.loadDefault = ->
 autoprefixer.process = (str, options = {}) ->
   @loadDefault().process(str, options)
 
-# Old deprecated API from Autoprefixer 0.x
-autoprefixer.compile = (str, options = {}) ->
-  @loadDefault().compile(str, options)
-
 # PostCSS with default Autoprefixer
 autoprefixer.postcss = (css) ->
   @loadDefault().postcss(css)

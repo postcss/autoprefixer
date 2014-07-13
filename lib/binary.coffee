@@ -119,10 +119,6 @@ class Binary
           @processOptions.map ||= { }
           @processOptions.map.sourcesContent = true
 
-        when '-c', '--cascade'
-          @stderr.write("Cascade is enable by default in Autoprefixer 2.0., " +
-                        "so -c and --cascade options are deprecated\n")
-
         when       '--no-cascade'
           @processorOptions.cascade = false
 
