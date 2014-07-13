@@ -146,13 +146,15 @@ describe 'Autoprefixer', ->
       result = cleaner.process(input)
       result.css.should.eql(input)
 
-    it 'marks parsing errors', ->
+    it 'marks parsing errors in strict mode', ->
       ( ->
-        cleaner.process('a {')
+        cleaner.process('a {', strict: true)
       ).should.throw("Can't parse CSS: Unclosed block at line 1:1")
 
     it 'shows file name in parse error', ->
-      ( -> cleaner.process('a {', from: 'a.css') ).should.throw(/in a.css$/)
+      ( ->
+        cleaner.process('a {', from: 'a.css', strict: true)
+      ).should.throw(/in a.css$/)
 
   describe 'postcss()', ->
 

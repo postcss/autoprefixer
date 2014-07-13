@@ -241,9 +241,10 @@ describe 'Binary', ->
     @raise('-b', 'ie',
            /autoprefixer: Unknown browser requirement `ie`/, done)
 
-  it 'prints parsing errors', (done) ->
-    @stdin.content = 'a {'
-    @raise(/^autoprefixer: Can't parse CSS/, done)
+  it 'prints parsing errors in strict mode', (done) ->
+    @stdin.content = 'a {{'
+    @raise('--strict',
+           /^autoprefixer: Can't parse CSS/, done)
 
 describe 'bin/autoprefixer', ->
 

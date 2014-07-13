@@ -34,6 +34,7 @@ class Binary
           --no-map-annotation  skip source map annotation comment is CSS
           --sources-content    Include origin CSS into map
           --no-cascade         do not create nice visual cascade of prefixes
+          --strict             do not ignore CSS syntax errors
       -i, --info               show selected browsers and properties
       -h, --help               show help text
       -v, --version            print program version
@@ -121,6 +122,9 @@ class Binary
 
         when       '--no-cascade'
           @processorOptions.cascade = false
+
+        when       '--strict'
+          @processorOptions.strict = true
 
         when '-b', '--browsers'
           @requirements = args.shift().split(',').map (i) -> i.trim()
