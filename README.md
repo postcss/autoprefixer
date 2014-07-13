@@ -219,6 +219,19 @@ a {
 
 You can disable cascade by `cascade: false` option.
 
+## Strict Mode
+
+By default PostCSS, Autoprefixer parser, tries to fix broken CSS to works
+with live input or legacy code with CSS hacks. For example, `a {` will be
+parsed as `a {}`.
+
+If you want to throw errors on any syntax errors, set `strict` option
+in `process(css, opts)` method:
+
+```css
+autoprefixer.process(css, { strict: true });
+```
+
 ## Disabling
 
 Autoprefixer was designed to have no interface. It is just work. If you need
