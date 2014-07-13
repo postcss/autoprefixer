@@ -115,6 +115,7 @@ describe 'Autoprefixer', ->
     it 'normalize cascade after remove', -> test('uncascade')
     it 'prefix decls in @supports',      -> test('supports')
     it 'saves declaration style',        -> test('style')
+    it 'uses control comments',          -> test('disabled')
     it 'has actual example in docs',     -> test('example')
 
     it 'should irgnore spaces inside values', ->

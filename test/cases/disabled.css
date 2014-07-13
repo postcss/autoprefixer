@@ -1,0 +1,29 @@
+a {
+    -webkit-border-radius: 4px;
+            border-radius: 4px;
+    transition: transform 1s;
+}
+
+b {
+    /* autoprefixer: off */
+    -webkit-border-radius: 4px;
+            border-radius: 4px;
+    transition: transform 1s;
+}
+
+@support (transition: 1s) {
+    /* autoprefixer: off */
+
+    :fullscreen {
+        -webkit-border-radius: 4px;
+                border-radius: 4px;
+        transition: transform 1s;
+    }
+
+    ::placeholder {
+        /*autoprefixer: on*/
+        -webkit-border-radius: 4px;
+                border-radius: 4px;
+        transition: transform 1s;
+    }
+}

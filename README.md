@@ -219,6 +219,49 @@ a {
 
 You can disable cascade by `cascade: false` option.
 
+## Disabling
+
+Autoprefixer was designed to have no interface. It is just work. If you need
+some browser specific hack just write prefixed property after unprefixed.
+
+```css
+a {
+    transform: scale(0.5);
+    -moz-transform: scale(0.6)
+}
+```
+
+If some prefixes was generated in wrong way, please create issue on GitHub.
+
+But if you didn’t need Autoprefixer in some part of your CSS and you understand
+why it is a best solution, you can use control comments to disable Autoprefixer.
+
+```css
+a {
+    transition: 1s; /* it will be prefixed */
+}
+
+b {
+    /* autoprefixer: off */
+    transition: 1s; /* it will not be prefixed */
+}
+```
+
+Control comment disable Autoprefixer in rule, where you place it.
+So Autoprefixer will not works in entiry `b` rule, not only after comment.
+
+Also you can use comment recursively:
+
+```css
+/* autoprefixer: off */
+@support (transition: all) {
+    /* autoprefixer: on */
+    a {
+        /* autoprefixer: off */
+    }
+}
+```
+
 ## Debug
 
 You can check which browsers are selected and which properties will be prefixed:

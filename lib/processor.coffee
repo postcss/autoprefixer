@@ -11,23 +11,28 @@ class Processor
     keyframes = @prefixes.add['@keyframes']
     supports  = @prefixes.add['@supports']
 
-    css.eachAtRule (rule) ->
+    css.eachAtRule (rule) =>
       if rule.name == 'keyframes'
-        keyframes?.process(rule)
+        keyframes?.process(rule) if not @disabled(rule)
       else if rule.name == 'supports'
-        supports.process(rule)
+        supports.process(rule) if not @disabled(rule)
 
     # Selectors
-    for selector in @prefixes.add.selectors
-      css.eachRule (rule) -> selector.process(rule)
+    css.eachRule (rule) =>
+      return if @disabled(rule)
+      for selector in @prefixes.add.selectors
+        selector.process(rule)
 
     # Properties
     css.eachDecl (decl) =>
       prefix = @prefixes.add[decl.prop]
-      prefix.process(decl) if prefix and prefix.prefixes
+      if prefix and prefix.prefixes
+        prefix.process(decl) if not @disabled(decl)
 
     # Values
     css.eachDecl (decl) =>
+      return if @disabled(decl)
+
       unprefixed = @prefixes.unprefixed(decl.prop)
       for value in @prefixes.values('add', unprefixed)
         value.process(decl)
@@ -38,14 +43,17 @@ class Processor
     # Keyframes
     css.eachAtRule (rule, i) =>
       if @prefixes.remove['@' + rule.name]
-        rule.parent.remove(i)
+        rule.parent.remove(i) if not @disabled(rule)
 
     # Selectors
     for checker in @prefixes.remove.selectors
       css.eachRule (rule, i) =>
-        rule.parent.remove(i) if checker.check(rule)
+        if checker.check(rule)
+          rule.parent.remove(i) if not @disabled(rule)
 
     css.eachDecl (decl, i) =>
+      return if @disabled(decl)
+
       rule       = decl.parent
       unprefixed = @prefixes.unprefixed(decl.prop)
 
@@ -63,6 +71,32 @@ class Processor
         if checker.check(decl.value)
           rule.remove(i)
           return
+
+  # Check for control comment
+  disabled: (node) ->
+    if node._autoprefixerDisabled?
+      node._autoprefixerDisabled
+
+    else if node.decls or node.rules
+      status = undefined
+      node.each (i) ->
+        return unless i.type == 'comment'
+        if i.text == 'autoprefixer: off'
+          status = false
+          return false
+        else if i.text == 'autoprefixer: on'
+          status = true
+          return false
+
+      node._autoprefixerDisabled = if status?
+        !status
+      else if node.parent
+        @disabled(node.parent)
+      else
+        false
+
+    else
+      node._autoprefixerDisabled = @disabled(node.parent)
 
   # Normalize spaces in cascade declaration group
   reduceSpaces: (decl) ->
