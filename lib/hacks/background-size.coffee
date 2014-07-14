@@ -5,7 +5,9 @@ class BackgroundSize extends Declaration
 
   # Remove fill parameter for prefixed declarations
   set: (decl, prefix) ->
-    if prefix == '-webkit-' and decl.value.indexOf(' ') == -1
+    value = decl.value.toLowerCase()
+    if prefix == '-webkit-' and value.indexOf(' ') == -1 and
+       value != 'contain' and value != 'cover'
       decl.value = decl.value + ' ' + decl.value
     super(decl, prefix)
 
