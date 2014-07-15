@@ -476,7 +476,6 @@ var prefixed     = autoprefixer.process(css).css;
 You can use Autoprefixer in PHP by
 [autoprefixer-php](https://github.com/vladkens/autoprefixer-php) library:
 
-
 ```php
 $autoprefixer = new Autoprefixer();
 $css          = 'a { transition: transform 1s }';
@@ -486,7 +485,8 @@ $prefixed     = $autoprefixer->compile($css);
 ### Visual Studio
 
 You can apply the Autoprefixer optimizations to your LESS/Sass stylesheets in
-the Visual Studio 2013 by using the [Web Essentials 2013](http://vswebessentials.com/)
+the Visual Studio 2013 by using
+the [Web Essentials 2013](http://vswebessentials.com/)
 plugin (since the 2.2 version).
 
 To add this functionality in the Visual Studio 2013 you need to do the following
@@ -494,12 +494,12 @@ steps:
 
 1. Download and install the [Microsoft Visual Studio 2013 Update 2](http://www.microsoft.com/en-us/download/details.aspx?id=42666)
 2. Download and install the [Web Essentials 2013 for Update 2](http://visualstudiogallery.msdn.microsoft.com/56633663-6799-41d7-9df7-0f2a504ca361)
-3. Choose a **"Tools -> Options -> Web Essentials -> CSS"** menu item
+3. Choose a `Tools` → `Options` → `Web Essentials` → `CSS` menu item
+4. In the `Enable Autoprefixer` box specify a value equal to `True`
+5. Additionally, you can specify the browser conditional expressions
+   in the `Targeted browsers` box
 
-	![Autoprefixer options in the Web Essentials 2013](http://i.imgur.com/X9sBBF8.png)
-4. In the **"Enable Autoprefixer"** box specify a value equal to `True`
-5. Additionally, you can specify the browser conditional expressions in the
-**"Targeted browsers"** box
+![Autoprefixer options in the Web Essentials 2013](http://i.imgur.com/X9sBBF8.png)
 
 ### .NET
 
