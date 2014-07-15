@@ -483,6 +483,24 @@ $css          = 'a { transition: transform 1s }';
 $prefixed     = $autoprefixer->compile($css);
 ```
 
+### Visual Studio
+
+You can apply the Autoprefixer optimizations to your LESS/Sass stylesheets in
+the Visual Studio 2013 by using the [Web Essentials 2013](http://vswebessentials.com/)
+plugin (since the 2.2 version).
+
+To add this functionality in the Visual Studio 2013 you need to do the following
+steps:
+
+1. Download and install the [Microsoft Visual Studio 2013 Update 2](http://www.microsoft.com/en-us/download/details.aspx?id=42666)
+2. Download and install the [Web Essentials 2013 for Update 2](http://visualstudiogallery.msdn.microsoft.com/56633663-6799-41d7-9df7-0f2a504ca361)
+3. Choose a **"Tools -> Options -> Web Essentials -> CSS"** menu item
+
+	![Autoprefixer options in the Web Essentials 2013](http://i.imgur.com/X9sBBF8.png)
+4. In the **"Enable Autoprefixer"** box specify a value equal to `True`
+5. Additionally, you can specify the browser conditional expressions in the
+**"Targeted browsers"** box
+
 ### .NET
 
 You can use Autoprefixer in .NET by the
@@ -497,12 +515,23 @@ PM> Install-Package Autoprefixer
 
 You can use Autoprefixer in ASP.NET by the official
 [BundleTransformer.Autoprefixer](http://www.nuget.org/packages/BundleTransformer.Autoprefixer/)
-plugin for [Bundle Transformer](http://bundletransformer.codeplex.com/).
-Install package via NuGet:
+plugin for [Bundle Transformer](http://bundletransformer.codeplex.com/).
 
-```
-PM> Install-Package BundleTransformer.Autoprefixer
-```
+To add this functionality in the ASP.NET web application you need to do the
+following steps:
+
+1. Install package via NuGet:
+
+	```
+	PM> Install-Package BundleTransformer.Autoprefixer
+	```
+2. Perform a post-install actions specified in the `readme.txt` file
+3. Register a bundles in the `App_Start/BundleConfig.cs` file and configure the
+Bundle Transformer (see the [documentation](http://bundletransformer.codeplex.com/documentation))
+4. Additionally, you can specify the browser conditional expressions in the 
+`Web.config` file (in the Visual Studio supported IntelliSense):
+
+	![BundleTransformer.Autoprefixer options in the Web.config file](http://i.imgur.com/f2iJlBB.png)
 
 ### JavaScript
 
