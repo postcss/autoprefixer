@@ -1,3 +1,7 @@
+## 2.1.1
+* Fix `-webkit-background-size` hack for `contain` and `cover` values.
+* Don’t add `-webkit-` prefix to `filter` with SVG (by Vincent De Oliveira).
+
 ## 2.1 “Eleftheria i thanatos”
 * Add support for `clip-path` and `mask` properties.
 * Return `-webkit-` prefix to `filter` with SVG URI.
