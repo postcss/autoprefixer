@@ -499,7 +499,7 @@ steps:
 5. Additionally, you can specify the browser conditional expressions
    in the `Targeted browsers` box
 
-![Autoprefixer options in the Web Essentials 2013](http://i.imgur.com/X9sBBF8.png)
+<img src="http://i.imgur.com/X9sBBF8.png" width="700" alt="Autoprefixer options in the Web Essentials 2013" />
 
 ### .NET
 
@@ -531,7 +531,7 @@ Bundle Transformer (see the [documentation](http://bundletransformer.codeplex.co
 4. Additionally, you can specify the browser conditional expressions in the 
 `Web.config` file (in the Visual Studio supported IntelliSense):
 
-	![BundleTransformer.Autoprefixer options in the Web.config file](http://i.imgur.com/f2iJlBB.png)
+	<img src="http://i.imgur.com/f2iJlBB.png" width="572" alt="BundleTransformer.Autoprefixer options in the Web.config file" />
 
 ### JavaScript
 
