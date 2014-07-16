@@ -219,18 +219,20 @@ a {
 
 You can disable cascade by `cascade: false` option.
 
-## Strict Mode
+## Safe Mode
 
-By default PostCSS, Autoprefixer parser, tries to fix broken CSS to works
-with live input or legacy code with CSS hacks. For example, `a {` will be
-parsed as `a {}`.
+PostCSS has special safe mode to parse broken CSS. If you will set `safe: true`
+option to `process` method, it will try to fix any syntax error, that it founds
+in CSS. For example, it will parse `a {` as `a {}`.
 
-If you want to throw errors on any syntax errors, set `strict` option
-in `process(css, opts)` method:
-
-```css
-autoprefixer.process(css, { strict: true });
+```js
+autoprefixer.parse('a {');                 // will throw "Unclosed block"
+autoprefixer.parse('a {', { safe: true }); // process CSS as a {}
 ```
+
+It is useful for legacy code with a lot of hack. Other use case is a interactive
+tools with live input, like
+[Autoprefixer demo](http://jsfiddle.net/simevidas/udyTs/show/light/).
 
 ## Disabling
 
