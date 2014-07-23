@@ -226,8 +226,8 @@ option to `process` method, it will try to fix any syntax error, that it founds
 in CSS. For example, it will parse `a {` as `a {}`.
 
 ```js
-autoprefixer.parse('a {');                 // will throw "Unclosed block"
-autoprefixer.parse('a {', { safe: true }); // process CSS as a {}
+autoprefixer.process('a {');                 // will throw "Unclosed block"
+autoprefixer.process('a {', { safe: true }); // process CSS as a {}
 ```
 
 It is useful for legacy code with a lot of hack. Other use case is a interactive
