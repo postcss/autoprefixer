@@ -11,14 +11,14 @@
   },
   "dependencies": {
     "coffee-script": "1.7.1",
-    "caniuse-db":    "^1.0.20140710",
+    "caniuse-db":    "^1.0.20140722",
     "fs-extra":      "~0.10.0",
-    "postcss":       "ai/postcss"
+    "postcss":       "~2.0.0"
   },
   "devDependencies": {
-    "browserify": "4.2.1",
+    "browserify": "4.2.3",
     "should":     "4.0.4",
-    "stylus":     "0.47.1",
+    "stylus":     "0.47.2",
     "mocha":      "1.20.1",
     "nib":        "1.0.3"
   },
