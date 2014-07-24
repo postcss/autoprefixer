@@ -69,12 +69,14 @@ task 'build', 'Build standalone autoprefixer.js', ->
   invoke('compile')
 
   browserify = require('browserify')
-  builder    = browserify(basedir: __dirname + '/build/')
+  builder    = browserify
+    basedir:     __dirname + '/build/'
+    standalone: 'autoprefixer'
   builder.add('./lib/autoprefixer.js')
 
   result = __dirname + '/autoprefixer.js'
   output = fs.createWriteStream(result)
-  builder.bundle standalone: 'autoprefixer', (error, build) ->
+  builder.bundle (error, build) ->
     if error
       process.stderr.write(error.toString() + "\n")
       process.exit(1)
