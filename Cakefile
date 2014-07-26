@@ -81,6 +81,9 @@ task 'build', 'Build standalone autoprefixer.js', ->
       process.stderr.write(error.toString() + "\n")
       process.exit(1)
 
+    build = build.toString()
+      .replace(/DP\$0\(\w+, "prototype", \{[^{]+\}\);/g, 'try{$&}catch(e){}')
+
     fs.removeSync(__dirname + '/build/')
 
     rails = __dirname + '/../autoprefixer-rails/vendor/autoprefixer.js'
