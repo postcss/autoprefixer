@@ -82,7 +82,7 @@ task 'build', 'Build standalone autoprefixer.js', ->
       process.exit(1)
 
     build = build.toString()
-      .replace(/DP\$0\(\w+, "prototype", \{[^{]+\}\);/g, 'try{$&}catch(e){}')
+      .replace(/DP\$0\([^\s]+, "prototype", \{[^{]+\}\);/g, 'try{$&}catch(e){}')
 
     fs.removeSync(__dirname + '/build/')
 
