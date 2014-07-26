@@ -193,8 +193,10 @@ class Binary
     try
       result = @compiler().process(css, opts)
     catch error
-      if error.autoprefixer or error.message.match(/^Can't parse CSS/)
+      if error.autoprefixer
         @error "autoprefixer: #{ error.message }"
+      else if error.message.match(/^Can't parse CSS/)
+        @error "autoprefixer: #{ error.toString() }"
       else
         @error 'autoprefixer: Internal error'
 
