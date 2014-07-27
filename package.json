@@ -13,13 +13,13 @@
     "coffee-script": "1.7.1",
     "caniuse-db":    "^1.0.20140724",
     "fs-extra":      "~0.10.0",
-    "postcss":       "ai/postcss"
+    "postcss":       "~2.1.0"
   },
   "devDependencies": {
     "browserify": "5.9.1",
     "should":     "4.0.4",
     "stylus":     "0.47.3",
-    "mocha":      "1.21.0",
+    "mocha":      "1.21.1",
     "nib":        "1.0.3"
   },
   "bin": {
