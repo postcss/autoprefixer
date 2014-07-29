@@ -1,3 +1,8 @@
+## 2.2 “Mobilis in mobili”
+* Allow to disable Autoprefixer for some rule by control comment.
+* Use PostCSS 2.1 with Safe Mode option and broken source line
+  in CSS syntax error messages.
+
 ## 2.1.1
 * Fix `-webkit-background-size` hack for `contain` and `cover` values.
 * Don’t add `-webkit-` prefix to `filter` with SVG (by Vincent De Oliveira).
