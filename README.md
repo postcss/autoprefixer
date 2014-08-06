@@ -176,7 +176,7 @@ By default, Autoprefixer uses `> 1%, last 2 versions, Firefox ESR, Opera 12.1`:
 ## Source Map
 
 You must set input and output CSS files paths (using `from` and `to` options)
-to generate a correct map.
+to generate a correct map.
 
 Autoprefixer can modify previous source maps (for example, from Sass):
 it will autodetect a previous map if it is listed in an annotation comment or
@@ -223,7 +223,7 @@ You can disable cascade by `cascade: false` option.
 ## Safe Mode
 
 PostCSS has a special safe mode to parse broken CSS. If you set the `safe: true`
-option to the `process` method, it will try to fix any syntax error,
+option to the `process` method, it will try to fix any syntax error,
 that it finds in the CSS. For example, it will parse `a {` as `a {}`.
 
 ```js
@@ -232,8 +232,8 @@ autoprefixer.process('a {', { safe: true }); // process CSS as a {}
 ```
 
 It is useful for legacy code with a lot of hacks. Other use cases are
-interactive tools with live input, like
-[Autoprefixer demo](http://jsfiddle.net/simevidas/udyTs/show/light/).
+interactive tools with live input,
+like [Autoprefixer demo](http://jsfiddle.net/simevidas/udyTs/show/light/).
 
 ## Disabling
 
@@ -339,7 +339,7 @@ and include your source CSS and the expected output.
 ### Why doesn’t Autoprefixer support `appearance`?
 
 Unlike `transition`, the `appearance` property is not a part of
-any specification. So there is no `appearance`, only `-moz-appearance`
+any specification. So there is no `appearance`, only `-moz-appearance`
 and `-webkit-appearance`. Quote from [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/-moz-appearance):
 
 > Do not use this property on Web sites: not only is it non-standard, but its
@@ -359,8 +359,8 @@ years before released as official features in the language specifications.
 As a result, JavaScript doesn’t have even basic syntax features which are
 present in other languages like Ruby or Python. There are no string
 interpolation, short lambda syntax, foreach statement for arrays, string and
-arrays slicing, etc. These features are really important and they will be in
-ECMAScript 6 (first update of JS syntax after 15 years), but this
+arrays slicing, etc. These features are really important and they will be
+in ECMAScript 6 (first update of JS syntax after 15 years), but this
 new specification is still not released and, of course, we must wait until
 all browsers support it.
 
@@ -374,11 +374,11 @@ became 1.
 
 Don’t be afraid of CoffeeScript. It’s just a new syntax, not another language
 (like ClojureScript). You can open [examples on CoffeeScript.org] and start
-to code. After a week your eyes will adjust and you will see that CoffeeScript
+to code. After a week your eyes will adjust and you will see that CoffeeScript
 is cleaner and more readable.
 
 Situation with CoffeeScript and JavaScript is absolutely the same as with
-CSS preprocessors and postprocessors. How can we develop a CSS postprocessor
+CSS preprocessors and postprocessors. How can we develop a CSS postprocessor
 and avoid using a JS preproccesor :).
 
 [examples on CoffeeScript.org]: http://coffeescript.org/
