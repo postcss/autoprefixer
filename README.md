@@ -55,15 +55,15 @@ Sponsored by [Evil Martians]. Based on [PostCSS] framework.
 
 ### Forget about prefixes
 
-The best tool is a tool you can't see and one that does the work for you.
-This is the main idea behind Autoprefixer.
+The best tool is a tool you can’t see and one that does the work for you.
+This is the main idea behind Autoprefixer.
 
 Autoprefixer interface is simple: just forget about vendor prefixes
 and write normal CSS according to the latest W3C specs. You don’t need
 a special language (like Sass) or special mixins.
 
 Because Autoprefixer is a postprocessor for CSS,
-you can also use it with preprocessors, such as Sass, Stylus or LESS.
+you can also use it with preprocessors, such as Sass, Stylus or LESS.
 
 ### Actual data from Can I Use
 
@@ -72,7 +72,7 @@ understands which browsers are actual and popular and adds only the necessar
 vendor prefixes.
 
 It also cleans your CSS from old prefixes (like prefixed `border-radius`,
-produced by many CSS libraries):
+produced by many CSS libraries):
 
 ```css
 a {
@@ -145,7 +145,7 @@ autoprefixer("last 1 version", "> 1%", "Explorer 7").process(css).css;
 * `ios 7` to set browser version directly.
 
 Blackberry and stock Android browsers will not be used in `last n versions`.
-You can add them by name:
+You can add them by name:
 
 ```js
 autoprefixer("last 1 version", "BlackBerry 10", "Android 4").process(css).css;
@@ -182,7 +182,7 @@ Autoprefixer can modify previous source maps (for example, from Sass):
 it will autodetect a previous map if it is listed in an annotation comment or
 in a file near the input CSS. You can disable source map with `map: false` or
 set the previous source map content manually to `map.prev` option (as a string
-or a object).
+or a object).
 
 ```js
 var result = autoprefixer.process(css, {
@@ -208,7 +208,7 @@ You can read more about the source map options in
 ## Visual Cascade
 
 Autoprefixer changes CSS indentation to create a nice visual cascade
-of prefixes, if CSS is uncompressed:
+of prefixes, if CSS is uncompressed:
 
 ```css
 a {
@@ -224,7 +224,7 @@ You can disable cascade by `cascade: false` option.
 
 PostCSS has a special safe mode to parse broken CSS. If you set the `safe: true`
 option to the `process` method, it will try to fix any syntax error,
-that it finds in the CSS. For example, it will parse `a {` as `a {}`.
+that it finds in the CSS. For example, it will parse `a {` as `a {}`.
 
 ```js
 autoprefixer.process('a {');                 // will throw "Unclosed block"
@@ -251,7 +251,7 @@ a {
 If some prefixes were generated in wrong way, please create issue on GitHub.
 
 But if you do not need Autoprefixer in some part of your CSS,
-you can use control comments to disable Autoprefixer.
+you can use control comments to disable Autoprefixer.
 
 ```css
 a {
@@ -305,7 +305,7 @@ No. Autoprefixer only adds prefixes, not polyfills. There are two reasons:
    Two separate libraries would be much better.
 2. Most of IE polyfills are bad for client performance, as they use slow hacks
    and old IEs often runs on old hardware. Most CSS3 features used only
-   for styling should be ignored in old IEs as it is recommended for
+   for styling should be ignored in old IEs as it is recommended for
    graceful degradation.
 
 ### Why doesn’t gradients work in Firefox?
@@ -320,7 +320,7 @@ a {
 ```
 
 Unfortunately, unprefixed gradients use a different direction syntax and most
-examples you find use an old gradient syntax, so be careful and use always the
+examples you find use an old gradient syntax, so be careful and use always the
 latest W3C specs with Autoprefixer.
 
 [direction syntax]: https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient
@@ -334,7 +334,7 @@ required on [Can I Use](http://caniuse.com/).
 If a prefix is required, but Autoprefixer doesn’t add it or adds it
 incorrectly, please
 [report an issue](https://github.com/ai/autoprefixer/issues/new)
-and include your source CSS and the expected output.
+and include your source CSS and the expected output.
 
 ### Why doesn’t Autoprefixer support `appearance`?
 
@@ -350,30 +350,30 @@ and `-webkit-appearance`. Quote from [MDN](https://developer.mozilla.org/en-US/d
 ### Why does Autoprefixer use CoffeeScript?
 
 JavaScript is very popular, but this is also the same reason why its syntax
-doesn't evolve. There's an entire internet with legacy code that has to
+doesn’t evolve. There’s an entire internet with legacy code that has to
 be supported by browsers. When new features are added, they will have to be
 supported for a long time to maintain backwards compatibility.
-This is bad for innovation, as new features has to be drafted for months and
+This is bad for innovation, as new features has to be drafted for months and
 years before released as official features in the language specifications.
 
 As a result, JavaScript doesn’t have even basic syntax features which are
 present in other languages like Ruby or Python. There are no string
-interpolation, short lambda syntax, foreach statement for arrays, string and
+interpolation, short lambda syntax, foreach statement for arrays, string and
 arrays slicing, etc. These features are really important and they will be in
 ECMAScript 6 (first update of JS syntax after 15 years), but this
 new specification is still not released and, of course, we must wait until
 all browsers support it.
 
 With JavaScript preprocessors like CoffeeScript or TypeScript we can bring
-innovation back. We can add a new operator and use it right now, without waiting
+innovation back. We can add a new operator and use it right now, without waiting
 for support in all browsers.
 
 Autoprefixer was written in pure JavaScript before, but CoffeeScript made
 Autoprefixer code much cleaner and more readable. Often, 2 lines of code
 became 1.
 
-Don’t be afraid of CoffeeScript. It's just a new syntax, not another language
-(like ClojureScript). You can open [examples on CoffeeScript.org] and start
+Don’t be afraid of CoffeeScript. It’s just a new syntax, not another language
+(like ClojureScript). You can open [examples on CoffeeScript.org] and start
 to code. After a week your eyes will adjust and you will see that CoffeeScript
 is cleaner and more readable.
 
@@ -416,7 +416,7 @@ plugin for [Brunch](http://brunch.io/).
 ### Compass
 
 If you use Compass binary to compile your styles, you can easily integrate
-Autoprefixer with it. Install `autoprefixer-rails` gem:
+Autoprefixer with it. Install `autoprefixer-rails` gem:
 
 ```
 gem install autoprefixer-rails
@@ -488,7 +488,7 @@ for more inforamtion.
 If you want to build your assets with a GUI, try
 [Prepros](http://alphapixels.com/prepros/). Just set “Auto Prefix CSS”
 [checkbox](https://f.cloud.github.com/assets/3478693/930798/faa29892-0016-11e3-8901-87850de7aed2.jpg)
-in right panel.
+in right panel.
 
 <img src="http://alphapixels.com/prepros/static/img/prepros.jpg" width="550" height="340" />
 
@@ -545,8 +545,8 @@ $prefixed     = $autoprefixer->compile($css);
 
 ### Visual Studio
 
-You can apply the Autoprefixer optimizations to your LESS/Sass stylesheets in
-Visual Studio 2013 by using
+You can apply the Autoprefixer optimizations to your LESS/Sass stylesheets
+in Visual Studio 2013 by using
 the [Web Essentials 2013](http://vswebessentials.com/)
 plugin (since the 2.2 version).
 
@@ -576,7 +576,7 @@ PM> Install-Package Autoprefixer
 
 You can use Autoprefixer in ASP.NET by the official
 [BundleTransformer.Autoprefixer](http://www.nuget.org/packages/BundleTransformer.Autoprefixer/)
-plugin for [Bundle Transformer](http://bundletransformer.codeplex.com/).
+plugin for [Bundle Transformer](http://bundletransformer.codeplex.com/).
 
 To add this functionality in the ASP.NET web application you need to do the
 following steps:
@@ -590,7 +590,7 @@ following steps:
 3. Register a bundles in the `App_Start/BundleConfig.cs` file and configure the
    Bundle Transformer (see the [documentation](http://bundletransformer.codeplex.com/documentation))
 4. Additionally, you can specify the browser conditional expressions in the
-   `Web.config` file (in the Visual Studio supported IntelliSense):
+   `Web.config` file (in the Visual Studio supported IntelliSense):
 
 	 <img src="http://i.imgur.com/f2iJlBB.png" width="572" alt="BundleTransformer.Autoprefixer options in the Web.config file" />
 
