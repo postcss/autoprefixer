@@ -262,7 +262,7 @@ b {
 ```
 
 Control comments disables Autoprefixer within the whole rule in which you place it.
-In the above example, Autoprefixer will be disabled the entire `b` rule scope, not only after the comment.
+In the above example, Autoprefixer will be disabled in the entire `b` rule scope, not only after the comment.
 
 You can also use comments recursively:
 
@@ -299,14 +299,14 @@ No. Autoprefixer only adds prefixes, not polyfills. There are two reasons:
 
 1. Prefixes and polyfills are very different and need a different API.
    Two separate libraries would be much better.
-2. Most of IE polyfills are very bad for client performance. They use slow hacks
-   and old IEs is mostly used on old hardware. Most CSS3 features used only
+2. Most of IE polyfills are bad for client performance, as they use slow hacks
+   and old IEs often runs on old hardware. Most CSS3 features used only
    for styling should be ignored in old IEs as it is recommended for
    graceful degradation.
 
 ### Why doesn’t gradients work in Firefox?
 
-Make sure that you use correct [direction syntax]. For example, you should use
+Make sure that you use correct the [direction syntax]. For example, you should use
 `to bottom` instead of `top`:
 
 ```css
@@ -348,8 +348,8 @@ and `-webkit-appearance`. Quote from [MDN](https://developer.mozilla.org/en-US/d
 JavaScript is very popular, but this is also the same reason why its syntax doesn't
 evolve. There's an entire internet with legacy code that has to
 be supported by browsers. When new features are added, they will have to be
-supported for a long time to maintain backwards compatability.
-This is very bad for innovation, as new features has to be drafted for months and
+supported for a long time to maintain backwards compatibility.
+This is bad for innovation, as new features has to be drafted for months and
 years before released as official features in the language specifications.
 
 As a result, JavaScript doesn’t have even basic syntax features which are
