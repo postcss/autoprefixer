@@ -197,9 +197,10 @@ result.map //=> Source map from main.sass to main.min.css
 fs.writeFileSync('main.min.css.map', result.map);
 ```
 
-Autoprefixer supports inline source maps too. If an input CSS contains an annotation
-from the previous step with a map in `data:uri`, Autoprefixer will update the
-source map with prefix changes and inline the new map back into the output CSS.
+Autoprefixer supports inline source maps too. If an input CSS contains
+an annotation from the previous step with a map in `data:uri`, Autoprefixer will
+update the source map with prefix changes and inline the new map back into
+the output CSS.
 
 You can read more about the source map options in
 [PostCSS documentation](https://github.com/ai/postcss#source-map-1).
@@ -221,23 +222,24 @@ You can disable cascade by `cascade: false` option.
 
 ## Safe Mode
 
-PostCSS has a special safe mode to parse broken CSS. If you set the  `safe: true`
-option to the `process` method, it will try to fix any syntax error, that it finds
-in the CSS. For example, it will parse `a {` as `a {}`.
+PostCSS has a special safe mode to parse broken CSS. If you set the `safe: true`
+option to the `process` method, it will try to fix any syntax error,
+that it finds in the CSS. For example, it will parse `a {` as `a {}`.
 
 ```js
 autoprefixer.process('a {');                 // will throw "Unclosed block"
 autoprefixer.process('a {', { safe: true }); // process CSS as a {}
 ```
 
-It is useful for legacy code with a lot of hacks. Other use cases are interactive
-tools with live input, like
+It is useful for legacy code with a lot of hacks. Other use cases are
+interactive tools with live input, like
 [Autoprefixer demo](http://jsfiddle.net/simevidas/udyTs/show/light/).
 
 ## Disabling
 
 Autoprefixer was designed to have no interface. It just works. If you need
-some browser specific hack just write the prefixed property after the unprefixed.
+some browser specific hack just write the prefixed property after
+the unprefixed.
 
 ```css
 a {
@@ -248,7 +250,8 @@ a {
 
 If some prefixes were generated in wrong way, please create issue on GitHub.
 
-But if you do not need Autoprefixer in some part of your CSS, you can use control comments to disable Autoprefixer.
+But if you do not need Autoprefixer in some part of your CSS,
+you can use control comments to disable Autoprefixer.
 
 ```css
 a {
@@ -261,8 +264,9 @@ b {
 }
 ```
 
-Control comments disables Autoprefixer within the whole rule in which you place it.
-In the above example, Autoprefixer will be disabled in the entire `b` rule scope, not only after the comment.
+Control comments disables Autoprefixer within the whole rule in which
+you place it. In the above example, Autoprefixer will be disabled
+in the entire `b` rule scope, not only after the comment.
 
 You can also use comments recursively:
 
@@ -306,8 +310,8 @@ No. Autoprefixer only adds prefixes, not polyfills. There are two reasons:
 
 ### Why doesn’t gradients work in Firefox?
 
-Make sure that you use correct the [direction syntax]. For example, you should use
-`to bottom` instead of `top`:
+Make sure that you use correct the [direction syntax]. For example, you should
+use `to bottom` instead of `top`:
 
 ```css
 a {
@@ -345,8 +349,8 @@ and `-webkit-appearance`. Quote from [MDN](https://developer.mozilla.org/en-US/d
 
 ### Why does Autoprefixer use CoffeeScript?
 
-JavaScript is very popular, but this is also the same reason why its syntax doesn't
-evolve. There's an entire internet with legacy code that has to
+JavaScript is very popular, but this is also the same reason why its syntax
+doesn't evolve. There's an entire internet with legacy code that has to
 be supported by browsers. When new features are added, they will have to be
 supported for a long time to maintain backwards compatibility.
 This is bad for innovation, as new features has to be drafted for months and
@@ -584,16 +588,16 @@ following steps:
 	```
 2. Perform a post-install actions specified in the `readme.txt` file
 3. Register a bundles in the `App_Start/BundleConfig.cs` file and configure the
-Bundle Transformer (see the [documentation](http://bundletransformer.codeplex.com/documentation))
-4. Additionally, you can specify the browser conditional expressions in the 
-`Web.config` file (in the Visual Studio supported IntelliSense):
+   Bundle Transformer (see the [documentation](http://bundletransformer.codeplex.com/documentation))
+4. Additionally, you can specify the browser conditional expressions in the
+   `Web.config` file (in the Visual Studio supported IntelliSense):
 
-	<img src="http://i.imgur.com/f2iJlBB.png" width="572" alt="BundleTransformer.Autoprefixer options in the Web.config file" />
+	 <img src="http://i.imgur.com/f2iJlBB.png" width="572" alt="BundleTransformer.Autoprefixer options in the Web.config file" />
 
 ### JavaScript
 
-You can use Autoprefixer in the browser or as a non-Node.js runtime
-with [standalone version](https://raw.github.com/ai/autoprefixer-rails/master/vendor/autoprefixer.js).
+You can use Autoprefixer in the browser or as a non-Node.js runtime with
+[standalone version](https://raw.github.com/ai/autoprefixer-rails/master/vendor/autoprefixer.js).
 
 ### PostCSS
 
