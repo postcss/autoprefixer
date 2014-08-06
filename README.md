@@ -20,7 +20,7 @@ Process your CSS by Autoprefixer:
 var prefixed = autoprefixer.process(css).css;
 ```
 
-It will use the data on current browser popularity and properties support
+It will use the data based on current browser popularity and property support
 to apply prefixes for you:
 
 ```css
@@ -261,8 +261,8 @@ b {
 }
 ```
 
-Control comments disable Autoprefixer in the rule, in which you place it.
-So Autoprefixer will not work in the entire `b` rule, not only after the comment.
+Control comments disables Autoprefixer within the whole rule in which you place it.
+In the above example, Autoprefixer will be disabled in the entire `b` rule scope, not only after the comment.
 
 You can also use comments recursively:
 
@@ -299,14 +299,14 @@ No. Autoprefixer only adds prefixes, not polyfills. There are two reasons:
 
 1. Prefixes and polyfills are very different and need a different API.
    Two separate libraries would be much better.
-2. Most of IE polyfills are very bad for client perfomance. They use slow hacks
-   and old IEs is mostly used on old hardware. Most CSS3 features used only
+2. Most of IE polyfills are bad for client performance, as they use slow hacks
+   and old IEs often runs on old hardware. Most CSS3 features used only
    for styling should be ignored in old IEs as it is recommended for
-   Graceful Degradation.
+   graceful degradation.
 
-### Why don’t gradients work in Firefox?
+### Why doesn’t gradients work in Firefox?
 
-Check that you use correct [direction syntax]. For example, you should use
+Make sure that you use correct the [direction syntax]. For example, you should use
 `to bottom` instead of `top`:
 
 ```css
@@ -345,17 +345,17 @@ and `-webkit-appearance`. Quote from [MDN](https://developer.mozilla.org/en-US/d
 
 ### Why does Autoprefixer use CoffeeScript?
 
-JavaScript is very popular, but this is also the same reason why its syntax does not
-evolve. There is an entire Internet with a lot of legacy code which has to
-be supported by browsers. If developers add an inappropriate feature then
-it can’t be removed in then next versions but must be supported for a very
-long time. This is very bad for innovation. To create new, we need to experiment
-and to choose.
+JavaScript is very popular, but this is also the same reason why its syntax doesn't
+evolve. There's an entire internet with legacy code that has to
+be supported by browsers. When new features are added, they will have to be
+supported for a long time to maintain backwards compatibility.
+This is bad for innovation, as new features has to be drafted for months and
+years before released as official features in the language specifications.
 
-As a result JavaScript doesn’t have even basic syntax features, which are
+As a result, JavaScript doesn’t have even basic syntax features which are
 present in other languages like Ruby or Python. There are no string
 interpolation, short lambda syntax, foreach statement for arrays, string and
-arrays slicing, etc. This features are really important and they will be in
+arrays slicing, etc. These features are really important and they will be in
 ECMAScript 6 (first update of JS syntax after 15 years), but this
 new specification is still not released and, of course, we must wait until
 all browsers support it.
@@ -364,11 +364,11 @@ With JavaScript preprocessors like CoffeeScript or TypeScript we can bring
 innovation back. We can add a new operator and use it right now, without waiting
 for support in all browsers.
 
-Autoprefixer was written in pure JavaScript before. But CoffeeScript made
+Autoprefixer was written in pure JavaScript before, but CoffeeScript made
 Autoprefixer code much cleaner and more readable. Often, 2 lines of code
 became 1.
 
-Don’t be afraid of CoffeeScript. It is just a new syntax, not another language
+Don’t be afraid of CoffeeScript. It's just a new syntax, not another language
 (like ClojureScript). You can open [examples on CoffeeScript.org] and start
 to code. After a week your eyes will adjust and you will see that CoffeeScript
 is cleaner and more readable.
@@ -542,7 +542,7 @@ $prefixed     = $autoprefixer->compile($css);
 ### Visual Studio
 
 You can apply the Autoprefixer optimizations to your LESS/Sass stylesheets in
-the Visual Studio 2013 by using
+Visual Studio 2013 by using
 the [Web Essentials 2013](http://vswebessentials.com/)
 plugin (since the 2.2 version).
 
