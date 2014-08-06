@@ -175,7 +175,7 @@ By default, Autoprefixer uses `> 1%, last 2 versions, Firefox ESR, Opera 12.1`:
 
 ## Source Map
 
-You must set input and output CSS files paths (by `from` and `to` options)
+You must set input and output CSS files paths (using `from` and `to` options)
 to generate a correct map.
 
 Autoprefixer can modify previous source maps (for example, from Sass):
@@ -197,11 +197,11 @@ result.map //=> Source map from main.sass to main.min.css
 fs.writeFileSync('main.min.css.map', result.map);
 ```
 
-Autoprefixer supports inline source maps too. If input CSS contains annotation
-from the previous step with map in `data:uri`, Autoprefixer will update the
-source map with prefixes changes and inine the new map back into the output CSS.
+Autoprefixer supports inline source maps too. If an input CSS contains an annotation
+from the previous step with a map in `data:uri`, Autoprefixer will update the
+source map with prefix changes and inline the new map back into the output CSS.
 
-You can read more about source map options in
+You can read more about the source map options in
 [PostCSS documentation](https://github.com/ai/postcss#source-map-1).
 
 ## Visual Cascade
@@ -221,23 +221,23 @@ You can disable cascade by `cascade: false` option.
 
 ## Safe Mode
 
-PostCSS has special safe mode to parse broken CSS. If you will set `safe: true`
-option to `process` method, it will try to fix any syntax error, that it founds
-in CSS. For example, it will parse `a {` as `a {}`.
+PostCSS has a special safe mode to parse broken CSS. If you set the  `safe: true`
+option to the `process` method, it will try to fix any syntax error, that it finds
+in the CSS. For example, it will parse `a {` as `a {}`.
 
 ```js
 autoprefixer.process('a {');                 // will throw "Unclosed block"
 autoprefixer.process('a {', { safe: true }); // process CSS as a {}
 ```
 
-It is useful for legacy code with a lot of hack. Other use case is a interactive
+It is useful for legacy code with a lot of hacks. Other use cases are interactive
 tools with live input, like
 [Autoprefixer demo](http://jsfiddle.net/simevidas/udyTs/show/light/).
 
 ## Disabling
 
-Autoprefixer was designed to have no interface. It is just work. If you need
-some browser specific hack just write prefixed property after unprefixed.
+Autoprefixer was designed to have no interface. It just works. If you need
+some browser specific hack just write the prefixed property after the unprefixed.
 
 ```css
 a {
@@ -246,10 +246,9 @@ a {
 }
 ```
 
-If some prefixes was generated in wrong way, please create issue on GitHub.
+If some prefixes were generated in wrong way, please create issue on GitHub.
 
-But if you didn’t need Autoprefixer in some part of your CSS and you understand
-why it is a best solution, you can use control comments to disable Autoprefixer.
+But if you do not need Autoprefixer in some part of your CSS, you can use control comments to disable Autoprefixer.
 
 ```css
 a {
@@ -262,10 +261,10 @@ b {
 }
 ```
 
-Control comment disable Autoprefixer in rule, where you place it.
-So Autoprefixer will not works in entiry `b` rule, not only after comment.
+Control comments disable Autoprefixer in the rule, in which you place it.
+So Autoprefixer will not work in the entire `b` rule, not only after the comment.
 
-Also you can use comment recursively:
+You can also use comments recursively:
 
 ```css
 /* autoprefixer: off */
@@ -302,7 +301,7 @@ No. Autoprefixer only adds prefixes, not polyfills. There are two reasons:
    Two separate libraries would be much better.
 2. Most of IE polyfills are very bad for client perfomance. They use slow hacks
    and old IEs is mostly used on old hardware. Most CSS3 features used only
-   for styling should be ignored in old IEs as is recommended for
+   for styling should be ignored in old IEs as it is recommended for
    Graceful Degradation.
 
 ### Why don’t gradients work in Firefox?
@@ -331,7 +330,7 @@ required on [Can I Use](http://caniuse.com/).
 If a prefix is required, but Autoprefixer doesn’t add it or adds it
 incorrectly, please
 [report an issue](https://github.com/ai/autoprefixer/issues/new)
-and include your source CSS and expected output.
+and include your source CSS and the expected output.
 
 ### Why doesn’t Autoprefixer support `appearance`?
 
@@ -346,8 +345,8 @@ and `-webkit-appearance`. Quote from [MDN](https://developer.mozilla.org/en-US/d
 
 ### Why does Autoprefixer use CoffeeScript?
 
-JavaScript is very popular, but this is the same reason why its syntax does not
-evolve. There is an entire Internet with a lot of legacy code which should
+JavaScript is very popular, but this is also the same reason why its syntax does not
+evolve. There is an entire Internet with a lot of legacy code which has to
 be supported by browsers. If developers add an inappropriate feature then
 it can’t be removed in then next versions but must be supported for a very
 long time. This is very bad for innovation. To create new, we need to experiment
