@@ -68,7 +68,7 @@ you can also use it with preprocessors such as Sass, Stylus or LESS.
 ### Actual data from Can I Use
 
 Autoprefixer utilizes the most recent data from [Can I Use](http://caniuse.com/)
-to add only necessary vendor prefixes. It also removes old, unnecessary prefixes from your CSS (like `border-radius` prefixes, produced by many CSS libraries).
+to add only necessary vendor prefixes. It also removes old, unnecessary prefixes from your CSS (like `border-radius` prefixes, produced by many CSS libraries).
 
 ```css
 a {
@@ -97,7 +97,7 @@ For them to display properly you sometimes need to recalculate angles
 or use old properties instead of new ones, but Autoprefixer hides this from you.
 
 Just write normal CSS according to the latest W3C specs and Autoprefixer
-will produce the code for old browsers.
+will produce the code for old browsers.
 
 ```css
 a {
@@ -171,10 +171,9 @@ You must set input and output CSS files paths (using `from` and `to` options)
 to generate a correct map.
 
 Autoprefixer can modify previous source maps (for example, from Sass):
-it will autodetect a previous map if it is listed in an annotation comment or
-in a file near the input CSS. You can disable source map with `map: false` or
-set the previous source map content manually to `map.prev` option (as a string
-or a object).
+it will autodetect a previous map if it is listed in an annotation comment.
+You can disable source map with `map: false` or set the previous source map
+content manually to `map.prev` option (as a string or a object).
 
 ```js
 var result = autoprefixer.process(css, {
@@ -200,7 +199,7 @@ You can read more about the source map options in
 ## Visual Cascade
 
 Autoprefixer changes CSS indentation to create a nice visual cascade
-of prefixes if the CSS is uncompressed:
+of prefixes if the CSS is uncompressed:
 
 ```css
 a {
@@ -215,8 +214,8 @@ You can disable cascade by using the `cascade: false` option.
 ## Safe Mode
 
 PostCSS has a special safe mode to parse broken CSS. If you set the `safe: true`
-option to the `process` method, it will try to fix any CSS syntax errors that it finds.
-For example, it will parse `a {` as `a {}`.
+option to the `process` method, it will try to fix any CSS syntax errors
+that it finds. For example, it will parse `a {` as `a {}`.
 
 ```js
 autoprefixer.process('a {');                 // will throw “Unclosed block”
@@ -224,7 +223,7 @@ autoprefixer.process('a {', { safe: true }); // will process as a closed block
 ```
 
 It is useful for legacy code when using several hacks, or interactive
-tools with live input, like [Autoprefixer demo](http://jsfiddle.net/simevidas/udyTs/show/light/).
+tools with live input, like [Autoprefixer demo](http://jsfiddle.net/simevidas/udyTs/show/light/).
 
 ## Disabling
 
