@@ -67,9 +67,8 @@ you can also use it with preprocessors such as Sass, Stylus or LESS.
 
 ### Actual data from Can I Use
 
-Autoprefixer utilizes the most recent data from [Can I Use](http://caniuse.com/) to 
-add only necessary vendor prefixes. It also removes old, unnecessary prefixes from your CSS 
-(like `border-radius` prefixes, produced by many CSS libraries).
+Autoprefixer utilizes the most recent data from [Can I Use](http://caniuse.com/)
+to add only necessary vendor prefixes. It also removes old, unnecessary prefixes from your CSS (like `border-radius` prefixes, produced by many CSS libraries).
 
 ```css
 a {
@@ -88,17 +87,17 @@ a {
 
 Note that Autoprefixer doesn’t load [Can I Use](http://caniuse.com/) data every time.
 It takes it from the [caniuse-db](https://www.npmjs.org/package/caniuse-db) dependency.
-If you use Autoprefixer from `npm`, keeping your `autoprefixer` and `caniuse-db` 
+If you use Autoprefixer from `npm`, keeping your `autoprefixer` and `caniuse-db`
 packages up to date will allow Autoprefixer to use the most recent data.
 
 ### Flexbox, Gradients, etc.
 
 Flexbox or gradients have different syntaxes in different browsers.
-For them to display properly you sometimes need to recalculate angles or
-use old properties instead of new ones, but Autoprefixer hides this from you.
+For them to display properly you sometimes need to recalculate angles
+or use old properties instead of new ones, but Autoprefixer hides this from you.
 
-Just write normal CSS according to the latest W3C specs 
-and Autoprefixer will produce the code for old browsers.
+Just write normal CSS according to the latest W3C specs and Autoprefixer
+will produce the code for old browsers.
 
 ```css
 a {
@@ -190,9 +189,10 @@ result.map //=> Source map from main.sass to main.min.css
 fs.writeFileSync('main.min.css.map', result.map);
 ```
 
-Autoprefixer supports inline source maps too. If an input CSS contains annotation
-from the previous step with a map in `data:uri`, Autoprefixer will update the
-source map with prefix changes and inline the new map back into the output CSS.
+Autoprefixer supports inline source maps too. If an input CSS contains
+annotation from the previous step with a map in `data:uri`, Autoprefixer will
+update the source map with prefix changes and inline the new map back into
+the output CSS.
 
 You can read more about the source map options in
 [PostCSS documentation](https://github.com/ai/postcss#source-map-1).
@@ -219,8 +219,8 @@ option to the `process` method, it will try to fix any CSS syntax errors that it
 For example, it will parse `a {` as `a {}`.
 
 ```js
-autoprefixer.process('a {');                 // will throw "Unclosed block"
-autoprefixer.process('a {', { safe: true }); // will process CSS as a closed block
+autoprefixer.process('a {');                 // will throw “Unclosed block”
+autoprefixer.process('a {', { safe: true }); // will process as a closed block
 ```
 
 It is useful for legacy code when using several hacks, or interactive
@@ -577,10 +577,11 @@ following steps:
 	PM> Install-Package BundleTransformer.Autoprefixer
 	```
 2. Perform a post-install actions specified in the `readme.txt` file
-3. Register a bundles in the `App_Start/BundleConfig.cs` file and configure the
-   Bundle Transformer (see the [documentation](http://bundletransformer.codeplex.com/documentation))
-4. Additionally, you can specify the browser conditional expressions in the
-   `Web.config` file (in the Visual Studio supported IntelliSense):
+3. Register a bundles in the `App_Start/BundleConfig.cs` file and configure
+   the Bundle Transformer (see
+   the [documentation](http://bundletransformer.codeplex.com/documentation))
+4. Additionally, you can specify the browser conditional expressions
+   in the `Web.config` file (in the Visual Studio supported IntelliSense):
 
 	 <img src="http://i.imgur.com/f2iJlBB.png" width="572" alt="BundleTransformer.Autoprefixer options in the Web.config file" />
 
