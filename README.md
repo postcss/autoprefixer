@@ -94,7 +94,7 @@ packages up to date will allow Autoprefixer to use the most recent data.
 ### Flexbox, Gradients, etc.
 
 Flexbox or gradients have different syntaxes in different browsers.
-For them to display properly, you sometimes need to recalculate angles or
+For them to display properly you sometimes need to recalculate angles or
 use old properties instead of new ones, but Autoprefixer hides this from you.
 
 Just write normal CSS according to the latest W3C specs 
@@ -128,8 +128,8 @@ You can specify the browsers you want to target in your project:
 autoprefixer("last 1 version", "> 1%", "Explorer 7").process(css).css;
 ```
 
-* `last 2 versions` targets the last versions for each browser, like Google's [“last 2 versions” strategy](http://support.google.com/a/bin/answer.py?answer=33864).
-* `last 2 Chrome versions` targets the last versions of a specific browser, in this example "Google Chrome"
+* `last 2 versions` targets the last versions for each browser, see [Google's version support](http://support.google.com/a/bin/answer.py?answer=33864).
+* `last 2 Chrome versions` targets the last versions of a specific browser.
 * `> 5%` declares browser versions selected by global usage statistics.
 * `Firefox > 20` targets versions of Firefox newer than 20.
 * `Firefox >= 20` targets versions of Firefox newer than or equal to 20.
