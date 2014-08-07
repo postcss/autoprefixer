@@ -26,17 +26,17 @@ to apply prefixes for you:
 ```css
 :-webkit-full-screen a {
     -webkit-transition: -webkit-transform 1s;
-            transition: transform 1s
+            transition: transform 1s;
 }
 :-moz-full-screen a {
-    transition: transform 1s
+    transition: transform 1s;
 }
 :-ms-fullscreen a {
-    transition: transform 1s
+    transition: transform 1s;
 }
 :fullscreen a {
     -webkit-transition: -webkit-transform 1s;
-            transition: transform 1s
+            transition: transform 1s;
 }
 ```
 
@@ -58,26 +58,23 @@ Sponsored by [Evil Martians]. Based on [PostCSS] framework.
 The best tool is a tool you can’t see and one that does the work for you.
 This is the main idea behind Autoprefixer.
 
-Autoprefixer interface is simple: just forget about vendor prefixes
+Working with Autoprefixer is simple: just forget about vendor prefixes
 and write normal CSS according to the latest W3C specs. You don’t need
 a special language (like Sass) or special mixins.
 
 Because Autoprefixer is a postprocessor for CSS,
-you can also use it with preprocessors, such as Sass, Stylus or LESS.
+you can also use it with preprocessors such as Sass, Stylus or LESS.
 
 ### Actual data from Can I Use
 
-Autoprefixer uses the most recent data from [Can I Use](http://caniuse.com/),
-understands which browsers are actual and popular and adds only the necessary
-vendor prefixes.
-
-It also cleans your CSS from old prefixes (like prefixed `border-radius`,
-produced by many CSS libraries):
+Autoprefixer utilizes the most recent data from [Can I Use](http://caniuse.com/) to 
+add only necessary vendor prefixes. It also removes old, unnecessary prefixes from your CSS 
+(like `border-radius` prefixes, produced by many CSS libraries).
 
 ```css
 a {
     -webkit-border-radius: 5px;
-            border-radius: 5px
+            border-radius: 5px;
 }
 ```
 
@@ -85,23 +82,23 @@ compiles to:
 
 ```css
 a {
-    border-radius: 5px
+    border-radius: 5px;
 }
 ```
 
-Note, that Autoprefixer doesn’t load Can I Use data every time. It takes it from
-[caniuse-db](https://www.npmjs.org/package/caniuse-db) dependency.
-So, if you use Autoprefixer from `npm`, try to keep your `autoprefixer`
-and `caniuse-db` packages fresh to have only actual prefixes in your CSS.
+Note that Autoprefixer doesn’t load [Can I Use](http://caniuse.com/) data every time.
+It takes it from the [caniuse-db](https://www.npmjs.org/package/caniuse-db) dependency.
+If you use Autoprefixer from `npm`, keeping your `autoprefixer` and `caniuse-db` 
+packages up to date will allow Autoprefixer to use the most recent data.
 
 ### Flexbox, Gradients, etc.
 
-Flexbox or gradients have different syntaxes in different browsers
-(sometimes you need to recalculate angles, sometimes you need 2 old properties
-instead of new one), but Autoprefixer hides this from you.
+Flexbox or gradients have different syntaxes in different browsers.
+For them to display properly, you sometimes need to recalculate angles or
+use old properties instead of new ones, but Autoprefixer hides this from you.
 
-Just code by latest W3C specs and Autoprefixer will produce the code
-for old browsers:
+Just write normal CSS according to the latest W3C specs 
+and Autoprefixer will produce the code for old browsers.
 
 ```css
 a {
@@ -121,9 +118,7 @@ a {
 }
 ```
 
-Autoprefixer has [22 special hacks] to fix browser’s differences.
-
-[22 special hacks]: https://github.com/ai/autoprefixer/tree/master/lib/hacks
+Autoprefixer has [22 special hacks](https://github.com/ai/autoprefixer/tree/master/lib/hacks) to fix web browser differences.
 
 ## Browsers
 
@@ -133,16 +128,14 @@ You can specify the browsers you want to target in your project:
 autoprefixer("last 1 version", "> 1%", "Explorer 7").process(css).css;
 ```
 
-* `last 2 versions` is last versions for each browser. Like “last 2 versions”
-  [strategy](http://support.google.com/a/bin/answer.py?answer=33864) in
-  Google.
-* `last 2 Chrome versions` is last versions of the specified browser.
-* `> 5%` is browser versions, selected by global usage statistics.
-* `Firefox > 20` is Firefox versions newer than 20.
-* `Firefox >= 20` is Firefox version 20 or newer.
-* `Firefox ESR` is the latest [Firefox ESR] version.
-* `none` don’t set any browsers to clean CSS from any vendor prefixes.
-* `ios 7` to set browser version directly.
+* `last 2 versions` targets the last versions for each browser, like Google's [“last 2 versions” strategy](http://support.google.com/a/bin/answer.py?answer=33864).
+* `last 2 Chrome versions` targets the last versions of a specific browser, in this example "Google Chrome"
+* `> 5%` declares browser versions selected by global usage statistics.
+* `Firefox > 20` targets versions of Firefox newer than 20.
+* `Firefox >= 20` targets versions of Firefox newer than or equal to 20.
+* `Firefox ESR` specifies the latest [Firefox ESR] version.
+* `ios 7` will set the browser version directly.
+* `none` will not target any browsers.
 
 Blackberry and stock Android browsers will not be used in `last n versions`.
 You can add them by name:
@@ -197,10 +190,9 @@ result.map //=> Source map from main.sass to main.min.css
 fs.writeFileSync('main.min.css.map', result.map);
 ```
 
-Autoprefixer supports inline source maps too. If an input CSS contains
-an annotation from the previous step with a map in `data:uri`, Autoprefixer will
-update the source map with prefix changes and inline the new map back into
-the output CSS.
+Autoprefixer supports inline source maps too. If an input CSS contains annotation
+from the previous step with a map in `data:uri`, Autoprefixer will update the
+source map with prefix changes and inline the new map back into the output CSS.
 
 You can read more about the source map options in
 [PostCSS documentation](https://github.com/ai/postcss#source-map-1).
@@ -208,43 +200,41 @@ You can read more about the source map options in
 ## Visual Cascade
 
 Autoprefixer changes CSS indentation to create a nice visual cascade
-of prefixes, if CSS is uncompressed:
+of prefixes if the CSS is uncompressed:
 
 ```css
 a {
     -webkit-box-sizing: border-box;
        -moz-box-sizing: border-box;
-            box-sizing: border-box
+            box-sizing: border-box;
 }
 ```
 
-You can disable cascade by `cascade: false` option.
+You can disable cascade by using the `cascade: false` option.
 
 ## Safe Mode
 
-PostCSS has a special safe mode to parse broken CSS. If you set the `safe: true`
-option to the `process` method, it will try to fix any syntax error,
-that it finds in the CSS. For example, it will parse `a {` as `a {}`.
+PostCSS has a special safe mode to parse broken CSS. If you set the `safe: true`
+option to the `process` method, it will try to fix any CSS syntax errors that it finds.
+For example, it will parse `a {` as `a {}`.
 
 ```js
 autoprefixer.process('a {');                 // will throw "Unclosed block"
-autoprefixer.process('a {', { safe: true }); // process CSS as a {}
+autoprefixer.process('a {', { safe: true }); // will process CSS as a closed block
 ```
 
-It is useful for legacy code with a lot of hacks. Other use cases are
-interactive tools with live input,
-like [Autoprefixer demo](http://jsfiddle.net/simevidas/udyTs/show/light/).
+It is useful for legacy code when using several hacks, or interactive
+tools with live input, like [Autoprefixer demo](http://jsfiddle.net/simevidas/udyTs/show/light/).
 
 ## Disabling
 
-Autoprefixer was designed to have no interface. It just works. If you need
-some browser specific hack just write the prefixed property after
-the unprefixed.
+Autoprefixer was designed to have no interface – it just works. If you need
+some browser specific hack just write prefixed property after unprefixed.
 
 ```css
 a {
     transform: scale(0.5);
-    -moz-transform: scale(0.6)
+    -moz-transform: scale(0.6);
 }
 ```
 
