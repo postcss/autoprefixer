@@ -1,4 +1,4 @@
-# Autoprefixer
+# Autoprefixer [![Build Status](https://travis-ci.org/ai/autoprefixer.png)](https://travis-ci.org/ai/autoprefixer)
 
 <img align="right" width="94" height="71" src="http://ai.github.io/autoprefixer/logo.svg" title="Autoprefixer logo by Anton Lovchikov">
 
