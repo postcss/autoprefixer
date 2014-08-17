@@ -17,9 +17,7 @@
   "devDependencies": {
     "browserify": "5.10.0",
     "should":     "4.0.4",
-    "stylus":     "0.47.3",
-    "mocha":      "1.21.4",
-    "nib":        "1.0.3"
+    "mocha":      "1.21.4"
   },
   "scripts": {
     "test": "mocha"

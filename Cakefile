@@ -1,16 +1,10 @@
 fs = require('fs-extra')
 
-sh = (cmd, callback) ->
-  require('child_process').exec cmd, (error, stdout, stderr) ->
-    process.stderr.write(stderr)
-    process.exit(1) if error
-    callback()
-
 task 'clean', 'Remove all temporary files', ->
   fs.removeSync(__dirname + '/build')
   fs.removeSync(__dirname + '/autoprefixer.js')
 
-task 'compile', 'Compile CoffeeScript to JS', ->
+task 'build', 'Compile CoffeeScript to JS', ->
   invoke('clean')
 
   coffee = require('coffee-script')
@@ -59,14 +53,8 @@ task 'compile', 'Compile CoffeeScript to JS', ->
 
   compile()
 
-task 'publish', 'Publish new version to npm', ->
-  invoke('compile', /binary.coffee/)
-  build = __dirname + '/build/'
-  sh "npm publish #{build}", ->
-    fs.removeSync(build)
-
-task 'build', 'Build standalone autoprefixer.js', ->
-  invoke('compile')
+task 'standalone', 'Build standalone autoprefixer.js', ->
+  invoke('build')
 
   browserify = require('browserify')
   builder    = browserify
@@ -89,75 +77,3 @@ task 'build', 'Build standalone autoprefixer.js', ->
     rails = __dirname + '/../autoprefixer-rails/vendor/autoprefixer.js'
     fs.writeFile(result, build)
     fs.writeFile(rails,  build) if fs.existsSync(rails)
-
-task 'bench', 'Benchmark on GitHub styles', ->
-  invoke('compile')
-
-  print = (text) -> process.stdout.write(text)
-
-  https = require('https')
-  get = (url, callback) ->
-    https.get url, (res) ->
-      data = ''
-      res.on 'data', (chunk) -> data += chunk
-      res.on 'end', -> callback(data)
-
-  capitalize = (text) ->
-    text[0].toUpperCase() + text[1..-1]
-
-  loadGithubStyles = (callback) ->
-    print("Load GitHub styles")
-    get 'https://github.com', (html) ->
-      link   = html.match(/[^"]+\.css/g)[0]
-      get link, (css) ->
-        print("\n")
-        require('coffee-script/register')
-        autoprefixer = require(__dirname + '/lib/autoprefixer')
-        cleaner      = autoprefixer('none')
-        callback(cleaner.process(css).css)
-
-  indent = (max, current) ->
-    diff = max.toString().length - current.toString().length
-    for i in [0...diff]
-      print(' ')
-
-  loadGithubStyles (css) ->
-    times = { }
-    tests = fs.readdirSync(__dirname + '/benchmark').filter (file) ->
-      file.match(/\.coffee$/)
-
-    result = (code, time) ->
-      print(time + " ms")
-      if times.autoprefixer
-        slower = time / times.autoprefixer
-        print(" (#{ slower.toFixed(1) } times slower)")
-      times[code] = time
-      print("\n")
-
-    tick = ->
-      if tests.length == 0
-        fs.removeSync(__dirname + '/build/')
-        return
-
-      file = tests.shift()
-      code = file.replace('.coffee', '')
-      name = capitalize code
-      print(name + ': ')
-
-      indent('Autoprefixer', name)
-
-      test = require('./benchmark/' + file)
-      test.prepare(css)
-
-      start = new Date()
-      test.run ->
-        test.run ->
-          test.run ->
-            test.run ->
-              test.run ->
-                end = new Date()
-                result code, Math.round((end - start) / 5)
-                test.clean()
-                tick()
-
-    tick()
