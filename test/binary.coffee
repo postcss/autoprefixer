@@ -243,7 +243,7 @@ describe 'Binary', ->
 
   it 'prints parsing errors', (done) ->
     @stdin.content = 'a {'
-    @raise(/^autoprefixer: Can't parse CSS[\s\S]+a \{/, done)
+    @raise(/^autoprefixer:<css input>:1:1: [\s\S]+a \{/, done)
 
   it 'should not fix parsing errors in safe mode', (done) ->
     write('a.css', 'a {')

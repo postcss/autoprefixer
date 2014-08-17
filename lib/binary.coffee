@@ -1,6 +1,7 @@
-autoprefixer = require('./autoprefixer')
-path         = require('path')
-fs           = require('fs-extra')
+CssSyntaxError = require('postcss/lib/css-syntax-error')
+autoprefixer   = require('./autoprefixer')
+path           = require('path')
+fs             = require('fs-extra')
 
 class Binary
   constructor: (process) ->
@@ -195,8 +196,8 @@ class Binary
     catch error
       if error.autoprefixer
         @error "autoprefixer: #{ error.message }"
-      else if error.message.match(/^Can't parse CSS/)
-        @error "autoprefixer: #{ error.toString() }"
+      else if error instanceof CssSyntaxError
+        @error "autoprefixer:#{ error.toString() }"
       else
         @error 'autoprefixer: Internal error'
 
