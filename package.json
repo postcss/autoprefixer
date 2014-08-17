@@ -1,18 +1,17 @@
 {
-  "name": "autoprefixer",
+  "name": "autoprefixer-core",
   "version": "2.2.0",
-  "description": "Parse CSS and add vendor prefixes to CSS rules using values from the Can I Use website",
-  "keywords": ["css", "prefix", "postprocessor", "postcss"],
+  "description": "CLI-less core of Autoprefixer to use in plugins",
+  "keywords": ["autoprefixer", "css", "prefix", "postprocessor", "postcss"],
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ai/autoprefixer.git"
+    "url": "https://github.com/ai/autoprefixer-core.git"
   },
   "dependencies": {
     "coffee-script": "1.7.1",
     "caniuse-db":    "^1.0.20140816",
-    "fs-extra":      "~0.11.0",
     "postcss":       "~2.2.0"
   },
   "devDependencies": {
@@ -21,9 +20,6 @@
     "stylus":     "0.47.3",
     "mocha":      "1.21.4",
     "nib":        "1.0.3"
-  },
-  "bin": {
-    "autoprefixer": "./bin/autoprefixer"
   },
   "scripts": {
     "test": "mocha"
