@@ -52,28 +52,3 @@ task 'build', 'Compile CoffeeScript to JS', ->
         fs.copy(sourcePath, buildPath)
 
   compile()
-
-task 'standalone', 'Build standalone autoprefixer.js', ->
-  invoke('build')
-
-  browserify = require('browserify')
-  builder    = browserify
-    basedir:     __dirname + '/build/'
-    standalone: 'autoprefixer'
-  builder.add('./lib/autoprefixer.js')
-
-  result = __dirname + '/autoprefixer.js'
-  output = fs.createWriteStream(result)
-  builder.bundle (error, build) ->
-    if error
-      process.stderr.write(error.toString() + "\n")
-      process.exit(1)
-
-    build = build.toString()
-      .replace(/DP\$0\([^\s]+, "prototype", \{[^{]+\}\);/g, 'try{$&}catch(e){}')
-
-    fs.removeSync(__dirname + '/build/')
-
-    rails = __dirname + '/../autoprefixer-rails/vendor/autoprefixer.js'
-    fs.writeFile(result, build)
-    fs.writeFile(rails,  build) if fs.existsSync(rails)

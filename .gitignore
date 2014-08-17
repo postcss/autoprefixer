@@ -2,7 +2,5 @@
 *~
 
 node_modules/
-.bundle
 
 build/
-autoprefixer.js
