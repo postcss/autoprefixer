@@ -26,7 +26,7 @@ gulp.task('build:docs', ['clean'], function () {
 gulp.task('build:package', ['clean'], function () {
     var editor = require('gulp-json-editor');
 
-    gulp.src('./package.json')
+    return gulp.src('./package.json')
         .pipe(editor(function (json) {
             json.main = 'lib/autoprefixer';
             json.devDependencies['coffee-script'] =
@@ -39,6 +39,15 @@ gulp.task('build:package', ['clean'], function () {
 
 gulp.task('build', ['build:lib', 'build:docs', 'build:package']);
 
+gulp.task('lint', function () {
+    var jshint = require('gulp-jshint');
+
+    return gulp.src(['index.js', 'gulpfile.js'])
+        .pipe(jshint())
+        .pipe(jshint.reporter('jshint-stylish'))
+        .pipe(jshint.reporter('fail'));
+});
+
 gulp.task('test', function () {
     require('coffee-script').register();
     require('should');
@@ -47,4 +56,4 @@ gulp.task('test', function () {
     return gulp.src('test/*.coffee', { read: false }).pipe(mocha());
 });
 
-gulp.task('default', ['test']);
+gulp.task('default', ['lint', 'test']);
