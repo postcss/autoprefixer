@@ -98,6 +98,31 @@ and `autoprefixer.postcss` shortcuts, which use default browsers and options.
 [Visual Cascade]:              https://github.com/ai/autoprefixer#visual-cascade
 [PostCSS]:                     https://github.com/postcss/postcss
 
+## CSS Processing
+
+Method `process(css, opts)` from Autoprefixer processor is a PostCSS’s method.
+
+You must set `from` and `to` options with file names to generates corrects
+source maps and useful error messages.
+
+Options:
+
+* `from` (path): file path to origin CSS files.
+* `to` (path): file path to future CSS file, which will
+  contain processed CSS with prefixes.
+* `safe` (boolean): enables [Safe Mode] in PostCSS. By default `false`.
+* `map` contains options for source maps:
+  * `inline: true` to force inline map to CSS annotation comment.
+    You can shortcut `map { inline: true }` to `map: 'inline'`.
+  * `prev` (strong or object): map content from previous processing step
+    (like Sass compilation).
+  If you set `map: false`, PostCSS will remove source map.
+
+You can read more about the source map options in [PostCSS documentation].
+
+[PostCSS documentation]: https://github.com/ai/postcss#source-map-1
+[Safe Mode]:             https://github.com/postcss/postcss#safe-mode
+
 ## PostCSS Chain
 
 You parse CSS only once and then process it through array of PostCSS processors.
