@@ -7,7 +7,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ai/autoprefixer-core.git"
+    "url": "https://github.com/postcss/autoprefixer-core.git"
   },
   "dependencies": {
     "coffee-script": "1.7.1",
