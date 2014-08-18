@@ -1,5 +1,4 @@
 --inline-diffs
---timeout   4000
 --require   should
 --reporter  spec
 --compilers coffee:coffee-script/register

@@ -6,4 +6,4 @@ build
 test
 .travis.yml
 
-Cakefile
+gulpfile.js
