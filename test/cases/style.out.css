@@ -1,8 +1,0 @@
-a {
-    color : black;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-transition: 1s;
-         -o-transition: 1s;
-            transition: 1s
-}

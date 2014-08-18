@@ -7,5 +7,5 @@ logo.svg
 test
 .travis.yml
 
-Cakefile
+gulpfile.js
 benchmark

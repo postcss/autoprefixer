@@ -1,2 +1,1 @@
-require('coffee-script').register();
-module.exports = require('./lib/autoprefixer');
+module.exports = require('autoprefixer-core');

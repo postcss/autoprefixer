@@ -1,0 +1,10 @@
+#!/usr/bin/env node
+
+require('./enable-es6');
+var Binary = require('./binary');
+
+var binary = new Binary(process);
+binary.run(function () {
+    process.exit(binary.status);
+});
+

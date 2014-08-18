@@ -1,5 +1,0 @@
-a {
-    margin: calc(5% + 5px) calc(10% + 10px);
-    background: linear-gradient(black, white), radial-gradient(white, black);
-    content: " linear-gradient(black, white) ";
-}

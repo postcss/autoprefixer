@@ -1,8 +1,0 @@
-@supports
-  (cursor: grab) or
-  not (transition: transform) and
-  (color: black) {
-    a {
-        color: black;
-    }
-}

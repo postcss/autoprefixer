@@ -10,22 +10,31 @@
     "url": "https://github.com/ai/autoprefixer.git"
   },
   "dependencies": {
-    "coffee-script": "1.7.1",
-    "caniuse-db":    "^1.0.20140816",
-    "fs-extra":      "~0.11.0",
-    "postcss":       "~2.2.0"
+    "autoprefixer-core": "postcss/autoprefixer-core",
+    "es6-transpiler":    "~0.7.14-2",
+    "fs-extra":          "~0.11.0",
+    "postcss":           "~2.2.0"
   },
   "devDependencies": {
-    "browserify": "5.10.0",
-    "should":     "4.0.4",
-    "stylus":     "0.47.3",
-    "mocha":      "1.21.4",
-    "nib":        "1.0.3"
+    "gulp-es6-transpiler": "1.0.0",
+    "gulp-json-editor":    "2.0.2",
+    "jshint-stylish":      "0.4.0",
+    "gulp-replace":        "0.4.0",
+    "gulp-jshint":         "1.8.4",
+    "gulp-mocha":          "1.0.0",
+    "gulp-util":           "3.0.0",
+    "fs-extra":            "0.11.0",
+    "request":             "2.40.0",
+    "should":              "4.0.4",
+    "stylus":              "0.47.3",
+    "mocha":               "1.21.4",
+    "gulp":                "3.8.7",
+    "nib":                 "1.0.3"
   },
   "bin": {
-    "autoprefixer": "./bin/autoprefixer"
+    "autoprefixer": "autoprefixer"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "gulp"
   }
 }
