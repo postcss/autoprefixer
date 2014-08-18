@@ -2,10 +2,8 @@
 
 node_modules
 build
-logo.svg
 
 test
 .travis.yml
 
 Cakefile
-benchmark
