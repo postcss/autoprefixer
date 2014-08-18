@@ -15,15 +15,18 @@
     "postcss":       "~2.2.0"
   },
   "devDependencies": {
-    "gulp-json-editor": "2.0.2",
-    "jshint-stylish":   "0.4.0",
-    "gulp-jshint":      "1.8.4",
-    "gulp-coffee":      "2.1.1",
-    "gulp-mocha":       "1.0.0",
-    "fs-extra":         "0.11.0",
-    "should":           "4.0.4",
-    "mocha":            "1.21.4",
-    "gulp":             "3.8.7"
+    "vinyl-source-stream": "0.1.1",
+    "gulp-json-editor":    "2.0.2",
+    "jshint-stylish":      "0.4.0",
+    "gulp-replace":        "0.4.0",
+    "gulp-jshint":         "1.8.4",
+    "gulp-coffee":         "2.1.1",
+    "gulp-mocha":          "1.0.0",
+    "browserify":          "5.10.0",
+    "fs-extra":            "0.11.0",
+    "should":              "4.0.4",
+    "mocha":               "1.21.4",
+    "gulp":                "3.8.7"
   },
   "scripts": {
     "test": "gulp"

@@ -2,7 +2,9 @@ var gulp = require('gulp');
 var fs   = require('fs-extra');
 
 gulp.task('clean', function (done) {
-    fs.remove(__dirname + '/build', done);
+    fs.remove(__dirname + '/autoprefixer.js', function () {
+        fs.remove(__dirname + '/build', done);
+    });
 });
 
 gulp.task('build:lib', ['clean'], function () {
@@ -38,6 +40,35 @@ gulp.task('build:package', ['clean'], function () {
 });
 
 gulp.task('build', ['build:lib', 'build:docs', 'build:package']);
+
+gulp.task('standalone', ['build:lib'], function (done) {
+    var builder    = require('browserify')({
+        basedir:     __dirname + '/build/',
+        standalone: 'autoprefixer'
+    });
+    builder.add('./lib/autoprefixer.js');
+
+    var output = fs.createWriteStream(__dirname + '/autoprefixer.js');
+    builder.bundle(function (error, build) {
+        if ( error ) {
+            process.stderr.write(error.toString() + "\n");
+            process.exit(1);
+        }
+
+        var build = build.toString().replace(
+            /DP\$0\([^\s]+, "prototype", \{[^{]+\}\);/g, 'try{$&}catch(e){}');
+
+        fs.removeSync(__dirname + '/build/');
+
+        var rails = __dirname + '/../autoprefixer-rails/vendor/autoprefixer.js';
+        if ( fs.existsSync(rails) ) {
+            fs.writeFileSync(rails, build);
+        } else {
+            fs.writeFileSync(__dirname + '/autoprefixer.js', build);
+        }
+        done();
+    });
+});
 
 gulp.task('lint', function () {
     var jshint = require('gulp-jshint');
