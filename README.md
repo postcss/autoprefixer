@@ -2,11 +2,11 @@
 
 <img align="right" width="94" height="71" src="http://ai.github.io/autoprefixer/logo.svg" title="Autoprefixer logo by Anton Lovchikov">
 
-Autoprefixer is a tool to parse CSS and add vendor prefixes to CSS rules
-using values from [Can I Use](http://caniuse.com/).
+Autoprefixer is a tool to parse CSS and add vendor prefixes using values
+from [Can I Use](http://caniuse.com/).
 
 This is core package to build Autoprefixer plugin for some environment
-(like [grunt-autoprefixer]). For end-user documentation, features
+(like [grunt-autoprefixer]). For end-user documentation, features
 and plugins list visit [main Autoprefixer] project.
 
 Sponsored by [Evil Martians]. Based on [PostCSS] framework.
@@ -69,12 +69,15 @@ var processor = autoprefixer('> 1%', 'Explorer 7', { cascade: false });
 ```
 
 You can directly specify browser version (like `iOS 7`) or use selections
-(like `last 2 version` or `> 5%`). [Full browsers documentation] is available
+(like `last 2 version` or `> 5%`). [Full browsers documentation] is available
 on main Autoprefixer page.
 
 By default, Autoprefixer uses
-`'> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1'`. You can get current
+`'> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1'`. You can get current
 default list from `autoprefixer.default` property.
+
+Also you can pass browsers array as first argument:
+`autoprefixer(browsers, options)`.
 
 There is only one option right now: `cascade: false` will disable
 [Visual Cascade].
@@ -87,8 +90,8 @@ Processor object had:
 * `.postcss` property returns [PostCSS] processor to use in chain
   with [other PostCSS processors].
 
-You can use processor object to process several CSS files. It will be faster,
-that create processor each time.
+You can use processor object to process several CSS files
+to increase perfomance.
 
 There are `autoprefixer.process()`, `autoprefixer.info()`
 and `autoprefixer.postcss` shortcuts, which use default browsers and options.
@@ -112,11 +115,13 @@ Options:
   contain processed CSS with prefixes.
 * `safe` (boolean): enables [Safe Mode] in PostCSS. By default `false`.
 * `map` contains options for source maps:
+
   * `inline: true` to force inline map to CSS annotation comment.
-    You can shortcut `map { inline: true }` to `map: 'inline'`.
+    You can shortcut `map { inline: true }` to `map: 'inline'`.
   * `prev` (strong or object): map content from previous processing step
-    (like Sass compilation).
-  If you set `map: false`, PostCSS will remove source map.
+    (like Sass compilation).
+
+  If you set `map: false`, PostCSS will remove source map.
 
 You can read more about the source map options in [PostCSS documentation].
 
