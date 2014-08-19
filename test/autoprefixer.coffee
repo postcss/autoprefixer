@@ -3,18 +3,22 @@ Browsers     = require('../lib/browsers')
 postcss      = require('postcss')
 fs           = require('fs')
 
-cleaner      = autoprefixer('none')
-compiler     = autoprefixer('Chrome 25', 'Opera 12')
-borderer     = autoprefixer('Safari 4',  'Firefox 3.6')
-cascader     = autoprefixer('Chrome > 19', 'Firefox 21', 'IE 10', cascade: true)
-keyframer    = autoprefixer('Chrome > 19', 'Opera 12')
-flexboxer    = autoprefixer('Chrome > 19', 'Firefox 21', 'IE 10')
-without3d    = autoprefixer('Opera 12', 'Explorer > 0')
-uncascader   = autoprefixer('Firefox 15')
-gradienter   = autoprefixer('Chrome 25', 'Opera 12', 'Android 2.3')
-selectorer   = autoprefixer('Chrome 25', 'Firefox > 17', 'Explorer 10')
-intrinsicer  = autoprefixer('Chrome 25', 'Firefox 22')
-backgrounder = autoprefixer('Firefox 3.6',  'Android 2.3')
+cleaner      = autoprefixer(browsers: [])
+compiler     = autoprefixer(browsers: ['Chrome 25', 'Opera 12'])
+borderer     = autoprefixer(browsers: ['Safari 4', 'Firefox 3.6'])
+keyframer    = autoprefixer(browsers: ['Chrome > 19', 'Opera 12'])
+flexboxer    = autoprefixer(browsers: ['Chrome > 19', 'Firefox 21', 'IE 10'])
+without3d    = autoprefixer(browsers: ['Opera 12', 'IE > 0'])
+uncascader   = autoprefixer(browsers: ['Firefox 15'])
+gradienter   = autoprefixer(browsers: ['Chrome 25', 'Opera 12', 'Android 2.3'])
+selectorer   = autoprefixer(browsers: ['Chrome 25', 'Firefox > 17', 'IE 10'])
+intrinsicer  = autoprefixer(browsers: ['Chrome 25', 'Firefox 22'])
+backgrounder = autoprefixer(browsers: ['Firefox 3.6', 'Android 2.3'])
+
+
+cascader = autoprefixer
+  browsers: ['Chrome > 19', 'Firefox 21', 'IE 10'],
+  cascade:  true
 
 prefixer = (name) ->
   if name == 'keyframes'
@@ -61,32 +65,11 @@ commons = ['transition', 'values', 'keyframes', 'gradient', 'flex-rewrite',
 
 describe 'autoprefixer()', ->
 
-  it 'sets browsers', ->
-    compiler.browsers.should.eql ['chrome 25', 'opera 12']
-    compiler.prefixes.options.should.eql({ })
-
   it 'sets options', ->
-    processor = autoprefixer('chrome 25', 'opera 12', cascade: false)
-    processor.prefixes.options.should.eql(cascade: false)
+    opts = { browsers: ['chrome 25', 'opera 12'], cascade: false }
+    processor = autoprefixer(opts)
+    processor.prefixes.options.should.eql(opts)
     processor.browsers.should.eql(['chrome 25', 'opera 12'])
-
-  it 'sets only options', ->
-    defaults  = new Browsers(autoprefixer.data.browsers, autoprefixer.default)
-    processor = autoprefixer(cascade: false)
-    processor.prefixes.options.should.eql(cascade: false)
-    processor.browsers.should.eql(defaults.selected)
-
-    processor = autoprefixer(undefined, cascade: false)
-    processor.prefixes.options.should.eql(cascade: false)
-    processor.browsers.should.eql(defaults.selected)
-
-  it 'receives array', ->
-    processor = autoprefixer(['chrome 25', 'opera 12'])
-    processor.browsers.should.eql ['chrome 25', 'opera 12']
-
-    processor = autoprefixer(['chrome 25', 'opera 12'], cascade: false)
-    processor.browsers.should.eql ['chrome 25', 'opera 12']
-    processor.prefixes.options.should.eql(cascade: false)
 
   it 'has default browsers', ->
     autoprefixer.default.should.be.an.instanceOf(Array)
@@ -165,7 +148,8 @@ describe 'Autoprefixer', ->
   describe 'info()', ->
 
     it 'returns inspect string', ->
-      autoprefixer('chrome 25').info().should.match(/Browsers:\s+Chrome: 25/)
+      autoprefixer(browsers: ['chrome 25']).info()
+        .should.match(/Browsers:\s+Chrome: 25/)
 
   describe 'hacks', ->
 

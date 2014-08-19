@@ -61,26 +61,25 @@ To process your CSS you need to make 2 steps:
 1. Build processor for your options and browsers supported in your project.
 2. Process CSS throw this processor.
 
-Function `autoprefixer(browser1, browser2, …, options)` returns
-new processor object:
+Function `autoprefixer(options)` returns new processor object:
 
 ```js
-var processor = autoprefixer('> 1%', 'Explorer 7', { cascade: false });
+var processor = autoprefixer({ browsers: '> 1%', 'IE 7', cascade: false });
 ```
 
-You can directly specify browser version (like `iOS 7`) or use selections
-(like `last 2 version` or `> 5%`). [Full browsers documentation] is available
-on main Autoprefixer page.
+There are 2 options:
 
-By default, Autoprefixer uses
-`'> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1'`. You can get current
-default list from `autoprefixer.default` property.
+* `browsers` (array): list of browsers, which are supported in your project.
 
-Also you can pass browsers array as first argument:
-`autoprefixer(browsers, options)`.
+  You can directly specify browser version (like `iOS 7`) or use selections
+  (like `last 2 version` or `> 5%`). [Full browsers documentation] is available
+  on main Autoprefixer page.
 
-There is only one option right now: `cascade: false` will disable
-[Visual Cascade].
+  By default, Autoprefixer uses
+  `'> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1'`. You can get current
+  default list from `autoprefixer.default` property.
+* `cascade` (boolean): should Autoprefixer uses [Visual Cascade],
+  if CSS will be uncompressed.
 
 Processor object had:
 
@@ -88,7 +87,7 @@ Processor object had:
 * `.info()` method, which returns debug information: which browsers are selected
   and which properties will be prefixed
 * `.postcss` property returns [PostCSS] processor to use in chain
-  with [other PostCSS processors].
+  with other [PostCSS processors].
 
 You can use processor object to process several CSS files
 to increase perfomance.
@@ -97,7 +96,7 @@ There are `autoprefixer.process()`, `autoprefixer.info()`
 and `autoprefixer.postcss` shortcuts, which use default browsers and options.
 
 [Full browsers documentation]: https://github.com/ai/autoprefixer#browsers
-[other PostCSS processors]:    https://github.com/postcss/postcss#built-with-postcss
+[PostCSS processors]:    https://github.com/postcss/postcss#built-with-postcss
 [Visual Cascade]:              https://github.com/ai/autoprefixer#visual-cascade
 [PostCSS]:                     https://github.com/postcss/postcss
 

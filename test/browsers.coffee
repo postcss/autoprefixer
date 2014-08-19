@@ -46,7 +46,7 @@ describe 'Browsers', ->
       browsers.selected.should.eql ['ie 3', 'ie 2', 'chrome 3', 'chrome 2']
 
     it 'allows to select no browsers', ->
-      browsers = new Browsers(data, ['none'])
+      browsers = new Browsers(data, [])
       browsers.selected.should.be.empty
 
     it 'raises an error on unknown requirement', ->

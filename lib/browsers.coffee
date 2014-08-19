@@ -52,7 +52,10 @@ class Browsers
 
     none:
       regexp: /^none$/i
-      select: -> []
+      select: ->
+        console?.warn("autoprefixer(\'none\') is deprecated and will be " +
+                      'removed in 3.1. ' + 'Use autoprefixer({ browsers: [] })')
+        []
 
     lastVersions:
       regexp: /^last (\d+) versions?$/i

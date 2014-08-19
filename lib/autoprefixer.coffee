@@ -29,6 +29,13 @@ autoprefixer = (reqs...) ->
   else if typeof(reqs[reqs.length - 1]) == 'object'
     options = reqs.pop()
 
+  if options?.browsers?
+    reqs = options.browsers
+  else if reqs
+    console?.warn('autoprefixer: autoprefixer(browsers) is deprecated ' +
+                  'and will be removed in 3.1. ' +
+                  'Use autoprefixer({ browsers: browsers }).')
+
   reqs = autoprefixer.default unless reqs?
 
   browsers = new Browsers(autoprefixer.data.browsers, reqs)
@@ -66,7 +73,7 @@ autoprefixer.default = ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1']
 
 # Lazy load for Autoprefixer with default browsers
 autoprefixer.loadDefault = ->
-  @defaultCache ||= autoprefixer(@default)
+  @defaultCache ||= autoprefixer(browsers: @default)
 
 # Compile with default Autoprefixer
 autoprefixer.process = (str, options = {}) ->
