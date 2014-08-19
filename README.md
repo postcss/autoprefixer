@@ -3,7 +3,7 @@
 <img align="right" width="94" height="71" src="http://ai.github.io/autoprefixer/logo.svg" title="Autoprefixer logo by Anton Lovchikov">
 
 Parse CSS and add vendor prefixes to CSS rules using values
-from [Can I Use](http://caniuse.com/).
+from [Can I Use].
 
 Write your CSS rules without vendor prefixes (in fact, forget about them
 entirely):
@@ -42,6 +42,7 @@ Sponsored by [Evil Martians]. Based on [PostCSS] framework.
 [interactive demo]: http://jsfiddle.net/simevidas/udyTs/show/light/
 [@autoprefixer]:    https://twitter.com/autoprefixer
 [Evil Martians]:    http://evilmartians.com/
+[Can I Use]:        http://caniuse.com/
 [PostCSS]:          https://github.com/postcss/postcss
 
 ## Features
@@ -81,11 +82,13 @@ a {
 }
 ```
 
-Autoprefixer has [22 special hacks](https://github.com/postcss/autoprefixer-core/tree/master/lib/hacks) to fix web browser differences.
+Autoprefixer has [22 special hacks] to fix web browser differences.
+
+[22 special hacks]: https://github.com/postcss/autoprefixer-core/tree/master/lib/hacks
 
 ### Only Actual Prefixes
 
-Autoprefixer utilizes the most recent data from [Can I Use](http://caniuse.com/)
+Autoprefixer utilizes the most recent data from [Can I Use]
 to add only necessary vendor prefixes.
 
 It also removes old, unnecessary prefixes from your CSS (like `border-radius`
@@ -106,11 +109,13 @@ a {
 }
 ```
 
+[Can I Use]: http://caniuse.com/
+
 ## Browsers
 
 You can specify the browsers you want to target in your project:
 
-* `last 2 versions` targets the last versions for each browser, see [Google's version support](http://support.google.com/a/bin/answer.py?answer=33864).
+* `last 2 versions` targets the last 2 versions for each browser..
 * `last 2 Chrome versions` targets the last versions of a specific browser.
 * `> 5%` declares browser versions selected by global usage statistics.
 * `Firefox > 20` targets versions of Firefox newer than 20.
@@ -217,7 +222,7 @@ You can also use comments recursively:
 
 ## FAQ
 
-### Does it add polyfills for old browsers?
+#### Does it add polyfills for old browsers?
 
 No. Autoprefixer only adds prefixes, not polyfills. There are two reasons:
 
@@ -228,10 +233,10 @@ No. Autoprefixer only adds prefixes, not polyfills. There are two reasons:
    for styling should be ignored in old IEs as it is recommended for
    graceful degradation.
 
-### Why doesn’t gradients work in Firefox?
+#### Why doesn’t gradients work in Firefox?
 
-Make sure that you use correct the [direction syntax]. For example, you should
-use `to bottom` instead of `top`:
+Make sure that you use correct the [direction syntax]l.
+For example, you should use `to bottom` instead of `top`:
 
 ```css
 a {
@@ -245,44 +250,38 @@ latest W3C specs with Autoprefixer.
 
 [direction syntax]: https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient
 
-### Why doesn’t Autoprefixer add prefixes to `border-radius`?
+#### Why doesn’t Autoprefixer add prefixes to `border-radius`?
 
 Developers are often surprised by how few prefixes are required today.
 If Autoprefixer doesn’t add prefixes to your CSS, check if they’re still
-required on [Can I Use](http://caniuse.com/).
+required on [Can I Use].
 
-If a prefix is required, but Autoprefixer doesn’t add it or adds it
-incorrectly, please
-[report an issue](https://github.com/ai/autoprefixer/issues/new)
-and include your source CSS and the expected output.
+[Can I Use]: http://caniuse.com/
 
-### Why doesn’t Autoprefixer support `appearance`?
+#### Why doesn’t Autoprefixer support `appearance`?
 
 Unlike `transition`, the `appearance` property is not a part of
 any specification. So there is no `appearance`, only `-moz-appearance`
-and `-webkit-appearance`. Quote from [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/-moz-appearance):
+and `-webkit-appearance`. See [MDN property page].
 
-> Do not use this property on Web sites: not only is it non-standard, but its
-> behavior changes from one browser to another. Even the keyword `none` does not
-> have the same behavior on each form element across different browsers, and
-> some do not support it at all.
+[MDN property page]: https://developer.mozilla.org/en-US/docs/Web/CSS/-moz-appearance
 
 ## Usage
 
 ### Grunt
 
-You can use the
-[grunt-autoprefixer](https://github.com/nDmitry/grunt-autoprefixer)
-plugin for Grunt. Install the npm package and add it to Gruntfile:
+You can use the [grunt-autoprefixer] plugin for Grunt.
+Install the npm package and add it to Gruntfile:
 
 ```js
 grunt.loadNpmTasks('grunt-autoprefixer');
 ```
 
+[grunt-autoprefixer]: https://github.com/nDmitry/grunt-autoprefixer
+
 ### Gulp
 
-In Gulp you can use [gulp-postcss](https://github.com/w0rm/gulp-postcss)
-with `autoprefixer` npm package.
+In Gulp you can use [gulp-postcss] with `autoprefixer` npm package.
 
 ```js
 gulp.task('autoprefixer', function () {
@@ -298,18 +297,27 @@ gulp.task('autoprefixer', function () {
 });
 ```
 
-`gulp-postcss` also allows you combine Autoprefixer with
-[other PostCSS plugins](https://github.com/postcss/postcss#built-with-postcss).
+With `gulp-postcss` you also can combine Autoprefixer
+with [other PostCSS plugins].
+
+[other PostCSS plugins]: https://github.com/postcss/postcss#built-with-postcss
+[gulp-postcss]:          https://github.com/w0rm/gulp-postcss
 
 ### Other Build Tools:
 
-* **Ruby on Rails**: [autoprefixer-rails](https://github.com/ai/autoprefixer-rails)
-* **Webpack**: [autoprefixer-loader](https://github.com/passy/autoprefixer-loader)
-* **Brunch**: [autoprefixer-brunch](https://github.com/lydell/autoprefixer-brunch)
-* **Broccoli**: [broccoli-autoprefixer](https://github.com/sindresorhus/broccoli-autoprefixer)
-* **Middleman**: [middleman-autoprefixer](https://github.com/porada/middleman-autoprefixer)
+* **Ruby on Rails**: [autoprefixer-rails]
+* **Webpack**: [autoprefixer-loader]
+* **Brunch**: [autoprefixer-brunch]
+* **Broccoli**: [broccoli-autoprefixer]
+* **Middleman**: [middleman-autoprefixer]
 * **Mincer**: add `autoprefixer` npm package and enable it:
   `environment.enable('autoprefixer')`.
+
+[middleman-autoprefixer]: https://github.com/porada/middleman-autoprefixer
+[broccoli-autoprefixer]:  https://github.com/sindresorhus/broccoli-autoprefixer
+[autoprefixer-loader]:    https://github.com/passy/autoprefixer-loader
+[autoprefixer-brunch]:    https://github.com/lydell/autoprefixer-brunch
+[autoprefixer-rails]:     https://github.com/ai/autoprefixer-rails
 
 ### Compass
 
@@ -337,28 +345,30 @@ You can set the browsers option as the second argument in `process` method.
 
 ### Stylus
 
-If you use Stylus CLI, you can add Autoprefixer by
-[autoprefixer-stylus](https://github.com/jenius/autoprefixer-stylus) plugin:
+If you use Stylus CLI, you can add Autoprefixer by [autoprefixer-stylus] plugin:
 
 ```
 stylus -u autoprefixer-stylus -w file.styl
 ```
 
+[autoprefixer-stylus]: https://github.com/jenius/autoprefixer-stylus
+
 ### CodeKit
 
 CodeKit, since the 2.0 version, contains Autoprefixer. In the After Compiling
-section, there is a checkbox to enable Autoprefixer.
-Read [CodeKit docs](https://incident57.com/codekit/help.html#autoprefixer)
+section, there is a checkbox to enable Autoprefixer. Read [CodeKit docs]
 for more inforamtion.
+
+[CodeKit docs]: https://incident57.com/codekit/help.html#autoprefixer
 
 ### Prepros
 
-If you want to build your assets with a GUI, try
-[Prepros](http://alphapixels.com/prepros/). Just set “Auto Prefix CSS”
-[checkbox](https://f.cloud.github.com/assets/3478693/930798/faa29892-0016-11e3-8901-87850de7aed2.jpg)
-in right panel.
+If you need free assets build GUI tool, try [Prepros].
+Just set “Auto Prefix CSS” checkbox in right panel.
 
 <img src="http://alphapixels.com/prepros/static/img/prepros.jpg" width="550" height="340" />
+
+[Prepros]: http://alphapixels.com/prepros/
 
 ### CLI
 
@@ -374,19 +384,16 @@ See `autoprefixer -h` for help.
 
 ### JavaScript
 
-You can use [autoprefixer-core](https://github.com/postcss/autoprefixer-core)
-in your node.js application or if you want to develop Autoprefixer plugin
-for new environment.
+You can use [autoprefixer-core] in your node.js application
+or if you want to develop Autoprefixer plugin for new environment.
 
 ```js
 var autoprefixer = require('autoprefixer-core');
 var prefixed     = autoprefixer.process('a { transition: transform 1s }').css;
 ```
 
-Autoprefixer can be also used as a [PostCSS](https://github.com/postcss/postcss)
-processor, so you can combine it
-with [other processors](https://github.com/postcss/postcss#built-with-postcss)
-and parse CSS only once:
+Autoprefixer can be also used as a [PostCSS] processor, so you can combine
+it with [other processors] and parse CSS only once:
 
 ```js
 postcss().
@@ -395,28 +402,30 @@ postcss().
     process(css);
 ```
 
-There is also [standalone build](https://raw.github.com/ai/autoprefixer-rails/master/vendor/autoprefixer.js)
-for the browser or as a non-Node.js runtime.
+There is also [standalone build] for the browser or as a non-Node.js runtime.
+
+[autoprefixer-core]: https://github.com/postcss/autoprefixer-core
+[other processors]:  https://github.com/postcss/postcss#built-with-postcss
+[standalone build]:  https://raw.github.com/ai/autoprefixer-rails/master/vendor/autoprefixer.js
+[PostCSS]:           https://github.com/postcss/postcss
 
 ### PHP
 
-You can use Autoprefixer in PHP by
-[autoprefixer-php](https://github.com/vladkens/autoprefixer-php) library:
+You can use Autoprefixer in PHP by [autoprefixer-php] library:
 
 ```php
 $autoprefixer = new Autoprefixer();
 $prefixed     = $autoprefixer->compile('a { transition: transform 1s }');
 ```
 
+[autoprefixer-php]: https://github.com/vladkens/autoprefixer-php
+
 ### .NET
 
-For .NET you can use
-[Autoprefixer for .NET](https://github.com/digitalcreations/autoprefixer)
-library.
+For .NET you can use [Autoprefixer for .NET] library.
 
-For ASP.NET you can use the official
-[BundleTransformer.Autoprefixer](http://www.nuget.org/packages/BundleTransformer.Autoprefixer/)
-plugin for [Bundle Transformer](http://bundletransformer.codeplex.com/).
+For ASP.NET you can use the official [BundleTransformer.Autoprefixer] plugin
+for [Bundle Transformer].
 
 1. Install package via NuGet:
 
@@ -425,9 +434,12 @@ plugin for [Bundle Transformer](http://bundletransformer.codeplex.com/).
   ```
 2. Perform a post-install actions specified in the `readme.txt` file.
 3. Register a bundles in the `App_Start/BundleConfig.cs` file and configure
-   the Bundle Transformer (see
-   the [documentation](http://bundletransformer.codeplex.com/documentation)).
+   the Bundle Transformer (see the [documentation]).
 
+[BundleTransformer.Autoprefixer]: http://www.nuget.org/packages/BundleTransformer.Autoprefixer/
+[Autoprefixer for .NET]:          https://github.com/digitalcreations/autoprefixer
+[Bundle Transformer]:             http://bundletransformer.codeplex.com/
+[documentation]:                  http://bundletransformer.codeplex.com/documentation
 
 ### Text Editors
 
@@ -435,9 +447,8 @@ Autoprefixer should be used in assets build tools. Text editor plugins are not
 a good solution, because prefixes decrease code readability and you will need
 to change value in all prefixed properties.
 
-I recommend you to learn build tools like [Grunt](http://gruntjs.com/)
-or [Gulp](http://gulpjs.com/). They works much better and will open you entire
-new world of useful plugins and automatization.
+I recommend you to learn build tools like [Grunt] or [Gulp]. They works much
+better and will open you entire new world of useful plugins and automatization.
 
 But, if you can’t move to build tool, you can use text editor plugins:
 
@@ -445,19 +456,25 @@ But, if you can’t move to build tool, you can use text editor plugins:
 * [Brackets](https://github.com/mikaeljorhult/brackets-autoprefixer)
 * [Atom Editor](https://github.com/sindresorhus/atom-autoprefixer)
 
+[Grunt]: http://gruntjs.com/
+[Gulp]:  http://gulpjs.com/
+
 #### Visual Studio
 
 You can apply the Autoprefixer optimizations to your LESS/Sass stylesheets
-in Visual Studio 2013 by using
-the [Web Essentials 2013](http://vswebessentials.com/)
-plugin (since the 2.2 version).
+in Visual Studio 2013 by using the [Web Essentials 2013] plugin
+(since the 2.2 version).
 
 To add this functionality in the Visual Studio 2013 you need to do the following
 steps:
 
-1. Download and install the [Microsoft Visual Studio 2013 Update 2](http://www.microsoft.com/en-us/download/details.aspx?id=42666)
-2. Download and install the [Web Essentials 2013 for Update 2](http://visualstudiogallery.msdn.microsoft.com/56633663-6799-41d7-9df7-0f2a504ca361)
+1. Download and install the [Microsoft Visual Studio 2013 Update 2].
+2. Download and install the [Web Essentials 2013 for Update 2].
 3. Choose a `Tools` → `Options` → `Web Essentials` → `CSS` menu item
 4. In the `Enable Autoprefixer` box specify a value equal to `True`
 
 <img src="http://i.imgur.com/X9sBBF8.png" width="700" alt="Autoprefixer options in the Web Essentials 2013" />
+
+[Microsoft Visual Studio 2013 Update 2]: http://www.microsoft.com/en-us/download/details.aspx?id=42666
+[Web Essentials 2013 for Update 2]:      http://visualstudiogallery.msdn.microsoft.com/56633663-6799-41d7-9df7-0f2a504ca361
+[Web Essentials 2013]:                   http://vswebessentials.com/
