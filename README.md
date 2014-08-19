@@ -152,3 +152,27 @@ gulp.task('css', function () {
 ```
 
 [gulp-postcss]: https://github.com/w0rm/gulp-postcss
+
+## Safe Mode
+
+PostCSS has a special safe mode to parse broken CSS. If you set the `safe: true`
+option to the `process` method, it will try to fix any CSS syntax errors
+that it finds. For example, it will parse `a {` as `a {}`.
+
+```js
+autoprefixer.process('a {');                 // will throw “Unclosed block”
+autoprefixer.process('a {', { safe: true }); // will process as a closed block
+```
+
+It is useful for legacy code when using several hacks, or interactive
+tools with live input, like [Autoprefixer demo](http://jsfiddle.net/simevidas/udyTs/show/light/).
+
+
+## Debug
+
+You can check which browsers are selected and which properties will be prefixed:
+
+```js
+info = autoprefixer("last 1 version").info();
+console.log(info);
+```
