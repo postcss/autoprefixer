@@ -74,7 +74,7 @@ gulp.task('lint:lib', function () {
 
 gulp.task('lint', ['lint:test', 'lint:lib']);
 
-gulp.task('bench', ['build'], function (done) {
+gulp.task('bench', ['build:bin', 'build:lib'], function (done) {
     require('./enable-es6');
 
     var zlib, request;
