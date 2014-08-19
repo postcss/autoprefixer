@@ -384,10 +384,12 @@ for the browser or as a non-Node.js runtime.
 
 ### Other Build Tools:
 
+* **Webpack**: [autoprefixer-loader](https://github.com/passy/autoprefixer-loader)
 * **Brunch**: [autoprefixer-brunch](https://github.com/lydell/autoprefixer-brunch)
 * **Broccoli**: [broccoli-autoprefixer](https://github.com/sindresorhus/broccoli-autoprefixer)
 * **Middleman**: [middleman-autoprefixer](https://github.com/porada/middleman-autoprefixer)
-* **Mincer**: install `autoprefixer` npm package and enable it: `environment.enable('autoprefixer')`.
+* **Mincer**: add `autoprefixer` npm package and enable it:
+  `environment.enable('autoprefixer')`.
 
 ### PHP
 
@@ -451,12 +453,12 @@ following steps:
 
    <img src="http://i.imgur.com/f2iJlBB.png" width="572" alt="BundleTransformer.Autoprefixer options in the Web.config file" />
 
-### Others
+### CLI
 
 You can use the `autoprefixer` binary to process CSS files using
 any assets manager:
 
-```
+```sh
 sudo npm install --global autoprefixer
 autoprefixer *.css
 ```
