@@ -395,7 +395,7 @@ it with [other processors] and parse CSS only once:
 
 ```js
 postcss().
-    use( autoprefixer(['> 1%', 'opera 12.5']).postcss ).
+    use( autoprefixer({ browsers: ['> 1%', 'IE 9'] }).postcss ).
     use( compressor ).
     process(css);
 ```
