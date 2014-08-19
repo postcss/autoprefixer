@@ -202,9 +202,10 @@ gulp.task('bench', ['build'], function (done) {
 gulp.task('test', function () {
     require('./enable-es6');
     require('should');
-
     var mocha = require('gulp-mocha');
-    return gulp.src('test/*.js', { read: false }).pipe(mocha());
+
+    return gulp.src('test/*.js', { read: false })
+        .pipe(mocha({ timeout: 4000 }));
 });
 
 gulp.task('default', ['lint', 'test']);
