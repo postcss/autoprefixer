@@ -125,7 +125,7 @@ gulp.task('bench', ['build'], function (done) {
             gutil.log('Load Github style');
             get(styles[0], function (css) {
                 var autoprefixer = require('./build/');
-                css = autoprefixer('none').process(css).css;
+                css = autoprefixer({ browsers: [] }).process(css).css;
                 callback(css);
             });
         });
