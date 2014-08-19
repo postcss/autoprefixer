@@ -301,6 +301,16 @@ gulp.task('autoprefixer', function () {
 `gulp-postcss` also allows you combine Autoprefixer with
 [other PostCSS plugins](https://github.com/postcss/postcss#built-with-postcss).
 
+### Other Build Tools:
+
+* **Ruby on Rails**: [autoprefixer-rails](https://github.com/ai/autoprefixer-rails)
+* **Webpack**: [autoprefixer-loader](https://github.com/passy/autoprefixer-loader)
+* **Brunch**: [autoprefixer-brunch](https://github.com/lydell/autoprefixer-brunch)
+* **Broccoli**: [broccoli-autoprefixer](https://github.com/sindresorhus/broccoli-autoprefixer)
+* **Middleman**: [middleman-autoprefixer](https://github.com/porada/middleman-autoprefixer)
+* **Mincer**: add `autoprefixer` npm package and enable it:
+  `environment.enable('autoprefixer')`.
+
 ### Compass
 
 If you use Compass binary to compile your styles, you can easily integrate
@@ -334,15 +344,6 @@ If you use Stylus CLI, you can add Autoprefixer by
 stylus -u autoprefixer-stylus -w file.styl
 ```
 
-### Ruby on Rails
-
-Add [autoprefixer-rails](https://github.com/ai/autoprefixer-rails) gem
-to `Gemfile` and write CSS in a usual way:
-
-```ruby
-gem "autoprefixer-rails"
-```
-
 ### CodeKit
 
 CodeKit, since the 2.0 version, contains Autoprefixer. In the After Compiling
@@ -358,6 +359,18 @@ If you want to build your assets with a GUI, try
 in right panel.
 
 <img src="http://alphapixels.com/prepros/static/img/prepros.jpg" width="550" height="340" />
+
+### CLI
+
+You can use the `autoprefixer` binary to process CSS files using
+any assets manager:
+
+```sh
+sudo npm install --global autoprefixer
+autoprefixer *.css
+```
+
+See `autoprefixer -h` for help.
 
 ### JavaScript
 
@@ -384,15 +397,6 @@ postcss().
 
 There is also [standalone build](https://raw.github.com/ai/autoprefixer-rails/master/vendor/autoprefixer.js)
 for the browser or as a non-Node.js runtime.
-
-### Other Build Tools:
-
-* **Webpack**: [autoprefixer-loader](https://github.com/passy/autoprefixer-loader)
-* **Brunch**: [autoprefixer-brunch](https://github.com/lydell/autoprefixer-brunch)
-* **Broccoli**: [broccoli-autoprefixer](https://github.com/sindresorhus/broccoli-autoprefixer)
-* **Middleman**: [middleman-autoprefixer](https://github.com/porada/middleman-autoprefixer)
-* **Mincer**: add `autoprefixer` npm package and enable it:
-  `environment.enable('autoprefixer')`.
 
 ### PHP
 
@@ -423,18 +427,6 @@ plugin for [Bundle Transformer](http://bundletransformer.codeplex.com/).
 3. Register a bundles in the `App_Start/BundleConfig.cs` file and configure
    the Bundle Transformer (see
    the [documentation](http://bundletransformer.codeplex.com/documentation)).
-
-### CLI
-
-You can use the `autoprefixer` binary to process CSS files using
-any assets manager:
-
-```sh
-sudo npm install --global autoprefixer
-autoprefixer *.css
-```
-
-See `autoprefixer -h` for help.
 
 
 ### Text Editors
