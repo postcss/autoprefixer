@@ -361,7 +361,8 @@ describe('autoprefixer', () => {
 
     it('is a module', () => {
         var autoprefixer = require('../');
-        autoprefixer('chrome 25').process(css).css.should.eql(prefixed);
+        autoprefixer({ browsers: 'chrome 25' })
+            .process(css).css.should.eql(prefixed);
     });
 
 });

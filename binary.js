@@ -139,7 +139,7 @@ Browsers:
                 this.processOptions.safe = true;
 
             } else if ( arg == '-b' || arg == '--browsers' ) {
-                this.requirements = args.shift().split(',')
+                this.processorOptions.browsers = args.shift().split(',')
                   .map( (i) => i.trim() );
 
             } else if ( arg == '-o' || arg == '--output' ) {
@@ -203,8 +203,7 @@ Browsers:
     // Lazy loading for Autoprefixer instance
     compiler() {
         if ( !this.compilerCache ) {
-          this.compilerCache = autoprefixer(this.requirements,
-                                            this.processorOptions);
+          this.compilerCache = autoprefixer(this.processorOptions);
         }
         return this.compilerCache;
     }
