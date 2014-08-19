@@ -1,6 +1,6 @@
 # Autoprefixer Core [![Build Status](https://travis-ci.org/postcss/autoprefixer-core.png)](https://travis-ci.org/postcss/autoprefixer-core)
 
-<img align="right" width="94" height="71" src="http://ai.github.io/autoprefixer/logo.svg" title="Autoprefixer logo by Anton Lovchikov">
+<img align="right" width="94" height="71" src="http://postcss.github.io/autoprefixer/logo.svg" title="Autoprefixer logo by Anton Lovchikov">
 
 Autoprefixer is a tool to parse CSS and add vendor prefixes using values
 from [Can I Use].
@@ -12,7 +12,7 @@ and plugins list visit [main Autoprefixer] project.
 Sponsored by [Evil Martians]. Based on [PostCSS] framework.
 
 [grunt‑autoprefixer]: https://github.com/nDmitry/grunt-autoprefixer)
-[main Autoprefixer]:  https://github.com/ai/autoprefixer
+[main Autoprefixer]:  https://github.com/postcss/autoprefixer
 [Evil Martians]:      http://evilmartians.com/
 [Can I Use]:          http://caniuse.com/
 [PostCSS]:            https://github.com/postcss/postcss
@@ -96,9 +96,9 @@ to increase perfomance.
 There are `autoprefixer.process()`, `autoprefixer.info()`
 and `autoprefixer.postcss` shortcuts, which use default browsers and options.
 
-[Full browsers documentation]: https://github.com/ai/autoprefixer#browsers
+[Full browsers documentation]: https://github.com/postcss/autoprefixer#browsers
 [PostCSS processors]:    https://github.com/postcss/postcss#built-with-postcss
-[Visual Cascade]:              https://github.com/ai/autoprefixer#visual-cascade
+[Visual Cascade]:              https://github.com/postcss/autoprefixer#visual-cascade
 [PostCSS]:                     https://github.com/postcss/postcss
 
 ## CSS Processing
@@ -125,7 +125,7 @@ Options:
 
 You can read more about the source map options in [PostCSS documentation].
 
-[PostCSS documentation]: https://github.com/ai/postcss#source-map-1
+[PostCSS documentation]: https://github.com/postcss/postcss#source-map-1
 [Safe Mode]:             https://github.com/postcss/postcss#safe-mode
 
 ## PostCSS Chain
