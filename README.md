@@ -64,7 +64,7 @@ To process your CSS you need to make 2 steps:
 Function `autoprefixer(options)` returns new processor object:
 
 ```js
-var processor = autoprefixer({ browsers: '> 1%', 'IE 7', cascade: false });
+var processor = autoprefixer({ browsers: ['> 1%', 'IE 7'], cascade: false });
 ```
 
 There are 2 options:
