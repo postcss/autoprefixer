@@ -4,7 +4,11 @@ var exec = require('child_process').exec;
 var path = __dirname + '/compass';
 
 var bundle = function (command, callback) {
-    exec(`cd ${path}; bundle exec ${command}`, callback);
+    exec(`cd ${path}; bundle exec ${command}`, (error, stdout, stderr) => {
+        process.stderr.write(stderr);
+        if ( error ) process.exit(1);
+        callback();
+    });
 };
 
 module.exports = {
@@ -22,12 +26,8 @@ module.exports = {
     },
 
     run(callback) {
-        bundle('sass --compass test.scss:test.css', (error, stdout, stderr) => {
+        bundle('sass --compass --sourcemap=none test.scss:test.css', () => {
             fs.removeSync(path + '/.sass-cache');
-
-            process.stderr.write(stderr);
-            if ( error ) process.exit(1);
-
             callback();
         });
     },
