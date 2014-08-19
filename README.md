@@ -3,7 +3,7 @@
 <img align="right" width="94" height="71" src="http://ai.github.io/autoprefixer/logo.svg" title="Autoprefixer logo by Anton Lovchikov">
 
 Autoprefixer is a tool to parse CSS and add vendor prefixes using values
-from [Can I Use](http://caniuse.com/).
+from [Can I Use].
 
 This is core package to build Autoprefixer plugin for some environment
 (like [grunt‑autoprefixer]). For end-user documentation, features
@@ -14,6 +14,7 @@ Sponsored by [Evil Martians]. Based on [PostCSS] framework.
 [grunt‑autoprefixer]: https://github.com/nDmitry/grunt-autoprefixer)
 [main Autoprefixer]:  https://github.com/ai/autoprefixer
 [Evil Martians]:      http://evilmartians.com/
+[Can I Use]:          http://caniuse.com/
 [PostCSS]:            https://github.com/postcss/postcss
 
 ## Quick Example
@@ -156,8 +157,7 @@ gulp.task('css', function () {
 ## Safe Mode
 
 PostCSS has a special safe mode to parse broken CSS. If you set the `safe: true`
-option to the `process` method, it will try to fix any CSS syntax errors
-that it finds. For example, it will parse `a {` as `a {}`.
+option to the `process` method, it will  parse `a {` as `a {}`:
 
 ```js
 autoprefixer.process('a {');                 // will throw “Unclosed block”
@@ -165,8 +165,9 @@ autoprefixer.process('a {', { safe: true }); // will process as a closed block
 ```
 
 It is useful for legacy code when using several hacks, or interactive
-tools with live input, like [Autoprefixer demo](http://jsfiddle.net/simevidas/udyTs/show/light/).
+tools with live input, like [Autoprefixer demo].
 
+[Autoprefixer demo]: http://jsfiddle.net/simevidas/udyTs/show/light/
 
 ## Debug
 
