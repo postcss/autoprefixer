@@ -463,13 +463,12 @@ You can apply the Autoprefixer optimizations to your LESS/Sass stylesheets
 in Visual Studio 2013 by using the [Web Essentials 2013] plugin
 (since the 2.2 version).
 
-To add this functionality in the Visual Studio 2013 you need to do the following
-steps:
+To add this functionality in the Visual Studio 2013 (Update 2 or later)
+you need to do the following steps:
 
-1. Download and install the Microsoft Visual Studio 2013 Update 2 or later.
-2. Download and install the [Web Essentials 2013 for Update 2].
-3. Choose a `Tools` → `Options` → `Web Essentials` → `CSS` menu item
-4. In the `Enable Autoprefixer` box specify a value equal to `True`
+1. Download and install the [Web Essentials 2013 for Update 2].
+2. Choose a `Tools` → `Options` → `Web Essentials` → `CSS` menu item
+3. In the `Enable Autoprefixer` box specify a value equal to `True`
 
 <img src="http://i.imgur.com/X9sBBF8.png" width="700" alt="Autoprefixer options in the Web Essentials 2013" />
 
