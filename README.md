@@ -285,16 +285,17 @@ In Gulp you can use [gulp-postcss](https://github.com/w0rm/gulp-postcss)
 with `autoprefixer` npm package.
 
 ```js
-gulp.task('autoprefixer, function () {
-    var postcss = require('gulp-postcss');
+gulp.task('autoprefixer', function () {
+    var postcss      = require('gulp-postcss');
     var autoprefixer = require('autoprefixer');
+
     return gulp.src('./src/*.css')
         .pipe(postcss( autoprefixer.postcss ))
         .pipe(gulp.dest('./dest'));
 });
 ```
 
-`gulp-postcss` also allow you combine Autoprefixer with
+`gulp-postcss` also allows you combine Autoprefixer with
 [other PostCSS plugins](https://github.com/postcss/postcss#built-with-postcss).
 
 ### Compass
@@ -319,18 +320,12 @@ on_stylesheet_saved do |file|
 end
 ```
 
-You can set the browsers option as the second argument in `process` method:
-
-```ruby
-io << AutoprefixerRails.process(css, browsers: ["last 1 version", "> 1%"])
-```
+You can set the browsers option as the second argument in `process` method.
 
 ### Stylus
 
 If you use Stylus CLI, you can add Autoprefixer by
-[autoprefixer-stylus](https://github.com/jenius/autoprefixer-stylus) plugin.
-
-Just install npm package and use it in `-u` option:
+[autoprefixer-stylus](https://github.com/jenius/autoprefixer-stylus) plugin:
 
 ```
 stylus -u autoprefixer-stylus -w file.styl
@@ -348,7 +343,7 @@ gem "autoprefixer-rails"
 ### CodeKit
 
 CodeKit, since the 2.0 version, contains Autoprefixer. In the After Compiling
-section, there is a checkbox to enable Autoprefixer.
+section, there is a checkbox to enable Autoprefixer.
 Read [CodeKit docs](https://incident57.com/codekit/help.html#autoprefixer)
 for more inforamtion.
 
@@ -369,8 +364,7 @@ for new environment.
 
 ```js
 var autoprefixer = require('autoprefixer-core');
-var css          = 'a { transition: transform 1s }';
-var prefixed     = autoprefixer.process(css).css;
+var prefixed     = autoprefixer.process('a { transition: transform 1s }').css;
 ```
 
 There is also [standalone build](https://raw.github.com/ai/autoprefixer-rails/master/vendor/autoprefixer.js)
@@ -391,13 +385,7 @@ plugin for [Broccoli](https://github.com/joliss/broccoli).
 ### Middleman
 
 Add [middleman-autoprefixer](https://github.com/porada/middleman-autoprefixer)
-gem to `Gemfile`:
-
-```ruby
-gem "middleman-autoprefixer"
-```
-
-and activate the extension in your project’s `config.rb`:
+gem to `Gemfile` and activate the extension in your project’s `config.rb`:
 
 ```ruby
 activate :autoprefixer
@@ -419,8 +407,7 @@ You can use Autoprefixer in PHP by
 
 ```php
 $autoprefixer = new Autoprefixer();
-$css          = 'a { transition: transform 1s }';
-$prefixed     = $autoprefixer->compile($css);
+$prefixed     = $autoprefixer->compile('a { transition: transform 1s }');
 ```
 
 ### Visual Studio
