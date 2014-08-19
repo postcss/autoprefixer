@@ -21,7 +21,7 @@
 
 ## 2.0 “Hongik Ingan”
 * Based on PostCSS 1.0.
-  See [options changes](https://github.com/ai/postcss/releases/tag/1.0.0).
+  See [options changes](https://github.com/postcss/postcss/releases/tag/1.0.0).
 * Restore visual cascade after declaration removing.
 * Enable visual cascade by default.
 * Prefix declareation in `@supports` at-rule conditions.
