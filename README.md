@@ -1,6 +1,6 @@
-# Autoprefixer [![Build Status](https://travis-ci.org/ai/autoprefixer.png)](https://travis-ci.org/ai/autoprefixer)
+# Autoprefixer [![Build Status](https://travis-ci.org/postcss/autoprefixer.png)](https://travis-ci.org/postcss/autoprefixer)
 
-<img align="right" width="94" height="71" src="http://ai.github.io/autoprefixer/logo.svg" title="Autoprefixer logo by Anton Lovchikov">
+<img align="right" width="94" height="71" src="http://postcss.github.io/autoprefixer/logo.svg" title="Autoprefixer logo by Anton Lovchikov">
 
 Parse CSS and add vendor prefixes to CSS rules using values
 from [Can I Use].
