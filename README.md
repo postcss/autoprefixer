@@ -6,13 +6,13 @@ Autoprefixer is a tool to parse CSS and add vendor prefixes using values
 from [Can I Use](http://caniuse.com/).
 
 This is core package to build Autoprefixer plugin for some environment
-(like [grunt-autoprefixer]). For end-user documentation, features
-and plugins list visit [main Autoprefixer] project.
+(like [grunt‑autoprefixer]). For end-user documentation, features
+and plugins list visit [main Autoprefixer] project.
 
 Sponsored by [Evil Martians]. Based on [PostCSS] framework.
 
-[grunt-autoprefixer]: https://github.com/nDmitry/grunt-autoprefixer)
-[main Autoprefixer]:  https://github.com/ai/autoprefixer
+[grunt‑autoprefixer]: https://github.com/nDmitry/grunt-autoprefixer)
+[main Autoprefixer]:  https://github.com/ai/autoprefixer
 [Evil Martians]:      http://evilmartians.com/
 [PostCSS]:            https://github.com/postcss/postcss
 
