@@ -367,38 +367,27 @@ var autoprefixer = require('autoprefixer-core');
 var prefixed     = autoprefixer.process('a { transition: transform 1s }').css;
 ```
 
+Autoprefixer can be also used as a [PostCSS](https://github.com/postcss/postcss)
+processor, so you can combine it
+with [other processors](https://github.com/postcss/postcss#built-with-postcss)
+and parse CSS only once:
+
+```js
+postcss().
+    use( autoprefixer(['> 1%', 'opera 12.5']).postcss ).
+    use( compressor ).
+    process(css);
+```
+
 There is also [standalone build](https://raw.github.com/ai/autoprefixer-rails/master/vendor/autoprefixer.js)
 for the browser or as a non-Node.js runtime.
 
-### Brunch
+### Other Build Tools:
 
-You can use the
-[autoprefixer-brunch](https://github.com/lydell/autoprefixer-brunch)
-plugin for [Brunch](http://brunch.io/).
-
-### Broccoli
-
-You can use the
-[broccoli-autoprefixer](https://github.com/sindresorhus/broccoli-autoprefixer)
-plugin for [Broccoli](https://github.com/joliss/broccoli).
-
-### Middleman
-
-Add [middleman-autoprefixer](https://github.com/porada/middleman-autoprefixer)
-gem to `Gemfile` and activate the extension in your project’s `config.rb`:
-
-```ruby
-activate :autoprefixer
-```
-
-### Mincer
-
-To use Autoprefixer in [Mincer](https://github.com/nodeca/mincer),
-install `autoprefixer` npm package and enable it:
-
-```js
-environment.enable('autoprefixer');
-```
+* **Brunch**: [autoprefixer-brunch](https://github.com/lydell/autoprefixer-brunch)
+* **Broccoli**: [broccoli-autoprefixer](https://github.com/sindresorhus/broccoli-autoprefixer)
+* **Middleman**: [middleman-autoprefixer](https://github.com/porada/middleman-autoprefixer)
+* **Mincer**: install `autoprefixer` npm package and enable it: `environment.enable('autoprefixer')`.
 
 ### PHP
 
@@ -450,9 +439,9 @@ following steps:
 
 1. Install package via NuGet:
 
-	```
-	PM> Install-Package BundleTransformer.Autoprefixer
-	```
+  ```
+  PM> Install-Package BundleTransformer.Autoprefixer
+  ```
 2. Perform a post-install actions specified in the `readme.txt` file
 3. Register a bundles in the `App_Start/BundleConfig.cs` file and configure
    the Bundle Transformer (see
@@ -460,21 +449,7 @@ following steps:
 4. Additionally, you can specify the browser conditional expressions
    in the `Web.config` file (in the Visual Studio supported IntelliSense):
 
-	 <img src="http://i.imgur.com/f2iJlBB.png" width="572" alt="BundleTransformer.Autoprefixer options in the Web.config file" />
-
-### PostCSS
-
-Autoprefixer can be also used as a [PostCSS](https://github.com/postcss/postcss)
-processor, so you can combine it
-with [other processors](https://github.com/postcss/postcss#built-with-postcss)
-and parse CSS only once:
-
-```js
-postcss().
-    use( autoprefixer(['> 1%', 'opera 12.5']).postcss ).
-    use( compressor ).
-    process(css);
-```
+   <img src="http://i.imgur.com/f2iJlBB.png" width="572" alt="BundleTransformer.Autoprefixer options in the Web.config file" />
 
 ### Others
 
