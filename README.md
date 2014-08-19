@@ -46,7 +46,7 @@ Sponsored by [Evil Martians]. Based on [PostCSS] framework.
 
 ## Features
 
-### Forget about prefixes
+### Write Pure CSS
 
 Working with Autoprefixer is simple: just forget about vendor prefixes
 and write normal CSS according to the latest W3C specs. You don’t need
@@ -58,7 +58,7 @@ unit function (`calc()`), at‑rules (`@support` and `@keyframes`) and properti
 Because Autoprefixer is a postprocessor for CSS,
 you can also use it with preprocessors such as Sass, Stylus or LESS.
 
-### Flexbox, filters, etc.
+### Flexbox, Filters, etc.
 
 Just write normal CSS according to the latest W3C specs and Autoprefixer
 will produce the code for old browsers.
@@ -83,7 +83,7 @@ a {
 
 Autoprefixer has [22 special hacks](https://github.com/postcss/autoprefixer-core/tree/master/lib/hacks) to fix web browser differences.
 
-### Only actual prefixes
+### Only Actual Prefixes
 
 Autoprefixer utilizes the most recent data from [Can I Use](http://caniuse.com/)
 to add only necessary vendor prefixes.
