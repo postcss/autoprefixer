@@ -15,7 +15,8 @@ entirely):
 ```
 
 Autoprefixer will use the data based on current browser popularity and property
-support to apply prefixes for you:
+support to apply prefixes for you. You try in the [interactive demo]
+of Autoprefixer.
 
 ```css
 :-webkit-full-screen a {
@@ -33,8 +34,6 @@ support to apply prefixes for you:
             transition: transform 1s;
 }
 ```
-
-You can play with your CSS in the [interactive demo] of Autoprefixer.
 
 Twitter account for news and releases: [@autoprefixer].
 
@@ -54,12 +53,12 @@ and write normal CSS according to the latest W3C specs. You don’t need
 a special language (like Sass) or remember, where you must use mixins.
 
 Autoprefixer supports selectors (like `:fullscreen` and `::selection`),
-unit function (`calc()`), at-rules (`@support` and `@keyframes`) and properties.
+unit function (`calc()`), at-rules (`@support` and `@keyframes`) and properties.
 
 Because Autoprefixer is a postprocessor for CSS,
 you can also use it with preprocessors such as Sass, Stylus or LESS.
 
-### Flexbox, Gradients, etc.
+### Flexbox, filters, etc.
 
 Just write normal CSS according to the latest W3C specs and Autoprefixer
 will produce the code for old browsers.
@@ -82,9 +81,9 @@ a {
 }
 ```
 
-Autoprefixer has [22 special hacks](https://github.com/ai/autoprefixer/tree/master/lib/hacks) to fix web browser differences.
+Autoprefixer has [22 special hacks](https://github.com/postcss/autoprefixer-core/tree/master/lib/hacks) to fix web browser differences.
 
-### Actual data from Can I Use
+### Only actual prefixes
 
 Autoprefixer utilizes the most recent data from [Can I Use](http://caniuse.com/)
 to add only necessary vendor prefixes.
