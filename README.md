@@ -235,7 +235,7 @@ No. Autoprefixer only adds prefixes, not polyfills. There are two reasons:
 
 #### Why doesn’t gradients work in Firefox?
 
-Make sure that you use correct the [direction syntax]l.
+Make sure that you use correct the [direction syntax].
 For example, you should use `to bottom` instead of `top`:
 
 ```css
@@ -262,9 +262,7 @@ required on [Can I Use].
 
 Unlike `transition`, the `appearance` property is not a part of
 any specification. So there is no `appearance`, only `-moz-appearance`
-and `-webkit-appearance`. See [MDN property page].
-
-[MDN property page]: https://developer.mozilla.org/en-US/docs/Web/CSS/-moz-appearance
+and `-webkit-appearance`.
 
 ## Usage
 
@@ -468,13 +466,12 @@ in Visual Studio 2013 by using the [Web Essentials 2013] plugin
 To add this functionality in the Visual Studio 2013 you need to do the following
 steps:
 
-1. Download and install the [Microsoft Visual Studio 2013 Update 2].
+1. Download and install the Microsoft Visual Studio 2013 Update 2 or later.
 2. Download and install the [Web Essentials 2013 for Update 2].
 3. Choose a `Tools` → `Options` → `Web Essentials` → `CSS` menu item
 4. In the `Enable Autoprefixer` box specify a value equal to `True`
 
 <img src="http://i.imgur.com/X9sBBF8.png" width="700" alt="Autoprefixer options in the Web Essentials 2013" />
 
-[Microsoft Visual Studio 2013 Update 2]: http://www.microsoft.com/en-us/download/details.aspx?id=42666
-[Web Essentials 2013 for Update 2]:      http://visualstudiogallery.msdn.microsoft.com/56633663-6799-41d7-9df7-0f2a504ca361
-[Web Essentials 2013]:                   http://vswebessentials.com/
+[Web Essentials 2013 for Update 2]: http://visualstudiogallery.msdn.microsoft.com/56633663-6799-41d7-9df7-0f2a504ca361
+[Web Essentials 2013]:              http://vswebessentials.com/
