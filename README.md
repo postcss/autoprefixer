@@ -401,43 +401,15 @@ $autoprefixer = new Autoprefixer();
 $prefixed     = $autoprefixer->compile('a { transition: transform 1s }');
 ```
 
-### Visual Studio
-
-You can apply the Autoprefixer optimizations to your LESS/Sass stylesheets
-in Visual Studio 2013 by using
-the [Web Essentials 2013](http://vswebessentials.com/)
-plugin (since the 2.2 version).
-
-To add this functionality in the Visual Studio 2013 you need to do the following
-steps:
-
-1. Download and install the [Microsoft Visual Studio 2013 Update 2](http://www.microsoft.com/en-us/download/details.aspx?id=42666)
-2. Download and install the [Web Essentials 2013 for Update 2](http://visualstudiogallery.msdn.microsoft.com/56633663-6799-41d7-9df7-0f2a504ca361)
-3. Choose a `Tools` → `Options` → `Web Essentials` → `CSS` menu item
-4. In the `Enable Autoprefixer` box specify a value equal to `True`
-5. Additionally, you can specify the browser conditional expressions
-   in the `Targeted browsers` box
-
-<img src="http://i.imgur.com/X9sBBF8.png" width="700" alt="Autoprefixer options in the Web Essentials 2013" />
-
 ### .NET
 
-You can use Autoprefixer in .NET by the
+For .NET you can use
 [Autoprefixer for .NET](https://github.com/digitalcreations/autoprefixer)
-library. Install package via NuGet:
-
-```
-PM> Install-Package Autoprefixer
-```
-
-### ASP.NET
+library.
 
 You can use Autoprefixer in ASP.NET by the official
 [BundleTransformer.Autoprefixer](http://www.nuget.org/packages/BundleTransformer.Autoprefixer/)
 plugin for [Bundle Transformer](http://bundletransformer.codeplex.com/).
-
-To add this functionality in the ASP.NET web application you need to do the
-following steps:
 
 1. Install package via NuGet:
 
@@ -481,3 +453,22 @@ But, if you can’t move to build tool, you can use text editor plugins:
 * [Sublime Text](https://github.com/sindresorhus/sublime-autoprefixer)
 * [Brackets](https://github.com/mikaeljorhult/brackets-autoprefixer)
 * [Atom Editor](https://github.com/sindresorhus/atom-autoprefixer)
+
+#### Visual Studio
+
+You can apply the Autoprefixer optimizations to your LESS/Sass stylesheets
+in Visual Studio 2013 by using
+the [Web Essentials 2013](http://vswebessentials.com/)
+plugin (since the 2.2 version).
+
+To add this functionality in the Visual Studio 2013 you need to do the following
+steps:
+
+1. Download and install the [Microsoft Visual Studio 2013 Update 2](http://www.microsoft.com/en-us/download/details.aspx?id=42666)
+2. Download and install the [Web Essentials 2013 for Update 2](http://visualstudiogallery.msdn.microsoft.com/56633663-6799-41d7-9df7-0f2a504ca361)
+3. Choose a `Tools` → `Options` → `Web Essentials` → `CSS` menu item
+4. In the `Enable Autoprefixer` box specify a value equal to `True`
+5. Additionally, you can specify the browser conditional expressions
+   in the `Targeted browsers` box
+
+<img src="http://i.imgur.com/X9sBBF8.png" width="700" alt="Autoprefixer options in the Web Essentials 2013" />
