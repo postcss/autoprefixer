@@ -42,7 +42,7 @@ Sponsored by [Evil Martians]. Based on [PostCSS] framework.
 [interactive demo]: http://jsfiddle.net/simevidas/udyTs/show/light/
 [@autoprefixer]:    https://twitter.com/autoprefixer
 [Evil Martians]:    http://evilmartians.com/
-[PostCSS]:          https://github.com/ai/postcss
+[PostCSS]:          https://github.com/postcss/postcss
 
 ## Features
 
@@ -53,7 +53,7 @@ and write normal CSS according to the latest W3C specs. You don’t need
 a special language (like Sass) or remember, where you must use mixins.
 
 Autoprefixer supports selectors (like `:fullscreen` and `::selection`),
-unit function (`calc()`), at-rules (`@support` and `@keyframes`) and properties.
+unit function (`calc()`), at‑rules (`@support` and `@keyframes`) and properties.
 
 Because Autoprefixer is a postprocessor for CSS,
 you can also use it with preprocessors such as Sass, Stylus or LESS.
@@ -152,7 +152,7 @@ Autoprefixer can modify previous source maps (for example, from Sass):
 it will autodetect a previous map if it is listed in an annotation comment.
 
 Autoprefixer supports inline source maps too. If an input CSS contains
-annotation from the previous step with a map in `data:uri`, Autoprefixer will
+annotation from the previous step with a map in data:uri, Autoprefixer will
 update the source map with prefix changes and inline the new map back into
 the output CSS.
 
@@ -281,21 +281,21 @@ grunt.loadNpmTasks('grunt-autoprefixer');
 
 ### Gulp
 
-You can use [gulp-autoprefixer](https://github.com/Metrime/gulp-autoprefixer)
-to use Autoprefixer in your Gulp build configuration.
+In Gulp you can use [gulp-postcss](https://github.com/w0rm/gulp-postcss)
+with `autoprefixer` npm package.
 
 ```js
-var prefix = require('gulp-autoprefixer');
-gulp.src('./css/*.css')
-  .pipe(prefix(["last 1 version", "> 1%", "ie 8", "ie 7"], { cascade: true }))
-  .pipe(gulp.dest('./dist/'));
+gulp.task('autoprefixer, function () {
+    var postcss = require('gulp-postcss');
+    var autoprefixer = require('autoprefixer');
+    return gulp.src('./src/*.css')
+        .pipe(postcss( autoprefixer.postcss ))
+        .pipe(gulp.dest('./dest'));
+});
 ```
 
-### Brunch
-
-You can use the
-[autoprefixer-brunch](https://github.com/lydell/autoprefixer-brunch)
-plugin for [Brunch](http://brunch.io/).
+`gulp-postcss` also allow you combine Autoprefixer with
+[other PostCSS plugins](https://github.com/postcss/postcss#built-with-postcss).
 
 ### Compass
 
@@ -345,21 +345,6 @@ to `Gemfile` and write CSS in a usual way:
 gem "autoprefixer-rails"
 ```
 
-### Ruby
-
-You can integrate Autoprefixer into your Sprockets environment
-by `autoprefixer-rails` gem:
-
-```ruby
-AutoprefixerRails.install(sprockets_env)
-```
-
-or process CSS from plain Ruby:
-
-```ruby
-prefixed = AutoprefixerRails.process(css)
-```
-
 ### CodeKit
 
 CodeKit, since the 2.0 version, contains Autoprefixer. In the After Compiling
@@ -376,20 +361,32 @@ in right panel.
 
 <img src="http://alphapixels.com/prepros/static/img/prepros.jpg" width="550" height="340" />
 
+### JavaScript
+
+You can use [autoprefixer-core](https://github.com/postcss/autoprefixer-core)
+in your node.js application or if you want to develop Autoprefixer plugin
+for new environment.
+
+```js
+var autoprefixer = require('autoprefixer-core');
+var css          = 'a { transition: transform 1s }';
+var prefixed     = autoprefixer.process(css).css;
+```
+
+There is also [standalone build](https://raw.github.com/ai/autoprefixer-rails/master/vendor/autoprefixer.js)
+for the browser or as a non-Node.js runtime.
+
+### Brunch
+
+You can use the
+[autoprefixer-brunch](https://github.com/lydell/autoprefixer-brunch)
+plugin for [Brunch](http://brunch.io/).
+
 ### Broccoli
 
 You can use the
 [broccoli-autoprefixer](https://github.com/sindresorhus/broccoli-autoprefixer)
 plugin for [Broccoli](https://github.com/joliss/broccoli).
-
-### Mincer
-
-To use Autoprefixer in [Mincer](https://github.com/nodeca/mincer),
-install `autoprefixer` npm package and enable it:
-
-```js
-environment.enable('autoprefixer');
-```
 
 ### Middleman
 
@@ -406,14 +403,13 @@ and activate the extension in your project’s `config.rb`:
 activate :autoprefixer
 ```
 
-### Node.js
+### Mincer
 
-Use `autoprefixer` npm package:
+To use Autoprefixer in [Mincer](https://github.com/nodeca/mincer),
+install `autoprefixer` npm package and enable it:
 
 ```js
-var autoprefixer = require('autoprefixer');
-var css          = 'a { transition: transform 1s }';
-var prefixed     = autoprefixer.process(css).css;
+environment.enable('autoprefixer');
 ```
 
 ### PHP
@@ -479,15 +475,12 @@ following steps:
 
 	 <img src="http://i.imgur.com/f2iJlBB.png" width="572" alt="BundleTransformer.Autoprefixer options in the Web.config file" />
 
-### JavaScript
-
-You can use Autoprefixer in the browser or as a non-Node.js runtime with
-[standalone version](https://raw.github.com/ai/autoprefixer-rails/master/vendor/autoprefixer.js).
-
 ### PostCSS
 
-Autoprefixer can be also used as a [PostCSS](https://github.com/ai/postcss)
-processor, so you can combine it with other processors and parse CSS only once:
+Autoprefixer can be also used as a [PostCSS](https://github.com/postcss/postcss)
+processor, so you can combine it
+with [other processors](https://github.com/postcss/postcss#built-with-postcss)
+and parse CSS only once:
 
 ```js
 postcss().
@@ -495,24 +488,6 @@ postcss().
     use( compressor ).
     process(css);
 ```
-
-### Sublime Text
-
-You can process your styles directly in Sublime Text with the
-[sublime-autoprefixer](https://github.com/sindresorhus/sublime-autoprefixer)
-plugin.
-
-### Brackets
-
-Styles can processed automatically in Brackets using the
-[brackets-autoprefixer](https://github.com/mikaeljorhult/brackets-autoprefixer)
-extension.
-
-### Atom Editor
-
-You can process your styles directly in Atom with the
-[atom-autoprefixer](https://github.com/sindresorhus/atom-autoprefixer)
-package.
 
 ### Others
 
@@ -525,3 +500,20 @@ autoprefixer *.css
 ```
 
 See `autoprefixer -h` for help.
+
+
+### Text Editors
+
+Autoprefixer should be used in assets build tools. Text editor plugins are not
+a good solution, because prefixes decrease code readability and you will need
+to change value in all prefixed properties.
+
+I recommend you to learn build tools like [Grunt](http://gruntjs.com/)
+or [Gulp](http://gulpjs.com/). They works much better and will open you entire
+new world of useful plugins and automatization.
+
+But, if you can’t move to build tool, you can use text editor plugins:
+
+* [Sublime Text](https://github.com/sindresorhus/sublime-autoprefixer)
+* [Brackets](https://github.com/mikaeljorhult/brackets-autoprefixer)
+* [Atom Editor](https://github.com/sindresorhus/atom-autoprefixer)
