@@ -174,6 +174,6 @@ tools with live input, like [Autoprefixer demo].
 You can check which browsers are selected and which properties will be prefixed:
 
 ```js
-info = autoprefixer("last 1 version").info();
+info = autoprefixer({ browsers: ['last 1 version'] }).info();
 console.log(info);
 ```

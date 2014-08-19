@@ -10,12 +10,12 @@ isPlainObject = (obj) ->
 # Parse CSS and add prefixed properties and values by Can I Use database
 # for actual browsers.
 #
-#   var prefixed = autoprefixer('> 1%', 'ie 8').process(css);
+#   var prefixed = autoprefixer({ browsers: ['> 1%', 'ie 8'] }).process(css);
 #
 # If you want to combine Autoprefixer with another PostCSS processor:
 #
-#   postcss.use(autoprefixer('last 1 version').postcss).
-#           use(compressor).
+#   postcss.use( autoprefixer({ browsers: ['last 1 version'] }).postcss ).
+#           use( compressor ).
 #           process(css);
 autoprefixer = (reqs...) ->
   if reqs.length == 1 and isPlainObject(reqs[0])
