@@ -157,7 +157,7 @@ gulp.task('css', function () {
 ## Safe Mode
 
 PostCSS has a special safe mode to parse broken CSS. If you set the `safe: true`
-option to the `process` method, it will  parse `a {` as `a {}`:
+option to the `process` method, it will  parse `a {` as `a {}`:
 
 ```js
 autoprefixer.process('a {');                 // will throw “Unclosed block”
