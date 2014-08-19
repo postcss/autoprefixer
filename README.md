@@ -14,14 +14,8 @@ entirely):
 }
 ```
 
-Process your CSS by Autoprefixer:
-
-```js
-var prefixed = autoprefixer.process(css).css;
-```
-
-It will use the data based on current browser popularity and property support
-to apply prefixes for you:
+Autoprefixer will use the data based on current browser popularity and property
+support to apply prefixes for you:
 
 ```css
 :-webkit-full-screen a {
@@ -55,46 +49,17 @@ Sponsored by [Evil Martians]. Based on [PostCSS] framework.
 
 ### Forget about prefixes
 
-The best tool is a tool you can’t see and one that does the work for you.
-This is the main idea behind Autoprefixer.
-
 Working with Autoprefixer is simple: just forget about vendor prefixes
 and write normal CSS according to the latest W3C specs. You don’t need
-a special language (like Sass) or special mixins.
+a special language (like Sass) or remember, where you must use mixins.
+
+Autoprefixer supports selectors (like `:fullscreen` and `::selection`),
+unit function (`calc()`), at-rules (`@support` and `@keyframes`) and properties.
 
 Because Autoprefixer is a postprocessor for CSS,
 you can also use it with preprocessors such as Sass, Stylus or LESS.
 
-### Actual data from Can I Use
-
-Autoprefixer utilizes the most recent data from [Can I Use](http://caniuse.com/)
-to add only necessary vendor prefixes. It also removes old, unnecessary prefixes from your CSS (like `border-radius` prefixes, produced by many CSS libraries).
-
-```css
-a {
-    -webkit-border-radius: 5px;
-            border-radius: 5px;
-}
-```
-
-compiles to:
-
-```css
-a {
-    border-radius: 5px;
-}
-```
-
-Note that Autoprefixer doesn’t load [Can I Use](http://caniuse.com/) data every time.
-It takes it from the [caniuse-db](https://www.npmjs.org/package/caniuse-db) dependency.
-If you use Autoprefixer from `npm`, keeping your `autoprefixer` and `caniuse-db`
-packages up to date will allow Autoprefixer to use the most recent data.
-
 ### Flexbox, Gradients, etc.
-
-Flexbox or gradients have different syntaxes in different browsers.
-For them to display properly you sometimes need to recalculate angles
-or use old properties instead of new ones, but Autoprefixer hides this from you.
 
 Just write normal CSS according to the latest W3C specs and Autoprefixer
 will produce the code for old browsers.
@@ -119,13 +84,32 @@ a {
 
 Autoprefixer has [22 special hacks](https://github.com/ai/autoprefixer/tree/master/lib/hacks) to fix web browser differences.
 
+### Actual data from Can I Use
+
+Autoprefixer utilizes the most recent data from [Can I Use](http://caniuse.com/)
+to add only necessary vendor prefixes.
+
+It also removes old, unnecessary prefixes from your CSS (like `border-radius`
+prefixes, produced by many CSS libraries).
+
+```css
+a {
+    -webkit-border-radius: 5px;
+            border-radius: 5px;
+}
+```
+
+compiles to:
+
+```css
+a {
+    border-radius: 5px;
+}
+```
+
 ## Browsers
 
 You can specify the browsers you want to target in your project:
-
-```js
-autoprefixer("last 1 version", "> 1%", "Explorer 7").process(css).css;
-```
 
 * `last 2 versions` targets the last versions for each browser, see [Google's version support](http://support.google.com/a/bin/answer.py?answer=33864).
 * `last 2 Chrome versions` targets the last versions of a specific browser.
@@ -137,13 +121,10 @@ autoprefixer("last 1 version", "> 1%", "Explorer 7").process(css).css;
 * `none` will not target any browsers.
 
 Blackberry and stock Android browsers will not be used in `last n versions`.
-You can add them by name:
-
-```js
-autoprefixer("last 1 version", "BlackBerry 10", "Android 4").process(css).css;
-```
+You should add them by name.
 
 Browsers names (case insensitive):
+
 * `Android` for old Android stock browser.
 * `BlackBerry` or `bb` for Blackberry browser.
 * `Chrome` for Google Chrome.
@@ -160,6 +141,7 @@ Browsers names (case insensitive):
 * `ExplorerMobile` or `ie_mob` for Internet Explorer Mobile.
 
 By default, Autoprefixer uses `> 1%, last 2 versions, Firefox ESR, Opera 12.1`:
+
 * Latest [Firefox ESR] is a 24 version.
 * Opera 12.1 will be in list until Opera supports non-Blink 12.x branch.
 
@@ -167,34 +149,13 @@ By default, Autoprefixer uses `> 1%, last 2 versions, Firefox ESR, Opera 12.1`:
 
 ## Source Map
 
-You must set input and output CSS files paths (using `from` and `to` options)
-to generate a correct map.
-
 Autoprefixer can modify previous source maps (for example, from Sass):
 it will autodetect a previous map if it is listed in an annotation comment.
-You can disable source map with `map: false` or set the previous source map
-content manually to `map.prev` option (as a string or a object).
-
-```js
-var result = autoprefixer.process(css, {
-    map:   { prev: fs.readFileSync('main.sass.css.map') },
-    from: 'main.sass.css',
-    to:   'main.min.css'
-});
-
-result.css //=> CSS with source map annotation comment
-result.map //=> Source map from main.sass to main.min.css
-
-fs.writeFileSync('main.min.css.map', result.map);
-```
 
 Autoprefixer supports inline source maps too. If an input CSS contains
 annotation from the previous step with a map in `data:uri`, Autoprefixer will
 update the source map with prefix changes and inline the new map back into
 the output CSS.
-
-You can read more about the source map options in
-[PostCSS documentation](https://github.com/ai/postcss#source-map-1).
 
 ## Visual Cascade
 
@@ -210,20 +171,6 @@ a {
 ```
 
 You can disable cascade by using the `cascade: false` option.
-
-## Safe Mode
-
-PostCSS has a special safe mode to parse broken CSS. If you set the `safe: true`
-option to the `process` method, it will try to fix any CSS syntax errors
-that it finds. For example, it will parse `a {` as `a {}`.
-
-```js
-autoprefixer.process('a {');                 // will throw “Unclosed block”
-autoprefixer.process('a {', { safe: true }); // will process as a closed block
-```
-
-It is useful for legacy code when using several hacks, or interactive
-tools with live input, like [Autoprefixer demo](http://jsfiddle.net/simevidas/udyTs/show/light/).
 
 ## Disabling
 
@@ -267,21 +214,6 @@ You can also use comments recursively:
         /* autoprefixer: off */
     }
 }
-```
-
-## Debug
-
-You can check which browsers are selected and which properties will be prefixed:
-
-```js
-info = autoprefixer("last 1 version").info();
-console.log(info);
-```
-
-Or by CLI command:
-
-```sh
-autoprefixer -i
 ```
 
 ## FAQ
@@ -335,42 +267,6 @@ and `-webkit-appearance`. Quote from [MDN](https://developer.mozilla.org/en-US/d
 > behavior changes from one browser to another. Even the keyword `none` does not
 > have the same behavior on each form element across different browsers, and
 > some do not support it at all.
-
-### Why does Autoprefixer use CoffeeScript?
-
-JavaScript is very popular, but this is also the same reason why its syntax
-doesn’t evolve. There’s an entire internet with legacy code that has to
-be supported by browsers. When new features are added, they will have to be
-supported for a long time to maintain backwards compatibility.
-This is bad for innovation, as new features has to be drafted for months and
-years before released as official features in the language specifications.
-
-As a result, JavaScript doesn’t have even basic syntax features which are
-present in other languages like Ruby or Python. There are no string
-interpolation, short lambda syntax, foreach statement for arrays, string and
-arrays slicing, etc. These features are really important and they will be
-in ECMAScript 6 (first update of JS syntax after 15 years), but this
-new specification is still not released and, of course, we must wait until
-all browsers support it.
-
-With JavaScript preprocessors like CoffeeScript or TypeScript we can bring
-innovation back. We can add a new operator and use it right now, without waiting
-for support in all browsers.
-
-Autoprefixer was written in pure JavaScript before, but CoffeeScript made
-Autoprefixer code much cleaner and more readable. Often, 2 lines of code
-became 1.
-
-Don’t be afraid of CoffeeScript. It’s just a new syntax, not another language
-(like ClojureScript). You can open [examples on CoffeeScript.org] and start
-to code. After a week your eyes will adjust and you will see that CoffeeScript
-is cleaner and more readable.
-
-Situation with CoffeeScript and JavaScript is absolutely the same as with
-CSS preprocessors and postprocessors. How can we develop a CSS postprocessor
-and avoid using a JS preproccesor :).
-
-[examples on CoffeeScript.org]: http://coffeescript.org/
 
 ## Usage
 
