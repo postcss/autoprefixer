@@ -13,7 +13,7 @@
     "autoprefixer-core": "postcss/autoprefixer-core",
     "es6-transpiler":    "~0.7.14-2",
     "fs-extra":          "~0.11.0",
-    "postcss":           "~2.2.0"
+    "postcss":           "~2.2.1"
   },
   "devDependencies": {
     "gulp-es6-transpiler": "1.0.0",
@@ -26,7 +26,7 @@
     "fs-extra":            "0.11.0",
     "request":             "2.40.0",
     "should":              "4.0.4",
-    "stylus":              "0.47.3",
+    "stylus":              "0.48.1",
     "mocha":               "1.21.4",
     "gulp":                "3.8.7",
     "nib":                 "1.0.3"
