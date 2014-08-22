@@ -279,13 +279,13 @@ grunt.loadNpmTasks('grunt-autoprefixer');
 
 ### Gulp
 
-In Gulp you can use [gulp-postcss] with `autoprefixer` npm package.
+In Gulp you can use [gulp-postcss] with `autoprefixer-core` npm package.
 
 ```js
 gulp.task('autoprefixer', function () {
     var postcss      = require('gulp-postcss');
     var sourcemaps   = require('gulp-sourcemaps');
-    var autoprefixer = require('autoprefixer');
+    var autoprefixer = require('autoprefixer-core');
 
     return gulp.src('./src/*.css')
         .pipe(sourcemaps.init())
