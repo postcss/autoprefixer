@@ -1,3 +1,8 @@
+## 3.0 “Liberté, Égalité, Fraternité”
+* Project was split to autoprefixer (with CLI) and autoprefixer-core.
+* `autoprefixer()` now receives only `options` object with `browsers` key.
+* GNU format for syntax error messages from PostCSS 2.2.
+
 ## 2.2 “Mobilis in mobili”
 * Allow to disable Autoprefixer for some rule by control comment.
 * Use PostCSS 2.1 with Safe Mode option and broken source line

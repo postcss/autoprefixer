@@ -1,6 +1,6 @@
 {
   "name": "autoprefixer-core",
-  "version": "2.2.0",
+  "version": "3.0.0",
   "description": "CLI-less core of Autoprefixer to use in plugins",
   "keywords": ["autoprefixer", "css", "prefix", "postprocessor", "postcss"],
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
