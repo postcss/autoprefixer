@@ -1,40 +1,40 @@
 {
-  "name": "autoprefixer",
-  "version": "3.0.0",
-  "description": "Parse CSS and add vendor prefixes to CSS rules using values from the Can I Use website",
-  "keywords": ["css", "prefix", "postprocessor", "postcss"],
-  "author": "Andrey Sitnik <andrey@sitnik.ru>",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/postcss/autoprefixer.git"
-  },
-  "dependencies": {
-    "autoprefixer-core": "~3.0.0",
-    "es6-transpiler":    "~0.7.14-2",
-    "fs-extra":          "~0.11.0",
-    "postcss":           "~2.2.1"
-  },
-  "devDependencies": {
-    "gulp-es6-transpiler": "1.0.0",
-    "gulp-json-editor":    "2.0.2",
-    "jshint-stylish":      "0.4.0",
-    "gulp-replace":        "0.4.0",
-    "gulp-jshint":         "1.8.4",
-    "gulp-mocha":          "1.0.0",
-    "gulp-util":           "3.0.0",
-    "fs-extra":            "0.11.0",
-    "request":             "2.40.0",
-    "should":              "4.0.4",
-    "stylus":              "0.48.1",
-    "mocha":               "1.21.4",
-    "gulp":                "3.8.7",
-    "nib":                 "1.0.3"
-  },
-  "bin": {
-    "autoprefixer": "autoprefixer"
-  },
-  "scripts": {
-    "test": "gulp"
-  }
+    "name": "autoprefixer",
+    "version": "3.0.0",
+    "description": "Parse CSS and add vendor prefixes to CSS rules using values from the Can I Use website",
+    "keywords": ["css", "prefix", "postprocessor", "postcss"],
+    "author": "Andrey Sitnik <andrey@sitnik.ru>",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/postcss/autoprefixer.git"
+    },
+    "dependencies": {
+        "autoprefixer-core": "~3.0.0",
+        "es6-transpiler":    "~0.7.14-2",
+        "fs-extra":          "~0.11.0",
+        "postcss":           "~2.2.1"
+    },
+    "devDependencies": {
+        "gulp-es6-transpiler": "1.0.0",
+        "gulp-json-editor":    "2.0.2",
+        "jshint-stylish":      "0.4.0",
+        "gulp-replace":        "0.4.0",
+        "gulp-jshint":         "1.8.4",
+        "gulp-mocha":          "1.0.0",
+        "gulp-util":           "3.0.0",
+        "fs-extra":            "0.11.0",
+        "request":             "2.40.0",
+        "should":              "4.0.4",
+        "stylus":              "0.48.1",
+        "mocha":               "1.21.4",
+        "gulp":                "3.8.7",
+        "nib":                 "1.0.3"
+    },
+    "bin": {
+        "autoprefixer": "autoprefixer"
+    },
+    "scripts": {
+        "test": "gulp"
+    }
 }
