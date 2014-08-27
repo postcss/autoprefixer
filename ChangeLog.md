@@ -1,3 +1,6 @@
+## 3.0.1
+* Fix `autoprefixer.postcss` in callbacks.
+
 ## 3.0 “Liberté, Égalité, Fraternité”
 * Project was split to autoprefixer (with CLI) and autoprefixer-core.
 * `autoprefixer()` now receives only `options` object with `browsers` key.
