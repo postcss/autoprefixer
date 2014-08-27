@@ -289,7 +289,7 @@ gulp.task('autoprefixer', function () {
 
     return gulp.src('./src/*.css')
         .pipe(sourcemaps.init())
-        .pipe(postcss( autoprefixer.postcss ))
+        .pipe(postcss( autoprefixer ))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('./dest'));
 });
@@ -395,7 +395,7 @@ it with [other processors] and parse CSS only once:
 
 ```js
 postcss().
-    use( autoprefixer({ browsers: ['> 1%', 'IE 9'] }).postcss ).
+    use( autoprefixer({ browsers: ['> 1%', 'IE 9'] }) ).
     use( compressor ).
     process(css);
 ```
