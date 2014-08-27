@@ -81,7 +81,7 @@ autoprefixer.process = (str, options = {}) ->
 
 # PostCSS with default Autoprefixer
 autoprefixer.postcss = (css) ->
-  @loadDefault().postcss(css)
+  autoprefixer.loadDefault().postcss(css)
 
 # Inspect with default Autoprefixer
 autoprefixer.info = ->

@@ -142,8 +142,12 @@ describe 'Autoprefixer', ->
   describe 'postcss()', ->
 
     it 'is a PostCSS filter', ->
-      processor = postcss( compiler )
-      processor.process( read('values') ).css.should.eql( read('values.out') )
+      postcss( compiler ).process( read('values') ).css
+        .should.eql( read('values.out') )
+
+    it 'is a PostCSS filter with default browsers', ->
+      postcss( autoprefixer ).process( read('values') ).css
+        .should.be.type('string')
 
   describe 'info()', ->
 
