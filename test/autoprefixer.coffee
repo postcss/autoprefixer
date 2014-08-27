@@ -142,7 +142,7 @@ describe 'Autoprefixer', ->
   describe 'postcss()', ->
 
     it 'is a PostCSS filter', ->
-      processor = postcss( compiler.postcss )
+      processor = postcss( compiler )
       processor.process( read('values') ).css.should.eql( read('values.out') )
 
   describe 'info()', ->

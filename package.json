@@ -12,7 +12,7 @@
     "dependencies": {
         "coffee-script": "1.7.1",
         "caniuse-db":    "^1.0.20140821",
-        "postcss":       "~2.2.1"
+        "postcss":       "~2.2.2"
     },
     "devDependencies": {
         "vinyl-source-stream": "0.1.1",
