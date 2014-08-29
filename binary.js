@@ -37,7 +37,7 @@ Options:
       --no-map-annotation  skip source map annotation comment is CSS
       --sources-content    Include origin CSS into map
       --no-cascade         do not create nice visual cascade of prefixes
-      --safe               tryt of fix CSS syntax errors
+      --safe               try to fix CSS syntax errors
   -i, --info               show selected browsers and properties
   -h, --help               show help text
   -v, --version            print program version`);
