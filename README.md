@@ -355,7 +355,7 @@ stylus -u autoprefixer-stylus -w file.styl
 
 CodeKit, since the 2.0 version, contains Autoprefixer. In the After Compiling
 section, there is a checkbox to enable Autoprefixer. Read [CodeKit docs]
-for more inforamtion.
+for more information.
 
 [CodeKit docs]: https://incident57.com/codekit/help.html#autoprefixer
 
