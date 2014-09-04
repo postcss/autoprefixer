@@ -10,7 +10,7 @@ entirely):
 
 ```css
 :fullscreen a {
-    transition: transform 1s
+    transition: transform 1s;
 }
 ```
 
