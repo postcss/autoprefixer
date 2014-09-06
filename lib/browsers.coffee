@@ -90,6 +90,18 @@ class Browsers
           filter = (v) -> v >= version
         data.versions.filter(filter).map (v) -> "#{data.name} #{v}"
 
+    olderThan:
+      regexp: /^(\w+) (<=?)\s*([\d\.]+)/
+      select: (browser, sign, version) ->
+        data    = @byName(browser)
+        version = parseFloat(version)
+
+        if sign == '<'
+          filter = (v) -> v < version
+        else if sign == '<='
+          filter = (v) -> v <= version
+        data.versions.filter(filter).map (v) -> "#{data.name} #{v}"
+
     esr:
       regexp: /^(firefox|ff|fx) esr$/i
       select: ->
