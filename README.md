@@ -120,6 +120,8 @@ You can specify the browsers you want to target in your project:
 * `> 5%` declares browser versions selected by global usage statistics.
 * `Firefox > 20` targets versions of Firefox newer than 20.
 * `Firefox >= 20` targets versions of Firefox newer than or equal to 20.
+* `Firefox < 20` targets versions of Firefox less than 20.
+* `Firefox <= 20` targets versions of Firefox less than or equal to 20.
 * `Firefox ESR` specifies the latest [Firefox ESR] version.
 * `ios 7` will set the browser version directly.
 * `none` will not target any browsers.
