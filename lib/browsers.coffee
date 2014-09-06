@@ -78,7 +78,7 @@ class Browsers
           else
             data.versions.filter (version, i) -> data.popularity[i] > popularity
 
-    newerThen:
+    newerThan:
       regexp: /^(\w+) (>=?)\s*([\d\.]+)/
       select: (browser, sign, version) ->
         data    = @byName(browser)
