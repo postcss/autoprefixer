@@ -78,7 +78,7 @@ class Browsers
           else
             data.versions.filter (version, i) -> data.popularity[i] > popularity
 
-    newerThen:
+    newerThan:
       regexp: /^(\w+) (>=?)\s*([\d\.]+)/
       select: (browser, sign, version) ->
         data    = @byName(browser)
@@ -88,6 +88,18 @@ class Browsers
           filter = (v) -> v > version
         else if sign == '>='
           filter = (v) -> v >= version
+        data.versions.filter(filter).map (v) -> "#{data.name} #{v}"
+
+    olderThan:
+      regexp: /^(\w+) (<=?)\s*([\d\.]+)/
+      select: (browser, sign, version) ->
+        data    = @byName(browser)
+        version = parseFloat(version)
+
+        if sign == '<'
+          filter = (v) -> v < version
+        else if sign == '<='
+          filter = (v) -> v <= version
         data.versions.filter(filter).map (v) -> "#{data.name} #{v}"
 
     esr:
