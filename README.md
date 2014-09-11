@@ -153,6 +153,8 @@ By default, Autoprefixer uses `> 1%, last 2 versions, Firefox ESR, Opera 12.1`:
 
 [Firefox ESR]: http://www.mozilla.org/en/firefox/organizations/faq/
 
+Targeted browsers are evaluated with an `AND` operation. For example with `['> 1%', 'ie >= 10']`, even if IE9 has over 1% usage, then the vendor-prefix would not be included because (`> 1%` AND `ie >= 10`) would be false.
+
 ## Source Map
 
 Autoprefixer can modify previous source maps (for example, from Sass):
