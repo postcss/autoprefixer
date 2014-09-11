@@ -153,6 +153,8 @@ By default, Autoprefixer uses `> 1%, last 2 versions, Firefox ESR, Opera 12.1`:
 
 [Firefox ESR]: http://www.mozilla.org/en/firefox/organizations/faq/
 
+Conflicts between rules are resolved with an `AND` operation. For example, you define browser support as `['> 1%', 'ie >= 10']`. Imagine a property that does not require a vendor-prefix in IE10, but does require a vendor-prefix in IE9. If IE9 has over 1% usage, then the vendor-prefix would be included because (`> 1%` AND `ie >= 10`) would be true. If IE9 has under 1% usage, then the vendor-prefix would not be included because (`> 1%` AND `ie >= 10`) would false.
+
 ## Source Map
 
 Autoprefixer can modify previous source maps (for example, from Sass):
