@@ -47,7 +47,7 @@ class Value extends Prefixer
   # Save values with next prefixed token
   add: (decl, prefix) ->
     decl._autoprefixerValues ||= { }
-    value = decl._autoprefixerValues[prefix] || decl.value
+    value = decl._autoprefixerValues[prefix] || decl._value?.raw || decl.value
     value = @replace(value, prefix)
     decl._autoprefixerValues[prefix] = value if value
 
