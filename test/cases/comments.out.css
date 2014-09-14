@@ -3,6 +3,8 @@ a {
     -webkit-transition: all 1s;
          -o-transition: all 1s;
             transition: all 1s;
+    height: -webkit-calc(/* comment before */100% - /* comment inside */ 10px/* comment after */);
+    height: calc(/* comment before */100% - /* comment inside */ 10px/* comment after */);
 }
 
 /* placeholder */

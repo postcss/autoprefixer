@@ -1,6 +1,7 @@
 a {
     /* transition */
     transition: all 1s;
+    height: calc(/* comment before */100% - /* comment inside */ 10px/* comment after */);
 }
 
 /* placeholder */
