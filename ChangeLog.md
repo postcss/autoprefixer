@@ -1,3 +1,10 @@
+## 3.1 “Satyameva Jayate”
+* Do not remove comments from prefixed values (by Eitan Rousso).
+* Allow Safari 6.1 to use final Flexbox spec (by John Kreitlow).
+* Fix `filter` value in `transition` in Webkits.
+* Show greetings if your browsers don’t require any prefixes.
+* Add `<=` and `<` browsers requirement.
+
 ## 3.0.1
 * Fix `autoprefixer.postcss` in callbacks.
 
