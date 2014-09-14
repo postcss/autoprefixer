@@ -77,8 +77,7 @@ describe 'info', ->
     browsers = new Browsers(data.browsers, ['ie 1'])
     prefixes = new Prefixes(data.prefixes, browsers)
 
-    info(prefixes).should.eql "Browsers:\n" +
-                                 "  IE: 1\n"
+    info(prefixes).should.match(/remove Autoprefixer/)
 
   it 'returns string for empty browsers', ->
     browsers = new Browsers(data.browsers, [])

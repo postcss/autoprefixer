@@ -38,13 +38,13 @@ module.exports = (prefixes) ->
   for name, data of prefixes.add
     if name[0] == '@' and data.prefixes
       atrules += prefix(name, false, data.prefixes)
-  out += "\nAt-Rules:\n" + atrules if atrules  != ''
+  out += "\nAt-Rules:\n" + atrules if atrules != ''
 
   selectors = ''
   for selector in prefixes.add.selectors
     if selector.prefixes
       selectors += prefix(selector.name, false, selector.prefixes)
-  out += "\nSelectors:\n" + selectors if selectors  != ''
+  out += "\nSelectors:\n" + selectors if selectors != ''
 
   values = ''
   props  = ''
@@ -68,5 +68,9 @@ module.exports = (prefixes) ->
 
   out += "\nProperties:\n" + props  if props  != ''
   out += "\nValues:\n"     + values if values != ''
+
+  if atrules == '' and selectors == '' and props == '' and values == ''
+    out += '\nAwesome! Your browsers don\'t require any vendor prefixes.' +
+           '\nNow you can remove Autoprefixer from build steps.'
 
   out
