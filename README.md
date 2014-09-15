@@ -235,7 +235,7 @@ No. Autoprefixer only adds prefixes, not polyfills. There are two reasons:
    for styling should be ignored in old IEs as it is recommended for
    graceful degradation.
 
-#### Why doesn’t gradients work in Firefox?
+#### Why don't gradients work in Firefox?
 
 Make sure that you use correct the [direction syntax].
 For example, you should use `to bottom` instead of `top`:
