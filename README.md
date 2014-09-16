@@ -118,7 +118,7 @@ Options:
 
   * `inline: true` to force inline map to CSS annotation comment.
     You can shortcut `map { inline: true }` to `map: 'inline'`.
-  * `prev` (strong or object): map content from previous processing step
+  * `prev` (string or object): map content from previous processing step
     (like Sass compilation).
 
   If you set `map: false`, PostCSS will remove source map.
