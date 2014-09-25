@@ -270,14 +270,23 @@ and `-webkit-appearance`.
 
 ### Grunt
 
-You can use the [grunt-autoprefixer] plugin for Grunt.
-Install the npm package and add it to Gruntfile:
+You can use the [grunt-postcss] plugin for Grunt with `autoprefixer-core`.
+Install the npm package and add it to `Gruntfile`:
 
 ```js
-grunt.loadNpmTasks('grunt-autoprefixer');
+grunt.initConfig({
+    postcss: {
+        options: {
+            processors: [ require('autoprefixer-core').postcss ]
+        },
+        dist: { src: 'css/*.css' }
+    },
+});
+
+grunt.loadNpmTasks('grunt-postcss');
 ```
 
-[grunt-autoprefixer]: https://github.com/nDmitry/grunt-autoprefixer
+[grunt-postcss]: https://github.com/nDmitry/grunt-postcss
 
 ### Gulp
 
