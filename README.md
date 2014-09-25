@@ -39,7 +39,7 @@ Twitter account for news and releases: [@autoprefixer].
 
 Sponsored by [Evil Martians]. Based on [PostCSS] framework.
 
-[interactive demo]: http://jsfiddle.net/simevidas/udyTs/show/light/
+[interactive demo]: http://simevidas.jsbin.com/gufoko/quiet
 [@autoprefixer]:    https://twitter.com/autoprefixer
 [Evil Martians]:    http://evilmartians.com/
 [Can I Use]:        http://caniuse.com/
