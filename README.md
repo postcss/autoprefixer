@@ -270,14 +270,18 @@ and `-webkit-appearance`.
 
 ### Grunt
 
-You can use the [grunt-postcss] plugin for Grunt with `autoprefixer-core`.
-Install the npm package and add it to `Gruntfile`:
+You can use the [grunt-postcss] plugin for Grunt with `autoprefixer-core`
+and [other PostCSS plugins]. Install the npm package and add it to `Gruntfile`:
 
 ```js
+var autoprefixer = require('autoprefixer-core');
+
 grunt.initConfig({
     postcss: {
         options: {
-            processors: [ require('autoprefixer-core').postcss ]
+            processors: [
+              autoprefixer({ browsers: ['last 2 version'] }).postcss
+            ]
         },
         dist: { src: 'css/*.css' }
     },
@@ -286,7 +290,8 @@ grunt.initConfig({
 grunt.loadNpmTasks('grunt-postcss');
 ```
 
-[grunt-postcss]: https://github.com/nDmitry/grunt-postcss
+[other PostCSS plugins]: https://github.com/postcss/postcss#built-with-postcss
+[grunt-postcss]:         https://github.com/nDmitry/grunt-postcss
 
 ### Gulp
 
@@ -300,7 +305,7 @@ gulp.task('autoprefixer', function () {
 
     return gulp.src('./src/*.css')
         .pipe(sourcemaps.init())
-        .pipe(postcss([autoprefixer]))
+        .pipe(postcss([ autoprefixer({ browsers: ['last 2 version'] }) ]))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('./dest'));
 });
@@ -312,10 +317,34 @@ with [other PostCSS plugins].
 [other PostCSS plugins]: https://github.com/postcss/postcss#built-with-postcss
 [gulp-postcss]:          https://github.com/w0rm/gulp-postcss
 
+### Webpack
+
+In [webpack] you can use [postcss-loader] with `autoprefixer-core`
+and [other PostCSS plugins].
+
+```js
+var autoprefixer = require('autoprefixer-core');
+
+module.exports = {
+    module: {
+        loaders: [
+            {
+                test:   /\.css$/,
+                loader: "style-loader!css-loader!postcss-loader"
+            }
+        ]
+    },
+    postcss: [ autoprefixer({ browsers: ['last 2 version'] }) ]
+}
+```
+
+[other PostCSS plugins]: https://github.com/postcss/postcss#built-with-postcss
+[postcss-loader]:        https://github.com/postcss/postcss-loader
+[webpack]:               http://webpack.github.io/
+
 ### Other Build Tools:
 
 * **Ruby on Rails**: [autoprefixer-rails]
-* **Webpack**: [autoprefixer-loader]
 * **Brunch**: [autoprefixer-brunch]
 * **Broccoli**: [broccoli-autoprefixer]
 * **Middleman**: [middleman-autoprefixer]
