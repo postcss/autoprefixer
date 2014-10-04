@@ -8,7 +8,7 @@ describe 'Keyframes', ->
       keyframes = new Keyframes('@keyframes', ['-moz-', '-ms-'])
 
       css = parse('@-moz-keyframes b {} @-ms-keyframes a {} @keyframes a {}')
-      keyframes.process(css.rules[2])
+      keyframes.process(css.childs[2])
       css.toString().should.eql('@-moz-keyframes b {} ' +
                                 '@-ms-keyframes a {} ' +
                                 '@-moz-keyframes a {} ' +

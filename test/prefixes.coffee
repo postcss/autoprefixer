@@ -138,19 +138,19 @@ describe 'Prefixes', ->
         css   = parse('a { -ms-a: 1; -o-a: 1; a: 1; b: 2 }')
         props = []
 
-        empty.group(css.rules[0].decls[0]).down (i) -> props.push(i.prop)
+        empty.group(css.first.first).down (i) -> props.push(i.prop)
         props.should.eql ['-o-a', 'a']
 
       it 'checks prefix groups', ->
         css   = parse('a { -ms-a: 1; -o-a: 1; a: -o-calc(1); a: 1; a: 2 }')
         props = []
 
-        empty.group(css.rules[0].decls[0]).down (i) -> props.push(i.prop)
+        empty.group(css.first.first).down (i) -> props.push(i.prop)
         props.should.eql ['-o-a', 'a', 'a']
 
       it 'returns check decls inside group', ->
         css  = parse('a { -moz-a: 1; -ms-a: 1; -o-a: 1; a: 1 }')
-        decl = css.rules[0].decls[0]
+        decl = css.first.first
 
         empty.group(decl).down( (i) -> i.prop == '-o-a' ).should.be.true
         empty.group(decl).down( (i) -> i.prop == '-o-b' ).should.be.false
@@ -161,19 +161,19 @@ describe 'Prefixes', ->
         css   = parse('a { b: 2; -ms-a: 1; -o-a: 1; a: 1 }')
         props = []
 
-        empty.group(css.rules[0].decls[3]).up (i) -> props.push(i.prop)
+        empty.group(css.first.childs[3]).up (i) -> props.push(i.prop)
         props.should.eql ['-o-a', '-ms-a']
 
       it 'checks prefix groups', ->
         css   = parse('a { a: 2; -ms-a: 1; -o-a: 1; a: -o-calc(1); a: 1  }')
         props = []
 
-        empty.group(css.rules[0].decls[4]).up (i) -> props.push(i.prop)
+        empty.group(css.first.childs[4]).up (i) -> props.push(i.prop)
         props.should.eql ['a', '-o-a', '-ms-a']
 
       it 'returns check decls inside group', ->
         css  = parse('a { -moz-a: 1; -ms-a: 1; -o-a: 1; a: 1 }')
-        decl = css.rules[0].decls[3]
+        decl = css.first.childs[3]
 
         empty.group(decl).up( (i) -> i.prop == '-ms-a' ).should.be.true
         empty.group(decl).up( (i) -> i.prop == '-ms-b' ).should.be.false

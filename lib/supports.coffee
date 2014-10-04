@@ -25,12 +25,12 @@ class Supports
     prefixer = @all.add[prop]
     prefixer?.process?(rule.first)
 
-    for decl in rule.decls
+    for decl in rule.childs
       for value in @all.values('add', prop)
         value.process(decl)
       Value.save(@all, decl)
 
-    rule.decls
+    rule.childs
 
   # Remove all unnecessary prefixes
   clean: (params) ->

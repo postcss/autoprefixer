@@ -11,26 +11,26 @@ describe 'OldSelector', ->
 
     it 'returns true on last rule', ->
       css = parse('::selection {} ::-moz-selection {}')
-      @old.isHack(css.rules[1]).should.be.true
+      @old.isHack(css.childs[1]).should.be.true
 
     it 'stops on another type', ->
       css = parse('::-moz-selection {} @keyframes anim {} ::selection {}')
-      @old.isHack(css.rules[0]).should.be.true
+      @old.isHack(css.first).should.be.true
 
     it 'stops on another selector', ->
       css = parse('::-moz-selection {} a {} ::selection {}')
-      @old.isHack(css.rules[0]).should.be.true
+      @old.isHack(css.first).should.be.true
 
     it 'finds unprefixed selector', ->
       css = parse('::-moz-selection {} ::-o-selection {} ::selection {}')
-      @old.isHack(css.rules[0]).should.be.false
+      @old.isHack(css.first).should.be.false
 
   describe 'check()', ->
 
     it 'finds old selector', ->
       css = parse('body::-moz-selection {} body::selection {}')
-      @old.check(css.rules[0]).should.be.true
+      @old.check(css.first).should.be.true
 
     it 'finds right', ->
       css = parse('body:::-moz-selection {}')
-      @old.check(css.rules[0]).should.be.false
+      @old.check(css.first).should.be.false

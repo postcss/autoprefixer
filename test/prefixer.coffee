@@ -35,7 +35,7 @@ describe 'Prefixer', ->
   describe '.clone()', ->
 
     it 'cleans custom properties', ->
-      rule = @css.rules[0].rules[0]
+      rule = @css.first.first
       rule._autoprefixerPrefix = '-ms-'
       rule._autoprefixerValues = { '-ms-': 1 }
 
@@ -47,7 +47,7 @@ describe 'Prefixer', ->
 
     it 'fixed declaration between', ->
       css = parse('a { color : black }')
-      cloned = Prefixer.clone(css.rules[0].first)
+      cloned = Prefixer.clone(css.first.first)
       cloned.between.should.eql(' : ')
 
   describe 'parentPrefix', ->
@@ -56,21 +56,21 @@ describe 'Prefixer', ->
       @prefix.parentPrefix(@css).should.be.false
 
     it 'finds in at-rules', ->
-      @prefix.parentPrefix(@css.rules[0]).should.eql('-ms-')
+      @prefix.parentPrefix(@css.first).should.eql('-ms-')
 
     it 'finds in selectors', ->
-      @prefix.parentPrefix(@css.rules[1]).should.eql('-moz-')
+      @prefix.parentPrefix(@css.childs[1]).should.eql('-moz-')
 
     it 'finds in parents', ->
-      @prefix.parentPrefix(@css.rules[0].rules[0]).should.eql('-ms-')
-      @prefix.parentPrefix(@css.rules[2]).should.be.false
+      @prefix.parentPrefix(@css.first.first).should.eql('-ms-')
+      @prefix.parentPrefix(@css.childs[2]).should.be.false
 
     it 'caches prefix', ->
-      @prefix.parentPrefix(@css.rules[0])
-      @css.rules[0]._autoprefixerPrefix.should.eql('-ms-')
+      @prefix.parentPrefix(@css.first)
+      @css.first._autoprefixerPrefix.should.eql('-ms-')
 
-      @css.rules[0]._autoprefixerPrefix = false
-      @prefix.parentPrefix(@css.rules[0]).should.be.false
+      @css.first._autoprefixerPrefix = false
+      @prefix.parentPrefix(@css.first).should.be.false
 
     it 'finds only browsers prefixes', ->
-      @prefix.parentPrefix(@css.rules[2]).should.be.false
+      @prefix.parentPrefix(@css.childs[2]).should.be.false

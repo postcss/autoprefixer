@@ -14,7 +14,7 @@ describe 'Value', ->
 
     it 'clones declaration', ->
       css   = parse('a { prop: v }')
-      width = css.rules[0].decls[0]
+      width = css.first.first
 
       width._autoprefixerValues = { '-ms-': '-ms-v' }
       Value.save(prefixes, width)
@@ -23,7 +23,7 @@ describe 'Value', ->
 
     it 'updates declaration with prefix', ->
       css   = parse('a { -ms-prop: v }')
-      width = css.rules[0].decls[0]
+      width = css.first.first
 
       width._autoprefixerValues = { '-ms-': '-ms-v' }
       Value.save(prefixes, width)
@@ -32,7 +32,7 @@ describe 'Value', ->
 
     it 'ignores on another prefix property', ->
       css   = parse('a { -ms-prop: v; prop: v }')
-      width = css.rules[0].decls[1]
+      width = css.first.childs[1]
 
       width._autoprefixerValues = { '-ms-': '-ms-v' }
       Value.save(prefixes, width)
@@ -41,7 +41,7 @@ describe 'Value', ->
 
     it 'ignores prefixes without changes', ->
       css   = parse('a { prop: v }')
-      width = css.rules[0].decls[0]
+      width = css.first.first
 
       width._autoprefixerValues = { '-ms-': 'v' }
       Value.save(prefixes, width)
@@ -57,12 +57,12 @@ describe 'Value', ->
                       '3: -ms-calc; ' +
                       '4: calced; }')
 
-      @calc.check(css.rules[0].decls[0]).should.be.true
-      @calc.check(css.rules[0].decls[1]).should.be.true
-      @calc.check(css.rules[0].decls[2]).should.be.true
+      @calc.check(css.first.childs[0]).should.be.true
+      @calc.check(css.first.childs[1]).should.be.true
+      @calc.check(css.first.childs[2]).should.be.true
 
-      @calc.check(css.rules[0].decls[3]).should.be.false
-      @calc.check(css.rules[0].decls[4]).should.be.false
+      @calc.check(css.first.childs[3]).should.be.false
+      @calc.check(css.first.childs[4]).should.be.false
 
   describe 'old()', ->
 
@@ -79,7 +79,7 @@ describe 'Value', ->
 
     it 'adds prefixes', ->
       css   = parse('a { width: calc(1em) calc(1%) }')
-      width = css.rules[0].decls[0]
+      width = css.first.first
 
       @calc.process(width)
       width._autoprefixerValues.should.eql
@@ -88,7 +88,7 @@ describe 'Value', ->
 
     it 'checks parents prefix', ->
       css   = parse('::-moz-fullscreen a { width: calc(1%) }')
-      width = css.rules[0].decls[0]
+      width = css.first.first
 
       @calc.process(width)
       width._autoprefixerValues.should.eql
@@ -96,7 +96,7 @@ describe 'Value', ->
 
     it 'checks property prefix', ->
       css   = parse('a { -moz-width: calc(1%); -o-width: calc(1%) }')
-      decls = css.rules[0].decls
+      decls = css.first.childs
 
       @calc.process(decls[0])
       decls[0]._autoprefixerValues.should.eql

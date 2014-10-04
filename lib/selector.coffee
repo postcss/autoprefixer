@@ -44,7 +44,7 @@ class Selector extends Prefixer
     index = rule.parent.index(rule) - 1
 
     while index >= 0
-      before = rule.parent.rules[index]
+      before = rule.parent.childs[index]
 
       return false if before.type != 'rule'
 

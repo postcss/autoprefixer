@@ -13,7 +13,7 @@ class OldSelector
   # Is rule is hack without unprefixed version bottom
   isHack: (rule) ->
     index = rule.parent.index(rule) + 1
-    rules = rule.parent.rules
+    rules = rule.parent.childs
 
     while index < rules.length
       before = rules[index].selector
