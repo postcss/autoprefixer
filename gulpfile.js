@@ -56,7 +56,8 @@ gulp.task('standalone', ['build:lib'], function (done) {
         }
 
         build = build.toString().replace(
-            /DP\$0\([^\s]+, "prototype", \{[^{]+\}\);/g, 'try{$&}catch(e){}');
+            /DP\$0\([^\s]+,\s*"prototype",\s*\{[^{]+\}\);/g,
+            'try{$&}catch(e){}');
 
         fs.removeSync(__dirname + '/build/');
 
