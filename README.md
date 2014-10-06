@@ -11,7 +11,7 @@ and plugins list visit [main Autoprefixer] project.
 
 Sponsored by [Evil Martians]. Based on [PostCSS] framework.
 
-[grunt‑autoprefixer]: https://github.com/nDmitry/grunt-autoprefixer)
+[grunt‑autoprefixer]: https://github.com/nDmitry/grunt-autoprefixer
 [main Autoprefixer]:  https://github.com/postcss/autoprefixer
 [Evil Martians]:      http://evilmartians.com/
 [Can I Use]:          http://caniuse.com/
