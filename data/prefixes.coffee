@@ -130,10 +130,13 @@ feature require('caniuse-db/features-json/user-select-none'), (browsers) ->
 # Flexible Box Layout
 feature require('caniuse-db/features-json/flexbox'), (browsers) ->
   browsers = map browsers, (browser, name, version) ->
-    if name == 'safari' and version < 6.1 or
-       name == 'ios_saf' and version < 7
+    if name == 'safari' and version < 6.1
+      browser + ' 2009'
+    else if name == 'ios_saf' and version < 7
       browser + ' 2009'
     else if name == 'chrome' and version < 21
+      browser + ' 2009'
+    else if name == 'android' and version < 4.4
       browser + ' 2009'
     else
       browser
