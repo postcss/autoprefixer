@@ -1,3 +1,6 @@
+## 3.1.1
+* Use Flexbox 2009 spec for Android stock browser < 4.4.
+
 ## 3.1 “Satyameva Jayate”
 * Do not remove comments from prefixed values (by Eitan Rousso).
 * Allow Safari 6.1 to use final Flexbox spec (by John Kreitlow).
