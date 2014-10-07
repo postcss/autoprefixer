@@ -181,7 +181,7 @@ You can disable cascade by using the `cascade: false` option.
 ## Disabling
 
 Autoprefixer was designed to have no interface – it just works. If you need
-some browser specific hack just write prefixed property after unprefixed.
+some browser specific hack just write a prefixed property after the unprefixed one.
 
 ```css
 a {
