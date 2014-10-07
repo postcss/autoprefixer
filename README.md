@@ -181,7 +181,8 @@ You can disable cascade by using the `cascade: false` option.
 ## Disabling
 
 Autoprefixer was designed to have no interface – it just works. If you need
-some browser specific hack just write a prefixed property after the unprefixed one.
+some browser specific hack just write a prefixed property after
+the unprefixed one.
 
 ```css
 a {
@@ -247,8 +248,8 @@ a {
 ```
 
 Unfortunately, unprefixed gradients use a different direction syntax and most
-examples you find use an old gradient syntax, so be careful and use always the
-latest W3C specs with Autoprefixer.
+examples you find use an old gradient syntax, so be careful and use always
+the latest W3C specs with Autoprefixer.
 
 [direction syntax]: https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient
 
