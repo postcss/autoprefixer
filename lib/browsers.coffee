@@ -105,7 +105,7 @@ class Browsers
     esr:
       regexp: /^(firefox|ff|fx) esr$/i
       select: ->
-        ['firefox 24']
+        ['firefox 31']
 
     direct:
       regexp: /^(\w+) ([\d\.]+)$/

@@ -84,7 +84,7 @@ describe 'Browsers', ->
 
     it 'selects Firefox ESR', ->
       browsers = new Browsers(data, ['Firefox ESR'])
-      browsers.selected.should.eql ['firefox 24']
+      browsers.selected.should.eql ['firefox 31']
 
     it 'follows explicit requirements', ->
       browsers = new Browsers(data, ['chrome 5', 'opera 4'])
