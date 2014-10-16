@@ -1,3 +1,6 @@
+## 3.1.2
+* Update Firefox ESR version from 24 to 31.
+
 ## 3.1.1
 * Use Flexbox 2009 spec for Android stock browser < 4.4.
 
