@@ -261,6 +261,21 @@ required on [Can I Use].
 
 [Can I Use]: http://caniuse.com/
 
+#### Why doesn’t Autoprefixer add prefixes for `display: box`, `box-align`, etc?
+
+There was 3 specification versions for Flexbox. For example, 2009 draft
+suggested to write `display: box`, 2012 draft `display: flexbox`,
+but final versions `display: flex`.
+
+Autoprefixer add prefixes only for properties from [final version]
+of Flexbox spec. So, for example, you need to write `display: flex` instead
+of `display: box`.
+
+There was many very old and outdated Flexbox manuals with only properties from
+old 2009 spec. Be careful and use only modern manuals.
+
+[final version]: http://www.w3.org/TR/css-flexbox-1/
+
 #### Why doesn’t Autoprefixer support `appearance`?
 
 Unlike `transition`, the `appearance` property is not a part of
