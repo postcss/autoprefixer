@@ -148,7 +148,7 @@ Browsers names (case insensitive):
 
 By default, Autoprefixer uses `> 1%, last 2 versions, Firefox ESR, Opera 12.1`:
 
-* Latest [Firefox ESR] is a 24 version.
+* Latest [Firefox ESR] is a 31 version.
 * Opera 12.1 will be in list until Opera supports non-Blink 12.x branch.
 
 [Firefox ESR]: http://www.mozilla.org/en/firefox/organizations/faq/
