@@ -279,6 +279,12 @@ Unlike `transition`, the `appearance` property is not a part of
 any specification. So there is no `appearance`, only `-moz-appearance`
 and `-webkit-appearance`.
 
+#### Does Autoprefixer add `-epub-` prefix?
+
+No, Autoprefixer works only with browsers prefixes from Can I Use.
+But you can use [postcss-epub](https://github.com/Rycochet/postcss-epub)
+for prefix ePub3 properties.
+
 ## Usage
 
 ### Grunt
