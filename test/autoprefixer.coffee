@@ -137,7 +137,7 @@ describe 'Autoprefixer', ->
     it 'shows file name in parse error', ->
       ( ->
         cleaner.process('a {', from: 'a.css')
-      ).should.throw(/^a.css:1:1: /)
+      ).should.throw(/a.css:1:1: /)
 
   describe 'postcss()', ->
 

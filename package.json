@@ -11,22 +11,22 @@
     },
     "dependencies": {
         "coffee-script": "1.8.0",
-        "caniuse-db":    "^1.0.30000006",
-        "postcss":       "git://github.com/postcss/postcss#tokenizer"
+        "caniuse-db":    "^1.0.30000020",
+        "postcss":       "postcss/postcss"
     },
     "devDependencies": {
         "vinyl-source-stream": "1.0.0",
-        "gulp-json-editor":    "2.1.0",
+        "gulp-json-editor":    "2.1.1",
         "jshint-stylish":      "1.0.0",
-        "gulp-replace":        "0.4.0",
-        "gulp-jshint":         "1.8.5",
+        "gulp-replace":        "0.5.0",
+        "gulp-jshint":         "1.9.0",
         "gulp-coffee":         "2.2.0",
         "gulp-mocha":          "1.1.1",
-        "browserify":          "6.1.0",
+        "browserify":          "6.2.0",
         "fs-extra":            "0.12.0",
-        "should":              "4.0.4",
-        "mocha":               "1.21.5",
-        "gulp":                "3.8.8"
+        "should":              "4.2.0",
+        "mocha":               "2.0.1",
+        "gulp":                "3.8.10"
     },
     "scripts": {
         "test": "gulp"
