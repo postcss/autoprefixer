@@ -2,8 +2,7 @@
 
 <img align="right" width="94" height="71" src="http://postcss.github.io/autoprefixer/logo.svg" title="Autoprefixer logo by Anton Lovchikov">
 
-[PostCSS] plugin to parse CSS and add vendor prefixes to CSS rules using values
-from [Can I Use].
+[PostCSS] plugin to parse CSS and add vendor prefixes to CSS rules using values from [Can I Use].
 
 Write your CSS rules without vendor prefixes (in fact, forget about them
 entirely):
