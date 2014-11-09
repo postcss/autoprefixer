@@ -70,3 +70,9 @@ div {
     background: red -o-linear-gradient(red, blue);
     background: red linear-gradient(red, blue);
 }
+
+.px {
+    background: -webkit-linear-gradient(black 0, white 100px);
+    background: -o-linear-gradient(black 0, white 100px);
+    background: linear-gradient(black 0, white 100px);
+}

@@ -41,3 +41,7 @@ div {
 .color {
     background: red linear-gradient(red, blue);
 }
+
+.px {
+    background: linear-gradient(black 0, white 100px);
+}

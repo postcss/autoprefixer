@@ -22,7 +22,7 @@ class Gradient extends Value
         params = @newDirection(params)
 
         if prefix == '-webkit- old'
-          @oldWebkit(value, args, params, after)
+          @oldWebkit(value, args, params, after) if args.indexOf('px') == -1
         else
           @convertDirection(params)
           prefix + @name + '(' + params.join(', ') + ')' + after
