@@ -112,8 +112,13 @@ describe 'Autoprefixer', ->
         continue if type == 'flex-rewrite'
         input  = read(type + '.out')
         output = read(type)
-        result = cleaner.process(input)
-        result.css.should.eql(output)
+        cleaner.process(input).css.should.eql(output)
+
+    it 'does not remove unnecessary prefixes on request', ->
+      for type in ['transition', 'values', 'fullscreen']
+        css    = read(type + '.out')
+        result = autoprefixer(browsers: [], remove: false).process(css)
+        result.css.should.eql(css)
 
     it 'prevents doubling prefixes', ->
       for type in commons

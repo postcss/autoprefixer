@@ -40,7 +40,7 @@ autoprefixer = (reqs...) ->
 
   browsers = new Browsers(autoprefixer.data.browsers, reqs)
   prefixes = new Prefixes(autoprefixer.data.prefixes, browsers, options)
-  new Autoprefixer(prefixes, autoprefixer.data)
+  new Autoprefixer(prefixes, autoprefixer.data, options)
 
 autoprefixer.data =
   browsers: require('../data/browsers')
@@ -56,7 +56,7 @@ class Autoprefixer
 
   # Return PostCSS processor, which will add necessary prefixes
   postcss: (css) =>
-    @prefixes.processor.remove(css)
+    @prefixes.processor.remove(css) if @options.remove != false
     @prefixes.processor.add(css)
 
   # Return string, what browsers selected and whar prefixes will be added

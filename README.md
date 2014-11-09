@@ -169,6 +169,21 @@ tools with live input, like [Autoprefixer demo].
 
 [Autoprefixer demo]: http://jsfiddle.net/simevidas/udyTs/show/light/
 
+## Cleaning
+
+By default, Autoprefixer not only add new prefixes, but also remove outdated.
+You can remove this behaviour by `remove: false` option:
+
+```js
+autoprefixer()
+  .process('a { -webkit-border-radius: 2px; border-radius: 2px }');
+// remove outdated -webkit-border-radius
+
+autoprefixer({ remove: false })
+  .process('a { -webkit-border-radius: 2px; border-radius: 2px }');
+// keeps -webkit-border-radius
+```
+
 ## Debug
 
 You can check which browsers are selected and which properties will be prefixed:
