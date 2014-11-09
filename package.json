@@ -24,7 +24,7 @@
         "gulp-mocha":          "1.1.1",
         "browserify":          "6.2.0",
         "fs-extra":            "0.12.0",
-        "should":              "4.2.0",
+        "should":              "4.2.1",
         "mocha":               "2.0.1",
         "gulp":                "3.8.10"
     },
