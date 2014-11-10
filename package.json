@@ -11,7 +11,7 @@
     },
     "dependencies": {
         "coffee-script": "1.8.0",
-        "caniuse-db":    "^1.0.30000020",
+        "caniuse-db":    "^1.0.30000021",
         "postcss":       "postcss/postcss"
     },
     "devDependencies": {
