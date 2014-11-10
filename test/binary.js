@@ -271,9 +271,9 @@ describe('Binary', () => {
     });
 
     it('changes annotation', (done) => {
-        write('one/a.css', css);
-        this.run('--annotation', '../a.map', 'one/a.css', () => {
-            read('one/a.css').should.match(/\n\/\*# sourceMappingURL=..\/a.map/);
+        write('a/a.css', css);
+        this.run('--annotation', '../a.map', 'a/a.css', () => {
+            read('a/a.css').should.match(/\n\/\*# sourceMappingURL=..\/a.map/);
             fs.existsSync( path('a.map') ).should.be.true;
             done();
         });
