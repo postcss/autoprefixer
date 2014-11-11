@@ -116,8 +116,8 @@ Options:
 * `safe` (boolean): enables [Safe Mode] in PostCSS. By default `false`.
 * `map` contains options for source maps:
 
-  * `inline: true` to force inline map to CSS annotation comment.
-    You can shortcut `map { inline: true }` to `map: 'inline'`.
+  * `inline: false` to force save map to separated file, instead of inline it
+    to CSS in special comment by base64.
   * `prev` (string or object): map content from previous processing step
     (like Sass compilation).
 
