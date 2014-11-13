@@ -2,6 +2,7 @@ var autoprefixer = require('../');
 var Binary       = require('../binary');
 
 var fs    = require('fs-extra');
+var parse = require('postcss/lib/parse');
 var child = require('child_process');
 
 class StringBuffer {
@@ -41,6 +42,10 @@ var read = function (file) {
     return fs.readFileSync(path(file)).toString();
 };
 
+var readMap = function (file) {
+    return parse(read(file)).prevMap.consumer();
+};
+
 var css      = 'a { transition: all 1s }';
 var prefixed = 'a { -webkit-transition: all 1s; transition: all 1s }';
 
@@ -64,6 +69,7 @@ describe('Binary', () => {
             });
 
             binary.run( () => {
+                var error;
                 if ( binary.status === 0 && this.stderr.content === '' ) {
                     error = false;
                 } else {
@@ -203,24 +209,24 @@ describe('Binary', () => {
         });
     });
 
-    it('generates source map on -m argument', (done) => {
+    it('inline source map on -m argument', (done) => {
         write('a.css', css);
         this.run('-m', '-o', 'b.css', 'a.css', () => {
             read('b.css').should.match(/\n\/\*# sourceMappingURL=/);
+            fs.existsSync( path('b.css.map') ).should.be.false;
 
-            map = JSON.parse(read('b.css.map'));
-            map.version.should.eql(3);
+            var map = readMap('b.css');
             map.file.should.eql('b.css');
             map.sources.should.eql(['a.css']);
+
             done();
         });
     });
 
-    it('inlines source map', (done) => {
+    it('generates separated source map file', (done) => {
         write('a.css', css);
-        this.run('-I', '-o', 'b.css', 'a.css', () => {
-            read('b.css').should.match(/\n\/\*# sourceMappingURL=data:/);
-            fs.existsSync( path('b.css.map') ).should.be.false;
+        this.run('--no-inline-map', '-o', 'b.css', 'a.css', () => {
+            fs.existsSync( path('b.css.map') ).should.be.true;
             done();
         });
     });
@@ -229,10 +235,20 @@ describe('Binary', () => {
         write('a.css', css);
         this.run('-m', '-o', 'b.css', 'a.css', () => {
             this.run('-o', 'c.css', 'b.css', () => {
-                var map = JSON.parse(read('c.css.map'));
-
+                var map = readMap('c.css');
                 map.file.should.eql('c.css');
                 map.sources.should.eql(['a.css']);
+                done();
+            });
+        });
+    });
+
+    it('forces map inline on request', (done) => {
+        write('a.css', css);
+        this.run('--no-inline-map', '-o', 'b.css', 'a.css', () => {
+            this.run('-I', '-o', 'c.css', 'b.css', () => {
+                read('c.css').should.match(/\n\/\*# sourceMappingURL=/);
+                fs.existsSync( path('c.css.map') ).should.be.false;
                 done();
             });
         });
@@ -242,7 +258,7 @@ describe('Binary', () => {
         write('a.css', css);
         this.run('-m', '-o', 'b.css', 'a.css', () => {
             this.run('--no-map', '-o', 'c.css', 'b.css', () => {
-                fs.existsSync( path('c.css.map') ).should.be.false;
+                read('c.css').should.not.match(/\n\/\*# sourceMappingURL=/);
                 done();
             });
         });
@@ -288,11 +304,29 @@ describe('Binary', () => {
         });
     });
 
-    it('includes sources content on request', (done) => {
+    it('includes sources content', (done) => {
         write('a.css', css);
-        this.run('--sources-content', 'a.css', () => {
-            read('a.css.map').should.match(/"sourcesContent":\["a {/);
+        this.run('-m', 'a.css', () => {
+            (!!readMap('a.css').sourcesContent).should.be.true;
             done();
+        });
+    });
+
+    it('misses sources content on request', (done) => {
+        write('a.css', css);
+        this.run('--no-sources-content', 'a.css', () => {
+            (!!readMap('a.css').sourcesContent).should.be.false;
+            done();
+        });
+    });
+
+    it('forces sources content on request', (done) => {
+        write('a.css', css);
+        this.run('--no-sources-content', '-o', 'b.css', 'a.css', () => {
+            this.run('--sources-content', '-o', 'c.css', 'b.css', () => {
+                (!!readMap('c.css').sourcesContent).should.be.true;
+                done();
+            });
         });
     });
 

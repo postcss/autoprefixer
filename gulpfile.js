@@ -15,12 +15,12 @@ gulp.task('build:bin', ['clean'], function () {
 });
 
 gulp.task('build:lib', ['clean'], function () {
-    var es6transpiler = require('gulp-es6-transpiler');
-    var replace       = require('gulp-replace');
+    var replace = require('gulp-replace');
+    var es6to5  = require('gulp-6to5');
 
     return gulp.src(['binary.js', 'index.js'])
         .pipe(replace(/require\('\.\/enable-es6'\);\n/, ''))
-        .pipe(es6transpiler())
+        .pipe(es6to5())
         .pipe(gulp.dest('build/'));
 });
 
@@ -39,9 +39,8 @@ gulp.task('build:package', ['clean'], function () {
 
     gulp.src('./package.json')
         .pipe(editor(function (json) {
-            json.devDependencies['es6-transpiler'] =
-                json.dependencies['es6-transpiler'];
-            delete json.dependencies['es6-transpiler'];
+            json.devDependencies['6to5'] = json.dependencies['6to5'];
+            delete json.dependencies['6to5'];
             return json;
         }))
         .pipe(gulp.dest('build'));

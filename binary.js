@@ -32,10 +32,12 @@ Options:
   -d, --dir DIR            set output dir
   -m, --map                generate source map
       --no-map             skip source map even if previous map exists
-  -I, --inline-map         inline map by data:uri to annotation comment
+      --no-inline          do not inline maps to data:uri
+      --inline-map         force inline map
       --annotation PATH    change map location relative from CSS file
       --no-map-annotation  skip source map annotation comment is CSS
-      --sources-content    Include origin CSS into map
+      --no-sources-content remove origin CSS from maps
+      --sources-content    force include origin CSS into map
       --no-cascade         do not create nice visual cascade of prefixes
       --safe               try to fix CSS syntax errors
   -i, --info               show selected browsers and properties
@@ -114,6 +116,12 @@ Browsers:
                 }
                 this.processOptions.map.inline = true;
 
+            } else if ( arg == '--no-inline-map' ) {
+                if ( typeof( this.processOptions.map ) == 'undefined' ) {
+                    this.processOptions.map = { };
+                }
+                this.processOptions.map.inline = false;
+
             } else if ( arg == '--annotation' ) {
                 if ( typeof( this.processOptions.map ) == 'undefined' ) {
                     this.processOptions.map = { };
@@ -131,6 +139,12 @@ Browsers:
                     this.processOptions.map = { };
                 }
                 this.processOptions.map.sourcesContent = true;
+
+            } else if ( arg == '--no-sources-content' ) {
+                if ( typeof( this.processOptions.map ) == 'undefined' ) {
+                    this.processOptions.map = { };
+                }
+                this.processOptions.map.sourcesContent = false;
 
             } else if ( arg == '--no-cascade' ) {
                 this.processorOptions.cascade = false;
@@ -284,8 +298,10 @@ Browsers:
                 return;
             }
 
-            for ( file of this.inputFiles ) {
-                var output = path.join(this.outputDir, path.basename(file));
+            var output;
+            for ( var i = 0; i < this.inputFiles.length; i++ ) {
+                file   = this.inputFiles[i];
+                output = path.join(this.outputDir, path.basename(file));
                 list.push([file, output]);
             }
 
@@ -297,13 +313,13 @@ Browsers:
                 return;
             }
 
-            for ( file of this.inputFiles ) {
-                list.push([file, this.outputFile]);
+            for ( var i = 0; i < this.inputFiles.length; i++ ) {
+                list.push([this.inputFiles[i], this.outputFile]);
             }
 
         } else {
-            for ( file of this.inputFiles ) {
-                list.push([file, file]);
+            for ( var i = 0; i < this.inputFiles.length; i++ ) {
+                list.push([this.inputFiles[i], this.inputFiles[i]]);
             }
         }
 
@@ -328,12 +344,12 @@ Browsers:
                 this.compileCSS(css, this.outputFile);
             });
         } else {
-            var file, input, output;
-            for ( file of files ) {
+            var input, output;
+            for ( var i = 0; i < files.length; i++ ) {
                 this.startWork();
             }
-            for ( file of files ) {
-                [input, output] = file;
+            for ( var i = 0; i < files.length; i++ ) {
+                [input, output] = files[i];
 
                 if ( !fs.existsSync(input) ) {
                     this.workError('autoprefixer: File ' + input +
