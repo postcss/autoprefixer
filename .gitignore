@@ -5,3 +5,4 @@ node_modules/
 .bundle
 
 build/
+benchmark/cache/

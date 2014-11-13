@@ -1,8 +1,10 @@
 .gitignore
 
 node_modules
-build
 logo.svg
+
+build
+benchmark/cache/
 
 test
 .travis.yml

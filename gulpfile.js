@@ -2,11 +2,13 @@ var gutil = require('gulp-util');
 var gulp  = require('gulp');
 var fs    = require('fs-extra');
 
-gulp.task('clean', function (done) {
+gulp.task('clean', ['build:clean', 'bench:clean']);
+
+gulp.task('build:clean', function (done) {
     fs.remove(__dirname + '/build', done);
 });
 
-gulp.task('build:bin', ['clean'], function () {
+gulp.task('build:bin', ['build:clean'], function () {
     var replace = require('gulp-replace');
 
     return gulp.src('autoprefixer')
@@ -14,7 +16,7 @@ gulp.task('build:bin', ['clean'], function () {
         .pipe(gulp.dest('build/'));
 });
 
-gulp.task('build:lib', ['clean'], function () {
+gulp.task('build:lib', ['build:clean'], function () {
     var replace = require('gulp-replace');
     var es6to5  = require('gulp-6to5');
 
@@ -24,7 +26,7 @@ gulp.task('build:lib', ['clean'], function () {
         .pipe(gulp.dest('build/'));
 });
 
-gulp.task('build:docs', ['clean'], function () {
+gulp.task('build:docs', ['build:clean'], function () {
     var ignore = require('fs').readFileSync('.npmignore').toString()
         .trim().split(/\n+/)
         .concat(['*.js', '.npmignore', 'package.json', 'autoprefixer'])
@@ -34,7 +36,7 @@ gulp.task('build:docs', ['clean'], function () {
         .pipe(gulp.dest('build'));
 });
 
-gulp.task('build:package', ['clean'], function () {
+gulp.task('build:package', ['build:clean'], function () {
     var editor = require('gulp-json-editor');
 
     gulp.src('./package.json')
@@ -73,8 +75,12 @@ gulp.task('lint:lib', function () {
 
 gulp.task('lint', ['lint:test', 'lint:lib']);
 
-gulp.task('bench', ['build:bin', 'build:lib'], function (done) {
-    require('./enable-es6');
+gulp.task('bench:clean', function (done) {
+    fs.remove(__dirname + '/benchmark/cache/', done);
+});
+
+gulp.task('bench:github', ['build:lib'], function (done) {
+    if ( fs.existsSync('./benchmark/cache/github.css') ) return done();
 
     var zlib, request;
     var get = function (url, callback) {
@@ -103,6 +109,7 @@ gulp.task('bench', ['build:bin', 'build:lib'], function (done) {
                 });
            });
     };
+
     var styles = function (url, callback) {
         get(url, function (html) {
             var styles = html.match(/[^"]+\.css("|')/g);
@@ -119,83 +126,22 @@ gulp.task('bench', ['build:bin', 'build:lib'], function (done) {
         });
     };
 
-    var githubStyle = function (callback) {
-        styles('https://github.com/', function (styles) {
-            gutil.log('Load Github style');
-            get(styles[0], function (css) {
-                var autoprefixer = require('./build/');
-                css = autoprefixer({ browsers: [] }).process(css).css;
-                callback(css);
-            });
+    styles('https://github.com/', function (styles) {
+        gutil.log('Load Github style');
+        get(styles[0], function (css) {
+            var autoprefixer = require('./build/');
+            css = autoprefixer({ browsers: [] }).process(css).css;
+            fs.outputFile('./benchmark/cache/github.css', css, done);
         });
-    };
-
-    var indent = function (max, current) {
-        var diff = max.toString().length - current.toString().length;
-        for ( var i = 0; i < diff; i++ ) {
-            process.stdout.write(' ');
-        }
-    };
-
-    var capitalize = function (text) {
-        return text.slice(0, 1).toUpperCase() + text.slice(1);
-    };
-
-    var times = { };
-    var result = function (code, time) {
-        process.stdout.write(time + " ms");
-        if ( times.autoprefixer ) {
-            var slower = time / times.autoprefixer;
-            process.stdout.write(' (' + slower.toFixed(1) + ' times slower)');
-        }
-        times[code] = time;
-        process.stdout.write("\n");
-    };
-
-    githubStyle(function (css) {
-        var tests = fs.readdirSync(__dirname + '/benchmark')
-            .filter(function (file) {
-                return file.match(/\.js$/);
-            });
-
-        var tick = function () {
-            if ( tests.length === 0 ) {
-                fs.removeSync(__dirname + '/build/');
-                process.stdout.write("\n");
-                done();
-                return;
-            }
-
-            var file = tests.shift();
-            var code = file.replace('.js', '');
-            var name = capitalize(code);
-            process.stdout.write(name + ': ');
-
-            indent('Autoprefixer', name);
-
-            var test = require('./benchmark/' + file);
-            test.prepare(css);
-
-            var start = new Date();
-            test.run(function () {
-                test.run(function () {
-                    test.run(function () {
-                        test.run(function () {
-                            test.run(function () {
-                                var end = new Date();
-                                result(code, Math.round((end - start) / 5));
-                                test.clean();
-                                tick();
-                            });
-                        });
-                    });
-                });
-            });
-        };
-
-        process.stdout.write("\n");
-        tick();
     });
+});
+
+gulp.task('bench', ['bench:github', 'build:bin'], function (done) {
+    var bench   = require('gulp-bench');
+    var summary = require('gulp-bench-summary');
+    return gulp.src('./benchmark/general.js', { read: false })
+        .pipe(bench())
+        .pipe(summary('Autoprefixer'));
 });
 
 gulp.task('test', function () {
