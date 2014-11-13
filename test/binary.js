@@ -49,7 +49,7 @@ var readMap = function (file) {
 
 var exists = function (file) {
     return fs.existsSync(path(file));
-}
+};
 
 var css      = 'a { transition: all 1s }';
 var prefixed = 'a { -webkit-transition: all 1s; transition: all 1s }';
@@ -400,7 +400,7 @@ describe('autoprefixer', () => {
 
     it('is a module', () => {
         var autoprefixer = require('../');
-        var result = autoprefixer({ browsers: 'chrome 25' }).process(css)
+        var result = autoprefixer({ browsers: 'chrome 25' }).process(css);
         expect(result.css).to.eql(prefixed);
     });
 
