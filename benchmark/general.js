@@ -43,7 +43,7 @@ module.exports = {
                 var bin  = __dirname + '/../build/autoprefixer';
                 var file = __dirname + '/cache/github.css';
                 run(bin + ' ' + file + ' -o ' + file + '.out', function () {
-                    done.resolve()
+                    done.resolve();
                 });
             }
         },
@@ -65,7 +65,7 @@ module.exports = {
                 var bin  = __dirname + '/../node_modules/.bin/stylus';
                 var file = __dirname + '/cache/stylus.styl';
                 run(bin + ' --use nib ' + file, function () {
-                    done.resolve()
+                    done.resolve();
                 });
             }
         }
