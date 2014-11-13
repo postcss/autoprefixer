@@ -282,7 +282,7 @@ Browsers:
             this.outputFile = '-';
         }
 
-        var file, list = [];
+        var i, file, list = [];
         if ( this.outputDir ) {
             if ( this.inputFiles.length === 0 ) {
                 this.error('autoprefixer: For STDIN input you need ' +
@@ -299,7 +299,7 @@ Browsers:
             }
 
             var output;
-            for ( var i = 0; i < this.inputFiles.length; i++ ) {
+            for ( i = 0; i < this.inputFiles.length; i++ ) {
                 file   = this.inputFiles[i];
                 output = path.join(this.outputDir, path.basename(file));
                 list.push([file, output]);
@@ -313,12 +313,12 @@ Browsers:
                 return;
             }
 
-            for ( var i = 0; i < this.inputFiles.length; i++ ) {
+            for ( i = 0; i < this.inputFiles.length; i++ ) {
                 list.push([this.inputFiles[i], this.outputFile]);
             }
 
         } else {
-            for ( var i = 0; i < this.inputFiles.length; i++ ) {
+            for ( i = 0; i < this.inputFiles.length; i++ ) {
                 list.push([this.inputFiles[i], this.inputFiles[i]]);
             }
         }
@@ -344,11 +344,11 @@ Browsers:
                 this.compileCSS(css, this.outputFile);
             });
         } else {
-            var input, output;
-            for ( var i = 0; i < files.length; i++ ) {
+            var i, input, output;
+            for ( i = 0; i < files.length; i++ ) {
                 this.startWork();
             }
-            for ( var i = 0; i < files.length; i++ ) {
+            for ( i = 0; i < files.length; i++ ) {
                 [input, output] = files[i];
 
                 if ( !fs.existsSync(input) ) {
