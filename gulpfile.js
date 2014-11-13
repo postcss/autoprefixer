@@ -55,10 +55,6 @@ gulp.task('standalone', ['build:lib'], function (done) {
             process.exit(1);
         }
 
-        build = build.toString().replace(
-            /DP\$0\([^\s]+,\s*"prototype",\s*\{[^{]+\}\);/g,
-            'try{$&}catch(e){}');
-
         fs.removeSync(__dirname + '/build/');
 
         var rails = __dirname + '/../autoprefixer-rails/vendor/autoprefixer.js';
