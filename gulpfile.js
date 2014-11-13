@@ -200,7 +200,6 @@ gulp.task('bench', ['build:bin', 'build:lib'], function (done) {
 
 gulp.task('test', function () {
     require('./enable-es6');
-    require('should');
     var mocha = require('gulp-mocha');
 
     return gulp.src('test/*.js', { read: false })

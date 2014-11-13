@@ -1,5 +1,4 @@
 --inline-diffs
 --timeout  4000
---require  should
 --require  ./enable-es6
 --reporter spec

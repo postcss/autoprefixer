@@ -1,9 +1,10 @@
 var autoprefixer = require('../');
 var Binary       = require('../binary');
 
-var fs    = require('fs-extra');
-var parse = require('postcss/lib/parse');
-var child = require('child_process');
+var fs     = require('fs-extra');
+var parse  = require('postcss/lib/parse');
+var child  = require('child_process');
+var expect = require('chai').expect;
 
 class StringBuffer {
     constructor() {
@@ -46,6 +47,10 @@ var readMap = function (file) {
     return parse(read(file)).prevMap.consumer();
 };
 
+var exists = function (file) {
+    return fs.existsSync(path(file));
+}
+
 var css      = 'a { transition: all 1s }';
 var prefixed = 'a { -webkit-transition: all 1s; transition: all 1s }';
 
@@ -82,7 +87,7 @@ describe('Binary', () => {
         this.run = (...args) => {
             var callback = args.pop();
             args.push(function (out, err) {
-                err.should.be.false;
+                expect(err).to.be.false;
                 callback(out);
             });
             this.exec(...args);
@@ -92,8 +97,8 @@ describe('Binary', () => {
             var done  = args.pop();
             var error = args.pop();
             args.push(function (out, err) {
-                out.should.be.empty;
-                err.should.match(error);
+                expect(out).to.be.empty;
+                expect(err).to.match(error);
                 done();
             });
             this.exec(...args);
@@ -112,28 +117,28 @@ describe('Binary', () => {
 
     it('shows autoprefixer version', (done) => {
         this.run('-v', (out) => {
-            out.should.match(/^autoprefixer [\d\.]+\n$/);
+            expect(out).to.match(/^autoprefixer [\d\.]+\n$/);
             done();
         });
     });
 
     it('shows help instructions', (done) => {
         this.run('-h', (out) => {
-            out.should.match(/Usage:/);
+            expect(out).to.match(/Usage:/);
             done();
         });
     });
 
     it('shows selected browsers and properties', (done) => {
         this.run('-i', (out) => {
-            out.should.match(/Browsers:/);
+            expect(out).to.match(/Browsers:/);
             done();
         });
     });
 
     it('changes browsers', (done) => {
         this.run('-i', '-b', 'ie 6', (out) => {
-            out.should.match(/IE: 6/);
+            expect(out).to.match(/IE: 6/);
             done();
         });
     });
@@ -142,9 +147,9 @@ describe('Binary', () => {
         write('a.css', css);
         write('b.css', css + css);
         this.run('-b', 'chrome 25', 'a.css', 'b.css', (out) => {
-            out.should.eql('');
-            read('a.css').should.eql(prefixed);
-            read('b.css').should.eql(prefixed + prefixed);
+            expect(out).to.be.empty;
+            expect(read('a.css')).to.eql(prefixed);
+            expect(read('b.css')).to.eql(prefixed + prefixed);
             done();
         });
     });
@@ -152,9 +157,9 @@ describe('Binary', () => {
     it('changes output file', (done) => {
         write('a.css', css);
         this.run('-b', 'chrome 25', 'a.css', '-o', 'b.css', (out) => {
-            out.should.eql('');
-            read('a.css').should.eql(css);
-            read('b.css').should.eql(prefixed);
+            expect(out).to.be.empty;
+            expect(read('a.css')).to.eql(css);
+            expect(read('b.css')).to.eql(prefixed);
             done();
         });
     });
@@ -162,8 +167,8 @@ describe('Binary', () => {
     it('creates dirs for output file', (done) => {
         write('a.css', '');
         this.run('a.css', '-o', 'one/two/b.css', (out) => {
-            out.should.eql('');
-            read('one/two/b.css').should.eql('');
+            expect(out).to.be.empty;
+            expect(read('one/two/b.css')).to.be.empty;
             done();
         });
     });
@@ -173,12 +178,12 @@ describe('Binary', () => {
         write('b.css', css + css);
 
         this.run('-b', 'chrome 25', 'a.css', 'b.css', '-d', 'out/', (out) => {
-            out.should.eql('');
+            expect(out).to.be.empty;
 
-            read('a.css').should.eql(css);
-            read('b.css').should.eql(css + css);
-            read('out/a.css').should.eql(prefixed);
-            read('out/b.css').should.eql(prefixed + prefixed);
+            expect(read('a.css')).to.eql(css);
+            expect(read('b.css')).to.eql(css + css);
+            expect(read('out/a.css')).to.eql(prefixed);
+            expect(read('out/b.css')).to.eql(prefixed + prefixed);
 
             done();
         });
@@ -187,8 +192,8 @@ describe('Binary', () => {
     it('outputs to stdout', (done) => {
         write('a.css', css);
         this.run('-b', 'chrome 25', '-o', '-', 'a.css', (out) => {
-            out.should.eql(prefixed + "\n");
-            read('a.css').should.eql(css);
+            expect(out).to.eql(prefixed + "\n");
+            expect(read('a.css')).to.eql(css);
             done();
         });
     });
@@ -196,7 +201,7 @@ describe('Binary', () => {
     it('reads from stdin', (done) => {
         this.stdin.content = css;
         this.run('-b', 'chrome 25', (out) => {
-            out.should.eql(prefixed + "\n");
+            expect(out).to.eql(prefixed + "\n");
             done();
         });
     });
@@ -204,7 +209,7 @@ describe('Binary', () => {
     it('skip source map by default', (done) => {
         write('a.css', css);
         this.run('-o', 'b.css', 'a.css', () => {
-            fs.existsSync( path('b.css.map') ).should.be.false;
+            expect(exists('b.css.map')).to.be.false;
             done();
         });
     });
@@ -212,12 +217,12 @@ describe('Binary', () => {
     it('inline source map on -m argument', (done) => {
         write('a.css', css);
         this.run('-m', '-o', 'b.css', 'a.css', () => {
-            read('b.css').should.match(/\n\/\*# sourceMappingURL=/);
-            fs.existsSync( path('b.css.map') ).should.be.false;
+            expect(read('b.css')).to.match(/\n\/\*# sourceMappingURL=/);
+            expect(exists('b.css.map')).to.be.false;
 
             var map = readMap('b.css');
-            map.file.should.eql('b.css');
-            map.sources.should.eql(['a.css']);
+            expect(map.file).to.eql('b.css');
+            expect(map.sources).to.eql(['a.css']);
 
             done();
         });
@@ -226,7 +231,7 @@ describe('Binary', () => {
     it('generates separated source map file', (done) => {
         write('a.css', css);
         this.run('--no-inline-map', '-o', 'b.css', 'a.css', () => {
-            fs.existsSync( path('b.css.map') ).should.be.true;
+            expect(exists('b.css.map')).to.be.true;
             done();
         });
     });
@@ -236,8 +241,8 @@ describe('Binary', () => {
         this.run('-m', '-o', 'b.css', 'a.css', () => {
             this.run('-o', 'c.css', 'b.css', () => {
                 var map = readMap('c.css');
-                map.file.should.eql('c.css');
-                map.sources.should.eql(['a.css']);
+                expect(map.file).to.eql('c.css');
+                expect(map.sources).to.eql(['a.css']);
                 done();
             });
         });
@@ -247,8 +252,8 @@ describe('Binary', () => {
         write('a.css', css);
         this.run('--no-inline-map', '-o', 'b.css', 'a.css', () => {
             this.run('-I', '-o', 'c.css', 'b.css', () => {
-                read('c.css').should.match(/\n\/\*# sourceMappingURL=/);
-                fs.existsSync( path('c.css.map') ).should.be.false;
+                expect(read('c.css')).to.match(/sourceMappingURL=/);
+                expect(exists('c.css.map')).to.be.false;
                 done();
             });
         });
@@ -258,7 +263,7 @@ describe('Binary', () => {
         write('a.css', css);
         this.run('-m', '-o', 'b.css', 'a.css', () => {
             this.run('--no-map', '-o', 'c.css', 'b.css', () => {
-                read('c.css').should.not.match(/\n\/\*# sourceMappingURL=/);
+                expect(read('c.css')).to.not.match(/sourceMappingURL=/);
                 done();
             });
         });
@@ -268,9 +273,9 @@ describe('Binary', () => {
         write('a.css', 'a {\n' +
                        '  transition: 1s }');
         this.run('-b', 'chrome 25', 'a.css', () => {
-            read('a.css').should.eql('a {\n' +
-                                     '  -webkit-transition: 1s;\n' +
-                                     '          transition: 1s }');
+            expect(read('a.css')).to.eql('a {\n' +
+                                         '  -webkit-transition: 1s;\n' +
+                                         '          transition: 1s }');
             done();
         });
     });
@@ -279,9 +284,9 @@ describe('Binary', () => {
         write('a.css', 'a {\n' +
                        '  transition: 1s }');
         this.run('-b', 'chrome 25', '--no-cascade', 'a.css', () => {
-            read('a.css').should.eql('a {\n' +
-                                     '  -webkit-transition: 1s;\n' +
-                                     '  transition: 1s }');
+            expect(read('a.css')).to.eql('a {\n' +
+                                         '  -webkit-transition: 1s;\n' +
+                                         '  transition: 1s }');
             done();
         });
     });
@@ -289,8 +294,8 @@ describe('Binary', () => {
     it('changes annotation', (done) => {
         write('a/a.css', css);
         this.run('--annotation', '../a.map', 'a/a.css', () => {
-            read('a/a.css').should.match(/\n\/\*# sourceMappingURL=..\/a.map/);
-            fs.existsSync( path('a.map') ).should.be.true;
+            expect(read('a/a.css')).to.match(/sourceMappingURL=..\/a.map/);
+            expect(exists('a.map')).to.be.true;
             done();
         });
     });
@@ -298,8 +303,8 @@ describe('Binary', () => {
     it('skips annotation on request', (done) => {
         write('a.css', css);
         this.run('-m', '--no-map-annotation', '-o', 'b.css', 'a.css', () => {
-            read('b.css').should.not.match(/\n\/\*# sourceMappingURL=/);
-            fs.existsSync( path('b.css.map') ).should.be.true;
+            expect(read('b.css')).to.not.match(/sourceMappingURL=/);
+            expect(exists('b.css.map')).to.be.true;
             done();
         });
     });
@@ -307,7 +312,7 @@ describe('Binary', () => {
     it('includes sources content', (done) => {
         write('a.css', css);
         this.run('-m', 'a.css', () => {
-            (!!readMap('a.css').sourcesContent).should.be.true;
+            expect(readMap('a.css').sourcesContent).to.be.instanceof(Array);
             done();
         });
     });
@@ -315,7 +320,7 @@ describe('Binary', () => {
     it('misses sources content on request', (done) => {
         write('a.css', css);
         this.run('--no-sources-content', 'a.css', () => {
-            (!!readMap('a.css').sourcesContent).should.be.false;
+            expect(readMap('a.css').sourcesContent).to.not.exist;
             done();
         });
     });
@@ -324,7 +329,7 @@ describe('Binary', () => {
         write('a.css', css);
         this.run('--no-sources-content', '-o', 'b.css', 'a.css', () => {
             this.run('--sources-content', '-o', 'c.css', 'b.css', () => {
-                (!!readMap('c.css').sourcesContent).should.be.true;
+                expect(readMap('c.css').sourcesContent).to.be.instanceof(Array);
                 done();
             });
         });
@@ -368,10 +373,10 @@ describe('Binary', () => {
         this.raise(/^autoprefixer:<css input>:1:1: [\s\S]+a \{/, done);
     });
 
-    it('should not fix parsing errors in safe mode', (done) => {
+    it('fixes parsing errors in safe mode', (done) => {
         write('a.css', 'a {');
         this.run('--safe', 'a.css', () => {
-            read('a.css').should.eql('a {}');
+            expect(read('a.css')).to.eql('a {}');
             done();
         });
     });
@@ -383,8 +388,8 @@ describe('bin/autoprefixer', () => {
     it('is an executable', (done) => {
         var binary = __dirname + '/../autoprefixer';
         child.execFile(binary, ['-v'], { }, (error, out) => {
-            (!!error).should.be.false;
-            out.should.match(/^autoprefixer [\d\.]+\n$/);
+            expect(error).to.not.exist;
+            expect(out).to.match(/^autoprefixer [\d\.]+\n$/);
             done();
         });
     });
@@ -395,8 +400,8 @@ describe('autoprefixer', () => {
 
     it('is a module', () => {
         var autoprefixer = require('../');
-        autoprefixer({ browsers: 'chrome 25' })
-            .process(css).css.should.eql(prefixed);
+        var result = autoprefixer({ browsers: 'chrome 25' }).process(css)
+        expect(result.css).to.eql(prefixed);
     });
 
 });
