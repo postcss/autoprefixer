@@ -28,8 +28,7 @@ var run  = function (command, callback) {
     });
 };
 var bundle = function (command, callback) {
-    var path = __dirname + '/compass';
-    run('cd ' + path + '; bundle exec ' + command, callback);
+    run('cd ' + __dirname + '; bundle exec ' + command, callback);
 };
 
 module.exports = {
@@ -51,9 +50,8 @@ module.exports = {
             name: 'Compass',
             defer: true,
             fn: function (done) {
-                var files = '../cache/compass.scss:../cache/compass.scss.css';
-                bundle('sass --compass --sourcemap=none ' + files, function () {
-                    fs.removeSync(__dirname + '/compass/.sass-cache');
+                var f = 'cache/compass.scss:cache/compass.scss.css';
+                bundle('sass -C --compass --sourcemap=none ' + f, function () {
                     done.resolve();
                 });
             }
