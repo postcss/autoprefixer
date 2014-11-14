@@ -1,3 +1,17 @@
+## 4.0 “Indivisibiliter ac Inseparabiliter”
+* Become 2.5 times fatser by new PostCSS 3.0 parser.
+* Do not remove outdated prefixes by `remove: false` option.
+* `map.inline` and `map.sourcesContent` options are now `true` by default.
+* Add `box-decoration-break` support.
+* Do not add old `-webkit-` prefix for gradients with `px` units.
+* Use previous source map to show origin source of CSS syntax error.
+* Use `from` option from previous source map `file` field.
+* Set `to` value to `from` if `to` option is missing.
+* Trim Unicode BOM on source maps parsing.
+* Parse at-rules without spaces like `@import"file"`.
+* Better previous `sourceMappingURL` annotation comment cleaning.
+* Do not remove previous `sourceMappingURL` comment on `map.annotation: false`.
+
 ## 3.1.2
 * Update Firefox ESR version from 24 to 31.
 
