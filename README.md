@@ -34,6 +34,9 @@ of Autoprefixer.
 }
 ```
 
+Autoprefixer is [recommended] by Google and used in Twitter, WordPress,
+Bootstrap and CodePen.
+
 Twitter account for news and releases: [@autoprefixer].
 
 Sponsored by [Evil Martians].
@@ -41,6 +44,7 @@ Sponsored by [Evil Martians].
 [interactive demo]: http://simevidas.jsbin.com/gufoko/quiet
 [@autoprefixer]:    https://twitter.com/autoprefixer
 [Evil Martians]:    http://evilmartians.com/
+[recommended]:      https://developers.google.com/web/fundamentals/tools/build/setupbuildprocess#dont-trip-up-with-vendor-prefixes
 [Can I Use]:        http://caniuse.com/
 [PostCSS]:          https://github.com/postcss/postcss
 
