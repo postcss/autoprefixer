@@ -426,8 +426,6 @@ for more information.
 If you need free assets build GUI tool, try [Prepros].
 Just set “Auto Prefix CSS” checkbox in right panel.
 
-<img src="http://alphapixels.com/prepros/static/img/prepros.jpg" width="550" height="340" />
-
 [Prepros]: http://alphapixels.com/prepros/
 
 ### CLI
