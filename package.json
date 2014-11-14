@@ -1,6 +1,6 @@
 {
     "name": "autoprefixer",
-    "version": "3.1.0",
+    "version": "4.0.0",
     "description": "Parse CSS and add vendor prefixes to CSS rules using values from the Can I Use website",
     "keywords": ["css", "prefix", "postprocessor", "postcss"],
     "author": "Andrey Sitnik <andrey@sitnik.ru>",
@@ -10,9 +10,9 @@
         "url": "https://github.com/postcss/autoprefixer.git"
     },
     "dependencies": {
-        "autoprefixer-core": "postcss/autoprefixer-core",
+        "autoprefixer-core": "~4.0.0",
         "fs-extra":          "~0.11.1",
-        "postcss":           "~3.0.0",
+        "postcss":           "~3.0.1",
         "6to5":              "1.12.10"
     },
     "devDependencies": {
