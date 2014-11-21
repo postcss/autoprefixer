@@ -6,8 +6,8 @@ postcss = require('postcss')
 list    = require('postcss/lib/list')
 
 split         = /\(\s*([^\(\):]+)\s*:([^\)]+)/
-findDecl      = /\(\s*([^\(\):]+)\s*:\s*([^\)]+)\s*\)/g
-findCondition = /(not\s*)?\(\s*([^\(\):]+)\s*:\s*([^\)]+)\s*\)\s*or\s*/gi
+findDecl      = /\(\s*([^\(\):]+)\s*:\s*(.+)\s*\)/g
+findCondition = /(not\s*)?\(\s*([^\(\):]+)\s*:\s*(.+?(?!\s*or\s*).+?)\s*\)*\s*\)\s*or\s*/gi
 
 class Supports
   constructor: (@all) ->
