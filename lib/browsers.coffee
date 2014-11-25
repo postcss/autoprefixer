@@ -50,13 +50,6 @@ class Browsers
   # Available requirements to select browsers
   requirements:
 
-    none:
-      regexp: /^none$/i
-      select: ->
-        console?.warn("autoprefixer(\'none\') is deprecated and will be " +
-                      'removed in 3.1. ' + 'Use autoprefixer({ browsers: [] })')
-        []
-
     lastVersions:
       regexp: /^last (\d+) versions?$/i
       select: (versions) ->
