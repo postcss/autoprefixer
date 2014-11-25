@@ -143,6 +143,15 @@ describe('Binary', () => {
         });
     });
 
+    it('cleans styles', (done) => {
+        write('a.css', prefixed);
+        this.run('-c', 'a.css', (out) => {
+            expect(out).to.be.empty;
+            expect(read('a.css')).to.eql(css);
+            done();
+        });
+    });
+
     it('rewrites several files', (done) => {
         write('a.css', css);
         write('b.css', css + css);

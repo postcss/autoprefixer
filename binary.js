@@ -28,6 +28,7 @@ Parse CSS files and add prefixed properties and values.
 
 Options:
   -b, --browsers BROWSERS  add prefixes for selected browsers
+  -c, --clean              remove all known prefixes
   -o, --output FILE        set output file
   -d, --dir DIR            set output dir
   -m, --map                generate source map
@@ -155,6 +156,9 @@ Browsers:
             } else if ( arg == '-b' || arg == '--browsers' ) {
                 this.processorOptions.browsers = args.shift().split(',')
                   .map( (i) => i.trim() );
+
+            } else if ( arg == '-c' || arg == '--clean' ) {
+                this.processorOptions.browsers = [];
 
             } else if ( arg == '-o' || arg == '--output' ) {
                 this.outputFile = args.shift();
