@@ -371,8 +371,8 @@ module.exports = {
 * **Broccoli**: [broccoli-autoprefixer]
 * **Middleman**: [middleman-autoprefixer]
 * **Mincer**: add `autoprefixer` npm package and enable it:
-  `environment.enable('autoprefixer')`.
-* **Jekyll**: add `autoprefixer-rails` and `jekyll-assets` to Gemfile
+  `environment.enable('autoprefixer')`
+* **Jekyll**: add `autoprefixer-rails` and `jekyll-assets` to `Gemfile`
 
 [middleman-autoprefixer]: https://github.com/porada/middleman-autoprefixer
 [broccoli-autoprefixer]:  https://github.com/sindresorhus/broccoli-autoprefixer
