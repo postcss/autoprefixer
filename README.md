@@ -1,4 +1,4 @@
-# Autoprefixer Core [![Build Status](https://travis-ci.org/postcss/autoprefixer-core.png)](https://travis-ci.org/postcss/autoprefixer-core)
+# Autoprefixer Core [![Build Status](https://travis-ci.org/postcss/autoprefixer-core.svg)](https://travis-ci.org/postcss/autoprefixer-core)
 
 <img align="right" width="94" height="71" src="http://postcss.github.io/autoprefixer/logo.svg" title="Autoprefixer logo by Anton Lovchikov">
 
