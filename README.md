@@ -463,7 +463,10 @@ postcss().
 
 There is also [standalone build] for the browser or as a non-Node.js runtime.
 
+You can use [html-autoprefixer] to process HTML with inlined CSS.
+
 [autoprefixer-core]: https://github.com/postcss/autoprefixer-core
+[html-autoprefixer]: https://github.com/RebelMail/html-autoprefixer
 [other processors]:  https://github.com/postcss/postcss#built-with-postcss
 [standalone build]:  https://raw.github.com/ai/autoprefixer-rails/master/vendor/autoprefixer.js
 [PostCSS]:           https://github.com/postcss/postcss
