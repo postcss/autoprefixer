@@ -1,3 +1,6 @@
+## 4.0.2
+* Remove `o-border-radius`, which is common mistake in legacy CSS.
+
 ## 4.0.1
 * Fix `@supports` support with brackets in values (by Vincent De Oliveira).
 
