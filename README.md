@@ -85,9 +85,9 @@ a {
 }
 ```
 
-Autoprefixer has [22 special hacks] to fix web browser differences.
+Autoprefixer has [27 special hacks] to fix web browser differences.
 
-[22 special hacks]: https://github.com/postcss/autoprefixer-core/tree/master/lib/hacks
+[27 special hacks]: https://github.com/postcss/autoprefixer-core/tree/master/lib/hacks
 
 ### Only Actual Prefixes
 
