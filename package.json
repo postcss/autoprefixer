@@ -11,8 +11,8 @@
     },
     "dependencies": {
         "coffee-script": "1.8.0",
-        "caniuse-db":    "^1.0.30000030",
-        "postcss":       "~3.0.6"
+        "caniuse-db":    "^1.0.30000031",
+        "postcss":       "~3.0.7"
     },
     "devDependencies": {
         "vinyl-source-stream": "1.0.0",
@@ -24,7 +24,7 @@
         "gulp-mocha":          "2.0.0",
         "browserify":          "7.0.0",
         "fs-extra":            "0.12.0",
-        "should":              "4.3.0",
+        "should":              "4.3.1",
         "mocha":               "2.0.1",
         "gulp":                "3.8.10"
     },
