@@ -54,7 +54,7 @@ Sponsored by [Evil Martians].
 
 Working with Autoprefixer is simple: just forget about vendor prefixes
 and write normal CSS according to the latest W3C specs. You don’t need
-a special language (like Sass) or remember, where you must use mixins.
+a special language (like Sass) or remember where you must use mixins.
 
 Autoprefixer supports selectors (like `:fullscreen` and `::selection`),
 unit function (`calc()`), at‑rules (`@support` and `@keyframes`) and properties.
