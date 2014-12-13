@@ -39,11 +39,12 @@ Bootstrap and CodePen.
 
 Twitter account for news and releases: [@autoprefixer].
 
-Sponsored by [Evil Martians].
+<a href="https://evilmartians.com/?utm_source=autoprefixer">
+<img src="https://evilmartians.com/badges/sponsored-by-evil-martians.svg" alt="Sponsored by Evil Martians" width="236" height="54">
+</a>
 
 [interactive demo]: http://simevidas.jsbin.com/gufoko/quiet
 [@autoprefixer]:    https://twitter.com/autoprefixer
-[Evil Martians]:    http://evilmartians.com/
 [recommended]:      https://developers.google.com/web/fundamentals/tools/build/setupbuildprocess#dont-trip-up-with-vendor-prefixes
 [Can I Use]:        http://caniuse.com/
 [PostCSS]:          https://github.com/postcss/postcss
