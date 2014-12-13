@@ -2,18 +2,19 @@
 
 <img align="right" width="94" height="71" src="http://postcss.github.io/autoprefixer/logo.svg" title="Autoprefixer logo by Anton Lovchikov">
 
-Autoprefixer is a tool to parse CSS and add vendor prefixes using values
+[PostCSS] plugin to parse CSS and add vendor prefixes using values
 from [Can I Use].
 
 This is core package to build Autoprefixer plugin for some environment
 (like [grunt‑autoprefixer]). For end-user documentation, features
 and plugins list visit [main Autoprefixer] project.
 
-Sponsored by [Evil Martians]. Based on [PostCSS] framework.
+<a href="https://evilmartians.com/?utm_source=autoprefixer-core">
+<img src="https://evilmartians.com/badges/sponsored-by-evil-martians.svg" alt="Sponsored by Evil Martians" width="236" height="54">
+</a>
 
 [grunt‑autoprefixer]: https://github.com/nDmitry/grunt-autoprefixer
 [main Autoprefixer]:  https://github.com/postcss/autoprefixer
-[Evil Martians]:      http://evilmartians.com/
 [Can I Use]:          http://caniuse.com/
 [PostCSS]:            https://github.com/postcss/postcss
 
