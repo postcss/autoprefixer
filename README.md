@@ -119,7 +119,7 @@ a {
 
 You can specify the browsers you want to target in your project:
 
-* `last 2 versions` targets the last 2 versions for each browser..
+* `last 2 versions` targets the last 2 versions for each browser.
 * `last 2 Chrome versions` targets the last versions of a specific browser.
 * `> 5%` declares browser versions selected by global usage statistics.
 * `Firefox > 20` targets versions of Firefox newer than 20.
