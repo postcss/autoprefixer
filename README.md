@@ -128,7 +128,6 @@ You can specify the browsers you want to target in your project:
 * `Firefox <= 20` targets versions of Firefox less than or equal to 20.
 * `Firefox ESR` specifies the latest [Firefox ESR] version.
 * `ios 7` will set the browser version directly.
-* `none` will not target any browsers.
 
 Blackberry and stock Android browsers will not be used in `last n versions`.
 You should add them by name.
