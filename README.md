@@ -398,7 +398,7 @@ on_stylesheet_saved do |file|
   css = File.read(file)
   map = file + '.map'
 
-  if File.exists? file + '.map'
+  if File.exists? map
     result = AutoprefixerRails.process(css,
       from: file,
       to:   file,
