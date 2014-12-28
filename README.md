@@ -396,13 +396,20 @@ require 'autoprefixer-rails'
 
 on_stylesheet_saved do |file|
   css = File.read(file)
-  File.open(file, 'w') do |io|
-    io << AutoprefixerRails.process(css)
+  map = file + '.map'
+
+  if File.exists? file + '.map'
+    result = AutoprefixerRails.process(css,
+      from: file,
+      to:   file,
+      map:  { prev: map, inline: false })
+    File.open(file, 'w') { |io| io << result.css }
+    File.open(map,  'w') { |io| io << result.map }
+  else
+    File.open(file, 'w') { |io| io << AutoprefixerRails.process(css) }
   end
 end
 ```
-
-You can set the browsers option as the second argument in `process` method.
 
 ### Stylus
 
