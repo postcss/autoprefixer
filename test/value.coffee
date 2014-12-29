@@ -32,7 +32,7 @@ describe 'Value', ->
 
     it 'ignores on another prefix property', ->
       css   = parse('a { -ms-prop: v; prop: v }')
-      width = css.first.childs[1]
+      width = css.first.last
 
       width._autoprefixerValues = { '-ms-': '-ms-v' }
       Value.save(prefixes, width)
@@ -57,12 +57,12 @@ describe 'Value', ->
                       '3: -ms-calc; ' +
                       '4: calced; }')
 
-      @calc.check(css.first.childs[0]).should.be.true
-      @calc.check(css.first.childs[1]).should.be.true
-      @calc.check(css.first.childs[2]).should.be.true
+      @calc.check(css.first.nodes[0]).should.be.true
+      @calc.check(css.first.nodes[1]).should.be.true
+      @calc.check(css.first.nodes[2]).should.be.true
 
-      @calc.check(css.first.childs[3]).should.be.false
-      @calc.check(css.first.childs[4]).should.be.false
+      @calc.check(css.first.nodes[3]).should.be.false
+      @calc.check(css.first.nodes[4]).should.be.false
 
   describe 'old()', ->
 
@@ -96,7 +96,7 @@ describe 'Value', ->
 
     it 'checks property prefix', ->
       css   = parse('a { -moz-width: calc(1%); -o-width: calc(1%) }')
-      decls = css.first.childs
+      decls = css.first.nodes
 
       @calc.process(decls[0])
       decls[0]._autoprefixerValues.should.eql

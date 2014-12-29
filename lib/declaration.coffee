@@ -32,7 +32,7 @@ class Declaration extends Prefixer
   # Should we use visual cascade for prefixes
   needCascade: (decl) ->
     decl._autoprefixerCascade ||= @all.options.cascade != false and
-                                  decl.before.indexOf("\n") != -1
+                                  decl.style('before').indexOf('\n') != -1
 
   # Return maximum length of possible prefixed property
   maxPrefixed: (prefixes, decl) ->
@@ -47,7 +47,7 @@ class Declaration extends Prefixer
 
   # Calculate indentation to create visual cascade
   calcBefore: (prefixes, decl, prefix = '') ->
-    before = decl.before
+    before = decl.style('before')
     max    = @maxPrefixed(prefixes, decl)
     diff   = max - utils.removeNote(prefix).length
     for i in [0...diff]
@@ -56,11 +56,11 @@ class Declaration extends Prefixer
 
   # Remove visual cascade
   restoreBefore: (decl) ->
-    lines = decl.before.split("\n")
+    lines = decl.style('before').split("\n")
     min   = lines[lines.length - 1]
 
     @all.group(decl).up (prefixed) ->
-      array = prefixed.before.split("\n")
+      array = prefixed.style('before').split("\n")
       last  = array[array.length - 1]
       min   = last if last.length < min.length
 

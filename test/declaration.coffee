@@ -31,7 +31,7 @@ describe 'Declaration', ->
       css = parse("a { tab-size: 4 } a {\n  tab-size: 4 }")
 
       @tabsize.needCascade(css.first.first).should.be.false
-      @tabsize.needCascade(css.childs[1].first).should.be.true
+      @tabsize.needCascade(css.last.first).should.be.true
 
   describe 'maxPrefixed()', ->
 
@@ -51,7 +51,7 @@ describe 'Declaration', ->
 
     it 'removes cascade', ->
       css  = parse("a {\n  -moz-tab-size: 4;\n       tab-size: 4 }")
-      decl = css.first.childs[1]
+      decl = css.first.nodes[1]
       @tabsize.restoreBefore(decl)
       decl.before.should.eql("\n  ")
 
@@ -71,7 +71,7 @@ describe 'Declaration', ->
 
     it 'adds prefixes', ->
       css = parse('a { -moz-tab-size: 2; tab-size: 2 }')
-      @tabsize.process(css.first.childs[1])
+      @tabsize.process(css.first.nodes[1])
       css.toString().should.eql(
         'a { -moz-tab-size: 2; -ms-tab-size: 2; tab-size: 2 }')
 

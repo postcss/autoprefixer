@@ -205,13 +205,13 @@ class Prefixes
   group: (decl) ->
     rule       = decl.parent
     index      = rule.index(decl)
-    length     = rule.childs.length
+    length     = rule.nodes.length
     unprefixed = @unprefixed(decl.prop)
 
     checker = (step, callback) =>
       index += step
       while index >= 0 and index < length
-        other = rule.childs[index]
+        other = rule.nodes[index]
         if other.type == 'decl'
 
           if step == -1 and other.prop == unprefixed

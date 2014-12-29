@@ -26,9 +26,9 @@ describe 'Selector', ->
 
     it 'shecks rule selectors', ->
       css = parse('body .selection {}, :::selection {}, body ::selection {}')
-      @selector.check(css.childs[0]).should.be.false
-      @selector.check(css.childs[1]).should.be.false
-      @selector.check(css.childs[2]).should.be.true
+      @selector.check(css.nodes[0]).should.be.false
+      @selector.check(css.nodes[1]).should.be.false
+      @selector.check(css.nodes[2]).should.be.true
 
   describe 'prefixeds()', ->
 
@@ -51,15 +51,15 @@ describe 'Selector', ->
 
     it 'stops on another type', ->
       css = parse('::-moz-selection {} @keyframes anim {} ::selection {}')
-      @selector.already(css.childs[2], @prefixeds, '-moz-').should.be.false
+      @selector.already(css.nodes[2], @prefixeds, '-moz-').should.be.false
 
     it 'stops on another selector', ->
       css = parse('::-moz-selection {} a {} ::selection {}')
-      @selector.already(css.childs[2], @prefixeds, '-moz-').should.be.false
+      @selector.already(css.nodes[2], @prefixeds, '-moz-').should.be.false
 
     it 'finds prefixed even if unknown prefix is between', ->
       css = parse('::-moz-selection {} ::-o-selection {} ::selection {}')
-      @selector.already(css.childs[2], @prefixeds, '-moz-').should.be.true
+      @selector.already(css.nodes[2], @prefixeds, '-moz-').should.be.true
 
   describe 'replace()', ->
 
@@ -71,15 +71,15 @@ describe 'Selector', ->
 
     it 'adds prefixes', ->
       css = parse('b ::-moz-selection{} b ::selection{}')
-      @selector.process(css.childs[1])
+      @selector.process(css.nodes[1])
       css.toString().should.eql(
         'b ::-moz-selection{} b ::-ms-selection{} b ::selection{}')
 
     it 'checks parents prefix', ->
-      css = parse('@-moz-page { ::selection{} }')
+      css = parse('@-moz-page{ ::selection{} }')
       @selector.process(css.first.first)
       css.toString().should.eql(
-        '@-moz-page { ::-moz-selection{} ::selection{} }')
+        '@-moz-page{ ::-moz-selection{} ::selection{} }')
 
   describe 'old()', ->
 

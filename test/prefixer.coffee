@@ -59,11 +59,11 @@ describe 'Prefixer', ->
       @prefix.parentPrefix(@css.first).should.eql('-ms-')
 
     it 'finds in selectors', ->
-      @prefix.parentPrefix(@css.childs[1]).should.eql('-moz-')
+      @prefix.parentPrefix(@css.nodes[1]).should.eql('-moz-')
 
     it 'finds in parents', ->
       @prefix.parentPrefix(@css.first.first).should.eql('-ms-')
-      @prefix.parentPrefix(@css.childs[2]).should.be.false
+      @prefix.parentPrefix(@css.nodes[2]).should.be.false
 
     it 'caches prefix', ->
       @prefix.parentPrefix(@css.first)
@@ -73,4 +73,4 @@ describe 'Prefixer', ->
       @prefix.parentPrefix(@css.first).should.be.false
 
     it 'finds only browsers prefixes', ->
-      @prefix.parentPrefix(@css.childs[2]).should.be.false
+      @prefix.parentPrefix(@css.nodes[2]).should.be.false

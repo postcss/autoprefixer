@@ -11,7 +11,7 @@ describe 'OldSelector', ->
 
     it 'returns true on last rule', ->
       css = parse('::selection {} ::-moz-selection {}')
-      @old.isHack(css.childs[1]).should.be.true
+      @old.isHack(css.last).should.be.true
 
     it 'stops on another type', ->
       css = parse('::-moz-selection {} @keyframes anim {} ::selection {}')

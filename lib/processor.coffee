@@ -77,7 +77,7 @@ class Processor
     if node._autoprefixerDisabled?
       node._autoprefixerDisabled
 
-    else if node.childs
+    else if node.nodes
       status = undefined
       node.each (i) ->
         return unless i.type == 'comment'

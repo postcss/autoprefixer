@@ -14,7 +14,6 @@ b {
 
 @support (transition: 1s) {
     /* autoprefixer: off */
-
     :fullscreen {
         -webkit-border-radius: 4px;
                 border-radius: 4px;
