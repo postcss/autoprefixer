@@ -411,6 +411,12 @@ on_stylesheet_saved do |file|
 end
 ```
 
+### Less
+
+You can use autoprefixer with less by including the [less-plugin-autoprefix] plugin.
+
+[less-plugin-autoprefix]: https://github.com/less/less-plugin-autoprefix
+
 ### Stylus
 
 If you use Stylus CLI, you can add Autoprefixer by [autoprefixer-stylus] plugin:
