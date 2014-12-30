@@ -12,7 +12,7 @@
     "dependencies": {
         "coffee-script": "1.8.0",
         "caniuse-db":    "^1.0.30000040",
-        "postcss":       "git://github.com/postcss/postcss.git#v4.0"
+        "postcss":       "~4.0.0"
     },
     "devDependencies": {
         "vinyl-source-stream": "1.0.0",
