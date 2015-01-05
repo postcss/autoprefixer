@@ -262,7 +262,10 @@ Developers are often surprised by how few prefixes are required today.
 If Autoprefixer doesn’t add prefixes to your CSS, check if they’re still
 required on [Can I Use].
 
-[Can I Use]: http://caniuse.com/
+There is [list with all supported] properties, values and selectors in wiki.
+
+[Can I Use]:               http://caniuse.com/
+[list with all supported]: https://github.com/postcss/autoprefixer/wiki/support-list
 
 #### Why doesn’t Autoprefixer support `display: box`, `box-align`, etc?
 
