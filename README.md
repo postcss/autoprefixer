@@ -25,7 +25,7 @@ entirely):
 
 ```css
 :fullscreen a {
-    transition: transform 1s;
+    display: flex
 }
 ```
 
@@ -41,18 +41,20 @@ to apply prefixes for you:
 
 ```css
 :-webkit-full-screen a {
-    -webkit-transition: -webkit-transform 1s;
-            transition: transform 1s;
+    display: -webkit-flex;
+    display: flex
 }
 :-moz-full-screen a {
-    transition: transform 1s;
+    display: flex
 }
 :-ms-fullscreen a {
-    transition: transform 1s;
+    display: -ms-flexbox;
+    display: flex
 }
 :fullscreen a {
-    -webkit-transition: -webkit-transform 1s;
-            transition: transform 1s;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex
 }
 ```
 
