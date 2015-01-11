@@ -11,7 +11,7 @@
     },
     "dependencies": {
         "coffee-script": "1.8.0",
-        "caniuse-db":    "^1.0.30000040",
+        "caniuse-db":    "^1.0.30000043",
         "postcss":       "~4.0.0"
     },
     "devDependencies": {
@@ -22,9 +22,9 @@
         "gulp-jshint":         "1.9.0",
         "gulp-coffee":         "2.2.0",
         "gulp-mocha":          "2.0.0",
-        "browserify":          "8.0.2",
-        "fs-extra":            "0.13.0",
-        "should":              "4.4.2",
+        "browserify":          "8.1.0",
+        "fs-extra":            "0.14.0",
+        "should":              "4.5.0",
         "mocha":               "2.1.0",
         "gulp":                "3.8.10"
     },
