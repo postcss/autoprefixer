@@ -29,47 +29,36 @@ autoprefixer = (reqs...) ->
   else if typeof(reqs[reqs.length - 1]) == 'object'
     options = reqs.pop()
 
-  if options?.browsers?
-    reqs = options.browsers
-  else if reqs
-    console?.warn('autoprefixer: autoprefixer(browsers) is deprecated ' +
-                  'and will be removed in 3.1. ' +
-                  'Use autoprefixer({ browsers: browsers }).')
+  reqs = options.browsers if options?.browsers?
 
-  reqs = autoprefixer.default unless reqs?
-
-  browsers = new Browsers(autoprefixer.data.browsers, reqs)
-  prefixes = new Prefixes(autoprefixer.data.prefixes, browsers, options)
-  new Autoprefixer(prefixes, autoprefixer.data, options)
+  new Autoprefixer(autoprefixer.data, reqs, options)
 
 autoprefixer.data =
   browsers: require('../data/browsers')
   prefixes: require('../data/prefixes')
 
 class Autoprefixer
-  constructor: (@prefixes, @data, @options = { }) ->
-    @browsers = @prefixes.browsers.selected
+  constructor: (@data, @reqs, @options = { }) ->
 
   # Parse CSS and add prefixed properties for selected browsers
   process: (str, options = {}) ->
-    @processor().process(str, options)
+    postcss(@postcss).process(str, options)
 
   # Return PostCSS processor, which will add necessary prefixes
   postcss: (css) =>
-    @prefixes.processor.remove(css) if @options.remove != false
-    @prefixes.processor.add(css)
+    prefixes = @prefixes(from: css.source.input.file)
+    prefixes.processor.remove(css) if @options.remove != false
+    prefixes.processor.add(css)
+
+  # Build Prefixes object for current options
+  prefixes: (opts) ->
+    browsers = new Browsers(autoprefixer.data.browsers, @reqs, opts)
+    new Prefixes(autoprefixer.data.prefixes, browsers, @options)
 
   # Return string, what browsers selected and whar prefixes will be added
-  info: ->
+  info: (opts) ->
     infoCache ||= require('./info')
-    infoCache(@prefixes)
-
-  # Cache PostCSS processor
-  processor: ->
-    @processorCache ||= postcss(@postcss)
-
-# Autoprefixer default browsers
-autoprefixer.default = ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1']
+    infoCache(@prefixes(opts))
 
 # Lazy load for Autoprefixer with default browsers
 autoprefixer.loadDefault = ->

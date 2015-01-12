@@ -11,8 +11,9 @@
     },
     "dependencies": {
         "coffee-script": "1.8.0",
+        "browserslist":  "~0.1.1",
         "caniuse-db":    "^1.0.30000043",
-        "postcss":       "~4.0.0"
+        "postcss":       "~4.0.1"
     },
     "devDependencies": {
         "vinyl-source-stream": "1.0.0",

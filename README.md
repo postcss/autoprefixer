@@ -41,6 +41,7 @@ to apply prefixes for you:
 
 ```css
 :-webkit-full-screen a {
+    display: -webkit-box;
     display: -webkit-flex;
     display: flex
 }
@@ -52,6 +53,7 @@ to apply prefixes for you:
     display: flex
 }
 :fullscreen a {
+    display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex

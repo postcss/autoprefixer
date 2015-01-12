@@ -3,45 +3,36 @@ Prefixes = require('../lib/prefixes')
 info     = require('../lib/info')
 
 data =
-  browsers:
-    chrome:
-      prefix:   '-webkit-'
-      versions: ['chrome 1']
-    firefox:
-      prefix:   '-moz-'
-      versions: ['firefox 2', 'firefox 1']
-    ie:
-      prefix:   '-ms-'
-      versions: ['ie 2']
+  browsers: require('../data/browsers')
   prefixes:
     a:
-      browsers: ['firefox 2', 'firefox 1', 'chrome 1']
+      browsers: ['firefox 21', 'firefox 20', 'chrome 30']
       transition: true
     b:
-      browsers: ['ie 2', 'firefox 1']
+      browsers: ['ie 6', 'firefox 20']
       props:    ['a', '*']
     c:
-      browsers: ['firefox 2']
+      browsers: ['firefox 21']
       props:    ['c']
     d:
-      browsers: ['firefox 2']
+      browsers: ['firefox 21']
       selector:   true
     '@keyframes':
-      browsers: ['firefox 2']
+      browsers: ['firefox 21']
     transition:
-      browsers: ['firefox 2']
+      browsers: ['firefox 21']
 
 describe 'info', ->
 
   it 'returns selected browsers and prefixes', ->
     browsers = new Browsers(data.browsers,
-      ['chrome 1', 'firefox 2', 'firefox 1', 'ie 2'])
+      ['chrome 30', 'firefox 21', 'firefox 20', 'ie 6'])
     prefixes = new Prefixes(data.prefixes, browsers)
 
     info(prefixes).should.eql "Browsers:\n" +
-                              "  Chrome: 1\n" +
-                              "  Firefox: 2, 1\n" +
-                              "  IE: 2\n" +
+                              "  Chrome: 30\n" +
+                              "  Firefox: 21, 20\n" +
+                              "  IE: 6\n" +
                               "\n" +
                               "At-Rules:\n" +
                               "  @keyframes: moz\n" +
@@ -59,13 +50,13 @@ describe 'info', ->
                               "  c: moz\n"
 
   it "doesn't show transitions unless they are necessary", ->
-    browsers = new Browsers(data.browsers, ['chrome 1', 'firefox 1', 'ie 2'])
+    browsers = new Browsers(data.browsers, ['chrome 30', 'firefox 20', 'ie 6'])
     prefixes = new Prefixes(data.prefixes, browsers)
 
     info(prefixes).should.eql "Browsers:\n" +
-                              "  Chrome: 1\n" +
-                              "  Firefox: 1\n" +
-                              "  IE: 2\n" +
+                              "  Chrome: 30\n" +
+                              "  Firefox: 20\n" +
+                              "  IE: 6\n" +
                               "\n" +
                               "Properties:\n" +
                               "  a: webkit, moz\n" +
@@ -74,7 +65,7 @@ describe 'info', ->
                               "  b: moz, ms\n"
 
   it 'returns string for empty prefixes', ->
-    browsers = new Browsers(data.browsers, ['ie 1'])
+    browsers = new Browsers(data.browsers, ['ie 7'])
     prefixes = new Prefixes(data.prefixes, browsers)
 
     info(prefixes).should.match(/remove Autoprefixer/)

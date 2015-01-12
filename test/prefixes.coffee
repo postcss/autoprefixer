@@ -8,31 +8,22 @@ Value       = require('../lib/value')
 parse       = require('postcss/lib/parse')
 
 data =
-  browsers:
-    chrome:
-      prefix:   '-webkit-'
-      versions: ['chrome 1']
-    firefox:
-      prefix:   '-moz-'
-      versions: ['firefox 2', 'firefox 1']
-    ie:
-      prefix:   '-ms-'
-      versions: ['ie 2', 'ie 1']
+  browsers: require('../data/browsers')
   prefixes:
     a:
-      browsers: ['firefox 2', 'firefox 1 old', 'chrome 1', 'ie 1']
+      browsers: ['firefox 21', 'firefox 20 old', 'chrome 30', 'ie 6']
       transition: true
     b:
-      browsers: ['ie 2 new', 'firefox 1']
+      browsers: ['ie 7 new', 'firefox 20']
       mistakes: ['-webkit-']
       props:    ['a', '*']
     c:
-      browsers: ['ie 2', 'firefox 1']
+      browsers: ['ie 7', 'firefox 20']
       selector: true
 
 empty = new Prefixes({ }, new Browsers(data.browsers, []))
 fill  = new Prefixes(data.prefixes,
-                     new Browsers(data.browsers, ['firefox 2', 'ie 2']))
+                     new Browsers(data.browsers, ['firefox 21', 'ie 7']))
 
 cSel  = new Selector('c', ['-ms-'], fill)
 aVal  = new Value('a',    ['-moz-'], fill)

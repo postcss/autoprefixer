@@ -1,5 +1,7 @@
 autoprefixer = require('../lib/autoprefixer')
 Browsers     = require('../lib/browsers')
+
+browserslist = require('browserslist')
 postcss      = require('postcss')
 fs           = require('fs')
 
@@ -67,18 +69,7 @@ describe 'autoprefixer()', ->
 
   it 'sets options', ->
     opts = { browsers: ['chrome 25', 'opera 12'], cascade: false }
-    processor = autoprefixer(opts)
-    processor.prefixes.options.should.eql(opts)
-    processor.browsers.should.eql(['chrome 25', 'opera 12'])
-
-  it 'has default browsers', ->
-    autoprefixer.default.should.be.an.instanceOf(Array)
-
-  it 'sets default browser', ->
-    defaults  = new Browsers(autoprefixer.data.browsers, autoprefixer.default)
-    processor = autoprefixer()
-    processor.browsers.should.eql(defaults.selected)
-    processor.prefixes.options.should.eql({ })
+    autoprefixer(opts).options.should.eql(opts)
 
 describe 'Autoprefixer', ->
 
@@ -143,6 +134,12 @@ describe 'Autoprefixer', ->
       ( ->
         cleaner.process('a {', from: 'a.css')
       ).should.throw(/a.css:1:1: /)
+
+    it 'uses browserslist config', ->
+      path   = __dirname + '/cases/config/test.css'
+      input  = read('config/test')
+      output = read('config/test.out')
+      autoprefixer.process(input, from: path).css.should.eql(output)
 
   describe 'postcss()', ->
 
