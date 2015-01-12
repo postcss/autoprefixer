@@ -239,10 +239,14 @@ Browsers:
         try {
             result = this.compiler().process(css, opts);
         } catch (error) {
-            if ( error.autoprefixer ) {
+            if ( error.indexOf && error.indexOf('Unknown browser') != -1 ) {
+                this.error('autoprefixer: ' + error);
+            } else if ( error.autoprefixer ) {
                 this.error('autoprefixer: ' + error.message);
             } else if ( error instanceof CssSyntaxError ) {
-                this.error('autoprefixer:' + error.toString());
+                var text = error.message;
+                if ( error.source ) text += '\n' + error.highlight();
+                this.error('autoprefixer:' + text);
             } else {
                 this.error('autoprefixer: Internal error');
                 if ( error.stack ) {

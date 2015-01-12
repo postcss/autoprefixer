@@ -374,7 +374,7 @@ describe('Binary', () => {
 
     it('prints errors', (done) => {
         this.raise('-b', 'ie',
-                   /autoprefixer: Unknown browser requirement `ie`/, done);
+                   /autoprefixer: Unknown browser query `ie`/, done);
     });
 
     it('prints parsing errors', (done) => {
