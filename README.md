@@ -11,7 +11,7 @@ entirely):
 
 ```css
 :fullscreen a {
-    transition: transform 1s;
+    display: flex
 }
 ```
 
@@ -21,18 +21,22 @@ of Autoprefixer.
 
 ```css
 :-webkit-full-screen a {
-    -webkit-transition: -webkit-transform 1s;
-            transition: transform 1s;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex
 }
 :-moz-full-screen a {
-    transition: transform 1s;
+    display: flex
 }
 :-ms-fullscreen a {
-    transition: transform 1s;
+    display: -ms-flexbox;
+    display: flex
 }
 :fullscreen a {
-    -webkit-transition: -webkit-transform 1s;
-            transition: transform 1s;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex
 }
 ```
 
@@ -116,44 +120,18 @@ a {
 
 ## Browsers
 
-You can specify the browsers you want to target in your project:
+Autoprefixer uses [Browserslist], so you can set can specify the browsers
+you want to target in your project by queries like `last 2 versions`
+or `> 5%`.
 
-* `last 2 versions` targets the last 2 versions for each browser.
-* `last 2 Chrome versions` targets the last versions of a specific browser.
-* `> 5%` declares browser versions selected by global usage statistics.
-* `Firefox > 20` targets versions of Firefox newer than 20.
-* `Firefox >= 20` targets versions of Firefox newer than or equal to 20.
-* `Firefox < 20` targets versions of Firefox less than 20.
-* `Firefox <= 20` targets versions of Firefox less than or equal to 20.
-* `Firefox ESR` specifies the latest [Firefox ESR] version.
-* `ios 7` will set the browser version directly.
+If you miss browsers option, Browserslist will try to find `browserslist`
+config in parent dirs.
 
-Blackberry and stock Android browsers will not be used in `last n versions`.
-You should add them by name.
+See [Browserslist docs] for queries, browser names, config format
+and default value.
 
-Browsers names (case insensitive):
-
-* `Android` for old Android stock browser.
-* `BlackBerry` or `bb` for Blackberry browser.
-* `Chrome` for Google Chrome.
-* `Firefox` or `ff` for Mozilla Firefox.
-* `Explorer` or `ie` for Internet Explorer.
-* `iOS` or `ios_saf` for iOS Safari.
-* `Opera` for Opera.
-* `Safari` for desktop Safari.
-* `OperaMobile` or `op_mob` for Opera Mobile.
-* `OperaMini` or `op_mini` for Opera Mini.
-* `ChromeAndroid` or `and_chr` for Chrome for Android
-  (mostly same as common `Chrome`).
-* `FirefoxAndroid` or `and_ff` for Firefox for Android.
-* `ExplorerMobile` or `ie_mob` for Internet Explorer Mobile.
-
-By default, Autoprefixer uses `> 1%, last 2 versions, Firefox ESR, Opera 12.1`:
-
-* Latest [Firefox ESR] is a 31 version.
-* Opera 12.1 will be in list until Opera supports non-Blink 12.x branch.
-
-[Firefox ESR]: http://www.mozilla.org/en/firefox/organizations/faq/
+[Browserslist]:      https://github.com/ai/browserslist
+[Browserslist docs]: https://github.com/ai/browserslist#queries
 
 ## Source Map
 
