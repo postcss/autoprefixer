@@ -76,11 +76,9 @@ var processor = autoprefixer({ browsers: ['> 1%', 'IE 7'], cascade: false });
 There are 2 options:
 
 * `browsers` (array): list of browsers, which are supported in your project.
-
   You can directly specify browser version (like `iOS 7`) or use selections
-  (like `last 2 version` or `> 5%`).
-
-  See [Browserslist docs] for available queries and default value.
+  (like `last 2 version` or `> 5%`). See [Browserslist docs] for available
+  queries and default value.
 * `cascade` (boolean): should Autoprefixer uses [Visual Cascade],
   if CSS will be uncompressed.
 
