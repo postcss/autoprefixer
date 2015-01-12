@@ -78,12 +78,9 @@ There are 2 options:
 * `browsers` (array): list of browsers, which are supported in your project.
 
   You can directly specify browser version (like `iOS 7`) or use selections
-  (like `last 2 version` or `> 5%`). [Full browsers documentation] is available
-  on main Autoprefixer page.
+  (like `last 2 version` or `> 5%`).
 
-  By default, Autoprefixer uses
-  `'> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1'`. You can get current
-  default list from `autoprefixer.default` property.
+  See [Browserslist docs] for available queries and default value.
 * `cascade` (boolean): should Autoprefixer uses [Visual Cascade],
   if CSS will be uncompressed.
 
@@ -101,10 +98,10 @@ to increase perfomance.
 There are `autoprefixer.process()`, `autoprefixer.info()`
 and `autoprefixer.postcss` shortcuts, which use default browsers and options.
 
-[Full browsers documentation]: https://github.com/postcss/autoprefixer#browsers
-[PostCSS processors]:    https://github.com/postcss/postcss#built-with-postcss
-[Visual Cascade]:              https://github.com/postcss/autoprefixer#visual-cascade
-[PostCSS]:                     https://github.com/postcss/postcss
+[PostCSS processors]: https://github.com/postcss/postcss#built-with-postcss
+[Browserslist docs]:  https://github.com/ai/browserslist
+[Visual Cascade]:     https://github.com/postcss/autoprefixer#visual-cascade
+[PostCSS]:            https://github.com/postcss/postcss
 
 ## CSS Processing
 
