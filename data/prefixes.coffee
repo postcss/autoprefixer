@@ -271,3 +271,10 @@ feature require('caniuse-db/features-json/object-fit'), (browsers) ->
   prefix 'object-fit',
          'object-position',
           browsers: browsers
+
+# CSS Shapes
+feature require('caniuse-db/features-json/css-shapes'), (browsers) ->
+  prefix 'shape-margin',
+         'shape-outside',
+         'shape-image-threshold',
+          browsers: browsers
