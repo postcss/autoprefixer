@@ -170,7 +170,7 @@ autoprefixer.process('a {', { safe: true }); // will process as a closed block
 It is useful for legacy code when using several hacks, or interactive
 tools with live input, like [Autoprefixer demo].
 
-[Autoprefixer demo]: http://jsbin.com/gufoko/quiet
+[Autoprefixer demo]: http://simevidas.jsbin.com/gufoko/quiet
 
 ## Cleaning
 
