@@ -265,3 +265,9 @@ feature require('caniuse-db/features-json/css-masks'), (browsers) ->
 feature require('caniuse-db/features-json/css-boxdecorationbreak'), (brwsrs) ->
   prefix 'box-decoration-break',
           browsers: brwsrs
+
+# CSS3 object-fit/object-position
+feature require('caniuse-db/features-json/object-fit'), (browsers) ->
+  prefix 'object-fit',
+         'object-position',
+          browsers: browsers
