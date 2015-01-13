@@ -4,7 +4,7 @@
 
 [PostCSS] plugin to parse CSS and add vendor prefixes to CSS rules using values
 from [Can I Use]. It is [recommended] by Google and used in Twitter,
-and Bootstrap.
+and Taobao.
 
 Write your CSS rules without vendor prefixes (in fact, forget about them
 entirely):
