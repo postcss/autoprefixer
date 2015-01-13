@@ -207,14 +207,10 @@ You can also use comments recursively:
 
 #### Does it add polyfills for old browsers?
 
-No. Autoprefixer only adds prefixes, not polyfills. There are two reasons:
+No. Autoprefixer only adds prefixes. Use [CSS Grace] for polyfills.
+It is PostCSS plugin too, soo you can parse CSS only once.
 
-1. Prefixes and polyfills are very different and need a different API.
-   Two separate libraries would be much better.
-2. Most of IE polyfills are bad for client performance, as they use slow hacks
-   and old IEs often runs on old hardware. Most CSS3 features used only
-   for styling should be ignored in old IEs as it is recommended for
-   graceful degradation.
+[CSS Grace]: https://github.com/cssdream/cssgrace
 
 #### Why don’t gradients work in Firefox?
 
