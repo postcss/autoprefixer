@@ -9,6 +9,7 @@ names =
   op_mob:  'Opera Mobile'
   and_chr: 'Chrome for Android'
   and_ff:  'Firefox for Android'
+  and_uc:  'UC for Android'
 
 prefix = (name, transition, prefixes) ->
     out  = '  ' + name + (if transition then '*' else '') + ': '
