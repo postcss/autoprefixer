@@ -161,4 +161,12 @@ class Gradient extends Value
     else
       super
 
+  # Do not add non-webkit prefixes for list-style and object
+  add: (decl, prefix) ->
+    prop = decl.prop
+    if prop == 'list-style' or prop == 'list-style-image' or prop == 'content'
+      super if prefix == '-webkit-' or prefix == '-webkit- old'
+    else
+      super
+
 module.exports = Gradient

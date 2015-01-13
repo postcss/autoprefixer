@@ -76,3 +76,9 @@ div {
     background: -o-linear-gradient(black 0, white 100px);
     background: linear-gradient(black 0, white 100px);
 }
+
+.list {
+    list-style-image: -webkit-gradient(linear, left top, left bottom, from(white), to(black));
+    list-style-image: -webkit-linear-gradient(white, black);
+    list-style-image: linear-gradient(white, black);
+}

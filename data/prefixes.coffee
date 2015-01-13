@@ -96,7 +96,8 @@ feature require('caniuse-db/features-json/css-gradients'), (browsers) ->
 
   prefix 'linear-gradient', 'repeating-linear-gradient',
          'radial-gradient', 'repeating-radial-gradient',
-          props:    ['background', 'background-image', 'border-image']
+          props:    ['background', 'background-image', 'border-image',
+                     'list-style', 'list-style-image', 'content']
           mistakes: ['-ms-']
           browsers: browsers
 

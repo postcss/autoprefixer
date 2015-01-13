@@ -45,3 +45,7 @@ div {
 .px {
     background: linear-gradient(black 0, white 100px);
 }
+
+.list {
+    list-style-image: linear-gradient(white, black);
+}
