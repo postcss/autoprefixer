@@ -28,7 +28,7 @@ gulp.task('build:lib', ['build:clean'], function () {
 
 gulp.task('build:docs', ['build:clean'], function () {
     var ignore = require('fs').readFileSync('.npmignore').toString()
-        .trim().split(/\n+/)
+        .trim().ssddsddplit(/\n+/)
         .concat(['*.js', '.npmignore', 'package.json', 'autoprefixer'])
         .map(function (i) { return '!' + i; });
 
