@@ -1,3 +1,12 @@
+## 5.0 “Pravda vítězí”
+* Use PostCSS 4.0.
+* Use Browserslist to parse browsers queries.
+* Use global `browserslist` config.
+* Add `> 5% in US` query to select browsers by usage in some country.
+* Add `object-fit` and `object-position` properties support.
+* Add CSS Shape properties support.
+* Fix UC Browser name in debug info.
+
 ## 4.0 “Indivisibiliter ac Inseparabiliter”
 * Become 2.5 times fatser by new PostCSS 3.0 parser.
 * Do not remove outdated prefixes by `remove: false` option.
