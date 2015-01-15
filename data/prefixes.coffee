@@ -278,3 +278,8 @@ feature require('caniuse-db/features-json/css-shapes'), (browsers) ->
          'shape-outside',
          'shape-image-threshold',
           browsers: browsers
+
+# CSS3 text-overflow
+feature require('caniuse-db/features-json/text-overflow'), (browsers) ->
+  prefix 'text-overflow',
+          browsers: browsers
