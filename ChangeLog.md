@@ -6,6 +6,7 @@
 * Add `object-fit` and `object-position` properties support.
 * Add CSS Shape properties support.
 * Fix UC Browser name in debug info.
+* Remove `autoprefixer.defaults` and use defaults from Browserslist. 
 
 ## 4.0 “Indivisibiliter ac Inseparabiliter”
 * Become 2.5 times fatser by new PostCSS 3.0 parser.
