@@ -358,8 +358,13 @@ module.exports = {
 
 ### Compass
 
-If you use Compass binary to compile your styles, you can easily integrate
-Autoprefixer with it. Install `autoprefixer-rails` gem:
+You should think about try Gulp instead of Compass binary, because it has
+better Autoprefixer integration and many other awesome plugins.
+
+But if you can’t move from Compass binray right now, there is a some hack
+to run Autoprefixer after `compass compile`.
+
+Install `autoprefixer-rails` gem:
 
 ```
 gem install autoprefixer-rails
