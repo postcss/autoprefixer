@@ -283,3 +283,8 @@ feature require('caniuse-db/features-json/css-shapes'), (browsers) ->
 feature require('caniuse-db/features-json/text-overflow'), (browsers) ->
   prefix 'text-overflow',
           browsers: browsers
+
+# CSS3 text-emphasis
+feature require('caniuse-db/features-json/text-emphasis'), (browsers) ->
+  prefix 'text-emphasis',
+          browsers: browsers
