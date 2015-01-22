@@ -16,7 +16,6 @@ selectorer   = autoprefixer(browsers: ['Chrome 25', 'Firefox > 17', 'IE 10'])
 intrinsicer  = autoprefixer(browsers: ['Chrome 25', 'Firefox 22'])
 backgrounder = autoprefixer(browsers: ['Firefox 3.6', 'Android 2.3'])
 
-
 cascader = autoprefixer
   browsers: ['Chrome > 19', 'Firefox 21', 'IE 10'],
   cascade:  true
@@ -42,6 +41,8 @@ prefixer = (name) ->
     without3d
   else if name == 'background-size'
     backgrounder
+  else if name == 'background-clip'
+    cleaner
   else if name == 'uncascade'
     uncascader
   else if name == 'example'
@@ -174,6 +175,7 @@ describe 'Autoprefixer', ->
     it 'fix break-inside property',     -> test('multicolumn')
     it 'ignores some 3D transforms',    -> test('3d-transform')
     it 'support background-size',       -> test('background-size')
+    it 'support background-clip',       -> test('background-clip')
 
     it 'ignores values for CSS3PIE props', ->
       input  = read('pie')

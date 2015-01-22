@@ -61,7 +61,7 @@ class Processor
       if @prefixes.remove[decl.prop]?.remove
         notHack = @prefixes.group(decl).down (other) -> other.prop == unprefixed
 
-        if notHack
+        if notHack and not @withHackValue(decl)
           @reduceSpaces(decl) if decl.before.indexOf("\n") > -1
           rule.remove(i)
           return
@@ -71,6 +71,10 @@ class Processor
         if checker.check(decl.value)
           rule.remove(i)
           return
+
+  # Some rare old values, which is not in standard
+  withHackValue: (decl) ->
+    decl.prop == '-webkit-background-clip' and decl.value == 'text'
 
   # Check for control comment
   disabled: (node) ->
