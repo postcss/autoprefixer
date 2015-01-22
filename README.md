@@ -255,8 +255,10 @@ of `display: box`.
 #### Why doesn’t Autoprefixer support `appearance`?
 
 Unlike `transition`, the `appearance` property is not a part of
-any specification. So there is no `appearance`, only `-moz-appearance`
-and `-webkit-appearance`.
+any specification. So there will not `appearance` in any future.
+
+In some future when all browsers will work without prefixes you will remove
+Autoprefixer and your CSS must works.
 
 #### Does Autoprefixer add `-epub-` prefix?
 
