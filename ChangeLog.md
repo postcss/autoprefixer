@@ -6,6 +6,7 @@
 * Add `object-fit` and `object-position` properties support.
 * Add CSS Shape properties support.
 * Fix UC Browser name in debug info.
+* Remove `autoprefixer.defaults` and use defaults from Browserslist.
 
 ## 4.0.2
 * Remove `o-border-radius`, which is common mistake in legacy CSS.
