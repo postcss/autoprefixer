@@ -1,4 +1,5 @@
-postcss  = require('postcss')
+browserslist = require('browserslist')
+postcss      = require('postcss')
 
 Browsers = require('./browsers')
 Prefixes = require('./prefixes')
@@ -60,9 +61,12 @@ class Autoprefixer
     infoCache ||= require('./info')
     infoCache(@prefixes(opts))
 
+# Autoprefixer default browsers
+autoprefixer.defaults = browserslist.defaults
+
 # Lazy load for Autoprefixer with default browsers
 autoprefixer.loadDefault = ->
-  @defaultCache ||= autoprefixer(browsers: @default)
+  @defaultCache ||= autoprefixer()
 
 # Compile with default Autoprefixer
 autoprefixer.process = (str, options = {}) ->

@@ -1,9 +1,8 @@
 autoprefixer = require('../lib/autoprefixer')
 Browsers     = require('../lib/browsers')
 
-browserslist = require('browserslist')
-postcss      = require('postcss')
-fs           = require('fs')
+postcss = require('postcss')
+fs      = require('fs')
 
 cleaner      = autoprefixer(browsers: [])
 compiler     = autoprefixer(browsers: ['Chrome 25', 'Opera 12'])
@@ -70,6 +69,9 @@ describe 'autoprefixer()', ->
   it 'sets options', ->
     opts = { browsers: ['chrome 25', 'opera 12'], cascade: false }
     autoprefixer(opts).options.should.eql(opts)
+
+  it 'has default browsers', ->
+    autoprefixer.defaults.should.be.an.instanceOf(Array)
 
 describe 'Autoprefixer', ->
 
