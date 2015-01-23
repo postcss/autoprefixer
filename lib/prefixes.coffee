@@ -3,10 +3,10 @@ vendor = require('postcss/lib/vendor')
 
 Declaration = require('./declaration')
 Processor   = require('./processor')
-Keyframes   = require('./keyframes')
 Supports    = require('./supports')
 Browsers    = require('./browsers')
 Selector    = require('./selector')
+AtRule      = require('./at-rule')
 Value       = require('./value')
 
 Selector.hack require('./hacks/fullscreen')
@@ -109,8 +109,8 @@ class Prefixes
   preprocess: (selected) ->
     add = { selectors: [], '@supports': new Supports(@) }
     for name, prefixes of selected.add
-      if name == '@keyframes'
-        add[name] = new Keyframes(name, prefixes, @)
+      if name == '@keyframes' or name == '@viewport'
+        add[name] = new AtRule(name, prefixes, @)
 
       else if @data[name].selector
         add.selectors.push(Selector.load(name, prefixes, @))

@@ -9,11 +9,14 @@ class Processor
   add: (css) ->
     # At-rules
     keyframes = @prefixes.add['@keyframes']
+    viewport  = @prefixes.add['@viewport']
     supports  = @prefixes.add['@supports']
 
     css.eachAtRule (rule) =>
       if rule.name == 'keyframes'
         keyframes?.process(rule) if not @disabled(rule)
+      else if rule.name == 'viewport'
+        viewport?.process(rule) if not @disabled(rule)
       else if rule.name == 'supports'
         supports.process(rule) if not @disabled(rule)
 

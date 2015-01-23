@@ -287,4 +287,8 @@ feature require('caniuse-db/features-json/text-overflow'), (browsers) ->
 # CSS3 text-emphasis
 feature require('caniuse-db/features-json/text-emphasis'), (browsers) ->
   prefix 'text-emphasis',
+
+# Viewport at-rule
+feature require('caniuse-db/features-json/css-deviceadaptation'), (browsers) ->
+  prefix '@viewport',
           browsers: browsers

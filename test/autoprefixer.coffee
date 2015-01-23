@@ -47,6 +47,8 @@ prefixer = (name) ->
     uncascader
   else if name == 'example'
     autoprefixer
+  else if name == 'viewport'
+    flexboxer
   else
     compiler
 
@@ -63,7 +65,7 @@ commons = ['transition', 'values', 'keyframes', 'gradient', 'flex-rewrite',
            'flexbox', 'filter', 'border-image', 'border-radius', 'notes',
            'selectors', 'placeholder', 'fullscreen', 'intrinsic', 'mistakes',
            'custom-prefix', 'cascade', 'double', 'multicolumn', '3d-transform',
-           'background-size', 'supports']
+           'background-size', 'supports', 'viewport']
 
 describe 'autoprefixer()', ->
 
@@ -81,6 +83,7 @@ describe 'Autoprefixer', ->
     it 'prefixes transition',            -> test('transition')
     it 'prefixes values',                -> test('values')
     it 'prefixes @keyframes',            -> test('keyframes')
+    it 'prefixes @viewport',             -> test('viewport')
     it 'prefixes selectors',             -> test('selectors')
     it 'removes common mistakes',        -> test('mistakes')
     it 'reads notes for prefixes',       -> test('notes')

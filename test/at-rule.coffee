@@ -1,11 +1,11 @@
-Keyframes = require('../lib/keyframes')
-parse     = require('postcss/lib/parse')
+AtRule = require('../lib/at-rule')
+parse  = require('postcss/lib/parse')
 
-describe 'Keyframes', ->
+describe 'AtRule', ->
   describe 'process()', ->
 
     it 'adds prefixes', ->
-      keyframes = new Keyframes('@keyframes', ['-moz-', '-ms-'])
+      keyframes = new AtRule('@keyframes', ['-moz-', '-ms-'])
 
       css = parse('@-moz-keyframes b {} @-ms-keyframes a {} @keyframes a {}')
       keyframes.process(css.last)
