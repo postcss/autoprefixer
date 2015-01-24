@@ -1,6 +1,7 @@
 Browsers = require('./browsers')
-vendor   = require('postcss/lib/vendor')
 utils    = require('./utils')
+
+vendor = require('postcss/lib/vendor')
 
 class Prefixer
   # Add hack to selected names

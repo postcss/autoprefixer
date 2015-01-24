@@ -15,6 +15,7 @@ gradienter   = autoprefixer(browsers: ['Chrome 25', 'Opera 12', 'Android 2.3'])
 selectorer   = autoprefixer(browsers: ['Chrome 25', 'Firefox > 17', 'IE 10'])
 intrinsicer  = autoprefixer(browsers: ['Chrome 25', 'Firefox 22'])
 backgrounder = autoprefixer(browsers: ['Firefox 3.6', 'Android 2.3'])
+resolutioner = autoprefixer(browsers: ['Safari 7'])
 
 cascader = autoprefixer
   browsers: ['Chrome > 19', 'Firefox 21', 'IE 10'],
@@ -49,6 +50,8 @@ prefixer = (name) ->
     autoprefixer
   else if name == 'viewport'
     flexboxer
+  else if name == 'resolution'
+    resolutioner
   else
     compiler
 
@@ -85,6 +88,7 @@ describe 'Autoprefixer', ->
     it 'prefixes @keyframes',            -> test('keyframes')
     it 'prefixes @viewport',             -> test('viewport')
     it 'prefixes selectors',             -> test('selectors')
+    it 'prefixes resolution query',      -> test('resolution')
     it 'removes common mistakes',        -> test('mistakes')
     it 'reads notes for prefixes',       -> test('notes')
     it 'keeps vendor-specific hacks',    -> test('vendor-hack')

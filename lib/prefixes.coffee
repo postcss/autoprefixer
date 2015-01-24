@@ -1,13 +1,14 @@
-utils  = require('./utils')
-vendor = require('postcss/lib/vendor')
-
 Declaration = require('./declaration')
+Resolution  = require('./resolution')
 Processor   = require('./processor')
 Supports    = require('./supports')
 Browsers    = require('./browsers')
 Selector    = require('./selector')
 AtRule      = require('./at-rule')
 Value       = require('./value')
+utils       = require('./utils')
+
+vendor = require('postcss/lib/vendor')
 
 Selector.hack require('./hacks/fullscreen')
 Selector.hack require('./hacks/placeholder')
@@ -111,6 +112,9 @@ class Prefixes
     for name, prefixes of selected.add
       if name == '@keyframes' or name == '@viewport'
         add[name] = new AtRule(name, prefixes, @)
+
+      else if name == '@resolution'
+        add[name] = new Resolution(name, prefixes, @)
 
       else if @data[name].selector
         add.selectors.push(Selector.load(name, prefixes, @))

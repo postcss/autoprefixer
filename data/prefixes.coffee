@@ -293,3 +293,8 @@ feature require('caniuse-db/features-json/text-emphasis'), (browsers) ->
 feature require('caniuse-db/features-json/css-deviceadaptation'), (browsers) ->
   prefix '@viewport',
           browsers: browsers
+
+# Resolution Media Queries
+feature require('caniuse-db/features-json/css-media-resolution'), (browsers) ->
+  prefix '@resolution',
+          browsers: browsers
