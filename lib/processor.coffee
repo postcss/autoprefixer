@@ -43,7 +43,7 @@ class Processor
 
   # Remove unnecessary pefixes
   remove: (css) ->
-    # Keyframes
+    # At-rules
     css.eachAtRule (rule, i) =>
       if @prefixes.remove['@' + rule.name]
         rule.parent.remove(i) if not @disabled(rule)
