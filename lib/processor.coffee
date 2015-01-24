@@ -47,9 +47,13 @@ class Processor
   # Remove unnecessary pefixes
   remove: (css) ->
     # At-rules
+    resolution = @prefixes.remove['@resolution']
+
     css.eachAtRule (rule, i) =>
       if @prefixes.remove['@' + rule.name]
         rule.parent.remove(i) if not @disabled(rule)
+      else if rule.name == 'media' and rule.params.indexOf('-resolution') != -1
+        resolution?.clean(rule)
 
     # Selectors
     for checker in @prefixes.remove.selectors

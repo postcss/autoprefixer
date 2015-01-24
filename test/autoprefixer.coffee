@@ -68,7 +68,7 @@ commons = ['transition', 'values', 'keyframes', 'gradient', 'flex-rewrite',
            'flexbox', 'filter', 'border-image', 'border-radius', 'notes',
            'selectors', 'placeholder', 'fullscreen', 'intrinsic', 'mistakes',
            'custom-prefix', 'cascade', 'double', 'multicolumn', '3d-transform',
-           'background-size', 'supports', 'viewport']
+           'background-size', 'supports', 'viewport', 'resolution']
 
 describe 'autoprefixer()', ->
 

@@ -143,10 +143,13 @@ class Prefixes
         for prefix in prefixes
           remove.selectors.push(selector.old(prefix))
 
-      else if name[0] == '@'
+      else if name == '@keyframes' or name == '@viewport'
         for prefix in prefixes
           prefixed = '@' + prefix + name[1..-1]
           remove[prefixed] = { remove: true }
+
+      else if name == '@resolution'
+        remove[name] = new Resolution(name, prefixes, @)
 
       else
         props = if @data[name].transition

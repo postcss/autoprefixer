@@ -8,44 +8,61 @@ split  = /(min|max)-resolution(\s*:\s*)(\d+)(dppx|dpi)/
 
 class Resolution extends Prefixer
 
-  prefix: (prefix, name, colon, value, units) ->
+  # Return prefixed query name
+  prefixName: (prefix, name) ->
     name = if prefix == '-moz-'
       name + '--moz-device-pixel-ratio'
     else
       prefix + name + '-device-pixel-ratio'
 
-    value = if units == 'dpi'
-      Math.round(value / 96)
-    else if units == 'dppx'
-      value
+  # Return prefixed query
+  prefixQuery: (prefix, name, colon, value, units) ->
+    value = Math.round(value / 96) if units == 'dpi'
+    @prefixName(prefix, name) + colon + value
 
-    name + colon + value
+  # Process at-rule params queries throw callback
+  changeQueries: (rule, callback) ->
+    origin  = list.comma(rule.params)
+    changed = callback(origin, [])
 
+    if origin != changed
+      join = rule.params.match(/,\s*/)
+      join = if join then join[0] else ', '
+      rule.params = changed.join(join)
+
+  # Remove prefixed queries
+  clean: (rule) ->
+    unless @bad
+      @bad = []
+      for prefix in @prefixes
+        @bad.push( @prefixName(prefix, 'min') )
+        @bad.push( @prefixName(prefix, 'max') )
+
+    @changeQueries rule, (origin, cleaned) =>
+      for query in origin
+        if @bad.every( (i) -> query.indexOf(i) == -1 )
+          cleaned.push(query)
+      cleaned
+
+  # Add prefixed queries
   process: (rule) ->
     parent   = @parentPrefix(rule)
     prefixes = if parent then [parent] else @prefixes
 
-    origin    = list.comma(rule.params)
-    prefixeds = []
+    @changeQueries rule, (origin, prefixed) =>
+      for query in origin
+        if query.indexOf('min-resolution') == -1 and
+           query.indexOf('max-resolution') == -1
+          prefixed.push(query)
+          continue
 
-    for query in origin
-      if query.indexOf('min-resolution') == -1 and
-         query.indexOf('max-resolution') == -1
+        for prefix in prefixes
+          processed = query.replace regexp, (str) =>
+            parts = str.match(split)
+            @prefixQuery(prefix, parts[1], parts[2], parts[3], parts[4])
+          prefixed.push(processed)
         prefixed.push(query)
-        continue
 
-      for prefix in prefixes
-        prefixed = query.replace regexp, (str) =>
-          parts = str.match(split)
-          @prefix(prefix, parts[1], parts[2], parts[3], parts[4])
-        prefixeds.push(prefixed)
-
-      prefixeds.push(query)
-
-    prefixeds = utils.uniq(prefixeds)
-    if origin != prefixeds
-      join = rule.params.match(/,\s*/)
-      join = if join then join[0] else ', '
-      rule.params = prefixeds.join(join)
+      utils.uniq(prefixed)
 
 module.exports = Resolution
