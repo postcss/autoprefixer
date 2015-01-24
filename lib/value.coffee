@@ -25,8 +25,12 @@ class Value extends Prefixer
             i.prop == decl.prop and i.value.replace(/\s+/, ' ') == trimmed
 
           unless already
-            cloned = @clone(decl, value: value)
-            decl.parent.insertBefore(decl, cloned)
+            if value.indexOf('-webkit-filter') != -1 and
+               (decl.prop == 'transition' or decl.prop == 'trasition-property')
+              decl.value = value
+            else
+              cloned = @clone(decl, value: value)
+              decl.parent.insertBefore(decl, cloned)
 
   # Is declaration need to be prefixed
   check: (decl) ->

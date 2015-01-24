@@ -79,7 +79,10 @@ class Processor
       # Values
       for checker in @prefixes.values('remove', unprefixed)
         if checker.check(decl.value)
-          rule.remove(i)
+          if checker.clean
+            checker.clean(decl)
+          else
+            rule.remove(i)
           return
 
   # Some rare old values, which is not in standard
