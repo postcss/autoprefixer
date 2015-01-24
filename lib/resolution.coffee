@@ -1,8 +1,6 @@
 Prefixer = require('./prefixer')
 utils    = require('./utils')
 
-list = require('postcss/lib/list')
-
 regexp = /(min|max)-resolution\s*:\s*\d+(dppx|dpi)/g
 split  = /(min|max)-resolution(\s*:\s*)(\d+)(dppx|dpi)/
 
@@ -20,16 +18,6 @@ class Resolution extends Prefixer
     value = Math.round(value / 96) if units == 'dpi'
     @prefixName(prefix, name) + colon + value
 
-  # Process at-rule params queries throw callback
-  changeQueries: (rule, callback) ->
-    origin  = list.comma(rule.params)
-    changed = callback(origin, [])
-
-    if origin != changed
-      join = rule.params.match(/,\s*/)
-      join = if join then join[0] else ', '
-      rule.params = changed.join(join)
-
   # Remove prefixed queries
   clean: (rule) ->
     unless @bad
@@ -38,7 +26,7 @@ class Resolution extends Prefixer
         @bad.push( @prefixName(prefix, 'min') )
         @bad.push( @prefixName(prefix, 'max') )
 
-    @changeQueries rule, (origin, cleaned) =>
+    rule.params = utils.editList rule.params, (origin, cleaned) =>
       for query in origin
         if @bad.every( (i) -> query.indexOf(i) == -1 )
           cleaned.push(query)
@@ -49,7 +37,7 @@ class Resolution extends Prefixer
     parent   = @parentPrefix(rule)
     prefixes = if parent then [parent] else @prefixes
 
-    @changeQueries rule, (origin, prefixed) =>
+    rule.params = utils.editList rule.params, (origin, prefixed) =>
       for query in origin
         if query.indexOf('min-resolution') == -1 and
            query.indexOf('max-resolution') == -1

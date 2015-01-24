@@ -1,3 +1,5 @@
+list = require('postcss/lib/list')
+
 module.exports =
 
   # Throw special error, to tell beniary, that this error is from Autoprefixer.
@@ -28,3 +30,15 @@ module.exports =
   regexp: (word, escape = true) ->
     word = @escapeRegexp(word) if escape
     /// (^|[\s,(]) ( #{ word } ($|[\s(,]) ) ///gi
+
+  # Change comma list
+  editList: (value, callback) ->
+    origin  = list.comma(value)
+    changed = callback(origin, [])
+
+    if origin == changed
+      value
+    else
+      join = value.match(/,\s*/)
+      join = if join then join[0] else ', '
+      changed.join(join)

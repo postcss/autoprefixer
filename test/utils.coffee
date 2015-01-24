@@ -60,3 +60,26 @@ describe 'utils', ->
       regexp = utils.regexp('(a|b)', false)
       test('a').should.be.ok
       test('b').should.be.ok
+
+  describe '.editList()', ->
+
+    it 'does save without changes', ->
+      list = utils.editList 'a,\nb, c', (parsed, edit) -> parsed
+      list.should.eql('a,\nb, c')
+
+    it 'changes list', ->
+      list = utils.editList 'a, b', (parsed, edit) ->
+        parsed.should.eql(['a', 'b'])
+        edit.should.eql([])
+        ['1', '2']
+      list.should.eql('1, 2')
+
+    it 'saves comma', ->
+      list = utils.editList 'a,\nb', (parsed, edit) ->
+        ['1', '2']
+      list.should.eql('1,\n2')
+
+    it 'parse one value', ->
+      list = utils.editList '1', (parsed, edit) ->
+        [parsed[0], '2']
+      list.should.eql('1, 2')
