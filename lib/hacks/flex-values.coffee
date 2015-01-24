@@ -1,7 +1,7 @@
 OldValue = require('../old-value')
 Value    = require('../value')
 
-class Transition extends Value
+class FlexValues extends Value
   @names = ['flex', 'flex-grow', 'flex-shrink', 'flex-basis']
 
   # Return prefixed property name
@@ -16,4 +16,4 @@ class Transition extends Value
   old: (prefix) ->
     new OldValue(@prefixed(prefix))
 
-module.exports = Transition
+module.exports = FlexValues
