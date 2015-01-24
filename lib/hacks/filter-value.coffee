@@ -3,7 +3,7 @@ Value = require('../value')
 class FilterValue extends Value
   @names = ['filter']
 
-  # Use prefixed and unprefixed filter for Webkit transition
+  # Use prefixed and unprefixed filter for WebKit transition
   replace: (value, prefix) ->
     if prefix == '-webkit-'
       if value.indexOf('-webkit-filter') == -1
