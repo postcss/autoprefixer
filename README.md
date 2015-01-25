@@ -203,6 +203,10 @@ You can also use comments recursively:
 }
 ```
 
+By default, Autoprefixer also removes outdated prefixes. You can disable this
+behavior by `remove: false` option. If you have no legacy code, this options
+will make Autoprefixer about 10% faster.
+
 ## FAQ
 
 #### Does it add polyfills for old browsers?
