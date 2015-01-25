@@ -83,11 +83,11 @@ class Processor
           notHack    = @prefixes.group(decl).down (other) ->
             other.value.indexOf(unprefixed) != -1
 
-          if checker.clean
-            checker.clean(decl, notHack)
-            return
-          else if notHack
+          if notHack
             rule.remove(i)
+            return
+          else if checker.clean
+            checker.clean(decl)
             return
 
   # Some rare old values, which is not in standard

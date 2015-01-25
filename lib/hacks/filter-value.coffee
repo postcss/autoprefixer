@@ -5,13 +5,10 @@ utils    = require('../utils')
 class OldFilterValue extends OldValue
 
   # Clean -webkit-filter from properties list
-  clean: (decl, notHack) ->
-    if notHack
-      decl.removeSelf()
-    else
-      decl.value = utils.editList decl.value, (props) =>
-        return props if props.every( (i) => i.indexOf(@unprefixed) != 0 )
-        props.filter (i) => i.indexOf(@prefixed) == -1
+  clean: (decl) ->
+    decl.value = utils.editList decl.value, (props) =>
+      return props if props.every( (i) => i.indexOf(@unprefixed) != 0 )
+      props.filter (i) => i.indexOf(@prefixed) == -1
 
 class FilterValue extends Value
   @names = ['filter']
