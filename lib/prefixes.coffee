@@ -33,6 +33,7 @@ Declaration.hack require('./hacks/justify-content')
 Declaration.hack require('./hacks/background-size')
 
 Value.hack require('./hacks/gradient')
+Value.hack require('./hacks/crisp-edges')
 Value.hack require('./hacks/flex-values')
 Value.hack require('./hacks/display-flex')
 Value.hack require('./hacks/filter-value')

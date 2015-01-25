@@ -303,3 +303,9 @@ feature require('caniuse-db/features-json/css-media-resolution'), (browsers) ->
 feature require('caniuse-db/features-json/css-text-align-last'), (browsers) ->
   prefix 'text-align-last',
           browsers: browsers
+
+# Crisp Edges Image Rendering Algorithm
+feature require('caniuse-db/features-json/css-crisp-edges'), (browsers) ->
+  prefix 'crisp-edges',
+          props:  ['image-rendering']
+          browsers: browsers

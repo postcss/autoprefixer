@@ -55,6 +55,8 @@ prefixer = (name) ->
     resolutioner
   else if name == 'filter'
     filterer
+  else if name == 'crisp-edges'
+    intrinsicer
   else
     compiler
 
@@ -186,6 +188,7 @@ describe 'Autoprefixer', ->
     it 'ignores some 3D transforms',    -> test('3d-transform')
     it 'support background-size',       -> test('background-size')
     it 'support background-clip',       -> test('background-clip')
+    it 'support crisp-edges',           -> test('crisp-edges')
 
     it 'ignores values for CSS3PIE props', ->
       input  = read('pie')
