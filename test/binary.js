@@ -300,6 +300,29 @@ describe('Binary', () => {
         });
     });
 
+    it('removes old prefixes by default', (done) => {
+        write('a.css', 'a {\n' +
+                       '  -webkit-transition: 1s;\n' +
+                       '          transition: 1s }');
+        this.run('-b', 'chrome 38', 'a.css', () => {
+            expect(read('a.css')).to.eql('a {\n' +
+                                         '  transition: 1s }');
+            done();
+        });
+    });
+
+    it('keeps old prefixes by request', (done) => {
+        write('a.css', 'a {\n' +
+                       '  -webkit-transition: 1s;\n' +
+                       '          transition: 1s }');
+        this.run('-b', 'chrome 38', '--no-remove', 'a.css', () => {
+            expect(read('a.css')).to.eql('a {\n' +
+                                         '  -webkit-transition: 1s;\n' +
+                                         '          transition: 1s }');
+            done();
+        });
+    });
+
     it('changes annotation', (done) => {
         write('a/a.css', css);
         this.run('--annotation', '../a.map', 'a/a.css', () => {

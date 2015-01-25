@@ -40,6 +40,7 @@ Options:
       --no-sources-content remove origin CSS from maps
       --sources-content    force include origin CSS into map
       --no-cascade         do not create nice visual cascade of prefixes
+      --no-remove          do not remove outdated prefixes
       --safe               try to fix CSS syntax errors
   -i, --info               show selected browsers and properties
   -h, --help               show help text
@@ -149,6 +150,9 @@ Browsers:
 
             } else if ( arg == '--no-cascade' ) {
                 this.processorOptions.cascade = false;
+
+            } else if ( arg == '--no-remove' ) {
+                this.processorOptions.remove = false;
 
             } else if ( arg == '--safe' ) {
                 this.processOptions.safe = true;
