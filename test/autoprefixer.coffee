@@ -27,7 +27,7 @@ prefixer = (name) ->
     keyframer
   else if name == 'border-radius'
     borderer
-  else if name == 'vendor-hack' or name == 'mistakes'
+  else if name == 'vendor-hack' or name == 'value-hack' or name == 'mistakes'
     cleaner
   else if name == 'gradient'
     gradienter
@@ -97,6 +97,7 @@ describe 'Autoprefixer', ->
     it 'removes common mistakes',        -> test('mistakes')
     it 'reads notes for prefixes',       -> test('notes')
     it 'keeps vendor-specific hacks',    -> test('vendor-hack')
+    it 'keeps values with vendor hacks', -> test('value-hack')
     it 'works with comments',            -> test('comments')
     it 'uses visual cascade',            -> test('cascade')
     it 'works with properties near',     -> test('double')

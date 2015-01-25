@@ -57,6 +57,6 @@ class Value extends Prefixer
 
   # Return function to fast find prefixed value
   old: (prefix) ->
-    new OldValue(prefix + @name)
+    new OldValue(@name, prefix + @name)
 
 module.exports = Value

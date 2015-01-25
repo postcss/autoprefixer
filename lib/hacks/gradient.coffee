@@ -157,7 +157,7 @@ class Gradient extends Value
       regexp = utils.regexp(
         "-webkit-(#{type}-gradient|gradient\\(\\s*#{type})", false)
 
-      new OldValue(prefix + @name, string, regexp)
+      new OldValue(@name, prefix + @name, string, regexp)
     else
       super
 

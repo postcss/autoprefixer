@@ -14,7 +14,7 @@ class FillAvailable extends Value
   # Different name for -moz-available
   old: (prefix) ->
     if prefix == '-moz-'
-      new OldValue('-moz-available')
+      new OldValue(@name, '-moz-available')
     else
       super
 

@@ -3,7 +3,7 @@ OldValue = require('../old-value')
 Value    = require('../value')
 
 class OldDisplayFlex extends OldValue
-  constructor: (@name) ->
+  constructor: (@unprefixed, @prefixed) ->
 
   # Faster check
   check: (value) ->
@@ -38,6 +38,6 @@ class DisplayFlex extends Value
   # Change value for old specs
   old: (prefix) ->
     prefixed = @prefixed(prefix)
-    new OldValue(prefixed) if prefixed
+    new OldValue(@name, prefixed) if prefixed
 
 module.exports = DisplayFlex

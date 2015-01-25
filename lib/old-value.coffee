@@ -1,9 +1,9 @@
 utils = require('./utils')
 
 class OldValue
-  constructor: (@name, @string, @regexp) ->
-    @regexp ||= utils.regexp(@name)
-    @string ||= @name
+  constructor: (@unprefixed, @prefixed, @string, @regexp) ->
+    @regexp ||= utils.regexp(@prefixed)
+    @string ||= @prefixed
 
   # Check, that value contain old value
   check: (value) ->

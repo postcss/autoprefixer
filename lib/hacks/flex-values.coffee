@@ -14,6 +14,6 @@ class FlexValues extends Value
 
   # Return function to fast prefixed property name
   old: (prefix) ->
-    new OldValue(@prefixed(prefix))
+    new OldValue(@name, @prefixed(prefix))
 
 module.exports = FlexValues

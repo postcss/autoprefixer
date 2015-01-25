@@ -2,6 +2,17 @@ OldValue = require('../old-value')
 Value    = require('../value')
 utils    = require('../utils')
 
+class OldFilterValue extends OldValue
+
+  # Clean -webkit-filter from properties list
+  clean: (decl, notHack) ->
+    if notHack
+      decl.removeSelf()
+    else
+      decl.value = utils.editList decl.value, (props) =>
+        return props if props.every( (i) => i.indexOf(@unprefixed) != 0 )
+        props.filter (i) => i.indexOf(@prefixed) == -1
+
 class FilterValue extends Value
   @names = ['filter']
 
@@ -17,13 +28,6 @@ class FilterValue extends Value
 
   # Clean -webkit-filter from transitioins
   old: (prefix) ->
-    old = new OldValue(prefix + @name)
-
-    if prefix == '-webkit-'
-      old.clean = (decl) ->
-        decl.value = utils.editList decl.value, (props) ->
-          props.filter (prop) -> prop.indexOf('-webkit-filter') == -1
-
-    old
+    new OldFilterValue(@name, prefix + @name)
 
 module.exports = FilterValue

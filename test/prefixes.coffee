@@ -31,7 +31,9 @@ bVal  = new Value('b', ['-ms- new'], fill)
 aProp = new Declaration('a', ['-moz-'], fill)
 aProp.values = [bVal]
 
-old = (name) -> new OldValue(name)
+old = (prefixed) ->
+  name = prefixed.replace(/-[^-]+-( old)?/, '')
+  new OldValue(name, prefixed)
 
 describe 'Prefixes', ->
 

@@ -79,11 +79,16 @@ class Processor
       # Values
       for checker in @prefixes.values('remove', unprefixed)
         if checker.check(decl.value)
+          unprefixed = checker.unprefixed
+          notHack    = @prefixes.group(decl).down (other) ->
+            other.value.indexOf(unprefixed) != -1
+
           if checker.clean
-            checker.clean(decl)
-          else
+            checker.clean(decl, notHack)
+            return
+          else if notHack
             rule.remove(i)
-          return
+            return
 
   # Some rare old values, which is not in standard
   withHackValue: (decl) ->

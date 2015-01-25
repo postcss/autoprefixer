@@ -67,7 +67,7 @@ describe 'Value', ->
   describe 'old()', ->
 
     it 'check prefixed value', ->
-      @calc.old('-ms-').should.eql new OldValue('-ms-calc')
+      @calc.old('-ms-').should.eql new OldValue('calc', '-ms-calc')
 
   describe 'replace()', ->
 
