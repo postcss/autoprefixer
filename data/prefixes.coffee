@@ -298,3 +298,8 @@ feature require('caniuse-db/features-json/css-deviceadaptation'), (browsers) ->
 feature require('caniuse-db/features-json/css-media-resolution'), (browsers) ->
   prefix '@resolution',
           browsers: browsers
+
+# CSS text-align-last
+feature require('caniuse-db/features-json/css-text-align-last'), (browsers) ->
+  prefix 'text-align-last',
+          browsers: browsers
