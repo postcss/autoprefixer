@@ -26,11 +26,8 @@ class Resolution extends Prefixer
         @bad.push( @prefixName(prefix, 'min') )
         @bad.push( @prefixName(prefix, 'max') )
 
-    rule.params = utils.editList rule.params, (origin, cleaned) =>
-      for query in origin
-        if @bad.every( (i) -> query.indexOf(i) == -1 )
-          cleaned.push(query)
-      cleaned
+    rule.params = utils.editList rule.params, (queries) =>
+      queries.filter (query) => @bad.every( (i) -> query.indexOf(i) == -1 )
 
   # Add prefixed queries
   process: (rule) ->

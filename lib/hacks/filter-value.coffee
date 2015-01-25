@@ -21,10 +21,8 @@ class FilterValue extends Value
 
     if prefix == '-webkit-'
       old.clean = (decl) ->
-        decl.value = utils.editList decl.value, (props, cleaned) ->
-          for prop in props
-            cleaned.push(prop) if prop.indexOf('-webkit-filter') == -1
-          cleaned
+        decl.value = utils.editList decl.value, (props) ->
+          props.filter (prop) -> prop.indexOf('-webkit-filter') == -1
 
     old
 
