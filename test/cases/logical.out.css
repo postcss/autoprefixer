@@ -1,0 +1,9 @@
+a {
+    margin-block-start: 1px;
+    -webkit-margin-start: 1px;
+       -moz-margin-start: 1px;
+            margin-inline-start: 1px;
+    -webkit-padding-end: 1px;
+       -moz-padding-end: 1px;
+            padding-inline-end: 1px;
+}

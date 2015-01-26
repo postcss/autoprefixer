@@ -12,7 +12,7 @@
     "dependencies": {
         "coffee-script": "1.8.0",
         "browserslist":  "~0.1.2",
-        "caniuse-db":    "^1.0.30000053",
+        "caniuse-db":    "^1.0.30000054",
         "postcss":       "~4.0.2"
     },
     "devDependencies": {

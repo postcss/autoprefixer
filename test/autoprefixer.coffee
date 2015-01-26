@@ -57,6 +57,8 @@ prefixer = (name) ->
     filterer
   else if name == 'crisp-edges'
     intrinsicer
+  else if name == 'logical'
+    intrinsicer
   else
     compiler
 
@@ -73,7 +75,7 @@ commons = ['transition', 'values', 'keyframes', 'gradient', 'flex-rewrite',
            'flexbox', 'filter', 'border-image', 'border-radius', 'notes',
            'selectors', 'placeholder', 'fullscreen', 'intrinsic', 'mistakes',
            'custom-prefix', 'cascade', 'double', 'multicolumn', '3d-transform',
-           'background-size', 'supports', 'viewport', 'resolution']
+           'background-size', 'supports', 'viewport', 'resolution', 'logical']
 
 describe 'autoprefixer()', ->
 
@@ -177,7 +179,7 @@ describe 'Autoprefixer', ->
 
     it 'changes angle in gradient',     -> test('gradient')
     it 'ignores prefix IE filter',      -> test('filter')
-    it 'change border image syntax',    -> test('border-image')
+    it 'changes border image syntax',   -> test('border-image')
     it 'supports old Mozilla prefixes', -> test('border-radius')
     it 'supports all flexbox syntaxes', -> test('flexbox')
     it 'supports map flexbox props',    -> test('flex-rewrite')
@@ -185,11 +187,13 @@ describe 'Autoprefixer', ->
     it 'supports all fullscreens',      -> test('fullscreen')
     it 'supports intrinsic sizing',     -> test('intrinsic')
     it 'supports custom prefixes',      -> test('custom-prefix')
-    it 'fix break-inside property',     -> test('multicolumn')
+    it 'fixes break-inside property',   -> test('multicolumn')
     it 'ignores some 3D transforms',    -> test('3d-transform')
-    it 'support background-size',       -> test('background-size')
-    it 'support background-clip',       -> test('background-clip')
-    it 'support crisp-edges',           -> test('crisp-edges')
+    it 'supports background-size',      -> test('background-size')
+    it 'supports background-clip',      -> test('background-clip')
+    it 'supports crisp-edges',          -> test('crisp-edges')
+    it 'supports crisp-edges',          -> test('crisp-edges')
+    it 'supports logical properties',   -> test('logical')
 
     it 'ignores values for CSS3PIE props', ->
       input  = read('pie')

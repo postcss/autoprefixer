@@ -45,14 +45,14 @@ feature require('caniuse-db/features-json/border-radius'), (browsers) ->
   prefix 'border-radius', 'border-top-left-radius', 'border-top-right-radius',
          'border-bottom-right-radius', 'border-bottom-left-radius',
           mistakes:   ['-ms-', '-o-']
-          browsers:   browsers
           transition: true
+          browsers:   browsers
 
 # Box Shadow
 feature require('caniuse-db/features-json/css-boxshadow'), (browsers) ->
   prefix 'box-shadow',
-          browsers:   browsers
           transition: true
+          browsers:   browsers
 
 # Animation
 feature require('caniuse-db/features-json/css-animation'), (browsers) ->
@@ -72,14 +72,14 @@ feature require('caniuse-db/features-json/css-transitions'), (browsers) ->
 # Transform 2D
 feature require('caniuse-db/features-json/transforms2d'), (browsers) ->
   prefix 'transform', 'transform-origin',
-          browsers:   browsers
           transition: true
+          browsers:   browsers
 
 # Transform 3D
 feature require('caniuse-db/features-json/transforms3d'), (browsers) ->
   prefix 'perspective', 'perspective-origin',
-          browsers:   browsers
           transition: true
+          browsers:   browsers
 
   prefix 'transform-style', 'backface-visibility',
           browsers: browsers
@@ -109,15 +109,15 @@ feature require('caniuse-db/features-json/css3-boxsizing'), (browsers) ->
 # Filter Effects
 feature require('caniuse-db/features-json/css-filters'), (browsers) ->
   prefix 'filter',
-          browsers:   browsers
           transition: true
+          browsers:   browsers
 
 # Multicolumns
 feature require('caniuse-db/features-json/multicolumn'), (browsers) ->
   prefix 'columns', 'column-width', 'column-gap',
          'column-rule', 'column-rule-color', 'column-rule-width',
-          browsers:   browsers
           transition: true
+          browsers:   browsers
 
   prefix 'column-count', 'column-rule-style', 'column-span', 'column-fill',
          'break-before', 'break-after', 'break-inside',
@@ -148,7 +148,7 @@ feature require('caniuse-db/features-json/flexbox'), (browsers) ->
 
   prefix 'flex', 'flex-grow', 'flex-shrink', 'flex-basis',
           transition: true
-          browsers: browsers
+          browsers:   browsers
 
   prefix 'flex-direction', 'flex-wrap', 'flex-flow', 'justify-content',
          'order', 'align-items', 'align-self', 'align-content',
@@ -309,3 +309,10 @@ feature require('caniuse-db/features-json/css-crisp-edges'), (browsers) ->
   prefix 'crisp-edges',
           props:  ['image-rendering']
           browsers: browsers
+
+# Logical Properties
+feature require('caniuse-db/features-json/css-logical-props'), (browsers) ->
+  prefix 'margin-inline-start',  'margin-inline-end',
+         'padding-inline-start', 'padding-inline-end',
+          transition: true
+          browsers:   browsers
