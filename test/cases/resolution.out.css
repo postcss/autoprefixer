@@ -1,3 +1,7 @@
 @media (-webkit-min-device-pixel-ratio: 2),
        (min-resolution: 2dppx),
        (min-resolution: 192dpi) { }
+
+@media (-webkit-min-device-pixel-ratio: 2.5), (min-resolution: 2.5dppx) { }
+
+@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) { }

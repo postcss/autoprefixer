@@ -1,8 +1,8 @@
 Prefixer = require('./prefixer')
 utils    = require('./utils')
 
-regexp = /(min|max)-resolution\s*:\s*\d+(dppx|dpi)/g
-split  = /(min|max)-resolution(\s*:\s*)(\d+)(dppx|dpi)/
+regexp = /(min|max)-resolution\s*:\s*\d*\.?\d+(dppx|dpi)/g
+split  = /(min|max)-resolution(\s*:\s*)(\d*\.?\d+)(dppx|dpi)/
 
 class Resolution extends Prefixer
 
@@ -15,7 +15,7 @@ class Resolution extends Prefixer
 
   # Return prefixed query
   prefixQuery: (prefix, name, colon, value, units) ->
-    value = Math.round(value / 96) if units == 'dpi'
+    value = Number(value / 96) if units == 'dpi'
     @prefixName(prefix, name) + colon + value
 
   # Remove prefixed queries

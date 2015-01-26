@@ -1,2 +1,6 @@
 @media (min-resolution: 2dppx),
        (min-resolution: 192dpi) { }
+
+@media (min-resolution: 2.5dppx) { }
+
+@media (min-resolution: 144dpi) { }
