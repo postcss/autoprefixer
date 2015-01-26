@@ -4,7 +4,7 @@ browsers = require('./browsers')
 feature = (data, opts, callback) ->
   [callback, opts] = [opts, { }] unless callback
 
-  match = if opts.full then /y\sx($|\s)/ else /\sx($|\s)/
+  match = opts.match || /\sx($|\s)/
   need  = []
 
   for browser, versions of data.stats
@@ -245,7 +245,7 @@ feature textDecoration, (browsers) ->
   prefix 'text-decoration-style',
           browsers: browsers
 
-feature textDecoration, full: true, (browsers) ->
+feature textDecoration, match: /y\sx($|\s)/, (browsers) ->
   prefix 'text-decoration-line',
          'text-decoration-color',
           browsers: browsers
@@ -295,7 +295,8 @@ feature require('caniuse-db/features-json/css-deviceadaptation'), (browsers) ->
           browsers: browsers
 
 # Resolution Media Queries
-feature require('caniuse-db/features-json/css-media-resolution'), (browsers) ->
+resolution = require('caniuse-db/features-json/css-media-resolution')
+feature resolution, match: /( x($| )|a #3)/, (browsers) ->
   prefix '@resolution',
           browsers: browsers
 

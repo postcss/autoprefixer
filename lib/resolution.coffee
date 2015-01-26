@@ -42,10 +42,11 @@ class Resolution extends Prefixer
           continue
 
         for prefix in prefixes
-          processed = query.replace regexp, (str) =>
-            parts = str.match(split)
-            @prefixQuery(prefix, parts[1], parts[2], parts[3], parts[4])
-          prefixed.push(processed)
+          if prefix != '-moz-' or query.indexOf('dppx') != -1
+            processed = query.replace regexp, (str) =>
+              parts = str.match(split)
+              @prefixQuery(prefix, parts[1], parts[2], parts[3], parts[4])
+            prefixed.push(processed)
         prefixed.push(query)
 
       utils.uniq(prefixed)

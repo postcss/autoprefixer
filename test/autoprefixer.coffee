@@ -16,7 +16,7 @@ gradienter   = autoprefixer(browsers: ['Chrome 25', 'Opera 12', 'Android 2.3'])
 selectorer   = autoprefixer(browsers: ['Chrome 25', 'Firefox > 17', 'IE 10'])
 intrinsicer  = autoprefixer(browsers: ['Chrome 25', 'Firefox 22'])
 backgrounder = autoprefixer(browsers: ['Firefox 3.6', 'Android 2.3'])
-resolutioner = autoprefixer(browsers: ['Safari 7'])
+resolutioner = autoprefixer(browsers: ['Firefox 15', 'Safari 7', 'Opera 12'])
 
 cascader = autoprefixer
   browsers: ['Chrome > 19', 'Firefox 21', 'IE 10'],
