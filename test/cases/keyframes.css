@@ -15,3 +15,4 @@
 @media screen {
     @keyframes inside {}
 }
+@keyframes spaces { from { color: black } to { color: white } }

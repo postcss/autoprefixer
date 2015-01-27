@@ -61,3 +61,6 @@
     @-o-keyframes inside {}
     @keyframes inside {}
 }
+@-webkit-keyframes spaces { from { color: black } to { color: white } }
+@-o-keyframes spaces { from { color: black } to { color: white } }
+@keyframes spaces { from { color: black } to { color: white } }

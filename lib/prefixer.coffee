@@ -3,6 +3,23 @@ utils    = require('./utils')
 
 vendor = require('postcss/lib/vendor')
 
+# Recursivly clone objects
+clone = (obj, parent) ->
+  return obj if typeof(obj) != 'object'
+  cloned = new obj.constructor()
+
+  for own i, value of obj
+    if i == 'parent' and typeof(value) == 'object'
+      cloned[i] = parent if parent
+    else if i == 'source'
+      cloned[i] = value
+    else if value instanceof Array
+      cloned[i] = value.map (i) -> clone(i, cloned)
+    else if i != '_autoprefixerPrefix' and i != '_autoprefixerValues'
+      cloned[i] = clone(value, cloned)
+
+  cloned
+
 class Prefixer
   # Add hack to selected names
   @hack: (klass) ->
@@ -20,12 +37,9 @@ class Prefixer
 
   # Clone node and clean autprefixer custom caches
   @clone: (node, overrides) ->
-    cloned = node.clone(overrides)
-    if node.type == 'decl'
-      cloned.between = node.between
-      cloned.before  = node.before
-    delete cloned._autoprefixerPrefix
-    delete cloned._autoprefixerValues
+    cloned = clone(node)
+    for name of overrides
+      cloned[name] = overrides[name]
     cloned
 
   constructor: (@name, @prefixes, @all) ->
