@@ -1,9 +1,9 @@
 @media (-webkit-min-device-pixel-ratio: 2),
        (min--moz-device-pixel-ratio: 2),
-       (-o-min-device-pixel-ratio: 2),
+       (-o-min-device-pixel-ratio: 2/1),
        (min-resolution: 2dppx),
        (min-resolution: 192dpi) { }
 
-@media (-webkit-min-device-pixel-ratio: 2.5), (min--moz-device-pixel-ratio: 2.5), (-o-min-device-pixel-ratio: 2.5), (min-resolution: 2.5dppx) { }
+@media (-webkit-min-device-pixel-ratio: 2.5), (min--moz-device-pixel-ratio: 2.5), (-o-min-device-pixel-ratio: 5/2), (min-resolution: 2.5dppx) { }
 
-@media (-webkit-min-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) { }
+@media (-webkit-min-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-resolution: 144dpi) { }

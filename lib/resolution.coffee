@@ -1,6 +1,8 @@
 Prefixer = require('./prefixer')
 utils    = require('./utils')
 
+n2f = require('num2fraction')
+
 regexp = /(min|max)-resolution\s*:\s*\d*\.?\d+(dppx|dpi)/g
 split  = /(min|max)-resolution(\s*:\s*)(\d*\.?\d+)(dppx|dpi)/
 
@@ -16,6 +18,7 @@ class Resolution extends Prefixer
   # Return prefixed query
   prefixQuery: (prefix, name, colon, value, units) ->
     value = Number(value / 96) if units == 'dpi'
+    value = n2f(value) if prefix == '-o-'
     @prefixName(prefix, name) + colon + value
 
   # Remove prefixed queries
