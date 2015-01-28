@@ -3,8 +3,8 @@ utils    = require('./utils')
 
 n2f = require('num2fraction')
 
-regexp = /(min|max)-resolution\s*:\s*\d*\.?\d+(dppx|dpi)/g
-split  = /(min|max)-resolution(\s*:\s*)(\d*\.?\d+)(dppx|dpi)/
+regexp = /(min|max)-resolution\s*:\s*\d*\.?\d+(dppx|dpi)/gi
+split  = /(min|max)-resolution(\s*:\s*)(\d*\.?\d+)(dppx|dpi)/i
 
 class Resolution extends Prefixer
 
