@@ -72,7 +72,7 @@ class Processor
         notHack = @prefixes.group(decl).down (other) -> other.prop == unprefixed
 
         if notHack and not @withHackValue(decl)
-          @reduceSpaces(decl) if decl.before.indexOf("\n") > -1
+          @reduceSpaces(decl) if decl.before and decl.before.indexOf("\n") > -1
           rule.remove(i)
           return
 
