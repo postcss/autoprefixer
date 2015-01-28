@@ -6,4 +6,5 @@ a {
 
 .border {
     border-block-end: 1px;
+    border-inline-end: 1px;
 }
