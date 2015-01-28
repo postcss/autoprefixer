@@ -72,7 +72,7 @@ class Processor
         notHack = @prefixes.group(decl).down (other) -> other.prop == unprefixed
 
         if notHack and not @withHackValue(decl)
-          @reduceSpaces(decl) if decl.before and decl.before.indexOf("\n") > -1
+          @reduceSpaces(decl) if decl.style('before').indexOf("\n") > -1
           rule.remove(i)
           return
 
@@ -126,12 +126,12 @@ class Processor
     @prefixes.group(decl).up (other) -> stop = true
     return if stop
 
-    parts   = decl.before.split("\n")
+    parts   = decl.style('before').split("\n")
     prevMin = parts[parts.length - 1].length
     diff    = false
 
     @prefixes.group(decl).down (other) ->
-      parts = other.before.split("\n")
+      parts = other.style('before').split("\n")
       last  = parts.length - 1
 
       if parts[last].length > prevMin
