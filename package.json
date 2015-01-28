@@ -13,7 +13,7 @@
         "autoprefixer-core": "git://github.com/postcss/autoprefixer-core.git",
         "fs-extra":          "~0.15.0",
         "postcss":           "~4.0.2",
-        "6to5":              "2.13.7"
+        "6to5":              "3.0.0"
     },
     "devDependencies": {
         "gulp-bench-summary": "0.1.0",
@@ -23,7 +23,7 @@
         "gulp-jshint":        "1.9.0",
         "gulp-bench":         "1.1.0",
         "gulp-mocha":         "2.0.0",
-        "gulp-6to5":          "2.0.2",
+        "gulp-6to5":          "3.0.0",
         "gulp-util":          "3.0.2",
         "request":            "2.51.0",
         "stylus":             "0.49.3",
