@@ -1,5 +1,6 @@
 a {
-    margin-block-start: 1px;
+    -webkit-margin-before: 1px;
+            margin-block-start: 1px;
     -webkit-margin-start: 1px;
        -moz-margin-start: 1px;
             margin-inline-start: 1px;

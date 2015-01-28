@@ -1,6 +1,6 @@
 Declaration = require('../declaration')
 
-class LogicalProps extends Declaration
+class InlineLogical extends Declaration
   @names = ['margin-inline-start',  'margin-inline-end',
             'padding-inline-start', 'padding-inline-end',
             'margin-start', 'margin-end', 'padding-start', 'padding-end']
@@ -13,4 +13,4 @@ class LogicalProps extends Declaration
   normalize: (prop) ->
     prop.replace(/(margin|padding)-(start|end)/, '$1-inline-$2')
 
-module.exports = LogicalProps
+module.exports = InlineLogical

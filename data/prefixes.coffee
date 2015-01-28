@@ -33,6 +33,13 @@ map = (browsers, callback) ->
     version = parseFloat(version)
     callback(browser, name, version)
 
+# Select only special browsers
+filter = (browsers, callback) ->
+  browsers.filter (browser) ->
+    [name, version] = browser.split(' ')
+    version = parseFloat(version)
+    callback(name, version)
+
 # Add data for all properties
 prefix = (names..., data) ->
   for name in names
@@ -312,8 +319,17 @@ feature require('caniuse-db/features-json/css-crisp-edges'), (browsers) ->
           browsers: browsers
 
 # Logical Properties
-feature require('caniuse-db/features-json/css-logical-props'), (browsers) ->
+logicalProps = require('caniuse-db/features-json/css-logical-props')
+
+feature logicalProps, (browsers) ->
   prefix 'margin-inline-start',  'margin-inline-end',
          'padding-inline-start', 'padding-inline-end',
+          transition: true
+          browsers:   browsers
+
+feature logicalProps, (browsers) ->
+  browsers = filter browsers, (i) -> i != 'firefox' and i != 'and_ff'
+  prefix 'margin-block-start',   'margin-block-end',
+         'padding-block-start',  'padding-block-end',
           transition: true
           browsers:   browsers
