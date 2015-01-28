@@ -13,5 +13,6 @@ a {
     -webkit-border-after: 1px;
             border-block-end: 1px;
     -webkit-border-end: 1px;
+       -moz-border-end: 1px;
             border-inline-end: 1px;
 }
