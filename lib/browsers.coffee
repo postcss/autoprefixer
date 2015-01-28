@@ -46,14 +46,4 @@ class Browsers
   isSelected: (browser) ->
     @selected.indexOf(browser) != -1
 
-  # Return browser data by it name
-  byName: (name) ->
-    name = name.toLowerCase()
-    name = @aliases[name] || name
-    data = @data[name]
-
-    utils.error("Unknown browser #{browser}") unless data
-    data.name = name
-    data
-
 module.exports = Browsers
