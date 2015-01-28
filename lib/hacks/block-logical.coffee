@@ -1,10 +1,12 @@
 Declaration = require('../declaration')
 
 class BlockLogical extends Declaration
-  @names = ['margin-block-start',  'margin-block-end',
+  @names = ['border-block-start',  'border-block-end',
+            'margin-block-start',  'margin-block-end',
             'padding-block-start', 'padding-block-end',
-            'border-block-start', 'border-block-end',
-            'margin-before', 'margin-after', 'padding-before', 'padding-after']
+            'border-before',  'border-after',
+            'margin-before',  'margin-after',
+            'padding-before', 'padding-after',]
 
   # Use old syntax for -moz- and -webkit-
   prefixed: (prop, prefix) ->
