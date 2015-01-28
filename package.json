@@ -11,7 +11,7 @@
     },
     "dependencies": {
         "coffee-script": "1.8.0",
-        "browserslist":  "~0.1.3",
+        "browserslist":  "~0.2.0",
         "num2fraction":  "~1.0.1",
         "caniuse-db":    "^1.0.30000057",
         "postcss":       "~4.0.3"

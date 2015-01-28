@@ -8,11 +8,9 @@ feature = (data, opts, callback) ->
   need  = []
 
   for browser, versions of data.stats
-    for interval, support of versions
-      for version in interval.split('-')
-        if browsers[browser] and support.match(match)
-          version = version.replace(/\.0$/, '')
-          need.push(browser + ' ' + version)
+    for version, support of versions
+      if browsers[browser] and support.match(match)
+        need.push(browser + ' ' + version)
 
   sorted = need.sort (a, b) ->
     a = a.split(' ')
