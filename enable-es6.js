@@ -12,5 +12,6 @@ var regexp = ['binary.js', 'test', 'benchmark'].map(function (i) {
 
 require('6to5/register')({
     only:   new RegExp('(' + regexp + ')'),
-    ignore: false
+    ignore: false,
+    loose: 'all'
 });

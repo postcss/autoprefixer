@@ -311,8 +311,7 @@ Browsers:
             }
 
             var output;
-            for ( i = 0; i < this.inputFiles.length; i++ ) {
-                file   = this.inputFiles[i];
+            for ( file of this.inputFiles ) {
                 output = path.join(this.outputDir, path.basename(file));
                 list.push([file, output]);
             }
@@ -325,13 +324,13 @@ Browsers:
                 return;
             }
 
-            for ( i = 0; i < this.inputFiles.length; i++ ) {
-                list.push([this.inputFiles[i], this.outputFile]);
+            for ( file of this.inputFiles ) {
+                list.push([file, this.outputFile]);
             }
 
         } else {
-            for ( i = 0; i < this.inputFiles.length; i++ ) {
-                list.push([this.inputFiles[i], this.inputFiles[i]]);
+            for ( file of this.inputFiles ) {
+                list.push([file, file]);
             }
         }
 

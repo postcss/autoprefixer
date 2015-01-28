@@ -22,7 +22,7 @@ gulp.task('build:lib', ['build:clean'], function () {
 
     return gulp.src(['binary.js', 'index.js'])
         .pipe(replace(/require\('\.\/enable-es6'\);\n/, ''))
-        .pipe(es6to5())
+        .pipe(es6to5({ loose: 'all' }))
         .pipe(gulp.dest('build/'));
 });
 
