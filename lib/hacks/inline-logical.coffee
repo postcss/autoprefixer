@@ -3,6 +3,7 @@ Declaration = require('../declaration')
 class InlineLogical extends Declaration
   @names = ['margin-inline-start',  'margin-inline-end',
             'padding-inline-start', 'padding-inline-end',
+            'border-inline-start', 'border-inline-end',
             'margin-start', 'margin-end', 'padding-start', 'padding-end']
 
   # Use old syntax for -moz- and -webkit-

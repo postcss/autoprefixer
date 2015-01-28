@@ -3,6 +3,7 @@ Declaration = require('../declaration')
 class BlockLogical extends Declaration
   @names = ['margin-block-start',  'margin-block-end',
             'padding-block-start', 'padding-block-end',
+            'border-block-start', 'border-block-end',
             'margin-before', 'margin-after', 'padding-before', 'padding-after']
 
   # Use old syntax for -moz- and -webkit-

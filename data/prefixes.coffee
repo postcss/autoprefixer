@@ -324,6 +324,7 @@ logicalProps = require('caniuse-db/features-json/css-logical-props')
 feature logicalProps, (browsers) ->
   prefix 'margin-inline-start',  'margin-inline-end',
          'padding-inline-start', 'padding-inline-end',
+         'border-inline-start', 'border-inline-end',
           transition: true
           browsers:   browsers
 
@@ -331,5 +332,6 @@ feature logicalProps, (browsers) ->
   browsers = filter browsers, (i) -> i != 'firefox' and i != 'and_ff'
   prefix 'margin-block-start',   'margin-block-end',
          'padding-block-start',  'padding-block-end',
+         'border-block-start',  'border-block-end',
           transition: true
           browsers:   browsers

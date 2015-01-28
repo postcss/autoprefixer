@@ -3,3 +3,7 @@ a {
     margin-inline-start: 1px;
     padding-inline-end: 1px;
 }
+
+.border {
+    border-block-end: 1px;
+}

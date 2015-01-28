@@ -8,3 +8,8 @@ a {
        -moz-padding-end: 1px;
             padding-inline-end: 1px;
 }
+
+.border {
+    -webkit-border-after: 1px;
+            border-block-end: 1px;
+}
