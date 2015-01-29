@@ -1,5 +1,3 @@
-browsers = require('./browsers')
-
 # Sort browsers
 sort = (array) ->
   array.sort (a, b) ->
@@ -21,8 +19,7 @@ feature = (data, opts, callback) ->
 
   for browser, versions of data.stats
     for version, support of versions
-      if browsers[browser] and support.match(match)
-        need.push(browser + ' ' + version)
+      need.push(browser + ' ' + version) if support.match(match)
 
   callback(sort(need))
 
