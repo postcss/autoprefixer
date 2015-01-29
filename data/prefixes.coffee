@@ -31,13 +31,6 @@ map = (browsers, callback) ->
     version = parseFloat(version)
     callback(browser, name, version)
 
-# Select only special browsers
-filter = (browsers, callback) ->
-  browsers.filter (browser) ->
-    [name, version] = browser.split(' ')
-    version = parseFloat(version)
-    callback(name, version)
-
 # Add data for all properties
 prefix = (names..., data) ->
   for name in names
@@ -326,8 +319,7 @@ feature logicalProps, (browsers) ->
           transition: true
           browsers:   browsers
 
-feature logicalProps, (browsers) ->
-  browsers = filter browsers, (i) -> i != 'firefox' and i != 'and_ff'
+feature logicalProps, match: /x\s#2/, (browsers) ->
   prefix 'border-block-start',  'border-block-end',
          'margin-block-start',  'margin-block-end',
          'padding-block-start', 'padding-block-end',
