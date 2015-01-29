@@ -10,10 +10,10 @@
         "url": "https://github.com/postcss/autoprefixer.git"
     },
     "dependencies": {
-        "autoprefixer-core": "git://github.com/postcss/autoprefixer-core.git",
-        "fs-extra":          "~0.15.0",
+        "autoprefixer-core": "~5.1.0",
+        "fs-extra":          "~0.16.3",
         "postcss":           "~4.0.2",
-        "6to5":              "3.0.3"
+        "6to5":              "3.0.16"
     },
     "devDependencies": {
         "gulp-bench-summary": "0.1.0",
