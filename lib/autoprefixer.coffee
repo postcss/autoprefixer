@@ -35,7 +35,7 @@ autoprefixer = (reqs...) ->
   new Autoprefixer(autoprefixer.data, reqs, options)
 
 autoprefixer.data =
-  browsers: require('../data/browsers')
+  browsers: require('caniuse-db/data').agents
   prefixes: require('../data/prefixes')
 
 class Autoprefixer

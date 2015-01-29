@@ -158,8 +158,6 @@ feature flexbox, match: /y\sx/, (browsers) ->
          'order', 'align-items', 'align-self', 'align-content',
           browsers: browsers
 
-require('fs').writeFileSync('2', result.flex.browsers.join('\n'))
-
 # calc() unit
 feature require('caniuse-db/features-json/calc'), (browsers) ->
   prefix 'calc',

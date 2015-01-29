@@ -1,6 +1,6 @@
 Browsers = require('../lib/browsers')
 
-data = require('../data/browsers')
+data = require('caniuse-db/data').agents
 
 describe 'Browsers', ->
 

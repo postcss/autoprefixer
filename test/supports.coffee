@@ -5,7 +5,7 @@ Supports = require('../lib/supports')
 data =
   browsers:
     firefox:
-      prefix:   '-moz-'
+      prefix:   'moz'
       versions: ['firefox 2']
   prefixes:
     a:

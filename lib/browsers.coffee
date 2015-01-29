@@ -8,8 +8,8 @@ class Browsers
   @prefixes: ->
     return @prefixesCache if @prefixesCache
 
-    data = require('../data/browsers')
-    @prefixesCache = utils.uniq(i.prefix for name, i of data).
+    data = require('caniuse-db/data').agents
+    @prefixesCache = utils.uniq("-#{i.prefix}-" for name, i of data).
                            sort (a, b) -> b.length - a.length
 
   # Check is value contain any possibe prefix
@@ -37,10 +37,10 @@ class Browsers
   # Return prefix for selected browser
   prefix: (browser) ->
     [name, version] = browser.split(' ')
-    if name == 'opera' and parseFloat(version) >= 15
-      '-webkit-'
+    if name == 'opera' and parseFloat(version) < 15
+      '-o-'
     else
-      @data[name].prefix
+      '-' + @data[name].prefix + '-'
 
   # Is browser is selected by requirements
   isSelected: (browser) ->
