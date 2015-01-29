@@ -23,13 +23,6 @@ feature = (data, opts, callback) ->
 
   callback(sort(need))
 
-# Select only special browsers
-map = (browsers, callback) ->
-  for browser in browsers
-    [name, version] = browser.split(' ')
-    version = parseFloat(version)
-    callback(browser, name, version)
-
 # Add data for all properties
 result = { }
 
@@ -187,11 +180,9 @@ feature require('caniuse-db/features-json/css-selection'), (browsers) ->
 
 # Placeholder selector
 feature require('caniuse-db/features-json/css-placeholder'), (browsers) ->
-  browsers = map browsers, (browser, name, version) ->
-    if name == 'firefox' and version <= 18
-      browser + ' old'
-    else
-      browser
+  browsers = browsers.map (i) ->
+    [name, version] = i.split(' ')
+    if name == 'firefox' and parseFloat(version) <= 18 then i + ' old' else i
 
   prefix '::placeholder',
           selector: true,
