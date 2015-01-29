@@ -35,12 +35,13 @@ result = { }
 
 prefix = (names..., data) ->
   for name in names
-    if result[name]
-      result[name].browsers = sort(result[name].browsers.concat(data.browsers))
-    else
-      result[name] = { }
-      for i of data
-        result[name][i] = data[i]
+    result[name] = { }
+    for i of data
+      result[name][i] = data[i]
+
+add = (names..., data) ->
+  for name in names
+    result[name].browsers = sort(result[name].browsers.concat(data.browsers))
 
 module.exports = result
 
@@ -89,21 +90,21 @@ feature require('caniuse-db/features-json/transforms3d'), (browsers) ->
           browsers: browsers
 
 # Gradients
-feature require('caniuse-db/features-json/css-gradients'), (browsers) ->
-  browsers = map browsers, (browser, name, version) ->
-    if name == 'android' and version < 4 or
-       name == 'ios_saf' and version < 5 or
-       name == 'safari'  and version < 5.1
-      browser + ' old'
-    else
-      browser
+gradients = require('caniuse-db/features-json/css-gradients')
 
+feature gradients, match: /y\sx/, (browsers) ->
   prefix 'linear-gradient', 'repeating-linear-gradient',
          'radial-gradient', 'repeating-radial-gradient',
           props:    ['background', 'background-image', 'border-image',
                      'list-style', 'list-style-image', 'content']
           mistakes: ['-ms-']
           browsers: browsers
+
+feature gradients, match: /a\sx/, (browsers) ->
+  browsers = browsers.map (i) -> if /op/.test(i) then i else "#{i} old"
+  add 'linear-gradient', 'repeating-linear-gradient',
+      'radial-gradient', 'repeating-radial-gradient',
+       browsers: browsers
 
 # Box sizing
 feature require('caniuse-db/features-json/css3-boxsizing'), (browsers) ->
@@ -148,15 +149,13 @@ feature flexbox, match: /a\sx/, (browsers) ->
           browsers: browsers
 
 feature flexbox, match: /y\sx/, (browsers) ->
-  prefix 'display-flex', 'inline-flex',
-          props:  ['display']
-          browsers: browsers
-  prefix 'flex', 'flex-grow', 'flex-shrink', 'flex-basis',
-          transition: true
-          browsers:   browsers
-  prefix 'flex-direction', 'flex-wrap', 'flex-flow', 'justify-content',
-         'order', 'align-items', 'align-self', 'align-content',
-          browsers: browsers
+  add 'display-flex', 'inline-flex',
+       browsers: browsers
+  add 'flex', 'flex-grow', 'flex-shrink', 'flex-basis',
+       browsers:   browsers
+  add 'flex-direction', 'flex-wrap', 'flex-flow', 'justify-content',
+      'order', 'align-items', 'align-self', 'align-content',
+       browsers: browsers
 
 # calc() unit
 feature require('caniuse-db/features-json/calc'), (browsers) ->
