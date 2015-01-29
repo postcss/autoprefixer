@@ -1,3 +1,22 @@
+## 5.1 “Jianyuan”
+* Add support for resolution media query (by 一丝).
+* Higher accuracy while removing prefixes in values.
+* Add support for logical properties (by 一丝).
+* Add `@viewport` support.
+* Add `text-overflow` support (by 一丝).
+* Add `text-emphasis` support (by 一丝).
+* Add `image-rendering: crisp-edges` support.
+* Add `text-align-last` support.
+* Return `autoprefixer.defaults` as alias to current `browserslist.defaults`.
+* Save code style while adding prefixes to `@keyframes` and `@viewport`.
+* Do not remove `-webkit-background-clip` with non-spec `text` value.
+* Fix `-webkit-filter` in `transition`.
+* Better support for browser versions joined on Can I Use
+  like `ios_saf 7.0-7.1` (by Vincent De Oliveira).
+* Fix compatibility with `postcss-import` (by Jason Kuhrt).
+* Fix Flexbox prefixes for BlackBerry and UC Browser.
+* Fix gradient prefixes for old Chrome.
+
 ## 5.0 “Pravda vítězí”
 * Use PostCSS 4.0.
 * Use Browserslist to parse browsers queries.
