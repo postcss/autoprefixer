@@ -10,7 +10,7 @@
         "url": "https://github.com/postcss/autoprefixer-core.git"
     },
     "dependencies": {
-        "coffee-script": "1.8.0",
+        "coffee-script": "1.9.0",
         "browserslist":  "~0.2.0",
         "num2fraction":  "~1.0.1",
         "caniuse-db":    "^1.0.30000059",
