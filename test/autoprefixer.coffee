@@ -15,6 +15,7 @@ uncascader   = autoprefixer(browsers: ['Firefox 15'])
 gradienter   = autoprefixer(browsers: ['Chrome 25', 'Opera 12', 'Android 2.3'])
 selectorer   = autoprefixer(browsers: ['Chrome 25', 'Firefox > 17', 'IE 10'])
 intrinsicer  = autoprefixer(browsers: ['Chrome 25', 'Firefox 22'])
+crispedgeser = autoprefixer(browsers: ['Safari 7', 'Firefox 22'])
 backgrounder = autoprefixer(browsers: ['Firefox 3.6', 'Android 2.3'])
 resolutioner = autoprefixer(browsers: ['Firefox 15', 'Safari 7', 'Opera 12'])
 
@@ -56,7 +57,7 @@ prefixer = (name) ->
   else if name == 'filter'
     filterer
   else if name == 'crisp-edges'
-    intrinsicer
+    crispedgeser
   else if name == 'logical'
     intrinsicer
   else
@@ -110,7 +111,7 @@ describe 'Autoprefixer', ->
     it 'uses control comments',          -> test('disabled')
     it 'has actual example in docs',     -> test('example')
 
-    it 'should irgnore spaces inside values', ->
+    it 'should ignore spaces inside values', ->
         css = read('trim')
         flexboxer.process(css).css.should.eql(css)
 
@@ -191,7 +192,6 @@ describe 'Autoprefixer', ->
     it 'ignores some 3D transforms',    -> test('3d-transform')
     it 'supports background-size',      -> test('background-size')
     it 'supports background-clip',      -> test('background-clip')
-    it 'supports crisp-edges',          -> test('crisp-edges')
     it 'supports crisp-edges',          -> test('crisp-edges')
     it 'supports logical properties',   -> test('logical')
 
