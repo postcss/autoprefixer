@@ -1,6 +1,8 @@
 flexSpec    = require('./flex-spec')
 Declaration = require('../declaration')
 
+list = require('postcss/lib/list')
+
 class Flex extends Declaration
   @names = ['flex', 'box-flex']
 
@@ -24,7 +26,7 @@ class Flex extends Declaration
   set: (decl, prefix) ->
     spec = flexSpec(prefix)[0]
     if spec == 2009
-      decl.value = decl.value.split(' ')[0]
+      decl.value = list.space(decl.value)[0]
       decl.value = Flex.oldValues[decl.value] || decl.value
       super(decl, prefix)
     else
