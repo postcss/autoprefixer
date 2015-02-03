@@ -1,3 +1,6 @@
+# 5.1.3
+* Add IE support for `image-rendering: crisp-edges`.
+
 # 5.1.2
 * Add never existed `@-ms-keyframes` to common mistake.
 
