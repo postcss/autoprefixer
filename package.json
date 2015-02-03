@@ -13,7 +13,7 @@
         "coffee-script": "1.9.0",
         "browserslist":  "~0.2.0",
         "num2fraction":  "~1.0.1",
-        "caniuse-db":    "^1.0.30000060",
+        "caniuse-db":    "^1.0.30000062",
         "postcss":       "~4.0.3"
     },
     "devDependencies": {
@@ -21,12 +21,12 @@
         "gulp-json-editor":    "2.2.1",
         "jshint-stylish":      "1.0.0",
         "gulp-replace":        "0.5.2",
-        "gulp-jshint":         "1.9.0",
+        "gulp-jshint":         "1.9.2",
         "gulp-coffee":         "2.3.1",
         "gulp-mocha":          "2.0.0",
-        "browserify":          "8.1.2",
+        "browserify":          "8.1.3",
         "fs-extra":            "0.16.3",
-        "should":              "4.6.2",
+        "should":              "4.6.3",
         "mocha":               "2.1.0",
         "gulp":                "3.8.10"
     },
