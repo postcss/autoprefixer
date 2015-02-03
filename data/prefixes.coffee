@@ -58,7 +58,7 @@ feature require('caniuse-db/features-json/css-animation'), (browsers) ->
          'animation-delay', 'animation-direction', 'animation-fill-mode',
          'animation-iteration-count', 'animation-play-state',
          'animation-timing-function', '@keyframes',
-          #mistakes: ['-ms-']
+          mistakes: ['-ms-']
           browsers: browsers
 
 # Transition
