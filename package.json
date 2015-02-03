@@ -13,7 +13,7 @@
         "coffee-script": "1.9.0",
         "browserslist":  "~0.2.0",
         "num2fraction":  "~1.0.1",
-        "caniuse-db":    "^1.0.30000062",
+        "caniuse-db":    "^1.0.30000064",
         "postcss":       "~4.0.3"
     },
     "devDependencies": {
