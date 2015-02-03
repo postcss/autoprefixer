@@ -1,3 +1,6 @@
+# 5.1.2
+* Add never existed `@-ms-keyframes` to common mistake.
+
 ## 5.1.1
 * Safer value split in `flex` hack.
 
