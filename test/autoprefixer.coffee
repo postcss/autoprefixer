@@ -15,7 +15,7 @@ uncascader   = autoprefixer(browsers: ['Firefox 15'])
 gradienter   = autoprefixer(browsers: ['Chrome 25', 'Opera 12', 'Android 2.3'])
 selectorer   = autoprefixer(browsers: ['Chrome 25', 'Firefox > 17', 'IE 10'])
 intrinsicer  = autoprefixer(browsers: ['Chrome 25', 'Firefox 22'])
-crispedgeser = autoprefixer(browsers: ['Safari 7', 'Firefox 22'])
+imagerender  = autoprefixer(browsers: ['Safari 7', 'Firefox 22', 'IE 11'])
 backgrounder = autoprefixer(browsers: ['Firefox 3.6', 'Android 2.3'])
 resolutioner = autoprefixer(browsers: ['Firefox 15', 'Safari 7', 'Opera 12'])
 
@@ -56,8 +56,8 @@ prefixer = (name) ->
     resolutioner
   else if name == 'filter'
     filterer
-  else if name == 'crisp-edges'
-    crispedgeser
+  else if name == 'image-rendering'
+    imagerender
   else if name == 'logical'
     intrinsicer
   else
@@ -192,7 +192,7 @@ describe 'Autoprefixer', ->
     it 'ignores some 3D transforms',    -> test('3d-transform')
     it 'supports background-size',      -> test('background-size')
     it 'supports background-clip',      -> test('background-clip')
-    it 'supports crisp-edges',          -> test('crisp-edges')
+    it 'supports image-rendering',      -> test('image-rendering')
     it 'supports logical properties',   -> test('logical')
 
     it 'ignores values for CSS3PIE props', ->

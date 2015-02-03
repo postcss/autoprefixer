@@ -31,6 +31,7 @@ Declaration.hack require('./hacks/block-logical')
 Declaration.hack require('./hacks/inline-logical')
 Declaration.hack require('./hacks/transform-decl')
 Declaration.hack require('./hacks/flex-direction')
+Declaration.hack require('./hacks/image-rendering')
 Declaration.hack require('./hacks/justify-content')
 Declaration.hack require('./hacks/background-size')
 
