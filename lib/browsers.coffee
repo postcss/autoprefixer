@@ -37,8 +37,11 @@ class Browsers
   # Return prefix for selected browser
   prefix: (browser) ->
     [name, version] = browser.split(' ')
-    if name == 'opera' and parseFloat(version) < 15
+    version = parseFloat(version)
+    if name == 'opera' and version < 15
       '-o-'
+    else if name == 'op_mob' and version >= 15
+      '-webkit-'
     else
       '-' + @data[name].prefix + '-'
 
