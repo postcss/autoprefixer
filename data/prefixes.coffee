@@ -252,9 +252,12 @@ feature require('caniuse-db/features-json/text-size-adjust'), (browsers) ->
 
 # CSS Masks
 feature require('caniuse-db/features-json/css-masks'), (browsers) ->
-  prefix 'clip-path', 'mask', 'mask-clip', 'mask-composite', 'mask-image',
-         'mask-origin', 'mask-position', 'mask-repeat', 'mask-size',
+  prefix 'mask-clip', 'mask-composite', 'mask-image',
+         'mask-origin', 'mask-repeat',
           browsers: browsers
+  prefix 'clip-path', 'mask', 'mask-position', 'mask-size',
+          transition: true
+          browsers:   browsers
 
 # Fragmented Borders and Backgrounds
 feature require('caniuse-db/features-json/css-boxdecorationbreak'), (brwsrs) ->
