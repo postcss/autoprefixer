@@ -1,3 +1,6 @@
+# 5.1.5
+* Add transition support for CSS Masks properties.
+
 # 5.1.4
 * Use `-webkit-` prefix for Opera Mobile 24.
 
