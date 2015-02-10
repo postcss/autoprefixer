@@ -213,13 +213,18 @@ will make Autoprefixer about 10% faster.
 
 No. Autoprefixer only adds prefixes.
 
-Most new CSS features will require client side JavaScript to handle correctly a new behavior.
+Most new CSS features will require client side JavaScript to handle correctly
+a new behavior.
 
-Depending on what you consider being a "polyfill", you can take a look to some other tools and libraries.
+Depending on what you consider being a "polyfill", you can take a look to some
+other tools and libraries.
 If you just look for syntax sugar, you might take a look to:
 
-- [CSS Grace], a PostCSS plugin, that handle some IE hacks (opacity, rgba, inline-block, etc) in addition to some non standard handy shortcuts.
-- [cssnext], a tool that allows you to write standard CSS syntax non implemented yet in browsers (custom properties, custom media, color functions, etc). It includes autoprefixer and can be used as a PostCSS plugin too.
+- [CSS Grace], a PostCSS plugin, that handle some IE hacks
+  (opacity, rgba, inline-block, etc) in addition to some non standard handy shortcuts.
+- [cssnext], a tool that allows you to write standard CSS syntax non implemented
+  yet in browsers (custom properties, custom media, color functions, etc).
+  It includes autoprefixer and can be used as a PostCSS plugin too.
 
 [CSS Grace]: https://github.com/cssdream/cssgrace
 [cssnext]: https://cssnext.github.io/
