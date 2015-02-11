@@ -120,7 +120,7 @@ a {
 
 ## Browsers
 
-Autoprefixer uses [Browserslist], so you can set can specify the browsers
+Autoprefixer uses [Browserslist], so you can specify the browsers
 you want to target in your project by queries like `last 2 versions`
 or `> 5%`.
 
