@@ -1,7 +1,7 @@
 Selector = require('../selector')
 
 class Placeholder extends Selector
-  @names = ['::placeholder']
+  @names = ['::placeholder-shown', '::placeholder']
 
   # Add old mozilla to possible prefixes
   possible: ->
