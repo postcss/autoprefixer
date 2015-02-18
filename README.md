@@ -274,8 +274,8 @@ of `display: box`.
 Unlike `transition`, the `appearance` property is not a part of
 any specification. So there will not `appearance` in any future.
 
-In some future when all browsers will work without prefixes you will remove
-Autoprefixer and your CSS must works.
+Sometime in the future when all browsers work without prefixes you can remove
+Autoprefixer and your CSS just works.
 
 #### Does Autoprefixer add `-epub-` prefix?
 
