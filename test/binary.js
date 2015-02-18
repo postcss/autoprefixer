@@ -20,11 +20,11 @@ class StringBuffer {
     }
 
     on(event, callback) {
-      if ( event == 'data' && this.resumed ) {
+        if ( event == 'data' && this.resumed ) {
           callback(this.content);
-      } else if ( event == 'end' ) {
+        } else if ( event == 'end' ) {
           callback();
-      }
+        }
     }
 }
 
