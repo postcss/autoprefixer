@@ -25,6 +25,6 @@
 :-ms-input-placeholder {
     color: #999
 }
-::placeholder-shown {
+:placeholder-shown {
     color: #999
 }
