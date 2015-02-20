@@ -1,16 +1,16 @@
-# 5.1.6
+## 5.1.6
 * Use official `::placeholder-shown` selector (by Vincent De Oliveira).
 
-# 5.1.5
+## 5.1.5
 * Add transition support for CSS Masks properties.
 
-# 5.1.4
+## 5.1.4
 * Use `-webkit-` prefix for Opera Mobile 24.
 
-# 5.1.3
+## 5.1.3
 * Add IE support for `image-rendering: crisp-edges`.
 
-# 5.1.2
+## 5.1.2
 * Add never existed `@-ms-keyframes` to common mistake.
 
 ## 5.1.1
