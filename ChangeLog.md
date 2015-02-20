@@ -1,3 +1,6 @@
+## 5.1.7
+* Fix placeholder selector (by Vincent De Oliveira).
+
 ## 5.1.6
 * Use official `::placeholder-shown` selector (by Vincent De Oliveira).
 
