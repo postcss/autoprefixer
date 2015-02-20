@@ -185,7 +185,7 @@ feature require('caniuse-db/features-json/css-placeholder'), (browsers) ->
     [name, version] = i.split(' ')
     if name == 'firefox' and parseFloat(version) <= 18 then i + ' old' else i
 
-  prefix '::placeholder-shown', '::placeholder',
+  prefix ':placeholder-shown', '::placeholder',
           selector: true,
           browsers: browsers
 
