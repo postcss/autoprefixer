@@ -272,7 +272,7 @@ of `display: box`.
 #### Why doesn’t Autoprefixer support `appearance`?
 
 Unlike `transition`, the `appearance` property is not a part of
-any specification. So there will not `appearance` in any future.
+any specification. So there will not be any `appearance` support in near future.
 
 Sometime in the future when all browsers work without prefixes you can remove
 Autoprefixer and your CSS just works.
