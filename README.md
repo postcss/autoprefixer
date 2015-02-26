@@ -123,7 +123,7 @@ Autoprefixer uses [Browserslist], so you can specify the browsers
 you want to target in your project by queries like `last 2 versions`
 or `> 5%`.
 
-If you miss browsers option, Browserslist will try to find `browserslist`
+If you don’t provide browsers option, Browserslist will try to find `browserslist`
 config in parent dirs.
 
 See [Browserslist docs] for queries, browser names, config format
@@ -170,7 +170,7 @@ a {
 }
 ```
 
-If some prefixes were generated in wrong way, please create issue on GitHub.
+If some prefixes were generated in a wrong way, please create an issue on GitHub.
 
 But if you do not need Autoprefixer in some part of your CSS,
 you can use control comments to disable Autoprefixer.
@@ -186,7 +186,7 @@ b {
 }
 ```
 
-Control comments disables Autoprefixer within the whole rule in which
+Control comments disable Autoprefixer within the whole rule in which
 you place it. In the above example, Autoprefixer will be disabled
 in the entire `b` rule scope, not only after the comment.
 
@@ -219,9 +219,9 @@ Depending on what you consider being a "polyfill", you can take a look to some
 other tools and libraries.
 If you just look for syntax sugar, you might take a look to:
 
-- [CSS Grace], a PostCSS plugin, that handle some IE hacks
-  (opacity, rgba, inline-block, etc) in addition to some non standard handy shortcuts.
-- [cssnext], a tool that allows you to write standard CSS syntax non implemented
+- [CSS Grace], a PostCSS plugin that handles some IE hacks
+  (opacity, rgba, inline-block, etc) in addition to some non-standard handy shortcuts.
+- [cssnext], a tool that allows you to write standard CSS syntax non-implemented
   yet in browsers (custom properties, custom media, color functions, etc).
   It includes autoprefixer and can be used as a PostCSS plugin too.
 
@@ -258,7 +258,7 @@ There is [list with all supported] properties, values and selectors in wiki.
 
 #### Why doesn’t Autoprefixer support `display: box`, `box-align`, etc?
 
-There was 3 specification versions for Flexbox. For example, 2009 draft
+There were 3 specification versions for Flexbox. For example, 2009 draft
 suggested to write `display: box`, 2012 draft `display: flexbox`,
 but final versions `display: flex`.
 
@@ -280,7 +280,7 @@ Autoprefixer and your CSS just works.
 
 No, Autoprefixer works only with browsers prefixes from Can I Use.
 But you can use [postcss-epub](https://github.com/Rycochet/postcss-epub)
-for prefix ePub3 properties.
+for prefixing ePub3 properties.
 
 ## Usage
 
@@ -376,10 +376,10 @@ module.exports = {
 
 ### Compass
 
-You should think about try Gulp instead of Compass binary, because it has
+You should consider using Gulp instead of Compass binary, because it has
 better Autoprefixer integration and many other awesome plugins.
 
-But if you can’t move from Compass binray right now, there is a some hack
+But if you can’t move from Compass binary right now, there’s a hack
 to run Autoprefixer after `compass compile`.
 
 Install `autoprefixer-rails` gem:
@@ -456,7 +456,7 @@ See `autoprefixer -h` for help.
 ### JavaScript
 
 You can use [autoprefixer-core] in your node.js application
-or if you want to develop Autoprefixer plugin for new environment.
+or if you want to develop an Autoprefixer plugin for new environment.
 
 ```js
 var autoprefixer = require('autoprefixer-core');
@@ -521,10 +521,11 @@ Autoprefixer should be used in assets build tools. Text editor plugins are not
 a good solution, because prefixes decrease code readability and you will need
 to change value in all prefixed properties.
 
-I recommend you to learn build tools like [Grunt] or [Gulp]. They works much
-better and will open you entire new world of useful plugins and automatization.
+I recommend you to learn how to use build tools like [Grunt] or [Gulp]. They
+work much better and will open you a whole new world of useful plugins and
+automatization.
 
-But, if you can’t move to build tool, you can use text editor plugins:
+But, if you can’t move to a build tool, you can use text editor plugins:
 
 * [Sublime Text](https://github.com/sindresorhus/sublime-autoprefixer)
 * [Brackets](https://github.com/mikaeljorhult/brackets-autoprefixer)
