@@ -64,7 +64,7 @@ Autoprefixer supports selectors (like `:fullscreen` and `::selection`),
 unit function (`calc()`), at‑rules (`@support` and `@keyframes`) and properties.
 
 Because Autoprefixer is a postprocessor for CSS,
-you can also use it with preprocessors such as Sass, Stylus or LESS.
+you can also use it with preprocessors such as Sass, Stylus or LESS.
 
 ### Flexbox, Filters, etc.
 
@@ -139,7 +139,7 @@ it will autodetect a previous map if it is listed in an annotation comment.
 
 Autoprefixer supports inline source maps too. If an input CSS contains
 annotation from the previous step with a map in data:uri, Autoprefixer will
-update the source map with prefix changes and inline the new map back into
+update the source map with prefix changes and inline the new map back into
 the output CSS.
 
 ## Visual Cascade
@@ -221,7 +221,7 @@ other tools and libraries. If you just look for syntax sugar, you might take
 a look to:
 
 - [CSS Grace], a PostCSS plugin that handles some IE hacks (opacity, rgba,
-  inline-block, etc) in addition to some non-standard handy shortcuts.
+  inline-block, etc) in addition to some non-standard handy shortcuts.
 - [cssnext], a tool that allows you to write standard CSS syntax non-implemented
   yet in browsers (custom properties, custom media, color functions, etc).
   It includes autoprefixer and can be used as a PostCSS plugin too.
@@ -260,28 +260,28 @@ There is [list with all supported] properties, values and selectors in wiki.
 #### Why doesn’t Autoprefixer support `display: box`, `box-align`, etc?
 
 There were 3 specification versions for Flexbox. For example, 2009 draft
-suggested to write `display: box`, 2012 draft `display: flexbox`,
+suggested to write `display: box`, 2012 draft `display: flexbox`,
 but final versions `display: flex`.
 
 Autoprefixer add prefixes only for properties from [final version]
-of Flexbox spec. So, for example, you need to write `display: flex` instead
+of Flexbox spec. So, for example, you need to write `display: flex` instead
 of `display: box`.
 
 [final version]: http://www.w3.org/TR/css-flexbox-1/
 
 #### Why doesn’t Autoprefixer support `appearance`?
 
-Unlike `transition`, the `appearance` property is not a part of
-any specification. So there will not be any `appearance` support in near future.
+Unlike `transition`, the `appearance` property is not a part of any
+specification. So there will not be any `appearance` support in near future.
 
 Sometime in the future when all browsers work without prefixes you can remove
-Autoprefixer and your CSS just works.
+Autoprefixer and your CSS just works.
 
 #### Does Autoprefixer add `-epub-` prefix?
 
 No, Autoprefixer works only with browsers prefixes from Can I Use.
 But you can use [postcss-epub](https://github.com/Rycochet/postcss-epub)
-for prefixing ePub3 properties.
+for prefixing ePub3 properties.
 
 ## Usage
 
