@@ -123,8 +123,8 @@ Autoprefixer uses [Browserslist], so you can specify the browsers
 you want to target in your project by queries like `last 2 versions`
 or `> 5%`.
 
-If you don’t provide browsers option, Browserslist will try to find `browserslist`
-config in parent dirs.
+If you don’t provide browsers option, Browserslist will try
+to find `browserslist` config in parent dirs.
 
 See [Browserslist docs] for queries, browser names, config format
 and default value.
@@ -159,9 +159,9 @@ You can disable cascade by using the `cascade: false` option.
 
 ## Disabling
 
-Autoprefixer was designed to have no interface – it just works. If you need
-some browser specific hack just write a prefixed property after
-the unprefixed one.
+Autoprefixer was designed to have no interface – it just works.
+If you need some browser specific hack just write a prefixed property
+after the unprefixed one.
 
 ```css
 a {
@@ -170,7 +170,8 @@ a {
 }
 ```
 
-If some prefixes were generated in a wrong way, please create an issue on GitHub.
+If some prefixes were generated in a wrong way,
+please create an issue on GitHub.
 
 But if you do not need Autoprefixer in some part of your CSS,
 you can use control comments to disable Autoprefixer.
@@ -215,12 +216,12 @@ No. Autoprefixer only adds prefixes.
 Most new CSS features will require client side JavaScript to handle correctly
 a new behavior.
 
-Depending on what you consider being a "polyfill", you can take a look to some
-other tools and libraries.
-If you just look for syntax sugar, you might take a look to:
+Depending on what you consider being a “polyfill”, you can take a look to some
+other tools and libraries. If you just look for syntax sugar, you might take
+a look to:
 
-- [CSS Grace], a PostCSS plugin that handles some IE hacks
-  (opacity, rgba, inline-block, etc) in addition to some non-standard handy shortcuts.
+- [CSS Grace], a PostCSS plugin that handles some IE hacks (opacity, rgba,
+  inline-block, etc) in addition to some non-standard handy shortcuts.
 - [cssnext], a tool that allows you to write standard CSS syntax non-implemented
   yet in browsers (custom properties, custom media, color functions, etc).
   It includes autoprefixer and can be used as a PostCSS plugin too.
@@ -412,7 +413,8 @@ end
 
 ### Less
 
-You can use autoprefixer with less by including the [less-plugin-autoprefix] plugin.
+You can use autoprefixer with less by including
+the [less-plugin-autoprefix] plugin.
 
 [less-plugin-autoprefix]: https://github.com/less/less-plugin-autoprefix
 
