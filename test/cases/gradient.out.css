@@ -84,6 +84,8 @@ div {
 }
 
 .mask {
+    -webkit-mask: -webkit-gradient(linear, left top, left bottom, from(white), to(black));
     -webkit-mask: -webkit-linear-gradient(white, black);
+            mask: -webkit-gradient(linear, left top, left bottom, from(white), to(black));
             mask: linear-gradient(white, black);
 }

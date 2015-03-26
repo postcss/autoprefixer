@@ -165,7 +165,7 @@ class Gradient extends Value
   add: (decl, prefix) ->
     p = decl.prop
     if p.indexOf('mask') != -1
-      super if prefix == '-webkit-'
+      super if prefix == '-webkit-' or prefix == '-webkit- old'
     else if p == 'list-style' or p == 'list-style-image' or p == 'content'
       super if prefix == '-webkit-' or prefix == '-webkit- old'
     else
