@@ -11,6 +11,12 @@ b {
     background-image: linear-gradient(rgba(0,0,0,1), white), linear-gradient(white, black);
 }
 
+strong {
+    background: -webkit-linear-gradient(bottom, transparent, rgba(0, 0, 0, 0.8) 20px, #000 30px, #000) no-repeat;
+    background: -o-linear-gradient(bottom, transparent, rgba(0, 0, 0, 0.8) 20px, #000 30px, #000) no-repeat;
+    background: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.8) 20px, #000 30px, #000) no-repeat;
+}
+
 div {
   background-image: -webkit-radial-gradient(right, white black), -webkit-repeating-linear-gradient(top left, black, white), -webkit-repeating-radial-gradient(bottom, aqua, red);
   background-image: -o-radial-gradient(right, white black), -o-repeating-linear-gradient(top left, black, white), -o-repeating-radial-gradient(bottom, aqua, red);
