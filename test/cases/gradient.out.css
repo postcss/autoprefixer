@@ -82,3 +82,8 @@ div {
     list-style-image: -webkit-linear-gradient(white, black);
     list-style-image: linear-gradient(white, black);
 }
+
+.mask {
+    -webkit-mask: -webkit-linear-gradient(white, black);
+            mask: linear-gradient(white, black);
+}

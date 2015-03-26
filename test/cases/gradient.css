@@ -49,3 +49,7 @@ div {
 .list {
     list-style-image: linear-gradient(white, black);
 }
+
+.mask {
+    mask: linear-gradient(white, black);
+}

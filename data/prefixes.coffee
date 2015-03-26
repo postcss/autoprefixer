@@ -90,7 +90,8 @@ feature gradients, match: /y\sx/, (browsers) ->
   prefix 'linear-gradient', 'repeating-linear-gradient',
          'radial-gradient', 'repeating-radial-gradient',
           props:    ['background', 'background-image', 'border-image',
-                     'list-style', 'list-style-image', 'content']
+                     'list-style', 'list-style-image', 'content',
+                     'mask-image', 'mask']
           mistakes: ['-ms-']
           browsers: browsers
 

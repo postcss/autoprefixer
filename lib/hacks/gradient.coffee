@@ -163,8 +163,10 @@ class Gradient extends Value
 
   # Do not add non-webkit prefixes for list-style and object
   add: (decl, prefix) ->
-    prop = decl.prop
-    if prop == 'list-style' or prop == 'list-style-image' or prop == 'content'
+    p = decl.prop
+    if p.indexOf('mask') != -1
+      super if prefix == '-webkit-'
+    else if p == 'list-style' or p == 'list-style-image' or p == 'content'
       super if prefix == '-webkit-' or prefix == '-webkit- old'
     else
       super
