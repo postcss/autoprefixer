@@ -209,7 +209,7 @@ will make Autoprefixer about 10% faster.
 
 ## FAQ
 
-#### Does it add polyfills ?
+#### Does it add polyfills?
 
 No. Autoprefixer only adds prefixes.
 
