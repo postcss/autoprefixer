@@ -1,6 +1,6 @@
 {
     "name": "autoprefixer-core",
-    "version": "5.1.7",
+    "version": "5.1.8",
     "description": "CLI-less core of Autoprefixer to use in plugins",
     "keywords": ["autoprefixer", "css", "prefix", "postprocessor", "postcss"],
     "author": "Andrey Sitnik <andrey@sitnik.ru>",
@@ -13,7 +13,7 @@
         "coffee-script": "1.9.1",
         "browserslist":  "~0.2.0",
         "num2fraction":  "~1.0.1",
-        "caniuse-db":    "^1.0.30000094",
+        "caniuse-db":    "^1.0.30000106",
         "postcss":       "~4.0.6"
     },
     "devDependencies": {
@@ -21,7 +21,7 @@
         "gulp-json-editor":    "2.2.1",
         "jshint-stylish":      "1.0.1",
         "gulp-replace":        "0.5.3",
-        "gulp-jshint":         "1.9.2",
+        "gulp-jshint":         "1.9.4",
         "gulp-coffee":         "2.3.1",
         "gulp-mocha":          "2.0.0",
         "browserify":          "9.0.3",

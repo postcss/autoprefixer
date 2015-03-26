@@ -1,3 +1,7 @@
+## 5.1.8
+* Fix gradients in `mask` and `mask-image` properties.
+* Fix old webkit prefix on some unsupported gradients.
+
 ## 5.1.7
 * Fix placeholder selector (by Vincent De Oliveira).
 
