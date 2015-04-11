@@ -1,0 +1,201 @@
+@import url(http://fonts.googleapis.com/css?family=Cherry+Cream+Soda|Kotta+One);
+
+body
+{
+background:url('http://www.hdesktops.com/wp-content/uploads/2013/12/abstract-black-black-free-wallpaper-iphone-5-84.jpg');
+background-attachment:fixed;
+background-size:100%;
+}
+
+#content
+{
+color:white;
+font-family: 'Kotta One', serif;
+}
+
+#white
+{
+background:none;
+border:none;
+}
+
+h1
+{
+font-family: 'Cherry Cream Soda', cursive;
+color:white;
+text-align:center;
+text-shadow:5px 5px 5px #e098ff;
+}
+
+a:link {color:Lavender;}  
+a:visited {color:Lavender;}  
+a:hover {color:Magenta;}    
+a:active {color:Magenta;}  
+
+td.top
+{
+background:url('http://oi57.tinypic.com/ftzwn7.jpg');
+color:white;
+text-align:center;
+}
+
+td.bottom
+{
+background:url('http://oi57.tinypic.com/ftzwn7.jpg');
+color:white;
+text-align:center;
+}
+
+th
+{
+background:url('http://oi57.tinypic.com/ftzwn7.jpg');
+color:white;
+text-align:center;
+}
+
+td
+{
+background-color:#530088;
+color:white;
+}
+
+td.right
+{
+background-color:#530088;
+color:white;
+}
+
+td.right_cub
+{
+background:#e098ff;
+color:black;
+}
+
+td.left
+{
+background-color:#530088;
+color:white;
+}
+
+td. left.b.center.
+{
+background-color:#530088;
+color:white;
+}
+
+div.left
+{
+background-color:#530088;
+color:white;
+}
+
+.table a:link 
+{
+color:black;
+}
+ 
+.table a:visited 
+{
+color:black;
+} 
+
+.table a:hover
+ {
+color:white;
+}  
+
+.table a:active 
+{
+color:white;
+} 
+
+table.table
+{
+box-shadow: 10px 10px 30px 10px #e098ff;
+}
+
+div#navigation
+{
+background:url('http://oi57.tinypic.com/ftzwn7.jpg');
+color:white;
+border-radius:25px;
+}
+
+div#top_bar
+{
+background:url('http://oi57.tinypic.com/ftzwn7.jpg');
+color:white;
+}
+
+div#bottom_bar
+{
+background:url('http://oi57.tinypic.com/ftzwn7.jpg');
+color:white;
+}
+
+
+#sidebar div.content
+{
+background-color:#530088;
+color:white;
+background-image:none;
+}
+
+#sidebar .inside div {background-image:none!important;}
+
+#sidebar .div {background-image:none;}
+
+#sidebar div.inside {background-image:none;}
+
+#sidebar div.inside.div {background-image:none;}
+
+#sidebar div.smallest
+{
+background-color:#530088;
+color:white;
+}
+
+#sidebar
+{
+background-color:#530088;
+color:white;
+border-radius:15px;
+}
+
+#sidebar h2
+{
+font-family: 'Cherry Cream Soda', cursive;
+color:white;
+}
+
+div.chat_light
+{
+background-color:#530088;
+color:white;
+}
+
+div.chat_dark
+{
+background-color:#5d0050;
+color:white;
+}
+
+#sidebar a:link 
+{
+color:black;
+}
+
+#sidebar a:visited 
+{
+color:black;
+}
+
+#sidebar a:hover
+{
+color:white;
+}
+
+#sidebar a:active 
+{
+color:white;
+}
