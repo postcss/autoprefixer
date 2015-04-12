@@ -74,10 +74,10 @@ Browsers:
   or last version: '-b "last 2 versions"'.`);
     }
 
-    // Print to stdout
-    print(str) {
+    // Print to stdout, with optional callback
+    print(str, done) {
         str = str.replace(/\n$/, '');
-        this.stdout.write(str + "\n");
+        this.stdout.write(str + "\n", done);
     }
 
     // Print to stdout
@@ -263,8 +263,9 @@ Browsers:
         if ( !result ) return this.endWork();
 
         if ( output == '-' ) {
-            this.print(result.css);
-            this.endWork();
+            this.print(result.css, () => {
+                this.endWork();
+            });
         } else {
             fs.outputFile(output, result.css, (error) => {
                 if (error) this.error('autoprefixer: ' + error);

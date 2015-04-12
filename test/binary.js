@@ -11,8 +11,11 @@ class StringBuffer {
         this.content = '';
     }
 
-    write(str) {
+    write(str, callback) {
         this.content += str;
+        if ( callback ) {
+            callback();
+        }
     }
 
     resume() {
