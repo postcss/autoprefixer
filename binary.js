@@ -1,9 +1,9 @@
-var CssSyntaxError = require('postcss/lib/css-syntax-error');
-var autoprefixer   = require('autoprefixer-core');
-var path           = require('path');
-var fs             = require('fs-extra');
+import CssSyntaxError from 'postcss/lib/css-syntax-error';
+import autoprefixer   from 'autoprefixer-core';
+import path           from 'path';
+import fs             from 'fs-extra';
 
-class Binary {
+export default class Binary {
     constructor(process) {
         this.arguments = process.argv.slice(2);
         this.stdin     = process.stdin;
@@ -77,13 +77,13 @@ Browsers:
     // Print to stdout
     print(str) {
         str = str.replace(/\n$/, '');
-        this.stdout.write(str + "\n");
+        this.stdout.write(str + '\n');
     }
 
     // Print to stdout
     error(str) {
         this.status = 1;
-        this.stderr.write(str + "\n");
+        this.stderr.write(str + '\n');
     }
 
     // Get current version
@@ -93,81 +93,81 @@ Browsers:
 
     // Parse arguments
     parseArguments() {
-        var args = this.arguments.slice();
+        let args = this.arguments.slice();
         while ( args.length > 0 ) {
-            var arg = args.shift();
+            let arg = args.shift();
 
-            if ( arg == '-h' || arg == '--help' ) {
+            if ( arg === '-h' || arg === '--help' ) {
                 this.command = 'showHelp';
 
-            } else if ( arg == '-v' || arg == '--version' ) {
+            } else if ( arg === '-v' || arg === '--version' ) {
                 this.command = 'showVersion';
 
-            } else if ( arg == '-i' || arg == '--info' ) {
+            } else if ( arg === '-i' || arg === '--info' ) {
                 this.command = 'info';
 
-            } else if ( arg == '-m' || arg == '--map' ) {
+            } else if ( arg === '-m' || arg === '--map' ) {
                 this.processOptions.map = { };
 
-            } else if ( arg == '--no-map' ) {
+            } else if ( arg === '--no-map' ) {
                 this.processOptions.map = false;
 
-            } else if ( arg == '-I' || arg == '--inline-map' ) {
-                if ( typeof( this.processOptions.map ) == 'undefined' ) {
+            } else if ( arg === '-I' || arg === '--inline-map' ) {
+                if ( typeof this.processOptions.map === 'undefined' ) {
                     this.processOptions.map = { };
                 }
                 this.processOptions.map.inline = true;
 
-            } else if ( arg == '--no-inline-map' ) {
-                if ( typeof( this.processOptions.map ) == 'undefined' ) {
+            } else if ( arg === '--no-inline-map' ) {
+                if ( typeof this.processOptions.map === 'undefined' ) {
                     this.processOptions.map = { };
                 }
                 this.processOptions.map.inline = false;
 
-            } else if ( arg == '--annotation' ) {
-                if ( typeof( this.processOptions.map ) == 'undefined' ) {
+            } else if ( arg === '--annotation' ) {
+                if ( typeof this.processOptions.map === 'undefined' ) {
                     this.processOptions.map = { };
                 }
                 this.processOptions.map.annotation = args.shift();
 
-            } else if ( arg == '--no-map-annotation' ) {
-                if ( typeof( this.processOptions.map ) == 'undefined' ) {
+            } else if ( arg === '--no-map-annotation' ) {
+                if ( typeof this.processOptions.map === 'undefined' ) {
                     this.processOptions.map = { };
                 }
                 this.processOptions.map.annotation = false;
 
-            } else if ( arg == '--sources-content' ) {
-                if ( typeof( this.processOptions.map ) == 'undefined' ) {
+            } else if ( arg === '--sources-content' ) {
+                if ( typeof this.processOptions.map === 'undefined' ) {
                     this.processOptions.map = { };
                 }
                 this.processOptions.map.sourcesContent = true;
 
-            } else if ( arg == '--no-sources-content' ) {
-                if ( typeof( this.processOptions.map ) == 'undefined' ) {
+            } else if ( arg === '--no-sources-content' ) {
+                if ( typeof this.processOptions.map === 'undefined' ) {
                     this.processOptions.map = { };
                 }
                 this.processOptions.map.sourcesContent = false;
 
-            } else if ( arg == '--no-cascade' ) {
+            } else if ( arg === '--no-cascade' ) {
                 this.processorOptions.cascade = false;
 
-            } else if ( arg == '--no-remove' ) {
+            } else if ( arg === '--no-remove' ) {
                 this.processorOptions.remove = false;
 
-            } else if ( arg == '--safe' ) {
+            } else if ( arg === '--safe' ) {
                 this.processOptions.safe = true;
 
-            } else if ( arg == '-b' || arg == '--browsers' ) {
+            } else if ( arg === '-b' || arg === '--browsers' ) {
                 this.processorOptions.browsers = args.shift().split(',')
                   .map( (i) => i.trim() );
 
-            } else if ( arg == '-c' || arg == '--clean' ) {
+            } else if ( arg === '-c' || arg === '--clean' ) {
                 this.processorOptions.browsers = [];
 
-            } else if ( arg == '-o' || arg == '--output' ) {
+            } else if ( arg === '-o' || arg === '--output' ) {
                 this.outputFile = args.shift();
 
-            } else if ( arg == '-d' || arg == '--dir' ) {
+            } else if ( arg === '-d' || arg === '--dir' ) {
                 this.outputDir = args.shift();
 
             } else {
@@ -225,30 +225,30 @@ Browsers:
     // Lazy loading for Autoprefixer instance
     compiler() {
         if ( !this.compilerCache ) {
-          this.compilerCache = autoprefixer(this.processorOptions);
+            this.compilerCache = autoprefixer(this.processorOptions);
         }
         return this.compilerCache;
     }
 
     // Compile loaded CSS
     compileCSS(css, output, input) {
-        var opts = { };
-        for ( var name in this.processOptions ) {
+        let opts = { };
+        for ( let name in this.processOptions ) {
             opts[name] = this.processOptions[name];
         }
-        if ( input )         opts.from = input;
-        if ( output != '-' ) opts.to   = output;
+        if ( input )          opts.from = input;
+        if ( output !== '-' ) opts.to   = output;
 
-        var result;
+        let result;
         try {
             result = this.compiler().process(css, opts);
         } catch (error) {
-            if ( error.indexOf && error.indexOf('Unknown browser') != -1 ) {
+            if ( error.indexOf && error.indexOf('Unknown browser') !== -1 ) {
                 this.error('autoprefixer: ' + error);
             } else if ( error.autoprefixer ) {
                 this.error('autoprefixer: ' + error.message);
             } else if ( error instanceof CssSyntaxError ) {
-                var text = error.message;
+                let text = error.message;
                 if ( error.source ) text += '\n' + error.highlight();
                 this.error('autoprefixer:' + text);
             } else {
@@ -262,25 +262,25 @@ Browsers:
 
         if ( !result ) return this.endWork();
 
-        if ( output == '-' ) {
+        if ( output === '-' ) {
             this.print(result.css);
             this.endWork();
         } else {
-            fs.outputFile(output, result.css, (error) => {
-                if (error) this.error('autoprefixer: ' + error);
+            fs.outputFile(output, result.css, (err1) => {
+                if ( err1 ) this.error('autoprefixer: ' + err1);
 
                 if ( result.map ) {
-                  var map;
-                  if ( opts.map && opts.map.annotation ) {
-                      map = path.resolve(path.dirname(output),
-                                         opts.map.annotation);
-                  } else {
-                      map = output + '.map';
-                  }
-                  fs.writeFile(map, result.map, (error) => {
-                      if (error) this.error('autoprefixer: ' + error);
-                      this.endWork();
-                  });
+                    let map;
+                    if ( opts.map && opts.map.annotation ) {
+                        map = path.resolve(path.dirname(output),
+                                           opts.map.annotation);
+                    } else {
+                        map = output + '.map';
+                    }
+                    fs.writeFile(map, result.map, (err2) => {
+                        if ( err2 ) this.error('autoprefixer: ' + err2);
+                        this.endWork();
+                    });
                 } else {
                     this.endWork();
                 }
@@ -294,23 +294,24 @@ Browsers:
             this.outputFile = '-';
         }
 
-        var i, file, list = [];
+        let file;
+        let list = [];
         if ( this.outputDir ) {
             if ( this.inputFiles.length === 0 ) {
                 this.error('autoprefixer: For STDIN input you need ' +
                            'to specify output file (by -o FILE),\n ' +
                            'not output dir');
-                return;
+                return false;
             }
 
-            var dir = this.outputDir;
+            let dir = this.outputDir;
             if ( fs.existsSync(dir) && !fs.statSync(dir).isDirectory() ) {
                 this.error('autoprefixer: Path ' + dir +
                            ' is a file, not directory');
-                return;
+                return false;
             }
 
-            var output;
+            let output;
             for ( file of this.inputFiles ) {
                 output = path.join(this.outputDir, path.basename(file));
                 list.push([file, output]);
@@ -321,7 +322,7 @@ Browsers:
                 this.error('autoprefixer: For several files you can ' +
                            'specify only output dir (by -d DIR`),\n' +
                            'not one output file');
-                return;
+                return false;
             }
 
             for ( file of this.inputFiles ) {
@@ -342,20 +343,20 @@ Browsers:
         this.waiting      = 0;
         this.doneCallback = done;
 
-        var files = this.files();
-        if ( !files ) return done();
+        let files = this.files();
+        if ( files === false ) return done();
 
         if ( files.length === 0 ) {
             this.startWork();
 
-            var css = '';
+            let css = '';
             this.stdin.resume();
             this.stdin.on('data', (chunk) => css += chunk);
             this.stdin.on('end', () => {
                 this.compileCSS(css, this.outputFile);
             });
         } else {
-            var i, input, output;
+            let i, input, output;
             for ( i = 0; i < files.length; i++ ) {
                 this.startWork();
             }
@@ -368,12 +369,12 @@ Browsers:
                     continue;
                 }
 
-                ((input, output) => {
-                    fs.readFile(input, (error, css) => {
+                ((input2, output2) => {
+                    fs.readFile(input2, (error, css) => {
                         if ( error ) {
                             this.workError('autoprefixer: ' + error.message);
                         } else {
-                            this.compileCSS(css, output, input);
+                            this.compileCSS(css, output2, input2);
                         }
                     });
                 })(input, output);
@@ -390,5 +391,3 @@ Browsers:
         }
     }
 }
-
-module.exports = Binary;

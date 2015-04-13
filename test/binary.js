@@ -1,10 +1,10 @@
-var autoprefixer = require('../');
-var Binary       = require('../binary');
+import Binary from '../binary';
 
-var fs     = require('fs-extra');
-var parse  = require('postcss/lib/parse');
-var child  = require('child_process');
-var expect = require('chai').expect;
+import { expect } from 'chai';
+import child      from 'child_process';
+import parse      from 'postcss/lib/parse';
+import path       from 'path';
+import fs         from 'fs-extra';
 
 class StringBuffer {
     constructor() {
@@ -20,54 +20,54 @@ class StringBuffer {
     }
 
     on(event, callback) {
-        if ( event == 'data' && this.resumed ) {
-          callback(this.content);
-        } else if ( event == 'end' ) {
-          callback();
+        if ( event === 'data' && this.resumed ) {
+            callback(this.content);
+        } else if ( event === 'end' ) {
+            callback();
         }
     }
 }
 
-var tempDir = __dirname + '/fixtures';
+let tempDir = path.join(__dirname, 'fixtures');
 
-var path = function (file) {
-    return tempDir + '/' + file;
+let temp = function (file) {
+    return path.join(tempDir, file);
 };
 
-var write = function (file, css) {
+let write = function (file, content) {
     if ( !fs.existsSync(tempDir) ) fs.mkdirSync(tempDir);
-    fs.outputFileSync(path(file), css);
+    fs.outputFileSync(temp(file), content);
 };
 
-var read = function (file) {
-    return fs.readFileSync(path(file)).toString();
+let read = function (file) {
+    return fs.readFileSync(temp(file)).toString();
 };
 
-var readMap = function (file) {
+let readMap = function (file) {
     return parse(read(file)).prevMap.consumer();
 };
 
-var exists = function (file) {
-    return fs.existsSync(path(file));
+let exists = function (file) {
+    return fs.existsSync(temp(file));
 };
 
-var css      = 'a { transition: all 1s }';
-var prefixed = 'a { -webkit-transition: all 1s; transition: all 1s }';
+let css      = 'a { transition: all 1s }';
+let prefixed = 'a { -webkit-transition: all 1s; transition: all 1s }';
 
-var stdout, stderr, stdin;
+let stdout, stderr, stdin;
 
 
-var exec = (...args) => {
-    var callback = args.pop();
+let exec = (...args) => {
+    let callback = args.pop();
     args = args.map( (arg) => {
         if ( arg.match(/\.css/) || arg.match(/\/$/) ) {
-            return path(arg);
+            return temp(arg);
         } else {
             return arg;
         }
     });
 
-    var binary = new Binary({
+    let binary = new Binary({
         argv:   ['', ''].concat(args),
         stdin:  stdin,
         stdout: stdout,
@@ -75,7 +75,7 @@ var exec = (...args) => {
     });
 
     binary.run( () => {
-        var error;
+        let error;
         if ( binary.status === 0 && stderr.content === '' ) {
             error = false;
         } else {
@@ -85,8 +85,8 @@ var exec = (...args) => {
     });
 };
 
-var run = (...args) => {
-    var callback = args.pop();
+let run = (...args) => {
+    let callback = args.pop();
     args.push(function (out, err) {
         expect(err).to.be.false;
         callback(out);
@@ -94,9 +94,9 @@ var run = (...args) => {
     exec(...args);
 };
 
-var raise = (...args) => {
-    var done  = args.pop();
-    var error = args.pop();
+let raise = (...args) => {
+    let done  = args.pop();
+    let error = args.pop();
     args.push(function (out, err) {
         expect(out).to.be.empty;
         expect(err).to.match(error);
@@ -202,7 +202,7 @@ describe('Binary', () => {
     it('outputs to stdout', (done) => {
         write('a.css', css);
         run('-b', 'chrome 25', '-o', '-', 'a.css', (out) => {
-            expect(out).to.eql(prefixed + "\n");
+            expect(out).to.eql(prefixed + '\n');
             expect(read('a.css')).to.eql(css);
             done();
         });
@@ -211,7 +211,7 @@ describe('Binary', () => {
     it('reads from stdin', (done) => {
         stdin.content = css;
         run('-b', 'chrome 25', (out) => {
-            expect(out).to.eql(prefixed + "\n");
+            expect(out).to.eql(prefixed + '\n');
             done();
         });
     });
@@ -230,7 +230,7 @@ describe('Binary', () => {
             expect(read('b.css')).to.match(/\n\/\*# sourceMappingURL=/);
             expect(exists('b.css.map')).to.be.false;
 
-            var map = readMap('b.css');
+            let map = readMap('b.css');
             expect(map.file).to.eql('b.css');
             expect(map.sources).to.eql(['a.css']);
 
@@ -250,7 +250,7 @@ describe('Binary', () => {
         write('a.css', css);
         run('-m', '-o', 'b.css', 'a.css', () => {
             run('-o', 'c.css', 'b.css', () => {
-                var map = readMap('c.css');
+                let map = readMap('c.css');
                 expect(map.file).to.eql('c.css');
                 expect(map.sources).to.eql(['a.css']);
                 done();
@@ -415,7 +415,7 @@ describe('Binary', () => {
 describe('bin/autoprefixer', () => {
 
     it('is an executable', (done) => {
-        var binary = __dirname + '/../autoprefixer';
+        let binary = path.join(__dirname, '../autoprefixer');
         child.execFile(binary, ['-v'], { }, (error, out) => {
             expect(error).to.not.exist;
             expect(out).to.match(/^autoprefixer [\d\.]+\n$/);
@@ -428,8 +428,8 @@ describe('bin/autoprefixer', () => {
 describe('autoprefixer', () => {
 
     it('is a module', () => {
-        var autoprefixer = require('../');
-        var result = autoprefixer({ browsers: 'chrome 25' }).process(css);
+        let autoprefixer = require('../');
+        let result = autoprefixer({ browsers: 'chrome 25' }).process(css);
         expect(result.css).to.eql(prefixed);
     });
 

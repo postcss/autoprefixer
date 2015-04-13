@@ -1,11 +1,12 @@
 var gutil = require('gulp-util');
 var gulp  = require('gulp');
+var path  = require('path');
 var fs    = require('fs-extra');
 
 gulp.task('clean', ['build:clean', 'bench:clean']);
 
 gulp.task('build:clean', function (done) {
-    fs.remove(__dirname + '/build', done);
+    fs.remove(path.join(__dirname, 'build'), done);
 });
 
 gulp.task('build:bin', ['build:clean'], function () {
@@ -18,11 +19,11 @@ gulp.task('build:bin', ['build:clean'], function () {
 
 gulp.task('build:lib', ['build:clean'], function () {
     var replace = require('gulp-replace');
-    var es6to5  = require('gulp-6to5');
+    var babel   = require('gulp-babel');
 
     return gulp.src(['binary.js', 'index.js'])
         .pipe(replace(/require\('\.\/enable-es6'\);\n/, ''))
-        .pipe(es6to5({ loose: 'all' }))
+        .pipe(babel({ loose: 'all' }))
         .pipe(gulp.dest('build/'));
 });
 
@@ -40,43 +41,33 @@ gulp.task('build:package', ['build:clean'], function () {
     var editor = require('gulp-json-editor');
 
     gulp.src('./package.json')
-        .pipe(editor(function (json) {
-            json.devDependencies['6to5'] = json.dependencies['6to5'];
-            delete json.dependencies['6to5'];
-            return json;
+        .pipe(editor(function (d) {
+            d.devDependencies['babel-core'] = d.dependencies['babel-core'];
+            delete d.dependencies['babel-core'];
+            return d;
         }))
         .pipe(gulp.dest('build'));
 });
 
 gulp.task('build', ['build:bin', 'build:lib', 'build:docs', 'build:package']);
 
-gulp.task('lint:test', function () {
-    var jshint = require('gulp-jshint');
-
-    return gulp.src('test/*.js')
-        .pipe(jshint({ esnext: true, expr: true }))
-        .pipe(jshint.reporter('jshint-stylish'))
-        .pipe(jshint.reporter('fail'));
-});
-
-gulp.task('lint:lib', function () {
-    var jshint = require('gulp-jshint');
+gulp.task('lint', function () {
+    var eslint = require('gulp-eslint');
 
     return gulp.src(['index.js',
                      'binary.js',
+                     'test/*.js',
                      'gulpfile.js',
                      'autoprefixer',
                      'enable-es6.js',
                      'benchmark/*.js'])
-        .pipe(jshint({ esnext: true }))
-        .pipe(jshint.reporter('jshint-stylish'))
-        .pipe(jshint.reporter('fail'));
+        .pipe(eslint())
+        .pipe(eslint.format())
+        .pipe(eslint.failAfterError());
 });
 
-gulp.task('lint', ['lint:test', 'lint:lib']);
-
 gulp.task('bench:clean', function (done) {
-    fs.remove(__dirname + '/benchmark/cache/', done);
+    fs.remove(path.join(__dirname, 'benchmark/cache/'), done);
 });
 
 gulp.task('bench:github', ['build:lib'], function (done) {
@@ -98,8 +89,9 @@ gulp.task('bench:github', ['build:lib'], function (done) {
                 res.on('end', function () {
                     var buffer = Buffer.concat(chunks);
 
-                    if ( res.headers['content-encoding'] == 'gzip' ) {
+                    if ( res.headers['content-encoding'] === 'gzip' ) {
                         zlib.gunzip(buffer, function (err, decoded) {
+                            if ( err ) throw err;
                             callback(decoded.toString());
                         });
 
@@ -107,28 +99,28 @@ gulp.task('bench:github', ['build:lib'], function (done) {
                         callback(buffer.toString());
                     }
                 });
-           });
+            });
     };
 
     var styles = function (url, callback) {
         get(url, function (html) {
-            var styles = html.match(/[^"]+\.css("|')/g);
-            if ( !styles ) throw "Can't find CSS links at " + url;
-            styles = styles.map(function(path) {
-                path = path.slice(0, -1);
-                if ( path.match(/^https?:/) ) {
-                    return path;
+            var files = html.match(/[^"]+\.css("|')/g);
+            if ( !files ) throw "Can't find CSS links at " + url;
+
+            callback(files.map(function(file) {
+                file = file.slice(0, -1);
+                if ( file.match(/^https?:/) ) {
+                    return file;
                 } else {
-                    return path.replace(/^\.?\.?\/?/, url);
+                    return file.replace(/^\.?\.?\/?/, url);
                 }
-            });
-            callback(styles);
+            }));
         });
     };
 
-    styles('https://github.com/', function (styles) {
+    styles('https://github.com/', function (files) {
         gutil.log('Load Github style');
-        get(styles[0], function (css) {
+        get(files[0], function (css) {
             var autoprefixer = require('./build/');
             css = autoprefixer({ browsers: [] }).process(css).css;
             fs.outputFile('./benchmark/cache/github.css', css, done);
@@ -136,7 +128,7 @@ gulp.task('bench:github', ['build:lib'], function (done) {
     });
 });
 
-gulp.task('bench', ['bench:github', 'build:bin'], function (done) {
+gulp.task('bench', ['bench:github', 'build:bin'], function () {
     var bench   = require('gulp-bench');
     var summary = require('gulp-bench-summary');
     return gulp.src('./benchmark/general.js', { read: false })

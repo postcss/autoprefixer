@@ -1,5 +1,7 @@
-var fs  = require('fs-extra');
-var css = fs.readFileSync(__dirname + '/cache/github.css').toString();
+var path = require('path');
+var fs   = require('fs-extra');
+
+var css = fs.readFileSync(path.join(__dirname, 'cache/github.css')).toString();
 
 var scss = css.replace(/([^-])transform:([^;}]+)(;|})/g,
                        '$1@include transform($2)$3').
@@ -10,14 +12,14 @@ var scss = css.replace(/([^-])transform:([^;}]+)(;|})/g,
                replace(/box-sizing:([^;}]+)(;|})/g,
                        '@include box-sizing($1)$2');
 scss = "@import 'compass/css3';\n" + scss;
-fs.writeFileSync(__dirname + '/cache/compass.scss', scss);
+fs.writeFileSync(path.join(__dirname, 'cache/compass.scss'), scss);
 
 var styl = css.replace('@charset "UTF-8";', "@import 'nib';")
-              .replace(/\}/g, "}\n").replace(/(\w)\[[^\]]+\]/g, '$1')
+              .replace(/\}/g, '}\n').replace(/(\w)\[[^\]]+\]/g, '$1')
               .replace(/filter:[^;}]+;?/ig, '')
               .replace(/(@keyframes[^\{]+)\{/ig, '$1 {')
               .replace(/url\([^\)]+\)/ig, 'white');
-fs.writeFileSync(__dirname + '/cache/stylus.styl', styl);
+fs.writeFileSync(path.join(__dirname, 'cache/stylus.styl'), styl);
 
 var exec = require('child_process').exec;
 var run  = function (command, callback) {
@@ -28,7 +30,8 @@ var run  = function (command, callback) {
     });
 };
 var bundle = function (command, callback) {
-    run('cd ' + __dirname + '; bundle exec ' + command, callback);
+    var home = __dirname;
+    run('cd ' + home + '; bundle exec ' + command, callback);
 };
 
 module.exports = {
@@ -39,8 +42,8 @@ module.exports = {
             name: 'Autoprefixer',
             defer: true,
             fn: function (done) {
-                var bin  = __dirname + '/../build/autoprefixer';
-                var file = __dirname + '/cache/github.css';
+                var bin  = path.join(__dirname, '../build/autoprefixer');
+                var file = path.join(__dirname, '/cache/github.css');
                 run(bin + ' ' + file + ' -o ' + file + '.out', function () {
                     done.resolve();
                 });
@@ -60,8 +63,8 @@ module.exports = {
             name: 'Stylus',
             defer: true,
             fn: function (done) {
-                var bin  = __dirname + '/../node_modules/.bin/stylus';
-                var file = __dirname + '/cache/stylus.styl';
+                var bin  = path.join(__dirname, '../node_modules/.bin/stylus');
+                var file = path.join(__dirname, 'cache/stylus.styl');
                 run(bin + ' --use nib ' + file, function () {
                     done.resolve();
                 });
