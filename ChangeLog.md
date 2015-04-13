@@ -1,3 +1,6 @@
+## 5.1.9
+* Fix DynJS compatibility (by Nick Howes).
+
 ## 5.1.8
 * Fix gradients in `mask` and `mask-image` properties.
 * Fix old webkit prefix on some unsupported gradients.
