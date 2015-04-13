@@ -10,8 +10,8 @@
         "url": "https://github.com/postcss/autoprefixer.git"
     },
     "dependencies": {
-        "autoprefixer-core": "~5.1.8",
-        "babel-core":        "5.1.2",
+        "autoprefixer-core": "~5.1.9",
+        "babel-core":        "5.1.4",
         "fs-extra":          "~0.18.0",
         "postcss":           "~4.0.6"
     },
