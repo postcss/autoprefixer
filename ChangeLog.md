@@ -1,3 +1,6 @@
+## 5.1.1
+* Fix process exit (by Michael Hart).
+
 ## 5.1 “Jianyuan”
 * Add support for resolution media query (by 一丝).
 * Higher accuracy while removing prefixes in values.
