@@ -8,7 +8,13 @@ sort = (array) ->
     else if a[0] < b[0]
       -1
     else
-      parseFloat(a[1]) - parseFloat(b[1])
+      d = parseFloat(a[1]) - parseFloat(b[1])
+      if d > 0
+        1
+      else if d < 0
+        -1
+      else
+        0
 
 # Convert Can I Use data
 feature = (data, opts, callback) ->
