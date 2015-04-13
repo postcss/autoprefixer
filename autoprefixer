@@ -5,8 +5,5 @@ var Binary = require('./binary');
 
 var binary = new Binary(process);
 binary.run(function () {
-    if ( binary.status ) {
-        process.exit(binary.status);
-    }
+    if ( binary.status ) process.exit(binary.status);
 });
-
