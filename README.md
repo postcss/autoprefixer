@@ -283,6 +283,11 @@ No, Autoprefixer works only with browsers prefixes from Can I Use.
 But you can use [postcss-epub](https://github.com/Rycochet/postcss-epub)
 for prefixing ePub3 properties.
 
+#### Why Autoprefixer uses unprefixed properties in `@-webkit-keyframes`?
+
+Browser teams can remove some prefix before other. So we try to use
+all combinations of prefixed/unprefixed values.
+
 ## Usage
 
 ### Grunt
