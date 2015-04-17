@@ -65,7 +65,7 @@ to apply prefixes for you:
 To process your CSS you need to make 2 steps:
 
 1. Build processor for your options and browsers supported in your project.
-2. Process CSS throw this processor.
+2. Process CSS through this processor.
 
 Function `autoprefixer(options)` returns new processor object:
 
