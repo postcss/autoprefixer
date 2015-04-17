@@ -15,7 +15,7 @@ uncascader   = autoprefixer(browsers: ['Firefox 15'])
 gradienter   = autoprefixer(browsers: ['Chrome 25', 'Opera 12', 'Android 2.3'])
 selectorer   = autoprefixer(browsers: ['Chrome 25', 'Firefox > 17', 'IE 10'])
 intrinsicer  = autoprefixer(browsers: ['Chrome 25', 'Firefox 22'])
-imagerender  = autoprefixer(browsers: ['Safari 7', 'Firefox 22', 'IE 11'])
+imagerender  = autoprefixer(browsers: ['iOS 8', 'iOS 6.1', 'FF 22', 'IE 11'])
 backgrounder = autoprefixer(browsers: ['Firefox 3.6', 'Android 2.3'])
 resolutioner = autoprefixer(browsers: ['Safari 7', 'Opera 12'])
 

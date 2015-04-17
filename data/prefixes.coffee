@@ -319,7 +319,7 @@ feature crispedges, match: /y x/, (browsers) ->
           props:  ['image-rendering']
           browsers: browsers
 
-feature crispedges, match: /a x/, (browsers) ->
+feature crispedges, match: /a x #2/, (browsers) ->
   prefix 'image-rendering',
           browsers: browsers
 
