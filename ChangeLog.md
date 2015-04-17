@@ -1,3 +1,6 @@
+## 5.1.10
+* Do not generate `-webkit-image-rendering`.
+
 ## 5.1.9
 * Fix DynJS compatibility (by Nick Howes).
 
