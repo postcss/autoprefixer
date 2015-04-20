@@ -1,3 +1,6 @@
+## 5.1.11
+* Update num2fraction to fix resolution media quuery (by 一丝).
+
 ## 5.1.10
 * Do not generate `-webkit-image-rendering`.
 
