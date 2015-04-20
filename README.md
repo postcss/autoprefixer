@@ -336,8 +336,8 @@ gulp.task('autoprefixer', function () {
 With `gulp-postcss` you also can combine Autoprefixer
 with [other PostCSS plugins].
 
-[other PostCSS plugins]: https://github.com/postcss/postcss#built-with-postcss
-[gulp-postcss]:          https://github.com/w0rm/gulp-postcss
+[other PostCSS plugins]: https://github.com/postcss/postcss#plugins
+[gulp-postcss]:          https://github.com/postcss/gulp-postcss
 
 ### Webpack
 
