@@ -146,12 +146,12 @@ describe 'Autoprefixer', ->
 
     it 'marks parsing errors', ->
       ( ->
-        cleaner.process('a {')
+        cleaner.process('a {').css
       ).should.throw("<css input>:1:1: Unclosed block")
 
     it 'shows file name in parse error', ->
       ( ->
-        cleaner.process('a {', from: 'a.css')
+        cleaner.process('a {', from: 'a.css').css
       ).should.throw(/a.css:1:1: /)
 
     it 'uses browserslist config', ->

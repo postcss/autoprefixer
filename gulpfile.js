@@ -1,9 +1,10 @@
 var gulp = require('gulp');
+var path = require('path');
 var fs   = require('fs-extra');
 
 gulp.task('clean', function (done) {
-    fs.remove(__dirname + '/autoprefixer.js', function () {
-        fs.remove(__dirname + '/build', done);
+    fs.remove(path.join(__dirname, 'autoprefixer.js'), function () {
+        fs.remove(path.join(__dirname, 'build'), done);
     });
 });
 
@@ -43,37 +44,34 @@ gulp.task('build', ['build:lib', 'build:docs', 'build:package']);
 
 gulp.task('standalone', ['build:lib'], function (done) {
     var builder    = require('browserify')({
-        basedir:     __dirname + '/build/',
+        basedir:     path.join(__dirname, 'build'),
         standalone: 'autoprefixer'
     });
     builder.add('./lib/autoprefixer.js');
 
-    var output = fs.createWriteStream(__dirname + '/autoprefixer.js');
     builder.bundle(function (error, build) {
-        if ( error ) {
-            process.stderr.write(error.toString() + "\n");
-            process.exit(1);
-        }
+        if ( error ) throw error;
 
-        fs.removeSync(__dirname + '/build/');
+        fs.removeSync(path.join(__dirname, 'build'));
 
-        var rails = __dirname + '/../autoprefixer-rails/vendor/autoprefixer.js';
+        var rails = path.join(__dirname, '..', 'autoprefixer-rails',
+            'vendor', 'autoprefixer.js');
         if ( fs.existsSync(rails) ) {
             fs.writeFileSync(rails, build);
         } else {
-            fs.writeFileSync(__dirname + '/autoprefixer.js', build);
+            fs.writeFileSync(path.join(__dirname, 'autoprefixer.js'), build);
         }
         done();
     });
 });
 
 gulp.task('lint', function () {
-    var jshint = require('gulp-jshint');
+    var eslint = require('gulp-eslint');
 
     return gulp.src(['index.js', 'gulpfile.js'])
-        .pipe(jshint())
-        .pipe(jshint.reporter('jshint-stylish'))
-        .pipe(jshint.reporter('fail'));
+        .pipe(eslint())
+        .pipe(eslint.format())
+        .pipe(eslint.failAfterError());
 });
 
 gulp.task('test', function () {
