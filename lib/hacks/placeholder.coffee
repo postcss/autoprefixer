@@ -22,7 +22,7 @@ class Placeholder extends Selector
   process: (node, result) ->
     if @name == '::placeholder' and node.selector.indexOf('::placeholder') != -1
       result.warn('Selector ::placeholder is unofficial. ' +
-                  'Use :placeholder-shown instead.', { node: node });
+                  'Use :placeholder-shown instead.', node: node);
     super
 
 module.exports = Placeholder

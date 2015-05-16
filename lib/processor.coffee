@@ -31,6 +31,11 @@ class Processor
 
     # Properties
     css.eachDecl (decl) =>
+      if decl.prop == 'display' and decl.value == 'box'
+        result.warn('You should write display: flex by final spec ' +
+                    'instead of display: box', node: decl)
+        return
+
       prefix = @prefixes.add[decl.prop]
       if prefix and prefix.prefixes
         prefix.process(decl) if not @disabled(decl)

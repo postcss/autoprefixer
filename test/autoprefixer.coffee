@@ -203,6 +203,13 @@ describe 'Autoprefixer', ->
         ['autoprefixer: <css input>:1:1: Selector ::placeholder is ' +
          'unofficial. Use :placeholder-shown instead.'])
 
+    it 'warn on old flexbox display', ->
+      result = postcss([flexboxer]).process('a{ display: box; }')
+      result.css.should.eql('a{ display: box; }')
+      result.warnings().map( (i) -> i.toString() ).should.eql(
+        ['autoprefixer: <css input>:1:4: You should write display: flex ' +
+         'by final spec instead of display: box'])
+
     it 'ignores values for CSS3PIE props', ->
       css = read('pie')
       postcss([compiler]).process(css).css.should.eql(css)
