@@ -257,18 +257,6 @@ There is [list with all supported] properties, values and selectors in wiki.
 [Can I Use]:               http://caniuse.com/
 [list with all supported]: https://github.com/postcss/autoprefixer/wiki/support-list
 
-#### Why doesn’t Autoprefixer support `display: box`, `box-align`, etc?
-
-There were 3 specification versions for Flexbox. For example, 2009 draft
-suggested to write `display: box`, 2012 draft `display: flexbox`,
-but final versions `display: flex`.
-
-Autoprefixer add prefixes only for properties from [final version]
-of Flexbox spec. So, for example, you need to write `display: flex` instead
-of `display: box`.
-
-[final version]: http://www.w3.org/TR/css-flexbox-1/
-
 #### Does Autoprefixer add `-epub-` prefix?
 
 No, Autoprefixer works only with browsers prefixes from Can I Use.
