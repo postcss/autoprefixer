@@ -66,10 +66,10 @@ prefixer = (name) ->
 read = (name) ->
   fs.readFileSync(__dirname + "/cases/#{ name }.css").toString()
 
-test = (from, instansce = prefixer(from)) ->
+test = (from, instance = prefixer(from)) ->
   input  = read(from)
   output = read(from + '.out')
-  postcss([instansce]).process(input).css.should.eql(output)
+  postcss([instance]).process(input).css.should.eql(output)
 
 commons = ['transition', 'values', 'keyframes', 'gradient', 'flex-rewrite',
            'flexbox', 'filter', 'border-image', 'border-radius', 'notes',
@@ -132,7 +132,7 @@ describe 'Autoprefixer', ->
     for type in ['transition', 'values', 'fullscreen']
       remover = autoprefixer(browsers: ['Opera 12'], add: false)
       opera   = autoprefixer(browsers: ['Opera 12'])
-      
+
       unprefixed = read(type)
       prefixed   = read(type + '.out')
 
@@ -182,7 +182,6 @@ describe 'Autoprefixer', ->
     it 'supports old Mozilla prefixes', -> test('border-radius')
     it 'supports all flexbox syntaxes', -> test('flexbox')
     it 'supports map flexbox props',    -> test('flex-rewrite')
-    it 'supports all placeholders',     -> test('placeholder')
     it 'supports all fullscreens',      -> test('fullscreen')
     it 'supports intrinsic sizing',     -> test('intrinsic')
     it 'supports custom prefixes',      -> test('custom-prefix')
@@ -193,6 +192,16 @@ describe 'Autoprefixer', ->
     it 'supports image-rendering',      -> test('image-rendering')
     it 'supports logical properties',   -> test('logical')
     it 'supports appearance',           -> test('appearance')
+
+    it 'supports all placeholders', ->
+      input  = read('placeholder')
+      output = read('placeholder.out')
+      result = postcss([prefixer('placeholder')]).process(input)
+
+      result.css.should.eql(output)
+      result.warnings().map( (i) -> i.toString() ).should.eql(
+        ['autoprefixer: <css input>:1:1: Selector ::placeholder is ' +
+         'unofficial. Use :placeholder-shown instead.'])
 
     it 'ignores values for CSS3PIE props', ->
       css = read('pie')

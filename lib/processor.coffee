@@ -6,7 +6,7 @@ class Processor
   constructor: (@prefixes) ->
 
   # Add necessary prefixes
-  add: (css) ->
+  add: (css, result) ->
     # At-rules
     resolution = @prefixes.add['@resolution']
     keyframes  = @prefixes.add['@keyframes']
@@ -27,7 +27,7 @@ class Processor
     css.eachRule (rule) =>
       return if @disabled(rule)
       for selector in @prefixes.add.selectors
-        selector.process(rule)
+        selector.process(rule, result)
 
     # Properties
     css.eachDecl (decl) =>
