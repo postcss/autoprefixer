@@ -189,7 +189,6 @@ describe 'Autoprefixer', ->
     it 'ignores some 3D transforms',    -> test('3d-transform')
     it 'supports background-size',      -> test('background-size')
     it 'supports background-clip',      -> test('background-clip')
-    it 'supports image-rendering',      -> test('image-rendering')
     it 'supports logical properties',   -> test('logical')
     it 'supports appearance',           -> test('appearance')
 
@@ -202,6 +201,16 @@ describe 'Autoprefixer', ->
       result.warnings().map( (i) -> i.toString() ).should.eql(
         ['autoprefixer: <css input>:1:1: Selector ::placeholder is ' +
          'unofficial. Use :placeholder-shown instead.'])
+
+    it 'supports image-rendering', ->
+      input  = read('image-rendering')
+      output = read('image-rendering.out')
+      result = postcss([prefixer('image-rendering')]).process(input)
+
+      result.css.should.eql(output)
+      result.warnings().map( (i) -> i.toString() ).should.eql(
+        ['autoprefixer: <css input>:2:5: There is no browsers with ' +
+         'crisp-edges rendering support.Maybe you mean pixelated?'])
 
     it 'warn on old flexbox display', ->
       result = postcss([flexboxer]).process('a{ display: box; }')

@@ -27,4 +27,12 @@ class ImageRendering extends Declaration
   normalize: (prop) ->
     'image-rendering'
 
+  # Warn on old value
+  process: (node, result) ->
+    if @name == 'image-rendering' and node.value == 'crisp-edges'
+      result.warn('There is no browsers with crisp-edges rendering support.' +
+                  'Maybe you mean pixelated?', node: node)
+
+    super
+
 module.exports = ImageRendering

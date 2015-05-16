@@ -38,7 +38,7 @@ class Processor
 
       prefix = @prefixes.add[decl.prop]
       if prefix and prefix.prefixes
-        prefix.process(decl) if not @disabled(decl)
+        prefix.process(decl, result) if not @disabled(decl)
 
     # Values
     css.eachDecl (decl) =>
