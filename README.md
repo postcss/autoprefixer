@@ -33,7 +33,14 @@ Process your CSS by Autoprefixer:
 
 ```js
 var autoprefixer = require('autoprefixer-core');
-var prefixed = autoprefixer.process(css).css;
+var postcss      = require('postcss');
+
+postcss([ autoprefixer ]).process(css).then(function (result) {
+    result.warnings().forEach(function (warn) {
+        console.warn(warn.toString());
+    });
+    console.log(result.css);
+});
 ```
 
 It will use the data based on current browser popularity and property support
@@ -62,18 +69,19 @@ to apply prefixes for you:
 
 ## Usage
 
-To process your CSS you need to make 2 steps:
+To process your CSS you need to make 3 steps:
 
-1. Build processor for your options and browsers supported in your project.
+1. Build plugin for your options and browsers supported in your project.
+2. Add this plugin to PostCSS processor.
 2. Process CSS through this processor.
 
-Function `autoprefixer(options)` returns new processor object:
+Function `autoprefixer(options)` returns new PostCSS plugin:
 
 ```js
-var processor = autoprefixer({ browsers: ['> 1%', 'IE 7'], cascade: false });
+var plugin = autoprefixer({ browsers: ['> 1%', 'IE 7'], cascade: false });
 ```
 
-There are a few options:
+There are 4 options:
 
 * `browsers` (array): list of browsers, which are supported in your project.
   You can directly specify browser version (like `iOS 7`) or use selections
@@ -83,27 +91,21 @@ There are a few options:
   if CSS is uncompressed. Default: `true`
 * `add` (boolean): should Autoprefixer add prefixes. Default is `true`.
 * `remove` (boolean): should Autoprefixer [remove outdated] prefixes.
-Default is `true`.
+  Default is `true`.
 
-Processor object has:
 
-* `.process(css, opts)` method, which will add prefixes to `css`.
-* `.info()` method, which returns debug information: which browsers are selected
-  and which properties will be prefixed
-* `.postcss` property returns [PostCSS] processor to use in chain
-  with other [PostCSS processors].
+Plugin object has `info()` method for [debug purpose].
 
-You can use processor object to process several CSS files
+See [PostCSS API] for plugin usage documentation.
+
+You can use PostCSS processor to process several CSS files
 to increase perfomance.
 
-There are `autoprefixer.process()`, `autoprefixer.info()`
-and `autoprefixer.postcss` shortcuts, which use default browsers and options.
-
-[PostCSS processors]: https://github.com/postcss/postcss#built-with-postcss
 [Browserslist docs]:  https://github.com/ai/browserslist
 [remove outdated]:    https://github.com/postcss/autoprefixer/#outdated-prefixes
 [Visual Cascade]:     https://github.com/postcss/autoprefixer#visual-cascade
-[PostCSS]:            https://github.com/postcss/postcss
+[debug purpose]:      #debug
+[PostCSS API]:        https://github.com/postcss/postcss/blob/master/docs/api.md
 
 ## CSS Processing
 
