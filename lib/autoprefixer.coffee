@@ -7,6 +7,8 @@ Prefixes = require('./prefixes')
 isPlainObject = (obj) ->
   Object.prototype.toString.apply(obj) == '[object Object]'
 
+cache = { }
+
 module.exports = postcss.plugin 'autoprefixer', (reqs...) ->
   if reqs.length == 1 and isPlainObject(reqs[0])
     options = reqs[0]
@@ -25,12 +27,13 @@ module.exports = postcss.plugin 'autoprefixer', (reqs...) ->
 
   loadPrefixes = (opts) ->
     browsers = new Browsers(module.exports.data.browsers, reqs, opts)
-    new Prefixes(module.exports.data.prefixes, browsers, options)
+    key      = browsers.selected.join(', ')
+    cache[key] ||= new Prefixes(module.exports.data.prefixes, browsers, options)
 
   plugin = (css) ->
     prefixes = loadPrefixes(from: css.source.input.file)
     prefixes.processor.remove(css) if options.remove != false
-    prefixes.processor.add(css) if options.add != false
+    prefixes.processor.add(css)    if options.add != false
 
   plugin.options = options
 
