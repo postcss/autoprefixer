@@ -50,7 +50,7 @@ prefixer = (name) ->
     uncascader
   else if name == 'example'
     autoprefixer
-  else if name == 'viewport'
+  else if name == 'viewport' or name == 'appearance'
     flexboxer
   else if name == 'resolution'
     resolutioner
@@ -76,7 +76,8 @@ commons = ['transition', 'values', 'keyframes', 'gradient', 'flex-rewrite',
            'flexbox', 'filter', 'border-image', 'border-radius', 'notes',
            'selectors', 'placeholder', 'fullscreen', 'intrinsic', 'mistakes',
            'custom-prefix', 'cascade', 'double', 'multicolumn', '3d-transform',
-           'background-size', 'supports', 'viewport', 'resolution', 'logical']
+           'background-size', 'supports', 'viewport', 'resolution', 'logical',
+           'appearance']
 
 describe 'autoprefixer()', ->
 
@@ -194,6 +195,7 @@ describe 'Autoprefixer', ->
     it 'supports background-clip',      -> test('background-clip')
     it 'supports image-rendering',      -> test('image-rendering')
     it 'supports logical properties',   -> test('logical')
+    it 'supports appearance',           -> test('appearance')
 
     it 'ignores values for CSS3PIE props', ->
       input  = read('pie')

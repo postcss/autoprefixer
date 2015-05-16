@@ -339,3 +339,8 @@ feature logicalProps, match: /x\s#2/, (browsers) ->
          'padding-block-start', 'padding-block-end',
           transition: true
           browsers:   browsers
+
+# CSS appearance
+feature require('caniuse-db/features-json/css-appearance'), (browsers) ->
+  prefix 'appearance',
+          browsers: browsers

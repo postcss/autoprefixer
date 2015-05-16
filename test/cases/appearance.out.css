@@ -1,0 +1,13 @@
+.a {
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+}
+.b {
+    -webkit-appearance: auto;
+       -moz-appearance: auto;
+            appearance: auto;
+}
+.c {
+    appearance: search;
+}
