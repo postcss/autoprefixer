@@ -315,7 +315,7 @@ feature require('caniuse-db/features-json/css-text-align-last'), (browsers) ->
 crispedges = require('caniuse-db/features-json/css-crisp-edges')
 
 feature crispedges, match: /y x/, (browsers) ->
-  prefix 'crisp-edges',
+  prefix 'pixelated',
           props:  ['image-rendering']
           browsers: browsers
 

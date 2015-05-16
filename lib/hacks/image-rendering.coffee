@@ -5,7 +5,7 @@ class ImageRendering extends Declaration
 
   # Add hack only for crisp-edges
   check: (decl) ->
-    decl.value == 'crisp-edges'
+    decl.value == 'pixelated'
 
   # Change property name for IE
   prefixed: (prop, prefix) ->
