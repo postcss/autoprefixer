@@ -4,21 +4,10 @@ postcss      = require('postcss')
 Browsers = require('./browsers')
 Prefixes = require('./prefixes')
 
-infoCache = null
 isPlainObject = (obj) ->
   Object.prototype.toString.apply(obj) == '[object Object]'
 
-# Parse CSS and add prefixed properties and values by Can I Use database
-# for actual browsers.
-#
-#   var prefixed = autoprefixer({ browsers: ['> 1%', 'ie 8'] }).process(css);
-#
-# If you want to combine Autoprefixer with another PostCSS processor:
-#
-#   postcss.use( autoprefixer({ browsers: ['last 1 version'] }).postcss ).
-#           use( compressor ).
-#           process(css);
-autoprefixer = (reqs...) ->
+module.exports = postcss.plugin 'autoprefixer', (reqs...) ->
   if reqs.length == 1 and isPlainObject(reqs[0])
     options = reqs[0]
     reqs    = undefined
@@ -30,54 +19,41 @@ autoprefixer = (reqs...) ->
   else if typeof(reqs[reqs.length - 1]) == 'object'
     options = reqs.pop()
 
-  reqs = options.browsers if options?.browsers?
+  options ||= { }
 
-  new Autoprefixer(autoprefixer.data, reqs, options)
+  reqs = options.browsers if options.browsers?
 
-autoprefixer.data =
+  loadPrefixes = (opts) ->
+    browsers = new Browsers(module.exports.data.browsers, reqs, opts)
+    new Prefixes(module.exports.data.prefixes, browsers, options)
+
+  plugin = (css) ->
+    prefixes = loadPrefixes(from: css.source.input.file)
+    prefixes.processor.remove(css) if options.remove != false
+    prefixes.processor.add(css)
+
+  plugin.options = options
+
+  plugin.process = (str, options = { }) ->
+    postcss(plugin).process(str, options)
+
+  plugin.info = (opts) ->
+    require('./info')(loadPrefixes(opts))
+
+  plugin
+
+# Autoprefixer data
+module.exports.data =
   browsers: require('caniuse-db/data').agents
   prefixes: require('../data/prefixes')
 
-class Autoprefixer
-  constructor: (@data, @reqs, @options = { }) ->
-
-  # Parse CSS and add prefixed properties for selected browsers
-  process: (str, options = {}) ->
-    postcss(@postcss).process(str, options)
-
-  # Return PostCSS processor, which will add necessary prefixes
-  postcss: (css) =>
-    prefixes = @prefixes(from: css.source.input.file)
-    prefixes.processor.remove(css) if @options.remove != false
-    prefixes.processor.add(css)
-
-  # Build Prefixes object for current options
-  prefixes: (opts) ->
-    browsers = new Browsers(autoprefixer.data.browsers, @reqs, opts)
-    new Prefixes(autoprefixer.data.prefixes, browsers, @options)
-
-  # Return string, what browsers selected and whar prefixes will be added
-  info: (opts) ->
-    infoCache ||= require('./info')
-    infoCache(@prefixes(opts))
-
 # Autoprefixer default browsers
-autoprefixer.defaults = browserslist.defaults
+module.exports.defaults = browserslist.defaults
 
-# Lazy load for Autoprefixer with default browsers
-autoprefixer.loadDefault = ->
-  @defaultCache ||= autoprefixer()
-
-# Compile with default Autoprefixer
-autoprefixer.process = (str, options = {}) ->
-  @loadDefault().process(str, options)
-
-# PostCSS with default Autoprefixer
-autoprefixer.postcss = (css) ->
-  autoprefixer.loadDefault().postcss(css)
+# Deprecated shortcut
+module.exports.process = (css, options) ->
+  module.exports().process(css, options)
 
 # Inspect with default Autoprefixer
-autoprefixer.info = ->
-  @loadDefault().info()
-
-module.exports = autoprefixer
+module.exports.info = ->
+  module.exports().info()
