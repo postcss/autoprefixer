@@ -69,8 +69,7 @@ read = (name) ->
 test = (from, instansce = prefixer(from)) ->
   input  = read(from)
   output = read(from + '.out')
-  result = instansce.process(input)
-  result.css.should.eql(output)
+  postcss([instansce]).process(input).css.should.eql(output)
 
 commons = ['transition', 'values', 'keyframes', 'gradient', 'flex-rewrite',
            'flexbox', 'filter', 'border-image', 'border-radius', 'notes',
@@ -90,86 +89,73 @@ describe 'autoprefixer()', ->
 
 describe 'Autoprefixer', ->
 
-  describe 'process()', ->
+  it 'prefixes transition',            -> test('transition')
+  it 'prefixes values',                -> test('values')
+  it 'prefixes @keyframes',            -> test('keyframes')
+  it 'prefixes @viewport',             -> test('viewport')
+  it 'prefixes selectors',             -> test('selectors')
+  it 'prefixes resolution query',      -> test('resolution')
+  it 'removes common mistakes',        -> test('mistakes')
+  it 'reads notes for prefixes',       -> test('notes')
+  it 'keeps vendor-specific hacks',    -> test('vendor-hack')
+  it 'keeps values with vendor hacks', -> test('value-hack')
+  it 'works with comments',            -> test('comments')
+  it 'uses visual cascade',            -> test('cascade')
+  it 'works with properties near',     -> test('double')
+  it 'checks prefixed in hacks',       -> test('check-down')
+  it 'normalize cascade after remove', -> test('uncascade')
+  it 'prefix decls in @supports',      -> test('supports')
+  it 'saves declaration style',        -> test('style')
+  it 'uses control comments',          -> test('disabled')
+  it 'has actual example in docs',     -> test('example')
 
-    it 'prefixes transition',            -> test('transition')
-    it 'prefixes values',                -> test('values')
-    it 'prefixes @keyframes',            -> test('keyframes')
-    it 'prefixes @viewport',             -> test('viewport')
-    it 'prefixes selectors',             -> test('selectors')
-    it 'prefixes resolution query',      -> test('resolution')
-    it 'removes common mistakes',        -> test('mistakes')
-    it 'reads notes for prefixes',       -> test('notes')
-    it 'keeps vendor-specific hacks',    -> test('vendor-hack')
-    it 'keeps values with vendor hacks', -> test('value-hack')
-    it 'works with comments',            -> test('comments')
-    it 'uses visual cascade',            -> test('cascade')
-    it 'works with properties near',     -> test('double')
-    it 'checks prefixed in hacks',       -> test('check-down')
-    it 'normalize cascade after remove', -> test('uncascade')
-    it 'prefix decls in @supports',      -> test('supports')
-    it 'saves declaration style',        -> test('style')
-    it 'uses control comments',          -> test('disabled')
-    it 'has actual example in docs',     -> test('example')
+  it 'should ignore spaces inside values', ->
+      css = read('trim')
+      postcss([flexboxer]).process(css).css.should.eql(css)
 
-    it 'should ignore spaces inside values', ->
-        css = read('trim')
-        flexboxer.process(css).css.should.eql(css)
+  it 'removes unnecessary prefixes', ->
+    for type in commons
+      continue if type == 'cascade'
+      continue if type == 'mistakes'
+      continue if type == 'flex-rewrite'
+      input  = read(type + '.out')
+      output = read(type)
+      postcss([cleaner]).process(input).css.should.eql(output)
 
-    it 'removes unnecessary prefixes', ->
-      for type in commons
-        continue if type == 'cascade'
-        continue if type == 'mistakes'
-        continue if type == 'flex-rewrite'
-        input  = read(type + '.out')
-        output = read(type)
-        cleaner.process(input).css.should.eql(output)
+  it 'does not remove unnecessary prefixes on request', ->
+    for type in ['transition', 'values', 'fullscreen']
+      keeper = autoprefixer(browsers: [], remove: false)
+      css    = read(type + '.out')
+      postcss([keeper]).process(css).css.should.eql(css)
 
-    it 'does not remove unnecessary prefixes on request', ->
-      for type in ['transition', 'values', 'fullscreen']
-        css    = read(type + '.out')
-        result = autoprefixer(browsers: [], remove: false).process(css)
-        result.css.should.eql(css)
+  it 'prevents doubling prefixes', ->
+    for type in commons
+      processor = postcss([prefixer(type)])
 
-    it 'prevents doubling prefixes', ->
-      for type in commons
-        instance = prefixer(type)
+      input  = read(type)
+      output = read(type + '.out')
+      processor.process( processor.process(input) ).css.should.eql(output)
 
-        input  = read(type)
-        output = read(type + '.out')
-        result = instance.process( instance.process(input) )
-        result.css.should.eql(output)
+  it 'parses difficult files', ->
+    input  = read('syntax')
+    result = postcss([cleaner]).process(input)
+    result.css.should.eql(input)
 
-    it 'parses difficult files', ->
-      input  = read('syntax')
-      result = cleaner.process(input)
-      result.css.should.eql(input)
+  it 'marks parsing errors', ->
+    ( ->
+      postcss([cleaner]).process('a {').css
+    ).should.throw("<css input>:1:1: Unclosed block")
 
-    it 'marks parsing errors', ->
-      ( ->
-        cleaner.process('a {').css
-      ).should.throw("<css input>:1:1: Unclosed block")
+  it 'shows file name in parse error', ->
+    ( ->
+      postcss([cleaner]).process('a {', from: 'a.css').css
+    ).should.throw(/a.css:1:1: /)
 
-    it 'shows file name in parse error', ->
-      ( ->
-        cleaner.process('a {', from: 'a.css').css
-      ).should.throw(/a.css:1:1: /)
-
-    it 'uses browserslist config', ->
-      path   = __dirname + '/cases/config/test.css'
-      input  = read('config/test')
-      output = read('config/test.out')
-      autoprefixer.process(input, from: path).css.should.eql(output)
-
-  describe 'postcss()', ->
-
-    it 'is a PostCSS filter', ->
-      postcss( compiler ).process( read('values') ).css
-        .should.eql( read('values.out') )
-
-    it 'is a PostCSS filter with default browsers', ->
-      postcss( autoprefixer ).process( read('values') ).css
-        .should.be.type('string')
+  it 'uses browserslist config', ->
+    path   = __dirname + '/cases/config/test.css'
+    input  = read('config/test')
+    output = read('config/test.out')
+    postcss([autoprefixer]).process(input, from: path).css.should.eql(output)
 
   describe 'info()', ->
 
@@ -198,6 +184,5 @@ describe 'Autoprefixer', ->
     it 'supports appearance',           -> test('appearance')
 
     it 'ignores values for CSS3PIE props', ->
-      input  = read('pie')
-      result = compiler.process(input)
-      result.css.should.eql(input)
+      css = read('pie')
+      postcss([compiler]).process(css).css.should.eql(css)
