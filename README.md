@@ -269,14 +269,6 @@ of `display: box`.
 
 [final version]: http://www.w3.org/TR/css-flexbox-1/
 
-#### Why doesn’t Autoprefixer support `appearance`?
-
-Unlike `transition`, the `appearance` property is not a part of any
-specification. So there will not be any `appearance` support in near future.
-
-Sometime in the future when all browsers work without prefixes you can remove
-Autoprefixer and your CSS just works.
-
 #### Does Autoprefixer add `-epub-` prefix?
 
 No, Autoprefixer works only with browsers prefixes from Can I Use.
