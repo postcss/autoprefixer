@@ -229,23 +229,6 @@ a look to:
 [CSS Grace]: https://github.com/cssdream/cssgrace
 [cssnext]: https://cssnext.github.io/
 
-#### Why don’t gradients work in Firefox?
-
-Make sure that you use correct the [direction syntax].
-For example, you should use `to bottom` instead of `top`:
-
-```css
-a {
-  background: linear-gradient(to bottom, white, black)
-}
-```
-
-Unfortunately, unprefixed gradients use a different direction syntax and most
-examples you find use an old gradient syntax, so be careful and use always
-the latest W3C specs with Autoprefixer.
-
-[direction syntax]: https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient
-
 #### Why doesn’t Autoprefixer add prefixes to `border-radius`?
 
 Developers are often surprised by how few prefixes are required today.
