@@ -81,7 +81,9 @@ There are a few options:
   queries and default value.
 * `cascade` (boolean): should Autoprefixer uses [Visual Cascade],
   if CSS is uncompressed. Default: `true`
-* `remove` (boolean): should Autoprefixer [Remove Outdated]. Default: `true`
+* `add` (boolean): should Autoprefixer add prefixes. Default is `true`.
+* `remove` (boolean): should Autoprefixer [remove outdated] prefixes.
+Default is `true`.
 
 Processor object has:
 
@@ -99,9 +101,9 @@ and `autoprefixer.postcss` shortcuts, which use default browsers and options.
 
 [PostCSS processors]: https://github.com/postcss/postcss#built-with-postcss
 [Browserslist docs]:  https://github.com/ai/browserslist
+[remove outdated]:    https://github.com/postcss/autoprefixer/#outdated-prefixes
 [Visual Cascade]:     https://github.com/postcss/autoprefixer#visual-cascade
 [PostCSS]:            https://github.com/postcss/postcss
-[Remove Outdated]:    https://github.com/postcss/autoprefixer-core#cleaning
 
 ## CSS Processing
 
@@ -170,21 +172,6 @@ It is useful for legacy code when using several hacks, or interactive
 tools with live input, like [Autoprefixer demo].
 
 [Autoprefixer demo]: http://simevidas.jsbin.com/gufoko/quiet
-
-## Cleaning
-
-By default, Autoprefixer not only add new prefixes, but also remove outdated.
-You can remove this behaviour by `remove: false` option:
-
-```js
-autoprefixer()
-  .process('a { -webkit-border-radius: 2px; border-radius: 2px }');
-// remove outdated -webkit-border-radius
-
-autoprefixer({ remove: false })
-  .process('a { -webkit-border-radius: 2px; border-radius: 2px }');
-// keeps -webkit-border-radius
-```
 
 ## Debug
 

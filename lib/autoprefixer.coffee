@@ -30,7 +30,7 @@ module.exports = postcss.plugin 'autoprefixer', (reqs...) ->
   plugin = (css) ->
     prefixes = loadPrefixes(from: css.source.input.file)
     prefixes.processor.remove(css) if options.remove != false
-    prefixes.processor.add(css)
+    prefixes.processor.add(css) if options.add != false
 
   plugin.options = options
 

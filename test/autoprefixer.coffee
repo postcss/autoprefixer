@@ -128,6 +128,17 @@ describe 'Autoprefixer', ->
       css    = read(type + '.out')
       postcss([keeper]).process(css).css.should.eql(css)
 
+  it 'does not add prefixes on request', ->
+    for type in ['transition', 'values', 'fullscreen']
+      remover = autoprefixer(browsers: ['Opera 12'], add: false)
+      opera   = autoprefixer(browsers: ['Opera 12'])
+      
+      unprefixed = read(type)
+      prefixed   = read(type + '.out')
+
+      output = postcss([opera]).process(unprefixed).css
+      postcss([remover]).process(prefixed).css.should.eql(output)
+
   it 'prevents doubling prefixes', ->
     for type in commons
       processor = postcss([prefixer(type)])
