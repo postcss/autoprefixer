@@ -378,14 +378,7 @@ CodeKit, since the 2.0 version, contains Autoprefixer. In the After Compiling
 section, there is a checkbox to enable Autoprefixer. Read [CodeKit docs]
 for more information.
 
-[CodeKit docs]: https://incident57.com/codekit/help.html#autoprefixer
-
-### Prepros
-
-If you need free assets build GUI tool, try [Prepros].
-Just set “Auto Prefix CSS” checkbox in right panel.
-
-[Prepros]: http://alphapixels.com/prepros/
+[CodeKit docs]: https://incident57.com/codekit/help.html#autoprefixerWW
 
 ### CLI
 
