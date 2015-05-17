@@ -93,19 +93,20 @@ There are 4 options:
 * `remove` (boolean): should Autoprefixer [remove outdated] prefixes.
   Default is `true`.
 
-
 Plugin object has `info()` method for [debug purpose].
-
-See [PostCSS API] for plugin usage documentation.
 
 You can use PostCSS processor to process several CSS files
 to increase perfomance.
 
-[Browserslist docs]:  https://github.com/ai/browserslist
-[remove outdated]:    https://github.com/postcss/autoprefixer/#outdated-prefixes
-[Visual Cascade]:     https://github.com/postcss/autoprefixer#visual-cascade
-[debug purpose]:      #debug
-[PostCSS API]:        https://github.com/postcss/postcss/blob/master/docs/api.md
+See [PostCSS API] for plugin usage documentation.
+See all [PostCSS Runner Guidelines] for best practices.
+
+[PostCSS Runner Guidelines]: https://github.com/postcss/postcss/blob/master/docs/guidelines/runner.md
+[Browserslist docs]:         https://github.com/ai/browserslist
+[remove outdated]:           https://github.com/postcss/autoprefixer/#outdated-prefixes
+[Visual Cascade]:            https://github.com/postcss/autoprefixer#visual-cascade
+[debug purpose]:             #debug
+[PostCSS API]:               https://github.com/postcss/postcss/blob/master/docs/api.md
 
 ## CSS Processing
 
