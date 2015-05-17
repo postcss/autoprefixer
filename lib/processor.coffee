@@ -46,7 +46,7 @@ class Processor
 
       unprefixed = @prefixes.unprefixed(decl.prop)
       for value in @prefixes.values('add', unprefixed)
-        value.process(decl)
+        value.process(decl, result)
       Value.save(@prefixes, decl)
 
   # Remove unnecessary pefixes

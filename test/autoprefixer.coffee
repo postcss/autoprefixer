@@ -176,7 +176,6 @@ describe 'Autoprefixer', ->
 
   describe 'hacks', ->
 
-    it 'changes angle in gradient',     -> test('gradient')
     it 'ignores prefix IE filter',      -> test('filter')
     it 'changes border image syntax',   -> test('border-image')
     it 'supports old Mozilla prefixes', -> test('border-radius')
@@ -191,6 +190,16 @@ describe 'Autoprefixer', ->
     it 'supports background-clip',      -> test('background-clip')
     it 'supports logical properties',   -> test('logical')
     it 'supports appearance',           -> test('appearance')
+
+    it 'changes angle in gradient', ->
+      input  = read('gradient')
+      output = read('gradient.out')
+      result = postcss([prefixer('gradient')]).process(input)
+
+      result.css.should.eql(output)
+      result.warnings().map( (i) -> i.toString() ).should.eql(
+        ['autoprefixer: Gradient has outdated direction syntax. ' +
+         'New syntax is like "to left" instead of "right".'])
 
     it 'supports all placeholders', ->
       input  = read('placeholder')
