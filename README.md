@@ -330,18 +330,17 @@ module.exports = {
 ### Other Build Tools:
 
 * **Ruby on Rails**: [autoprefixer-rails]
-* **Brunch**: [autoprefixer-brunch]
-* **Broccoli**: [broccoli-autoprefixer]
+* **Brunch**: [postcss-brunch]
+* **Broccoli**: [broccoli-postcss]
 * **Middleman**: [middleman-autoprefixer]
 * **Mincer**: add `autoprefixer` npm package and enable it:
   `environment.enable('autoprefixer')`
 * **Jekyll**: add `autoprefixer-rails` and `jekyll-assets` to `Gemfile`
 
 [middleman-autoprefixer]: https://github.com/porada/middleman-autoprefixer
-[broccoli-autoprefixer]:  https://github.com/sindresorhus/broccoli-autoprefixer
-[autoprefixer-loader]:    https://github.com/passy/autoprefixer-loader
-[autoprefixer-brunch]:    https://github.com/lydell/autoprefixer-brunch
 [autoprefixer-rails]:     https://github.com/ai/autoprefixer-rails
+[broccoli-postcss]:       https://github.com/jeffjewiss/broccoli-postcss
+[postcss-brunch]:         https://github.com/iamvdo/postcss-brunch
 
 ### Compass
 
@@ -413,34 +412,32 @@ Just set “Auto Prefix CSS” checkbox in right panel.
 
 ### CLI
 
-You can use the `autoprefixer` binary to process CSS files using
-any assets manager:
+You can use the [postcss-cli] to run Autoprefixer from CLI:
 
 ```sh
-sudo npm install --global autoprefixer
-autoprefixer *.css
+sudo npm install --global postcss-cli autoprefixer
+postcss --use autoprefixer *.css -d build/
 ```
 
-See `autoprefixer -h` for help.
+See `postcss-cli -h` for help.
+
+[postcss-cli]: https://github.com/code42day/postcss-cli
 
 ### JavaScript
 
-You can use [autoprefixer-core] in your node.js application
+You can use [autoprefixer-core] with [PostCSS] in your node.js application
 or if you want to develop an Autoprefixer plugin for new environment.
 
 ```js
 var autoprefixer = require('autoprefixer-core');
-var prefixed     = autoprefixer.process('a { transition: transform 1s }').css;
-```
+var postcss      = require('postcss');
 
-Autoprefixer can be also used as a [PostCSS] processor, so you can combine
-it with [other processors] and parse CSS only once:
-
-```js
-postcss().
-    use( autoprefixer({ browsers: ['> 1%', 'IE 9'] }) ).
-    use( compressor ).
-    process(css);
+postcss([ autoprefixer ]).process(css).then(function (result) {
+    result.warnings().forEach(function (warn) {
+        console.warn(warn.toString());
+    });
+    console.log(result.css);
+});
 ```
 
 There is also [standalone build] for the browser or as a non-Node.js runtime.
@@ -449,75 +446,24 @@ You can use [html-autoprefixer] to process HTML with inlined CSS.
 
 [autoprefixer-core]: https://github.com/postcss/autoprefixer-core
 [html-autoprefixer]: https://github.com/RebelMail/html-autoprefixer
-[other processors]:  https://github.com/postcss/postcss#plugins
 [standalone build]:  https://raw.github.com/ai/autoprefixer-rails/master/vendor/autoprefixer.js
 [PostCSS]:           https://github.com/postcss/postcss
 
-### PHP
-
-You can use Autoprefixer in PHP by [autoprefixer-php] library:
-
-```php
-$autoprefixer = new Autoprefixer();
-$prefixed     = $autoprefixer->compile('a { transition: transform 1s }');
-```
-
-[autoprefixer-php]: https://github.com/vladkens/autoprefixer-php
-
-### .NET
-
-For .NET you can use [Autoprefixer for .NET] library.
-
-For ASP.NET you can use the official [BundleTransformer.Autoprefixer] plugin
-for [Bundle Transformer].
-
-1. Install package via NuGet:
-
-  ```
-  PM> Install-Package BundleTransformer.Autoprefixer
-  ```
-2. Perform a post-install actions specified in the `readme.txt` file.
-3. Register a bundles in the `App_Start/BundleConfig.cs` file and configure
-   the Bundle Transformer (see the [documentation]).
-
-[BundleTransformer.Autoprefixer]: http://www.nuget.org/packages/BundleTransformer.Autoprefixer/
-[Autoprefixer for .NET]:          https://github.com/digitalcreations/autoprefixer
-[Bundle Transformer]:             http://bundletransformer.codeplex.com/
-[documentation]:                  http://bundletransformer.codeplex.com/documentation
-
-### Text Editors
+### Text Editors and IDE
 
 Autoprefixer should be used in assets build tools. Text editor plugins are not
 a good solution, because prefixes decrease code readability and you will need
 to change value in all prefixed properties.
 
-I recommend you to learn how to use build tools like [Grunt] or [Gulp]. They
-work much better and will open you a whole new world of useful plugins and
-automatization.
+I recommend you to learn how to use build tools like [Gulp].
+They work much better and will open you a whole new world of useful plugins
+and automatization.
 
 But, if you can’t move to a build tool, you can use text editor plugins:
 
 * [Sublime Text](https://github.com/sindresorhus/sublime-autoprefixer)
 * [Brackets](https://github.com/mikaeljorhult/brackets-autoprefixer)
 * [Atom Editor](https://github.com/sindresorhus/atom-autoprefixer)
+* [Visual Studio](http://vswebessentials.com/)
 
-[Grunt]: http://gruntjs.com/
 [Gulp]:  http://gulpjs.com/
-
-#### Visual Studio
-
-You can apply the Autoprefixer optimizations to your LESS/Sass stylesheets
-in Visual Studio 2013 by using the [Web Essentials 2013] plugin
-(since the 2.2 version).
-
-To add this functionality in the Visual Studio 2013 (Update 2 or later)
-you need to do the following steps:
-
-1. Download and install the [Web Essentials 2013 for Update 2].
-2. Choose a `Tools` → `Options` → `Web Essentials` → `CSS` menu item
-3. In the `Enable Autoprefixer` box specify a value equal to `True`
-
-<img src="http://i.imgur.com/X9sBBF8.png" width="700" alt="Autoprefixer options in the Web Essentials 2013" />
-
-[Web Essentials 2013 for Update 2]: http://visualstudiogallery.msdn.microsoft.com/56633663-6799-41d7-9df7-0f2a504ca361
-[Web Essentials 2013]:              http://vswebessentials.com/
