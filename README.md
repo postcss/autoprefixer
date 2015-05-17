@@ -253,31 +253,6 @@ for prefixing ePub3 properties.
 
 ## Usage
 
-### Grunt
-
-You can use the [grunt-postcss] plugin for Grunt with `autoprefixer-core`
-and [other PostCSS plugins]. Install the npm package and add it to `Gruntfile`:
-
-```js
-var autoprefixer = require('autoprefixer-core');
-
-grunt.initConfig({
-    postcss: {
-        options: {
-            processors: [
-              autoprefixer({ browsers: ['last 2 version'] }).postcss
-            ]
-        },
-        dist: { src: 'css/*.css' }
-    },
-});
-
-grunt.loadNpmTasks('grunt-postcss');
-```
-
-[other PostCSS plugins]: https://github.com/postcss/postcss#plugins
-[grunt-postcss]:         https://github.com/nDmitry/grunt-postcss
-
 ### Gulp
 
 In Gulp you can use [gulp-postcss] with `autoprefixer-core` npm package.
@@ -330,6 +305,7 @@ module.exports = {
 ### Other Build Tools:
 
 * **Ruby on Rails**: [autoprefixer-rails]
+* **Grunt**: [grunt-postcss]
 * **Brunch**: [postcss-brunch]
 * **Broccoli**: [broccoli-postcss]
 * **Middleman**: [middleman-autoprefixer]
@@ -341,6 +317,7 @@ module.exports = {
 [autoprefixer-rails]:     https://github.com/ai/autoprefixer-rails
 [broccoli-postcss]:       https://github.com/jeffjewiss/broccoli-postcss
 [postcss-brunch]:         https://github.com/iamvdo/postcss-brunch
+[grunt-postcss]:          https://github.com/nDmitry/grunt-postcss
 
 ### Compass
 
