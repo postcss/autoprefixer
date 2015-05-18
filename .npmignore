@@ -4,10 +4,8 @@ node_modules
 logo.svg
 
 build
-benchmark/cache/
 
 test
 .travis.yml
 
 gulpfile.js
-benchmark
