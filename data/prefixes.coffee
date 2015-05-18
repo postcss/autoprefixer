@@ -241,14 +241,9 @@ feature require('caniuse-db/features-json/pointer'), (browsers) ->
           browsers: browsers
 
 # Text decoration
-textDecoration = require('caniuse-db/features-json/text-decoration')
-
-feature textDecoration, (browsers) ->
+feature require('caniuse-db/features-json/text-decoration'), (browsers) ->
   prefix 'text-decoration-style',
-          browsers: browsers
-
-feature textDecoration, match: /y\sx($|\s)/, (browsers) ->
-  prefix 'text-decoration-line',
+         'text-decoration-line',
          'text-decoration-color',
           browsers: browsers
 
