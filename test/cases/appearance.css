@@ -1,9 +1,7 @@
-.a {
+a {
     appearance: none;
 }
-.b {
+
+b {
     appearance: auto;
-}
-.c {
-    appearance: search;
 }

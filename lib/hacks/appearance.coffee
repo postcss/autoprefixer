@@ -3,9 +3,8 @@ Declaration = require('../declaration')
 class Appearance extends Declaration
   @names = ['appearance']
 
-  # Prefix only none and auto values
+  # Prefix only none value
   check: (decl) ->
-    v = decl.value.toLowerCase()
-    v == 'auto' or v == 'none'
+    decl.value.toLowerCase() == 'none'
 
 module.exports = Appearance
