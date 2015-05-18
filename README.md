@@ -157,6 +157,31 @@ a {
 
 You can disable cascade by using the `cascade: false` option.
 
+## Outdated Prefixes
+
+By default, Autoprefixer also removes outdated prefixes.
+
+You can disable this behavior by `remove: false` option. If you have
+no legacy code, this options will make Autoprefixer about 10% faster.
+
+Also you can set `add: false` option. Autoprefixer will only clean outdated
+prefixes, but will not any new prefixes.
+
+Autoprefixer adds new prefixes between unprefixed property and already
+written prefixes in your CSS. If it will broke expected prefixes order,
+you can clean all prefixes from your CSS and then add necessary prefixes again:
+
+```js
+var cleaner  = postcss([ autoprefixer({ add: false, browsers: [] }) ]);
+var prefixer = postcss([ autoprefixer ]);
+
+cleaner.process(css).then(function (cleaned) {
+    prefixer.process(cleaned.css, function (result) {
+        console.log(result.css);
+    });
+});
+```
+
 ## Disabling
 
 Autoprefixer was designed to have no interface – it just works.
@@ -202,10 +227,6 @@ You can also use comments recursively:
     }
 }
 ```
-
-By default, Autoprefixer also removes outdated prefixes. You can disable this
-behavior by `remove: false` option. If you have no legacy code, this options
-will make Autoprefixer about 10% faster.
 
 ## FAQ
 
