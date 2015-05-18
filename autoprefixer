@@ -1,5 +1,8 @@
 #!/usr/bin/env node
 
+process.stderr.write('Autoprefixer CLI is deprecated. ' +
+                     'Use postcss-cli instead.\n');
+
 require('./enable-es6');
 var Binary = require('./binary');
 
