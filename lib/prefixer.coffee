@@ -5,7 +5,6 @@ vendor = require('postcss/lib/vendor')
 
 # Recursivly clone objects
 clone = (obj, parent) ->
-  return obj if typeof(obj) != 'object'
   cloned = new obj.constructor()
 
   for own i, value of obj
@@ -16,7 +15,8 @@ clone = (obj, parent) ->
     else if value instanceof Array
       cloned[i] = value.map (i) -> clone(i, cloned)
     else if i != '_autoprefixerPrefix' and i != '_autoprefixerValues'
-      cloned[i] = clone(value, cloned)
+      value = clone(value, cloned) if typeof(value) == 'object'
+      cloned[i] = value
 
   cloned
 
