@@ -429,8 +429,8 @@ describe('autoprefixer', () => {
 
     it('is a module', () => {
         let autoprefixer = require('../');
-        let result = autoprefixer({ browsers: 'chrome 25' }).process(css);
-        expect(result.css).to.eql(prefixed);
+        let name = autoprefixer({ browsers: 'chrome 25' }).postcssPlugin;
+        expect(name).to.eql('autoprefixer');
     });
 
 });

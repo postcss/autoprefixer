@@ -1,7 +1,7 @@
-import CssSyntaxError from 'postcss/lib/css-syntax-error';
-import autoprefixer   from 'autoprefixer-core';
-import path           from 'path';
-import fs             from 'fs-extra';
+import autoprefixer from 'autoprefixer-core';
+import postcss      from 'postcss';
+import path         from 'path';
+import fs           from 'fs-extra';
 
 export default class Binary {
     constructor(process) {
@@ -14,8 +14,8 @@ export default class Binary {
         this.command    = 'compile';
         this.inputFiles = [];
 
-        this.processOptions   = { };
-        this.processorOptions = { };
+        this.processOptions = { };
+        this.pluginOptions  = { };
         this.parseArguments();
     }
 
@@ -149,20 +149,20 @@ Browsers:
                 this.processOptions.map.sourcesContent = false;
 
             } else if ( arg === '--no-cascade' ) {
-                this.processorOptions.cascade = false;
+                this.pluginOptions.cascade = false;
 
             } else if ( arg === '--no-remove' ) {
-                this.processorOptions.remove = false;
+                this.pluginOptions.remove = false;
 
             } else if ( arg === '--safe' ) {
                 this.processOptions.safe = true;
 
             } else if ( arg === '-b' || arg === '--browsers' ) {
-                this.processorOptions.browsers = args.shift().split(',')
+                this.pluginOptions.browsers = args.shift().split(',')
                   .map( (i) => i.trim() );
 
             } else if ( arg === '-c' || arg === '--clean' ) {
-                this.processorOptions.browsers = [];
+                this.pluginOptions.browsers = [];
 
             } else if ( arg === '-o' || arg === '--output' ) {
                 this.outputFile = args.shift();
@@ -201,7 +201,7 @@ Browsers:
 
     // Print inspect
     info(done) {
-        this.print(this.compiler().info());
+        this.print(autoprefixer(this.pluginOptions).info());
         done();
     }
 
@@ -225,7 +225,7 @@ Browsers:
     // Lazy loading for Autoprefixer instance
     compiler() {
         if ( !this.compilerCache ) {
-            this.compilerCache = autoprefixer(this.processorOptions);
+            this.compilerCache = postcss([ autoprefixer(this.pluginOptions) ]);
         }
         return this.compilerCache;
     }
@@ -239,53 +239,50 @@ Browsers:
         if ( input )          opts.from = input;
         if ( output !== '-' ) opts.to   = output;
 
-        let result;
-        try {
-            result = this.compiler().process(css, opts);
-        } catch (error) {
-            if ( error.indexOf && error.indexOf('Unknown browser') !== -1 ) {
-                this.error('autoprefixer: ' + error);
-            } else if ( error.autoprefixer ) {
-                this.error('autoprefixer: ' + error.message);
-            } else if ( error instanceof CssSyntaxError ) {
-                let text = error.message;
-                if ( error.source ) text += '\n' + error.highlight();
-                this.error('autoprefixer:' + text);
-            } else {
-                this.error('autoprefixer: Internal error');
-                if ( error.stack ) {
-                    this.error('');
-                    this.error(error.stack);
-                }
-            }
-        }
-
-        if ( !result ) return this.endWork();
-
-        if ( output === '-' ) {
-            this.print(result.css);
-            this.endWork();
-        } else {
-            fs.outputFile(output, result.css, (err1) => {
-                if ( err1 ) this.error('autoprefixer: ' + err1);
-
-                if ( result.map ) {
-                    let map;
-                    if ( opts.map && opts.map.annotation ) {
-                        map = path.resolve(path.dirname(output),
-                                           opts.map.annotation);
-                    } else {
-                        map = output + '.map';
-                    }
-                    fs.writeFile(map, result.map, (err2) => {
-                        if ( err2 ) this.error('autoprefixer: ' + err2);
-                        this.endWork();
-                    });
+        this.compiler().process(css, opts)
+            .catch( (error) => {
+                if ( error.indexOf && error.indexOf('Unknown browser') !== -1 ) {
+                    this.error('autoprefixer: ' + error);
+                } else if ( error.autoprefixer ) {
+                    this.error('autoprefixer: ' + error.message);
+                } else if ( error.name === 'CssSyntaxError' ) {
+                    let text = error.message + error.showSourceCode();
+                    this.error('autoprefixer:' + text);
                 } else {
+                    this.error('autoprefixer: Internal error');
+                    if ( error.stack ) {
+                        this.error('');
+                        this.error(error.stack);
+                    }
+                }
+                this.endWork();
+            })
+            .then( (result) => {
+                if ( output === '-' ) {
+                    this.print(result.css);
                     this.endWork();
+                } else {
+                    fs.outputFile(output, result.css, (err1) => {
+                        if ( err1 ) this.error('autoprefixer: ' + err1);
+
+                        if ( result.map ) {
+                            let map;
+                            if ( opts.map && opts.map.annotation ) {
+                                map = path.resolve(path.dirname(output),
+                                                   opts.map.annotation);
+                            } else {
+                                map = output + '.map';
+                            }
+                            fs.writeFile(map, result.map, (err2) => {
+                                if ( err2 ) this.error('autoprefixer: ' + err2);
+                                this.endWork();
+                            });
+                        } else {
+                            this.endWork();
+                        }
+                    });
                 }
             });
-        }
     }
 
     // Return input and output files array
