@@ -312,7 +312,7 @@ grunt.initConfig({
 grunt.loadNpmTasks('grunt-postcss');
 ```
 
-[other PostCSS plugins]: https://github.com/postcss/postcss#built-with-postcss
+[other PostCSS plugins]: https://github.com/postcss/postcss#plugins
 [grunt-postcss]:         https://github.com/nDmitry/grunt-postcss
 
 ### Gulp
@@ -360,7 +360,7 @@ module.exports = {
 }
 ```
 
-[other PostCSS plugins]: https://github.com/postcss/postcss#built-with-postcss
+[other PostCSS plugins]: https://github.com/postcss/postcss#plugins
 [postcss-loader]:        https://github.com/postcss/postcss-loader
 [webpack]:               http://webpack.github.io/
 
@@ -486,7 +486,7 @@ You can use [html-autoprefixer] to process HTML with inlined CSS.
 
 [autoprefixer-core]: https://github.com/postcss/autoprefixer-core
 [html-autoprefixer]: https://github.com/RebelMail/html-autoprefixer
-[other processors]:  https://github.com/postcss/postcss#built-with-postcss
+[other processors]:  https://github.com/postcss/postcss#plugins
 [standalone build]:  https://raw.github.com/ai/autoprefixer-rails/master/vendor/autoprefixer.js
 [PostCSS]:           https://github.com/postcss/postcss
 
