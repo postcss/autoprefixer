@@ -73,16 +73,17 @@ Function `autoprefixer(options)` returns new processor object:
 var processor = autoprefixer({ browsers: ['> 1%', 'IE 7'], cascade: false });
 ```
 
-There are 2 options:
+There are a few options:
 
 * `browsers` (array): list of browsers, which are supported in your project.
   You can directly specify browser version (like `iOS 7`) or use selections
   (like `last 2 version` or `> 5%`). See [Browserslist docs] for available
   queries and default value.
 * `cascade` (boolean): should Autoprefixer uses [Visual Cascade],
-  if CSS will be uncompressed.
+  if CSS is uncompressed. Default: `true`
+* `remove` (boolean): should Autoprefixer [Remove Outdated]. Default: `true`
 
-Processor object had:
+Processor object has:
 
 * `.process(css, opts)` method, which will add prefixes to `css`.
 * `.info()` method, which returns debug information: which browsers are selected
@@ -100,6 +101,7 @@ and `autoprefixer.postcss` shortcuts, which use default browsers and options.
 [Browserslist docs]:  https://github.com/ai/browserslist
 [Visual Cascade]:     https://github.com/postcss/autoprefixer#visual-cascade
 [PostCSS]:            https://github.com/postcss/postcss
+[Remove Outdated]:    https://github.com/postcss/autoprefixer-core#cleaning
 
 ## CSS Processing
 
