@@ -406,7 +406,7 @@ for more information.
 You can use the [postcss-cli] to run Autoprefixer from CLI:
 
 ```sh
-sudo npm install --global postcss-cli autoprefixer
+npm install --global postcss-cli autoprefixer
 postcss --use autoprefixer *.css -d build/
 ```
 
