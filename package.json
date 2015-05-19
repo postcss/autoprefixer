@@ -21,7 +21,6 @@
         "gulp-eslint":      "0.12.0",
         "gulp-mocha":       "2.0.1",
         "gulp-babel":       "5.1.0",
-        "eslint":           "0.21.0",
         "mocha":            "2.2.5",
         "gulp":             "3.8.11",
         "chai":             "2.3.0"
