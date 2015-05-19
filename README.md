@@ -125,7 +125,7 @@ Options:
 
 You can read more about the source map options in [PostCSS documentation].
 
-[PostCSS documentation]: https://github.com/postcss/postcss#source-map-1
+[PostCSS documentation]: https://github.com/postcss/postcss#source-map
 [Safe Mode]:             https://github.com/postcss/postcss#safe-mode
 
 ## PostCSS Chain
