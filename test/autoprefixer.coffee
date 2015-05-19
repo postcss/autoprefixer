@@ -190,6 +190,7 @@ describe 'Autoprefixer', ->
     it 'supports background-clip',      -> test('background-clip')
     it 'supports logical properties',   -> test('logical')
     it 'supports appearance',           -> test('appearance')
+    it 'supports all placeholders',     -> test('placeholder')
 
     it 'changes angle in gradient', ->
       input  = read('gradient')
@@ -200,16 +201,6 @@ describe 'Autoprefixer', ->
       result.warnings().map( (i) -> i.toString() ).should.eql(
         ['autoprefixer: Gradient has outdated direction syntax. ' +
          'New syntax is like "to left" instead of "right".'])
-
-    it 'supports all placeholders', ->
-      input  = read('placeholder')
-      output = read('placeholder.out')
-      result = postcss([prefixer('placeholder')]).process(input)
-
-      result.css.should.eql(output)
-      result.warnings().map( (i) -> i.toString() ).should.eql(
-        ['autoprefixer: <css input>:1:1: Selector ::placeholder is ' +
-         'unofficial. Use :placeholder-shown instead.'])
 
     it 'supports image-rendering', ->
       input  = read('image-rendering')

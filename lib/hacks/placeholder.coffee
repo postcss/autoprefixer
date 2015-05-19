@@ -18,11 +18,4 @@ class Placeholder extends Selector
     else
       "::#{ prefix }placeholder"
 
-  # Warn on old unofficial selector
-  process: (node, result) ->
-    if @name == '::placeholder' and node.selector.indexOf('::placeholder') != -1
-      result.warn('Selector ::placeholder is unofficial. ' +
-                  'Use :placeholder-shown instead.', node: node);
-    super
-
 module.exports = Placeholder
