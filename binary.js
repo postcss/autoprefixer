@@ -258,6 +258,10 @@ Browsers:
                 this.endWork();
             })
             .then( (result) => {
+                result.warnings().forEach( (warn) => {
+                    this.stderr.write(warn.toString() + '\n');
+                });
+
                 if ( output === '-' ) {
                     this.print(result.css);
                     this.endWork();
@@ -361,7 +365,7 @@ Browsers:
                 [input, output] = files[i];
 
                 if ( !fs.existsSync(input) ) {
-                    this.workError('autoprefixer: File ' + input +
+                    this.workError('autoprefixer: File ' + input + ' ' +
                                    'doesn\'t exists');
                     continue;
                 }
