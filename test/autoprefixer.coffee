@@ -199,8 +199,8 @@ describe 'Autoprefixer', ->
 
       result.css.should.eql(output)
       result.warnings().map( (i) -> i.toString() ).should.eql(
-        ['autoprefixer: Gradient has outdated direction syntax. ' +
-         'New syntax is like "to left" instead of "right".'])
+        ['autoprefixer: <css input>:38:5: Gradient has outdated direction ' +
+         'syntax. New syntax is like "to left" instead of "right".'])
 
     it 'supports image-rendering', ->
       input  = read('image-rendering')
