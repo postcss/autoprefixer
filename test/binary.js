@@ -412,7 +412,7 @@ describe('Binary', () => {
 
     it('prints warnings', (done) => {
         write('a.css', 'a{background:linear-gradient(top,white,black)}');
-        raise('a.css', /autoprefixer: Gradient/, done);
+        raise('a.css', /1:3: Gradient/, done);
     });
 
 });
