@@ -412,6 +412,16 @@ describe('Binary', () => {
 
 });
 
+describe('autoprefixer', () => {
+
+    it('is a module', () => {
+        let autoprefixer = require('../');
+        let name = autoprefixer({ browsers: 'chrome 25' }).postcssPlugin;
+        expect(name).to.eql('autoprefixer');
+    });
+
+});
+
 describe('bin/autoprefixer', () => {
 
     it('is an executable', (done) => {
@@ -421,16 +431,6 @@ describe('bin/autoprefixer', () => {
             expect(out).to.match(/^autoprefixer [\d\.]+\n$/);
             done();
         });
-    });
-
-});
-
-describe('autoprefixer', () => {
-
-    it('is a module', () => {
-        let autoprefixer = require('../');
-        let name = autoprefixer({ browsers: 'chrome 25' }).postcssPlugin;
-        expect(name).to.eql('autoprefixer');
     });
 
 });
