@@ -67,7 +67,7 @@ gulp.task('test', function () {
     var mocha = require('gulp-mocha');
 
     return gulp.src('test/*.js', { read: false })
-        .pipe(mocha({ timeout: 4000 }));
+        .pipe(mocha({ timeout: 6000 }));
 });
 
 gulp.task('default', ['lint', 'test']);
