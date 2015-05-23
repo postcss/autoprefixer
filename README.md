@@ -262,8 +262,8 @@ required on [Can I Use].
 
 There is [list with all supported] properties, values and selectors in wiki.
 
-[Can I Use]:               http://caniuse.com/
 [list with all supported]: https://github.com/postcss/autoprefixer/wiki/support-list
+[Can I Use]:               http://caniuse.com/
 
 #### Why Autoprefixer uses unprefixed properties in `@-webkit-keyframes`?
 
