@@ -1,6 +1,8 @@
-# Autoprefixer Core [![Build Status](https://travis-ci.org/postcss/autoprefixer-core.svg)](https://travis-ci.org/postcss/autoprefixer-core)
+# Autoprefixer Core [![Build Status][ci-img]][ci]
 
-<img align="right" width="94" height="71" src="http://postcss.github.io/autoprefixer/logo.svg" title="Autoprefixer logo by Anton Lovchikov">
+<img align="right" width="94" height="71"
+     src="http://postcss.github.io/autoprefixer/logo.svg"
+     title="Autoprefixer logo by Anton Lovchikov">
 
 [PostCSS] plugin to parse CSS and add vendor prefixes using values
 from [Can I Use].
@@ -17,6 +19,8 @@ and plugins list visit [main Autoprefixer] project.
 [main Autoprefixer]:  https://github.com/postcss/autoprefixer
 [Can I Use]:          http://caniuse.com/
 [PostCSS]:            https://github.com/postcss/postcss
+[ci-img]:             https://travis-ci.org/postcss/autoprefixer-core.svg
+[ci]:                 https://travis-ci.org/postcss/autoprefixer-core
 
 ## Quick Example
 
