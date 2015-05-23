@@ -1,6 +1,8 @@
-# Autoprefixer [![Build Status](https://travis-ci.org/postcss/autoprefixer.svg)](https://travis-ci.org/postcss/autoprefixer)
+# Autoprefixer [![Build Status][ci-img]][ci]
 
-<img align="right" width="94" height="71" src="http://postcss.github.io/autoprefixer/logo.svg" title="Autoprefixer logo by Anton Lovchikov">
+<img align="right" width="94" height="71"
+     src="http://postcss.github.io/autoprefixer/logo.svg"
+     title="Autoprefixer logo by Anton Lovchikov">
 
 [PostCSS] plugin to parse CSS and add vendor prefixes to CSS rules using values
 from [Can I Use]. It is [recommended] by Google and used in Twitter,
@@ -51,6 +53,8 @@ Twitter account for news and releases: [@autoprefixer].
 [recommended]:      https://developers.google.com/web/fundamentals/tools/build/setupbuildprocess#dont-trip-up-with-vendor-prefixes
 [Can I Use]:        http://caniuse.com/
 [PostCSS]:          https://github.com/postcss/postcss
+[ci-img]:           https://travis-ci.org/postcss/autoprefixer.svg
+[ci]:               https://travis-ci.org/postcss/autoprefixer
 
 ## Features
 
