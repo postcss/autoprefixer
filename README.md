@@ -414,7 +414,7 @@ npm install --global postcss-cli autoprefixer
 postcss --use autoprefixer *.css -d build/
 ```
 
-See `postcss-cli -h` for help.
+See `postcss -h` for help.
 
 [postcss-cli]: https://github.com/code42day/postcss-cli
 
