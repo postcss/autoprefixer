@@ -1,3 +1,14 @@
+## 5.2 “Dont tread on me”
+* Add `appearance` support.
+* Warn users on old gradient direction or flexbox syntax.
+* Add `add: false` option to disable new prefixes adding.
+* Make Autoprefixer 30% faster.
+* Use PostCSS 4.1 plugin API.
+* Add prefixes for `pixelated` instead of `crisp-edges` in `image-rendering`.
+* Do not add `::placeholder` prefixes for `:placeholder-shown`.
+* Fix `text-decoration` prefixes.
+* `autoprefixer.process()` was deprecated. Use PostCSS API.
+
 ## 5.1.11
 * Update num2fraction to fix resolution media quuery (by 一丝).
 
