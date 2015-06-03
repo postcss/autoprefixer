@@ -327,10 +327,43 @@ module.exports = {
 [postcss-loader]:        https://github.com/postcss/postcss-loader
 [webpack]:               http://webpack.github.io/
 
+### Grunt
+
+In Grunt you can use [grunt-postcss] with `autoprefixer-core` npm package.
+
+```js
+module.exports = function(grunt) {
+    require('grunt-postcss')(grunt);
+
+    grunt.initConfig({
+        postcss: {
+            options: {
+                map: true,
+                processors: [
+                    require('autoprefixer-core')({
+                        browsers: ['last 2 versions']
+                    })
+                ]
+            },
+            dist: {
+                src: 'css/*.css'
+            }
+        }
+    });
+
+    grunt.registerTask('default', ['postcss:dist']);
+};
+```
+
+With `grunt-postcss` you also can combine Autoprefixer
+with [other PostCSS plugins].
+
+[other PostCSS plugins]: https://github.com/postcss/postcss#plugins
+[grunt-postcss]:         https://github.com/nDmitry/grunt-postcss
+
 ### Other Build Tools:
 
 * **Ruby on Rails**: [autoprefixer-rails]
-* **Grunt**: [grunt-postcss]
 * **Brunch**: [postcss-brunch]
 * **Broccoli**: [broccoli-postcss]
 * **Middleman**: [middleman-autoprefixer]
@@ -342,7 +375,6 @@ module.exports = {
 [autoprefixer-rails]:     https://github.com/ai/autoprefixer-rails
 [broccoli-postcss]:       https://github.com/jeffjewiss/broccoli-postcss
 [postcss-brunch]:         https://github.com/iamvdo/postcss-brunch
-[grunt-postcss]:          https://github.com/nDmitry/grunt-postcss
 
 ### Compass
 
