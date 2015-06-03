@@ -501,3 +501,9 @@ But, if you can’t move to a build tool, you can use text editor plugins:
 * [Visual Studio](http://vswebessentials.com/)
 
 [Gulp]:  http://gulpjs.com/
+
+## Options
+
+All options are listed in [autoprefixer-core] docs.
+
+[autoprefixer-core]: https://github.com/postcss/autoprefixer-core#usage
