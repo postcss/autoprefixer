@@ -209,7 +209,7 @@ for prefixing ePub3 properties.
 
 All options are listed in [autoprefixer-core docs].
 
-[autoprefixer-core]: https://github.com/postcss/autoprefixer-core#usage
+[autoprefixer-core docs]: https://github.com/postcss/autoprefixer-core#usage
 
 ### Gulp
 
