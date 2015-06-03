@@ -405,6 +405,13 @@ for more information.
 
 [CodeKit docs]: https://incident57.com/codekit/help.html#autoprefixerWW
 
+### Prepros
+
+If you need free assets build GUI tool, try [Prepros].
+Just set “Auto Prefix CSS” checkbox in right panel.
+
+[Prepros]: http://alphapixels.com/prepros/
+
 ### CLI
 
 You can use the [postcss-cli] to run Autoprefixer from CLI:
