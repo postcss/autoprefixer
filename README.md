@@ -136,31 +136,6 @@ and default value.
 [Browserslist]:      https://github.com/ai/browserslist
 [Browserslist docs]: https://github.com/ai/browserslist#queries
 
-## Source Map
-
-Autoprefixer can modify previous source maps (for example, from Sass):
-it will autodetect a previous map if it is listed in an annotation comment.
-
-Autoprefixer supports inline source maps too. If an input CSS contains
-annotation from the previous step with a map in data:uri, Autoprefixer will
-update the source map with prefix changes and inline the new map back into
-the output CSS.
-
-## Visual Cascade
-
-Autoprefixer changes CSS indentation to create a nice visual cascade
-of prefixes if the CSS is uncompressed:
-
-```css
-a {
-    -webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box;
-}
-```
-
-You can disable cascade by using the `cascade: false` option.
-
 ## Outdated Prefixes
 
 By default, Autoprefixer also removes outdated prefixes.
@@ -184,52 +159,6 @@ cleaner.process(css).then(function (cleaned) {
         console.log(result.css);
     });
 });
-```
-
-## Disabling
-
-Autoprefixer was designed to have no interface – it just works.
-If you need some browser specific hack just write a prefixed property
-after the unprefixed one.
-
-```css
-a {
-    transform: scale(0.5);
-    -moz-transform: scale(0.6);
-}
-```
-
-If some prefixes were generated in a wrong way,
-please create an issue on GitHub.
-
-But if you do not need Autoprefixer in some part of your CSS,
-you can use control comments to disable Autoprefixer.
-
-```css
-a {
-    transition: 1s; /* it will be prefixed */
-}
-
-b {
-    /* autoprefixer: off */
-    transition: 1s; /* it will not be prefixed */
-}
-```
-
-Control comments disable Autoprefixer within the whole rule in which
-you place it. In the above example, Autoprefixer will be disabled
-in the entire `b` rule scope, not only after the comment.
-
-You can also use comments recursively:
-
-```css
-/* autoprefixer: off */
-@support (transition: all) {
-    /* autoprefixer: on */
-    a {
-        /* autoprefixer: off */
-    }
-}
 ```
 
 ## FAQ
@@ -277,6 +206,10 @@ But you can use [postcss-epub](https://github.com/Rycochet/postcss-epub)
 for prefixing ePub3 properties.
 
 ## Usage
+
+All options are listed in [autoprefixer-core docs].
+
+[autoprefixer-core]: https://github.com/postcss/autoprefixer-core#usage
 
 ### Gulp
 
@@ -502,8 +435,48 @@ But, if you can’t move to a build tool, you can use text editor plugins:
 
 [Gulp]:  http://gulpjs.com/
 
-## Options
+## Disabling
 
-All options are listed in [autoprefixer-core] docs.
+Autoprefixer was designed to have no interface – it just works.
+If you need some browser specific hack just write a prefixed property
+after the unprefixed one.
 
-[autoprefixer-core]: https://github.com/postcss/autoprefixer-core#usage
+```css
+a {
+    transform: scale(0.5);
+    -moz-transform: scale(0.6);
+}
+```
+
+If some prefixes were generated in a wrong way,
+please create an issue on GitHub.
+
+But if you do not need Autoprefixer in some part of your CSS,
+you can use control comments to disable Autoprefixer.
+
+```css
+a {
+    transition: 1s; /* it will be prefixed */
+}
+
+b {
+    /* autoprefixer: off */
+    transition: 1s; /* it will not be prefixed */
+}
+```
+
+Control comments disable Autoprefixer within the whole rule in which
+you place it. In the above example, Autoprefixer will be disabled
+in the entire `b` rule scope, not only after the comment.
+
+You can also use comments recursively:
+
+```css
+/* autoprefixer: off */
+@support (transition: all) {
+    /* autoprefixer: on */
+    a {
+        /* autoprefixer: off */
+    }
+}
+```
