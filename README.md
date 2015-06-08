@@ -218,8 +218,8 @@ You can however use the plugins [postcss-flexboxfixer] and [postcss-gradientfixe
 before running Autoprefixer. These plugins will rewrite older syntaxes
 for better browser compatibility.
 
-[postcss-flexboxfixer]: https://github.com/hallvors/postcss-flexboxfixer) 
-[postcss-gradientfixer]: https://github.com/hallvors/postcss-gradientfixer) 
+[postcss-flexboxfixer]: https://github.com/hallvors/postcss-flexboxfixer
+[postcss-gradientfixer]: https://github.com/hallvors/postcss-gradientfixer
 
 ## Usage
 
