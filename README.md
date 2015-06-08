@@ -205,6 +205,22 @@ No, Autoprefixer works only with browsers prefixes from Can I Use.
 But you can use [postcss-epub](https://github.com/Rycochet/postcss-epub)
 for prefixing ePub3 properties.
 
+#### Will removing vendor prefixes create standards-compatible code?
+
+Not necessarily. If you have an older code base, vendor-prefixed code is 
+likely written for implementations based on older versions of the CSS 
+specification. This problem is especially common with flexbox and CSS 
+gradients. Simply removing the vendor prefix (and even adding other 
+prefixes) will *not* by itself create standards-compatible or cross-browser
+compatible code. 
+
+You can however use the plugins [postcss-flexboxfixer] and [postcss-gradientfixer]
+before running Autoprefixer. These plugins will rewrite older syntaxes
+for better browser compatibility.
+
+[postcss-flexboxfixer]: https://github.com/hallvors/postcss-flexboxfixer) 
+[postcss-gradientfixer]: https://github.com/hallvors/postcss-gradientfixer) 
+
 ## Usage
 
 All options are listed in [autoprefixer-core docs].
