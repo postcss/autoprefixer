@@ -199,27 +199,24 @@ There is [list with all supported] properties, values and selectors in wiki.
 Browser teams can remove some prefix before other. So we try to use
 all combinations of prefixed/unprefixed values.
 
+#### How to work with legacy `-webkit-` only code?
+
+Autoprefixer needs unprefixed property to add prefixes. So if you wrote
+only `-webkit-gradient` without W3C’s `gradient`, Autoprefixer will not add
+other prefixes.
+
+But [PostCSS] has 2 plugins to convert gradients and flexbox
+to unprefixed version: [postcss-flexboxfixer] and [postcss-gradientfixer].
+Use them before Autoprefixer.
+
+[postcss-flexboxfixer]: https://github.com/hallvors/postcss-flexboxfixer)
+[postcss-gradientfixer]: https://github.com/hallvors/postcss-gradientfixer)
+
 #### Does Autoprefixer add `-epub-` prefix?
 
 No, Autoprefixer works only with browsers prefixes from Can I Use.
 But you can use [postcss-epub](https://github.com/Rycochet/postcss-epub)
 for prefixing ePub3 properties.
-
-#### Will removing vendor prefixes create standards-compatible code?
-
-Not necessarily. If you have an older code base, vendor-prefixed code is 
-likely written for implementations based on older versions of the CSS 
-specification. This problem is especially common with flexbox and CSS 
-gradients. Simply removing the vendor prefix (and even adding other 
-prefixes) will *not* by itself create standards-compatible or cross-browser
-compatible code. 
-
-You can however use the plugins [postcss-flexboxfixer] and [postcss-gradientfixer]
-before running Autoprefixer. These plugins will rewrite older syntaxes
-for better browser compatibility.
-
-[postcss-flexboxfixer]: https://github.com/hallvors/postcss-flexboxfixer) 
-[postcss-gradientfixer]: https://github.com/hallvors/postcss-gradientfixer) 
 
 ## Usage
 
