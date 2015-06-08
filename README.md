@@ -181,7 +181,7 @@ a look to:
   It includes autoprefixer and can be used as a PostCSS plugin too.
 
 [CSS Grace]: https://github.com/cssdream/cssgrace
-[cssnext]: https://cssnext.github.io/
+[cssnext]:   https://cssnext.github.io/
 
 #### Why doesn’t Autoprefixer add prefixes to `border-radius`?
 
@@ -209,8 +209,8 @@ But [PostCSS] has 2 plugins to convert gradients and flexbox
 to unprefixed version: [postcss-flexboxfixer] and [postcss-gradientfixer].
 Use them before Autoprefixer.
 
-[postcss-flexboxfixer]: https://github.com/hallvors/postcss-flexboxfixer)
-[postcss-gradientfixer]: https://github.com/hallvors/postcss-gradientfixer)
+[postcss-gradientfixer]: https://github.com/hallvors/postcss-gradientfixer
+[postcss-flexboxfixer]:  https://github.com/hallvors/postcss-flexboxfixer
 
 #### Does Autoprefixer add `-epub-` prefix?
 
