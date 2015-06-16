@@ -141,10 +141,10 @@ and default value.
 By default, Autoprefixer also removes outdated prefixes.
 
 You can disable this behavior by `remove: false` option. If you have
-no legacy code, this options will make Autoprefixer about 10% faster.
+no legacy code, this option will make Autoprefixer about 10% faster.
 
 Also you can set `add: false` option. Autoprefixer will only clean outdated
-prefixes, but will not any new prefixes.
+prefixes, but not any new prefixes.
 
 Autoprefixer adds new prefixes between unprefixed property and already
 written prefixes in your CSS. If it will broke expected prefixes order,
