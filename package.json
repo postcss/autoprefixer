@@ -10,24 +10,24 @@
         "url": "https://github.com/postcss/autoprefixer-core.git"
     },
     "dependencies": {
-        "coffee-script": "1.9.2",
+        "coffee-script": "1.9.3",
         "browserslist":  "~0.4.0",
         "num2fraction":  "^1.1.0",
-        "caniuse-db":    "^1.0.30000181",
+        "caniuse-db":    "^1.0.30000212",
         "postcss":       "~4.1.11"
     },
     "devDependencies": {
         "vinyl-source-stream": "1.1.0",
         "gulp-json-editor":    "2.2.1",
         "gulp-replace":        "0.5.3",
-        "gulp-eslint":         "0.12.0",
+        "gulp-eslint":         "0.14.0",
         "gulp-coffee":         "2.3.1",
-        "gulp-mocha":          "2.1.0",
-        "browserify":          "10.2.1",
-        "fs-extra":            "0.18.4",
+        "gulp-mocha":          "2.1.1",
+        "browserify":          "10.2.4",
+        "fs-extra":            "0.19.0",
         "should":              "6.0.3",
         "mocha":               "2.2.5",
-        "gulp":                "3.8.11"
+        "gulp":                "3.9.0"
     },
     "scripts": {
         "test": "gulp"
