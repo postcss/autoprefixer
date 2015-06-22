@@ -122,8 +122,12 @@ class Processor
       else
         false
 
-    else
+    else if node.parent
       node._autoprefixerDisabled = @disabled(node.parent)
+
+    else
+      # unknown state
+      false
 
   # Normalize spaces in cascade declaration group
   reduceSpaces: (decl) ->
