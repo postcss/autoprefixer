@@ -1,3 +1,6 @@
+## 5.2.1
+* Fix parent-less node issue on some cases (by Josh Gillies)
+
 ## 5.2 “Dont tread on me”
 * Add `appearance` support.
 * Warn users on old gradient direction or flexbox syntax.
