@@ -7,7 +7,7 @@ class TransformDecl extends Declaration
                   'rotate3d', 'rotateX', 'rotateY', 'rotateZ', 'perspective']
 
   # Recursively check all parents for @keyframes
-  keykrameParents: (decl) ->
+  keyframeParents: (decl) ->
     parent = decl.parent
     while parent
       return true if parent.type == 'atrule' and parent.name == 'keyframes'
@@ -27,7 +27,7 @@ class TransformDecl extends Declaration
   # Don't add prefix for IE in keyframes
   insert: (decl, prefix, prefixes) ->
     if prefix == '-ms-'
-      super if not @contain3d(decl) and not @keykrameParents(decl)
+      super if not @contain3d(decl) and not @keyframeParents(decl)
     else if prefix == '-o-'
       super if not @contain3d(decl)
     else
