@@ -3,7 +3,7 @@ Declaration = require('../declaration')
 class BackgroundSize extends Declaration
   @names = ['background-size']
 
-  # Remove fill parameter for prefixed declarations
+  # Duplication parameter for -webkit- browsers
   set: (decl, prefix) ->
     value = decl.value.toLowerCase()
     if prefix == '-webkit-' and value.indexOf(' ') == -1 and
