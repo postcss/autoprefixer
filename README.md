@@ -101,8 +101,8 @@ Autoprefixer has [27 special hacks] to fix web browser differences.
 Autoprefixer utilizes the most recent data from [Can I Use]
 to add only necessary vendor prefixes.
 
-It also removes old, unnecessary prefixes from your CSS (like `border-radius`
-prefixes, produced by many CSS libraries).
+It also removes old, unnecessary prefixes from your CSS
+(like `border-radius` prefixes, produced by many CSS libraries).
 
 ```css
 a {
@@ -148,7 +148,8 @@ prefixes, but not any new prefixes.
 
 Autoprefixer adds new prefixes between any unprefixed properties and already
 written prefixes in your CSS. If it will break the expected prefixes order,
-you can clean all prefixes from your CSS and then add the necessary prefixes again:
+you can clean all prefixes from your CSS and then
+add the necessary prefixes again:
 
 ```js
 var cleaner  = postcss([ autoprefixer({ add: false, browsers: [] }) ]);
@@ -167,12 +168,12 @@ cleaner.process(css).then(function (cleaned) {
 
 No. Autoprefixer only adds prefixes.
 
-Most new CSS features will require client side JavaScript to handle a new 
+Most new CSS features will require client side JavaScript to handle a new
 behavior correctly.
 
 Depending on what you consider to be a “polyfill”, you can take a look at some
-other tools and libraries. If you are just looking for syntax sugar, you might take
-a look at:
+other tools and libraries. If you are just looking for syntax sugar,
+you might take a look at:
 
 - [CSS Grace], a PostCSS plugin that handles some IE hacks (opacity, rgba,
   inline-block, etc) in addition to some non-standard handy shortcuts.
@@ -189,7 +190,7 @@ Developers are often surprised by how few prefixes are required today.
 If Autoprefixer doesn’t add prefixes to your CSS, check if they’re still
 required on [Can I Use].
 
-There is a [list with all supported] properties, values, and selectors in the wiki.
+There is a [list with all supported] properties, values, and selectors.
 
 [list with all supported]: https://github.com/postcss/autoprefixer/wiki/support-list
 [Can I Use]:               http://caniuse.com/
@@ -201,9 +202,9 @@ all combinations of prefixed/unprefixed values.
 
 #### How to work with legacy `-webkit-` only code?
 
-Autoprefixer needs unprefixed property to add prefixes. So if you only 
-wrote `-webkit-gradient` without W3C’s `gradient`, Autoprefixer will not add
-other prefixes.
+Autoprefixer needs unprefixed property to add prefixes. So if you only
+wrote `-webkit-gradient` without W3C’s `gradient`,
+Autoprefixer will not add other prefixes.
 
 But [PostCSS] has a plugins to convert CSS to unprefixed state.
 Use them before Autoprefixer:
@@ -328,8 +329,8 @@ with [other PostCSS plugins].
 
 ### Compass
 
-You should consider using Gulp instead of Compass binary, because it has
-better Autoprefixer integration and many other awesome plugins.
+You should consider using Gulp instead of Compass binary,
+because it has better Autoprefixer integration and many other awesome plugins.
 
 But if you can’t move from Compass binary right now, there’s a hack
 to run Autoprefixer after `compass compile`.
