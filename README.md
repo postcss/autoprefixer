@@ -127,10 +127,10 @@ Autoprefixer uses [Browserslist], so you can specify the browsers
 you want to target in your project by queries like `last 2 versions`
 or `> 5%`.
 
-If you don’t provide browsers option, Browserslist will try
-to find `browserslist` config in parent dirs.
+If you don’t provide the browsers option, Browserslist will try
+to find the `browserslist` config in parent dirs.
 
-See [Browserslist docs] for queries, browser names, config format
+See [Browserslist docs] for queries, browser names, config format,
 and default value.
 
 [Browserslist]:      https://github.com/ai/browserslist
@@ -140,15 +140,15 @@ and default value.
 
 By default, Autoprefixer also removes outdated prefixes.
 
-You can disable this behavior by `remove: false` option. If you have
+You can disable this behavior by the `remove: false` option. If you have
 no legacy code, this option will make Autoprefixer about 10% faster.
 
-Also you can set `add: false` option. Autoprefixer will only clean outdated
+Also, you can set the `add: false` option. Autoprefixer will only clean outdated
 prefixes, but not any new prefixes.
 
-Autoprefixer adds new prefixes between unprefixed property and already
-written prefixes in your CSS. If it will broke expected prefixes order,
-you can clean all prefixes from your CSS and then add necessary prefixes again:
+Autoprefixer adds new prefixes between any unprefixed properties and already
+written prefixes in your CSS. If it will break the expected prefixes order,
+you can clean all prefixes from your CSS and then add the necessary prefixes again:
 
 ```js
 var cleaner  = postcss([ autoprefixer({ add: false, browsers: [] }) ]);
@@ -167,12 +167,12 @@ cleaner.process(css).then(function (cleaned) {
 
 No. Autoprefixer only adds prefixes.
 
-Most new CSS features will require client side JavaScript to handle correctly
-a new behavior.
+Most new CSS features will require client side JavaScript to handle a new 
+behavior correctly.
 
-Depending on what you consider being a “polyfill”, you can take a look to some
-other tools and libraries. If you just look for syntax sugar, you might take
-a look to:
+Depending on what you consider to be a “polyfill”, you can take a look at some
+other tools and libraries. If you are just looking for syntax sugar, you might take
+a look at:
 
 - [CSS Grace], a PostCSS plugin that handles some IE hacks (opacity, rgba,
   inline-block, etc) in addition to some non-standard handy shortcuts.
@@ -189,20 +189,20 @@ Developers are often surprised by how few prefixes are required today.
 If Autoprefixer doesn’t add prefixes to your CSS, check if they’re still
 required on [Can I Use].
 
-There is [list with all supported] properties, values and selectors in wiki.
+There is a [list with all supported] properties, values, and selectors in the wiki.
 
 [list with all supported]: https://github.com/postcss/autoprefixer/wiki/support-list
 [Can I Use]:               http://caniuse.com/
 
 #### Why Autoprefixer uses unprefixed properties in `@-webkit-keyframes`?
 
-Browser teams can remove some prefix before other. So we try to use
+Browser teams can remove some prefixes before others. So we try to use
 all combinations of prefixed/unprefixed values.
 
 #### How to work with legacy `-webkit-` only code?
 
-Autoprefixer needs unprefixed property to add prefixes. So if you wrote
-only `-webkit-gradient` without W3C’s `gradient`, Autoprefixer will not add
+Autoprefixer needs unprefixed property to add prefixes. So if you only 
+wrote `-webkit-gradient` without W3C’s `gradient`, Autoprefixer will not add
 other prefixes.
 
 But [PostCSS] has a plugins to convert CSS to unprefixed state.
