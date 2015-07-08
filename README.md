@@ -241,7 +241,7 @@ gulp.task('autoprefixer', function () {
 
     return gulp.src('./src/*.css')
         .pipe(sourcemaps.init())
-        .pipe(postcss([ autoprefixer({ browsers: ['last 2 version'] }) ]))
+        .pipe(postcss([ autoprefixer({ browsers: ['last 2 versions'] }) ]))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('./dest'));
 });
@@ -270,7 +270,7 @@ module.exports = {
             }
         ]
     },
-    postcss: [ autoprefixer({ browsers: ['last 2 version'] }) ]
+    postcss: [ autoprefixer({ browsers: ['last 2 versions'] }) ]
 }
 ```
 
