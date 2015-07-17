@@ -13,19 +13,19 @@
         "coffee-script": "1.9.3",
         "browserslist":  "~0.4.0",
         "num2fraction":  "^1.1.0",
-        "caniuse-db":    "^1.0.30000214",
-        "postcss":       "~4.1.12"
+        "caniuse-db":    "^1.0.30000234",
+        "postcss":       "~4.1.16"
     },
     "devDependencies": {
         "vinyl-source-stream": "1.1.0",
         "gulp-json-editor":    "2.2.1",
         "gulp-replace":        "0.5.3",
-        "gulp-eslint":         "0.14.0",
+        "gulp-eslint":         "0.15.0",
         "gulp-coffee":         "2.3.1",
-        "gulp-mocha":          "2.1.2",
-        "browserify":          "10.2.4",
-        "fs-extra":            "0.20.0",
-        "should":              "7.0.1",
+        "gulp-mocha":          "2.1.3",
+        "browserify":          "11.0.0",
+        "fs-extra":            "0.22.1",
+        "should":              "7.0.2",
         "mocha":               "2.2.5",
         "gulp":                "3.9.0"
     },
