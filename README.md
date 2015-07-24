@@ -91,7 +91,7 @@ There are 4 options:
   You can directly specify browser version (like `iOS 7`) or use selections
   (like `last 2 version` or `> 5%`). See [Browserslist docs] for available
   queries and default value.
-* `cascade` (boolean): should Autoprefixer uses [Visual Cascade],
+* `cascade` (boolean): should Autoprefixer uses Visual Cascade,
   if CSS is uncompressed. Default: `true`
 * `add` (boolean): should Autoprefixer add prefixes. Default is `true`.
 * `remove` (boolean): should Autoprefixer [remove outdated] prefixes.
@@ -108,7 +108,6 @@ See all [PostCSS Runner Guidelines] for best practices.
 [PostCSS Runner Guidelines]: https://github.com/postcss/postcss/blob/master/docs/guidelines/runner.md
 [Browserslist docs]:         https://github.com/ai/browserslist
 [remove outdated]:           https://github.com/postcss/autoprefixer/#outdated-prefixes
-[Visual Cascade]:            https://github.com/postcss/autoprefixer#visual-cascade
 [debug purpose]:             #debug
 [PostCSS API]:               https://github.com/postcss/postcss/blob/master/docs/api.md
 
