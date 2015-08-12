@@ -118,6 +118,11 @@ feature require('caniuse-db/features-json/css-filters'), (browsers) ->
           transition: true
           browsers:   browsers
 
+# Backdrop-filter
+feature require('caniuse-db/features-json/css-backdrop-filter'), (browsers) ->
+  prefix 'backdrop-filter',
+          browsers: browsers
+
 # Multicolumns
 feature require('caniuse-db/features-json/multicolumn'), (browsers) ->
   prefix 'columns', 'column-width', 'column-gap',
