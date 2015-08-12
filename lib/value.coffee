@@ -26,7 +26,7 @@ class Value extends Prefixer
 
           unless already
             if value.indexOf('-webkit-filter') != -1 and
-               (decl.prop == 'transition' or decl.prop == 'trasition-property')
+               (decl.prop == 'transition' or decl.prop == 'transition-property')
               decl.value = value
             else
               cloned = @clone(decl, value: value)
