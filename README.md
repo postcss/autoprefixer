@@ -284,7 +284,7 @@ In Grunt you can use [grunt-postcss] with `autoprefixer-core` npm package.
 
 ```js
 module.exports = function(grunt) {
-    require('grunt-postcss')(grunt);
+    grunt.loadNpmTasks('grunt-postcss');
 
     grunt.initConfig({
         postcss: {
