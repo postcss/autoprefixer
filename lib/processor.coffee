@@ -13,7 +13,7 @@ class Processor
     viewport   = @prefixes.add['@viewport']
     supports   = @prefixes.add['@supports']
 
-    css.eachAtRule (rule) =>
+    css.walkAtRules (rule) =>
       if rule.name == 'keyframes'
         keyframes?.process(rule) if not @disabled(rule)
       else if rule.name == 'viewport'
@@ -24,13 +24,13 @@ class Processor
         resolution?.process(rule) if not @disabled(rule)
 
     # Selectors
-    css.eachRule (rule) =>
+    css.walkRules (rule) =>
       return if @disabled(rule)
       for selector in @prefixes.add.selectors
         selector.process(rule, result)
 
     # Properties
-    css.eachDecl (decl) =>
+    css.walkDecls (decl) =>
       if decl.prop == 'display' and decl.value == 'box'
         result.warn('You should write display: flex by final spec ' +
                     'instead of display: box', node: decl)
@@ -41,7 +41,7 @@ class Processor
         prefix.process(decl, result) if not @disabled(decl)
 
     # Values
-    css.eachDecl (decl) =>
+    css.walkDecls (decl) =>
       return if @disabled(decl)
 
       unprefixed = @prefixes.unprefixed(decl.prop)
@@ -54,19 +54,19 @@ class Processor
     # At-rules
     resolution = @prefixes.remove['@resolution']
 
-    css.eachAtRule (rule, i) =>
+    css.walkAtRules (rule, i) =>
       if @prefixes.remove['@' + rule.name]
-        rule.parent.remove(i) if not @disabled(rule)
+        rule.parent.removeChild(i) if not @disabled(rule)
       else if rule.name == 'media' and rule.params.indexOf('-resolution') != -1
         resolution?.clean(rule)
 
     # Selectors
     for checker in @prefixes.remove.selectors
-      css.eachRule (rule, i) =>
+      css.walkRules (rule, i) =>
         if checker.check(rule)
-          rule.parent.remove(i) if not @disabled(rule)
+          rule.parent.removeChild(i) if not @disabled(rule)
 
-    css.eachDecl (decl, i) =>
+    css.walkDecls (decl, i) =>
       return if @disabled(decl)
 
       rule       = decl.parent
@@ -77,8 +77,8 @@ class Processor
         notHack = @prefixes.group(decl).down (other) -> other.prop == unprefixed
 
         if notHack and not @withHackValue(decl)
-          @reduceSpaces(decl) if decl.style('before').indexOf("\n") > -1
-          rule.remove(i)
+          @reduceSpaces(decl) if decl.raw('before').indexOf("\n") > -1
+          rule.removeChild(i)
           return
 
       # Values
@@ -89,7 +89,7 @@ class Processor
             other.value.indexOf(unprefixed) != -1
 
           if notHack
-            rule.remove(i)
+            rule.removeChild(i)
             return
           else if checker.clean
             checker.clean(decl)
@@ -135,18 +135,18 @@ class Processor
     @prefixes.group(decl).up (other) -> stop = true
     return if stop
 
-    parts   = decl.style('before').split("\n")
+    parts   = decl.raw('before').split("\n")
     prevMin = parts[parts.length - 1].length
     diff    = false
 
     @prefixes.group(decl).down (other) ->
-      parts = other.style('before').split("\n")
+      parts = other.raw('before').split("\n")
       last  = parts.length - 1
 
       if parts[last].length > prevMin
         diff = parts[last].length - prevMin if diff == false
         parts[last] = parts[last][0...-diff]
 
-        other.before = parts.join("\n")
+        other.raws.before = parts.join("\n")
 
 module.exports = Processor

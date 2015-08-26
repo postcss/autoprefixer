@@ -32,7 +32,7 @@ class Declaration extends Prefixer
   # Should we use visual cascade for prefixes
   needCascade: (decl) ->
     decl._autoprefixerCascade ||= @all.options.cascade != false and
-                                  decl.style('before').indexOf('\n') != -1
+                                  decl.raw('before').indexOf('\n') != -1
 
   # Return maximum length of possible prefixed property
   maxPrefixed: (prefixes, decl) ->
@@ -47,7 +47,7 @@ class Declaration extends Prefixer
 
   # Calculate indentation to create visual cascade
   calcBefore: (prefixes, decl, prefix = '') ->
-    before = decl.style('before')
+    before = decl.raw('before')
     max    = @maxPrefixed(prefixes, decl)
     diff   = max - utils.removeNote(prefix).length
     for i in [0...diff]
@@ -56,16 +56,16 @@ class Declaration extends Prefixer
 
   # Remove visual cascade
   restoreBefore: (decl) ->
-    lines = decl.style('before').split("\n")
+    lines = decl.raw('before').split("\n")
     min   = lines[lines.length - 1]
 
     @all.group(decl).up (prefixed) ->
-      array = prefixed.style('before').split("\n")
+      array = prefixed.raw('before').split("\n")
       last  = array[array.length - 1]
       min   = last if last.length < min.length
 
     lines[lines.length - 1] = min
-    decl.before = lines.join("\n")
+    decl.raws.before = lines.join("\n")
 
   # Clone and insert new declaration
   insert: (decl, prefix, prefixes) ->
@@ -73,7 +73,7 @@ class Declaration extends Prefixer
     return unless cloned
 
     if @needCascade(decl)
-      cloned.before = @calcBefore(prefixes, decl, prefix)
+      cloned.raws.before = @calcBefore(prefixes, decl, prefix)
     decl.parent.insertBefore(decl, cloned)
 
   # Clone and add prefixes for declaration
@@ -92,7 +92,7 @@ class Declaration extends Prefixer
       prefixes = super
       if prefixes?.length
         @restoreBefore(decl)
-        decl.before = @calcBefore(prefixes, decl)
+        decl.raws.before = @calcBefore(prefixes, decl)
     else
       super
 

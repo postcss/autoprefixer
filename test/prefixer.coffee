@@ -48,7 +48,7 @@ describe 'Prefixer', ->
     it 'fixed declaration between', ->
       css = parse('a { color : black }')
       cloned = Prefixer.clone(css.first.first)
-      cloned.between.should.eql(' : ')
+      cloned.raws.between.should.eql(' : ')
 
   describe 'parentPrefix', ->
 

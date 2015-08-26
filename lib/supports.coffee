@@ -15,7 +15,7 @@ class Supports
   # Create virtual rule to process it by prefixer
   virtual: (prop, value) ->
     rule = postcss.parse('a{}').first
-    rule.append( prop: prop, value: value, before: '' )
+    rule.append( prop: prop, value: value, raws: before: '' )
     rule
 
   # Return array of Declaration with all necessary prefixes

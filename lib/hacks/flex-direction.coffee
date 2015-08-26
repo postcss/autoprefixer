@@ -24,14 +24,14 @@ class FlexDirection extends Declaration
       cloned.prop  = prefix + 'box-orient'
       cloned.value = orient
       if @needCascade(decl)
-        cloned.before = @calcBefore(prefixes, decl, prefix)
+        cloned.raws.before = @calcBefore(prefixes, decl, prefix)
       decl.parent.insertBefore(decl, cloned)
 
       cloned = @clone(decl)
       cloned.prop  = prefix + 'box-direction'
       cloned.value = dir
       if @needCascade(decl)
-        cloned.before = @calcBefore(prefixes, decl, prefix)
+        cloned.raws.before = @calcBefore(prefixes, decl, prefix)
       decl.parent.insertBefore(decl, cloned)
     else
       super

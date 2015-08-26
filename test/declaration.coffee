@@ -53,7 +53,7 @@ describe 'Declaration', ->
       css  = parse("a {\n  -moz-tab-size: 4;\n       tab-size: 4 }")
       decl = css.first.nodes[1]
       @tabsize.restoreBefore(decl)
-      decl.before.should.eql("\n  ")
+      decl.raws.before.should.eql("\n  ")
 
   describe 'prefixed()', ->
 
