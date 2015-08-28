@@ -118,6 +118,27 @@ feature require('caniuse-db/features-json/css-filters'), (browsers) ->
           transition: true
           browsers:   browsers
 
+# filter() function
+feature require('caniuse-db/features-json/css-filter-function'), (browsers) ->
+  prefix 'filter-function',
+          props:    ['background', 'background-image', 'border-image',
+                     'list-style', 'list-style-image', 'content',
+                     'mask-image', 'mask']
+          browsers: browsers
+
+# Backdrop-filter
+feature require('caniuse-db/features-json/css-backdrop-filter'), (browsers) ->
+  prefix 'backdrop-filter',
+          browsers: browsers
+
+# element() function
+feature require('caniuse-db/features-json/css-element-function'), (browsers) ->
+  prefix 'element',
+          props:    ['background', 'background-image', 'border-image',
+                     'list-style', 'list-style-image', 'content',
+                     'mask-image', 'mask']
+          browsers: browsers
+
 # Multicolumns
 feature require('caniuse-db/features-json/multicolumn'), (browsers) ->
   prefix 'columns', 'column-width', 'column-gap',

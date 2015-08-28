@@ -6,7 +6,7 @@ fs      = require('fs')
 
 cleaner      = autoprefixer(browsers: [])
 compiler     = autoprefixer(browsers: ['Chrome 25', 'Opera 12'])
-filterer     = autoprefixer(browsers: ['Chrome 39', 'Opera 12'])
+filterer     = autoprefixer(browsers: ['Chrome 39', 'Opera 12', 'Safari 9', 'Firefox 39'])
 borderer     = autoprefixer(browsers: ['Safari 4', 'Firefox 3.6'])
 keyframer    = autoprefixer(browsers: ['Chrome > 19', 'Opera 12'])
 flexboxer    = autoprefixer(browsers: ['Chrome > 19', 'Firefox 21', 'IE 10'])
@@ -54,7 +54,7 @@ prefixer = (name) ->
     flexboxer
   else if name == 'resolution'
     resolutioner
-  else if name == 'filter'
+  else if name == 'filter' or name == 'advanced-filter' or name == 'element'
     filterer
   else if name == 'image-rendering'
     imagerender
@@ -76,7 +76,7 @@ commons = ['transition', 'values', 'keyframes', 'gradient', 'flex-rewrite',
            'selectors', 'placeholder', 'fullscreen', 'intrinsic', 'mistakes',
            'custom-prefix', 'cascade', 'double', 'multicolumn', '3d-transform',
            'background-size', 'supports', 'viewport', 'resolution', 'logical',
-           'appearance']
+           'appearance', 'advanced-filter', 'element']
 
 describe 'autoprefixer()', ->
 
