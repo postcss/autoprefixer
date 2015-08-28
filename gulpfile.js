@@ -20,7 +20,9 @@ gulp.task('build:docs', ['clean'], function () {
     var ignore = require('fs').readFileSync('.npmignore').toString()
         .trim().split(/\n+/)
         .concat(['.npmignore', 'index.js', 'package.json'])
-        .map(function (i) { return '!' + i; });
+        .map(function (i) {
+            return '!' + i;
+        });
 
     return gulp.src(['*'].concat(ignore))
         .pipe(gulp.dest('build'));
@@ -43,8 +45,8 @@ gulp.task('build:package', ['clean'], function () {
 gulp.task('build', ['build:lib', 'build:docs', 'build:package']);
 
 gulp.task('standalone', ['build:lib'], function (done) {
-    var builder    = require('browserify')({
-        basedir:     path.join(__dirname, 'build'),
+    var builder = require('browserify')({
+        basedir:    path.join(__dirname, 'build'),
         standalone: 'autoprefixer'
     });
     builder.add('./lib/autoprefixer.js');
