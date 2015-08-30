@@ -191,6 +191,7 @@ describe 'Autoprefixer', ->
     it 'supports logical properties',   -> test('logical')
     it 'supports appearance',           -> test('appearance')
     it 'supports all placeholders',     -> test('placeholder')
+    it 'supports image-rendering',      -> test('image-rendering')
 
     it 'changes angle in gradient', ->
       input  = read('gradient')
@@ -201,16 +202,6 @@ describe 'Autoprefixer', ->
       result.warnings().map( (i) -> i.toString() ).should.eql(
         ['autoprefixer: <css input>:38:5: Gradient has outdated direction ' +
          'syntax. New syntax is like "to left" instead of "right".'])
-
-    it 'supports image-rendering', ->
-      input  = read('image-rendering')
-      output = read('image-rendering.out')
-      result = postcss([prefixer('image-rendering')]).process(input)
-
-      result.css.should.eql(output)
-      result.warnings().map( (i) -> i.toString() ).should.eql(
-        ['autoprefixer: <css input>:2:5: There is no browsers with ' +
-         'crisp-edges rendering support.Maybe you mean pixelated?'])
 
     it 'warn on old flexbox display', ->
       result = postcss([flexboxer]).process('a{ display: box; }')
