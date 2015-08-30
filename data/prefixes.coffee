@@ -375,3 +375,9 @@ feature require('caniuse-db/features-json/css-snappoints'), (browsers) ->
          'scroll-snap-destination',
          'scroll-snap-points-x', 'scroll-snap-points-y',
           browsers: browsers
+
+# CSS Regions
+feature require('caniuse-db/features-json/css-regions'), (browsers) ->
+  prefix 'flow-into', 'flow-from',
+         'region-fragment',
+          browsers: browsers
