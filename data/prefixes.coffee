@@ -360,3 +360,11 @@ feature logicalProps, match: /x\s#2/, (browsers) ->
 feature require('caniuse-db/features-json/css-appearance'), (browsers) ->
   prefix 'appearance',
           browsers: browsers
+
+# CSS Scroll snap points
+feature require('caniuse-db/features-json/css-snappoints'), (browsers) ->
+  prefix 'scroll-snap-type',
+         'scroll-snap-coordinate',
+         'scroll-snap-destination',
+         'scroll-snap-points-x', 'scroll-snap-points-y',
+          browsers: browsers
