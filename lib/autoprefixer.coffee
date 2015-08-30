@@ -37,12 +37,6 @@ module.exports = postcss.plugin 'autoprefixer', (reqs...) ->
 
   plugin.options = options
 
-  plugin.process = (str, options = { }) ->
-    console?.warn?('Autoprefixer\'s process() method is deprecated ' +
-                   'and will removed in next major release. ' +
-                   'Use postcss([autoprefixer]).process() instead')
-    postcss(plugin).process(str, options)
-
   plugin.info = (opts) ->
     require('./info')(loadPrefixes(opts))
 
@@ -55,10 +49,6 @@ module.exports.data =
 
 # Autoprefixer default browsers
 module.exports.defaults = browserslist.defaults
-
-# Deprecated shortcut
-module.exports.process = (css, options) ->
-  module.exports().process(css, options)
 
 # Inspect with default Autoprefixer
 module.exports.info = ->
