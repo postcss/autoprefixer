@@ -323,73 +323,20 @@ with [other PostCSS plugins].
 [broccoli-postcss]:       https://github.com/jeffjewiss/broccoli-postcss
 [postcss-brunch]:         https://github.com/iamvdo/postcss-brunch
 
-### Compass
+### Preprocessors
 
-You should consider using Gulp instead of Compass binary,
-because it has better Autoprefixer integration and many other awesome plugins.
+* **Less**: [less-plugin-autoprefix]
+* **Stylus**: [autoprefixer-stylus]
+* **Compass**: [autoprefixer-rails]
 
-But if you can’t move from Compass binary right now, there’s a hack
-to run Autoprefixer after `compass compile`.
+ [less-plugin-autoprefix]: https://github.com/less/less-plugin-autoprefix
+ [autoprefixer-stylus]:    https://github.com/jenius/autoprefixer-stylus
+ [autoprefixer-rails]:     https://github.com/ai/autoprefixer-rails#compass
 
-Install `autoprefixer-rails` gem:
+### GUI Tools
 
-```
-gem install autoprefixer-rails
-```
-
-and add post-compile hook to `config.rb`:
-
-```ruby
-require 'autoprefixer-rails'
-
-on_stylesheet_saved do |file|
-  css = File.read(file)
-  map = file + '.map'
-
-  if File.exists? map
-    result = AutoprefixerRails.process(css,
-      from: file,
-      to:   file,
-      map:  { prev: File.read(map), inline: false })
-    File.open(file, 'w') { |io| io << result.css }
-    File.open(map,  'w') { |io| io << result.map }
-  else
-    File.open(file, 'w') { |io| io << AutoprefixerRails.process(css) }
-  end
-end
-```
-
-### Less
-
-You can use autoprefixer with less by including
-the [less-plugin-autoprefix] plugin.
-
-[less-plugin-autoprefix]: https://github.com/less/less-plugin-autoprefix
-
-### Stylus
-
-If you use Stylus CLI, you can add Autoprefixer by [autoprefixer-stylus] plugin:
-
-```
-stylus -u autoprefixer-stylus -w file.styl
-```
-
-[autoprefixer-stylus]: https://github.com/jenius/autoprefixer-stylus
-
-### CodeKit
-
-CodeKit, since the 2.0 version, contains Autoprefixer. In the After Compiling
-section, there is a checkbox to enable Autoprefixer. Read [CodeKit docs]
-for more information.
-
-[CodeKit docs]: https://incident57.com/codekit/help.html#autoprefixer
-
-### Prepros
-
-If you need free assets build GUI tool, try [Prepros].
-Just set “Auto Prefix CSS” checkbox in right panel.
-
-[Prepros]: http://alphapixels.com/prepros/
+* [CodeKit](https://incident57.com/codekit/help.html#autoprefixer)
+* [Prepros](http://alphapixels.com/prepros/)
 
 ### CLI
 
