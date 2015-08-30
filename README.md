@@ -396,6 +396,27 @@ But, if you can’t move to a build tool, you can use text editor plugins:
 
 [Gulp]:  http://gulpjs.com/
 
+## Warnings
+
+Autoprefixer use [PostCSS warning API] to warn about really important problem
+in your CSS:
+
+* Old directiom syntax in gradients.
+* Old unprefixed `display: box` instead of `display: flex`
+  by latest specification version.
+
+You can get warnings from `result.warnings()`:
+
+```js
+result.warnings().forEach(function (warn) {
+    console.warn(warn.toString());
+});
+```
+
+Every Autoprefixer runner should display this warnings.
+
+[PostCSS warning API]: https://github.com/postcss/postcss/blob/master/docs/api.md#warning-class
+
 ## Disabling
 
 Autoprefixer was designed to have no interface – it just works.
