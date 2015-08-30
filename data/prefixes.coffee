@@ -223,8 +223,15 @@ feature require('caniuse-db/features-json/css-hyphens'), (browsers) ->
           browsers: browsers
 
 # Fullscreen selector
-feature require('caniuse-db/features-json/fullscreen'), (browsers) ->
+fullscreen = require('caniuse-db/features-json/fullscreen')
+
+feature fullscreen, (browsers) ->
   prefix ':fullscreen',
+          selector: true,
+          browsers: browsers
+
+feature fullscreen, match: /x(\s#2|$)/, (browsers) ->
+  prefix '::backdrop',
           selector: true,
           browsers: browsers
 
