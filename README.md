@@ -1,28 +1,12 @@
-# Autoprefixer Core [![Build Status][ci-img]][ci]
+# Autoprefixer [![Build Status][ci-img]][ci]
 
 <img align="right" width="94" height="71"
      src="http://postcss.github.io/autoprefixer/logo.svg"
      title="Autoprefixer logo by Anton Lovchikov">
 
-[PostCSS] plugin to parse CSS and add vendor prefixes using values
-from [Can I Use].
-
-This is core package to build Autoprefixer plugin for some environment
-(like [grunt‑autoprefixer]). For end-user documentation, features
-and plugins list visit [main Autoprefixer] project.
-
-<a href="https://evilmartians.com/?utm_source=autoprefixer-core">
-<img src="https://evilmartians.com/badges/sponsored-by-evil-martians.svg" alt="Sponsored by Evil Martians" width="236" height="54">
-</a>
-
-[grunt‑autoprefixer]: https://github.com/nDmitry/grunt-autoprefixer
-[main Autoprefixer]:  https://github.com/postcss/autoprefixer
-[Can I Use]:          http://caniuse.com/
-[PostCSS]:            https://github.com/postcss/postcss
-[ci-img]:             https://travis-ci.org/postcss/autoprefixer-core.svg
-[ci]:                 https://travis-ci.org/postcss/autoprefixer-core
-
-## Quick Example
+[PostCSS] plugin to parse CSS and add vendor prefixes to CSS rules using values
+from [Can I Use]. It is [recommended] by Google and used in Twitter,
+and Taobao.
 
 Write your CSS rules without vendor prefixes (in fact, forget about them
 entirely):
@@ -33,22 +17,9 @@ entirely):
 }
 ```
 
-Process your CSS by Autoprefixer:
-
-```js
-var autoprefixer = require('autoprefixer-core');
-var postcss      = require('postcss');
-
-postcss([ autoprefixer ]).process(css).then(function (result) {
-    result.warnings().forEach(function (warn) {
-        console.warn(warn.toString());
-    });
-    console.log(result.css);
-});
-```
-
-It will use the data based on current browser popularity and property support
-to apply prefixes for you:
+Autoprefixer will use the data based on current browser popularity and property
+support to apply prefixes for you. You try in the [interactive demo]
+of Autoprefixer.
 
 ```css
 :-webkit-full-screen a {
@@ -71,15 +42,463 @@ to apply prefixes for you:
 }
 ```
 
+Twitter account for news and releases: [@autoprefixer].
+
+<a href="https://evilmartians.com/?utm_source=autoprefixer">
+<img src="https://evilmartians.com/badges/sponsored-by-evil-martians.svg" alt="Sponsored by Evil Martians" width="236" height="54">
+</a>
+
+[interactive demo]: http://simevidas.jsbin.com/gufoko/quiet
+[@autoprefixer]:    https://twitter.com/autoprefixer
+[recommended]:      https://developers.google.com/web/fundamentals/tools/build/setupbuildprocess#dont-trip-up-with-vendor-prefixes
+[Can I Use]:        http://caniuse.com/
+[PostCSS]:          https://github.com/postcss/postcss
+[ci-img]:           https://travis-ci.org/postcss/autoprefixer-core.svg
+[ci]:               https://travis-ci.org/postcss/autoprefixer-core
+
+## Features
+
+### Write Pure CSS
+
+Working with Autoprefixer is simple: just forget about vendor prefixes
+and write normal CSS according to the latest W3C specs. You don’t need
+a special language (like Sass) or remember where you must use mixins.
+
+Autoprefixer supports selectors (like `:fullscreen` and `::selection`),
+unit function (`calc()`), at‑rules (`@support` and `@keyframes`) and properties.
+
+Because Autoprefixer is a postprocessor for CSS,
+you can also use it with preprocessors such as Sass, Stylus or LESS.
+
+### Flexbox, Filters, etc.
+
+Just write normal CSS according to the latest W3C specs and Autoprefixer
+will produce the code for old browsers.
+
+```css
+a {
+    display: flex;
+}
+```
+
+compiles to:
+
+```css
+a {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex
+}
+```
+
+Autoprefixer has [27 special hacks] to fix web browser differences.
+
+[27 special hacks]: https://github.com/postcss/autoprefixer-core/tree/master/lib/hacks
+
+### Only Actual Prefixes
+
+Autoprefixer utilizes the most recent data from [Can I Use]
+to add only necessary vendor prefixes.
+
+It also removes old, unnecessary prefixes from your CSS
+(like `border-radius` prefixes, produced by many CSS libraries).
+
+```css
+a {
+    -webkit-border-radius: 5px;
+            border-radius: 5px;
+}
+```
+
+compiles to:
+
+```css
+a {
+    border-radius: 5px;
+}
+```
+
+[Can I Use]: http://caniuse.com/
+
+## Browsers
+
+Autoprefixer uses [Browserslist], so you can specify the browsers
+you want to target in your project by queries like `last 2 versions`
+or `> 5%`.
+
+If you don’t provide the browsers option, Browserslist will try
+to find the `browserslist` config in parent dirs.
+
+See [Browserslist docs] for queries, browser names, config format,
+and default value.
+
+[Browserslist]:      https://github.com/ai/browserslist
+[Browserslist docs]: https://github.com/ai/browserslist#queries
+
+## Outdated Prefixes
+
+By default, Autoprefixer also removes outdated prefixes.
+
+You can disable this behavior by the `remove: false` option. If you have
+no legacy code, this option will make Autoprefixer about 10% faster.
+
+Also, you can set the `add: false` option. Autoprefixer will only clean outdated
+prefixes, but not any new prefixes.
+
+Autoprefixer adds new prefixes between any unprefixed properties and already
+written prefixes in your CSS. If it will break the expected prefixes order,
+you can clean all prefixes from your CSS and then
+add the necessary prefixes again:
+
+```js
+var cleaner  = postcss([ autoprefixer({ add: false, browsers: [] }) ]);
+var prefixer = postcss([ autoprefixer ]);
+
+cleaner.process(css).then(function (cleaned) {
+    prefixer.process(cleaned.css).then(function (result) {
+        console.log(result.css);
+    });
+});
+```
+
+## FAQ
+
+#### Does it add polyfills?
+
+No. Autoprefixer only adds prefixes.
+
+Most new CSS features will require client side JavaScript to handle a new
+behavior correctly.
+
+Depending on what you consider to be a “polyfill”, you can take a look at some
+other tools and libraries. If you are just looking for syntax sugar,
+you might take a look at:
+
+- [CSS Grace], a PostCSS plugin that handles some IE hacks (opacity, rgba,
+  inline-block, etc) in addition to some non-standard handy shortcuts.
+- [cssnext], a tool that allows you to write standard CSS syntax non-implemented
+  yet in browsers (custom properties, custom media, color functions, etc).
+  It includes autoprefixer and can be used as a PostCSS plugin too.
+
+[CSS Grace]: https://github.com/cssdream/cssgrace
+[cssnext]:   https://cssnext.github.io/
+
+#### Why doesn’t Autoprefixer add prefixes to `border-radius`?
+
+Developers are often surprised by how few prefixes are required today.
+If Autoprefixer doesn’t add prefixes to your CSS, check if they’re still
+required on [Can I Use].
+
+There is a [list with all supported] properties, values, and selectors.
+
+[list with all supported]: https://github.com/postcss/autoprefixer/wiki/support-list
+[Can I Use]:               http://caniuse.com/
+
+#### Why Autoprefixer uses unprefixed properties in `@-webkit-keyframes`?
+
+Browser teams can remove some prefixes before others. So we try to use
+all combinations of prefixed/unprefixed values.
+
+#### How to work with legacy `-webkit-` only code?
+
+Autoprefixer needs unprefixed property to add prefixes. So if you only
+wrote `-webkit-gradient` without W3C’s `gradient`,
+Autoprefixer will not add other prefixes.
+
+But [PostCSS] has a plugins to convert CSS to unprefixed state.
+Use them before Autoprefixer:
+
+* [postcss-unprefix]
+* [postcss-flexboxfixer]
+* [postcss-gradientfixer]
+
+[postcss-gradientfixer]: https://github.com/hallvors/postcss-gradientfixer
+[postcss-flexboxfixer]:  https://github.com/hallvors/postcss-flexboxfixer
+[postcss-unprefix]:      https://github.com/yisibl/postcss-unprefix
+
+#### Does Autoprefixer add `-epub-` prefix?
+
+No, Autoprefixer works only with browsers prefixes from Can I Use.
+But you can use [postcss-epub](https://github.com/Rycochet/postcss-epub)
+for prefixing ePub3 properties.
+
 ## Usage
 
-To process your CSS you need to make 3 steps:
+### Gulp
 
-1. Build plugin for your options and browsers supported in your project.
-2. Add this plugin to PostCSS processor.
-2. Process CSS through this processor.
+In Gulp you can use [gulp-postcss] with `autoprefixer-core` npm package.
 
-Function `autoprefixer(options)` returns new PostCSS plugin:
+```js
+gulp.task('autoprefixer', function () {
+    var postcss      = require('gulp-postcss');
+    var sourcemaps   = require('gulp-sourcemaps');
+    var autoprefixer = require('autoprefixer-core');
+
+    return gulp.src('./src/*.css')
+        .pipe(sourcemaps.init())
+        .pipe(postcss([ autoprefixer({ browsers: ['last 2 versions'] }) ]))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest('./dest'));
+});
+```
+
+With `gulp-postcss` you also can combine Autoprefixer
+with [other PostCSS plugins].
+
+[other PostCSS plugins]: https://github.com/postcss/postcss#plugins
+[gulp-postcss]:          https://github.com/postcss/gulp-postcss
+
+### Webpack
+
+In [webpack] you can use [postcss-loader] with `autoprefixer-core`
+and [other PostCSS plugins].
+
+```js
+var autoprefixer = require('autoprefixer-core');
+
+module.exports = {
+    module: {
+        loaders: [
+            {
+                test:   /\.css$/,
+                loader: "style-loader!css-loader!postcss-loader"
+            }
+        ]
+    },
+    postcss: [ autoprefixer({ browsers: ['last 2 versions'] }) ]
+}
+```
+
+[other PostCSS plugins]: https://github.com/postcss/postcss#plugins
+[postcss-loader]:        https://github.com/postcss/postcss-loader
+[webpack]:               http://webpack.github.io/
+
+### Grunt
+
+In Grunt you can use [grunt-postcss] with `autoprefixer-core` npm package.
+
+```js
+module.exports = function(grunt) {
+    grunt.loadNpmTasks('grunt-postcss');
+
+    grunt.initConfig({
+        postcss: {
+            options: {
+                map: true,
+                processors: [
+                    require('autoprefixer-core')({
+                        browsers: ['last 2 versions']
+                    })
+                ]
+            },
+            dist: {
+                src: 'css/*.css'
+            }
+        }
+    });
+
+    grunt.registerTask('default', ['postcss:dist']);
+};
+```
+
+With `grunt-postcss` you also can combine Autoprefixer
+with [other PostCSS plugins].
+
+[other PostCSS plugins]: https://github.com/postcss/postcss#plugins
+[grunt-postcss]:         https://github.com/nDmitry/grunt-postcss
+
+### Other Build Tools:
+
+* **Ruby on Rails**: [autoprefixer-rails]
+* **Brunch**: [postcss-brunch]
+* **Broccoli**: [broccoli-postcss]
+* **Middleman**: [middleman-autoprefixer]
+* **Mincer**: add `autoprefixer` npm package and enable it:
+  `environment.enable('autoprefixer')`
+* **Jekyll**: add `autoprefixer-rails` and `jekyll-assets` to `Gemfile`
+
+[middleman-autoprefixer]: https://github.com/porada/middleman-autoprefixer
+[autoprefixer-rails]:     https://github.com/ai/autoprefixer-rails
+[broccoli-postcss]:       https://github.com/jeffjewiss/broccoli-postcss
+[postcss-brunch]:         https://github.com/iamvdo/postcss-brunch
+
+### Compass
+
+You should consider using Gulp instead of Compass binary,
+because it has better Autoprefixer integration and many other awesome plugins.
+
+But if you can’t move from Compass binary right now, there’s a hack
+to run Autoprefixer after `compass compile`.
+
+Install `autoprefixer-rails` gem:
+
+```
+gem install autoprefixer-rails
+```
+
+and add post-compile hook to `config.rb`:
+
+```ruby
+require 'autoprefixer-rails'
+
+on_stylesheet_saved do |file|
+  css = File.read(file)
+  map = file + '.map'
+
+  if File.exists? map
+    result = AutoprefixerRails.process(css,
+      from: file,
+      to:   file,
+      map:  { prev: File.read(map), inline: false })
+    File.open(file, 'w') { |io| io << result.css }
+    File.open(map,  'w') { |io| io << result.map }
+  else
+    File.open(file, 'w') { |io| io << AutoprefixerRails.process(css) }
+  end
+end
+```
+
+### Less
+
+You can use autoprefixer with less by including
+the [less-plugin-autoprefix] plugin.
+
+[less-plugin-autoprefix]: https://github.com/less/less-plugin-autoprefix
+
+### Stylus
+
+If you use Stylus CLI, you can add Autoprefixer by [autoprefixer-stylus] plugin:
+
+```
+stylus -u autoprefixer-stylus -w file.styl
+```
+
+[autoprefixer-stylus]: https://github.com/jenius/autoprefixer-stylus
+
+### CodeKit
+
+CodeKit, since the 2.0 version, contains Autoprefixer. In the After Compiling
+section, there is a checkbox to enable Autoprefixer. Read [CodeKit docs]
+for more information.
+
+[CodeKit docs]: https://incident57.com/codekit/help.html#autoprefixer
+
+### Prepros
+
+If you need free assets build GUI tool, try [Prepros].
+Just set “Auto Prefix CSS” checkbox in right panel.
+
+[Prepros]: http://alphapixels.com/prepros/
+
+### CLI
+
+You can use the [postcss-cli] to run Autoprefixer from CLI:
+
+```sh
+npm install --global postcss-cli autoprefixer
+postcss --use autoprefixer *.css -d build/
+```
+
+See `postcss -h` for help.
+
+[postcss-cli]: https://github.com/code42day/postcss-cli
+
+### JavaScript
+
+You can use [autoprefixer-core] with [PostCSS] in your node.js application
+or if you want to develop an Autoprefixer plugin for new environment.
+
+```js
+var autoprefixer = require('autoprefixer-core');
+var postcss      = require('postcss');
+
+postcss([ autoprefixer ]).process(css).then(function (result) {
+    result.warnings().forEach(function (warn) {
+        console.warn(warn.toString());
+    });
+    console.log(result.css);
+});
+```
+
+There is also [standalone build] for the browser or as a non-Node.js runtime.
+
+You can use [html-autoprefixer] to process HTML with inlined CSS.
+
+[autoprefixer-core]: https://github.com/postcss/autoprefixer-core
+[html-autoprefixer]: https://github.com/RebelMail/html-autoprefixer
+[standalone build]:  https://raw.github.com/ai/autoprefixer-rails/master/vendor/autoprefixer.js
+[PostCSS]:           https://github.com/postcss/postcss
+
+### Text Editors and IDE
+
+Autoprefixer should be used in assets build tools. Text editor plugins are not
+a good solution, because prefixes decrease code readability and you will need
+to change value in all prefixed properties.
+
+I recommend you to learn how to use build tools like [Gulp].
+They work much better and will open you a whole new world of useful plugins
+and automatization.
+
+But, if you can’t move to a build tool, you can use text editor plugins:
+
+* [Sublime Text](https://github.com/sindresorhus/sublime-autoprefixer)
+* [Brackets](https://github.com/mikaeljorhult/brackets-autoprefixer)
+* [Atom Editor](https://github.com/sindresorhus/atom-autoprefixer)
+* [Visual Studio](http://vswebessentials.com/)
+
+[Gulp]:  http://gulpjs.com/
+
+## Disabling
+
+Autoprefixer was designed to have no interface – it just works.
+If you need some browser specific hack just write a prefixed property
+after the unprefixed one.
+
+```css
+a {
+    transform: scale(0.5);
+    -moz-transform: scale(0.6);
+}
+```
+
+If some prefixes were generated in a wrong way,
+please create an issue on GitHub.
+
+But if you do not need Autoprefixer in some part of your CSS,
+you can use control comments to disable Autoprefixer.
+
+```css
+a {
+    transition: 1s; /* it will be prefixed */
+}
+
+b {
+    /* autoprefixer: off */
+    transition: 1s; /* it will not be prefixed */
+}
+```
+
+Control comments disable Autoprefixer within the whole rule in which
+you place it. In the above example, Autoprefixer will be disabled
+in the entire `b` rule scope, not only after the comment.
+
+You can also use comments recursively:
+
+```css
+/* autoprefixer: off */
+@support (transition: all) {
+    /* autoprefixer: on */
+    a {
+        /* autoprefixer: off */
+    }
+}
+```
+
+## Options
+
+Function `autoprefixer(options)` returns new PostCSS plugin.
+See [PostCSS API] for plugin usage documentation.
 
 ```js
 var plugin = autoprefixer({ browsers: ['> 1%', 'IE 7'], cascade: false });
@@ -97,93 +516,18 @@ There are 4 options:
 * `remove` (boolean): should Autoprefixer [remove outdated] prefixes.
   Default is `true`.
 
-Plugin object has `info()` method for [debug purpose].
+Plugin object has `info()` method for debug purpose.
 
 You can use PostCSS processor to process several CSS files
 to increase perfomance.
 
-See [PostCSS API] for plugin usage documentation.
-See all [PostCSS Runner Guidelines] for best practices.
-
-[PostCSS Runner Guidelines]: https://github.com/postcss/postcss/blob/master/docs/guidelines/runner.md
-[Browserslist docs]:         https://github.com/ai/browserslist
-[remove outdated]:           https://github.com/postcss/autoprefixer/#outdated-prefixes
-[debug purpose]:             #debug
-[PostCSS API]:               https://github.com/postcss/postcss/blob/master/docs/api.md
-
-## CSS Processing
-
-Method `process(css, opts)` from Autoprefixer processor is a PostCSS’s method.
-
-You must set `from` and `to` options with file names to generates corrects
-source maps and useful error messages.
-
-Options:
-
-* `from` (path): file path to origin CSS files.
-* `to` (path): file path to future CSS file, which will
-  contain processed CSS with prefixes.
-* `safe` (boolean): enables [Safe Mode] in PostCSS. By default `false`.
-* `map` contains options for source maps:
-
-  * `inline: false` to force save map to separated file, instead of inline it
-    to CSS in special comment by base64.
-  * `prev` (string or object): map content from previous processing step
-    (like Sass compilation).
-
-  If you set `map: false`, PostCSS will remove source map.
-
-You can read more about the source map options in [PostCSS documentation].
-
-[PostCSS documentation]: https://github.com/postcss/postcss#source-map
-[Safe Mode]:             https://github.com/postcss/postcss#safe-mode
-
-## PostCSS Chain
-
-You parse CSS only once and then process it through array of PostCSS processors.
-
-For example, you can use [gulp-postcss]:
-
-```js
-var postcss    = require('gulp-postcss');
-var sourcemaps = require('gulp-sourcemaps');
-
-gulp.task('css', function () {
-    var processors = [
-        require('autoprefixer')('last 1 version'),
-        require('css-mqpacker'),
-        require('csswring')
-     ];
-     return gulp.src('./src/style.css')
-        .pipe(sourcemaps.init())
-        .pipe(postcss(processors))
-        .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest('./dest'));
-});
-```
-
-[gulp-postcss]: https://github.com/w0rm/gulp-postcss
-
-## Safe Mode
-
-PostCSS has a special safe mode to parse broken CSS. If you set the `safe: true`
-option to the `process` method, it will  parse `a {` as `a {}`:
-
-```js
-autoprefixer.process('a {');                 // will throw “Unclosed block”
-autoprefixer.process('a {', { safe: true }); // will process as a closed block
-```
-
-It is useful for legacy code when using several hacks, or interactive
-tools with live input, like [Autoprefixer demo].
-
-[Autoprefixer demo]: http://simevidas.jsbin.com/gufoko/quiet
+[PostCSS API]: https://github.com/postcss/postcss/blob/master/docs/api.md
 
 ## Debug
 
 You can check which browsers are selected and which properties will be prefixed:
 
 ```js
-info = autoprefixer({ browsers: ['last 1 version'] }).info();
+var info = autoprefixer({ browsers: ['last 1 version'] }).info();
 console.log(info);
 ```
