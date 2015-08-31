@@ -11,10 +11,7 @@
   ],
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/postcss/autoprefixer.git"
-  },
+  "repository": "postcss/autoprefixer",
   "dependencies": {
     "coffee-script": "1.9.3",
     "num2fraction":  "^1.1.0",
