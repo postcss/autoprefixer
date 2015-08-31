@@ -53,8 +53,8 @@ Twitter account for news and releases: [@autoprefixer].
 [recommended]:      https://developers.google.com/web/fundamentals/tools/build/setupbuildprocess#dont-trip-up-with-vendor-prefixes
 [Can I Use]:        http://caniuse.com/
 [PostCSS]:          https://github.com/postcss/postcss
-[ci-img]:           https://travis-ci.org/postcss/autoprefixer-core.svg
-[ci]:               https://travis-ci.org/postcss/autoprefixer-core
+[ci-img]:           https://travis-ci.org/postcss/autoprefixer.svg
+[ci]:               https://travis-ci.org/postcss/autoprefixer
 
 ## Features
 
@@ -94,7 +94,7 @@ a {
 
 Autoprefixer has [27 special hacks] to fix web browser differences.
 
-[27 special hacks]: https://github.com/postcss/autoprefixer-core/tree/master/lib/hacks
+[27 special hacks]: https://github.com/postcss/autoprefixer/tree/master/lib/hacks
 
 ### Only Actual Prefixes
 
@@ -227,13 +227,13 @@ for prefixing ePub3 properties.
 
 ### Gulp
 
-In Gulp you can use [gulp-postcss] with `autoprefixer-core` npm package.
+In Gulp you can use [gulp-postcss] with `autoprefixer` npm package.
 
 ```js
 gulp.task('autoprefixer', function () {
     var postcss      = require('gulp-postcss');
     var sourcemaps   = require('gulp-sourcemaps');
-    var autoprefixer = require('autoprefixer-core');
+    var autoprefixer = require('autoprefixer');
 
     return gulp.src('./src/*.css')
         .pipe(sourcemaps.init())
@@ -251,11 +251,11 @@ with [other PostCSS plugins].
 
 ### Webpack
 
-In [webpack] you can use [postcss-loader] with `autoprefixer-core`
+In [webpack] you can use [postcss-loader] with `autoprefixer`
 and [other PostCSS plugins].
 
 ```js
-var autoprefixer = require('autoprefixer-core');
+var autoprefixer = require('autoprefixer');
 
 module.exports = {
     module: {
@@ -276,7 +276,7 @@ module.exports = {
 
 ### Grunt
 
-In Grunt you can use [grunt-postcss] with `autoprefixer-core` npm package.
+In Grunt you can use [grunt-postcss] with `autoprefixer` npm package.
 
 ```js
 module.exports = function(grunt) {
@@ -287,7 +287,7 @@ module.exports = function(grunt) {
             options: {
                 map: true,
                 processors: [
-                    require('autoprefixer-core')({
+                    require('autoprefixer')({
                         browsers: ['last 2 versions']
                     })
                 ]
@@ -353,11 +353,11 @@ See `postcss -h` for help.
 
 ### JavaScript
 
-You can use [autoprefixer-core] with [PostCSS] in your node.js application
+You can use Autoprefixer with [PostCSS] in your node.js application
 or if you want to develop an Autoprefixer plugin for new environment.
 
 ```js
-var autoprefixer = require('autoprefixer-core');
+var autoprefixer = require('autoprefixer');
 var postcss      = require('postcss');
 
 postcss([ autoprefixer ]).process(css).then(function (result) {
@@ -372,7 +372,6 @@ There is also [standalone build] for the browser or as a non-Node.js runtime.
 
 You can use [html-autoprefixer] to process HTML with inlined CSS.
 
-[autoprefixer-core]: https://github.com/postcss/autoprefixer-core
 [html-autoprefixer]: https://github.com/RebelMail/html-autoprefixer
 [standalone build]:  https://raw.github.com/ai/autoprefixer-rails/master/vendor/autoprefixer.js
 [PostCSS]:           https://github.com/postcss/postcss

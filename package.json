@@ -1,7 +1,7 @@
 {
-  "name": "autoprefixer-core",
+  "name": "autoprefixer",
   "version": "5.2.1",
-  "description": "CLI-less core of Autoprefixer to use in plugins",
+  "description": "Parse CSS and add vendor prefixes to CSS rules using values from the Can I Use website",
   "keywords": [
     "autoprefixer",
     "css",
@@ -13,7 +13,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/postcss/autoprefixer-core.git"
+    "url": "https://github.com/postcss/autoprefixer.git"
   },
   "dependencies": {
     "coffee-script": "1.9.3",
