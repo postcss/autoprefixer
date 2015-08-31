@@ -1,0 +1,8 @@
+a {
+    mask-border-source: url(image.png);
+    mask-border-slice: 50% fill;
+    mask-border-width: auto 1 50%;
+    mask-border-outset: 0 1 2;
+    mask-border-repeat: repeat space;
+    mask-border: url(#foo) 1 fill;
+}

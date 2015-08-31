@@ -1,0 +1,14 @@
+a {
+    -webkit-mask-box-image-source: url(image.png);
+            mask-border-source: url(image.png);
+    -webkit-mask-box-image-slice: 50% fill;
+            mask-border-slice: 50% fill;
+    -webkit-mask-box-image-width: auto 1 50%;
+            mask-border-width: auto 1 50%;
+    -webkit-mask-box-image-outset: 0 1 2;
+            mask-border-outset: 0 1 2;
+    -webkit-mask-box-image-repeat: repeat space;
+            mask-border-repeat: repeat space;
+    -webkit-mask-box-image: url(#foo) 1 fill;
+            mask-border: url(#foo) 1 fill;
+}
