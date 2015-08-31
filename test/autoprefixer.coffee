@@ -192,6 +192,7 @@ describe 'Autoprefixer', ->
     it 'supports appearance',           -> test('appearance')
     it 'supports all placeholders',     -> test('placeholder')
     it 'supports image-rendering',      -> test('image-rendering')
+    it 'supports mask box image',       -> test('mask-box-image')
 
     it 'changes angle in gradient', ->
       input  = read('gradient')

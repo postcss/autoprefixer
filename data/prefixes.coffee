@@ -283,9 +283,12 @@ feature require('caniuse-db/features-json/text-size-adjust'), (browsers) ->
 # CSS Masks
 feature require('caniuse-db/features-json/css-masks'), (browsers) ->
   prefix 'mask-clip', 'mask-composite', 'mask-image',
-         'mask-origin', 'mask-repeat',
+         'mask-origin', 'mask-repeat', 'mask-box-image-repeat',
+         'mask-box-image-source',
           browsers: browsers
   prefix 'clip-path', 'mask', 'mask-position', 'mask-size',
+         'mask-box-image', 'mask-box-image-outset', 'mask-box-image-width',
+         'mask-box-image-slice',
           transition: true
           browsers:   browsers
 

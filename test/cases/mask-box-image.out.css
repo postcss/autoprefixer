@@ -1,0 +1,6 @@
+a {
+    -webkit-mask-border-repeat: repeat;
+            mask-box-image-repeat: repeat;
+    -webkit-mask-border-width: 2px;
+            mask-box-image-width: 2px;
+}
