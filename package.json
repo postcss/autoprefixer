@@ -1,5 +1,5 @@
 {
-  "name": "autoprefixer",
+  "name": "autoprefixer-core",
   "version": "5.2.1",
   "description": "Parse CSS and add vendor prefixes to CSS rules using values from the Can I Use website",
   "keywords": [
@@ -11,7 +11,7 @@
   ],
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
   "license": "MIT",
-  "repository": "postcss/autoprefixer",
+  "repository": "postcss/autoprefixer-core",
   "dependencies": {
     "coffee-script": "1.9.3",
     "num2fraction":  "^1.1.0",
