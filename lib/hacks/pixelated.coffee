@@ -1,4 +1,5 @@
-Value = require('../value')
+OldValue = require('../old-value')
+Value    = require('../value')
 
 class Pixelated extends Value
   @names = ['pixelated']
@@ -9,6 +10,15 @@ class Pixelated extends Value
       string.replace(@regexp(), '$1-webkit-optimize-contrast')
     else if prefix == '-moz-'
       string.replace(@regexp(), '$1-moz-crisp-edges')
+    else
+      super
+
+  # Different name for -moz-available
+  old: (prefix) ->
+    if prefix == '-webkit-'
+      new OldValue(@name, '-webkit-optimize-contrast')
+    else if prefix == '-moz-'
+      new OldValue(@name, '-moz-crisp-edges')
     else
       super
 
