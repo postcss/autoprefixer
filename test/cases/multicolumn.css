@@ -1,19 +1,21 @@
 .a {
-    break-inside: auto
+    break-inside: auto;
+    break-before: auto;
+    break-after: auto;
 }
 
 .b {
-    break-inside: avoid
+    break-inside: avoid;
 }
 
 .c {
-    break-inside: avoid-column
+    break-inside: avoid-column;
 }
 
 .d {
-    break-inside: avoid-page
+    break-inside: avoid-page;
 }
 
 .e {
-    break-inside: avoid-region
+    break-inside: avoid-region;
 }

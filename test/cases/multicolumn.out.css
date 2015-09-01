@@ -1,26 +1,32 @@
 .a {
     -webkit-column-break-inside: auto;
        page-break-inside: auto;
-            break-inside: auto
+            break-inside: auto;
+    -webkit-column-break-before: auto;
+       page-break-before: auto;
+            break-before: auto;
+    -webkit-column-break-after: auto;
+       page-break-after: auto;
+            break-after: auto;
 }
 
 .b {
     -webkit-column-break-inside: avoid;
        page-break-inside: avoid;
-            break-inside: avoid
+            break-inside: avoid;
 }
 
 .c {
     -webkit-column-break-inside: avoid;
        page-break-inside: avoid;
-            break-inside: avoid-column
+            break-inside: avoid-column;
 }
 
 .d {
     page-break-inside: avoid;
-         break-inside: avoid-page
+         break-inside: avoid-page;
 }
 
 .e {
-    break-inside: avoid-region
+    break-inside: avoid-region;
 }

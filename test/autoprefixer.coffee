@@ -185,7 +185,7 @@ describe 'Autoprefixer', ->
     it 'supports all fullscreens',      -> test('fullscreen')
     it 'supports intrinsic sizing',     -> test('intrinsic')
     it 'supports custom prefixes',      -> test('custom-prefix')
-    it 'fixes break-inside property',   -> test('multicolumn')
+    it 'fixes break properties',        -> test('multicolumn')
     it 'ignores some 3D transforms',    -> test('3d-transform')
     it 'supports background-size',      -> test('background-size')
     it 'supports background-clip',      -> test('background-clip')
