@@ -8,16 +8,21 @@ class Value extends Prefixer
 
   # Clone decl for each prefixed values
   @save: (prefixes, decl) ->
+    prop = decl.prop
     for prefix, value of decl._autoprefixerValues
       continue if value == decl.value
-      propPrefix = vendor.prefix(decl.prop)
+
+      isTransition = prop == 'transition' or prop == 'transition-property'
+      propPrefix   = vendor.prefix(prop)
 
       if propPrefix == prefix
+        decl.value = value
+      else if isTransition and value.indexOf('-webkit-filter') != -1
         decl.value = value
       else if propPrefix == '-pie-'
         continue
       else
-        prefixed = prefixes.prefixed(decl.prop, prefix)
+        prefixed = prefixes.prefixed(prop, prefix)
         rule     = decl.parent
         if rule.every( (i) -> i.prop != prefixed )
           trimmed = value.replace(/\s+/, ' ')
@@ -25,12 +30,8 @@ class Value extends Prefixer
             i.prop == decl.prop and i.value.replace(/\s+/, ' ') == trimmed
 
           unless already
-            if value.indexOf('-webkit-filter') != -1 and
-               (decl.prop == 'transition' or decl.prop == 'transition-property')
-              decl.value = value
-            else
-              cloned = @clone(decl, value: value)
-              decl.parent.insertBefore(decl, cloned)
+            cloned = @clone(decl, value: value)
+            decl.parent.insertBefore(decl, cloned)
 
   # Is declaration need to be prefixed
   check: (decl) ->

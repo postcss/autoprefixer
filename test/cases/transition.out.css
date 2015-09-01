@@ -10,7 +10,7 @@ a {
 div {
     -webkit-transition-property: -webkit-filter, filter;
          -o-transition-property: filter;
-            transition-property: filter;
+            transition-property: -webkit-filter, filter;
     -webkit-animation-name: rotating;
          -o-animation-name: rotating;
             animation-name: rotating;
