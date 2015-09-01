@@ -48,7 +48,7 @@ Twitter account for news and releases: [@autoprefixer].
 <img src="https://evilmartians.com/badges/sponsored-by-evil-martians.svg" alt="Sponsored by Evil Martians" width="236" height="54">
 </a>
 
-[interactive demo]: http://simevidas.jsbin.com/gufoko/quiet
+[interactive demo]: http://autoprefixer.github.io/
 [@autoprefixer]:    https://twitter.com/autoprefixer
 [recommended]:      https://developers.google.com/web/fundamentals/tools/build/setupbuildprocess#dont-trip-up-with-vendor-prefixes
 [Can I Use]:        http://caniuse.com/
