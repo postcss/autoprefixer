@@ -3,5 +3,5 @@ a {
 }
 
 h1 {
-    background-image: image-set('foo@1x.png' 1x, 'foo@2x.png' 2x);
+    background-image: image-set('foo@1x.png' 1x, "foo@2x.png" 2x);
 }

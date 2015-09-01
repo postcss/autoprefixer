@@ -4,6 +4,6 @@ a {
 }
 
 h1 {
-    background-image: -webkit-image-set(url(foo@1x.png) 1x, url(foo@2x.png) 2x);
-    background-image: image-set('foo@1x.png' 1x, 'foo@2x.png' 2x);
+    background-image: -webkit-image-set(url('foo@1x.png') 1x, url("foo@2x.png") 2x);
+    background-image: image-set('foo@1x.png' 1x, "foo@2x.png" 2x);
 }
