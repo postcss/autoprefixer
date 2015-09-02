@@ -95,9 +95,8 @@ gradients = require('caniuse-db/features-json/css-gradients')
 feature gradients, match: /y\sx/, (browsers) ->
   prefix 'linear-gradient', 'repeating-linear-gradient',
          'radial-gradient', 'repeating-radial-gradient',
-          props:    ['background', 'background-image', 'border-image',
-                     'list-style', 'list-style-image', 'content',
-                     'mask-image', 'mask']
+          props: ['background', 'background-image', 'border-image', 'mask',
+                  'list-style', 'list-style-image', 'content', 'mask-image']
           mistakes: ['-ms-']
           browsers: browsers
 
@@ -121,9 +120,8 @@ feature require('caniuse-db/features-json/css-filters'), (browsers) ->
 # filter() function
 feature require('caniuse-db/features-json/css-filter-function'), (browsers) ->
   prefix 'filter-function',
-          props:    ['background', 'background-image', 'border-image',
-                     'list-style', 'list-style-image', 'content',
-                     'mask-image', 'mask']
+          props: ['background', 'background-image', 'border-image', 'mask',
+                  'list-style', 'list-style-image', 'content', 'mask-image']
           browsers: browsers
 
 # Backdrop-filter
@@ -134,9 +132,8 @@ feature require('caniuse-db/features-json/css-backdrop-filter'), (browsers) ->
 # element() function
 feature require('caniuse-db/features-json/css-element-function'), (browsers) ->
   prefix 'element',
-          props:    ['background', 'background-image', 'border-image',
-                     'list-style', 'list-style-image', 'content',
-                     'mask-image', 'mask']
+          props: ['background', 'background-image', 'border-image', 'mask',
+                  'list-style', 'list-style-image', 'content', 'mask-image']
           browsers: browsers
 
 # Multicolumns
@@ -388,12 +385,18 @@ feature require('caniuse-db/features-json/css-regions'), (browsers) ->
 # CSS image-set
 feature require('caniuse-db/features-json/css-image-set'), (browsers) ->
   prefix 'image-set',
-          props: ['background', 'background-image', 'border-image',
-                  'list-style', 'list-style-image', 'content',
-                  'mask-image', 'mask']
+          props: ['background', 'background-image', 'border-image', 'mask',
+                  'list-style', 'list-style-image', 'content', 'mask-image']
           browsers: browsers
 
-# CSS Writing Mode
+# Writing Mode
 feature require('caniuse-db/features-json/css-writing-mode'), (browsers) ->
   prefix 'writing-mode',
+          browsers: browsers
+
+# Cross-Fade Function
+feature require('caniuse-db/features-json/css-cross-fade.json'), (browsers) ->
+  prefix 'cross-fade',
+          props: ['background', 'background-image', 'border-image', 'mask',
+                  'list-style', 'list-style-image', 'content', 'mask-image']
           browsers: browsers

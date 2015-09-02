@@ -1,0 +1,9 @@
+a {
+    background-image: -webkit-cross-fade(url(foo.png), url(bar.png), 20%);
+    background-image: cross-fade(20% url(foo.png), url(bar.png));
+}
+
+b {
+    background-image: -webkit-cross-fade(url(foo.png), url(bar.png), 0.5);
+    background-image: cross-fade(url(foo.png), url(bar.png));
+}

@@ -1,0 +1,7 @@
+a {
+    background-image: cross-fade(20% url(foo.png), url(bar.png));
+}
+
+b {
+    background-image: cross-fade(url(foo.png), url(bar.png));
+}
