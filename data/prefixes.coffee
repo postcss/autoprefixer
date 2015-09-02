@@ -385,11 +385,15 @@ feature require('caniuse-db/features-json/css-regions'), (browsers) ->
          'region-fragment',
           browsers: browsers
 
-
 # CSS image-set
 feature require('caniuse-db/features-json/css-image-set'), (browsers) ->
   prefix 'image-set',
           props: ['background', 'background-image', 'border-image',
                   'list-style', 'list-style-image', 'content',
                   'mask-image', 'mask']
+          browsers: browsers
+
+# CSS Writing Mode
+feature require('caniuse-db/features-json/css-writing-mode'), (browsers) ->
+  prefix 'writing-mode',
           browsers: browsers

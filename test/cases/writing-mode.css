@@ -1,0 +1,9 @@
+.one {
+    writing-mode: horizontal-tb;
+}
+.two {
+    writing-mode: vertical-rl;
+}
+.three {
+    writing-mode: vertical-lr;
+}
