@@ -16,8 +16,8 @@
     "coffee-script": "1.9.3",
     "num2fraction":  "^1.1.0",
     "browserslist":  "~1.0.0",
-    "caniuse-db":    "^1.0.30000281",
-    "postcss":       "^5.0.3"
+    "caniuse-db":    "^1.0.30000288",
+    "postcss":       "^5.0.4"
   },
   "devDependencies": {
     "vinyl-source-stream": "1.1.0",
