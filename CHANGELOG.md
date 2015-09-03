@@ -1,5 +1,5 @@
 ## 5.2.1
-* Fix parent-less node issue on some cases (by Josh Gillies)
+* Fix parent-less node issue on some cases (by Josh Gillies).
 
 ## 5.2 “Dont tread on me”
 * Add `appearance` support.
@@ -13,7 +13,7 @@
 * `autoprefixer.process()` was deprecated. Use PostCSS API.
 
 ## 5.1.11
-* Update num2fraction to fix resolution media quuery (by 一丝).
+* Update `num2fraction` to fix resolution media query (by 一丝).
 
 ## 5.1.10
 * Do not generate `-webkit-image-rendering`.
