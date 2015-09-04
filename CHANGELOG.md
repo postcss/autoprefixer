@@ -1,3 +1,28 @@
+## 6.0 “Eureka”
+* Remove `autoprefixer(opt).process(css)`, use `autoprefixer.process(css, opt)`.
+* Remove `safe` option. Use separated Safe parser from PostCSS.
+* Remove Opera 12.1 from default query.
+* Use PostCSS 5.0 API.
+* Add custom syntaxes support.
+* Add `image-set` support (by 一丝).
+* Add `mask-border` support (by 一丝).
+* Add `filter()` function support (by Vincent De Oliveira).
+* Add `backdrop-filter` support (by Vincent De Oliveira).
+* Add `element()` support (by Vincent De Oliveira).
+* Add CSS Regions support.
+* Add Scroll Snap Points support.
+* Add `writing-mode` support.
+* Add `::backdrop` support.
+* Add `cross-fade()` support.
+* Add other `break-` properties support.
+* Add Microsoft Edge support (by Andrey Polischuk).
+* Add `not` keyword and exclude browsers by query.
+* Add version ranges `IE 6-9` (by Ben Briggs).
+* Fix `filter` in `transition` support on Safari.
+* Fix `url()` parsing.
+* Fix `pixelated` cleaning.
+* Always show old gradient direction warning.
+
 ## 5.2.1
 * Fix parent-less node issue on some cases (by Josh Gillies).
 
