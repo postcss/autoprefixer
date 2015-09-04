@@ -1,4 +1,6 @@
 ## 6.0 “Eureka”
+* CLI was removed from `autoprefixer` package to `autoprefixer-cli`.
+* `autoprefixer-core` and `autoprefixer` packages was merged back.
 * Remove `autoprefixer(opt).process(css)`, use `autoprefixer.process(css, opt)`.
 * Remove `safe` option. Use separated Safe parser from PostCSS.
 * Remove Opera 12.1 from default query.
