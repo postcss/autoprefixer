@@ -390,7 +390,8 @@ feature require('caniuse-db/features-json/css-image-set'), (browsers) ->
           browsers: browsers
 
 # Writing Mode
-feature require('caniuse-db/features-json/css-writing-mode'), (browsers) ->
+writingMode = require('caniuse-db/features-json/css-writing-mode')
+feature writingMode, match: /a|x/, (browsers) ->
   prefix 'writing-mode',
           browsers: browsers
 
