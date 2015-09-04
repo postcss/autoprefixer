@@ -35,10 +35,15 @@ class Processor
         result.warn('You should write display: flex by final spec ' +
                     'instead of display: box', node: decl)
         return
+      if decl.value.indexOf('linear-gradient') != -1
+        if /gradient\(\s*(top|left|right|bottom)/.test(decl.value)
+          result.warn('Gradient has outdated direction syntax. ' +
+                      'New syntax is like "to left" instead of "right".',
+                      node: decl)
 
       prefix = @prefixes.add[decl.prop]
       if prefix and prefix.prefixes
-        prefix.process(decl, result) if not @disabled(decl)
+        prefix.process(decl) if not @disabled(decl)
 
     # Values
     css.walkDecls (decl) =>

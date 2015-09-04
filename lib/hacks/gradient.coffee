@@ -172,13 +172,4 @@ class Gradient extends Value
     else
       super
 
-  process: (node, result) ->
-    added = super
-    if added and @name == 'linear-gradient'
-      if /\(\s*(top|left|right|bottom)/.test(node.value)
-        result.warn('Gradient has outdated direction syntax. ' +
-                    'New syntax is like "to left" instead of "right".',
-                    node: node)
-    added
-
 module.exports = Gradient
