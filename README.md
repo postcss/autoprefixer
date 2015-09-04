@@ -474,7 +474,7 @@ var plugin = autoprefixer({ browsers: ['> 1%', 'IE 7'], cascade: false });
 There are 4 options:
 
 * `browsers` (array): list of browsers, which are supported in your project.
-  You can directly specify browser version (like `iOS 7`) or use selections
+  You can directly specify browser version (like `IE 7`) or use selections
   (like `last 2 version` or `> 5%`). See [Browserslist docs] for available
   queries and default value.
 * `cascade` (boolean): should Autoprefixer uses Visual Cascade,
