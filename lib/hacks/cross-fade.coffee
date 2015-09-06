@@ -16,7 +16,7 @@ class CrossFade extends Value
         args  = value[@name.length + 1..close - 1]
 
         if prefix == '-webkit-'
-          match = args.match(/\d+%/)
+          match = args.match(/\d*.?\d+%?/)
           if match
             args  = args[match[0].length..-1].trim()
             args += ', ' + match[0]
