@@ -1,3 +1,6 @@
+## 6.0.1
+* Fix `cross-fade()` support (by 一丝).
+
 ## 6.0 “Eureka”
 * CLI was removed from `autoprefixer` package to `autoprefixer-cli`.
 * `autoprefixer-core` and `autoprefixer` packages was merged back.
