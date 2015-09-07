@@ -1,3 +1,6 @@
+## 6.0.2
+* Remove unnecessary `-khtml-` prefix too.
+
 ## 6.0.1
 * Fix `cross-fade()` support (by 一丝).
 
