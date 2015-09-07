@@ -65,14 +65,14 @@ feature require('caniuse-db/features-json/css-animation'), (browsers) ->
          'animation-delay', 'animation-direction', 'animation-fill-mode',
          'animation-iteration-count', 'animation-play-state',
          'animation-timing-function', '@keyframes',
-          mistakes: ['-ms-']
+          mistakes: ['-khtml-', '-ms-']
           browsers: browsers
 
 # Transition
 feature require('caniuse-db/features-json/css-transitions'), (browsers) ->
   prefix 'transition', 'transition-property', 'transition-duration',
          'transition-delay', 'transition-timing-function',
-          mistakes: ['-ms-']
+          mistakes: ['-khtml-', '-ms-']
           browsers: browsers
 
 # Transform 2D
