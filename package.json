@@ -29,7 +29,7 @@
     "browserify":          "11.0.1",
     "fs-extra":            "0.24.0",
     "should":              "7.1.0",
-    "mocha":               "2.3.0",
+    "mocha":               "2.3.1",
     "gulp":                "3.9.0"
   },
   "scripts": {
