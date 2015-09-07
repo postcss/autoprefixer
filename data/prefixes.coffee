@@ -55,6 +55,7 @@ feature require('caniuse-db/features-json/border-radius'), (browsers) ->
 # Box Shadow
 feature require('caniuse-db/features-json/css-boxshadow'), (browsers) ->
   prefix 'box-shadow',
+          mistakes:   ['-khtml-']
           transition: true
           browsers:   browsers
 
@@ -150,6 +151,7 @@ feature require('caniuse-db/features-json/multicolumn'), (browsers) ->
 # User select
 feature require('caniuse-db/features-json/user-select-none'), (browsers) ->
   prefix 'user-select',
+          mistakes: ['-khtml-']
           browsers: browsers
 
 # Flexible Box Layout
