@@ -400,7 +400,7 @@ But, if you can’t move to a build tool, you can use text editor plugins:
 Autoprefixer use [PostCSS warning API] to warn about really important problem
 in your CSS:
 
-* Old directiom syntax in gradients.
+* Old direction syntax in gradients.
 * Old unprefixed `display: box` instead of `display: flex`
   by latest specification version.
 
