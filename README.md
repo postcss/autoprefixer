@@ -475,7 +475,7 @@ There are 4 options:
 
 * `browsers` (array): list of browsers, which are supported in your project.
   You can directly specify browser version (like `IE 7`) or use selections
-  (like `last 2 version` or `> 5%`). See [Browserslist docs] for available
+  (like `last 2 version` or `> 5%`). See [Browserslist docs] for available
   queries and default value.
 * `cascade` (boolean): should Autoprefixer uses Visual Cascade,
   if CSS is uncompressed. Default: `true`
