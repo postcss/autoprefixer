@@ -1,3 +1,6 @@
+## 6.0.3
+* Fix old gradient direction warning.
+
 ## 6.0.2
 * Remove unnecessary `-khtml-` prefix too.
 
