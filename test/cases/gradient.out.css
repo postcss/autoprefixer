@@ -64,6 +64,10 @@ div {
     background: linear-gradient(top left, black, rgba(0, 0, 0, 0.5), white);
 }
 
+.silent {
+    background: -webkit-linear-gradient(top left, black, white);
+}
+
 .radial {
     background: -webkit-radial-gradient(0 50%, farthest-side, white, black);
     background: -o-radial-gradient(0 50%, farthest-side, white, black);

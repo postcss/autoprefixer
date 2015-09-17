@@ -2,6 +2,8 @@ vendor = require('postcss/lib/vendor')
 Value  = require('./value')
 utils  = require('./utils')
 
+OLD_DIRECTION = /(^|[^-])(linear|radial)-gradient\(\s*(top|left|right|bottom)/i
+
 class Processor
   constructor: (@prefixes) ->
 
@@ -36,7 +38,7 @@ class Processor
                     'instead of display: box', node: decl)
         return
       if decl.value.indexOf('linear-gradient') != -1
-        if /gradient\(\s*(top|left|right|bottom)/.test(decl.value)
+        if OLD_DIRECTION.test(decl.value)
           result.warn('Gradient has outdated direction syntax. ' +
                       'New syntax is like "to left" instead of "right".',
                       node: decl)
