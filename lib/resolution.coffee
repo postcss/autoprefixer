@@ -38,14 +38,8 @@ class Resolution extends Prefixer
     prefixes = if parent then [parent] else @prefixes
 
     # Find defined device pixel ratio's
-    min_ratio_parts = rule.params.match(/min-device-pixel-ratio\s*:\s*(\d*\.?\d+)/i)
-    max_ratio_parts = rule.params.match(/max-device-pixel-ratio\s*:\s*(\d*\.?\d+)/i)
-    min_ratio = false
-    if min_ratio_parts
-      min_ratio = min_ratio_parts[1]
-    max_ratio = false
-    if max_ratio_parts
-      max_ratio = max_ratio_parts[1]
+    min_ratio = rule.params.match(/min-device-pixel-ratio\s*:\s*(\d*\.?\d+)/i)
+    max_ratio = rule.params.match(/max-device-pixel-ratio\s*:\s*(\d*\.?\d+)/i)
 
     rule.params = utils.editList rule.params, (origin, prefixed) =>
       for query in origin
@@ -64,7 +58,7 @@ class Resolution extends Prefixer
               units = parts[4]
               # If there is a device pixel ratio defined, use that instead of calculating it
               if min_ratio || max_ratio
-                value = if parts[1] == 'min' then min_ratio else max_ratio
+                value = if parts[1] == 'min' then min_ratio[1] else max_ratio[1]
                 units = 'ratio'
               @prefixQuery(prefix, parts[1], parts[2], value, units)
             prefixed.push(processed)
