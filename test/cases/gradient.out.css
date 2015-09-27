@@ -103,3 +103,15 @@ div {
             mask: -webkit-gradient(linear, left top, left bottom, from(white), to(black));
             mask: linear-gradient(white, black);
 }
+
+.newline {
+    background-image:
+        -webkit-linear-gradient( 45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4 ),
+        -webkit-linear-gradient( 45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4 );
+    background-image:
+        -o-linear-gradient( 45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4 ),
+        -o-linear-gradient( 45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4 );
+    background-image:
+        linear-gradient( 45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4 ),
+        linear-gradient( 45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4 );
+}
