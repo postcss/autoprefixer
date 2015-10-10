@@ -1,7 +1,10 @@
 OldValue = require('../old-value')
 Value    = require('../value')
 utils    = require('../utils')
-list     = require('postcss/lib/list')
+
+
+parser = require('postcss-value-parser')
+list   = require('postcss/lib/list')
 
 isDirection = /top|left|right|bottom/gi
 
@@ -11,23 +14,16 @@ class Gradient extends Value
 
   # Change degrees for webkit prefix
   replace: (string, prefix) ->
-    list.space(string)
-      .map (value) =>
-        return value if value[0..@name.length] != @name + '('
-
-        close  = value.lastIndexOf(')')
-        after  = value[close + 1..-1]
-        args   = value[@name.length + 1..close - 1]
-        params = list.comma(args)
-        params = @newDirection(params)
-
+    ast = parser(string)
+    for node in ast.nodes
+      if node.type == 'function' and node.value == @name
+        node.nodes = @newDirection(node.nodes)
         if prefix == '-webkit- old'
-          @oldWebkit(value, args, params, after)
+          @oldWebkit(node)
         else
-          @convertDirection(params)
-          prefix + @name + '(' + params.join(', ') + ')' + after
-
-      .join(' ')
+          node.nodes = @convertDirection(node.nodes)
+          node.value = prefix + node.value
+    ast.toString()
 
   # Direction to replace
   directions:
@@ -54,101 +50,142 @@ class Gradient extends Value
 
   # Replace old direction to new
   newDirection: (params) ->
-    first = params[0]
+    return params if params[0].value == 'to'
+    return params unless isDirection.test(params[0].value)
 
-    if first.indexOf('to ') == -1 and isDirection.test(first)
-      first = first.split(' ')
-      first = for value in first
-        @directions[value.toLowerCase()] || value
-      params[0] = 'to ' + first.join(' ')
+    params.unshift({ type: 'word', value: 'to' }, { type: 'space', value: ' ' })
+    for i in [2..params.length]
+      if params[i].type == 'div'
+        break
+      if params[i].type == 'word'
+        params[i].value = @revertDirection(params[i].value)
 
     params
-
-  # Convert to old webkit syntax
-  oldWebkit: (value, args, params, after) ->
-    return value if args.indexOf('px') != -1
-    return value if @name != 'linear-gradient'
-    return value if params[0] and params[0].indexOf('deg') != -1
-    return value if args.indexOf('-corner') != -1
-    return value if args.indexOf('-side')   != -1
-
-    params = @oldDirection(params)
-    params = @colorStops(params)
-
-    '-webkit-gradient(linear, ' + params.join(', ') + ')' + after
 
   # Change new direction to old
   convertDirection: (params) ->
     if params.length > 0
-      if params[0][0..2] == 'to '
-        params[0] = @fixDirection(params[0])
-      else if params[0].indexOf('deg') != -1
-        params[0] = @fixAngle(params[0])
-      else if params[0].indexOf(' at ') != -1
+      if params[0].value == 'to'
+        @fixDirection(params)
+      else if params[0].value.indexOf('deg') != -1
+        @fixAngle(params)
+      else if params[2].value == 'at'
         @fixRadial(params)
+    params
 
   # Replace `to top left` to `bottom right`
-  fixDirection: (param) ->
-    param = param.split(' ')
-    param.splice(0, 1)
-    param = for value in param
-      @directions[value.toLowerCase()] || value
-    param.join(' ')
+  fixDirection: (params) ->
+    params.splice(0, 2)
+    for i in [0..params.length]
+      if params[i].type == 'div'
+        break
+      if params[i].type == 'word'
+        params[i].value = @revertDirection(params[i].value)
+
+  # Add 90 degrees
+  fixAngle: (params) ->
+    first = params[0].value
+    first = parseFloat(first)
+    first = Math.abs(450 - first) % 360
+    first = @roundFloat(first, 3)
+    params[0].value = "#{first}deg"
+
+  # Fix radial direction syntax
+  fixRadial: (params) ->
+    first  = params[0]
+    second = []
+
+    for i in [4..params.length]
+      if params[i].type == 'div'
+        break
+      else
+        second.push(params[i])
+
+    params.splice(0, i, second..., params[i + 2], first)
+
+  revertDirection: (word) ->
+    @directions[word.toLowerCase()] || word
 
   # Round float and save digits under dot
   roundFloat: (float, digits) ->
     parseFloat(float.toFixed(digits))
 
-  # Add 90 degrees
-  fixAngle: (param) ->
-    param = parseFloat(param)
-    param = Math.abs(450 - param) % 360
-    param = @roundFloat(param, 3)
-    "#{param}deg"
+  # Convert to old webkit syntax
+  oldWebkit: (node) ->
+    params = node.nodes
+    string = parser.stringify(node.nodes)
 
+    return if @name != 'linear-gradient'
+    return if params[0] and params[0].value.indexOf('deg') != -1
+    return if string.indexOf('px') != -1
+    return if string.indexOf('-corner') != -1
+    return if string.indexOf('-side')   != -1
+
+    params = [[]]
+    for i in node.nodes
+      params[params.length - 1].push(i)
+      if i.type == 'div' && i.value == ','
+        params.push([])
+
+    @oldDirection(params)
+    @colorStops(params)
+
+    node.nodes = []
+    for param in params
+      node.nodes = node.nodes.concat(param)
+
+    node.nodes.unshift({ type: 'word', value: 'linear' }, @cloneDiv(node.nodes))
+    node.value = '-webkit-gradient'
+
+  # Change direction syntax to old webkit
   oldDirection: (params) ->
-    params if params.length == 0
+    div = @cloneDiv(params[0])
 
-    if params[0].indexOf('to ') != -1
-      direction = params[0].replace(/^to\s+/, '')
-      direction = @oldDirections[direction]
-      params[0] = direction
-      params
+    if params[0][0].value != 'to'
+      params.unshift([{ type: 'word', value: @oldDirections.bottom }, div])
+
     else
-      direction = @oldDirections.bottom
-      [direction].concat(params)
+      words = []
+      for node in params[0].slice(2)
+        if node.type == 'word'
+          words.push(node.value.toLowerCase())
+
+      words = words.join(' ')
+      old   = @oldDirections[words] || words
+
+      params[0] = [{ type: 'word', value: old }, div]
+
+  # Get div token from exists parameters
+  cloneDiv: (params) ->
+    for i in params
+      if i.type == 'div' and i.value == ','
+        return i
+    return { type: 'div', value: ',', after: ' ' }
 
   # Change colors syntax to old webkit
   colorStops: (params) ->
-    params.map (param, i) ->
-      return param if i == 0
+    for param, i in params
+      continue if i == 0
 
-      [color, position] = list.space(param)
+      color = parser.stringify(param[0])
+      if param[1] and param[1].type == 'word'
+        pos = param[1].value
+      else if param[2] and param[2].type == 'word'
+        pos = param[2].value
 
-      unless position?
-        # Allow to parse rgba(0,0,0,0)50%
-        match = param.match(/^(.*\))(\d.*)$/)
-        if match
-          color    = match[1]
-          position = match[2]
-
-      if position and position.indexOf(')') != -1
-        color   += ' ' + position
-        position = undefined
-
-      if i == 1 and (position is undefined or position == '0%')
+      stop = if i == 1 and (not pos or pos == '0%')
         "from(#{color})"
-      else if i == params.length - 1 and (position is undefined or position == '100%')
+      else if i == params.length - 1 and (not pos or pos == '100%')
         "to(#{color})"
-      else if position
-        "color-stop(#{position}, #{color})"
+      else if pos
+        "color-stop(#{pos}, #{color})"
       else
         "color-stop(#{color})"
 
-  # Fix radial direction syntax
-  fixRadial: (params) ->
-    first = params[0].split(/\s+at\s+/)
-    params.splice(0, 1, first[1], first[0])
+      div = param[param.length - 1]
+      params[i] = [{ type: 'word', value: stop }]
+      if div.type == 'div' and div.value == ','
+        params[i].push(div)
 
   # Remove old WebKit gradient too
   old: (prefix) ->

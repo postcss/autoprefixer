@@ -106,12 +106,15 @@ div {
 
 .newline {
     background-image:
-        -webkit-linear-gradient( 45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4 ),
-        -webkit-linear-gradient( 45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4 );
+        -webkit-gradient( linear, left top, left bottom, from(white), to(black) ),
+        -webkit-gradient( linear, left top, left bottom, from(black), to(white) );
     background-image:
-        -o-linear-gradient( 45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4 ),
-        -o-linear-gradient( 45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4 );
+        -webkit-linear-gradient( white, black ),
+        -webkit-linear-gradient( black, white );
     background-image:
-        linear-gradient( 45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4 ),
-        linear-gradient( 45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4 );
+        -o-linear-gradient( white, black ),
+        -o-linear-gradient( black, white );
+    background-image:
+        linear-gradient( white, black ),
+        linear-gradient( black, white );
 }
