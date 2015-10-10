@@ -88,6 +88,7 @@ feature require('caniuse-db/features-json/transforms3d'), (browsers) ->
           browsers:   browsers
 
   prefix 'transform-style', 'backface-visibility',
+          mistakes: ['-ms-', '-o-']
           browsers: browsers
 
 # Gradients
