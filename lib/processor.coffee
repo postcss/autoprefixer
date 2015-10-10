@@ -115,10 +115,10 @@ class Processor
       status = undefined
       node.each (i) ->
         return unless i.type == 'comment'
-        if i.text == 'autoprefixer: off'
+        if /(!\s*)?autoprefixer:\s*off/i.test(i.text)
           status = false
           return false
-        else if i.text == 'autoprefixer: on'
+        else if /(!\s*)?autoprefixer:\s*on/i.test(i.text)
           status = true
           return false
 
