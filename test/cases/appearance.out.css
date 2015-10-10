@@ -5,5 +5,7 @@ a {
 }
 
 b {
-    appearance: auto;
+    -webkit-appearance: auto;
+       -moz-appearance: auto;
+            appearance: auto;
 }
