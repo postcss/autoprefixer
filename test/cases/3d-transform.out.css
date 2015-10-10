@@ -8,6 +8,11 @@ b {
      -o-transform: translateX(45deg);
         transform: translateX(45deg);
 }
+em {
+    -ms-transform: rotate(45deg);
+     -o-transform: rotateZ(45deg);
+        transform: rotateZ(45deg);
+}
 @-o-keyframes anim {
     from {
         -o-transform: rotate(90deg);

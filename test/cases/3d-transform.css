@@ -5,6 +5,9 @@ a {
 b {
     transform: translateX(45deg);
 }
+em {
+    transform: rotateZ(45deg);
+}
 @keyframes anim {
     from {
         transform: rotate(90deg);

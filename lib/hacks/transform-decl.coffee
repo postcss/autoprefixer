@@ -4,7 +4,7 @@ class TransformDecl extends Declaration
   @names = ['transform', 'transform-origin']
 
   @functions3d = ['matrix3d', 'translate3d', 'translateZ', 'scale3d', 'scaleZ',
-                  'rotate3d', 'rotateX', 'rotateY', 'rotateZ', 'perspective']
+                  'rotate3d', 'rotateX', 'rotateY', 'perspective']
 
   # Recursively check all parents for @keyframes
   keyframeParents: (decl) ->
@@ -23,6 +23,13 @@ class TransformDecl extends Declaration
         return true
 
     false
+
+  # Replace rotateZ to rotate for IE 9
+  set: (decl, prefix) ->
+    decl = super
+    if prefix == '-ms-'
+      decl.value = decl.value.replace(/rotateZ/gi, 'rotate')
+    decl
 
   # Don't add prefix for IE in keyframes
   insert: (decl, prefix, prefixes) ->
