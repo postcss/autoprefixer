@@ -62,3 +62,9 @@ div {
 .mask {
     mask: linear-gradient(white, black);
 }
+
+.newline {
+    background-image:
+        linear-gradient( 45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4 ),
+        linear-gradient( 45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4 );
+}
