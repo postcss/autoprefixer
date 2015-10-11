@@ -129,7 +129,8 @@ feature require('caniuse-db/features-json/css-filter-function'), (browsers) ->
 # Backdrop-filter
 feature require('caniuse-db/features-json/css-backdrop-filter'), (browsers) ->
   prefix 'backdrop-filter',
-          browsers: browsers
+          transition: true
+          browsers:   browsers
 
 # element() function
 feature require('caniuse-db/features-json/css-element-function'), (browsers) ->
