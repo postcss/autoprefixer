@@ -333,6 +333,21 @@ with [other PostCSS plugins].
  [autoprefixer-stylus]:    https://github.com/jenius/autoprefixer-stylus
  [autoprefixer-rails]:     https://github.com/ai/autoprefixer-rails#compass
 
+### CSS-in-JS
+
+There is [postcss-js] to use Autoprefixer in React Inline Styles, [Free Style],
+Radium and other CSS-in-JS solutions.
+
+```js
+let prefixer = postcssJs.sync([ autoprefixer ]);
+let style = prefixer({
+    display: 'flex'
+});
+```
+
+[postcss-js]: https://github.com/postcss/postcss-js
+[Free Style]: https://github.com/blakeembrey/free-style
+
 ### GUI Tools
 
 * [CodeKit](https://incident57.com/codekit/help.html#autoprefixer)
