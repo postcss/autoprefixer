@@ -156,9 +156,9 @@ var cleaner  = postcss([ autoprefixer({ add: false, browsers: [] }) ]);
 var prefixer = postcss([ autoprefixer ]);
 
 cleaner.process(css).then(function (cleaned) {
-    prefixer.process(cleaned.css).then(function (result) {
-        console.log(result.css);
-    });
+    return prefixer.process(cleaned.css)
+}).then(function (result) {
+    console.log(result.css);
 });
 ```
 
