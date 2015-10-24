@@ -169,6 +169,14 @@ describe 'Autoprefixer', ->
     output = read('config/test.out')
     postcss([autoprefixer]).process(input, from: path).css.should.eql(output)
 
+  it 'works without source in nodes', ->
+    root = postcss.root()
+    root.append(selector: 'a')
+    root.first.append(prop: 'display', value: 'flex')
+    compiler(root)
+    root.toString().should.eql(
+      'a {\n    display: -webkit-flex;\n    display: flex\n}')
+
   describe 'info()', ->
 
     it 'returns inspect string', ->
