@@ -405,3 +405,10 @@ feature require('caniuse-db/features-json/css-cross-fade.json'), (browsers) ->
           props: ['background', 'background-image', 'border-image', 'mask',
                   'list-style', 'list-style-image', 'content', 'mask-image']
           browsers: browsers
+
+# Read Only selector
+readOnly = require('caniuse-db/features-json/css-read-only-write.json')
+feature readOnly, (browsers) ->
+  prefix ':read-only', ':read-write',
+          selector: true,
+          browsers: browsers
