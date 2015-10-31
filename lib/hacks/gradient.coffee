@@ -2,7 +2,6 @@ OldValue = require('../old-value')
 Value    = require('../value')
 utils    = require('../utils')
 
-
 parser = require('postcss-value-parser')
 list   = require('postcss/lib/list')
 
