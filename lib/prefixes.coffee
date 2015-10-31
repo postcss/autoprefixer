@@ -45,7 +45,6 @@ Value.hack require('./hacks/cross-fade')
 Value.hack require('./hacks/flex-values')
 Value.hack require('./hacks/display-flex')
 Value.hack require('./hacks/fill-available')
-Value.hack require('./hacks/transform-value')
 
 declsCache = { }
 
