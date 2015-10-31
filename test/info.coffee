@@ -41,9 +41,8 @@ describe 'info', ->
                               "  d: moz\n" +
                               "\n" +
                               "Properties:\n" +
-                              "  a*: webkit, moz\n" +
+                              "  a: webkit, moz\n" +
                               "  transition: moz\n" +
-                              "  * - can be used in transition\n" +
                               "\n" +
                               "Values:\n" +
                               "  b: moz, ms\n" +

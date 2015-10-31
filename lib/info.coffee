@@ -11,8 +11,8 @@ names =
   and_ff:  'Firefox for Android'
   and_uc:  'UC for Android'
 
-prefix = (name, transition, prefixes) ->
-    out  = '  ' + name + (if transition then '*' else '') + ': '
+prefix = (name, prefixes) ->
+    out  = '  ' + name + ': '
     out += prefixes.map( (i) -> i.replace(/^-(.*)-$/g, '$1') ).join(', ')
     out += "\n"
     out
@@ -38,34 +38,26 @@ module.exports = (prefixes) ->
   atrules = ''
   for name, data of prefixes.add
     if name[0] == '@' and data.prefixes
-      atrules += prefix(name, false, data.prefixes)
+      atrules += prefix(name, data.prefixes)
   out += "\nAt-Rules:\n" + atrules if atrules != ''
 
   selectors = ''
   for selector in prefixes.add.selectors
     if selector.prefixes
-      selectors += prefix(selector.name, false, selector.prefixes)
+      selectors += prefix(selector.name, selector.prefixes)
   out += "\nSelectors:\n" + selectors if selectors != ''
 
   values = ''
   props  = ''
-  useTransition  = false
-  needTransition = prefixes.add.transition?.prefixes
   for name, data of prefixes.add
     if name[0] != '@' and data.prefixes
-      transitionProp = needTransition and prefixes.data[name].transition
-      useTransition  = true if transitionProp
-      props += prefix(name, transitionProp, data.prefixes)
+      props += prefix(name, data.prefixes)
 
     continue unless data.values
-    continue if prefixes.transition.props.some (i) -> i == name
     for value in data.values
-      string = prefix(value.name, false, value.prefixes)
+      string = prefix(value.name, value.prefixes)
       if values.indexOf(string) == -1
         values += string
-
-  if useTransition
-    props += "  * - can be used in transition\n"
 
   out += "\nProperties:\n" + props  if props  != ''
   out += "\nValues:\n"     + values if values != ''
