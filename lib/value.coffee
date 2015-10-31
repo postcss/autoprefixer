@@ -12,12 +12,8 @@ class Value extends Prefixer
     for prefix, value of decl._autoprefixerValues
       continue if value == decl.value
 
-      isTransition = prop == 'transition' or prop == 'transition-property'
-      propPrefix   = vendor.prefix(prop)
-
+      propPrefix = vendor.prefix(prop)
       if propPrefix == prefix
-        decl.value = value
-      else if isTransition and value.indexOf('-webkit-filter') != -1
         decl.value = value
       else if propPrefix == '-pie-'
         continue
