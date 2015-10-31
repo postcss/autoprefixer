@@ -1,5 +1,6 @@
 Declaration = require('./declaration')
 Resolution  = require('./resolution')
+Transition  = require('./transition')
 Processor   = require('./processor')
 Supports    = require('./supports')
 Browsers    = require('./browsers')
@@ -51,9 +52,8 @@ declsCache = { }
 class Prefixes
   constructor: (@data, @browsers, @options = { }) ->
     [@add, @remove] = @preprocess(@select(@data))
+    @transition     = new Transition(@)
     @processor      = new Processor(@)
-
-  transitionProps: ['transition', 'transition-property']
 
   # Return clone instance to remove all prefixes
   cleaner: ->
@@ -127,18 +127,14 @@ class Prefixes
         add.selectors.push(Selector.load(name, prefixes, @))
 
       else
-        props = if @data[name].transition
-          @transitionProps
-        else
-          @data[name].props
+        props = @data[name].props
 
         if props
           value = Value.load(name, prefixes, @)
           for prop in props
             add[prop] = { values: [] } unless add[prop]
             add[prop].values.push(value)
-
-        unless @data[name].props
+        else
           values = add[name]?.values || []
           add[name] = Declaration.load(name, prefixes, @)
           add[name].values = values
@@ -159,11 +155,7 @@ class Prefixes
         remove[name] = new Resolution(name, prefixes, @)
 
       else
-        props = if @data[name].transition
-          @transitionProps
-        else
-          @data[name].props
-
+        props = @data[name].props
         if props
           value = Value.load(name, [], @)
           for prefix in prefixes
@@ -173,8 +165,7 @@ class Prefixes
                 remove[prop] = { }       unless remove[prop]
                 remove[prop].values = [] unless remove[prop].values
                 remove[prop].values.push(old)
-
-        unless @data[name].props
+        else
           for prefix in prefixes
             prop = vendor.unprefixed(name)
             olds = @decl(name).old(name, prefix)

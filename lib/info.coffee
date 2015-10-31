@@ -58,7 +58,7 @@ module.exports = (prefixes) ->
       props += prefix(name, transitionProp, data.prefixes)
 
     continue unless data.values
-    continue if prefixes.transitionProps.some (i) -> i == name
+    continue if prefixes.transition.props.some (i) -> i == name
     for value in data.values
       string = prefix(value.name, false, value.prefixes)
       if values.indexOf(string) == -1
