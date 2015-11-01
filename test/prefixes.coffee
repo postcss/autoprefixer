@@ -12,7 +12,6 @@ data =
   prefixes:
     a:
       browsers: ['firefox 21', 'firefox 20 old', 'chrome 30', 'ie 6']
-      transition: true
     b:
       browsers: ['ie 7 new', 'firefox 20']
       mistakes: ['-webkit-']
@@ -55,10 +54,6 @@ describe 'Prefixes', ->
     it 'preprocesses prefixes add data', ->
       fill.add.should.eql
         'selectors': [cSel]
-        'transition':
-          values: [aVal]
-        'transition-property':
-          values: [aVal]
         'a': aProp
         '*':
           values: [bVal]
@@ -67,10 +62,6 @@ describe 'Prefixes', ->
     it 'preprocesses prefixes remove data', ->
       JSON.stringify(fill.remove).should.eql JSON.stringify({
         'selectors': [cSel.old('-moz-')]
-        'transition':
-          values: [old('-webkit-a'), old('-ms-a'), old('-moz- olda')]
-        'transition-property':
-          values: [old('-webkit-a'), old('-ms-a'), old('-moz- olda')]
         '-webkit-a':
           remove: true
         '-ms-a':

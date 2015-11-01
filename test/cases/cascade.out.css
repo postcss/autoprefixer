@@ -6,8 +6,8 @@ a {
        -moz-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
-    -webkit-transition: all 1s;
-            transition: all 1s
+    -webkit-mask: none;
+            mask: none
 }
 
-b { -webkit-transition: all 1s; transition: all 1s }
+b { -webkit-mask: none; mask: none }

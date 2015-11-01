@@ -18,6 +18,7 @@ intrinsicer  = autoprefixer(browsers: ['Chrome 25', 'Firefox 22'])
 imagerender  = autoprefixer(browsers: ['iOS 8', 'iOS 6.1', 'FF 22', 'IE 11'])
 backgrounder = autoprefixer(browsers: ['Firefox 3.6', 'Android 2.3'])
 resolutioner = autoprefixer(browsers: ['Safari 7', 'Opera 12'])
+transitioner = autoprefixer(browsers: ['Chrome 25', 'Firefox 15'])
 
 cascader = autoprefixer
   browsers: ['Chrome > 19', 'Firefox 21', 'IE 10'],
@@ -131,14 +132,9 @@ describe 'Autoprefixer', ->
 
   it 'does not add prefixes on request', ->
     for type in ['transition', 'values', 'fullscreen']
-      remover = autoprefixer(browsers: ['Opera 12'], add: false)
-      opera   = autoprefixer(browsers: ['Opera 12'])
-
+      remover    = autoprefixer(browsers: ['Opera 12'], add: false)
       unprefixed = read(type)
-      prefixed   = read(type + '.out')
-
-      output = postcss([opera]).process(unprefixed).css
-      postcss([remover]).process(prefixed).css.should.eql(output)
+      postcss([remover]).process(unprefixed).css.should.eql(unprefixed)
 
   it 'prevents doubling prefixes', ->
     for type in commons

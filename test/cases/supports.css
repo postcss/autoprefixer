@@ -1,6 +1,6 @@
 @supports
   (cursor: grab) or
-  not (transition: transform) and
+  not (mask: none) and
   (color: black) {
     a {
         color: black;

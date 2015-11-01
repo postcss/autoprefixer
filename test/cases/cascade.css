@@ -1,6 +1,6 @@
 a {
     flex-direction: row;
-    transition: all 1s
+    mask: none
 }
 
-b { transition: all 1s }
+b { mask: none }

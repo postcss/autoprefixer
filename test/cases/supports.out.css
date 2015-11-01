@@ -1,6 +1,6 @@
 @supports
   ((cursor: -webkit-grab) or (cursor: grab)) or
-  not ((-webkit-transition: -webkit-transform) or (-o-transition: -o-transform) or (transition: transform)) and
+  not ((-webkit-mask: none) or (mask: none)) and
   (color: black) {
     a {
         color: black;

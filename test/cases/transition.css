@@ -1,5 +1,5 @@
 a {
-    transition: transform 200ms, color 200ms;
+    transition: color 200ms, transform 200ms;
     transform: rotate(10deg);
 }
 

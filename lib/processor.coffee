@@ -31,8 +31,9 @@ class Processor
       for selector in @prefixes.add.selectors
         selector.process(rule, result)
 
-    # Properties
     css.walkDecls (decl) =>
+      return if @disabled(decl)
+
       if decl.prop == 'display' and decl.value == 'box'
         result.warn('You should write display: flex by final spec ' +
                     'instead of display: box', node: decl)
@@ -43,9 +44,14 @@ class Processor
                       'New syntax is like "to left" instead of "right".',
                       node: decl)
 
-      prefix = @prefixes.add[decl.prop]
-      if prefix and prefix.prefixes
-        prefix.process(decl) if not @disabled(decl)
+      if decl.prop == 'transition' or decl.prop == 'transition-property'
+        # Transition
+        @prefixes.transition.add(decl)
+      else
+        # Properties
+        prefixer = @prefixes.add[decl.prop]
+        if prefixer and prefixer.prefixes
+          prefixer.process(decl)
 
     # Values
     css.walkDecls (decl) =>
@@ -78,6 +84,10 @@ class Processor
 
       rule       = decl.parent
       unprefixed = @prefixes.unprefixed(decl.prop)
+
+      # Transition
+      if decl.prop == 'transition' or decl.prop == 'transition-properties'
+        @prefixes.transition.remove(decl)
 
       # Properties
       if @prefixes.remove[decl.prop]?.remove

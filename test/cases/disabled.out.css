@@ -1,29 +1,28 @@
 a {
     border-radius: 4px;
-    -webkit-transition: -webkit-transform 1s;
-         -o-transition: -o-transform 1s;
-            transition: transform 1s;
+    -webkit-mask: none;
+            mask: none;
 }
 
 b {
     /* autoprefixer: off */
     -webkit-border-radius: 4px;
             border-radius: 4px;
-    transition: transform 1s;
+    mask: none;
 }
 
 .loud {
     /*! autoprefixer: off */
     -webkit-border-radius: 4px;
             border-radius: 4px;
-    transition: transform 1s;
+    mask: none;
 }
 
 .case {
     /*autoprefixer:OFF*/
     -webkit-border-radius: 4px;
             border-radius: 4px;
-    transition: transform 1s;
+    mask: none;
 }
 
 @support (transition: 1s) {
@@ -31,21 +30,20 @@ b {
     :fullscreen {
         -webkit-border-radius: 4px;
                 border-radius: 4px;
-        transition: transform 1s;
+        mask: none;
     }
 
     ::-webkit-input-placeholder {
         /*autoprefixer: on*/
         border-radius: 4px;
-        -webkit-transition: -webkit-transform 1s;
-                transition: transform 1s;
+        -webkit-mask: none;
+                mask: none;
     }
 
     ::placeholder {
         /*autoprefixer: on*/
         border-radius: 4px;
-        -webkit-transition: -webkit-transform 1s;
-             -o-transition: -o-transform 1s;
-                transition: transform 1s;
+        -webkit-mask: none;
+                mask: none;
     }
 }

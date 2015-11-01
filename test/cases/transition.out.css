@@ -1,16 +1,20 @@
 a {
-    -webkit-transition: -webkit-transform 200ms, color 200ms;
-         -o-transition: -o-transform 200ms, color 200ms;
-            transition: transform 200ms, color 200ms;
+    -webkit-transition: color 200ms, -webkit-transform 200ms;
+    transition: color 200ms, -webkit-transform 200ms;
+    -o-transition: color 200ms, transform 200ms, -o-transform 200ms;
+    transition: color 200ms, transform 200ms;
+    transition: color 200ms, transform 200ms, -webkit-transform 200ms, -o-transform 200ms;
     -webkit-transform: rotate(10deg);
          -o-transform: rotate(10deg);
             transform: rotate(10deg);
 }
 
 div {
-    -webkit-transition-property: -webkit-filter, filter;
-         -o-transition-property: filter;
-            transition-property: -webkit-filter, filter;
+    -webkit-transition-property: -webkit-filter;
+    transition-property: -webkit-filter;
+    -o-transition-property: filter;
+    transition-property: filter;
+    transition-property: filter, -webkit-filter;
     -webkit-animation-name: rotating;
          -o-animation-name: rotating;
             animation-name: rotating;

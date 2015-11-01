@@ -10,7 +10,9 @@ data =
   prefixes:
     a:
       browsers: ['firefox 2']
-      transition: true
+    b:
+      browsers: ['firefox 2']
+      props: 'c'
 
 describe 'Supports', ->
   before ->
@@ -35,11 +37,11 @@ describe 'Supports', ->
       decls[1].toString().should.eql('a: one')
 
     it 'returns decls with prefixed value', ->
-      decls = @supports.prefixed('transition', 'a')
+      decls = @supports.prefixed('c', 'b')
 
       decls.length.should.eql(2)
-      decls[0].toString().should.eql('transition: -moz-a')
-      decls[1].toString().should.eql('transition: a')
+      decls[0].toString().should.eql('c: -moz-b')
+      decls[1].toString().should.eql('c: b')
 
   describe 'clean()', ->
 
@@ -47,8 +49,8 @@ describe 'Supports', ->
       @supports.clean('(-moz-a: 1) or (a: 1)').should.eql('(a: 1)')
 
     it 'remove prefixed values', ->
-      @supports.clean('(transition: -moz-a) or (transition: -a-)').
-        should.eql('(transition: -a-)')
+      @supports.clean('(c: -moz-b) or (c: -b-)').
+        should.eql('(c: -b-)')
 
     it 'normalize brackets', ->
       @supports.clean('((-moz-a: 1) or (a: 1))').should.eql('(a: 1)')
@@ -73,6 +75,6 @@ describe 'Supports', ->
       rule.params.should.eql('(color black) and not ((-moz-a: 1) or (a: 1))')
 
     it 'replaces params with prefixed property', ->
-      rule = { params: '(transition: a)' }
+      rule = { params: '(c: b)' }
       @supports.process(rule)
-      rule.params.should.eql('((transition: -moz-a) or (transition: a))')
+      rule.params.should.eql('((c: -moz-b) or (c: b))')
