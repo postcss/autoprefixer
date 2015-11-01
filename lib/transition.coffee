@@ -41,17 +41,39 @@ class Transition
         prefixValue = @stringify(@cleanOtherPrefixes(params, prefix))
         @cloneBefore(decl, prefix + decl.prop, prefixValue)
 
-    if value != decl.value
-      decl.cloneBefore()
-      decl.value = value
+    if value != decl.value and not @already(decl, decl.prop, value)
+        decl.cloneBefore()
+        decl.value = value
+
+  # Does we aready have this declaration
+  already: (decl, prop, value) ->
+    decl.parent.some (i) -> i.prop == prop and i.value == value
 
   # Add declaration if it is not exist
   cloneBefore: (decl, prop, value) ->
-    already = decl.parent.some (i) -> i.prop == prop and i.value == value
-    decl.cloneBefore(prop: prop, value: value) unless already
+    unless @already(decl, prop, value)
+      decl.cloneBefore(prop: prop, value: value)
 
   # Process transition and remove all unnecessary properties
   remove: (decl) ->
+    params = @parse(decl.value)
+    params = params.filter (param) => !@prefixes.remove[param[0].value]?.remove
+    value  = @stringify(params)
+
+    return if decl.value == value
+
+    if params.length == 0
+      decl.remove();
+      return
+
+    double  = decl.parent.some (i) -> i.prop == decl.prop and i.value == value
+    smaller = decl.parent.some (i) ->
+      i != decl and i.prop == decl.prop and i.value.length > value.length
+
+    if double or smaller
+      decl.remove()
+    else
+      decl.value = value
 
   # Parse properties list to array
   parse: (value) ->
@@ -68,6 +90,7 @@ class Transition
 
   # Return properties string from array
   stringify: (params) ->
+    return '' if params.length == 0
     nodes = []
     for param in params
       if param[param.length - 1].type != 'div'

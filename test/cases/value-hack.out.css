@@ -11,5 +11,4 @@
 .hack {
     width: -webkit-calc(30% + 1px);
     display: -webkit-box;
-    transition: -webkit-filter 1s;
 }

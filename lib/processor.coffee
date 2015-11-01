@@ -86,7 +86,7 @@ class Processor
       unprefixed = @prefixes.unprefixed(decl.prop)
 
       # Transition
-      if decl.prop == 'transition' or decl.prop == 'transition-properties'
+      if decl.prop == 'transition' or decl.prop == 'transition-property'
         @prefixes.transition.remove(decl)
 
       # Properties
