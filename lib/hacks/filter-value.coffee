@@ -17,7 +17,7 @@ class FilterValue extends Value
     super
     @name = 'filter' if name == 'filter-function'
 
-  # Use prefixed and unprefixed filter for WebKit transition
+  # Use prefixed and unprefixed filter for WebKit
   replace: (value, prefix) ->
     if prefix == '-webkit-'  && value.indexOf('filter(') == -1
       if value.indexOf('-webkit-filter') == -1
@@ -27,7 +27,7 @@ class FilterValue extends Value
     else
       super
 
-  # Clean -webkit-filter from transitioins
+  # Clean -webkit-filter
   old: (prefix) ->
     new OldFilterValue(@name, prefix + @name)
 
