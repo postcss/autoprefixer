@@ -21,7 +21,7 @@ class Transition
       prop   = param[0].value
       continue if prop[0] == '-'
       prefixer = @prefixes.add[prop]
-      continue unless prefixer
+      continue if not prefixer?.prefixes
 
       for prefix in prefixer.prefixes
         prefixed = @prefixes.prefixed(prop, prefix)
