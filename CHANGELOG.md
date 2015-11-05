@@ -1,3 +1,13 @@
+## 6.1 “Bil-shaʿb wa lil-shaʿb”
+* Change `transition` support to output more robust CSS.
+* Add `:read-only` support.
+* Add support for `appearance` with any values.
+* Add CSS-in-JS support via `postcss-js`.
+* Add loud `/*! autoprefixer: off */` control comments support.
+* Convert `rotateZ` to `rotate` for `-ms-transform`.
+* Use `postcss-value-parser` to carefully work with gradients.
+* Remove `-ms-transform-style` and `-o-transform-style` that never existed.
+
 ## 6.0.3
 * Fix old gradient direction warning.
 
