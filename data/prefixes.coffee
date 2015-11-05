@@ -48,16 +48,14 @@ module.exports = result
 feature require('caniuse-db/features-json/border-radius'), (browsers) ->
   prefix 'border-radius', 'border-top-left-radius', 'border-top-right-radius',
          'border-bottom-right-radius', 'border-bottom-left-radius',
-          mistakes:   ['-khtml-', '-ms-', '-o-']
-          transition: true
-          browsers:   browsers
+          mistakes: ['-khtml-', '-ms-', '-o-']
+          browsers: browsers
 
 # Box Shadow
 feature require('caniuse-db/features-json/css-boxshadow'), (browsers) ->
   prefix 'box-shadow',
-          mistakes:   ['-khtml-']
-          transition: true
-          browsers:   browsers
+          mistakes: ['-khtml-']
+          browsers: browsers
 
 # Animation
 feature require('caniuse-db/features-json/css-animation'), (browsers) ->
@@ -78,14 +76,12 @@ feature require('caniuse-db/features-json/css-transitions'), (browsers) ->
 # Transform 2D
 feature require('caniuse-db/features-json/transforms2d'), (browsers) ->
   prefix 'transform', 'transform-origin',
-          transition: true
-          browsers:   browsers
+          browsers: browsers
 
 # Transform 3D
 feature require('caniuse-db/features-json/transforms3d'), (browsers) ->
   prefix 'perspective', 'perspective-origin',
-          transition: true
-          browsers:   browsers
+          browsers: browsers
 
   prefix 'transform-style', 'backface-visibility',
           mistakes: ['-ms-', '-o-']
@@ -116,8 +112,7 @@ feature require('caniuse-db/features-json/css3-boxsizing'), (browsers) ->
 # Filter Effects
 feature require('caniuse-db/features-json/css-filters'), (browsers) ->
   prefix 'filter',
-          transition: true
-          browsers:   browsers
+          browsers: browsers
 
 # filter() function
 feature require('caniuse-db/features-json/css-filter-function'), (browsers) ->
@@ -129,8 +124,7 @@ feature require('caniuse-db/features-json/css-filter-function'), (browsers) ->
 # Backdrop-filter
 feature require('caniuse-db/features-json/css-backdrop-filter'), (browsers) ->
   prefix 'backdrop-filter',
-          transition: true
-          browsers:   browsers
+          browsers: browsers
 
 # element() function
 feature require('caniuse-db/features-json/css-element-function'), (browsers) ->
@@ -143,12 +137,11 @@ feature require('caniuse-db/features-json/css-element-function'), (browsers) ->
 feature require('caniuse-db/features-json/multicolumn'), (browsers) ->
   prefix 'columns', 'column-width', 'column-gap',
          'column-rule', 'column-rule-color', 'column-rule-width',
-          transition: true
-          browsers:   browsers
+          browsers: browsers
 
   prefix 'column-count', 'column-rule-style', 'column-span', 'column-fill',
          'break-before', 'break-after', 'break-inside',
-          browsers:   browsers
+          browsers: browsers
 
 # User select
 feature require('caniuse-db/features-json/user-select-none'), (browsers) ->
@@ -165,7 +158,6 @@ feature flexbox, match: /a\sx/, (browsers) ->
           props:  ['display']
           browsers: browsers
   prefix 'flex', 'flex-grow', 'flex-shrink', 'flex-basis',
-          transition: true
           browsers:   browsers
   prefix 'flex-direction', 'flex-wrap', 'flex-flow', 'justify-content',
          'order', 'align-items', 'align-self', 'align-content',
@@ -290,8 +282,7 @@ feature require('caniuse-db/features-json/css-masks'), (browsers) ->
   prefix 'clip-path', 'mask', 'mask-position', 'mask-size',
          'mask-border', 'mask-border-outset', 'mask-border-width',
          'mask-border-slice',
-          transition: true
-          browsers:   browsers
+          browsers: browsers
 
 # Fragmented Borders and Backgrounds
 feature require('caniuse-db/features-json/css-boxdecorationbreak'), (brwsrs) ->
@@ -357,15 +348,13 @@ feature logicalProps, (browsers) ->
   prefix 'border-inline-start',  'border-inline-end',
          'margin-inline-start',  'margin-inline-end',
          'padding-inline-start', 'padding-inline-end',
-          transition: true
-          browsers:   browsers
+          browsers: browsers
 
 feature logicalProps, match: /x\s#2/, (browsers) ->
   prefix 'border-block-start',  'border-block-end',
          'margin-block-start',  'margin-block-end',
          'padding-block-start', 'padding-block-end',
-          transition: true
-          browsers:   browsers
+          browsers: browsers
 
 # CSS appearance
 feature require('caniuse-db/features-json/css-appearance'), (browsers) ->
