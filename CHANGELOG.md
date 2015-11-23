@@ -1,3 +1,6 @@
+## 6.1.1
+* Fix `cursor: grab` and `cusror: grabbing` support.
+
 ## 6.1 “Bil-shaʿb wa lil-shaʿb”
 * Change `transition` support to output more robust CSS.
 * Add `:read-only` support.
