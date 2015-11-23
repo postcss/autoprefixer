@@ -51,7 +51,7 @@ describe 'Browsers', ->
       browsers.prefix('opera 12').should.eql('-o-')
       browsers.prefix('opera 15').should.eql('-webkit-')
       browsers.prefix('op_mob 12').should.eql('-o-')
-      browsers.prefix('op_mob 30').should.eql('-webkit-')
+      browsers.prefix('op_mob 33').should.eql('-webkit-')
 
   describe 'isSelected()', ->
 
