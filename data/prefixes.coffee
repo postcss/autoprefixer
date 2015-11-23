@@ -240,15 +240,17 @@ feature require('caniuse-db/features-json/intrinsic-width'), (browsers) ->
                    'height', 'min-height', 'max-height']
           browsers: browsers
 
-# Zoom and grab cursor
+# Zoom cursors
 feature require('caniuse-db/features-json/css3-cursors-newer'), (browsers) ->
   prefix 'zoom-in', 'zoom-out',
           props:  ['cursor']
-          browsers: browsers.concat ['chrome 3']
+          browsers: browsers
 
+# Grab cursors
+feature require('caniuse-db/features-json/css3-cursors-grab'), (browsers) ->
   prefix 'grab', 'grabbing',
           props:  ['cursor']
-          browsers: browsers.concat ['firefox 24', 'firefox 25', 'firefox 26']
+          browsers: browsers
 
 # Sticky position
 feature require('caniuse-db/features-json/css-sticky'), (browsers) ->
