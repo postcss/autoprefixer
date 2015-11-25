@@ -140,7 +140,7 @@ and default value.
 
 By default, Autoprefixer also removes outdated prefixes.
 
-You can disable this behavior with with `remove: false` option. If you have
+You can disable this behavior with the `remove: false` option. If you have
 no legacy code, this option will make Autoprefixer about 10% faster.
 
 Also, you can set the `add: false` option. Autoprefixer will only clean outdated
