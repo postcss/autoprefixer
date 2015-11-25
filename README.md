@@ -18,7 +18,7 @@ entirely):
 ```
 
 Autoprefixer will use the data based on current browser popularity and property
-support to apply prefixes for you. You try in the [interactive demo]
+support to apply prefixes for you. You can try the [interactive demo]
 of Autoprefixer.
 
 ```css
@@ -140,11 +140,11 @@ and default value.
 
 By default, Autoprefixer also removes outdated prefixes.
 
-You can disable this behavior by the `remove: false` option. If you have
+You can disable this behavior with `remove: false` option. If you have
 no legacy code, this option will make Autoprefixer about 10% faster.
 
 Also, you can set the `add: false` option. Autoprefixer will only clean outdated
-prefixes, but not any new prefixes.
+prefixes, but will not add any new prefixes.
 
 Autoprefixer adds new prefixes between any unprefixed properties and already
 written prefixes in your CSS. If it will break the expected prefixes order,
@@ -368,7 +368,7 @@ See `postcss -h` for help.
 
 ### JavaScript
 
-You can use Autoprefixer with [PostCSS] in your node.js application
+You can use Autoprefixer with [PostCSS] in your Node.js application
 or if you want to develop an Autoprefixer plugin for new environment.
 
 ```js
@@ -412,7 +412,7 @@ But, if you can’t move to a build tool, you can use text editor plugins:
 
 ## Warnings
 
-Autoprefixer use [PostCSS warning API] to warn about really important problem
+Autoprefixer use [PostCSS warning API] to warn about really important problems
 in your CSS:
 
 * Old direction syntax in gradients.
@@ -492,16 +492,16 @@ There are 4 options:
   You can directly specify browser version (like `IE 7`) or use selections
   (like `last 2 version` or `> 5%`). See [Browserslist docs] for available
   queries and default value.
-* `cascade` (boolean): should Autoprefixer uses Visual Cascade,
+* `cascade` (boolean): should Autoprefixer use Visual Cascade,
   if CSS is uncompressed. Default: `true`
 * `add` (boolean): should Autoprefixer add prefixes. Default is `true`.
 * `remove` (boolean): should Autoprefixer [remove outdated] prefixes.
   Default is `true`.
 
-Plugin object has `info()` method for debug purpose.
+Plugin object has `info()` method for debugging purpose.
 
 You can use PostCSS processor to process several CSS files
-to increase perfomance.
+to increase performance.
 
 [PostCSS API]: https://github.com/postcss/postcss/blob/master/docs/api.md
 
