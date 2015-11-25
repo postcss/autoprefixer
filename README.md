@@ -140,7 +140,7 @@ and default value.
 
 By default, Autoprefixer also removes outdated prefixes.
 
-You can disable this behavior with `remove: false` option. If you have
+You can disable this behavior with with `remove: false` option. If you have
 no legacy code, this option will make Autoprefixer about 10% faster.
 
 Also, you can set the `add: false` option. Autoprefixer will only clean outdated
@@ -412,7 +412,7 @@ But, if you can’t move to a build tool, you can use text editor plugins:
 
 ## Warnings
 
-Autoprefixer use [PostCSS warning API] to warn about really important problems
+Autoprefixer uses the [PostCSS warning API] to warn about really important problems
 in your CSS:
 
 * Old direction syntax in gradients.
