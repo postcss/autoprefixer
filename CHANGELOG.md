@@ -1,3 +1,6 @@
+## 6.1.2
+* Fix gradient hack on some parameters (by Alexey Efremov).
+
 ## 6.1.1
 * Fix `cursor: grab` and `cursor: grabbing` support.
 
