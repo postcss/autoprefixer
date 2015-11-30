@@ -175,14 +175,12 @@ Depending on what you consider to be a “polyfill”, you can take a look at so
 other tools and libraries. If you are just looking for syntax sugar,
 you might take a look at:
 
-- [CSS Grace], a PostCSS plugin that handles some IE hacks (opacity, rgba,
-  inline-block, etc) in addition to some non-standard handy shortcuts.
+- [Oldie], a PostCSS plugin that handles some IE hacks (opacity, rgba, etc).
 - [cssnext], a tool that allows you to write standard CSS syntax non-implemented
   yet in browsers (custom properties, custom media, color functions, etc).
-  It includes autoprefixer and can be used as a PostCSS plugin too.
 
-[CSS Grace]: https://github.com/cssdream/cssgrace
-[cssnext]:   https://cssnext.github.io/
+[cssnext]: https://github.com/cssnext/postcss-cssnext
+[Oldie]:   https://github.com/jonathantneal/oldie
 
 #### Why doesn’t Autoprefixer add prefixes to `border-radius`?
 
