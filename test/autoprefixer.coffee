@@ -78,7 +78,7 @@ commons = ['transition', 'values', 'keyframes', 'gradient', 'flex-rewrite',
            'custom-prefix', 'cascade', 'double', 'multicolumn', '3d-transform',
            'background-size', 'supports', 'viewport', 'resolution', 'logical',
            'appearance', 'advanced-filter', 'element', 'image-set',
-           'image-rendering', 'mask-border', 'writing-mode', 'cross-fade']
+           'image-rendering', 'mask-border', 'writing-mode', 'cross-fade', 'gradient-fix']
 
 describe 'autoprefixer()', ->
 
@@ -117,6 +117,7 @@ describe 'Autoprefixer', ->
 
   it 'removes unnecessary prefixes', ->
     for type in commons
+      continue if type == 'gradient-fix'
       continue if type == 'cascade'
       continue if type == 'mistakes'
       continue if type == 'flex-rewrite'

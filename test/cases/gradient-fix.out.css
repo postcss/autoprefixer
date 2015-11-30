@@ -1,0 +1,6 @@
+.test {
+  background-image: -webkit-linear-gradient(yellow 50%, red 50%);
+  background-image: -webkit-linear-gradient(red 50%);
+  background-image: -o-linear-gradient(red 50%);
+  background-image: linear-gradient(to   , red 50%);
+}

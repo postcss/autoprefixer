@@ -51,9 +51,8 @@ class Gradient extends Value
   newDirection: (params) ->
     return params if params[0].value == 'to'
     return params unless isDirection.test(params[0].value)
-
     params.unshift({ type: 'word', value: 'to' }, { type: 'space', value: ' ' })
-    for i in [2..params.length]
+    for i in [2...params.length]
       if params[i].type == 'div'
         break
       if params[i].type == 'word'
@@ -75,7 +74,7 @@ class Gradient extends Value
   # Replace `to top left` to `bottom right`
   fixDirection: (params) ->
     params.splice(0, 2)
-    for i in [0..params.length]
+    for i in [0...params.length]
       if params[i].type == 'div'
         break
       if params[i].type == 'word'
@@ -94,7 +93,7 @@ class Gradient extends Value
     first  = params[0]
     second = []
 
-    for i in [4..params.length]
+    for i in [4...params.length]
       if params[i].type == 'div'
         break
       else
