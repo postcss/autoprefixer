@@ -316,7 +316,7 @@ with [other PostCSS plugins].
   `environment.enable('autoprefixer')`
 * **Jekyll**: add `autoprefixer-rails` and `jekyll-assets` to `Gemfile`
 
-[middleman-autoprefixer]: https://github.com/porada/middleman-autoprefixer
+[middleman-autoprefixer]: https://github.com/middleman/middleman-autoprefixer
 [autoprefixer-rails]:     https://github.com/ai/autoprefixer-rails
 [broccoli-postcss]:       https://github.com/jeffjewiss/broccoli-postcss
 [postcss-brunch]:         https://github.com/iamvdo/postcss-brunch
@@ -349,7 +349,7 @@ let style = prefixer({
 ### GUI Tools
 
 * [CodeKit](https://incident57.com/codekit/help.html#autoprefixer)
-* [Prepros](http://alphapixels.com/prepros/)
+* [Prepros](https://prepros.io)
 
 ### CLI
 
