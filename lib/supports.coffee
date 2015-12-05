@@ -62,6 +62,6 @@ class Supports
       if stringed.length == 1
         stringed[0]
       else
-        '(' + stringed.join(' or ') + ')'
+        '((' + stringed.join(') or (') + '))'
 
 module.exports = Supports
