@@ -78,7 +78,8 @@ commons = ['transition', 'values', 'keyframes', 'gradient', 'flex-rewrite',
            'custom-prefix', 'cascade', 'double', 'multicolumn', '3d-transform',
            'background-size', 'supports', 'viewport', 'resolution', 'logical',
            'appearance', 'advanced-filter', 'element', 'image-set',
-           'image-rendering', 'mask-border', 'writing-mode', 'cross-fade', 'gradient-fix']
+           'image-rendering', 'mask-border', 'writing-mode', 'cross-fade',
+           'gradient-fix', 'text-emphasis-position']
 
 describe 'autoprefixer()', ->
 
@@ -202,6 +203,7 @@ describe 'Autoprefixer', ->
     it 'supports image-set()',          -> test('image-set')
     it 'supports writing-mode',         -> test('writing-mode')
     it 'supports cross-fade()',         -> test('cross-fade')
+    it 'supports text-emphasis',        -> test('text-emphasis-position')
 
     it 'changes angle in gradient', ->
       input  = read('gradient')

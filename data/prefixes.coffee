@@ -403,3 +403,9 @@ feature readOnly, (browsers) ->
   prefix ':read-only', ':read-write',
           selector: true,
           browsers: browsers
+
+# Text Emphasize
+feature require('caniuse-db/features-json/text-emphasis.json'), (browsers) ->
+  prefix 'text-emphasis', 'text-emphasis-position',
+         'text-emphasis-style', 'text-emphasis-color',
+          browsers: browsers

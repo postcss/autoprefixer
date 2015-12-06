@@ -37,6 +37,7 @@ Declaration.hack require('./hacks/flex-direction')
 Declaration.hack require('./hacks/image-rendering')
 Declaration.hack require('./hacks/justify-content')
 Declaration.hack require('./hacks/background-size')
+Declaration.hack require('./hacks/text-emphasis-position')
 
 Value.hack require('./hacks/gradient')
 Value.hack require('./hacks/pixelated')
