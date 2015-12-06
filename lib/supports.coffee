@@ -3,6 +3,7 @@ Value    = require('./value')
 utils    = require('./utils')
 
 postcss = require('postcss')
+parser  = require('postcss-value-parser')
 list    = require('postcss/lib/list')
 
 split         = /\(\s*([^\(\):]+)\s*:([^\)]+)/
@@ -51,11 +52,33 @@ class Supports
 
         all
 
-      .replace(/\(\s*\((.*)\)\s*\)/g, '($1)')
+  # Check value node for brackets
+  isBrackets: (node) ->
+    node.type == 'function' and node.value == ''
+
+  # Recursively part of brackets
+  walkBrackets: (nodes) ->
+    nodes.map (node) =>
+      if not @isBrackets(node)
+        node
+      else
+        node.nodes = @walkBrackets(node.nodes)
+        if node.nodes.length == 1 and @isBrackets(node.nodes[0])
+          node.nodes[0]
+        else
+          node
+
+  # Clean unnecessary brackets
+  brackets: (params) ->
+    ast = parser(params)
+    ast.nodes = @walkBrackets(ast.nodes)
+    parser.stringify(ast)
 
   # Add prefixed declaration
   process: (rule) ->
     rule.params = @clean(rule.params)
+    rule.params = @brackets(rule.params)
+
     rule.params = rule.params.replace findDecl, (all, prop, value) =>
       stringed = ("(#{ i.prop }: #{ i.value })" for i in @prefixed(prop, value))
 
@@ -63,5 +86,6 @@ class Supports
         stringed[0]
       else
         '((' + stringed.join(') or (') + '))'
+    rule.params = @brackets(rule.params)
 
 module.exports = Supports

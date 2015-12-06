@@ -52,9 +52,6 @@ describe 'Supports', ->
       @supports.clean('(c: -moz-b) or (c: -b-)').
         should.eql('(c: -b-)')
 
-    it 'normalize brackets', ->
-      @supports.clean('((-moz-a: 1) or (a: 1))').should.eql('(a: 1)')
-
     it 'keeps and-conditions', ->
       @supports.clean('(-moz-a: 1) and (a: 1)')
         .should.eql('(-moz-a: 1) and (a: 1)')
@@ -66,15 +63,23 @@ describe 'Supports', ->
     it 'allows hacks', ->
       @supports.clean('(-moz-a: 1)').should.eql('(-moz-a: 1)')
 
+  describe 'brackets()', ->
+
+    it 'normalize brackets', ->
+      @supports.brackets('((a: 1))').should.eql('(a: 1)')
+
+    it 'normalize brackets recursively', ->
+      @supports.brackets('(((a: 1) or ((b: 2))))')
+        .should.eql('((a: 1) or (b: 2))')
 
   describe 'process()', ->
+
+    it 'adds params with prefixed property', ->
+      rule = { params: '(c: b)' }
+      @supports.process(rule)
+      rule.params.should.eql('((c: -moz-b) or (c: b))')
 
     it 'replaces params with prefixed property', ->
       rule = { params: '(color black) and not (a: 1)' }
       @supports.process(rule)
       rule.params.should.eql('(color black) and not ((-moz-a: 1) or (a: 1))')
-
-    it 'replaces params with prefixed property', ->
-      rule = { params: '(c: b)' }
-      @supports.process(rule)
-      rule.params.should.eql('((c: -moz-b) or (c: b))')
