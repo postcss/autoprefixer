@@ -13,7 +13,7 @@ class Pixelated extends Value
     else
       super
 
-  # Different name for -moz-available
+  # Different name for -webkit- and -moz-
   old: (prefix) ->
     if prefix == '-webkit-'
       new OldValue(@name, '-webkit-optimize-contrast')
