@@ -1,11 +1,20 @@
 a {
     width: -webkit-fill-available;
     width: -moz-available;
-    width: fill-available;
+    width: fill;
 }
 
 b {
     height: -webkit-max-content;
     height: -moz-max-content;
     height: max-content;
+}
+
+p {
+    block-size: -webkit-min-content;
+    block-size: -moz-min-content;
+    block-size: min-content;
+    min-inline-size: -webkit-fit-content;
+    min-inline-size: -moz-fit-content;
+    min-inline-size: fit-content;
 }

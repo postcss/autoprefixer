@@ -235,9 +235,15 @@ feature require('caniuse-db/features-json/css3-tabsize'), (browsers) ->
 
 # Intrinsic & extrinsic sizing
 feature require('caniuse-db/features-json/intrinsic-width'), (browsers) ->
-  prefix 'max-content', 'min-content', 'fit-content', 'fill-available',
+  # Rename 'fill-available' to 'fill'
+  # https://drafts.csswg.org/css-sizing/?c=M%3BO%3DD#valdef-width-fill
+  prefix 'max-content', 'min-content', 'fit-content', 'fill',
           props:  ['width',  'min-width',  'max-width',
-                   'height', 'min-height', 'max-height']
+                   'height', 'min-height', 'max-height',
+                   # Add CSS Logical Properties
+                   # https://drafts.csswg.org/css-logical-props/#logical-dimension-properties
+                   'inline-size', 'min-inline-size', 'max-inline-size',
+                   'block-size', 'min-block-size', 'max-block-size']
           browsers: browsers
 
 # Zoom cursors
