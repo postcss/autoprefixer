@@ -11,3 +11,13 @@
     color: #000;
   }
 }
+@supports not ((display: -webkit-flex) or (display: flex)) {
+  a {
+    color: #000;
+  }
+}
+@supports (((-webkit-perspective: 1px) and (not (-webkit-overflow-scrolling: touch))) or ((perspective: 1px) and (not (-webkit-overflow-scrolling: touch)))) {
+  a {
+    color: #000;
+  }
+}
