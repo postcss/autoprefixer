@@ -3,10 +3,9 @@ a {
 }
 
 em {
-    text-emphasis-position: under left;
+    text-emphasis-position: under right;
 }
 
-/* Reverse order */
-em {
+.revers {
     text-emphasis-position: left over;
 }

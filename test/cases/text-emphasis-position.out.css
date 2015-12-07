@@ -5,11 +5,10 @@ a {
 
 em {
     -webkit-text-emphasis-position: under;
-            text-emphasis-position: under left;
+            text-emphasis-position: under right;
 }
 
-/* Reverse order */
-em {
+.revers {
     -webkit-text-emphasis-position: over;
             text-emphasis-position: left over;
 }
