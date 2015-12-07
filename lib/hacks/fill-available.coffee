@@ -4,7 +4,7 @@ Value    = require('../value')
 class FillAvailable extends Value
   @names = ['fill']
 
-  # Different prefix for -moz-available and -webkit-fill-available
+  # Different prefix for WebKit and Firefox
   replace: (string, prefix) ->
     if prefix == '-moz-'
       string.replace(@regexp(), '$1-moz-available$3')
@@ -13,7 +13,7 @@ class FillAvailable extends Value
     else
       super
 
-  # Different name for -moz-available and -webkit-fill-available
+  # Different name for WebKit and Firefox
   old: (prefix) ->
     if prefix == '-moz-'
       new OldValue(@name, '-moz-available')
