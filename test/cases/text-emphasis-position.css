@@ -1,3 +1,12 @@
 a {
     text-emphasis-position: over left;
 }
+
+em {
+    text-emphasis-position: under left;
+}
+
+/* Reverse order */
+em {
+    text-emphasis-position: left over;
+}

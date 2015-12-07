@@ -5,7 +5,7 @@ class TextEmphasisPosition extends Declaration
 
   set: (decl, prefix) ->
     if prefix == '-webkit-'
-      decl.value = decl.value.replace(/\s+(right|left)(\s*)/i, '$2')
+      decl.value = decl.value.replace(/\s*(right|left)\s*/i, '')
       super(decl, prefix)
     else
       super

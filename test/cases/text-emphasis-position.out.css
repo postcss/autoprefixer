@@ -2,3 +2,14 @@ a {
     -webkit-text-emphasis-position: over;
             text-emphasis-position: over left;
 }
+
+em {
+    -webkit-text-emphasis-position: under;
+            text-emphasis-position: under left;
+}
+
+/* Reverse order */
+em {
+    -webkit-text-emphasis-position: over;
+            text-emphasis-position: left over;
+}
