@@ -6,16 +6,19 @@
         color: black;
     }
 }
+
 @supports (background: linear-gradient(rgba(0,0,0,.5), hsl(20, 50%, 50%)), url("path/to/img.png")) {
   a {
     color: #000;
   }
 }
+
 @supports not (display: flex) {
   a {
     color: #000;
   }
 }
+
 @supports ((perspective: 1px) and (not (-webkit-overflow-scrolling: touch))) {
   a {
     color: #000;
