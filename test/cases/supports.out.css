@@ -24,3 +24,9 @@
     color: #000;
   }
 }
+
+@supports ((-webkit-animation-name: test) or (-o-animation-name: test) or (animation-name: test)) and (((-webkit-transition-timing-function: steps(4, end)) or (-o-transition-timing-function: steps(4, end)) or (transition-timing-function: steps(4, end))) or ((-webkit-transition-timing-function: step-end) or (-o-transition-timing-function: step-end) or (transition-timing-function: step-end))) {
+  -webkit-animation-name: test;
+       -o-animation-name: test;
+          animation-name: test;
+}
