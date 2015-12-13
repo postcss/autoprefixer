@@ -24,3 +24,7 @@
     color: #000;
   }
 }
+
+@supports (animation-name: test) and ((transition-timing-function: steps(4, end)) or (transition-timing-function: step-end)) {
+  animation-name: test;
+}
