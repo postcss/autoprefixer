@@ -1,7 +1,7 @@
 OldValue = require('../old-value')
 Value    = require('../value')
 
-class FillAvailable extends Value
+class Fill extends Value
   @names = ['fill']
 
   # Different prefix for WebKit and Firefox
@@ -22,4 +22,4 @@ class FillAvailable extends Value
     else
       super
 
-module.exports = FillAvailable
+module.exports = Fill

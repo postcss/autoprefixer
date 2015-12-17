@@ -39,6 +39,7 @@ Declaration.hack require('./hacks/justify-content')
 Declaration.hack require('./hacks/background-size')
 Declaration.hack require('./hacks/text-emphasis-position')
 
+Value.hack require('./hacks/fill')
 Value.hack require('./hacks/gradient')
 Value.hack require('./hacks/pixelated')
 Value.hack require('./hacks/image-set')
@@ -46,7 +47,6 @@ Value.hack require('./hacks/cross-fade')
 Value.hack require('./hacks/flex-values')
 Value.hack require('./hacks/display-flex')
 Value.hack require('./hacks/filter-value')
-Value.hack require('./hacks/fill-available')
 
 declsCache = { }
 
