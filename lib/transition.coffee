@@ -58,12 +58,16 @@ class Transition
   # Show transition-property warning
   checkForWarning: (result, decl) ->
     if decl.prop == 'transition-property'
-      other = decl.parent.nodes.find (i) ->
-        i.prop.indexOf('transition-') == 0 and i.prop != 'transition-property'
-      if other and other.value.indexOf(',') != -1
-        decl.warn(result, 'Replace transition-property to transition, ' +
-                          'because Autoprefixer could not support any cases ' +
-                          'of transition-property and other transition-*')
+      decl.parent.each (i) ->
+        return if i.prop.indexOf('transition-') != 0
+        return if i.prop == 'transition-property'
+
+        if i.value.indexOf(',') != -1
+          decl.warn(result, 'Replace transition-property to transition, ' +
+                            'because Autoprefixer could not support ' +
+                            'any cases of transition-property ' +
+                            'and other transition-*')
+        return false
 
   # Process transition and remove all unnecessary properties
   remove: (decl) ->
