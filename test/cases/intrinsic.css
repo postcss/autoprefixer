@@ -1,7 +1,12 @@
 a {
-    width: fill-available;
+    width: fill;
 }
 
 b {
     height: max-content;
+}
+
+p {
+    block-size: min-content;
+    min-inline-size: fit-content;
 }
