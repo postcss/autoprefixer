@@ -221,7 +221,7 @@ describe 'Autoprefixer', ->
       result.css.should.eql(output)
       result.warnings().map( (i) -> i.toString() ).should.eql(
         ['autoprefixer: <css input>:38:5: Gradient has outdated direction ' +
-         'syntax. New syntax is like "to left" instead of "right".'])
+         'syntax. New syntax is like `to left` instead of `right`.'])
 
     it 'warn on old flexbox display', ->
       result = postcss([flexboxer]).process('a{ display: box; }')
@@ -237,8 +237,8 @@ describe 'Autoprefixer', ->
 
       result.css.should.eql(output)
       result.warnings().map( (i) -> i.toString() ).should.eql(
-        ['autoprefixer: <css input>:15:5: Replace `fill-available` ' +
-         'to `fill`, because spec had been changed'])
+        ['autoprefixer: <css input>:15:5: Replace fill-available ' +
+         'to fill, because spec had been changed'])
 
     it 'supports text-emphasis', ->
       input  = read('text-emphasis-position')

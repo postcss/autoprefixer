@@ -41,7 +41,7 @@ class Processor
       if decl.value.indexOf('linear-gradient') != -1
         if OLD_DIRECTION.test(decl.value)
           result.warn('Gradient has outdated direction syntax. ' +
-                      'New syntax is like "to left" instead of "right".',
+                      'New syntax is like `to left` instead of `right`.',
                       node: decl)
       if decl.prop == 'text-emphasis-position'
         if decl.value == 'under' or decl.value == 'over'
@@ -49,7 +49,7 @@ class Processor
                       'For example, `under left` instead of just `under`.',
                       node: decl)
       if decl.value.indexOf('fill-available') != -1
-        result.warn('Replace `fill-available` to `fill`, ' +
+        result.warn('Replace fill-available to fill, ' +
                     'because spec had been changed',
                     node: decl)
 
