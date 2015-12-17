@@ -2,7 +2,7 @@ OldValue = require('../old-value')
 Value    = require('../value')
 
 class Fill extends Value
-  @names = ['fill']
+  @names = ['fill', 'fill-available']
 
   # Different prefix for WebKit and Firefox
   replace: (string, prefix) ->

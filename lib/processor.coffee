@@ -48,6 +48,10 @@ class Processor
           result.warn('You should use 2 values for text-emphasis-position ' +
                       'For example, `under left` instead of just `under`.',
                       node: decl)
+      if decl.value.indexOf('fill-available') != -1
+        result.warn('Replace `fill-available` to `fill`, ' +
+                    'because spec had been changed',
+                    node: decl)
 
       if decl.prop == 'transition' or decl.prop == 'transition-property'
         # Transition

@@ -18,3 +18,9 @@ p {
     min-inline-size: -moz-fit-content;
     min-inline-size: fit-content;
 }
+
+.old {
+    width: -webkit-fill-available;
+    width: -moz-available;
+    width: fill-available;
+}

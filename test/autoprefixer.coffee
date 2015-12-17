@@ -189,7 +189,6 @@ describe 'Autoprefixer', ->
     it 'supports all flexbox syntaxes', -> test('flexbox')
     it 'supports map flexbox props',    -> test('flex-rewrite')
     it 'supports all fullscreens',      -> test('fullscreen')
-    it 'supports intrinsic sizing',     -> test('intrinsic')
     it 'supports custom prefixes',      -> test('custom-prefix')
     it 'fixes break properties',        -> test('multicolumn')
     it 'ignores some 3D transforms',    -> test('3d-transform')
@@ -220,6 +219,16 @@ describe 'Autoprefixer', ->
       result.warnings().map( (i) -> i.toString() ).should.eql(
         ['autoprefixer: <css input>:1:4: You should write display: flex ' +
          'by final spec instead of display: box'])
+
+    it 'supports intrinsic sizing', ->
+      input  = read('intrinsic')
+      output = read('intrinsic.out')
+      result = postcss([prefixer('intrinsic')]).process(input)
+
+      result.css.should.eql(output)
+      result.warnings().map( (i) -> i.toString() ).should.eql(
+        ['autoprefixer: <css input>:15:5: Replace `fill-available` ' +
+         'to `fill`, because spec had been changed'])
 
     it 'supports text-emphasis', ->
       input  = read('text-emphasis-position')

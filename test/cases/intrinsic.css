@@ -10,3 +10,7 @@ p {
     block-size: min-content;
     min-inline-size: fit-content;
 }
+
+.old {
+    width: fill-available;
+}
