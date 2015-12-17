@@ -7,19 +7,19 @@ data =
   browsers:
     firefox:
       prefix:   'moz'
-      versions: ['firefox 2']
+      versions: ['firefox 22']
   prefixes:
     a:
-      browsers: ['firefox 2']
+      browsers: ['firefox 22']
     b:
-      browsers: ['firefox 2']
+      browsers: ['firefox 22']
       props: 'c'
 
 describe 'Supports', ->
   before ->
-    browsers  = new Browsers(data.browsers, ['firefox 2'])
+    browsers  = new Browsers(data.browsers, ['firefox 22', 'firefox 21'])
     prefixes  = new Prefixes(data.prefixes, browsers)
-    @supports = new Supports(prefixes)
+    @supports = new Supports(Prefixes, prefixes)
 
   describe 'parse()', ->
 
@@ -93,6 +93,11 @@ describe 'Supports', ->
 
     it 'keeps hacks', ->
       @rm('(-moz-a: 1) or (b: 2)').should.eql('(-moz-a: 1) or (b: 2)')
+
+  describe 'prefixer()', ->
+
+    it 'uses only browsers with @supports support', ->
+      @supports.prefixer().browsers.selected.should.eql(['firefox 22'])
 
   describe 'cleanBrackets()', ->
     before ->

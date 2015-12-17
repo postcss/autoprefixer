@@ -7,24 +7,22 @@
     }
 }
 
-@supports (background: linear-gradient(rgba(0,0,0,.5), hsl(20, 50%, 50%)), url("path/to/img.png")) {
-  a {
-    color: #000;
-  }
-}
-
 @supports not (display: flex) {
-  a {
-    color: #000;
-  }
+    a {
+        color: #000;
+    }
 }
 
 @supports ((perspective: 1px) and (not (-webkit-overflow-scrolling: touch))) {
-  a {
-    color: #000;
-  }
+    a {
+        color: #000;
+    }
 }
 
-@supports (animation-name: test) and ((transition-timing-function: steps(4, end)) or (transition-timing-function: step-end)) {
-  animation-name: test;
+@supports (animation-name: test) and ((animation-timing-function: steps(4, end)) or (animation-timing-function: step-end)) {
+    animation-name: test;
+}
+
+@supports (transition: color 1s) {
+    transition: color 1s;
 }

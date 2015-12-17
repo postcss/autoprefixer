@@ -7,26 +7,24 @@
     }
 }
 
-@supports ((background: -webkit-linear-gradient(rgba(0,0,0,.5), hsl(20, 50%, 50%)), url("path/to/img.png")) or (background: -o-linear-gradient(rgba(0,0,0,.5), hsl(20, 50%, 50%)), url("path/to/img.png")) or (background: linear-gradient(rgba(0,0,0,.5), hsl(20, 50%, 50%)), url("path/to/img.png"))) {
-  a {
-    color: #000;
-  }
-}
-
 @supports not ((display: -webkit-flex) or (display: flex)) {
-  a {
-    color: #000;
-  }
+    a {
+        color: #000;
+    }
 }
 
 @supports (((-webkit-perspective: 1px) or (perspective: 1px)) and (not (-webkit-overflow-scrolling: touch))) {
-  a {
-    color: #000;
-  }
+    a {
+        color: #000;
+    }
 }
 
-@supports ((-webkit-animation-name: test) or (-o-animation-name: test) or (animation-name: test)) and (((-webkit-transition-timing-function: steps(4, end)) or (-o-transition-timing-function: steps(4, end)) or (transition-timing-function: steps(4, end))) or ((-webkit-transition-timing-function: step-end) or (-o-transition-timing-function: step-end) or (transition-timing-function: step-end))) {
-  -webkit-animation-name: test;
-       -o-animation-name: test;
-          animation-name: test;
+@supports ((-webkit-animation-name: test) or (animation-name: test)) and (((-webkit-animation-timing-function: steps(4, end)) or (animation-timing-function: steps(4, end))) or ((-webkit-animation-timing-function: step-end) or (animation-timing-function: step-end))) {
+    -webkit-animation-name: test;
+            animation-name: test;
+}
+
+@supports (transition: color 1s) {
+    -webkit-transition: color 1s;
+    transition: color 1s;
 }

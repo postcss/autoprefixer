@@ -1,12 +1,28 @@
-Prefixes = require('./prefixes')
+Browsers = require('./browsers')
 brackets = require('./brackets')
 Value    = require('./value')
 utils    = require('./utils')
 
 postcss = require('postcss')
 
+supported = []
+data      = require('caniuse-db/features-json/css-featurequeries')
+for browser, versions of data.stats
+  for version, support of versions
+    supported.push(browser + ' ' + version) if /y/.test(support)
+
 class Supports
-  constructor: (@all) ->
+  constructor: (@Prefixes, @all) ->
+
+  # Return prefixer only with @supports supported browsers
+  prefixer: ->
+    return @prefixerCache if @prefixerCache
+
+    filtered = @all.browsers.selected.filter (i) =>
+      supported.indexOf(i) != -1
+
+    browsers = new Browsers(@all.browsers.data, filtered, @all.options)
+    @prefixerCache = new @Prefixes(@all.data, browsers, @all.options)
 
   # Parse string into declaration property and value
   parse: (str) ->
@@ -26,11 +42,11 @@ class Supports
     rule = @virtual(str)
     prop = rule.first.prop
 
-    prefixer = @all.add[prop]
+    prefixer = @prefixer().add[prop]
     prefixer?.process?(rule.first)
 
     for decl in rule.nodes
-      for value in @all.values('add', prop)
+      for value in @prefixer().values('add', prop)
         value.process(decl)
       Value.save(@all, decl)
 

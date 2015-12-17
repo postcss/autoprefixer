@@ -116,7 +116,7 @@ class Prefixes
 
   # Cache prefixes data to fast CSS processing
   preprocess: (selected) ->
-    add = { selectors: [], '@supports': new Supports(@) }
+    add = { selectors: [], '@supports': new Supports(Prefixes, @) }
     for name, prefixes of selected.add
       if name == '@keyframes' or name == '@viewport'
         add[name] = new AtRule(name, prefixes, @)

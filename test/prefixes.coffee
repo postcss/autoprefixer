@@ -57,7 +57,7 @@ describe 'Prefixes', ->
         'a': aProp
         '*':
           values: [bVal]
-        '@supports': new Supports(fill)
+        '@supports': new Supports(Prefixes, fill)
 
     it 'preprocesses prefixes remove data', ->
       JSON.stringify(fill.remove).should.eql JSON.stringify({

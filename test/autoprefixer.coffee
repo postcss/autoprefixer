@@ -12,6 +12,7 @@ keyframer    = autoprefixer(browsers: ['Chrome > 19', 'Opera 12'])
 flexboxer    = autoprefixer(browsers: ['Chrome > 19', 'Firefox 21', 'IE 10'])
 without3d    = autoprefixer(browsers: ['Opera 12', 'IE > 0'])
 uncascader   = autoprefixer(browsers: ['Firefox 15'])
+supporter    = autoprefixer(browsers: ['Chrome 25', 'Chrome 28', 'IE > 0'])
 gradienter   = autoprefixer(browsers: ['Chrome 25', 'Opera 12', 'Android 2.3'])
 selectorer   = autoprefixer(browsers: ['Chrome 25', 'Firefox > 17', 'IE 10'])
 intrinsicer  = autoprefixer(browsers: ['Chrome 25', 'Firefox 22'])
@@ -61,6 +62,8 @@ prefixer = (name) ->
     imagerender
   else if name == 'logical'
     intrinsicer
+  else if name == 'supports'
+    supporter
   else
     compiler
 
