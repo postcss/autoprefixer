@@ -65,7 +65,8 @@ and write normal CSS according to the latest W3C specs. You don’t need
 a special language (like Sass) or remember where you must use mixins.
 
 Autoprefixer supports selectors (like `:fullscreen` and `::selection`),
-unit function (`calc()`), at‑rules (`@support` and `@keyframes`) and properties.
+unit function (`calc()`), at‑rules (`@supports` and `@keyframes`)
+and properties.
 
 Because Autoprefixer is a postprocessor for CSS,
 you can also use it with preprocessors such as Sass, Stylus or LESS.
@@ -467,7 +468,7 @@ You can also use comments recursively:
 
 ```css
 /* autoprefixer: off */
-@support (transition: all) {
+@supports (transition: all) {
     /* autoprefixer: on */
     a {
         /* autoprefixer: off */
