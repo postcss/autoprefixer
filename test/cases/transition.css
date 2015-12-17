@@ -7,3 +7,13 @@ div {
     transition-property: filter;
     animation-name: rotating;
 }
+
+.good {
+    transition-property: filter;
+    transition-duration: 1s;
+}
+
+.bad {
+    transition-property: color, filter;
+    transition-duration: 1s, 2s;
+}

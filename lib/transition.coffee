@@ -8,7 +8,7 @@ class Transition
   props: ['transition', 'transition-property']
 
   # Process transition and add prefies for all necessary properties
-  add: (decl) ->
+  add: (decl, result) ->
     declPrefixes = @prefixes.add[decl.prop]?.prefixes || []
 
     params = @parse(decl.value)
@@ -42,8 +42,9 @@ class Transition
         @cloneBefore(decl, prefix + decl.prop, prefixValue)
 
     if value != decl.value and not @already(decl, decl.prop, value)
-        decl.cloneBefore()
-        decl.value = value
+      @checkForWarning(result, decl)
+      decl.cloneBefore()
+      decl.value = value
 
   # Does we aready have this declaration
   already: (decl, prop, value) ->
@@ -53,6 +54,16 @@ class Transition
   cloneBefore: (decl, prop, value) ->
     unless @already(decl, prop, value)
       decl.cloneBefore(prop: prop, value: value)
+
+  # Show transition-property warning
+  checkForWarning: (result, decl) ->
+    if decl.prop == 'transition-property'
+      other = decl.parent.nodes.find (i) ->
+        i.prop.indexOf('transition-') == 0 and i.prop != 'transition-property'
+      if other and other.value.indexOf(',') != -1
+        decl.warn(result, 'Replace transition-property to transition, ' +
+                          'because Autoprefixer could not support any cases ' +
+                          'of transition-property and other transition-*')
 
   # Process transition and remove all unnecessary properties
   remove: (decl) ->

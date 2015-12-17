@@ -19,3 +19,25 @@ div {
          -o-animation-name: rotating;
             animation-name: rotating;
 }
+
+.good {
+    -webkit-transition-property: -webkit-filter;
+    transition-property: -webkit-filter;
+    -o-transition-property: filter;
+    transition-property: filter;
+    transition-property: filter, -webkit-filter;
+    -webkit-transition-duration: 1s;
+         -o-transition-duration: 1s;
+            transition-duration: 1s;
+}
+
+.bad {
+    -webkit-transition-property: color, -webkit-filter;
+    transition-property: color, -webkit-filter;
+    -o-transition-property: color, filter;
+    transition-property: color, filter;
+    transition-property: color, filter, -webkit-filter;
+    -webkit-transition-duration: 1s, 2s;
+         -o-transition-duration: 1s, 2s;
+            transition-duration: 1s, 2s;
+}

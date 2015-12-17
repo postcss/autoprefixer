@@ -92,7 +92,6 @@ describe 'autoprefixer()', ->
 
 describe 'Autoprefixer', ->
 
-  it 'prefixes transition',            -> test('transition')
   it 'prefixes values',                -> test('values')
   it 'prefixes @keyframes',            -> test('keyframes')
   it 'prefixes @viewport',             -> test('viewport')
@@ -111,6 +110,17 @@ describe 'Autoprefixer', ->
   it 'saves declaration style',        -> test('style')
   it 'uses control comments',          -> test('disabled')
   it 'has actual example in docs',     -> test('example')
+
+  it 'prefixes transition', ->
+    input  = read('transition')
+    output = read('transition.out')
+    result = postcss([prefixer('transition')]).process(input)
+
+    result.css.should.eql(output)
+    result.warnings().map( (i) -> i.toString() ).should.eql(
+      ['autoprefixer: <css input>:17:5: Replace transition-property ' +
+       'to transition, because Autoprefixer could not support any cases ' +
+       'of transition-property and other transition-*'])
 
   it 'should ignore spaces inside values', ->
       css = read('trim')

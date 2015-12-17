@@ -55,7 +55,7 @@ class Processor
 
       if decl.prop == 'transition' or decl.prop == 'transition-property'
         # Transition
-        @prefixes.transition.add(decl)
+        @prefixes.transition.add(decl, result)
       else
         # Properties
         prefixer = @prefixes.add[decl.prop]
