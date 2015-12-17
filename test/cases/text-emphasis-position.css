@@ -6,6 +6,10 @@ em {
     text-emphasis-position: under right;
 }
 
-.revers {
+.reverse {
     text-emphasis-position: left over;
+}
+
+.wrong {
+    text-emphasis-position: over;
 }

@@ -203,7 +203,6 @@ describe 'Autoprefixer', ->
     it 'supports image-set()',          -> test('image-set')
     it 'supports writing-mode',         -> test('writing-mode')
     it 'supports cross-fade()',         -> test('cross-fade')
-    it 'supports text-emphasis',        -> test('text-emphasis-position')
 
     it 'changes angle in gradient', ->
       input  = read('gradient')
@@ -221,6 +220,17 @@ describe 'Autoprefixer', ->
       result.warnings().map( (i) -> i.toString() ).should.eql(
         ['autoprefixer: <css input>:1:4: You should write display: flex ' +
          'by final spec instead of display: box'])
+
+    it 'supports text-emphasis', ->
+      input  = read('text-emphasis-position')
+      output = read('text-emphasis-position.out')
+      result = postcss([prefixer('text-emphasis-position')]).process(input)
+
+      result.css.should.eql(output)
+      result.warnings().map( (i) -> i.toString() ).should.eql(
+        ['autoprefixer: <css input>:14:5: You should use 2 values ' +
+         'for text-emphasis-position For example, `under left` ' +
+         'instead of just `under`.'])
 
     it 'ignores values for CSS3PIE props', ->
       css = read('pie')

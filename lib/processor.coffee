@@ -43,6 +43,11 @@ class Processor
           result.warn('Gradient has outdated direction syntax. ' +
                       'New syntax is like "to left" instead of "right".',
                       node: decl)
+      if decl.prop == 'text-emphasis-position'
+        if decl.value == 'under' or decl.value == 'over'
+          result.warn('You should use 2 values for text-emphasis-position ' +
+                      'For example, `under left` instead of just `under`.',
+                      node: decl)
 
       if decl.prop == 'transition' or decl.prop == 'transition-property'
         # Transition
