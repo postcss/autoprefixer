@@ -121,7 +121,20 @@ div {
 
 .convert {
     background: -webkit-gradient(linear, right top, left top, from(white), to(black));
-    background: -webkit-linear-gradient(180deg, white, black);
-    background: -o-linear-gradient(180deg, white, black);
+    background: -webkit-linear-gradient(right, white, black);
+    background: -o-linear-gradient(right, white, black);
     background: linear-gradient(270deg, white, black);
+}
+
+.rad {
+    background: -webkit-gradient(linear, left top, left bottom, from(white), to(black));
+    background: -webkit-linear-gradient(top, white, black);
+    background: -o-linear-gradient(top, white, black);
+    background: linear-gradient(1rad, white, black);
+}
+
+.turn {
+    background: -webkit-linear-gradient(342deg, white, black);
+    background: -o-linear-gradient(342deg, white, black);
+    background: linear-gradient(0.3turn, white, black);
 }

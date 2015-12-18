@@ -72,3 +72,11 @@ div {
 .convert {
     background: linear-gradient(270deg, white, black);
 }
+
+.rad {
+    background: linear-gradient(1rad, white, black);
+}
+
+.turn {
+    background: linear-gradient(0.3turn, white, black);
+}

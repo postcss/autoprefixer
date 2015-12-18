@@ -17,8 +17,10 @@ class Gradient extends Value
     for node in ast.nodes
       if node.type == 'function' and node.value == @name
         node.nodes = @newDirection(node.nodes)
+        node.nodes = @normalize(node.nodes)
         if prefix == '-webkit- old'
-          @oldWebkit(node)
+          changes = @oldWebkit(node)
+          return unless changes
         else
           node.nodes = @convertDirection(node.nodes)
           node.value = prefix + node.value
@@ -46,6 +48,43 @@ class Gradient extends Value
     'bottom left':  'right top, left bottom'
     'left top':     'right bottom, left top'
     'left bottom':  'right top, left bottom'
+
+  # Replace first token
+  replaceFirst: (params, words...) ->
+    prefix = words.map (i) ->
+      if i == ' '
+        { type: 'space', value: i }
+      else
+        { type: 'word', value: i }
+    return prefix.concat(params.slice(1))
+
+  # Convert angle unit to deg
+  normalizeUnit: (str, full) ->
+    num = parseFloat(str)
+    deg = (num / full) * 360
+    "#{ deg }deg"
+
+  # Normalize angle
+  normalize: (nodes) ->
+    return nodes unless nodes[0]
+
+    if /-?\d+(.\d+)?grad/.test(nodes[0].value)
+      nodes[0].value = @normalizeUnit(nodes[0].value, 400)
+    else if /-?\d+(.\d+)?rad/.test(nodes[0].value)
+      nodes[0].value = @normalizeUnit(nodes[0].value, 2)
+    else if /-?\d+(.\d+)?turn/.test(nodes[0].value)
+      nodes[0].value = @normalizeUnit(nodes[0].value, 1)
+
+    if nodes[0].value == '0deg'
+      nodes = @replaceFirst(nodes, 'to', ' ', 'top')
+    else if nodes[0].value == '90deg'
+      nodes = @replaceFirst(nodes, 'to', ' ', 'right')
+    else if nodes[0].value == '180deg'
+      nodes = @replaceFirst(nodes, 'to', ' ', 'bottom')
+    else if nodes[0].value == '270deg'
+      nodes = @replaceFirst(nodes, 'to', ' ', 'left')
+
+    nodes
 
   # Replace old direction to new
   newDirection: (params) ->
@@ -108,35 +147,16 @@ class Gradient extends Value
   roundFloat: (float, digits) ->
     parseFloat(float.toFixed(digits))
 
-  # Replace first token
-  replaceFirst: (params, words...) ->
-    prefix = words.map (i) ->
-      if i == ' '
-        { type: 'space', value: i }
-      else
-        { type: 'word', value: i }
-    return prefix.concat(params.slice(1))
-
   # Convert to old webkit syntax
   oldWebkit: (node) ->
     nodes  = node.nodes
     string = parser.stringify(node.nodes)
 
-    if nodes[0] and nodes[0].value.indexOf('deg') != -1
-      if nodes[0].value == '0deg'
-        nodes = @replaceFirst(nodes, 'to', ' ', 'top')
-      else if nodes[0].value == '90deg'
-        nodes = @replaceFirst(nodes, 'to', ' ', 'right')
-      else if nodes[0].value == '180deg'
-        nodes = @replaceFirst(params, 'to', ' ', 'bottom')
-      else if nodes[0].value == '270deg'
-        nodes = @replaceFirst(nodes, 'to', ' ', 'left')
-
-    return if @name != 'linear-gradient'
-    return if nodes[0] and nodes[0].value.indexOf('deg') != -1
-    return if string.indexOf('px') != -1
-    return if string.indexOf('-corner') != -1
-    return if string.indexOf('-side')   != -1
+    return false if @name != 'linear-gradient'
+    return false if nodes[0] and nodes[0].value.indexOf('deg') != -1
+    return false if string.indexOf('px') != -1
+    return false if string.indexOf('-corner') != -1
+    return false if string.indexOf('-side')   != -1
 
     params = [[]]
     for i in nodes
@@ -153,6 +173,8 @@ class Gradient extends Value
 
     node.nodes.unshift({ type: 'word', value: 'linear' }, @cloneDiv(node.nodes))
     node.value = '-webkit-gradient'
+
+    true
 
   # Change direction syntax to old webkit
   oldDirection: (params) ->
