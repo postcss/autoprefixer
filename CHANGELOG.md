@@ -1,3 +1,18 @@
+## 6.2 “Fluctuat nec mergitur”
+* Use `fill` instead of `fill-available` according spec changes (by 一丝).
+* Add `fill` support for logical dimension properties (by 一丝).
+* Add `text-emphasis` support (by 一丝).
+* Add prefixes to `@supports` only for compatible browsers.
+* Add `rad`, `grad` and `turn` units support to linear gradients.
+* Add some `deg` directions support for old WebKit linear gradients.
+* Fix `@supports` parenthesis (by @heady).
+* Add warning when prefixes could not be generated
+  for complicated `transition-property` values.
+* Add warning for outdated `fill-available` value.
+* Add warning for wrong `text-emphasis-position` value.
+* Add “time capsule” warning for prefix-less future.
+* Normalizes all warning messages.
+
 ## 6.1.2
 * Fix gradient hack on some parameters (by Alexey Efremov).
 
