@@ -138,3 +138,10 @@ div {
     background: -o-linear-gradient(342deg, white, black);
     background: linear-gradient(0.3turn, white, black);
 }
+
+.norm {
+    background: -webkit-gradient(linear, right top, left top, from(white), to(black));
+    background: -webkit-linear-gradient(right, white, black);
+    background: -o-linear-gradient(right, white, black);
+    background: linear-gradient(-90deg, white, black);
+}

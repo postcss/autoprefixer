@@ -14,6 +14,7 @@
   "repository": "postcss/autoprefixer",
   "dependencies": {
     "postcss-value-parser": "^3.2.3",
+    "normalize-range":      "^0.1.2",
     "coffee-script":        "1.10.0",
     "num2fraction":         "^1.2.2",
     "browserslist":         "~1.0.1",

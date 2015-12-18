@@ -3,6 +3,7 @@ Value    = require('../value')
 utils    = require('../utils')
 
 parser = require('postcss-value-parser')
+range  = require('normalize-range');
 list   = require('postcss/lib/list')
 
 isDirection = /top|left|right|bottom/gi
@@ -74,6 +75,10 @@ class Gradient extends Value
       nodes[0].value = @normalizeUnit(nodes[0].value, 2)
     else if /-?\d+(.\d+)?turn/.test(nodes[0].value)
       nodes[0].value = @normalizeUnit(nodes[0].value, 1)
+    else if nodes[0].value.indexOf('deg') != -1
+      num = parseFloat(nodes[0].value)
+      num = range.wrap(0, 360, num)
+      nodes[0].value = "#{num}deg"
 
     if nodes[0].value == '0deg'
       nodes = @replaceFirst(nodes, 'to', ' ', 'top')

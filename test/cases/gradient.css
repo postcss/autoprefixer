@@ -80,3 +80,7 @@ div {
 .turn {
     background: linear-gradient(0.3turn, white, black);
 }
+
+.norm {
+    background: linear-gradient(-90deg, white, black);
+}
