@@ -19,7 +19,7 @@ gulp.task('build:lib', ['clean'], function () {
 gulp.task('build:docs', ['clean'], function () {
     var ignore = require('fs').readFileSync('.npmignore').toString()
         .trim().split(/\n+/)
-        .concat(['.npmignore', 'index.js', 'package.json'])
+        .concat(['.npmignore', 'index.js', 'package.json', 'logo.svg'])
         .map(function (i) {
             return '!' + i;
         });
