@@ -118,3 +118,10 @@ div {
         linear-gradient( white, black ),
         linear-gradient( black, white );
 }
+
+.convert {
+    background: -webkit-gradient(linear, right top, left top, from(white), to(black));
+    background: -webkit-linear-gradient(180deg, white, black);
+    background: -o-linear-gradient(180deg, white, black);
+    background: linear-gradient(270deg, white, black);
+}

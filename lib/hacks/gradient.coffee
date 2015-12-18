@@ -108,19 +108,38 @@ class Gradient extends Value
   roundFloat: (float, digits) ->
     parseFloat(float.toFixed(digits))
 
+  # Replace first token
+  replaceFirst: (params, words...) ->
+    prefix = words.map (i) ->
+      if i == ' '
+        { type: 'space', value: i }
+      else
+        { type: 'word', value: i }
+    return prefix.concat(params.slice(1))
+
   # Convert to old webkit syntax
   oldWebkit: (node) ->
-    params = node.nodes
+    nodes  = node.nodes
     string = parser.stringify(node.nodes)
 
+    if nodes[0] and nodes[0].value.indexOf('deg') != -1
+      if nodes[0].value == '0deg'
+        nodes = @replaceFirst(nodes, 'to', ' ', 'top')
+      else if nodes[0].value == '90deg'
+        nodes = @replaceFirst(nodes, 'to', ' ', 'right')
+      else if nodes[0].value == '180deg'
+        nodes = @replaceFirst(params, 'to', ' ', 'bottom')
+      else if nodes[0].value == '270deg'
+        nodes = @replaceFirst(nodes, 'to', ' ', 'left')
+
     return if @name != 'linear-gradient'
-    return if params[0] and params[0].value.indexOf('deg') != -1
+    return if nodes[0] and nodes[0].value.indexOf('deg') != -1
     return if string.indexOf('px') != -1
     return if string.indexOf('-corner') != -1
     return if string.indexOf('-side')   != -1
 
     params = [[]]
-    for i in node.nodes
+    for i in nodes
       params[params.length - 1].push(i)
       if i.type == 'div' && i.value == ','
         params.push([])

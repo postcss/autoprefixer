@@ -68,3 +68,7 @@ div {
         linear-gradient( white, black ),
         linear-gradient( black, white );
 }
+
+.convert {
+    background: linear-gradient(270deg, white, black);
+}
