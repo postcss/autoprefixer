@@ -59,10 +59,10 @@ class Transition
   checkForWarning: (result, decl) ->
     if decl.prop == 'transition-property'
       decl.parent.each (i) ->
-        return if i.prop.indexOf('transition-') != 0
+        return if i.prop?.indexOf('transition-') != 0
         return if i.prop == 'transition-property'
 
-        if i.value.indexOf(',') != -1
+        if not i.value or i.value.indexOf(',') != -1
           decl.warn(result, 'Replace transition-property to transition, ' +
                             'because Autoprefixer could not support ' +
                             'any cases of transition-property ' +
