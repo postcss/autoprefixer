@@ -1,3 +1,6 @@
+## 6.2.1
+* Fix AST error in transition warning (by @jvdanilo).
+
 ## 6.2 “Fluctuat nec mergitur”
 * Use `fill` instead of `fill-available` according spec changes (by 一丝).
 * Add `fill` support for logical dimension properties (by 一丝).
