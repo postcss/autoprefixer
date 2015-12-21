@@ -14,6 +14,7 @@ div {
 }
 
 .bad {
+    /* safe with different node types */
     transition-property: color, filter;
     transition-duration: 1s, 2s;
 }

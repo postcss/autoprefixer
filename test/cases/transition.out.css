@@ -32,6 +32,7 @@ div {
 }
 
 .bad {
+    /* safe with different node types */
     -webkit-transition-property: color, -webkit-filter;
     transition-property: color, -webkit-filter;
     -o-transition-property: color, filter;
