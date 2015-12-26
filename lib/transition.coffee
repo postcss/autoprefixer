@@ -73,7 +73,9 @@ class Transition
   # Process transition and remove all unnecessary properties
   remove: (decl) ->
     params = @parse(decl.value)
-    params = params.filter (param) => !@prefixes.remove[param[0].value]?.remove
+    params = params
+      .filter (param) => param[0]?.value
+      .filter (param) => !@prefixes.remove[param[0].value]?.remove
     value  = @stringify(params)
 
     return if decl.value == value
