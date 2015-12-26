@@ -1,3 +1,6 @@
+## 6.2.2
+* Fix issues in broken transitions.
+
 ## 6.2.1
 * Fix AST error in transition warning (by @jvdanilo).
 
