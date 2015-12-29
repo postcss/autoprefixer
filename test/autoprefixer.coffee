@@ -125,6 +125,11 @@ describe 'Autoprefixer', ->
        'to transition, because Autoprefixer could not support any cases ' +
        'of transition-property and other transition-*'])
 
+  it 'works with broken transition', ->
+    input  = 'a{transition:,,}'
+    output = 'a{-webkit-transition:;-o-transition:;transition:}'
+    postcss([prefixer('transition')]).process(input).css.should.eql(output)
+
   it 'should ignore spaces inside values', ->
       css = read('trim')
       postcss([flexboxer]).process(css).css.should.eql(css)

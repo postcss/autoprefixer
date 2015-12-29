@@ -18,7 +18,7 @@ class Transition
     return if names.some (i) -> i[0] == '-'
 
     for param in params
-      prop   = param[0].value
+      prop = param[0].value
       continue if prop[0] == '-'
       prefixer = @prefixes.add[prop]
       continue if not prefixer?.prefixes
@@ -73,9 +73,7 @@ class Transition
   # Process transition and remove all unnecessary properties
   remove: (decl) ->
     params = @parse(decl.value)
-    params = params
-      .filter (param) => param[0]?.value
-      .filter (param) => !@prefixes.remove[param[0].value]?.remove
+    params = params.filter (param) => !@prefixes.remove[param[0].value]?.remove
     value  = @stringify(params)
 
     return if decl.value == value
@@ -104,7 +102,7 @@ class Transition
         result.push(param)
         param = []
     result.push(param)
-    result
+    result.filter (i) -> i.length > 0
 
   # Return properties string from array
   stringify: (params) ->
