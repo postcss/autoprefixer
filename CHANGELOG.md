@@ -1,3 +1,6 @@
+## 6.2.3
+* Fix error on broken transition with double comma.
+
 ## 6.2.2
 * Fix issues in broken transitions.
 
