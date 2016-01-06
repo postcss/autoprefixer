@@ -92,6 +92,9 @@ class Prefixes
 
       add = @sort utils.uniq(add)
 
+      if @options.flexbox == 'no-2009'
+        add = add.filter (i) -> i.indexOf('2009') == -1
+
       all = data.browsers.map( (i) => @browsers.prefix(i) )
       all = all.concat(data.mistakes) if data.mistakes
       all = all.concat(notes)

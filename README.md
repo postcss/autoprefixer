@@ -450,6 +450,8 @@ Autoprefixer has 4 features, which can be disabled by options:
 
 * `supports: false` will disable `@supports` parameters prefixing.
 * `flexbox: false` will disabled flexbox properties prefixing.
+  Or `flexbox: "no-2009"` will add prefixes only for final and IE
+  versions of specification.
 * `grid: false` will disable Grid Layout prefixes for IE.
 * `remove: false` will disabled cleaning outdated prefixes.
 
@@ -505,8 +507,9 @@ There are 4 options:
   Default is `true`.
 * `supports` (boolean): should Autoprefixer add prefixes for `@supports`
   parameters. Default is `true`.
-* `flexbox` (boolean): should Autoprefixer add prefixes for flexbox
-  properties. Default is `true`.
+* `flexbox` (boolean|string): should Autoprefixer add prefixes for flexbox
+  properties. With `"no-2009" value Autoprefixer will add prefixes only
+  for final and IE versions of specification. `Default is `true`.
 * `grid` (boolean): should Autoprefixer add IE prefixes for Grid Layout
   properties. Default is `true`.
 

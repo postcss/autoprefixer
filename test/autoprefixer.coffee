@@ -221,6 +221,12 @@ describe 'Autoprefixer', ->
     result   = postcss([instance]).process(css)
     result.css.should.eql(css)
 
+  it 'has option to disable 2009 flexbox support', ->
+    css      = 'a{flex:1}'
+    instance = autoprefixer(browsers: ['Chrome > 19'], flexbox: 'no-2009')
+    result   = postcss([instance]).process(css)
+    result.css.should.eql('a{-webkit-flex:1;flex:1}')
+
   describe 'info()', ->
 
     it 'returns inspect string', ->
