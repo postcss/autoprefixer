@@ -76,14 +76,16 @@ class Declaration extends Prefixer
       cloned.raws.before = @calcBefore(prefixes, decl, prefix)
     decl.parent.insertBefore(decl, cloned)
 
-  # Clone and add prefixes for declaration
-  add: (decl, prefix, prefixes) ->
-    prefixed  = @prefixed(decl.prop, prefix)
+  # Did this declaration has this prefix above
+  isAlready: (decl, prefixed) ->
     already   = @all.group(decl).up   (i) -> i.prop == prefixed
     already ||= @all.group(decl).down (i) -> i.prop == prefixed
+    return already
 
-    return if already or @otherPrefixes(decl.value, prefix)
-
+  # Clone and add prefixes for declaration
+  add: (decl, prefix, prefixes) ->
+    prefixed = @prefixed(decl.prop, prefix)
+    return if @isAlready(decl, prefixed) or @otherPrefixes(decl.value, prefix)
     @insert(decl, prefix, prefixes)
 
   # Add spaces for visual cascade
