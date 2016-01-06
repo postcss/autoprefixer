@@ -1,0 +1,16 @@
+a {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    justify-items: stretch;
+    align-items: stretch;
+}
+
+b {
+    display: inline-grid;
+    grid-template-rows: 10px repeat(4, 250px 10px) 20px;
+    align-items: stretch;
+}
+
+.unknown {
+    align-items: start;
+}

@@ -1,0 +1,26 @@
+a {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: auto 1fr;
+    grid-template-columns: auto 1fr;
+    -ms-grid-column-align: stretch;
+    justify-items: stretch;
+    -ms-grid-row-align: stretch;
+    align-items: stretch;
+}
+
+b {
+    display: -ms-inline-grid;
+    display: inline-grid;
+    -ms-grid-rows: 10px (250px 10px)[4] 20px;
+    grid-template-rows: 10px repeat(4, 250px 10px) 20px;
+    -ms-grid-row-align: stretch;
+    align-items: stretch;
+}
+
+.unknown {
+    -webkit-align-items: start;
+    -ms-flex-align: start;
+    -ms-grid-row-align: start;
+    align-items: start;
+}

@@ -6,7 +6,7 @@ class BlockLogical extends Declaration
             'padding-block-start', 'padding-block-end',
             'border-before',  'border-after',
             'margin-before',  'margin-after',
-            'padding-before', 'padding-after',]
+            'padding-before', 'padding-after']
 
   # Use old syntax for -moz- and -webkit-
   prefixed: (prop, prefix) ->

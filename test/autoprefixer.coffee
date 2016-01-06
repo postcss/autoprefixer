@@ -4,6 +4,7 @@ Browsers     = require('../lib/browsers')
 postcss = require('postcss')
 fs      = require('fs')
 
+grider       = autoprefixer(browsers: ['Chrome 25', 'IE 10'], cascade: false)
 cleaner      = autoprefixer(browsers: [])
 compiler     = autoprefixer(browsers: ['Chrome 25', 'Opera 12'])
 filterer     = autoprefixer(browsers: ['Chrome 25', 'Safari 9', 'Firefox 39'])
@@ -26,7 +27,9 @@ cascader = autoprefixer
   cascade:  true
 
 prefixer = (name) ->
-  if name == 'keyframes'
+  if name == 'grid'
+    grider
+  else if name == 'keyframes'
     keyframer
   else if name == 'border-radius'
     borderer
@@ -82,7 +85,7 @@ commons = ['transition', 'values', 'keyframes', 'gradient', 'flex-rewrite',
            'background-size', 'supports', 'viewport', 'resolution', 'logical',
            'appearance', 'advanced-filter', 'element', 'image-set',
            'image-rendering', 'mask-border', 'writing-mode', 'cross-fade',
-           'gradient-fix', 'text-emphasis-position']
+           'gradient-fix', 'text-emphasis-position', 'grid']
 
 describe 'autoprefixer()', ->
 
@@ -220,6 +223,7 @@ describe 'Autoprefixer', ->
     it 'supports image-set()',          -> test('image-set')
     it 'supports writing-mode',         -> test('writing-mode')
     it 'supports cross-fade()',         -> test('cross-fade')
+    it 'supports grid layout',          -> test('grid')
 
     it 'changes angle in gradient', ->
       input  = read('gradient')

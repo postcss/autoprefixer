@@ -411,3 +411,14 @@ feature require('caniuse-db/features-json/text-emphasis.json'), (browsers) ->
   prefix 'text-emphasis', 'text-emphasis-position',
          'text-emphasis-style', 'text-emphasis-color',
           browsers: browsers
+
+# CSS Grid Layout
+feature require('caniuse-db/features-json/css-grid.json'), (browsers) ->
+  prefix 'grid', 'inline-grid',
+          props:  ['display']
+          browsers: browsers
+  prefix 'grid-template-columns', 'grid-template-rows', 'grid-template-columns',
+         'grid-column', 'grid-row', 'grid-column-end', 'grid-row-end',
+         'grid-row-align', # Hack for grid or flexbox case
+         'justify-items',
+          browsers: browsers

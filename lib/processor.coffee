@@ -56,6 +56,19 @@ class Processor
       if decl.prop == 'transition' or decl.prop == 'transition-property'
         # Transition
         @prefixes.transition.add(decl, result)
+
+      else if decl.prop == 'align-items'
+        # align-items flexbox or grid
+        display = @displayType(decl)
+        if display != 'grid'
+          prefixer = @prefixes.add['align-items']
+          if prefixer and prefixer.prefixes
+            prefixer.process(decl)
+        if display != 'flex'
+          prefixer = @prefixes.add['grid-row-align']
+          if prefixer and prefixer.prefixes
+            prefixer.process(decl)
+
       else
         # Properties
         prefixer = @prefixes.add[decl.prop]
@@ -174,5 +187,15 @@ class Processor
         parts[last] = parts[last][0...-diff]
 
         other.raws.before = parts.join("\n")
+
+  # Is it flebox or grid rule
+  displayType: (decl) ->
+    for i in decl.parent.nodes
+      if i.prop == 'display'
+        if i.value.indexOf('flex') != -1
+          return 'flex'
+        else if i.value.indexOf('grid') != -1
+          return 'grid'
+    return false
 
 module.exports = Processor
