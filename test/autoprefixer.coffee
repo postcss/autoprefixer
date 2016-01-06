@@ -196,6 +196,12 @@ describe 'Autoprefixer', ->
     root.toString().should.eql(
       'a {\n    display: -webkit-flex;\n    display: flex\n}')
 
+  it 'takes values from other PostCSS plugins', ->
+    plugin = (css) ->
+      css.walkDecls (i) -> i.value = "calc(0)"
+    result = postcss([plugin, compiler]).process('a{width:0/**/0}')
+    result.css.should.eql('a{width:-webkit-calc(0);width:calc(0)}')
+
   describe 'info()', ->
 
     it 'returns inspect string', ->

@@ -45,10 +45,17 @@ class Value extends Prefixer
   replace: (string, prefix) ->
     string.replace(@regexp(), '$1' + prefix + '$2')
 
+  # Get value with comments if it was not changed
+  value: (decl) ->
+    if decl.raws.value and decl.raws.value.value == decl.value
+      decl.raws.value.raw
+    else
+      decl.value
+
   # Save values with next prefixed token
   add: (decl, prefix) ->
     decl._autoprefixerValues ||= { }
-    value = decl._autoprefixerValues[prefix] || decl.raws.value?.raw || decl.value
+    value = decl._autoprefixerValues[prefix] || @value(decl)
     value = @replace(value, prefix)
     decl._autoprefixerValues[prefix] = value if value
 
