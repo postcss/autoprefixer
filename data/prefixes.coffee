@@ -158,7 +158,7 @@ feature flexbox, match: /a\sx/, (browsers) ->
           props:  ['display']
           browsers: browsers
   prefix 'flex', 'flex-grow', 'flex-shrink', 'flex-basis',
-          browsers:   browsers
+          browsers: browsers
   prefix 'flex-direction', 'flex-wrap', 'flex-flow', 'justify-content',
          'order', 'align-items', 'align-self', 'align-content',
           browsers: browsers
@@ -167,7 +167,7 @@ feature flexbox, match: /y\sx/, (browsers) ->
   add 'display-flex', 'inline-flex',
        browsers: browsers
   add 'flex', 'flex-grow', 'flex-shrink', 'flex-basis',
-       browsers:   browsers
+       browsers: browsers
   add 'flex-direction', 'flex-wrap', 'flex-flow', 'justify-content',
       'order', 'align-items', 'align-self', 'align-content',
        browsers: browsers
