@@ -37,7 +37,7 @@ module.exports = postcss.plugin 'autoprefixer', (reqs...) ->
 
   loadPrefixes = (opts) ->
     browsers = new Browsers(module.exports.data.browsers, reqs, opts)
-    key      = browsers.selected.join(', ') + options.cascade
+    key      = browsers.selected.join(', ') + JSON.stringify(options)
     cache[key] ||= new Prefixes(module.exports.data.prefixes, browsers, options)
 
   plugin = (css, result) ->

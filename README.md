@@ -446,7 +446,14 @@ a {
 If some prefixes were generated in a wrong way,
 please create an issue on GitHub.
 
-But if you do not need Autoprefixer in some part of your CSS,
+Autoprefixer has 4 features, which can be disabled by options:
+
+* `supports: false` will disable `@supports` parameters prefixing.
+* `flexbox: false` will disabled flexbox properties prefixing.
+* `grid: false` will disable Grid Layout prefixes for IE.
+* `remove: false` will disabled cleaning outdated prefixes.
+
+If you do not need Autoprefixer in some part of your CSS,
 you can use control comments to disable Autoprefixer.
 
 ```css
@@ -496,6 +503,12 @@ There are 4 options:
 * `add` (boolean): should Autoprefixer add prefixes. Default is `true`.
 * `remove` (boolean): should Autoprefixer [remove outdated] prefixes.
   Default is `true`.
+* `supports` (boolean): should Autoprefixer add prefixes for `@supports`
+  parameters. Default is `true`.
+* `flexbox` (boolean): should Autoprefixer add prefixes for flexbox
+  properties. Default is `true`.
+* `grid` (boolean): should Autoprefixer add IE prefixes for Grid Layout
+  properties. Default is `true`.
 
 Plugin object has `info()` method for debugging purpose.
 

@@ -21,7 +21,8 @@ class Processor
       else if rule.name == 'viewport'
         viewport?.process(rule) if not @disabled(rule)
       else if rule.name == 'supports'
-        supports.process(rule) if not @disabled(rule)
+        if @prefixes.options.supports != false and not @disabled(rule)
+          supports.process(rule)
       else if rule.name == 'media' and rule.params.indexOf('-resolution') != -1
         resolution?.process(rule) if not @disabled(rule)
 
@@ -60,11 +61,11 @@ class Processor
       else if decl.prop == 'align-items'
         # align-items flexbox or grid
         display = @displayType(decl)
-        if display != 'grid'
+        if display != 'grid' and @prefixes.options.flexbox != false
           prefixer = @prefixes.add['align-items']
           if prefixer and prefixer.prefixes
             prefixer.process(decl)
-        if display != 'flex'
+        if display != 'flex' and @prefixes.options.grid != false
           prefixer = @prefixes.add['grid-row-align']
           if prefixer and prefixer.prefixes
             prefixer.process(decl)
@@ -138,8 +139,20 @@ class Processor
   withHackValue: (decl) ->
     decl.prop == '-webkit-background-clip' and decl.value == 'text'
 
-  # Check for control comment
+  # Check for control comment and global options
   disabled: (node) ->
+    if @prefixes.options.grid == false and node.type == 'decl'
+      if node.prop == 'display' and node.value.indexOf('grid') != -1
+        return true
+      if node.prop.indexOf('grid') != -1 or node.prop == 'justify-items'
+        return true
+    if @prefixes.options.flexbox == false and node.type == 'decl'
+      if node.prop == 'display' and node.value.indexOf('flex') != -1
+        return true
+      other = ['order', 'justify-content', 'align-self', 'align-content']
+      if node.prop.indexOf('flex') != -1 or other.indexOf(node.prop) != -1
+        return true
+
     if node._autoprefixerDisabled?
       node._autoprefixerDisabled
 

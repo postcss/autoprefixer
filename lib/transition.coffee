@@ -26,7 +26,8 @@ class Transition
       for prefix in prefixer.prefixes
         prefixed = @prefixes.prefixed(prop, prefix)
         if prefixed != '-ms-transform' and names.indexOf(prefixed) == -1
-          added.push(@clone(prefixed, param))
+          unless @disabled(prop)
+            added.push(@clone(prefixed, param))
 
     params = params.concat(added)
     value  = @stringify(params)
@@ -152,5 +153,12 @@ class Transition
       if remove.indexOf(prop) == -1 and (prefix == '-webkit-' or prefix == '')
         result.push(param)
     result
+
+  # Check property for disabled by option
+  disabled: (prop) ->
+    if @prefixes.options.flexbox == false
+      other = ['order', 'justify-content', 'align-self', 'align-content']
+      if prop.indexOf('flex') != -1 or other.indexOf(prop) != -1
+        return true
 
 module.exports = Transition

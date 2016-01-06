@@ -202,6 +202,25 @@ describe 'Autoprefixer', ->
     result = postcss([plugin, compiler]).process('a{width:0/**/0}')
     result.css.should.eql('a{width:-webkit-calc(0);width:calc(0)}')
 
+  it 'has option to disable @supports support', ->
+    css      = '@supports (cursor: grab) {}'
+    instance = autoprefixer(browsers: ['Chrome 28'], supports: false)
+    result   = postcss([instance]).process(css)
+    result.css.should.eql(css)
+
+  it 'has option to disable grid support', ->
+    input    = read('grid')
+    output   = read('grid.disabled')
+    instance = autoprefixer(browsers: ['IE 10'], grid: false)
+    result   = postcss([instance]).process(input)
+    result.css.should.eql(output)
+
+  it 'has option to disable flexbox support', ->
+    css      = read('flexbox')
+    instance = autoprefixer(browsers: ['IE 10'], flexbox: false)
+    result   = postcss([instance]).process(css)
+    result.css.should.eql(css)
+
   describe 'info()', ->
 
     it 'returns inspect string', ->
