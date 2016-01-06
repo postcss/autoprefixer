@@ -508,7 +508,7 @@ There are 4 options:
 * `supports` (boolean): should Autoprefixer add prefixes for `@supports`
   parameters. Default is `true`.
 * `flexbox` (boolean|string): should Autoprefixer add prefixes for flexbox
-  properties. With `"no-2009" value Autoprefixer will add prefixes only
+  properties. With `"no-2009"` value Autoprefixer will add prefixes only
   for final and IE versions of specification. `Default is `true`.
 * `grid` (boolean): should Autoprefixer add IE prefixes for Grid Layout
   properties. Default is `true`.
