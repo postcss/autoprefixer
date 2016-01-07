@@ -8,10 +8,10 @@ class GridTemplate extends Declaration
 
   # Change property name for IE
   prefixed: (prop, prefix) ->
-    prefix + if prefix == '-ms-'
-      prop.replace('template-', '')
+    if prefix == '-ms-'
+      prefix + prop.replace('template-', '')
     else
-      prop
+      super(prop, prefix)
 
   # Change IE property back
   normalize: (prop) ->

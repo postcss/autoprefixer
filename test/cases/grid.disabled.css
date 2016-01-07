@@ -3,12 +3,14 @@ a {
     grid-template-columns: auto 1fr;
     justify-items: stretch;
     align-items: stretch;
+    grid-column-end: span 3;
 }
 
 b {
     display: inline-grid;
     grid-template-rows: 10px repeat(4, 250px 10px) 20px;
     align-items: stretch;
+    grid-row-end: span 3;
 }
 
 .unknown {

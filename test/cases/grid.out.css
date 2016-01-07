@@ -7,6 +7,8 @@ a {
     justify-items: stretch;
     -ms-grid-row-align: stretch;
     align-items: stretch;
+    -ms-grid-column-span: 3;
+    grid-column-end: span 3;
 }
 
 b {
@@ -16,6 +18,8 @@ b {
     grid-template-rows: 10px repeat(4, 250px 10px) 20px;
     -ms-grid-row-align: stretch;
     align-items: stretch;
+    -ms-grid-row-span: 3;
+    grid-row-end: span 3;
 }
 
 .unknown {
