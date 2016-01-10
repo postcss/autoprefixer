@@ -422,3 +422,8 @@ feature require('caniuse-db/features-json/css-grid.json'), (browsers) ->
          'grid-row-align', # Hack for grid or flexbox case
          'justify-items',
           browsers: browsers
+
+# CSS text-spacing
+feature require('caniuse-db/features-json/css-text-spacing.json'), (browsers) ->
+  prefix 'text-spacing',
+          browsers: browsers

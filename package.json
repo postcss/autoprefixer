@@ -18,7 +18,7 @@
     "coffee-script":        "1.10.0",
     "num2fraction":         "^1.2.2",
     "browserslist":         "~1.1.0",
-    "caniuse-db":           "^1.0.30000384",
+    "caniuse-db":           "^1.0.30000385",
     "postcss":              "^5.0.14"
   },
   "devDependencies": {
@@ -28,7 +28,7 @@
     "gulp-eslint":         "1.1.1",
     "gulp-coffee":         "2.3.1",
     "gulp-mocha":          "2.2.0",
-    "browserify":          "12.0.1",
+    "browserify":          "13.0.0",
     "fs-extra":            "0.26.4",
     "should":              "8.0.2",
     "mocha":               "2.3.4",
