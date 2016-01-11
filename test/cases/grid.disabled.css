@@ -1,16 +1,22 @@
-a {
+.a {
     display: grid;
     grid-template-columns: auto 1fr;
     justify-items: stretch;
     align-items: stretch;
+    grid-column-start: 1;
     grid-column-end: span 3;
 }
 
-b {
+.b {
     display: inline-grid;
     grid-template-rows: 10px repeat(4, 250px 10px) 20px;
     align-items: stretch;
+    grid-row-start: 1;
     grid-row-end: span 3;
+}
+
+.c {
+    grid-column: 1 / span 3;
 }
 
 .unknown {

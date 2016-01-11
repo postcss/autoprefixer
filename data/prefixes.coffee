@@ -419,8 +419,8 @@ feature require('caniuse-db/features-json/css-grid.json'), (browsers) ->
           browsers: browsers
   prefix 'grid-template-columns', 'grid-template-rows', 'grid-template-columns',
          'grid-column', 'grid-row', 'grid-column-end', 'grid-row-end',
+         'grid-column-start', 'grid-row-start', 'justify-items',
          'grid-row-align', # Hack for grid or flexbox case
-         'justify-items',
           browsers: browsers
 
 # CSS text-spacing

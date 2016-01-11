@@ -21,6 +21,7 @@ Declaration.hack require('./hacks/grid-end')
 Declaration.hack require('./hacks/flex-flow')
 Declaration.hack require('./hacks/flex-grow')
 Declaration.hack require('./hacks/flex-wrap')
+Declaration.hack require('./hacks/grid-start')
 Declaration.hack require('./hacks/align-self')
 Declaration.hack require('./hacks/flex-basis')
 Declaration.hack require('./hacks/mask-border')
@@ -194,7 +195,10 @@ class Prefixes
 
   # Return unprefixed version of property
   unprefixed: (prop) ->
-    prop = vendor.unprefixed(prop)
+    @normalize(vendor.unprefixed(prop))
+
+  # Normalize prefix for remover
+  normalize: (prop) ->
     @decl(prop).normalize(prop)
 
   # Return prefixed version of property

@@ -1,4 +1,4 @@
-a {
+.a {
     display: -ms-grid;
     display: grid;
     -ms-grid-columns: auto 1fr;
@@ -7,19 +7,29 @@ a {
     justify-items: stretch;
     -ms-grid-row-align: stretch;
     align-items: stretch;
+    -ms-grid-column: 1;
+    grid-column-start: 1;
     -ms-grid-column-span: 3;
     grid-column-end: span 3;
 }
 
-b {
+.b {
     display: -ms-inline-grid;
     display: inline-grid;
     -ms-grid-rows: 10px (250px 10px)[4] 20px;
     grid-template-rows: 10px repeat(4, 250px 10px) 20px;
     -ms-grid-row-align: stretch;
     align-items: stretch;
+    -ms-grid-row: 1;
+    grid-row-start: 1;
     -ms-grid-row-span: 3;
     grid-row-end: span 3;
+}
+
+.c {
+    -ms-grid-column-span: 3;
+    -ms-grid-column: 1;
+    grid-column: 1 / span 3;
 }
 
 .unknown {

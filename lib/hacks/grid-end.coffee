@@ -1,12 +1,12 @@
 Declaration = require('../declaration')
 
-class GridRowAlign extends Declaration
+class GridEnd extends Declaration
   @names = ['grid-row-end',  'grid-column-end',
             'grid-row-span', 'grid-column-span']
 
   # Return a final spec property
   normalize: (prop) ->
-    prop.replace('-span', '-end')
+    prop.replace(/(-span|-end)/, '')
 
   # Change property name for IE
   prefixed: (prop, prefix) ->
@@ -21,4 +21,4 @@ class GridRowAlign extends Declaration
       decl.value = decl.value.replace(/span\s/i, '')
     super(decl, prefix)
 
-module.exports = GridRowAlign
+module.exports = GridEnd

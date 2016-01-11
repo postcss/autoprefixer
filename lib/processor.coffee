@@ -114,7 +114,8 @@ class Processor
 
       # Properties
       if @prefixes.remove[decl.prop]?.remove
-        notHack = @prefixes.group(decl).down (other) -> other.prop == unprefixed
+        notHack = @prefixes.group(decl).down (other) =>
+          @prefixes.normalize(other.prop) == unprefixed
 
         if notHack and not @withHackValue(decl)
           @reduceSpaces(decl) if decl.raw('before').indexOf("\n") > -1
