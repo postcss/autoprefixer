@@ -76,7 +76,9 @@ read = (name) ->
 test = (from, instance = prefixer(from)) ->
   input  = read(from)
   output = read(from + '.out')
-  postcss([instance]).process(input).css.should.eql(output)
+  result = postcss([instance]).process(input)
+  result.warnings().length.should.eql(0)
+  result.css.should.eql(output)
 
 commons = ['transition', 'values', 'keyframes', 'gradient', 'flex-rewrite',
            'flexbox', 'filter', 'border-image', 'border-radius', 'notes',
