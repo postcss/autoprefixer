@@ -268,12 +268,22 @@ describe 'Autoprefixer', ->
         ['autoprefixer: <css input>:38:5: Gradient has outdated direction ' +
          'syntax. New syntax is like `to left` instead of `right`.'])
 
-    it 'warn on old flexbox display', ->
+    it 'warns on old flexbox display', ->
       result = postcss([flexboxer]).process('a{ display: box; }')
       result.css.should.eql('a{ display: box; }')
       result.warnings().map( (i) -> i.toString() ).should.eql(
         ['autoprefixer: <css input>:1:4: You should write display: flex ' +
          'by final spec instead of display: box'])
+
+     it 'warns on unsupported grid features', ->
+       css      = read('nogrid')
+       instance = autoprefixer(browsers: ['IE 10'], flexbox: false)
+       result   = postcss([instance]).process(css)
+       result.warnings().length.should.eql(0)
+
+    it 'does not warns on unsupported grid on disabled grid', ->
+      css    = read('nogrid')
+      result = postcss([prefixer('transition')]).process(css)
 
     it 'supports intrinsic sizing', ->
       input  = read('intrinsic')

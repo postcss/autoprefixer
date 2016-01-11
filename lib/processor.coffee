@@ -54,6 +54,19 @@ class Processor
                     'because spec had been changed',
                     node: decl)
 
+      if @prefixes.options.flexbox != false
+        if decl.prop == 'grid-row-end' and decl.value.indexOf('span') == -1
+          result.warn('IE supports only grid-row-end with span. ' +
+                      'You should add grid: false option to Autoprefixer ' +
+                      'and use some JS grid polyfill for full spec support',
+                      node: decl)
+        if decl.prop == 'grid-row'
+          if decl.value.indexOf('/') != -1 and decl.value.indexOf('span') == -1
+            result.warn('IE supports only grid-row with / and span. ' +
+                        'You should add grid: false option to Autoprefixer ' +
+                        'and use some JS grid polyfill for full spec support',
+                        node: decl)
+
       if decl.prop == 'transition' or decl.prop == 'transition-property'
         # Transition
         @prefixes.transition.add(decl, result)
