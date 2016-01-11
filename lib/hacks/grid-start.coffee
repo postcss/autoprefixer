@@ -3,6 +3,10 @@ Declaration = require('../declaration')
 class GridStart extends Declaration
   @names = ['grid-row-start', 'grid-column-start', 'grid-row', 'grid-column']
 
+  # Do not add prefix for unsupported value in IE
+  check: (decl) ->
+    decl.value.indexOf('/') == -1 or decl.value.indexOf('span') != -1
+
   # Return a final spec property
   normalize: (prop) ->
     prop.replace('-start', '')
