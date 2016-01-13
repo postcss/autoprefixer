@@ -509,7 +509,7 @@ There are 4 options:
   parameters. Default is `true`.
 * `flexbox` (boolean|string): should Autoprefixer add prefixes for flexbox
   properties. With `"no-2009"` value Autoprefixer will add prefixes only
-  for final and IE versions of specification. `Default is `true`.
+  for final and IE versions of specification. Default is `true`.
 * `grid` (boolean): should Autoprefixer add IE prefixes for Grid Layout
   properties. Default is `true`.
 
