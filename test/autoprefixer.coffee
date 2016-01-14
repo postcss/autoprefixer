@@ -98,6 +98,18 @@ describe 'autoprefixer()', ->
   it 'has default browsers', ->
     autoprefixer.defaults.should.be.an.instanceOf(Array)
 
+  it 'passes statistics to Browserslist', ->
+    stats =
+      chrome:
+        10: 10
+        11: 40
+      ie:
+        10: 10
+        11: 40
+
+    autoprefixer(browsers: '> 20% in my stats', stats: stats).info()
+      .should.match(/Browsers:\n  Chrome: 11\n  IE: 11\n/)
+
 describe 'Autoprefixer', ->
 
   it 'prefixes values',                -> test('values')

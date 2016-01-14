@@ -512,13 +512,16 @@ There are 4 options:
   for final and IE versions of specification. Default is `true`.
 * `grid` (boolean): should Autoprefixer add IE prefixes for Grid Layout
   properties. Default is `true`.
+* `stats` (object): custom [usage statistics] for `> 10% in my stats`
+  browsers query.
 
 Plugin object has `info()` method for debugging purpose.
 
 You can use PostCSS processor to process several CSS files
 to increase performance.
 
-[PostCSS API]: https://github.com/postcss/postcss/blob/master/docs/api.md
+[usage statistics]: https://github.com/ai/browserslist#custom-usage-data
+[PostCSS API]:      https://github.com/postcss/postcss/blob/master/docs/api.md
 
 ## Debug
 

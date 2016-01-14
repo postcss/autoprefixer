@@ -19,12 +19,12 @@ class Browsers
 
     @prefixesRegexp.test(value)
 
-  constructor: (@data, requirements, @options) ->
+  constructor: (@data, requirements, @options, @stats) ->
     @selected = @parse(requirements)
 
   # Return browsers selected by requirements
   parse: (requirements) ->
-    browserslist(requirements, { path: @options?.from })
+    browserslist(requirements, path: @options?.from, stats: @stats)
 
   # Select major browsers versions by criteria
   browsers: (criteria) ->
