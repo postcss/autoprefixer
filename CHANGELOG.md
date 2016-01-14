@@ -1,3 +1,10 @@
+## 6.3 “Pro rege et lege”
+* Add Grid Layout support.
+* Add `text-spacing` support.
+* Add `> 10% in my stats` browsers query with custom usage statistics.
+* Add options to disable `@supports`, Flexbox or Grid support.
+* Fix compatibility with other PostCSS plugins.
+
 ## 6.2.3
 * Fix error on broken transition with double comma.
 
