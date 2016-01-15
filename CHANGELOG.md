@@ -1,3 +1,6 @@
+## 6.3.1
+* Fix compatibility with Flexibility polyfill.
+
 ## 6.3 “Pro rege et lege”
 * Add Grid Layout support.
 * Add `text-spacing` support.
