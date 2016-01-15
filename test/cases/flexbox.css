@@ -1,4 +1,5 @@
 a {
+    -js-display: flex;
     display: flex;
     flex-flow: row;
     order: 0;

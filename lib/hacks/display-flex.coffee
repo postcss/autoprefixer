@@ -18,7 +18,7 @@ class DisplayFlex extends Value
 
   # Faster check for flex value
   check: (decl) ->
-    decl.value == @name
+    decl.prop == 'display' and decl.value == @name
 
   # Return value by spec
   prefixed: (prefix) ->

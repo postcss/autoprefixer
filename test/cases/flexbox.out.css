@@ -1,4 +1,5 @@
 a {
+    -js-display: flex;
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
