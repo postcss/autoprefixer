@@ -180,7 +180,7 @@ you might take a look at:
 - [cssnext], a tool that allows you to write standard CSS syntax non-implemented
   yet in browsers (custom properties, custom media, color functions, etc).
 
-[cssnext]: https://github.com/cssnext/postcss-cssnext
+[cssnext]: https://github.com/MoOx/postcss-cssnext
 [Oldie]:   https://github.com/jonathantneal/oldie
 
 #### Why doesn’t Autoprefixer add prefixes to `border-radius`?
