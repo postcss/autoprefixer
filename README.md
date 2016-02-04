@@ -449,11 +449,11 @@ please create an issue on GitHub.
 Autoprefixer has 4 features, which can be disabled by options:
 
 * `supports: false` will disable `@supports` parameters prefixing.
-* `flexbox: false` will disabled flexbox properties prefixing.
+* `flexbox: false` will disable flexbox properties prefixing.
   Or `flexbox: "no-2009"` will add prefixes only for final and IE
   versions of specification.
 * `grid: false` will disable Grid Layout prefixes for IE.
-* `remove: false` will disabled cleaning outdated prefixes.
+* `remove: false` will disable cleaning outdated prefixes.
 
 If you do not need Autoprefixer in some part of your CSS,
 you can use control comments to disable Autoprefixer.
