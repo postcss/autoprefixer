@@ -6,7 +6,7 @@ utils    = require('./utils')
 postcss = require('postcss')
 
 supported = []
-data      = require('caniuse-db/features-json/css-featurequeries')
+data      = require('caniuse-db/features-json/css-featurequeries.json')
 for browser, versions of data.stats
   for version, support of versions
     supported.push(browser + ' ' + version) if /y/.test(support)
