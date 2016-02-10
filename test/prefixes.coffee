@@ -8,7 +8,7 @@ Value       = require('../lib/value')
 parse       = require('postcss/lib/parse')
 
 data =
-  browsers: require('caniuse-db/data').agents
+  browsers: require('caniuse-db/data.json').agents
   prefixes:
     a:
       browsers: ['firefox 21', 'firefox 20 old', 'chrome 30', 'ie 6']

@@ -8,7 +8,7 @@ class Browsers
   @prefixes: ->
     return @prefixesCache if @prefixesCache
 
-    data = require('caniuse-db/data').agents
+    data = require('caniuse-db/data.json').agents
     @prefixesCache = utils.uniq("-#{i.prefix}-" for name, i of data).
                            sort (a, b) -> b.length - a.length
 
