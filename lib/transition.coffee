@@ -1,5 +1,6 @@
 parser = require('postcss-value-parser')
 vendor = require('postcss/lib/vendor')
+list   = require('postcss/lib/list')
 
 class Transition
   constructor: (@prefixes) ->
@@ -64,7 +65,7 @@ class Transition
         return if i.prop.indexOf('transition-') != 0
         return if i.prop == 'transition-property'
 
-        if i.value.indexOf(',') != -1
+        if list.comma(i.value).length > 1
           decl.warn(result, 'Replace transition-property to transition, ' +
                             'because Autoprefixer could not support ' +
                             'any cases of transition-property ' +

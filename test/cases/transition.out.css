@@ -31,6 +31,17 @@ div {
             transition-duration: 1s;
 }
 
+.good2 {
+    -webkit-transition-property: color, -webkit-filter;
+    transition-property: color, -webkit-filter;
+    -o-transition-property: color, filter;
+    transition-property: color, filter;
+    transition-property: color, filter, -webkit-filter;
+    -webkit-transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
+         -o-transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
+            transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
+}
+
 .bad {
     /* safe with different node types */
     -webkit-transition-property: color, -webkit-filter;

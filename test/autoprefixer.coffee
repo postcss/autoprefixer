@@ -138,7 +138,7 @@ describe 'Autoprefixer', ->
 
     result.css.should.eql(output)
     result.warnings().map( (i) -> i.toString() ).should.eql(
-      ['autoprefixer: <css input>:18:5: Replace transition-property ' +
+      ['autoprefixer: <css input>:23:5: Replace transition-property ' +
        'to transition, because Autoprefixer could not support any cases ' +
        'of transition-property and other transition-*'])
 

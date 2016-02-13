@@ -13,6 +13,11 @@ div {
     transition-duration: 1s;
 }
 
+.good2 {
+    transition-property: color, filter;
+    transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
+}
+
 .bad {
     /* safe with different node types */
     transition-property: color, filter;
