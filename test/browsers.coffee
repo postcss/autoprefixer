@@ -49,9 +49,9 @@ describe 'Browsers', ->
     it 'returns right prefix for Operas', ->
       browsers = new Browsers(data, [])
       browsers.prefix('opera 12').should.eql('-o-')
-      browsers.prefix('opera 15').should.eql('-webkit-')
+      browsers.prefix('opera 35').should.eql('-webkit-')
       browsers.prefix('op_mob 12').should.eql('-o-')
-      browsers.prefix('op_mob 33').should.eql('-webkit-')
+      browsers.prefix('op_mob 35').should.eql('-webkit-')
 
   describe 'isSelected()', ->
 

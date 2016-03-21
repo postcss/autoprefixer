@@ -33,6 +33,8 @@ describe 'info', ->
                               "  Chrome: 30\n" +
                               "  Firefox: 21, 20\n" +
                               "  IE: 6\n" +
+                              "These browsers account for 0.13% " +
+                                "of all users globally\n" +
                               "\n" +
                               "At-Rules:\n" +
                               "  @keyframes: moz\n" +
@@ -56,6 +58,8 @@ describe 'info', ->
                               "  Chrome: 30\n" +
                               "  Firefox: 20\n" +
                               "  IE: 6\n" +
+                              "These browsers account for 0.08% " +
+                                "of all users globally\n" +
                               "\n" +
                               "Properties:\n" +
                               "  a: webkit, moz\n" +

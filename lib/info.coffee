@@ -1,3 +1,5 @@
+browserslist = require('browserslist')
+
 capitalize = (str) ->
   str.slice(0, 1).toUpperCase() + str.slice(1)
 
@@ -34,6 +36,9 @@ module.exports = (prefixes) ->
   for browser, list of versions
     list = list.sort (a, b) -> parseFloat(b) - parseFloat(a)
     out += '  ' + browser + ': ' + list.join(', ') + "\n"
+  coverage = browserslist.coverage(prefixes.browsers.selected)
+  round    = Math.round(coverage * 100) / 100.0;
+  out     += "These browsers account for #{ round }% of all users globally\n"
 
   atrules = ''
   for name, data of prefixes.add
