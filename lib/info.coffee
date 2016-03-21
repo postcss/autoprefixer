@@ -38,7 +38,7 @@ module.exports = (prefixes) ->
     out += '  ' + browser + ': ' + list.join(', ') + "\n"
   coverage = browserslist.coverage(prefixes.browsers.selected)
   round    = Math.round(coverage * 100) / 100.0;
-  out     += "These browsers account for #{ round }% of all users globally\n"
+  out     += "\nThese browsers account for #{ round }% of all users globally\n"
 
   atrules = ''
   for name, data of prefixes.add
