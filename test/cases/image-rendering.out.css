@@ -8,3 +8,12 @@ img.other {
         image-rendering: -moz-crisp-edges;
         image-rendering: pixelated;
 }
+
+img.already {
+    -ms-interpolation-mode: nearest-neighbor;
+    display: block;
+    image-rendering: crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: pixelated;
+}

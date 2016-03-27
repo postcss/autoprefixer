@@ -5,3 +5,10 @@ img {
 img.other {
     image-rendering: pixelated;
 }
+
+img.already {
+    -ms-interpolation-mode: nearest-neighbor;
+    display: block;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+}

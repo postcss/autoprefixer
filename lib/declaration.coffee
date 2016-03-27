@@ -72,6 +72,10 @@ class Declaration extends Prefixer
     cloned = @set(@clone(decl), prefix)
     return unless cloned
 
+    already = decl.parent.some (i) ->
+      i.prop == cloned.prop and i.value == cloned.value
+    return if already
+
     if @needCascade(decl)
       cloned.raws.before = @calcBefore(prefixes, decl, prefix)
     decl.parent.insertBefore(decl, cloned)
