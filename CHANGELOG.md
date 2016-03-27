@@ -1,3 +1,6 @@
+## 6.3.5
+* Fix duplicate prefixes for `-ms-interpolation-mode`.
+
 ## 6.3.4
 * Show users coverage for selected browsers in `info()`.
 
