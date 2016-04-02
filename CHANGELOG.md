@@ -1,3 +1,6 @@
+## 6.3.6
+* Add Safari TP prefix support for Grid Layout.
+
 ## 6.3.5
 * Fix duplicate prefixes for `-ms-interpolation-mode`.
 
