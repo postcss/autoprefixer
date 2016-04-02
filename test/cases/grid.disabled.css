@@ -19,6 +19,13 @@
     grid-column: 1 / span 3;
 }
 
+.webkit {
+    grid: subgrid;
+    grid-template-areas: "head head"
+                         "nav  main"
+                         "foot ....";
+}
+
 .unknown {
     -ms-flex-align: start;
         align-items: start;

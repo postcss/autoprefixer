@@ -1,35 +1,55 @@
 .a {
+    display: -webkit-grid;
     display: -ms-grid;
     display: grid;
+    -webkit-grid-template-columns: auto 1fr;
     -ms-grid-columns: auto 1fr;
     grid-template-columns: auto 1fr;
     -ms-grid-column-align: stretch;
     justify-items: stretch;
     -ms-grid-row-align: stretch;
     align-items: stretch;
+    -webkit-grid-column-start: 1;
     -ms-grid-column: 1;
     grid-column-start: 1;
+    -webkit-grid-column-end: span 3;
     -ms-grid-column-span: 3;
     grid-column-end: span 3;
 }
 
 .b {
+    display: -webkit-inline-grid;
     display: -ms-inline-grid;
     display: inline-grid;
+    -webkit-grid-template-rows: 10px repeat(4, 250px 10px) 20px;
     -ms-grid-rows: 10px (250px 10px)[4] 20px;
     grid-template-rows: 10px repeat(4, 250px 10px) 20px;
     -ms-grid-row-align: stretch;
     align-items: stretch;
+    -webkit-grid-row-start: 1;
     -ms-grid-row: 1;
     grid-row-start: 1;
+    -webkit-grid-row-end: span 3;
     -ms-grid-row-span: 3;
     grid-row-end: span 3;
 }
 
 .c {
+    -webkit-grid-column: 1 / span 3;
     -ms-grid-column-span: 3;
     -ms-grid-column: 1;
     grid-column: 1 / span 3;
+}
+
+.webkit {
+    -webkit-grid: subgrid;
+    grid: subgrid;
+    -webkit-grid-template-areas: "head head"
+                         "nav  main"
+                         "foot ....";
+    grid-template-areas: "head head"
+                         "nav  main"
+                         "foot ....";
 }
 
 .unknown {

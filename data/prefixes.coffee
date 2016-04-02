@@ -433,14 +433,26 @@ feature require('caniuse-db/features-json/text-emphasis.json'), (browsers) ->
           browsers: browsers
 
 # CSS Grid Layout
-feature require('caniuse-db/features-json/css-grid.json'), (browsers) ->
-  prefix 'grid', 'inline-grid',
+grid = require('caniuse-db/features-json/css-grid.json')
+feature grid, (browsers) ->
+  prefix 'display-grid', 'inline-grid',
           props:  ['display']
           browsers: browsers
-  prefix 'grid-template-columns', 'grid-template-rows', 'grid-template-columns',
-         'grid-column', 'grid-row', 'grid-column-end', 'grid-row-end',
-         'grid-column-start', 'grid-row-start', 'justify-items',
-         'grid-row-align', # Hack for grid or flexbox case
+  prefix 'grid-template-columns', 'grid-template-rows',
+         'grid-row-start', 'grid-column-start',
+         'grid-row-end', 'grid-column-end',
+         'grid-row', 'grid-column',
+          browsers: browsers
+
+feature grid, match: /y x/, (browsers) ->
+  prefix 'grid-template-areas', 'grid-template',
+         'grid-auto-columns', 'grid-auto-rows',
+         'grid-auto-flow', 'grid', 'grid-area',
+         'grid-row-gap', 'grid-column-gap', 'grid-gap',
+          browsers: browsers
+
+feature grid, match: /a x/, (browsers) ->
+  prefix 'justify-items', 'grid-row-align',
           browsers: browsers
 
 # CSS text-spacing
