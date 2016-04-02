@@ -2,13 +2,6 @@ flexSpec = require('./flex-spec')
 OldValue = require('../old-value')
 Value    = require('../value')
 
-class OldDisplayFlex extends OldValue
-  constructor: (@unprefixed, @prefixed) ->
-
-  # Faster check
-  check: (value) ->
-    value == @name
-
 class DisplayFlex extends Value
   @names = ['display-flex', 'inline-flex']
 
