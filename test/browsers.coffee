@@ -47,11 +47,11 @@ describe 'Browsers', ->
       browsers.prefix('chrome 30').should == '-webkit-'
 
     it 'returns right prefix for Operas', ->
-      browsers = new Browsers(data, [])
+      browsers = new Browsers(data, ['last 1 opera version'])
       browsers.prefix('opera 12').should.eql('-o-')
-      browsers.prefix('opera 35').should.eql('-webkit-')
+      browsers.prefix(browsers.selected[0]).should.eql('-webkit-')
       browsers.prefix('op_mob 12').should.eql('-o-')
-      browsers.prefix('op_mob 35').should.eql('-webkit-')
+      browsers.prefix(browsers.selected[0]).should.eql('-webkit-')
 
   describe 'isSelected()', ->
 
