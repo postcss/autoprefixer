@@ -24,7 +24,6 @@ of Autoprefixer.
 ```css
 :-webkit-full-screen a {
     display: -webkit-box;
-    display: -webkit-flex;
     display: flex
 }
 :-moz-full-screen a {
@@ -36,7 +35,6 @@ of Autoprefixer.
 }
 :fullscreen a {
     display: -webkit-box;
-    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex
 }
