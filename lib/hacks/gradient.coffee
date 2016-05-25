@@ -72,7 +72,7 @@ class Gradient extends Value
     if /-?\d+(.\d+)?grad/.test(nodes[0].value)
       nodes[0].value = @normalizeUnit(nodes[0].value, 400)
     else if /-?\d+(.\d+)?rad/.test(nodes[0].value)
-      nodes[0].value = @normalizeUnit(nodes[0].value, 2)
+      nodes[0].value = @normalizeUnit(nodes[0].value, 2 * Math.PI)
     else if /-?\d+(.\d+)?turn/.test(nodes[0].value)
       nodes[0].value = @normalizeUnit(nodes[0].value, 1)
     else if nodes[0].value.indexOf('deg') != -1

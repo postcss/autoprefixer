@@ -127,9 +127,8 @@ div {
 }
 
 .rad {
-    background: -webkit-gradient(linear, left top, left bottom, from(white), to(black));
-    background: -webkit-linear-gradient(top, white, black);
-    background: -o-linear-gradient(top, white, black);
+    background: -webkit-linear-gradient(32.704deg, white, black);
+    background: -o-linear-gradient(32.704deg, white, black);
     background: linear-gradient(1rad, white, black);
 }
 
