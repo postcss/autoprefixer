@@ -163,6 +163,22 @@ cleaner.process(css).then(function (cleaned) {
 
 ## FAQ
 
+#### No prefixes in production
+
+Many other tools contain Autoprefixer. For example, webpack uses Autoprefixer
+to minify CSS by cleaning unnecessary prefixes.
+
+If you set browsers list to Autoprefixer by `browsers` option, only first
+Autoprefixer will know your browsers. Autoprefixer inside webpack will use
+default browsers list. As result, webpack will remove prefixes, that first
+Autoprefixer added.
+
+You need to put your browsers to [`browserslist` config] in project root —
+as result all tools (Autoprefixer, cssnano, doiuse, cssnext) will use same
+browsers list.
+
+[`browserslist` config]: https://github.com/ai/browserslist#config-file
+
 #### Does it add polyfills?
 
 No. Autoprefixer only adds prefixes.
