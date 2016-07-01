@@ -12,6 +12,8 @@ clone = (obj, parent) ->
       cloned[i] = parent if parent
     else if i == 'source'
       cloned[i] = value
+    else if i == null
+      cloned[i] = value
     else if value instanceof Array
       cloned[i] = value.map (i) -> clone(i, cloned)
     else if i != '_autoprefixerPrefix' and i != '_autoprefixerValues'
