@@ -1,3 +1,6 @@
+## 6.3.7
+* Fix rare `Cannot read property 'constructor' of null` issue.
+
 ## 6.3.6
 * Add Safari TP prefix support for Grid Layout.
 
