@@ -4,10 +4,7 @@ Browsers     = require('../lib/browsers')
 postcss = require('postcss')
 fs      = require('fs')
 
-grider = autoprefixer
-  browsers: ['Chrome 25', 'Safari TP', 'IE 10'],
-  cascade: false
-
+grider       = autoprefixer(browsers: ['Chrome 25', 'IE 10'], cascade: false)
 cleaner      = autoprefixer(browsers: [])
 compiler     = autoprefixer(browsers: ['Chrome 25', 'Opera 12'])
 filterer     = autoprefixer(browsers: ['Chrome 25', 'Safari 9', 'Firefox 39'])

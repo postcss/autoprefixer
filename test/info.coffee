@@ -60,7 +60,7 @@ describe 'info', ->
                               "  Firefox: 20\n" +
                               "  IE: 6\n" +
                               "\n" +
-                              "These browsers account for 0.09% " +
+                              "These browsers account for 0.08% " +
                                 "of all users globally\n" +
                               "\n" +
                               "Properties:\n" +
