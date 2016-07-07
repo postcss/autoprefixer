@@ -35,7 +35,8 @@ class Processor
     css.walkDecls (decl) =>
       return if @disabled(decl)
 
-      if decl.prop == 'display' and decl.value == 'box'
+      if @prefixes.options.flexbox != false and decl.prop == 'display' and
+          decl.value == 'box'
         result.warn('You should write display: flex by final spec ' +
                     'instead of display: box', node: decl)
         return
