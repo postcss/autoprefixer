@@ -13,13 +13,13 @@ class Transition
     declPrefixes = @prefixes.add[decl.prop]?.prefixes || []
 
     params = @parse(decl.value)
-    names  = params.map (i) -> i[0].value
+    names  = params.map (i) => @findProp(i)
     added  = []
 
     return if names.some (i) -> i[0] == '-'
 
     for param in params
-      prop = param[0].value
+      prop = @findProp(param)
       continue if prop[0] == '-'
       prefixer = @prefixes.add[prop]
       continue if not prefixer?.prefixes
@@ -28,7 +28,7 @@ class Transition
         prefixed = @prefixes.prefixed(prop, prefix)
         if prefixed != '-ms-transform' and names.indexOf(prefixed) == -1
           unless @disabled(prop, prefix)
-            added.push(@clone(prefixed, param))
+            added.push(@clone(prop, prefixed, param))
 
     params = params.concat(added)
     value  = @stringify(params)
@@ -47,6 +47,14 @@ class Transition
       @checkForWarning(result, decl)
       decl.cloneBefore()
       decl.value = value
+
+  # Find property name
+  findProp: (param) ->
+    prop = param[0].value
+    if /^\d/.test(prop)
+      find = param.find (token, i) -> i != 0 and token.type == 'word'
+      prop = find.value if find
+    prop
 
   # Does we aready have this declaration
   already: (decl, prop, value) ->
@@ -75,7 +83,7 @@ class Transition
   # Process transition and remove all unnecessary properties
   remove: (decl) ->
     params = @parse(decl.value)
-    params = params.filter (param) => !@prefixes.remove[param[0].value]?.remove
+    params = params.filter (i) => !@prefixes.remove[@findProp(i)]?.remove
     value  = @stringify(params)
 
     return if decl.value == value
@@ -121,11 +129,15 @@ class Transition
     parser.stringify({ nodes: nodes })
 
   # Return new param array with different name
-  clone: (name, param) ->
-    result = []
+  clone: (origin, name, param) ->
+    result  = []
+    changed = false
     for i in param
-      result.push(i)
-    result[0] = { type: 'word', value: name }
+      if !changed and i.type == 'word' and i.value == origin
+        result.push(type: 'word', value: name)
+        changed = true
+      else
+        result.push(i)
     result
 
   # Find or create seperator
@@ -137,19 +149,19 @@ class Transition
     { type: 'div', value: ',', after: ' ' }
 
   cleanOtherPrefixes: (params, prefix) ->
-    params.filter (param) ->
-      current = vendor.prefix(param[0].value)
+    params.filter (param) =>
+      current = vendor.prefix(@findProp(param))
       current == '' or current == prefix
 
   # Remove all non-webkit prefixes and unprefixed params if we have prefixed
   cleanForSafari: (params) ->
     result = []
     remove = params
-      .map (i) -> i[0].value
+      .map (i) => @findProp(i)
       .filter (i) -> i[0..7] == '-webkit-'
       .map (i) => @prefixes.unprefixed(i)
     for param in params
-      prop   = param[0].value
+      prop   = @findProp(param)
       prefix = vendor.prefix(prop)
       if remove.indexOf(prop) == -1 and (prefix == '-webkit-' or prefix == '')
         result.push(param)

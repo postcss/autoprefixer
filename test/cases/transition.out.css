@@ -53,3 +53,11 @@ div {
          -o-transition-duration: 1s, 2s;
             transition-duration: 1s, 2s;
 }
+
+.revert {
+    -webkit-transition: 200ms -webkit-transform;
+    transition: 200ms -webkit-transform;
+    -o-transition: 200ms transform, 200ms -o-transform;
+    transition: 200ms transform;
+    transition: 200ms transform, 200ms -webkit-transform, 200ms -o-transform;
+}
