@@ -33,13 +33,16 @@ class Transition
     params = params.concat(added)
     value  = @stringify(params)
 
-    clean = @stringify(@cleanForSafari(params))
+    webkitClean = @stringify(@cleanFromUnprefixed(params, '-webkit-'))
     if declPrefixes.indexOf('-webkit-') != -1
-      @cloneBefore(decl, '-webkit-' + decl.prop, clean)
-    @cloneBefore(decl, decl.prop, clean)
+      @cloneBefore(decl, '-webkit-' + decl.prop, webkitClean)
+    @cloneBefore(decl, decl.prop, webkitClean)
+    if declPrefixes.indexOf('-o-') != -1
+      operaClean = @stringify(@cleanFromUnprefixed(params, '-o-'))
+      @cloneBefore(decl, '-o-' + decl.prop, operaClean)
 
     for prefix in declPrefixes
-      if prefix != '-webkit-'
+      if prefix != '-webkit-' and prefix != '-o-'
         prefixValue = @stringify(@cleanOtherPrefixes(params, prefix))
         @cloneBefore(decl, prefix + decl.prop, prefixValue)
 
@@ -154,16 +157,16 @@ class Transition
       current == '' or current == prefix
 
   # Remove all non-webkit prefixes and unprefixed params if we have prefixed
-  cleanForSafari: (params) ->
+  cleanFromUnprefixed: (params, prefix) ->
     result = []
     remove = params
       .map (i) => @findProp(i)
-      .filter (i) -> i[0..7] == '-webkit-'
+      .filter (i) -> i[0...prefix.length] == prefix
       .map (i) => @prefixes.unprefixed(i)
     for param in params
-      prop   = @findProp(param)
-      prefix = vendor.prefix(prop)
-      if remove.indexOf(prop) == -1 and (prefix == '-webkit-' or prefix == '')
+      prop = @findProp(param)
+      p    = vendor.prefix(prop)
+      if remove.indexOf(prop) == -1 and (p == prefix or p == '')
         result.push(param)
     result
 

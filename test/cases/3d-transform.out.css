@@ -1,5 +1,5 @@
 a {
-    -o-transition: transform 1s, -o-transform 1s;
+    -o-transition: -o-transform 1s;
     transition: transform 1s;
     transition: transform 1s, -o-transform 1s;
     transform: rotateX(45deg);

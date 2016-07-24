@@ -1,7 +1,7 @@
 a {
     -webkit-transition: color 200ms, -webkit-transform 200ms;
     transition: color 200ms, -webkit-transform 200ms;
-    -o-transition: color 200ms, transform 200ms, -o-transform 200ms;
+    -o-transition: color 200ms, -o-transform 200ms;
     transition: color 200ms, transform 200ms;
     transition: color 200ms, transform 200ms, -webkit-transform 200ms, -o-transform 200ms;
     -webkit-transform: rotate(10deg);
@@ -57,7 +57,7 @@ div {
 .revert {
     -webkit-transition: 200ms -webkit-transform;
     transition: 200ms -webkit-transform;
-    -o-transition: 200ms transform, 200ms -o-transform;
+    -o-transition: 200ms -o-transform;
     transition: 200ms transform;
     transition: 200ms transform, 200ms -webkit-transform, 200ms -o-transform;
 }
