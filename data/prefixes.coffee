@@ -444,13 +444,6 @@ feature grid, (browsers) ->
          'grid-row', 'grid-column',
           browsers: browsers
 
-feature grid, match: /y x/, (browsers) ->
-  prefix 'grid-template-areas', 'grid-template',
-         'grid-auto-columns', 'grid-auto-rows',
-         'grid-auto-flow', 'grid', 'grid-area',
-         'grid-row-gap', 'grid-column-gap', 'grid-gap',
-          browsers: browsers
-
 feature grid, match: /a x/, (browsers) ->
   prefix 'justify-items', 'grid-row-align',
           browsers: browsers
