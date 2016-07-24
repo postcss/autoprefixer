@@ -191,11 +191,13 @@ other tools and libraries. If you are just looking for syntax sugar,
 you might take a look at:
 
 - [Oldie], a PostCSS plugin that handles some IE hacks (opacity, rgba, etc).
+- [postcss-flexbugs-fixes], a PostCSS plugin to fix flexbox issues.
 - [cssnext], a tool that allows you to write standard CSS syntax non-implemented
   yet in browsers (custom properties, custom media, color functions, etc).
 
-[cssnext]: https://github.com/MoOx/postcss-cssnext
-[Oldie]:   https://github.com/jonathantneal/oldie
+[postcss-flexbugs-fixes]: https://github.com/luisrudge/postcss-flexbugs-fixes
+[cssnext]:                https://github.com/MoOx/postcss-cssnext
+[Oldie]:                  https://github.com/jonathantneal/oldie
 
 #### Why doesn’t Autoprefixer add prefixes to `border-radius`?
 
