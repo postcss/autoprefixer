@@ -356,7 +356,7 @@ feature textAlignLast, (browsers) ->
 # Crisp Edges Image Rendering Algorithm
 crispedges = require('caniuse-db/features-json/css-crisp-edges.json')
 
-feature crispedges, match: /y x/, (browsers) ->
+feature crispedges, match: /y x|a x #1/, (browsers) ->
   prefix 'pixelated',
           props:  ['image-rendering']
           browsers: browsers

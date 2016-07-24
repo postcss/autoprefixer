@@ -68,6 +68,10 @@ gulp.task('standalone', ['build:lib'], function (done) {
 });
 
 gulp.task('lint', function () {
+    if ( parseInt(process.versions.node) < 4 ) {
+        return null;
+    }
+
     var eslint = require('gulp-eslint');
 
     return gulp.src(['index.js', 'gulpfile.js'])

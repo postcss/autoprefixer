@@ -34,7 +34,7 @@ describe 'info', ->
                               "  Firefox: 21, 20\n" +
                               "  IE: 6\n" +
                               "\n" +
-                              "These browsers account for 0.11% " +
+                              "These browsers account for 0.13% " +
                                 "of all users globally\n" +
                               "\n" +
                               "At-Rules:\n" +
@@ -60,7 +60,7 @@ describe 'info', ->
                               "  Firefox: 20\n" +
                               "  IE: 6\n" +
                               "\n" +
-                              "These browsers account for 0.08% " +
+                              "These browsers account for 0.09% " +
                                 "of all users globally\n" +
                               "\n" +
                               "Properties:\n" +
