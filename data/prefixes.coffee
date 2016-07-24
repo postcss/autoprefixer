@@ -79,11 +79,16 @@ feature require('caniuse-db/features-json/transforms2d.json'), (browsers) ->
           browsers: browsers
 
 # Transform 3D
-feature require('caniuse-db/features-json/transforms3d.json'), (browsers) ->
+transforms3d = require('caniuse-db/features-json/transforms3d.json')
+feature transforms3d, (browsers) ->
   prefix 'perspective', 'perspective-origin',
           browsers: browsers
+  prefix 'transform-style',
+          mistakes: ['-ms-', '-o-']
+          browsers: browsers
 
-  prefix 'transform-style', 'backface-visibility',
+feature transforms3d, match: /y\sx|y\s#2/, (browsers) ->
+  prefix 'backface-visibility',
           mistakes: ['-ms-', '-o-']
           browsers: browsers
 

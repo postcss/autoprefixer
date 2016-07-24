@@ -321,3 +321,13 @@ describe 'Autoprefixer', ->
     it 'ignores values for CSS3PIE props', ->
       css = read('pie')
       postcss([compiler]).process(css).css.should.eql(css)
+
+    it 'add prefix for backface-visibility for Safari 9', ->
+      input = 'a{ ' +
+        'backface-visibility: hidden; ' +
+        'transform-style: preserve-3d }'
+      instance = autoprefixer(browsers: ['Safari 9'], flexbox: false)
+      postcss([instance]).process(input).css.should.eql('a{ ' +
+          '-webkit-backface-visibility: hidden; ' +
+          'backface-visibility: hidden; ' +
+          'transform-style: preserve-3d }')
