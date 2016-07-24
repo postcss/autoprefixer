@@ -1,6 +1,7 @@
-Browsers = require('../lib/browsers')
-Prefixes = require('../lib/prefixes')
-info     = require('../lib/info')
+browserslist = require('browserslist')
+Browsers     = require('../lib/browsers')
+Prefixes     = require('../lib/prefixes')
+info         = require('../lib/info')
 
 data =
   browsers: require('caniuse-db/data.json').agents
@@ -29,12 +30,16 @@ describe 'info', ->
       ['chrome 30', 'firefox 21', 'firefox 20', 'ie 6'])
     prefixes = new Prefixes(data.prefixes, browsers)
 
+    coverage = browserslist.coverage(
+      ['chrome 30', 'firefox 21', 'firefox 20', 'ie 6'])
+    round = Math.round(coverage * 100) / 100.0
+
     info(prefixes).should.eql "Browsers:\n" +
                               "  Chrome: 30\n" +
                               "  Firefox: 21, 20\n" +
                               "  IE: 6\n" +
                               "\n" +
-                              "These browsers account for 0.13% " +
+                              "These browsers account for #{round}% " +
                                 "of all users globally\n" +
                               "\n" +
                               "At-Rules:\n" +
@@ -55,12 +60,15 @@ describe 'info', ->
     browsers = new Browsers(data.browsers, ['chrome 30', 'firefox 20', 'ie 6'])
     prefixes = new Prefixes(data.prefixes, browsers)
 
+    coverage = browserslist.coverage(['chrome 30', 'firefox 20', 'ie 6'])
+    round    = Math.round(coverage * 100) / 100.0
+
     info(prefixes).should.eql "Browsers:\n" +
                               "  Chrome: 30\n" +
                               "  Firefox: 20\n" +
                               "  IE: 6\n" +
                               "\n" +
-                              "These browsers account for 0.09% " +
+                              "These browsers account for #{ round }% " +
                                 "of all users globally\n" +
                               "\n" +
                               "Properties:\n" +
