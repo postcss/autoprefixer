@@ -281,8 +281,9 @@ feature require('caniuse-db/features-json/pointer.json'), (browsers) ->
 # Text decoration
 feature require('caniuse-db/features-json/text-decoration.json'), (browsers) ->
   prefix 'text-decoration-style',
-         'text-decoration-line',
          'text-decoration-color',
+         'text-decoration-line',
+         'text-decoration-skip',
           browsers: browsers
 
 # Text Size Adjust
