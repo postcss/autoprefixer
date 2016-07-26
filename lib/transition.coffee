@@ -55,8 +55,9 @@ class Transition
   findProp: (param) ->
     prop = param[0].value
     if /^\d/.test(prop)
-      find = param.find (token, i) -> i != 0 and token.type == 'word'
-      prop = find.value if find
+      for token, i in param
+        if i != 0 and token.type == 'word'
+          return token.value
     prop
 
   # Does we aready have this declaration
