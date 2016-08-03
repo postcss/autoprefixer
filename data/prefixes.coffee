@@ -285,6 +285,7 @@ feature require('caniuse-db/features-json/pointer.json'), (browsers) ->
 
 # Text decoration
 decoration = require('caniuse-db/features-json/text-decoration.json')
+
 feature decoration, (browsers) ->
   prefix 'text-decoration-style',
          'text-decoration-color',
