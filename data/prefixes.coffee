@@ -293,7 +293,6 @@ feature decoration, (browsers) ->
           browsers: browsers
 
 feature decoration, match: /x.*#3/, (browsers) ->
-  console.log(browsers)
   prefix 'text-decoration-skip',
           browsers: browsers
 
@@ -465,4 +464,10 @@ textSpacing = require('caniuse-db/features-json/css-text-spacing.json')
 
 feature textSpacing, (browsers) ->
   prefix 'text-spacing',
+          browsers: browsers
+
+# :any-link selector
+feature require('caniuse-db/features-json/css-any-link.json'), (browsers) ->
+  prefix ':any-link',
+          selector: true,
           browsers: browsers
