@@ -379,7 +379,7 @@ postcss --use autoprefixer *.css -d build/
 
 See `postcss -h` for help.
 
-[postcss-cli]: https://github.com/code42day/postcss-cli
+[postcss-cli]: https://github.com/postcss/postcss-cli
 
 ### JavaScript
 
