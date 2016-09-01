@@ -17,7 +17,8 @@ clone = (obj, parent) ->
     else if value instanceof Array
       cloned[i] = value.map (i) -> clone(i, cloned)
     else if i != '_autoprefixerPrefix' and i != '_autoprefixerValues'
-      value = clone(value, cloned) if typeof(value) == 'object'
+      if typeof(value) == 'object' && value != null
+        value = clone(value, cloned)
       cloned[i] = value
 
   cloned
