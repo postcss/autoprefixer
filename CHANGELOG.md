@@ -1,3 +1,6 @@
+## 6.4.1
+* Fix node cloning after some PostCSS plugins.
+
 ## 6.4 “Hic et ubique terrarum”
 * Add `:any-link` selector support.
 * Add `text-decoration-skip` support.
