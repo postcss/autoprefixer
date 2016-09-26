@@ -71,11 +71,11 @@ class Processor
         # Transition
         @prefixes.transition.add(decl, result)
 
-      else if decl.prop == 'align-items'
-        # align-items flexbox or grid
+      else if decl.prop == 'align-self'
+        # align-self flexbox or grid
         display = @displayType(decl)
         if display != 'grid' and @prefixes.options.flexbox != false
-          prefixer = @prefixes.add['align-items']
+          prefixer = @prefixes.add['align-self']
           if prefixer and prefixer.prefixes
             prefixer.process(decl)
         if display != 'flex' and @prefixes.options.grid != false
@@ -163,7 +163,7 @@ class Processor
     if @prefixes.options.flexbox == false and node.type == 'decl'
       if node.prop == 'display' and node.value.indexOf('flex') != -1
         return true
-      other = ['order', 'justify-content', 'align-self', 'align-content']
+      other = ['order', 'justify-content', 'align-items', 'align-content']
       if node.prop.indexOf('flex') != -1 or other.indexOf(node.prop) != -1
         return true
 

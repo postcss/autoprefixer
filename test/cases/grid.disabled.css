@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: auto 1fr;
     justify-items: stretch;
-    align-items: stretch;
+    align-self: stretch;
     grid-column-start: 1;
     grid-column-end: span 3;
 }
@@ -10,7 +10,7 @@
 .b {
     display: inline-grid;
     grid-template-rows: 10px repeat(4, 250px 10px) 20px;
-    align-items: stretch;
+    align-self: stretch;
     grid-row-start: 1;
     grid-row-end: span 3;
 }
@@ -27,11 +27,11 @@
 }
 
 .unknown {
-    -ms-flex-align: start;
-        align-items: start;
+    -ms-flex-item-align: start;
+        align-self: start;
 }
 
 .flex {
-    -ms-flex-align: end;
-        align-items: flex-end;
+    -ms-flex-item-align: end;
+        align-self: flex-end;
 }

@@ -13,6 +13,6 @@ class GridRowAlign extends Declaration
 
   # Change IE property back
   normalize: (prop) ->
-    'align-items'
+    'align-self'
 
 module.exports = GridRowAlign
