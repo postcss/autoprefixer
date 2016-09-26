@@ -29,3 +29,7 @@
 .unknown {
     align-items: start;
 }
+
+.flex {
+    align-items: flex-end;
+}

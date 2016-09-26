@@ -30,3 +30,8 @@
     -ms-flex-align: start;
         align-items: start;
 }
+
+.flex {
+    -ms-flex-align: end;
+        align-items: flex-end;
+}

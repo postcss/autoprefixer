@@ -45,3 +45,9 @@
     -ms-grid-row-align: start;
     align-items: start;
 }
+
+.flex {
+    -webkit-align-items: flex-end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+}
