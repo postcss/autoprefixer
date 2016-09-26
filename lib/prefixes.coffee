@@ -179,6 +179,13 @@ class Prefixes
           for prefix in prefixes
             prop = vendor.unprefixed(name)
             olds = @decl(name).old(name, prefix)
+            if name == 'align-self'
+              a = add[name]?.prefixes
+              if a
+                if prefix == '-webkit- 2009' && a.indexOf('-webkit-') != -1
+                  continue
+                else if prefix == '-webkit-' && a.indexOf('-webkit- 2009') != -1
+                  continue
             for prefixed in olds
               remove[prefixed] = {} unless remove[prefixed]
               remove[prefixed].remove = true
