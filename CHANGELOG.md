@@ -1,3 +1,8 @@
+## 6.5 “Einigkeit und Recht und Freiheit”
+* Add `defaults` keyword to browsers requirements.
+* Fix CSS Grid Layout support.
+* Fix `align-self` cleaning.
+
 ## 6.4.1
 * Fix node cloning after some PostCSS plugins.
 
