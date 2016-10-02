@@ -342,11 +342,11 @@ with [other PostCSS plugins].
 
 * **Less**: [less-plugin-autoprefix]
 * **Stylus**: [autoprefixer-stylus]
-* **Compass**: [autoprefixer-rails]
+* **Compass**: [autoprefixer-rails#compass]
 
- [less-plugin-autoprefix]: https://github.com/less/less-plugin-autoprefix
- [autoprefixer-stylus]:    https://github.com/jenius/autoprefixer-stylus
- [autoprefixer-rails]:     https://github.com/ai/autoprefixer-rails#compass
+[less-plugin-autoprefix]: https://github.com/less/less-plugin-autoprefix
+[autoprefixer-stylus]:    https://github.com/jenius/autoprefixer-stylus
+[autoprefixer-rails#compass]:     https://github.com/ai/autoprefixer-rails#compass
 
 ### CSS-in-JS
 
