@@ -15,11 +15,11 @@
   "dependencies": {
     "postcss-value-parser": "^3.2.3",
     "normalize-range":      "^0.1.2",
-    "coffee-script":        "1.11.0",
+    "coffee-script":        "1.11.1",
     "num2fraction":         "^1.2.2",
     "browserslist":         "~1.4.0",
-    "caniuse-db":           "^1.0.30000541",
-    "postcss":              "^5.2.3"
+    "caniuse-db":           "^1.0.30000542",
+    "postcss":              "^5.2.4"
   },
   "devDependencies": {
     "eslint-config-postcss": "2.0.2",
