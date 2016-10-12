@@ -74,3 +74,7 @@ describe 'Prefixer', ->
 
     it 'finds only browsers prefixes', ->
       @prefix.parentPrefix(@css.nodes[2]).should.be.false
+
+    it 'works with selector contained --', ->
+      css = parse(':--a { color: black }')
+      @prefix.parentPrefix(css.first.first).should.be.false

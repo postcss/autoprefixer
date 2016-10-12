@@ -58,7 +58,8 @@ class Prefixer
     else if node.type == 'root'
       false
 
-    else if node.type == 'rule' and node.selector.indexOf(':-') != -1
+    else if node.type == 'rule' and
+            node.selector.indexOf(':-') != -1 and /:(-\w+-)/.test(node.selector)
       node.selector.match(/:(-\w+-)/)[1]
 
     else if node.type == 'atrule' and node.name[0] == '-'
