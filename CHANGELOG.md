@@ -1,3 +1,6 @@
+## 6.5.1
+* Fix selectors with `:--` prefix support.
+
 ## 6.5 “Einigkeit und Recht und Freiheit”
 * Add `defaults` keyword to browsers requirements.
 * Fix CSS Grid Layout support.
