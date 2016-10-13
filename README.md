@@ -510,7 +510,7 @@ See [PostCSS API] for plugin usage documentation.
 var plugin = autoprefixer({ browsers: ['> 1%', 'IE 7'], cascade: false });
 ```
 
-There are 4 options:
+There are 8 options:
 
 * `browsers` (array): list of browsers, which are supported in your project.
   You can directly specify browser version (like `IE 7`) or use selections
