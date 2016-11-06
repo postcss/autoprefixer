@@ -1,3 +1,6 @@
+## 6.5.2
+* Clean prefixes data (by Reinaldo Schiehll).
+
 ## 6.5.1
 * Fix selectors with `:--` prefix support.
 
