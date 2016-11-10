@@ -1,3 +1,6 @@
+## 6.5.3
+* Add error for popular mistake with `browser` option instead of `browsers`.
+
 ## 6.5.2
 * Clean prefixes data (by Reinaldo Schiehll).
 
