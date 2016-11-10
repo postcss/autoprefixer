@@ -33,6 +33,9 @@ module.exports = postcss.plugin 'autoprefixer', (reqs...) ->
 
   options ||= { }
 
+  if options.browser
+    throw new Error('Change `browser` option to `browsers` in Autoprefixer')
+
   reqs = options.browsers if options.browsers?
 
   loadPrefixes = (opts) ->

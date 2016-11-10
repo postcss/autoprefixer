@@ -91,6 +91,11 @@ commons = ['transition', 'values', 'keyframes', 'gradient', 'flex-rewrite',
 
 describe 'autoprefixer()', ->
 
+  it 'throws on wrong options', ->
+    ( ->
+      autoprefixer({ browser: ['chrome 25', 'opera 12'] })
+    ).should.throw(/browsers/)
+
   it 'sets options', ->
     opts = { browsers: ['chrome 25', 'opera 12'], cascade: false }
     autoprefixer(opts).options.should.eql(opts)
