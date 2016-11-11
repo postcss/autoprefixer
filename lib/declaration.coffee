@@ -1,6 +1,5 @@
 Prefixer = require('./prefixer')
 Browsers = require('./browsers')
-vendor   = require('postcss/lib/vendor')
 utils    = require('./utils')
 
 class Declaration extends Prefixer
