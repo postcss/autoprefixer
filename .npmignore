@@ -2,6 +2,7 @@
 .editorconfig
 
 node_modules
+yarn.lock
 build
 autoprefixer.js
 
