@@ -1,3 +1,6 @@
+## 6.5.4
+* Fix unitless 0 basis in IE10/IE11 shorthand flex (by Google).
+
 ## 6.5.3
 * Add error for popular mistake with `browser` option instead of `browsers`.
 
