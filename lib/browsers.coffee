@@ -24,7 +24,11 @@ class Browsers
 
   # Return browsers selected by requirements
   parse: (requirements) ->
-    browserslist(requirements, path: @options?.from, stats: @stats)
+    browserslist(requirements,
+      stats: @stats
+      path:  @options?.from
+      env:   @options?.env
+    )
 
   # Select major browsers versions by criteria
   browsers: (criteria) ->

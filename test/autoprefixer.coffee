@@ -207,6 +207,13 @@ describe 'Autoprefixer', ->
     output = read('config/test.out')
     postcss([autoprefixer]).process(input, from: path).css.should.eql(output)
 
+  it 'sets browserslist environment', ->
+    path   = __dirname + '/cases/config/test.css'
+    input  = read('config/test')
+    output = read('config/test.production')
+    postcss([autoprefixer({ env: 'production' })])
+      .process(input, from: path).css.should.eql(output)
+
   it 'works without source in nodes', ->
     root = postcss.root()
     root.append(selector: 'a')

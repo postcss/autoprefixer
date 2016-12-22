@@ -126,14 +126,20 @@ Autoprefixer uses [Browserslist], so you can specify the browsers
 you want to target in your project by queries like `last 2 versions`
 or `> 5%`.
 
-If you don’t provide the browsers option, Browserslist will try
-to find the `browserslist` config in parent dirs.
+The best way to provide browsers is `browserslist` config
+or `package.json` with `browserslist` key. Put it in your project root.
+
+We recommend to avoid Autoprefixer option and use `browserslist` config
+or `package.json`. In this case browsers will be shared with other tools
+like [babel-preset-env] or [Stylelint].
 
 See [Browserslist docs] for queries, browser names, config format,
 and default value.
 
-[Browserslist]:      https://github.com/ai/browserslist
 [Browserslist docs]: https://github.com/ai/browserslist#queries
+[babel-preset-env]:  https://github.com/babel/babel-preset-env
+[Browserslist]:      https://github.com/ai/browserslist
+[Stylelint]:         http://stylelint.io/
 
 ## Outdated Prefixes
 
@@ -252,7 +258,7 @@ gulp.task('autoprefixer', function () {
 
     return gulp.src('./src/*.css')
         .pipe(sourcemaps.init())
-        .pipe(postcss([ autoprefixer({ browsers: ['last 2 versions'] }) ]))
+        .pipe(postcss([ autoprefixer() ]))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('./dest'));
 });
@@ -270,8 +276,6 @@ In [webpack] you can use [postcss-loader] with `autoprefixer`
 and [other PostCSS plugins].
 
 ```js
-var autoprefixer = require('autoprefixer');
-
 module.exports = {
     module: {
         loaders: [
@@ -280,8 +284,17 @@ module.exports = {
                 loader: "style-loader!css-loader!postcss-loader"
             }
         ]
-    },
-    postcss: [ autoprefixer({ browsers: ['last 2 versions'] }) ]
+    }
+}
+```
+
+And create a `postcss.config.js` with:
+
+```js
+module.exports = {
+  plugins: [
+    require('autoprefixer')
+  ]
 }
 ```
 
@@ -302,9 +315,7 @@ module.exports = function(grunt) {
             options: {
                 map: true,
                 processors: [
-                    require('autoprefixer')({
-                        browsers: ['last 2 versions']
-                    })
+                    require('autoprefixer')
                 ]
             },
             dist: {
@@ -507,15 +518,17 @@ Function `autoprefixer(options)` returns new PostCSS plugin.
 See [PostCSS API] for plugin usage documentation.
 
 ```js
-var plugin = autoprefixer({ browsers: ['> 1%', 'IE 7'], cascade: false });
+var plugin = autoprefixer({ cascade: false });
 ```
 
 There are 8 options:
 
-* `browsers` (array): list of browsers, which are supported in your project.
-  You can directly specify browser version (like `IE 7`) or use selections
-  (like `last 2 version` or `> 5%`). See [Browserslist docs] for available
+* `browsers` (array): list of browsers query (like `last 2 version`),
+  which are supported in your project. We recommend to use `browserslist`
+  config or `browserslist` key in `package.json`, rather than this option
+  to share browsers with other tools.Wee [Browserslist docs] for available
   queries and default value.
+* `env` (string): environment for Browserslist.
 * `cascade` (boolean): should Autoprefixer use Visual Cascade,
   if CSS is uncompressed. Default: `true`
 * `add` (boolean): should Autoprefixer add prefixes. Default is `true`.
@@ -544,6 +557,6 @@ to increase performance.
 You can check which browsers are selected and which properties will be prefixed:
 
 ```js
-var info = autoprefixer({ browsers: ['last 1 version'] }).info();
+var info = autoprefixer().info();
 console.log(info);
 ```
