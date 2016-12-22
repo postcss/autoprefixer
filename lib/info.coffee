@@ -14,10 +14,10 @@ names =
   and_uc:  'UC for Android'
 
 prefix = (name, prefixes) ->
-    out  = '  ' + name + ': '
-    out += prefixes.map( (i) -> i.replace(/^-(.*)-$/g, '$1') ).join(', ')
-    out += "\n"
-    out
+  out  = '  ' + name + ': '
+  out += prefixes.map( (i) -> i.replace(/^-(.*)-$/g, '$1') ).join(', ')
+  out += "\n"
+  out
 
 module.exports = (prefixes) ->
   return "No browsers selected" if prefixes.browsers.selected.length == 0
