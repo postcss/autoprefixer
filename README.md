@@ -526,7 +526,7 @@ There are 8 options:
 * `browsers` (array): list of browsers query (like `last 2 version`),
   which are supported in your project. We recommend to use `browserslist`
   config or `browserslist` key in `package.json`, rather than this option
-  to share browsers with other tools.Wee [Browserslist docs] for available
+  to share browsers with other tools. See [Browserslist docs] for available
   queries and default value.
 * `env` (string): environment for Browserslist.
 * `cascade` (boolean): should Autoprefixer use Visual Cascade,
