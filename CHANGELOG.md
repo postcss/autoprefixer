@@ -1,3 +1,8 @@
+## 6.6 “Kaiyuan”
+* Add `browserslist` key in `package.json` support.
+* Add support for separated environments in browserslist config.
+* Add `browserslist-stats.json` file support to load custom usage statistics.
+
 ## 6.5.4
 * Fix unitless 0 basis in IE10/IE11 shorthand flex (by Google).
 
