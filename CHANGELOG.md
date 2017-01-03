@@ -1,3 +1,6 @@
+## 6.6.1
+* Add metadata to use Autoprefixer in JSS tests (by Chi Vinh Le).
+
 ## 6.6 “Kaiyuan”
 * Add `browserslist` key in `package.json` support.
 * Add support for separated environments in browserslist config.
