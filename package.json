@@ -13,18 +13,18 @@
   "license": "MIT",
   "repository": "postcss/autoprefixer",
   "dependencies": {
-    "browserslist": "~1.5.1",
-    "caniuse-db": "^1.0.30000604",
+    "browserslist": "^1.5.2",
+    "caniuse-db": "^1.0.30000613",
     "coffee-script": "^1.12.2",
     "normalize-range": "^0.1.2",
     "num2fraction": "^1.2.2",
-    "postcss": "^5.2.8",
+    "postcss": "^5.2.10",
     "postcss-value-parser": "^3.2.3"
   },
   "devDependencies": {
-    "browserify": "^13.1.1",
+    "browserify": "^13.3.0",
     "eslint-config-postcss": "^2.0.2",
-    "fs-extra": "^1.0.0",
+    "fs-extra": "^2.0.0",
     "gulp": "^3.9.1",
     "gulp-coffee": "^2.3.3",
     "gulp-eslint": "^3.0.1",
