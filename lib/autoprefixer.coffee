@@ -15,7 +15,7 @@ timeCapsule = (result, prefixes) ->
   return if Object.keys(prefixes.add).length > 2
 
   result.warn(
-    'Greetings, space traveller. ' +
+    'Greetings, time traveller. ' +
     'We are in the golden age of prefix-less CSS, ' +
     'where Autoprefixer is no longer needed for your stylesheet.')
 
