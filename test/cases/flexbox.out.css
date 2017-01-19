@@ -5,7 +5,11 @@ a {
     display: -moz-box;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
     -webkit-flex-flow: row;
+       -moz-box-orient: horizontal;
+       -moz-box-direction: normal;
         -ms-flex-flow: row;
             flex-flow: row;
     -webkit-box-ordinal-group: 1;
@@ -214,4 +218,18 @@ a {
        -moz-box-flex: calc(1em + 1px);
         -ms-flex: calc(1em + 1px) 0 0px;
             flex: calc(1em + 1px) 0 0;
+}
+.h {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-flow: column wrap;
+       -moz-box-orient: vertical;
+       -moz-box-direction: normal;
+        -ms-flex-flow: column wrap;
+            flex-flow: column wrap;
+}
+.i {
+    -webkit-flex-flow: nowrap;
+        -ms-flex-flow: nowrap;
+            flex-flow: nowrap;
 }

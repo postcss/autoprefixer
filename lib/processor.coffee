@@ -130,6 +130,8 @@ class Processor
         notHack = @prefixes.group(decl).down (other) =>
           @prefixes.normalize(other.prop) == unprefixed
 
+        notHack = true if unprefixed == 'flex-flow'
+
         if notHack and not @withHackValue(decl)
           @reduceSpaces(decl) if decl.raw('before').indexOf("\n") > -1
           rule.removeChild(i)

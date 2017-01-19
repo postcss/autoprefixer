@@ -203,7 +203,9 @@ class Prefixes
 
   # Return unprefixed version of property
   unprefixed: (prop) ->
-    @normalize(vendor.unprefixed(prop))
+    value = @normalize(vendor.unprefixed(prop))
+    value = 'flex-flow' if value == 'flex-direction'
+    value
 
   # Normalize prefix for remover
   normalize: (prop) ->
