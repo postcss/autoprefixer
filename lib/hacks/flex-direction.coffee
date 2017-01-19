@@ -11,7 +11,9 @@ class FlexDirection extends Declaration
   # Use two properties for 2009 spec
   insert: (decl, prefix, prefixes) ->
     [spec, prefix] = flexSpec(prefix)
-    if spec == 2009
+    if spec != 2009
+      super
+    else
       already = decl.parent.some (i) ->
         i.prop == prefix + 'box-orient' or i.prop == prefix + 'box-direction'
       return if already
@@ -33,8 +35,6 @@ class FlexDirection extends Declaration
       if @needCascade(decl)
         cloned.raws.before = @calcBefore(prefixes, decl, prefix)
       decl.parent.insertBefore(decl, cloned)
-    else
-      super
 
   # Clean two properties for 2009 spec
   old: (prop, prefix) ->
