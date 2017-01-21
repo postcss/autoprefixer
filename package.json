@@ -13,12 +13,12 @@
   "license": "MIT",
   "repository": "postcss/autoprefixer",
   "dependencies": {
-    "browserslist": "^1.5.2",
+    "browserslist": "~1.6.0",
     "caniuse-db": "^1.0.30000613",
     "coffee-script": "^1.12.2",
     "normalize-range": "^0.1.2",
     "num2fraction": "^1.2.2",
-    "postcss": "^5.2.10",
+    "postcss": "^5.2.11",
     "postcss-value-parser": "^3.2.3"
   },
   "devDependencies": {
