@@ -1,3 +1,8 @@
+## 6.7 “Krungthep doot thep saang”
+* Add Electron support in browsers list (by Kilian Valkhof).
+* Add `flex-flow` partial support for Flexbox 2009 specification.
+* Fix browsers `0` version issue in some Can I Use data.
+
 ## 6.6.1
 * Add metadata to use Autoprefixer in JSS tests (by Chi Vinh Le).
 
