@@ -1,3 +1,6 @@
+## 6.7.1
+* Update Browserslist with `last n version` fix.
+
 ## 6.7 “Krungthep doot thep saang”
 * Add Electron support in browsers list (by Kilian Valkhof).
 * Add `flex-flow` partial support for Flexbox 2009 specification.
