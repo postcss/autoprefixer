@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var path = require('path');
 var fs   = require('fs-extra');
+var yargs = require('yargs');
 
 gulp.task('clean', function (done) {
     fs.remove(path.join(__dirname, 'autoprefixer.js'), function () {
@@ -85,7 +86,8 @@ gulp.task('test', function () {
     require('should');
 
     var mocha = require('gulp-mocha');
-    return gulp.src('test/*.coffee', { read: false }).pipe(mocha());
+    return gulp.src('test/*.coffee', { read: false })
+      .pipe(mocha({ grep: yargs.argv.grep }));
 });
 
 gulp.task('default', ['lint', 'test']);
