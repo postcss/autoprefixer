@@ -13,16 +13,16 @@
   "license": "MIT",
   "repository": "postcss/autoprefixer",
   "dependencies": {
-    "browserslist": "~1.6.0",
-    "caniuse-db": "^1.0.30000613",
-    "coffee-script": "^1.12.2",
+    "browserslist": "^1.7.1",
+    "caniuse-db": "^1.0.30000617",
+    "coffee-script": "^1.12.3",
     "normalize-range": "^0.1.2",
     "num2fraction": "^1.2.2",
     "postcss": "^5.2.11",
     "postcss-value-parser": "^3.2.3"
   },
   "devDependencies": {
-    "browserify": "^13.3.0",
+    "browserify": "^14.0.0",
     "eslint-config-postcss": "^2.0.2",
     "fs-extra": "^2.0.0",
     "gulp": "^3.9.1",
@@ -32,7 +32,7 @@
     "gulp-mocha": "^3.0.1",
     "gulp-replace": "^0.5.4",
     "mocha": "^3.2.0",
-    "should": "^11.1.2",
+    "should": "^11.2.0",
     "vinyl-source-stream": "^1.1.0"
   },
   "scripts": {
