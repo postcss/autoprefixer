@@ -4,7 +4,8 @@ Browsers     = require('../lib/browsers')
 postcss = require('postcss')
 fs      = require('fs')
 
-grider       = autoprefixer(browsers: ['Chrome 25', 'IE 10'], cascade: false)
+grider = autoprefixer(browsers: ['Chrome 25', 'Edge 12', 'IE 10'], cascade: no)
+
 cleaner      = autoprefixer(browsers: [])
 compiler     = autoprefixer(browsers: ['Chrome 25', 'Opera 12'])
 filterer     = autoprefixer(browsers: ['Chrome 25', 'Safari 9', 'Firefox 39'])
@@ -237,7 +238,7 @@ describe 'Autoprefixer', ->
   it 'has option to disable grid support', ->
     input    = read('grid')
     output   = read('grid.disabled')
-    instance = autoprefixer(browsers: ['IE 10'], grid: false)
+    instance = autoprefixer(browsers: ['Edge 12', 'IE 10'], grid: false)
     result   = postcss([instance]).process(input)
     result.css.should.eql(output)
 

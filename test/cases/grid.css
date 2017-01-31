@@ -33,3 +33,9 @@
 .flex {
     align-self: flex-end;
 }
+
+@supports (display: grid) {
+    .foo {
+        display: grid;
+    }
+}

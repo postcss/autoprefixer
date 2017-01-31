@@ -40,13 +40,13 @@ class Supports
   # Return array of Declaration with all necessary prefixes
   prefixed: (str) ->
     rule = @virtual(str)
-    prop = rule.first.prop
+    return rule.nodes if @disabled(rule.first)
 
-    prefixer = @prefixer().add[prop]
+    prefixer = @prefixer().add[rule.first.prop]
     prefixer?.process?(rule.first)
 
     for decl in rule.nodes
-      for value in @prefixer().values('add', prop)
+      for value in @prefixer().values('add', rule.first.prop)
         value.process(decl)
       Value.save(@all, decl)
 
@@ -151,5 +151,22 @@ class Supports
     ast = @add(ast, rule.params)
     ast = @cleanBrackets(ast)
     rule.params = brackets.stringify(ast)
+
+  # Check global options
+  disabled: (node) ->
+    if @all.options.grid == false
+      if node.prop == 'display' and node.value.indexOf('grid') != -1
+        return true
+      if node.prop.indexOf('grid') != -1 or node.prop == 'justify-items'
+        return true
+
+    if @all.options.flexbox == false
+      if node.prop == 'display' and node.value.indexOf('flex') != -1
+        return true
+      other = ['order', 'justify-content', 'align-items', 'align-content']
+      if node.prop.indexOf('flex') != -1 or other.indexOf(node.prop) != -1
+        return true
+
+    false
 
 module.exports = Supports

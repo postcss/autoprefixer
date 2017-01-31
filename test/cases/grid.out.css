@@ -51,3 +51,10 @@
     -ms-flex-item-align: end;
     align-self: flex-end;
 }
+
+@supports ((display: -ms-grid) or (display: grid)) {
+    .foo {
+        display: -ms-grid;
+        display: grid;
+    }
+}
