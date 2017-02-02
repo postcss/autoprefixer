@@ -243,7 +243,7 @@ No, Autoprefixer works only with browsers prefixes from Can I Use.
 But you can use [postcss-epub](https://github.com/Rycochet/postcss-epub)
 for prefixing ePub3 properties.
 
-#### Why doesn't Autoprefixer transform generic font-family `system-ui`?
+#### Why doesn’t Autoprefixer transform generic font-family `system-ui`?
 
 `system-ui` is technically not a prefix and the transformation is not future-proof. But you can use [postcss-font-family-system-ui](https://github.com/JLHwung/postcss-font-family-system-ui) to transform `system-ui` to a practical font-family list.
 
