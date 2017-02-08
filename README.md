@@ -515,8 +515,8 @@ You can also use comments recursively:
 }
 ```
 
-### Disabling in Sass/SCSS
-In Sass/SCSS you can use all the disable options above, add an exclamation mark before autoprefixer in the comment.
+In Sass/SCSS you can use all the disable options above, add an exclamation mark
+in the start of comment: `/*! autoprefixer: off */`.
 
 ## Options
 
