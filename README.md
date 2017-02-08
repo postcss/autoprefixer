@@ -494,7 +494,7 @@ a {
 }
 
 b {
-    /* autoprefixer: off */
+    /*! autoprefixer: off */
     transition: 1s; /* it will not be prefixed */
 }
 ```
