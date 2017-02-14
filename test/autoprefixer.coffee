@@ -316,9 +316,12 @@ describe 'Autoprefixer', ->
       result = postcss([prefixer('intrinsic')]).process(input)
 
       result.css.should.eql(output)
-      result.warnings().map( (i) -> i.toString() ).should.eql(
-        ['autoprefixer: <css input>:15:5: Replace fill-available ' +
-         'to fill, because spec had been changed'])
+      result.warnings().map( (i) -> i.toString() ).should.eql([
+        'autoprefixer: <css input>:15:5: Replace fill to stretch, ' +
+        'because spec had been changed',
+        'autoprefixer: <css input>:19:5: Replace fill-available to stretch, ' +
+        'because spec had been changed'
+      ])
 
     it 'supports text-emphasis', ->
       input  = read('text-emphasis-position')

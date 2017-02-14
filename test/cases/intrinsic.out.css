@@ -1,7 +1,7 @@
 a {
     width: -webkit-fill-available;
     width: -moz-available;
-    width: fill;
+    width: stretch;
 }
 
 b {
@@ -17,6 +17,12 @@ p {
     min-inline-size: -webkit-fit-content;
     min-inline-size: -moz-fit-content;
     min-inline-size: fit-content;
+}
+
+.outdated {
+    width: -webkit-fill-available;
+    width: -moz-available;
+    width: fill;
 }
 
 .old {

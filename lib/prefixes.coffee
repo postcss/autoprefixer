@@ -44,7 +44,7 @@ Declaration.hack require('./hacks/justify-content')
 Declaration.hack require('./hacks/background-size')
 Declaration.hack require('./hacks/text-emphasis-position')
 
-Value.hack require('./hacks/fill')
+Value.hack require('./hacks/stretch')
 Value.hack require('./hacks/gradient')
 Value.hack require('./hacks/pixelated')
 Value.hack require('./hacks/image-set')

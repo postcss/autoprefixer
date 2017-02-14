@@ -1,5 +1,5 @@
 a {
-    width: fill;
+    width: stretch;
 }
 
 b {
@@ -9,6 +9,10 @@ b {
 p {
     block-size: min-content;
     min-inline-size: fit-content;
+}
+
+.outdated {
+    width: fill;
 }
 
 .old {

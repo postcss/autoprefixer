@@ -4,6 +4,11 @@ utils  = require('./utils')
 
 OLD_DIRECTION = /(^|[^-])(linear|radial)-gradient\(\s*(top|left|right|bottom)/i
 
+SIZES = ['width', 'height',  'min-width',  'max-width',
+         'min-height', 'max-height', 'inline-size',
+         'min-inline-size', 'max-inline-size', 'block-size',
+         'min-block-size',  'max-block-size']
+
 class Processor
   constructor: (@prefixes) ->
 
@@ -49,10 +54,15 @@ class Processor
           result.warn('You should use 2 values for text-emphasis-position ' +
                       'For example, `under left` instead of just `under`.',
                       node: decl)
-      if decl.value.indexOf('fill-available') != -1
-        result.warn('Replace fill-available to fill, ' +
-                    'because spec had been changed',
-                    node: decl)
+
+      if SIZES.indexOf(decl.prop) != -1
+        if decl.value.indexOf('fill-available') != -1
+          result.warn('Replace fill-available to stretch, ' +
+                      'because spec had been changed',
+                      node: decl)
+        else if decl.value.indexOf('fill') != -1
+          result.warn('Replace fill to stretch, because spec had been changed',
+                      node: decl)
 
       if @prefixes.options.flexbox != false
         if decl.prop == 'grid-row-end' and decl.value.indexOf('span') == -1

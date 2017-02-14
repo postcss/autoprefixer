@@ -284,7 +284,8 @@ feature require('caniuse-db/features-json/css3-tabsize.json'), (browsers) ->
 
 # Intrinsic & extrinsic sizing
 feature require('caniuse-db/features-json/intrinsic-width.json'), (browsers) ->
-  prefix 'max-content', 'min-content', 'fit-content', 'fill', 'fill-available',
+  prefix 'max-content', 'min-content', 'fit-content',
+         'fill', 'fill-available', 'stretch',
           props:  ['width',  'min-width',  'max-width',
                    'height', 'min-height', 'max-height',
                    'inline-size', 'min-inline-size', 'max-inline-size',
