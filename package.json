@@ -13,16 +13,16 @@
   "license": "MIT",
   "repository": "postcss/autoprefixer",
   "dependencies": {
-    "browserslist": "^1.7.1",
-    "caniuse-db": "^1.0.30000618",
+    "browserslist": "^1.7.2",
+    "caniuse-db": "^1.0.30000623",
     "coffee-script": "^1.12.3",
     "normalize-range": "^0.1.2",
     "num2fraction": "^1.2.2",
-    "postcss": "^5.2.11",
+    "postcss": "^5.2.13",
     "postcss-value-parser": "^3.2.3"
   },
   "devDependencies": {
-    "browserify": "^14.0.0",
+    "browserify": "^14.1.0",
     "eslint-config-postcss": "^2.0.2",
     "fs-extra": "^2.0.0",
     "gulp": "^3.9.1",
