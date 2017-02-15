@@ -1,3 +1,6 @@
+## 6.7.3
+* Fix compatibility with “Intrinsic & Extrinsic Sizing” spec update.
+
 ## 6.7.2
 * Do not prefix grid/flexbox in `@supports` on `grid: false`/`flexbox: false`.
 
