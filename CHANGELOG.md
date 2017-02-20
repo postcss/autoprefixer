@@ -1,3 +1,7 @@
+## 6.7.4
+* Improve `browsers` option perfomance.
+* Update CoffeeScript compiler.
+
 ## 6.7.3
 * Fix compatibility with “Intrinsic & Extrinsic Sizing” spec update.
 
