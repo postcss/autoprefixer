@@ -333,7 +333,7 @@ feature decoration, (browsers) ->
           browsers: browsers
           feature: 'text-decoration'
 
-feature decoration, match: /x.*#3/, (browsers) ->
+feature decoration, match: /x.*#[23]/, (browsers) ->
   prefix 'text-decoration-skip',
           browsers: browsers
           feature: 'text-decoration'
