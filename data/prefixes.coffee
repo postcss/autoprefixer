@@ -353,11 +353,17 @@ feature require('caniuse-db/features-json/css-masks.json'), (browsers) ->
          'mask-border-source',
           browsers: browsers
           feature: 'css-masks'
-  prefix 'clip-path', 'mask', 'mask-position', 'mask-size',
+  prefix 'mask', 'mask-position', 'mask-size',
          'mask-border', 'mask-border-outset', 'mask-border-width',
          'mask-border-slice',
           browsers: browsers
           feature: 'css-masks'
+
+# CSS clip-path property
+feature require('caniuse-db/features-json/css-clip-path.json'), (browsers) ->
+  prefix 'clip-path',
+          browsers: browsers
+          feature: 'css-clip-path'
 
 # Fragmented Borders and Backgrounds
 boxdecorbreak = require('caniuse-db/features-json/css-boxdecorationbreak.json')
