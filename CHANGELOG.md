@@ -1,3 +1,6 @@
+# Change Log
+This project adheres to [Semantic Versioning](http://semver.org/).
+
 ## 6.7.4
 * Improve `browsers` option perfomance.
 * Update CoffeeScript compiler.
