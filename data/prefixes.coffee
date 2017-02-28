@@ -227,9 +227,15 @@ feature bckgrndImgOpts, (browsers) ->
 # Font feature settings
 feature require('caniuse-db/features-json/font-feature.json'), (browsers) ->
   prefix 'font-feature-settings', 'font-variant-ligatures',
-         'font-language-override','font-kerning',
+         'font-language-override',
           browsers: browsers
           feature: 'font-feature'
+
+# CSS font-kerning property
+feature require('caniuse-db/features-json/font-kerning.json'), (browsers) ->
+  prefix 'font-kerning',
+          browsers: browsers
+          feature: 'font-kerning'
 
 # Border image
 feature require('caniuse-db/features-json/border-image.json'), (browsers) ->
