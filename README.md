@@ -529,7 +529,7 @@ var plugin = autoprefixer({ cascade: false });
 
 There are 8 options:
 
-* `browsers` (array): list of browsers query (like `last 2 version`),
+* `browsers` (array): list of browsers query (like `last 2 versions`),
   which are supported in your project. We recommend to use `browserslist`
   config or `browserslist` key in `package.json`, rather than this option
   to share browsers with other tools. See [Browserslist docs] for available
