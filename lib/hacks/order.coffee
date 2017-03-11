@@ -21,7 +21,7 @@ class Order extends Declaration
   # Fix value for 2009 spec
   set: (decl, prefix) ->
     spec = flexSpec(prefix)[0]
-    if spec == 2009
+    if spec == 2009 and /\d/.test(decl.value)
       decl.value = (parseInt(decl.value) + 1).toString()
       super(decl, prefix)
     else

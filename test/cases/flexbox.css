@@ -68,3 +68,6 @@ a {
 .i {
     flex-flow: nowrap;
 }
+.inherit {
+    order: inherit;
+}

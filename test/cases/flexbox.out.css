@@ -233,3 +233,10 @@ a {
         -ms-flex-flow: nowrap;
             flex-flow: nowrap;
 }
+.inherit {
+    -webkit-box-ordinal-group: inherit;
+    -webkit-order: inherit;
+       -moz-box-ordinal-group: inherit;
+        -ms-flex-order: inherit;
+            order: inherit;
+}
