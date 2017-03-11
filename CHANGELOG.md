@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 6.7.7
+* Fix `order` for non-digit values.
+
 ## 6.7.6
 * Fix `font-kerning` (by Chi Vinh Le).
 
