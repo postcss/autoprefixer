@@ -47,7 +47,7 @@ Twitter account for news and releases: [@autoprefixer].
 
 [interactive demo]: http://autoprefixer.github.io/
 [@autoprefixer]:    https://twitter.com/autoprefixer
-[recommended]:      https://developers.google.com/web/tools/setup/setup-buildtools#dont-trip-up-with-vendor-prefixes
+[recommended]:      https://developers.google.com/web/tools/setup/setup-buildtools#dont_trip_up_with_vendor_prefixes
 [Can I Use]:        http://caniuse.com/
 [PostCSS]:          https://github.com/postcss/postcss
 [ci-img]:           https://travis-ci.org/postcss/autoprefixer.svg
