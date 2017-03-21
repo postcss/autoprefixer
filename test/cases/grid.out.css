@@ -58,3 +58,15 @@
         display: grid;
     }
 }
+
+.min-max-content {
+    -ms-grid-columns: min-content max-content;
+    grid-template-columns: -webkit-min-content -webkit-max-content;
+    grid-template-columns: min-content max-content;
+}
+
+.fit-content {
+    -ms-grid-columns: min-content max-content fit-content(500px);
+    grid-template-columns: -webkit-min-content -webkit-max-content fit-content(500px);
+    grid-template-columns: min-content max-content fit-content(500px);
+}

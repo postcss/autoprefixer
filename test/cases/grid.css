@@ -39,3 +39,11 @@
         display: grid;
     }
 }
+
+.min-max-content {
+    grid-template-columns: min-content max-content;
+}
+
+.fit-content {
+    grid-template-columns: min-content max-content fit-content(500px);
+}
