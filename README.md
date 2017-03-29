@@ -379,7 +379,7 @@ let style = prefixer({
 
 ### GUI Tools
 
-* [CodeKit](https://incident57.com/codekit/help.html#autoprefixer)
+* [CodeKit](https://codekitapp.com/help/autoprefixer/)
 * [Prepros](https://prepros.io)
 
 ### CLI
