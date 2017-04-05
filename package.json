@@ -39,6 +39,6 @@
     "test": "gulp"
   },
   "eslintConfig": {
-    "extends": "eslint-config-postcss/es5"
+    "extends": "eslint-config-postcss"
   }
 }
