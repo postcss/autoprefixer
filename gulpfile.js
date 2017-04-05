@@ -9,10 +9,10 @@ gulp.task('clean', function (done) {
 });
 
 gulp.task('build:lib', ['clean'], function () {
-    var coffee = require('gulp-coffee');
+    var babel = require('gulp-babel');
 
-    return gulp.src(['{lib,data}/**/*.coffee'])
-        .pipe(coffee())
+    return gulp.src(['{lib,data}/**/*.js'])
+        .pipe(babel())
         .pipe(gulp.dest('build/'));
 });
 
@@ -34,9 +34,9 @@ gulp.task('build:package', ['clean'], function () {
     return gulp.src('./package.json')
         .pipe(editor(function (json) {
             json.main = 'lib/autoprefixer';
-            json.devDependencies['coffee-script'] =
-                json.dependencies['coffee-script'];
-            delete json.dependencies['coffee-script'];
+            json.devDependencies['babel-register'] =
+                json.dependencies['babel-register'];
+            delete json.dependencies['babel-register'];
             return json;
         }))
         .pipe(gulp.dest('build'));
@@ -77,11 +77,11 @@ gulp.task('lint', function () {
 });
 
 gulp.task('test', function () {
-    require('coffee-script').register();
+    require('babel-register')();
     require('should');
 
     var mocha = require('gulp-mocha');
-    return gulp.src('test/*.coffee', { read: false }).pipe(mocha());
+    return gulp.src('test/*.js', { read: false }).pipe(mocha());
 });
 
 gulp.task('default', ['lint', 'test']);
