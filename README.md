@@ -388,7 +388,7 @@ You can use the [postcss-cli] to run Autoprefixer from CLI:
 
 ```sh
 npm install --global postcss-cli autoprefixer
-postcss --use autoprefixer *.css -d build/
+postcss *.css --use autoprefixer -d build/
 ```
 
 See `postcss -h` for help.
