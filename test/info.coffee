@@ -4,7 +4,7 @@ Prefixes     = require('../lib/prefixes')
 info         = require('../lib/info')
 
 data =
-  browsers: require('caniuse-db/data.json').agents
+  browsers: require('caniuse-lite').agents
   prefixes:
     a:
       browsers: ['firefox 21', 'firefox 20', 'chrome 30']
