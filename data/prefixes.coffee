@@ -1,3 +1,5 @@
+unpackFeature = require('caniuse-lite').feature;
+
 # Sort browsers
 sort = (array) ->
   array.sort (a, b) ->
@@ -45,7 +47,7 @@ add = (names..., data) ->
 module.exports = result
 
 # Border Radius
-feature require('caniuse-db/features-json/border-radius.json'), (browsers) ->
+feature unpackFeature(require('caniuse-lite/data/features/border-radius.js')), (browsers) ->
   prefix 'border-radius', 'border-top-left-radius', 'border-top-right-radius',
          'border-bottom-right-radius', 'border-bottom-left-radius',
           mistakes: ['-khtml-', '-ms-', '-o-']
@@ -53,14 +55,14 @@ feature require('caniuse-db/features-json/border-radius.json'), (browsers) ->
           feature: 'border-radius'
 
 # Box Shadow
-feature require('caniuse-db/features-json/css-boxshadow.json'), (browsers) ->
+feature unpackFeature(require('caniuse-lite/data/features/css-boxshadow.js')), (browsers) ->
   prefix 'box-shadow',
           mistakes: ['-khtml-']
           browsers: browsers
           feature: 'css-boxshadow'
 
 # Animation
-feature require('caniuse-db/features-json/css-animation.json'), (browsers) ->
+feature unpackFeature(require('caniuse-lite/data/features/css-animation.js')), (browsers) ->
   prefix 'animation', 'animation-name', 'animation-duration',
          'animation-delay', 'animation-direction', 'animation-fill-mode',
          'animation-iteration-count', 'animation-play-state',
@@ -70,7 +72,7 @@ feature require('caniuse-db/features-json/css-animation.json'), (browsers) ->
           feature: 'css-animation'
 
 # Transition
-feature require('caniuse-db/features-json/css-transitions.json'), (browsers) ->
+feature unpackFeature(require('caniuse-lite/data/features/css-transitions.js')), (browsers) ->
   prefix 'transition', 'transition-property', 'transition-duration',
          'transition-delay', 'transition-timing-function',
           mistakes: ['-khtml-', '-ms-']
@@ -78,13 +80,13 @@ feature require('caniuse-db/features-json/css-transitions.json'), (browsers) ->
           feature: 'css-transitions'
 
 # Transform 2D
-feature require('caniuse-db/features-json/transforms2d.json'), (browsers) ->
+feature unpackFeature(require('caniuse-lite/data/features/transforms2d.js')), (browsers) ->
   prefix 'transform', 'transform-origin',
           browsers: browsers
           feature: 'transforms2d'
 
 # Transform 3D
-transforms3d = require('caniuse-db/features-json/transforms3d.json')
+transforms3d = unpackFeature(require('caniuse-lite/data/features/transforms3d.js'))
 feature transforms3d, (browsers) ->
   prefix 'perspective', 'perspective-origin',
           browsers: browsers
@@ -101,7 +103,7 @@ feature transforms3d, match: /y\sx|y\s#2/, (browsers) ->
           feature: 'transforms3d'
 
 # Gradients
-gradients = require('caniuse-db/features-json/css-gradients.json')
+gradients = unpackFeature(require('caniuse-lite/data/features/css-gradients.js'))
 
 feature gradients, match: /y\sx/, (browsers) ->
   prefix 'linear-gradient', 'repeating-linear-gradient',
@@ -120,19 +122,19 @@ feature gradients, match: /a\sx/, (browsers) ->
        feature: 'css-gradients'
 
 # Box sizing
-feature require('caniuse-db/features-json/css3-boxsizing.json'), (browsers) ->
+feature unpackFeature(require('caniuse-lite/data/features/css3-boxsizing.js')), (browsers) ->
   prefix 'box-sizing',
           browsers: browsers
           feature: 'css3-boxsizing'
 
 # Filter Effects
-feature require('caniuse-db/features-json/css-filters.json'), (browsers) ->
+feature unpackFeature(require('caniuse-lite/data/features/css-filters.js')), (browsers) ->
   prefix 'filter',
           browsers: browsers
           feature: 'css-filters'
 
 # filter() function
-filterFunction = require('caniuse-db/features-json/css-filter-function.json')
+filterFunction = unpackFeature(require('caniuse-lite/data/features/css-filter-function.js'))
 
 feature filterFunction, (browsers) ->
   prefix 'filter-function',
@@ -142,7 +144,7 @@ feature filterFunction, (browsers) ->
           feature: 'css-filter-function'
 
 # Backdrop-filter
-backdropFilter = require('caniuse-db/features-json/css-backdrop-filter.json')
+backdropFilter = unpackFeature(require('caniuse-lite/data/features/css-backdrop-filter.js'))
 
 feature backdropFilter, (browsers) ->
   prefix 'backdrop-filter',
@@ -150,7 +152,7 @@ feature backdropFilter, (browsers) ->
           feature: 'css-backdrop-filter'
 
 # element() function
-elementFunction = require('caniuse-db/features-json/css-element-function.json')
+elementFunction = unpackFeature(require('caniuse-lite/data/features/css-element-function.js'))
 
 feature elementFunction, (browsers) ->
   prefix 'element',
@@ -160,7 +162,7 @@ feature elementFunction, (browsers) ->
           feature: 'css-element-function'
 
 # Multicolumns
-feature require('caniuse-db/features-json/multicolumn.json'), (browsers) ->
+feature unpackFeature(require('caniuse-lite/data/features/multicolumn.js')), (browsers) ->
   prefix 'columns', 'column-width', 'column-gap',
          'column-rule', 'column-rule-color', 'column-rule-width',
           browsers: browsers
@@ -172,7 +174,7 @@ feature require('caniuse-db/features-json/multicolumn.json'), (browsers) ->
           feature: 'multicolumn'
 
 # User select
-userSelectNone = require('caniuse-db/features-json/user-select-none.json')
+userSelectNone = unpackFeature(require('caniuse-lite/data/features/user-select-none.js'))
 
 feature userSelectNone, (browsers) ->
   prefix 'user-select',
@@ -181,7 +183,7 @@ feature userSelectNone, (browsers) ->
           feature: 'user-select-none'
 
 # Flexible Box Layout
-flexbox = require('caniuse-db/features-json/flexbox.json')
+flexbox = unpackFeature(require('caniuse-lite/data/features/flexbox.js'))
 
 feature flexbox, match: /a\sx/, (browsers) ->
   browsers = browsers.map (i) -> if /ie|firefox/.test(i) then i else "#{i} 2009"
@@ -210,14 +212,14 @@ feature flexbox, match: /y\sx/, (browsers) ->
        feature: 'flexbox'
 
 # calc() unit
-feature require('caniuse-db/features-json/calc.json'), (browsers) ->
+feature unpackFeature(require('caniuse-lite/data/features/calc.js')), (browsers) ->
   prefix 'calc',
           props:  ['*']
           browsers: browsers
           feature: 'calc'
 
 # Background options
-bckgrndImgOpts = require('caniuse-db/features-json/background-img-opts.json')
+bckgrndImgOpts = unpackFeature(require('caniuse-lite/data/features/background-img-opts.js'))
 
 feature bckgrndImgOpts, (browsers) ->
   prefix 'background-clip', 'background-origin', 'background-size',
@@ -225,33 +227,33 @@ feature bckgrndImgOpts, (browsers) ->
           feature: 'background-img-opts'
 
 # Font feature settings
-feature require('caniuse-db/features-json/font-feature.json'), (browsers) ->
+feature unpackFeature(require('caniuse-lite/data/features/font-feature.js')), (browsers) ->
   prefix 'font-feature-settings', 'font-variant-ligatures',
          'font-language-override',
           browsers: browsers
           feature: 'font-feature'
 
 # CSS font-kerning property
-feature require('caniuse-db/features-json/font-kerning.json'), (browsers) ->
+feature unpackFeature(require('caniuse-lite/data/features/font-kerning.js')), (browsers) ->
   prefix 'font-kerning',
           browsers: browsers
           feature: 'font-kerning'
 
 # Border image
-feature require('caniuse-db/features-json/border-image.json'), (browsers) ->
+feature unpackFeature(require('caniuse-lite/data/features/border-image.js')), (browsers) ->
   prefix 'border-image',
           browsers: browsers
           feature: 'border-image'
 
 # Selection selector
-feature require('caniuse-db/features-json/css-selection.json'), (browsers) ->
+feature unpackFeature(require('caniuse-lite/data/features/css-selection.js')), (browsers) ->
   prefix '::selection',
           selector: true,
           browsers: browsers
           feature: 'css-selection'
 
 # Placeholder selector
-feature require('caniuse-db/features-json/css-placeholder.json'), (browsers) ->
+feature unpackFeature(require('caniuse-lite/data/features/css-placeholder.js')), (browsers) ->
   browsers = browsers.map (i) ->
     [name, version] = i.split(' ')
     if name == 'firefox' and parseFloat(version) <= 18 then i + ' old' else i
@@ -262,13 +264,13 @@ feature require('caniuse-db/features-json/css-placeholder.json'), (browsers) ->
           feature: 'css-placeholder'
 
 # Hyphenation
-feature require('caniuse-db/features-json/css-hyphens.json'), (browsers) ->
+feature unpackFeature(require('caniuse-lite/data/features/css-hyphens.js')), (browsers) ->
   prefix 'hyphens',
           browsers: browsers
           feature: 'css-hyphens'
 
 # Fullscreen selector
-fullscreen = require('caniuse-db/features-json/fullscreen.json')
+fullscreen = unpackFeature(require('caniuse-lite/data/features/fullscreen.js'))
 
 feature fullscreen, (browsers) ->
   prefix ':fullscreen',
@@ -283,13 +285,13 @@ feature fullscreen, match: /x(\s#2|$)/, (browsers) ->
           feature: 'fullscreen'
 
 # Tab size
-feature require('caniuse-db/features-json/css3-tabsize.json'), (browsers) ->
+feature unpackFeature(require('caniuse-lite/data/features/css3-tabsize.js')), (browsers) ->
   prefix 'tab-size',
           browsers: browsers
           feature: 'css3-tabsize'
 
 # Intrinsic & extrinsic sizing
-feature require('caniuse-db/features-json/intrinsic-width.json'), (browsers) ->
+feature unpackFeature(require('caniuse-lite/data/features/intrinsic-width.js')), (browsers) ->
   prefix 'max-content', 'min-content', 'fit-content',
          'fill', 'fill-available', 'stretch',
           props:  ['width',  'min-width',  'max-width',
@@ -300,7 +302,7 @@ feature require('caniuse-db/features-json/intrinsic-width.json'), (browsers) ->
           feature: 'intrinsic-width'
 
 # Zoom cursors
-cursorsNewer = require('caniuse-db/features-json/css3-cursors-newer.json')
+cursorsNewer = unpackFeature(require('caniuse-lite/data/features/css3-cursors-newer.js'))
 
 feature cursorsNewer, (browsers) ->
   prefix 'zoom-in', 'zoom-out',
@@ -309,7 +311,7 @@ feature cursorsNewer, (browsers) ->
           feature: 'css3-cursors-newer'
 
 # Grab cursors
-cursorsGrab = require('caniuse-db/features-json/css3-cursors-grab.json')
+cursorsGrab = unpackFeature(require('caniuse-lite/data/features/css3-cursors-grab.js'))
 feature cursorsGrab, (browsers) ->
   prefix 'grab', 'grabbing',
           props:  ['cursor']
@@ -317,20 +319,20 @@ feature cursorsGrab, (browsers) ->
           feature: 'css3-cursors-grab'
 
 # Sticky position
-feature require('caniuse-db/features-json/css-sticky.json'), (browsers) ->
+feature unpackFeature(require('caniuse-lite/data/features/css-sticky.js')), (browsers) ->
   prefix 'sticky',
           props:  ['position']
           browsers: browsers
           feature: 'css-sticky'
 
 # Pointer Events
-feature require('caniuse-db/features-json/pointer.json'), (browsers) ->
+feature unpackFeature(require('caniuse-lite/data/features/pointer.js')), (browsers) ->
   prefix 'touch-action',
           browsers: browsers
           feature: 'pointer'
 
 # Text decoration
-decoration = require('caniuse-db/features-json/text-decoration.json')
+decoration = unpackFeature(require('caniuse-lite/data/features/text-decoration.js'))
 
 feature decoration, (browsers) ->
   prefix 'text-decoration-style',
@@ -345,7 +347,7 @@ feature decoration, match: /x.*#[23]/, (browsers) ->
           feature: 'text-decoration'
 
 # Text Size Adjust
-textSizeAdjust = require('caniuse-db/features-json/text-size-adjust.json')
+textSizeAdjust = unpackFeature(require('caniuse-lite/data/features/text-size-adjust.js'))
 
 feature textSizeAdjust, (browsers) ->
   prefix 'text-size-adjust',
@@ -353,7 +355,7 @@ feature textSizeAdjust, (browsers) ->
           feature: 'text-size-adjust'
 
 # CSS Masks
-feature require('caniuse-db/features-json/css-masks.json'), (browsers) ->
+feature unpackFeature(require('caniuse-lite/data/features/css-masks.js')), (browsers) ->
   prefix 'mask-clip', 'mask-composite', 'mask-image',
          'mask-origin', 'mask-repeat', 'mask-border-repeat',
          'mask-border-source',
@@ -366,13 +368,13 @@ feature require('caniuse-db/features-json/css-masks.json'), (browsers) ->
           feature: 'css-masks'
 
 # CSS clip-path property
-feature require('caniuse-db/features-json/css-clip-path.json'), (browsers) ->
+feature unpackFeature(require('caniuse-lite/data/features/css-clip-path.js')), (browsers) ->
   prefix 'clip-path',
           browsers: browsers
           feature: 'css-clip-path'
 
 # Fragmented Borders and Backgrounds
-boxdecorbreak = require('caniuse-db/features-json/css-boxdecorationbreak.json')
+boxdecorbreak = unpackFeature(require('caniuse-lite/data/features/css-boxdecorationbreak.js'))
 
 feature boxdecorbreak, (browsers) ->
   prefix 'box-decoration-break',
@@ -380,14 +382,14 @@ feature boxdecorbreak, (browsers) ->
           feature: 'css-boxdecorationbreak'
 
 # CSS3 object-fit/object-position
-feature require('caniuse-db/features-json/object-fit.json'), (browsers) ->
+feature unpackFeature(require('caniuse-lite/data/features/object-fit.js')), (browsers) ->
   prefix 'object-fit',
          'object-position',
           browsers: browsers
           feature: 'object-fit'
 
 # CSS Shapes
-feature require('caniuse-db/features-json/css-shapes.json'), (browsers) ->
+feature unpackFeature(require('caniuse-lite/data/features/css-shapes.js')), (browsers) ->
   prefix 'shape-margin',
          'shape-outside',
          'shape-image-threshold',
@@ -395,20 +397,20 @@ feature require('caniuse-db/features-json/css-shapes.json'), (browsers) ->
           feature: 'css-shapes'
 
 # CSS3 text-overflow
-feature require('caniuse-db/features-json/text-overflow.json'), (browsers) ->
+feature unpackFeature(require('caniuse-lite/data/features/text-overflow.js')), (browsers) ->
   prefix 'text-overflow',
           browsers: browsers
           feature: 'text-overflow'
 
 # Viewport at-rule
-devdaptation = require('caniuse-db/features-json/css-deviceadaptation.json')
+devdaptation = unpackFeature(require('caniuse-lite/data/features/css-deviceadaptation.js'))
 feature devdaptation, (browsers) ->
   prefix '@viewport',
           browsers: browsers
           feature: 'css-deviceadaptation'
 
 # Resolution Media Queries
-resolution = require('caniuse-db/features-json/css-media-resolution.json')
+resolution = unpackFeature(require('caniuse-lite/data/features/css-media-resolution.js'))
 
 feature resolution, match: /( x($| )|a #3)/, (browsers) ->
   prefix '@resolution',
@@ -416,7 +418,7 @@ feature resolution, match: /( x($| )|a #3)/, (browsers) ->
           feature: 'css-media-resolution'
 
 # CSS text-align-last
-textAlignLast = require('caniuse-db/features-json/css-text-align-last.json')
+textAlignLast = unpackFeature(require('caniuse-lite/data/features/css-text-align-last.js'))
 
 feature textAlignLast, (browsers) ->
   prefix 'text-align-last',
@@ -424,7 +426,7 @@ feature textAlignLast, (browsers) ->
           feature: 'css-text-align-last'
 
 # Crisp Edges Image Rendering Algorithm
-crispedges = require('caniuse-db/features-json/css-crisp-edges.json')
+crispedges = unpackFeature(require('caniuse-lite/data/features/css-crisp-edges.js'))
 
 feature crispedges, match: /y x|a x #1/, (browsers) ->
   prefix 'pixelated',
@@ -438,7 +440,7 @@ feature crispedges, match: /a x #2/, (browsers) ->
           feature: 'css-crisp-edges'
 
 # Logical Properties
-logicalProps = require('caniuse-db/features-json/css-logical-props.json')
+logicalProps = unpackFeature(require('caniuse-lite/data/features/css-logical-props.js'))
 
 feature logicalProps, (browsers) ->
   prefix 'border-inline-start',  'border-inline-end',
@@ -455,13 +457,13 @@ feature logicalProps, match: /x\s#2/, (browsers) ->
           feature: 'css-logical-props'
 
 # CSS appearance
-feature require('caniuse-db/features-json/css-appearance.json'), (browsers) ->
+feature unpackFeature(require('caniuse-lite/data/features/css-appearance.js')), (browsers) ->
   prefix 'appearance',
           browsers: browsers
           feature: 'css-appearance'
 
 # CSS Scroll snap points
-feature require('caniuse-db/features-json/css-snappoints.json'), (browsers) ->
+feature unpackFeature(require('caniuse-lite/data/features/css-snappoints.js')), (browsers) ->
   prefix 'scroll-snap-type',
          'scroll-snap-coordinate',
          'scroll-snap-destination',
@@ -470,14 +472,14 @@ feature require('caniuse-db/features-json/css-snappoints.json'), (browsers) ->
           feature: 'css-snappoints'
 
 # CSS Regions
-feature require('caniuse-db/features-json/css-regions.json'), (browsers) ->
+feature unpackFeature(require('caniuse-lite/data/features/css-regions.js')), (browsers) ->
   prefix 'flow-into', 'flow-from',
          'region-fragment',
           browsers: browsers
           feature: 'css-regions'
 
 # CSS image-set
-feature require('caniuse-db/features-json/css-image-set.json'), (browsers) ->
+feature unpackFeature(require('caniuse-lite/data/features/css-image-set.js')), (browsers) ->
   prefix 'image-set',
           props: ['background', 'background-image', 'border-image', 'mask',
                   'list-style', 'list-style-image', 'content', 'mask-image']
@@ -485,14 +487,14 @@ feature require('caniuse-db/features-json/css-image-set.json'), (browsers) ->
           feature: 'css-image-set'
 
 # Writing Mode
-writingMode = require('caniuse-db/features-json/css-writing-mode.json')
+writingMode = unpackFeature(require('caniuse-lite/data/features/css-writing-mode.js'))
 feature writingMode, match: /a|x/, (browsers) ->
   prefix 'writing-mode',
           browsers: browsers
           feature: 'css-writing-mode'
 
 # Cross-Fade Function
-feature require('caniuse-db/features-json/css-cross-fade.json'), (browsers) ->
+feature unpackFeature(require('caniuse-lite/data/features/css-cross-fade.js')), (browsers) ->
   prefix 'cross-fade',
           props: ['background', 'background-image', 'border-image', 'mask',
                   'list-style', 'list-style-image', 'content', 'mask-image']
@@ -500,7 +502,7 @@ feature require('caniuse-db/features-json/css-cross-fade.json'), (browsers) ->
           feature: 'css-cross-fade'
 
 # Read Only selector
-readOnly = require('caniuse-db/features-json/css-read-only-write.json')
+readOnly = unpackFeature(require('caniuse-lite/data/features/css-read-only-write.js'))
 feature readOnly, (browsers) ->
   prefix ':read-only', ':read-write',
           selector: true,
@@ -508,14 +510,14 @@ feature readOnly, (browsers) ->
           feature: 'css-read-only-write'
 
 # Text Emphasize
-feature require('caniuse-db/features-json/text-emphasis.json'), (browsers) ->
+feature unpackFeature(require('caniuse-lite/data/features/text-emphasis.js')), (browsers) ->
   prefix 'text-emphasis', 'text-emphasis-position',
          'text-emphasis-style', 'text-emphasis-color',
           browsers: browsers
           feature: 'text-emphasis'
 
 # CSS Grid Layout
-grid = require('caniuse-db/features-json/css-grid.json')
+grid = unpackFeature(require('caniuse-lite/data/features/css-grid.js'))
 feature grid, (browsers) ->
   prefix 'display-grid', 'inline-grid',
           props:  ['display']
@@ -534,7 +536,7 @@ feature grid, match: /a x/, (browsers) ->
           feature: 'css-grid'
 
 # CSS text-spacing
-textSpacing = require('caniuse-db/features-json/css-text-spacing.json')
+textSpacing = unpackFeature(require('caniuse-lite/data/features/css-text-spacing.js'))
 
 feature textSpacing, (browsers) ->
   prefix 'text-spacing',
@@ -542,7 +544,7 @@ feature textSpacing, (browsers) ->
           feature: 'css-text-spacing'
 
 # :any-link selector
-feature require('caniuse-db/features-json/css-any-link.json'), (browsers) ->
+feature unpackFeature(require('caniuse-lite/data/features/css-any-link.js')), (browsers) ->
   prefix ':any-link',
           selector: true,
           browsers: browsers

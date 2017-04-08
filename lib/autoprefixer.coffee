@@ -59,7 +59,7 @@ module.exports = postcss.plugin 'autoprefixer', (reqs...) ->
 
 # Autoprefixer data
 module.exports.data =
-  browsers: require('caniuse-db/data.json').agents
+  browsers: require('caniuse-lite').agents
   prefixes: require('../data/prefixes')
 
 # Autoprefixer default browsers
