@@ -14,7 +14,7 @@
   "repository": "postcss/autoprefixer",
   "dependencies": {
     "browserslist": "^1.7.7",
-    "caniuse-db": "^1.0.30000639",
+    "caniuse-db": "^1.0.30000649",
     "coffee-script": "^1.12.4",
     "normalize-range": "^0.1.2",
     "num2fraction": "^1.2.2",
@@ -22,7 +22,7 @@
     "postcss-value-parser": "^3.2.3"
   },
   "devDependencies": {
-    "browserify": "^14.1.0",
+    "browserify": "^14.3.0",
     "eslint-config-postcss": "^2.0.2",
     "fs-extra": "^1.0.0",
     "gulp": "^3.9.1",
