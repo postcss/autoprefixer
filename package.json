@@ -33,13 +33,22 @@
     "gulp-json-editor": "^2.2.1",
     "gulp-mocha": "^4.3.0",
     "gulp-replace": "^0.5.4",
+    "lint-staged": "^3.4.0",
     "mocha": "^3.2.0",
+    "pre-commit": "^1.2.2",
     "should": "^11.2.1",
     "vinyl-source-stream": "^1.1.0"
   },
   "scripts": {
+    "lint-staged": "lint-staged",
     "test": "gulp"
   },
+  "lint-staged": {
+    "*.js": "eslint"
+  },
+  "pre-commit": [
+    "lint-staged"
+  ],
   "eslintConfig": {
     "extends": "eslint-config-postcss",
     "rules": {
@@ -51,13 +60,16 @@
   },
   "babel": {
     "presets": [
-        ["env", {
-            "targets": {
-                "browsers": "IE 11",
-                "node": 4
-            },
-            "loose": true
-        }]
+      [
+        "env",
+        {
+          "targets": {
+            "browsers": "IE 11",
+            "node": 4
+          },
+          "loose": true
+        }
+      ]
     ]
   }
 }
