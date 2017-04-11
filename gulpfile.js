@@ -68,7 +68,7 @@ gulp.task('standalone', ['build:lib'], (done) => {
 gulp.task('lint', () => {
     const eslint = require('gulp-eslint');
 
-    return gulp.src(['index.js', 'gulpfile.js', 'data/**/.js', 'lib/**/*.js'])
+    return gulp.src(['index.js', 'gulpfile.js', 'data/**/*.js', 'lib/**/*.js'])
         .pipe(eslint())
         .pipe(eslint.format())
         .pipe(eslint.failAfterError());
@@ -78,7 +78,8 @@ gulp.task('test', () => {
     require('should');
 
     const mocha = require('gulp-mocha');
-    return gulp.src('test/*.js', { read: false }).pipe(mocha({ compilers: 'js:babel-core/register' }));
+    return gulp.src('test/*.js', { read: false })
+        .pipe(mocha({ compilers: 'js:babel-core/register' }));
 });
 
 gulp.task('default', ['lint', 'test']);
