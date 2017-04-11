@@ -1,42 +1,40 @@
-var gulp = require('gulp');
-var path = require('path');
-var fs   = require('fs-extra');
+const gulp = require('gulp');
+const path = require('path');
+const fs   = require('fs-extra');
 
-gulp.task('clean', function (done) {
-    fs.remove(path.join(__dirname, 'autoprefixer.js'), function () {
+gulp.task('clean', (done) => {
+    fs.remove(path.join(__dirname, 'autoprefixer.js'), () => {
         fs.remove(path.join(__dirname, 'build'), done);
     });
 });
 
-gulp.task('build:lib', ['clean'], function () {
-    var coffee = require('gulp-coffee');
+gulp.task('build:lib', ['clean'], () => {
+    const babel = require('gulp-babel');
 
-    return gulp.src(['{lib,data}/**/*.coffee'])
-        .pipe(coffee())
+    return gulp.src(['{lib,data}/**/*.js'])
+        .pipe(babel())
         .pipe(gulp.dest('build/'));
 });
 
-gulp.task('build:docs', ['clean'], function () {
-    var ignore = require('fs').readFileSync('.npmignore').toString()
+gulp.task('build:docs', ['clean'], () => {
+    const ignore = require('fs').readFileSync('.npmignore').toString()
         .trim().split(/\n+/)
         .concat(['.npmignore', 'index.js', 'package.json', 'logo.svg'])
-        .map(function (i) {
-            return '!' + i;
-        });
+        .map((i) => '!' + i);
 
     return gulp.src(['*'].concat(ignore))
         .pipe(gulp.dest('build'));
 });
 
-gulp.task('build:package', ['clean'], function () {
-    var editor = require('gulp-json-editor');
+gulp.task('build:package', ['clean'], () => {
+    const editor = require('gulp-json-editor');
 
     return gulp.src('./package.json')
-        .pipe(editor(function (json) {
+        .pipe(editor((json) => {
             json.main = 'lib/autoprefixer';
-            json.devDependencies['coffee-script'] =
-                json.dependencies['coffee-script'];
-            delete json.dependencies['coffee-script'];
+            json.devDependencies['babel-register'] =
+                json.dependencies['babel-register'];
+            delete json.dependencies['babel-register'];
             return json;
         }))
         .pipe(gulp.dest('build'));
@@ -44,19 +42,19 @@ gulp.task('build:package', ['clean'], function () {
 
 gulp.task('build', ['build:lib', 'build:docs', 'build:package']);
 
-gulp.task('standalone', ['build:lib'], function (done) {
-    var builder = require('browserify')({
+gulp.task('standalone', ['build:lib'], (done) => {
+    const builder = require('browserify')({
         basedir:    path.join(__dirname, 'build'),
         standalone: 'autoprefixer'
     });
     builder.add('./lib/autoprefixer.js');
 
-    builder.bundle(function (error, build) {
+    builder.bundle((error, build) => {
         if ( error ) throw error;
 
         fs.removeSync(path.join(__dirname, 'build'));
 
-        var rails = path.join(__dirname, '..', 'autoprefixer-rails',
+        const rails = path.join(__dirname, '..', 'autoprefixer-rails',
             'vendor', 'autoprefixer.js');
         if ( fs.existsSync(rails) ) {
             fs.writeFileSync(rails, build);
@@ -67,21 +65,20 @@ gulp.task('standalone', ['build:lib'], function (done) {
     });
 });
 
-gulp.task('lint', function () {
-    var eslint = require('gulp-eslint');
+gulp.task('lint', () => {
+    const eslint = require('gulp-eslint');
 
-    return gulp.src(['index.js', 'gulpfile.js'])
+    return gulp.src(['index.js', 'gulpfile.js', 'data/**/.js', 'lib/**/*.js'])
         .pipe(eslint())
         .pipe(eslint.format())
         .pipe(eslint.failAfterError());
 });
 
-gulp.task('test', function () {
-    require('coffee-script').register();
+gulp.task('test', () => {
     require('should');
 
-    var mocha = require('gulp-mocha');
-    return gulp.src('test/*.coffee', { read: false }).pipe(mocha());
+    const mocha = require('gulp-mocha');
+    return gulp.src('test/*.js', { read: false }).pipe(mocha({ compilers: 'js:babel-core/register' }));
 });
 
 gulp.task('default', ['lint', 'test']);
