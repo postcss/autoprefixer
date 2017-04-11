@@ -35,71 +35,74 @@ describe('info', () => {
 
     it('returns selected browsers and prefixes', () => {
         const browsers = new Browsers(data.browsers,
-      ['chrome 30', 'firefox 21', 'firefox 20', 'ie 6']);
+            ['chrome 30', 'firefox 21', 'firefox 20', 'ie 6']);
         const prefixes = new Prefixes(data.prefixes, browsers);
 
         const coverage = browserslist.coverage(
-      ['chrome 30', 'firefox 21', 'firefox 20', 'ie 6']);
+            ['chrome 30', 'firefox 21', 'firefox 20', 'ie 6']);
         const round = Math.round(coverage * 100) / 100.0;
 
-        return info(prefixes).should.eql('Browsers:\n' +
-                              '  Chrome: 30\n' +
-                              '  Firefox: 21, 20\n' +
-                              '  IE: 6\n' +
-                              '\n' +
-                              `These browsers account for ${round}% ` +
-                                'of all users globally\n' +
-                              '\n' +
-                              'At-Rules:\n' +
-                              '  @keyframes: moz\n' +
-                              '\n' +
-                              'Selectors:\n' +
-                              '  d: moz\n' +
-                              '\n' +
-                              'Properties:\n' +
-                              '  a: webkit, moz\n' +
-                              '  transition: moz\n' +
-                              '\n' +
-                              'Values:\n' +
-                              '  b: moz, ms\n' +
-                              '  c: moz\n'
-    );
+        info(prefixes).should.eql(
+            'Browsers:\n' +
+            '  Chrome: 30\n' +
+            '  Firefox: 21, 20\n' +
+            '  IE: 6\n' +
+            '\n' +
+            `These browsers account for ${round}% ` +
+            'of all users globally\n' +
+            '\n' +
+            'At-Rules:\n' +
+            '  @keyframes: moz\n' +
+            '\n' +
+            'Selectors:\n' +
+            '  d: moz\n' +
+            '\n' +
+            'Properties:\n' +
+            '  a: webkit, moz\n' +
+            '  transition: moz\n' +
+            '\n' +
+            'Values:\n' +
+            '  b: moz, ms\n' +
+            '  c: moz\n'
+        );
     });
 
     it('doesn\'t show transitions unless they are necessary', () => {
-        const browsers = new Browsers(data.browsers, ['chrome 30', 'firefox 20', 'ie 6']);
+        const browsers = new Browsers(data.browsers,
+            ['chrome 30', 'firefox 20', 'ie 6']);
         const prefixes = new Prefixes(data.prefixes, browsers);
 
-        const coverage = browserslist.coverage(['chrome 30', 'firefox 20', 'ie 6']);
+        const coverage = browserslist.coverage(
+            ['chrome 30', 'firefox 20', 'ie 6']);
         const round    = Math.round(coverage * 100) / 100.0;
 
-        return info(prefixes).should.eql('Browsers:\n' +
-                              '  Chrome: 30\n' +
-                              '  Firefox: 20\n' +
-                              '  IE: 6\n' +
-                              '\n' +
-                              `These browsers account for ${ round }% ` +
-                                'of all users globally\n' +
-                              '\n' +
-                              'Properties:\n' +
-                              '  a: webkit, moz\n' +
-                              '\n' +
-                              'Values:\n' +
-                              '  b: moz, ms\n'
-    );
+        info(prefixes).should.eql(
+            'Browsers:\n' +
+            '  Chrome: 30\n' +
+            '  Firefox: 20\n' +
+            '  IE: 6\n' +
+            '\n' +
+            `These browsers account for ${ round }% ` +
+            'of all users globally\n' +
+            '\n' +
+            'Properties:\n' +
+            '  a: webkit, moz\n' +
+            '\n' +
+            'Values:\n' +
+            '  b: moz, ms\n'
+        );
     });
 
     it('returns string for empty prefixes', () => {
         const browsers = new Browsers(data.browsers, ['ie 7']);
         const prefixes = new Prefixes(data.prefixes, browsers);
-
-        return info(prefixes).should.match(/remove Autoprefixer/);
+        info(prefixes).should.match(/remove Autoprefixer/);
     });
 
-    return it('returns string for empty browsers', () => {
+    it('returns string for empty browsers', () => {
         const browsers = new Browsers(data.browsers, []);
         const prefixes = new Prefixes(data.prefixes, browsers);
-
-        return info(prefixes).should.eql('No browsers selected');
+        info(prefixes).should.eql('No browsers selected');
     });
+
 });
