@@ -15,12 +15,9 @@ describe('Prefixer', () => {
         it('registers hacks for subclasses', () => {
             class A extends Prefixer {}
             class Hack extends A {
-                static initClass() {
-                    this.names = ['a', 'b'];
-                }
+                static names = ['a', 'b'];
             }
 
-            Hack.initClass();
             A.hack(Hack);
 
             A.hacks.should.eql({ a: Hack, b: Hack });
@@ -33,17 +30,13 @@ describe('Prefixer', () => {
 
         it('loads hacks', () => {
             class A extends Prefixer {
-                static initClass() {
-                    this.prototype.klass = 'a';
-                }
+                klass = 'a';
             }
-            A.initClass();
+
             class Hack extends A {
-                static initClass() {
-                    this.prototype.klass = 'hack';
-                }
+                klass = 'hack';
             }
-            Hack.initClass();
+
             A.hacks = { hacked: Hack };
 
             A.load('hacked').klass.should.eql('hack');
