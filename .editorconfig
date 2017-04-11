@@ -8,5 +8,8 @@ charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = true
 
+[*.js]
+indent_size = 4
+
 [*.css]
 indent_size = 4
