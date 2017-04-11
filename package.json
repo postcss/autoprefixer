@@ -52,7 +52,8 @@
   "eslintConfig": {
     "extends": "eslint-config-postcss",
     "rules": {
-      "complexity": "off"
+      "complexity": "off",
+      "camelcase": "off"
     },
     "env": {
       "mocha": true
