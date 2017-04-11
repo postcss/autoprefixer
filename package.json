@@ -43,11 +43,7 @@
   "eslintConfig": {
     "extends": "eslint-config-postcss",
     "rules": {
-      "complexity": "off",
-      "max-len": [2, 80, {
-        "ignoreComments": true,
-        "ignoreStrings": true
-      }]
+      "complexity": "off"
     }
   },
   "babel": {
