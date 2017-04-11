@@ -44,6 +44,9 @@
     "extends": "eslint-config-postcss",
     "rules": {
       "complexity": "off"
+    },
+    "env": {
+      "mocha": true
     }
   },
   "babel": {

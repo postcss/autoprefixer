@@ -68,10 +68,13 @@ gulp.task('standalone', ['build:lib'], (done) => {
 gulp.task('lint', () => {
     const eslint = require('gulp-eslint');
 
-    return gulp.src(['index.js', 'gulpfile.js', 'data/**/*.js', 'lib/**/*.js'])
-        .pipe(eslint())
-        .pipe(eslint.format())
-        .pipe(eslint.failAfterError());
+    return gulp.src([
+        'index.js',
+        'gulpfile.js',
+        'data/**/*.js',
+        'lib/**/*.js',
+        'test/**/*.js'
+    ]).pipe(eslint()).pipe(eslint.format()).pipe(eslint.failAfterError());
 });
 
 gulp.task('test', () => {
