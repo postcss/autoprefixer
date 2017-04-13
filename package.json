@@ -14,11 +14,11 @@
   "repository": "postcss/autoprefixer",
   "dependencies": {
     "browserslist": "^1.7.7",
-    "caniuse-db": "^1.0.30000649",
-    "coffee-script": "^1.12.4",
+    "caniuse-db": "^1.0.30000653",
+    "coffee-script": "^1.12.5",
     "normalize-range": "^0.1.2",
     "num2fraction": "^1.2.2",
-    "postcss": "^5.2.16",
+    "postcss": "^5.2.17",
     "postcss-value-parser": "^3.2.3"
   },
   "devDependencies": {
