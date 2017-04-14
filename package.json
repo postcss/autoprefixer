@@ -66,6 +66,7 @@
         "env",
         {
           "targets": {
+            "browsers": "last 1 version",
             "node": 4
           },
           "loose": true
