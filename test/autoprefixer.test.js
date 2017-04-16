@@ -230,7 +230,7 @@ it('does not remove unnecessary prefixes on request', () => {
 });
 
 it('does not add prefixes on request', () => {
-    for ( let type in ['transition', 'values', 'fullscreen']) {
+    for ( let type of ['transition', 'values', 'fullscreen']) {
         const remover    = autoprefixer({ browsers: ['Opera 12'], add: false });
         const unprefixed = read(type);
         expect(postcss([remover]).process(unprefixed).css).toEqual(unprefixed);
@@ -238,7 +238,7 @@ it('does not add prefixes on request', () => {
 });
 
 it('prevents doubling prefixes', () => {
-    for ( let type in COMMONS) {
+    for ( let type of COMMONS) {
         const processor = postcss([prefixer(type)]);
         const input  = read(type);
         const output = read(type + '.out');
@@ -379,14 +379,22 @@ describe('hacks', () => {
 
     it('warns on unsupported grid features', () => {
         const css      = read('nogrid');
-        const instance = autoprefixer({ browsers: ['IE 10'], flexbox: false });
+        const instance = autoprefixer({ browsers: ['IE 10'] });
         const result   = postcss([instance]).process(css);
-        expect(result.warnings().length).toEqual(0);
+        expect(result.warnings().map(i => i.toString())).toEqual([
+            'autoprefixer: <css input>:2:5: IE supports only grid-row-end ' +
+            'with span. You should add grid: false option to Autoprefixer ' +
+            'and use some JS grid polyfill for full spec support',
+            'autoprefixer: <css input>:3:5: IE supports only grid-row ' +
+            'with / and span. You should add grid: false option to ' +
+            'Autoprefixer and use some JS grid polyfill for full spec support'
+        ]);
     });
 
     it('does not warns on unsupported grid on disabled grid', () => {
-        const css    = read('nogrid');
-        const result = postcss([prefixer('transition')]).process(css);
+        const css      = read('nogrid');
+        const instance = autoprefixer({ browsers: ['IE 10'], flexbox: false });
+        const result   = postcss([instance]).process(css);
         expect(result.warnings().length).toEqual(0);
     });
 
