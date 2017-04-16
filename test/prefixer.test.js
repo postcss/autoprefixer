@@ -2,7 +2,6 @@ const Prefixer = require('../lib/prefixer');
 const parse    = require('postcss/lib/parse');
 
 let prefix, css;
-
 beforeEach(() => {
     prefix = new Prefixer();
     css = parse('@-ms-keyframes a { to { } } ' +

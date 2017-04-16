@@ -3,7 +3,6 @@ const Prefixes    = require('../lib/prefixes');
 const parse       = require('postcss/lib/parse');
 
 let prefixes, tabsize;
-
 beforeEach(() => {
     prefixes = new Prefixes({ }, { });
     tabsize  = new Declaration('tab-size', ['-moz-', '-ms-'], prefixes);
