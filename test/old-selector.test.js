@@ -12,24 +12,24 @@ describe('OldSelector', () => {
 
         it('returns true on last rule', function () {
             const css = parse('::selection {} ::-moz-selection {}');
-            this.old.isHack(css.last).should.be.true;
+            expect(this.old.isHack(css.last)).toBeTruthy();
         });
 
         it('stops on another type', function () {
             const css = parse('::-moz-selection {} ' +
                 '@keyframes anim {} ::selection {}');
-            this.old.isHack(css.first).should.be.true;
+            expect(this.old.isHack(css.first)).toBeTruthy();
         });
 
         it('stops on another selector', function () {
             const css = parse('::-moz-selection {} a {} ::selection {}');
-            this.old.isHack(css.first).should.be.true;
+            expect(this.old.isHack(css.first)).toBeTruthy();
         });
 
         it('finds unprefixed selector', function () {
             const css = parse('::-moz-selection {} ' +
                 '::-o-selection {} ::selection {}');
-            this.old.isHack(css.first).should.be.false;
+            expect(this.old.isHack(css.first)).toBeFalsy();
         });
 
     });
@@ -38,12 +38,12 @@ describe('OldSelector', () => {
 
         it('finds old selector', function () {
             const css = parse('body::-moz-selection {} body::selection {}');
-            this.old.check(css.first).should.be.true;
+            expect(this.old.check(css.first)).toBeTruthy();
         });
 
         it('finds right', function () {
             const css = parse('body:::-moz-selection {}');
-            this.old.check(css.first).should.be.false;
+            expect(this.old.check(css.first)).toBeFalsy();
         });
 
     });

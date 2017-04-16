@@ -5,9 +5,9 @@ describe('utils', () => {
     describe('.error()', () => {
 
         it('raises an error', () => {
-            (() => {
+            expect(() => {
                 utils.error('A');
-            }).should.throw('A');
+            }).toThrow('A');
         });
 
         it('marks an error', () => {
@@ -18,7 +18,7 @@ describe('utils', () => {
                 error = e;
             }
 
-            error.autoprefixer.should.be.true;
+            expect(error.autoprefixer).toBeTruthy();
         });
 
     });
@@ -26,7 +26,8 @@ describe('utils', () => {
     describe('.uniq()', () => {
 
         it('filters doubles in array', () => {
-            utils.uniq(['1', '1', '2', '3', '3']).should.eql(['1', '2', '3']);
+            expect(utils.uniq(['1', '1', '2', '3', '3']))
+                .toEqual(['1', '2', '3']);
         });
 
     });
@@ -34,8 +35,8 @@ describe('utils', () => {
     describe('.removeNote()', () => {
 
         it('removes note', () => {
-            utils.removeNote('-webkit- note').should.eql('-webkit-');
-            utils.removeNote('-webkit-').should.eql('-webkit-');
+            expect(utils.removeNote('-webkit- note')).toEqual('-webkit-');
+            expect(utils.removeNote('-webkit-')).toEqual('-webkit-');
         });
 
     });
@@ -44,7 +45,7 @@ describe('utils', () => {
 
         it('escapes RegExp symbols', () => {
             const string = utils.escapeRegexp('^[()\\]');
-            string.should.eql('\\^\\[\\(\\)\\\\\\]');
+            expect(string).toEqual('\\^\\[\\(\\)\\\\\\]');
         });
 
     });
@@ -55,29 +56,29 @@ describe('utils', () => {
             const regexp = utils.regexp('foo');
             const test   = string => string.match(regexp) !== null;
 
-            test('foo').should.be.ok;
-            test('Foo').should.be.ok;
-            test('one, foo, two').should.be.ok;
-            test('one(),foo(),two()').should.be.ok;
+            expect(test('foo')).toBeTruthy();
+            expect(test('Foo')).toBeTruthy();
+            expect(test('one, foo, two')).toBeTruthy();
+            expect(test('one(),foo(),two()')).toBeTruthy();
 
-            'foo(), a, foo'.replace(regexp, '$1b$2')
-                .should.eql('bfoo(), a, bfoo');
+            expect('foo(), a, foo'.replace(regexp, '$1b$2'))
+                .toEqual('bfoo(), a, bfoo');
 
-            test('foob').should.be.false;
-            test('(foo)').should.be.false;
-            test('-a-foo').should.be.false;
+            expect(test('foob')).toBeFalsy();
+            expect(test('(foo)')).toBeFalsy();
+            expect(test('-a-foo')).toBeFalsy();
         });
 
         it('escapes string if needed', () => {
             let regexp = utils.regexp('(a|b)');
             const test   = string => string.match(regexp) !== null;
 
-            test('a').should.be.false;
-            test('(a|b)').should.be.ok;
+            expect(test('a')).toBeFalsy();
+            expect(test('(a|b)')).toBeTruthy();
 
             regexp = utils.regexp('(a|b)', false);
-            test('a').should.be.ok;
-            test('b').should.be.ok;
+            expect(test('a')).toBeTruthy();
+            expect(test('b')).toBeTruthy();
         });
 
     });
@@ -86,26 +87,26 @@ describe('utils', () => {
 
         it('does save without changes', () => {
             const list = utils.editList('a,\nb, c', parsed => parsed);
-            list.should.eql('a,\nb, c');
+            expect(list).toEqual('a,\nb, c');
         });
 
         it('changes list', () => {
             const list = utils.editList('a, b', (parsed, edit) => {
-                parsed.should.eql(['a', 'b']);
-                edit.should.eql([]);
+                expect(parsed).toEqual(['a', 'b']);
+                expect(edit).toEqual([]);
                 return ['1', '2'];
             });
-            list.should.eql('1, 2');
+            expect(list).toEqual('1, 2');
         });
 
         it('saves comma', () => {
             const list = utils.editList('a,\nb', () => ['1', '2']);
-            list.should.eql('1,\n2');
+            expect(list).toEqual('1,\n2');
         });
 
         it('parse one value', () => {
             const list = utils.editList('1', (parsed) => [parsed[0], '2']);
-            list.should.eql('1, 2');
+            expect(list).toEqual('1, 2');
         });
 
     });

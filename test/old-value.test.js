@@ -6,13 +6,13 @@ describe('OldValue', () => {
 
         it('checks value in string', () => {
             const old = new OldValue('calc', '-o-calc');
-            old.check('1px -o-calc(1px)').should.be.true;
-            old.check('1px calc(1px)').should.be.false;
+            expect(old.check('1px -o-calc(1px)')).toBeTruthy();
+            expect(old.check('1px calc(1px)')).toBeFalsy();
         });
 
         it('allows custom checks', () => {
             const old = new OldValue('calc', '-o-calc', 'calc', /calc/);
-            return old.check('1px calc(1px)').should.be.true;
+            expect(old.check('1px calc(1px)')).toBeTruthy();
         });
 
     });

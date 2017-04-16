@@ -78,11 +78,8 @@ gulp.task('lint', () => {
 });
 
 gulp.task('test', () => {
-    require('should');
-
-    const mocha = require('gulp-mocha');
-    return gulp.src('test/*.js', { read: false })
-        .pipe(mocha({ compilers: 'js:babel-core/register' }));
+    const jest = require('gulp-jest').default;
+    return gulp.src('test/').pipe(jest());
 });
 
 gulp.task('default', ['lint', 'test']);

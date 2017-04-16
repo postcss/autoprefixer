@@ -1,4 +1,0 @@
---inline-diffs
---require   should
---reporter  spec
---compilers coffee:coffee-script/register

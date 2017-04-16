@@ -12,10 +12,10 @@ describe('AtRule', () => {
                               '@-ms-keyframes a {} ' +
                               '@keyframes a {}');
             keyframes.process(css.last);
-            css.toString().should.eql('@-moz-keyframes b {} ' +
-                                    '@-ms-keyframes a {} ' +
-                                    '@-moz-keyframes a {} ' +
-                                    '@keyframes a {}');
+            expect(css.toString()).toEqual('@-moz-keyframes b {} ' +
+                                           '@-ms-keyframes a {} ' +
+                                           '@-moz-keyframes a {} ' +
+                                           '@keyframes a {}');
         });
 
     });

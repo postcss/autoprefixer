@@ -10,7 +10,7 @@ describe('Selector', () => {
     describe('prefixed()', () => {
 
         it('adds prefix after non-letters symbols', function () {
-            this.selector.prefixed('-moz-').should.eql('::-moz-selection');
+            expect(this.selector.prefixed('-moz-')).toEqual('::-moz-selection');
         });
 
     });
@@ -19,14 +19,14 @@ describe('Selector', () => {
 
         it('creates regexp for prefix', function () {
             const regexp = this.selector.regexp('-moz-');
-            regexp.test('::-moz-selection').should.be.true;
-            regexp.test('::selection').should.be.false;
+            expect(regexp.test('::-moz-selection')).toBeTruthy();
+            expect(regexp.test('::selection')).toBeFalsy();
         });
 
         it('creates regexp without prefix', function () {
             const regexp = this.selector.regexp();
-            regexp.test('::-moz-selection').should.be.false;
-            regexp.test('::selection').should.be.true;
+            expect(regexp.test('::-moz-selection')).toBeFalsy();
+            expect(regexp.test('::selection')).toBeTruthy();
         });
     });
 
@@ -35,9 +35,9 @@ describe('Selector', () => {
         it('shecks rule selectors', function () {
             const css = parse('body .selection {}, ' +
                 ':::selection {}, body ::selection {}');
-            this.selector.check(css.nodes[0]).should.be.false;
-            this.selector.check(css.nodes[1]).should.be.false;
-            this.selector.check(css.nodes[2]).should.be.true;
+            expect(this.selector.check(css.nodes[0])).toBeFalsy();
+            expect(this.selector.check(css.nodes[1])).toBeFalsy();
+            expect(this.selector.check(css.nodes[2])).toBeTruthy();
         });
 
     });
@@ -46,7 +46,7 @@ describe('Selector', () => {
 
         it('returns all avaiable prefixed selectors', function () {
             const css = parse('::selection {}');
-            this.selector.prefixeds(css.first).should.eql({
+            expect(this.selector.prefixeds(css.first)).toEqual({
                 '-webkit-': '::-webkit-selection',
                 '-moz-':    '::-moz-selection',
                 '-ms-':     '::-ms-selection',
@@ -64,37 +64,37 @@ describe('Selector', () => {
 
         it('returns false on first element', function () {
             const css = parse('::selection {}');
-            this.selector.already(css.first, this.prefixeds, '-moz-')
-                .should.be.false;
+            expect(this.selector.already(css.first, this.prefixeds, '-moz-'))
+                .toBeFalsy();
         });
 
         it('stops on another type', function () {
             const css = parse('::-moz-selection {} ' +
                 '@keyframes anim {} ::selection {}');
-            this.selector.already(css.nodes[2], this.prefixeds, '-moz-')
-                .should.be.false;
+            expect(this.selector.already(css.nodes[2], this.prefixeds, '-moz-'))
+                .toBeFalsy();
         });
 
         it('stops on another selector', function () {
             const css = parse('::-moz-selection {} a {} ::selection {}');
-            this.selector.already(css.nodes[2], this.prefixeds, '-moz-')
-                .should.be.false;
+            expect(this.selector.already(css.nodes[2], this.prefixeds, '-moz-'))
+                .toBeFalsy();
         });
 
         it('finds prefixed even if unknown prefix is between', function () {
             const css = parse('::-moz-selection {} ' +
                 '::-o-selection {} ::selection {}');
-            this.selector.already(css.nodes[2], this.prefixeds, '-moz-')
-                .should.be.true;
+            expect(this.selector.already(css.nodes[2], this.prefixeds, '-moz-'))
+                .toBeTruthy();
         });
     });
 
     describe('replace()', () => {
 
-        it('should add prefix to selectors', function () {
-            this.selector
+        it('adds prefix to selectors', function () {
+            expect(this.selector
                 .replace('body ::selection, input::selection, a', '-ms-')
-                .should.eql('body ::-ms-selection, input::-ms-selection, a');
+            ).toEqual('body ::-ms-selection, input::-ms-selection, a');
         });
 
     });
@@ -104,14 +104,14 @@ describe('Selector', () => {
         it('adds prefixes', function () {
             const css = parse('b ::-moz-selection{} b ::selection{}');
             this.selector.process(css.nodes[1]);
-            css.toString().should.eql(
+            expect(css.toString()).toEqual(
                 'b ::-moz-selection{} b ::-ms-selection{} b ::selection{}');
         });
 
         it('checks parents prefix', function () {
             const css = parse('@-moz-page{ ::selection{} }');
             this.selector.process(css.first.first);
-            css.toString().should.eql(
+            expect(css.toString()).toEqual(
                 '@-moz-page{ ::-moz-selection{} ::selection{} }');
         });
 
@@ -121,8 +121,8 @@ describe('Selector', () => {
 
         it('returns object to find old selector', function () {
             const old = this.selector.old('-moz-');
-            old.unprefixed.should.eql('::selection');
-            old.prefix.should.eql('-moz-');
+            expect(old.unprefixed).toEqual('::selection');
+            expect(old.prefix).toEqual('-moz-');
         });
 
     });

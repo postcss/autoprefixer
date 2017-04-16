@@ -20,7 +20,7 @@ describe('Value', () => {
             width._autoprefixerValues = { '-ms-': '-ms-v' };
             Value.save(prefixes, width);
 
-            css.toString().should.eql('a { prop: -ms-v; prop: v }');
+            expect(css.toString()).toEqual('a { prop: -ms-v; prop: v }');
         });
 
         it('updates declaration with prefix', () => {
@@ -30,7 +30,7 @@ describe('Value', () => {
             width._autoprefixerValues = { '-ms-': '-ms-v' };
             Value.save(prefixes, width);
 
-            css.toString().should.eql('a { -ms-prop: -ms-v }');
+            expect(css.toString()).toEqual('a { -ms-prop: -ms-v }');
         });
 
         it('ignores on another prefix property', () => {
@@ -40,7 +40,7 @@ describe('Value', () => {
             width._autoprefixerValues = { '-ms-': '-ms-v' };
             Value.save(prefixes, width);
 
-            css.toString().should.eql('a { -ms-prop: v; prop: v }');
+            expect(css.toString()).toEqual('a { -ms-prop: v; prop: v }');
         });
 
         it('ignores prefixes without changes', () => {
@@ -50,7 +50,7 @@ describe('Value', () => {
             width._autoprefixerValues = { '-ms-': 'v' };
             Value.save(prefixes, width);
 
-            css.toString().should.eql('a { prop: v }');
+            expect(css.toString()).toEqual('a { prop: v }');
         });
 
     });
@@ -64,12 +64,12 @@ describe('Value', () => {
                           '3: -ms-calc; ' +
                           '4: calced; }');
 
-            this.calc.check(css.first.nodes[0]).should.be.true;
-            this.calc.check(css.first.nodes[1]).should.be.true;
-            this.calc.check(css.first.nodes[2]).should.be.true;
+            expect(this.calc.check(css.first.nodes[0])).toBeTruthy();
+            expect(this.calc.check(css.first.nodes[1])).toBeTruthy();
+            expect(this.calc.check(css.first.nodes[2])).toBeTruthy();
 
-            this.calc.check(css.first.nodes[3]).should.be.false;
-            this.calc.check(css.first.nodes[4]).should.be.false;
+            expect(this.calc.check(css.first.nodes[3])).toBeFalsy();
+            expect(this.calc.check(css.first.nodes[4])).toBeFalsy();
         });
 
     });
@@ -77,7 +77,8 @@ describe('Value', () => {
     describe('old()', () => {
 
         it('check prefixed value', function () {
-            this.calc.old('-ms-').should.eql(new OldValue('calc', '-ms-calc'));
+            expect(this.calc.old('-ms-'))
+                .toEqual(new OldValue('calc', '-ms-calc'));
         });
 
     });
@@ -85,10 +86,10 @@ describe('Value', () => {
     describe('replace()', () => {
 
         it('adds prefix to value', function () {
-            this.calc.replace('1px calc(1em)', '-ms-')
-                .should.eql('1px -ms-calc(1em)');
-            this.calc.replace('1px,calc(1em)', '-ms-')
-                .should.eql('1px,-ms-calc(1em)');
+            expect(this.calc.replace('1px calc(1em)', '-ms-'))
+                .toEqual('1px -ms-calc(1em)');
+            expect(this.calc.replace('1px,calc(1em)', '-ms-'))
+                .toEqual('1px,-ms-calc(1em)');
         });
 
     });
@@ -100,7 +101,7 @@ describe('Value', () => {
             const width = css.first.first;
 
             this.calc.process(width);
-            width._autoprefixerValues.should.eql({
+            expect(width._autoprefixerValues).toEqual({
                 '-moz-': '-moz-calc(1em) -moz-calc(1%)',
                 '-ms-':   '-ms-calc(1em) -ms-calc(1%)'
             });
@@ -111,7 +112,7 @@ describe('Value', () => {
             const width = css.first.first;
 
             this.calc.process(width);
-            width._autoprefixerValues.should.eql({
+            expect(width._autoprefixerValues).toEqual({
                 '-moz-': '-moz-calc(1%)' });
         });
 
@@ -120,11 +121,11 @@ describe('Value', () => {
             const decls = css.first.nodes;
 
             this.calc.process(decls[0]);
-            decls[0]._autoprefixerValues.should.eql({
+            expect(decls[0]._autoprefixerValues).toEqual({
                 '-moz-': '-moz-calc(1%)' });
 
             this.calc.process(decls[1]);
-            (decls[1]._autoprefixerValues === undefined).should.be.true;
+            expect(decls[1]._autoprefixerValues).not.toBeDefined();
         });
 
     });

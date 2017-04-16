@@ -42,7 +42,7 @@ describe('info', () => {
             ['chrome 30', 'firefox 21', 'firefox 20', 'ie 6']);
         const round = Math.round(coverage * 100) / 100.0;
 
-        info(prefixes).should.eql(
+        expect(info(prefixes)).toEqual(
             'Browsers:\n' +
             '  Chrome: 30\n' +
             '  Firefox: 21, 20\n' +
@@ -76,7 +76,7 @@ describe('info', () => {
             ['chrome 30', 'firefox 20', 'ie 6']);
         const round    = Math.round(coverage * 100) / 100.0;
 
-        info(prefixes).should.eql(
+        expect(info(prefixes)).toEqual(
             'Browsers:\n' +
             '  Chrome: 30\n' +
             '  Firefox: 20\n' +
@@ -96,13 +96,13 @@ describe('info', () => {
     it('returns string for empty prefixes', () => {
         const browsers = new Browsers(data.browsers, ['ie 7']);
         const prefixes = new Prefixes(data.prefixes, browsers);
-        info(prefixes).should.match(/remove Autoprefixer/);
+        expect(info(prefixes)).toMatch(/remove Autoprefixer/);
     });
 
     it('returns string for empty browsers', () => {
         const browsers = new Browsers(data.browsers, []);
         const prefixes = new Prefixes(data.prefixes, browsers);
-        info(prefixes).should.eql('No browsers selected');
+        expect(info(prefixes)).toEqual('No browsers selected');
     });
 
 });

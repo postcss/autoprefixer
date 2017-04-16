@@ -44,7 +44,7 @@ describe('Prefixes', () => {
     describe('select()', () => {
 
         it('selects necessary prefixes', () => {
-            fill.select(data.prefixes).should.eql({
+            expect(fill.select(data.prefixes)).toEqual({
                 add: {
                     a: ['-moz-'],
                     b: ['-ms- new'],
@@ -63,7 +63,7 @@ describe('Prefixes', () => {
     describe('preprocess()', () => {
 
         it('preprocesses prefixes add data', () => {
-            fill.add.should.eql({
+            expect(fill.add).toEqual({
                 'selectors': [cSel],
                 'a': aProp,
                 '*': {
@@ -74,7 +74,7 @@ describe('Prefixes', () => {
         });
 
         it('preprocesses prefixes remove data', () => {
-            JSON.stringify(fill.remove).should.eql(JSON.stringify({
+            expect(JSON.stringify(fill.remove)).toEqual(JSON.stringify({
                 'selectors': [cSel.old('-moz-')],
                 '-webkit-a': {
                     remove: true
@@ -99,14 +99,14 @@ describe('Prefixes', () => {
     describe('.cleaner()', () => {
 
         it('returns itself is no browsers are selected', () => {
-            empty.cleaner().should.eql(empty);
+            expect(empty.cleaner()).toEqual(empty);
         });
 
         it('returns Prefixes with empty browsers', () => {
             const cleaner = new Prefixes(data.prefixes,
                 new Browsers(data.browsers, []));
-            Object.keys(fill.cleaner().add).length.should.eql(2);
-            fill.cleaner().remove.should.eql(cleaner.remove);
+            expect(Object.keys(fill.cleaner().add).length).toEqual(2);
+            expect(fill.cleaner().remove).toEqual(cleaner.remove);
         });
 
     });
@@ -114,11 +114,11 @@ describe('Prefixes', () => {
     describe('.decl()', () => {
 
         it('loads declarations by property', () => {
-            empty.decl('a').should.eql(new Declaration('a'));
+            expect(empty.decl('a')).toEqual(new Declaration('a'));
         });
 
         it('caches values', () => {
-            empty.decl('a').should.exactly(empty.decl('a'));
+            expect(empty.decl('a')).toBe(empty.decl('a'));
         });
 
     });
@@ -126,7 +126,7 @@ describe('Prefixes', () => {
     describe('.unprefixed()', () => {
 
         it('returns unprefixed version', () => {
-            empty.unprefixed('-moz-a').should.eql('a');
+            expect(empty.unprefixed('-moz-a')).toEqual('a');
         });
 
     });
@@ -134,11 +134,11 @@ describe('Prefixes', () => {
     describe('.prefixed()', () => {
 
         it('adds prefix', () => {
-            empty.prefixed('a', '-ms-').should.eql('-ms-a');
+            expect(empty.prefixed('a', '-ms-')).toEqual('-ms-a');
         });
 
         it('changes prefix', () => {
-            empty.prefixed('a', '-ms-').should.eql('-ms-a');
+            expect(empty.prefixed('a', '-ms-')).toEqual('-ms-a');
         });
 
     });
@@ -146,8 +146,8 @@ describe('Prefixes', () => {
     describe('values()', () => {
 
         it('returns values for this and all properties', () => {
-            fill.values('add', 'a').should.eql([bVal]);
-            fill.values('remove', 'a').should.eql([
+            expect(fill.values('add', 'a')).toEqual([bVal]);
+            expect(fill.values('remove', 'a')).toEqual([
                 old('-ms-b'),
                 old('-moz-b'),
                 old('-webkit-b')
@@ -165,7 +165,7 @@ describe('Prefixes', () => {
                 const props = [];
 
                 empty.group(css.first.first).down(i => props.push(i.prop));
-                props.should.eql(['-o-a', 'a']);
+                expect(props).toEqual(['-o-a', 'a']);
             });
 
             it('checks prefix groups', () => {
@@ -174,15 +174,17 @@ describe('Prefixes', () => {
                 const props = [];
 
                 empty.group(css.first.first).down(i => props.push(i.prop));
-                props.should.eql(['-o-a', 'a', 'a']);
+                expect(props).toEqual(['-o-a', 'a', 'a']);
             });
 
             it('returns check decls inside group', () => {
                 const css  = parse('a { -moz-a: 1; -ms-a: 1; -o-a: 1; a: 1 }');
                 const decl = css.first.first;
 
-                empty.group(decl).down( i => i.prop === '-o-a').should.be.true;
-                empty.group(decl).down( i => i.prop === '-o-b').should.be.false;
+                expect(empty.group(decl).down( i => i.prop === '-o-a'))
+                    .toBeTruthy();
+                expect(empty.group(decl).down( i => i.prop === '-o-b'))
+                    .toBeFalsy();
             });
 
         });
@@ -194,7 +196,7 @@ describe('Prefixes', () => {
                 const props = [];
 
                 empty.group(css.first.nodes[3]).up(i => props.push(i.prop));
-                props.should.eql(['-o-a', '-ms-a']);
+                expect(props).toEqual(['-o-a', '-ms-a']);
             });
 
             it('checks prefix groups', () => {
@@ -203,15 +205,17 @@ describe('Prefixes', () => {
                 const props = [];
 
                 empty.group(css.first.nodes[4]).up(i => props.push(i.prop));
-                props.should.eql(['a', '-o-a', '-ms-a']);
+                expect(props).toEqual(['a', '-o-a', '-ms-a']);
             });
 
             it('returns check decls inside group', () => {
                 const css  = parse('a { -moz-a: 1; -ms-a: 1; -o-a: 1; a: 1 }');
                 const decl = css.first.nodes[3];
 
-                empty.group(decl).up( i => i.prop === '-ms-a').should.be.true;
-                empty.group(decl).up( i => i.prop === '-ms-b').should.be.false;
+                expect(empty.group(decl).up( i => i.prop === '-ms-a'))
+                    .toBeTruthy();
+                expect(empty.group(decl).up( i => i.prop === '-ms-b'))
+                    .toBeFalsy();
             });
 
         });
