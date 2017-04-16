@@ -50,13 +50,13 @@ gulp.task('standalone', ['build:lib'], (done) => {
     builder.add('./lib/autoprefixer.js');
 
     builder.bundle((error, build) => {
-        if ( error ) throw error;
+        if (error) throw error;
 
         fs.removeSync(path.join(__dirname, 'build'));
 
         const rails = path.join(__dirname, '..', 'autoprefixer-rails',
             'vendor', 'autoprefixer.js');
-        if ( fs.existsSync(rails) ) {
+        if (fs.existsSync(rails)) {
             fs.writeFileSync(rails, build);
         } else {
             fs.writeFileSync(path.join(__dirname, 'autoprefixer.js'), build);
