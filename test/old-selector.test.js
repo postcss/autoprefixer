@@ -1,51 +1,45 @@
 const Selector = require('../lib/selector');
 const parse    = require('postcss/lib/parse');
 
-describe('OldSelector', () => {
+const selector = new Selector('::selection', ['-moz-', '-ms-']);
+const old = selector.old('-moz-');
 
-    beforeEach(function () {
-        const selector = new Selector('::selection', ['-moz-', '-ms-']);
-        this.old = selector.old('-moz-');
+describe('isHack()', () => {
+
+    it('returns true on last rule', () => {
+        const css = parse('::selection {} ::-moz-selection {}');
+        expect(old.isHack(css.last)).toBeTruthy();
     });
 
-    describe('isHack()', () => {
-
-        it('returns true on last rule', function () {
-            const css = parse('::selection {} ::-moz-selection {}');
-            expect(this.old.isHack(css.last)).toBeTruthy();
-        });
-
-        it('stops on another type', function () {
-            const css = parse('::-moz-selection {} ' +
-                '@keyframes anim {} ::selection {}');
-            expect(this.old.isHack(css.first)).toBeTruthy();
-        });
-
-        it('stops on another selector', function () {
-            const css = parse('::-moz-selection {} a {} ::selection {}');
-            expect(this.old.isHack(css.first)).toBeTruthy();
-        });
-
-        it('finds unprefixed selector', function () {
-            const css = parse('::-moz-selection {} ' +
-                '::-o-selection {} ::selection {}');
-            expect(this.old.isHack(css.first)).toBeFalsy();
-        });
-
+    it('stops on another type', () => {
+        const css = parse('::-moz-selection {} ' +
+                          '@keyframes anim {} ::selection {}');
+        expect(old.isHack(css.first)).toBeTruthy();
     });
 
-    describe('check()', () => {
+    it('stops on another selector', () => {
+        const css = parse('::-moz-selection {} a {} ::selection {}');
+        expect(old.isHack(css.first)).toBeTruthy();
+    });
 
-        it('finds old selector', function () {
-            const css = parse('body::-moz-selection {} body::selection {}');
-            expect(this.old.check(css.first)).toBeTruthy();
-        });
+    it('finds unprefixed selector', () => {
+        const css = parse('::-moz-selection {} ' +
+                          '::-o-selection {} ::selection {}');
+        expect(old.isHack(css.first)).toBeFalsy();
+    });
 
-        it('finds right', function () {
-            const css = parse('body:::-moz-selection {}');
-            expect(this.old.check(css.first)).toBeFalsy();
-        });
+});
 
+describe('check()', () => {
+
+    it('finds old selector', () => {
+        const css = parse('body::-moz-selection {} body::selection {}');
+        expect(old.check(css.first)).toBeTruthy();
+    });
+
+    it('finds right', () => {
+        const css = parse('body:::-moz-selection {}');
+        expect(old.check(css.first)).toBeFalsy();
     });
 
 });
