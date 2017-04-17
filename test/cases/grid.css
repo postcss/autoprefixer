@@ -1,7 +1,7 @@
 .a {
     display: grid;
     grid-template-columns: auto 1fr;
-    justify-items: stretch;
+    justify-self: stretch;
     align-self: stretch;
     grid-column-start: 1;
     grid-column-end: span 3;
@@ -10,6 +10,7 @@
 .b {
     display: inline-grid;
     grid-template-rows: 10px repeat(4, 250px 10px) 20px;
+    justify-self: stretch;
     align-self: stretch;
     grid-row-start: 1;
     grid-row-end: span 3;
@@ -27,10 +28,12 @@
 }
 
 .unknown {
+    justify-self: start;
     align-self: start;
 }
 
 .flex {
+    justify-self: flex-end;
     align-self: flex-end;
 }
 

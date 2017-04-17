@@ -4,7 +4,7 @@
     -ms-grid-columns: auto 1fr;
     grid-template-columns: auto 1fr;
     -ms-grid-column-align: stretch;
-    justify-items: stretch;
+    justify-self: stretch;
     -ms-grid-row-align: stretch;
     align-self: stretch;
     -ms-grid-column: 1;
@@ -18,6 +18,8 @@
     display: inline-grid;
     -ms-grid-rows: 10px (250px 10px)[4] 20px;
     grid-template-rows: 10px repeat(4, 250px 10px) 20px;
+    -ms-grid-column-align: stretch;
+    justify-self: stretch;
     -ms-grid-row-align: stretch;
     align-self: stretch;
     -ms-grid-row: 1;
@@ -40,6 +42,8 @@
 }
 
 .unknown {
+    -ms-grid-column-align: start;
+    justify-self: start;
     -webkit-align-self: start;
     -ms-flex-item-align: start;
     -ms-grid-row-align: start;
@@ -47,6 +51,7 @@
 }
 
 .flex {
+    justify-self: flex-end;
     -webkit-align-self: flex-end;
     -ms-flex-item-align: end;
     align-self: flex-end;

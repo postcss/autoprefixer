@@ -696,8 +696,8 @@ const grid = require('caniuse-lite/data/features/css-grid.js');
 f(grid, browsers => {
     prefix(['display-grid', 'inline-grid'], {
         props:  ['display'],
-        browsers,
-        feature: 'css-grid'
+        feature: 'css-grid',
+        browsers
     });
     prefix([
         'grid-template-columns', 'grid-template-rows',
@@ -705,13 +705,13 @@ f(grid, browsers => {
         'grid-row-end', 'grid-column-end',
         'grid-row', 'grid-column'
     ], {
-        browsers,
-        feature: 'css-grid'
+        feature: 'css-grid',
+        browsers
     });
 });
 
 f(grid, { match: /a x/ }, browsers =>
-    prefix(['justify-items', 'grid-row-align'], {
+    prefix(['grid-column-align', 'grid-row-align'], {
         feature: 'css-grid',
         browsers
     })
