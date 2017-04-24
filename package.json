@@ -14,15 +14,15 @@
   "repository": "postcss/autoprefixer",
   "dependencies": {
     "babel-register": "^6.24.0",
-    "browserslist": "^2.0.0",
-    "caniuse-lite": "^1.0.30000657",
+    "browserslist": "^2.1.0",
+    "caniuse-lite": "^1.0.30000660",
     "normalize-range": "^0.1.2",
     "num2fraction": "^1.2.2",
     "postcss": "^5.2.17",
     "postcss-value-parser": "^3.2.3"
   },
   "devDependencies": {
-    "babel-eslint": "^7.2.2",
+    "babel-eslint": "^7.2.3",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.4.0",
     "browserify": "^14.3.0",
