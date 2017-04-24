@@ -6,7 +6,8 @@ const fs      = require('fs');
 
 const grider = autoprefixer({
     browsers: ['Chrome 25', 'Edge 12', 'IE 10'],
-    cascade: false
+    cascade: false,
+    grid: true
 });
 
 const cleaner = autoprefixer({
@@ -210,6 +211,7 @@ it('should ignore spaces inside values', () => {
 });
 
 it('removes unnecessary prefixes', () => {
+    const processor = postcss([cleaner]);
     for ( let type of COMMONS) {
         if (type === 'gradient-fix' ) continue;
         if (type === 'cascade' ) continue;
@@ -217,7 +219,7 @@ it('removes unnecessary prefixes', () => {
         if (type === 'flex-rewrite' ) continue;
         const input  = read(type + '.out');
         const output = read(type);
-        expect(postcss([cleaner]).process(input).css).toEqual(output);
+        expect(processor.process(input).css).toEqual(output);
     }
 });
 
@@ -306,8 +308,8 @@ it('has option to disable @supports support', () => {
     expect(result.css).toEqual(css);
 });
 
-it('has option to disable grid support', () => {
-    const ap = autoprefixer({ browsers: ['Edge 12', 'IE 10'], grid: false });
+it('has disabled grid options by default', () => {
+    const ap = autoprefixer({ browsers: ['Edge 12', 'IE 10'] });
     const input  = read('grid');
     const output = read('grid.disabled');
     const result = postcss([ap]).process(input);
@@ -379,7 +381,7 @@ describe('hacks', () => {
 
     it('warns on unsupported grid features', () => {
         const css      = read('nogrid');
-        const instance = autoprefixer({ browsers: ['IE 10'] });
+        const instance = autoprefixer({ browsers: ['IE 10'], grid: true });
         const result   = postcss([instance]).process(css);
         expect(result.warnings().map(i => i.toString())).toEqual([
             'autoprefixer: <css input>:2:5: IE supports only grid-row-end ' +

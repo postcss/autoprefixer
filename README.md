@@ -476,14 +476,14 @@ a {
 If some prefixes were generated in a wrong way,
 please create an issue on GitHub.
 
-Autoprefixer has 4 features, which can be disabled by options:
+Autoprefixer has 4 features, which can be enabled or disabled by options:
 
 * `supports: false` will disable `@supports` parameters prefixing.
 * `flexbox: false` will disable flexbox properties prefixing.
   Or `flexbox: "no-2009"` will add prefixes only for final and IE
   versions of specification.
-* `grid: false` will disable Grid Layout prefixes for IE.
 * `remove: false` will disable cleaning outdated prefixes.
+* `grid: true` will enable Grid Layout prefixes for IE.
 
 If you do not need Autoprefixer in some part of your CSS,
 you can use control comments to disable Autoprefixer.
@@ -546,7 +546,7 @@ There are 8 options:
   properties. With `"no-2009"` value Autoprefixer will add prefixes only
   for final and IE versions of specification. Default is `true`.
 * `grid` (boolean): should Autoprefixer add IE prefixes for Grid Layout
-  properties. Default is `true`.
+  properties. Default is `false`.
 * `stats` (object): custom [usage statistics] for `> 10% in my stats`
   browsers query.
 
