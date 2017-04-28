@@ -556,7 +556,7 @@ You can use PostCSS processor to process several CSS files
 to increase performance.
 
 [usage statistics]: https://github.com/ai/browserslist#custom-usage-data
-[PostCSS API]:      https://github.com/postcss/postcss/blob/master/docs/api.md
+[PostCSS API]:      http://api.postcss.org
 
 ## Debug
 
