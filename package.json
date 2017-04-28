@@ -14,7 +14,7 @@
   "repository": "postcss/autoprefixer",
   "dependencies": {
     "browserslist": "^1.7.7",
-    "caniuse-db": "^1.0.30000653",
+    "caniuse-db": "^1.0.30000664",
     "coffee-script": "^1.12.5",
     "normalize-range": "^0.1.2",
     "num2fraction": "^1.2.2",

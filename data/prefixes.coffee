@@ -267,6 +267,12 @@ feature require('caniuse-db/features-json/css-hyphens.json'), (browsers) ->
           browsers: browsers
           feature: 'css-hyphens'
 
+feature require('caniuse-db/features-json/css-hyphenate.json'), (browsers) ->
+  prefix 'hyphenate-character', 'hyphenate-limit-zone', 'hyphenate-limit-chars',
+         'hyphenate-limit-lines', 'hyphenate-limit-last',
+          browsers: browsers
+          feature: 'css-hyphenate'
+
 # Fullscreen selector
 fullscreen = require('caniuse-db/features-json/fullscreen.json')
 
