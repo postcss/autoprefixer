@@ -4,3 +4,15 @@
 @media (min-resolution: 2.5dppx) { }
 
 @media (min-resolution: 144dpi) { }
+
+@media (min-resolution: 144dpi), (max-resolution: 288dpi) { }
+
+@media (min-device-pixel-ratio: 2), (min-resolution: 192dpi) { }
+
+@media (min-device-pixel-ratio: 3), (min-resolution: 840dpi) { }
+
+@media (max-device-pixel-ratio: 2), (max-resolution: 192dpi) { }
+
+@media (max-device-pixel-ratio: 3), (max-resolution: 840dpi) { }
+
+@media (min-device-pixel-ratio: 3), (min-resolution: 840dpi), (max-device-pixel-ratio: 4), (max-resolution: 940dpi) { }
