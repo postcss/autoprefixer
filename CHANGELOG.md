@@ -1,6 +1,17 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 7.0 “Coelestem adspicit lucem”
+* Remove node.js 0.12 support.
+* Use PostCSS 6.0.
+* Use Browserslist 2.
+* Use `caniuse-lite` instead of `caniuse-db` (by Ben Briggs).
+* Use `^` for Browserslist dependencies, instead of `~`.
+* Rewrite project from CoffeeScript to Babel (by Dmitry Semigradsky).
+* Disable Grid Layout prefixes for IE by default.
+* Fix `-ms-grid-column-align`.
+* Move tests to Jest.
+
 ## 6.7.7
 * Fix `order` for non-digit values.
 
