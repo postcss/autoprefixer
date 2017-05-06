@@ -893,12 +893,12 @@ browserslist@^1.4.0:
     caniuse-db "^1.0.30000639"
     electron-to-chromium "^1.2.7"
 
-browserslist@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-2.1.1.tgz#d0da26318d86352be7693d407977b8523cc78b11"
+browserslist@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-2.1.2.tgz#a9dd0791342dab019861c2dd1cd0fd5d83230d39"
   dependencies:
-    caniuse-lite "^1.0.30000664"
-    electron-to-chromium "^1.3.8"
+    caniuse-lite "^1.0.30000665"
+    electron-to-chromium "^1.3.9"
 
 bser@1.0.2:
   version "1.0.2"
@@ -971,7 +971,7 @@ caniuse-db@^1.0.30000639:
   version "1.0.30000665"
   resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000665.tgz#e84f4277935f295f546f8533cb0b410a8415b972"
 
-caniuse-lite@^1.0.30000664, caniuse-lite@^1.0.30000665:
+caniuse-lite@^1.0.30000665:
   version "1.0.30000665"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000665.tgz#62cf1283afb9b7b42d5ddceeb0345ce1ec432a1e"
 
@@ -1396,7 +1396,7 @@ ecc-jsbn@~0.1.1:
   dependencies:
     jsbn "~0.1.0"
 
-electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.8:
+electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.9:
   version "1.3.9"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.9.tgz#db1cba2a26aebcca2f7f5b8b034554468609157d"
 
