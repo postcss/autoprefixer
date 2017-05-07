@@ -18,7 +18,7 @@
     "caniuse-lite": "^1.0.30000665",
     "normalize-range": "^0.1.2",
     "num2fraction": "^1.2.2",
-    "postcss": "^6.0.0",
+    "postcss": "^6.0.1",
     "postcss-value-parser": "^3.2.3"
   },
   "devDependencies": {
