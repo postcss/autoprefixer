@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 7.0.1
+* Fix Autoprefixer for old JS runtimes.
+
 ## 7.0 “Coelestem adspicit lucem”
 * Remove node.js 0.12 support.
 * Use PostCSS 6.0.
