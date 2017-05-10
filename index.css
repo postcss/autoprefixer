@@ -1,0 +1,46 @@
+@charset "utf-8";
+/* CSS Document */
+@import url("css/reset.css");
+@import url("css/index.css");
+@import url("css/header.css");
+@import url("css/footer.css");
+@import url("css/content.css");
+@import url("css/category.css");
+/*@import url("css/search.css");
+@import url("css/favorites.css");
+@import url("css/country.css");
+@import url("css/language.css");
+@import url("css/settings.css");
+@import url("css/register.css");
+@import url("css/login.css");
+@import url("css/terms_of_use.css");
+@import url("css/privacy.css");
+@import url("css/acceptable_use.css");
+*/
+
+body {
+	margin: 0px;
+	padding: 0px;
+	background-color: #333333;
+}
+
+#wrapper	{
+	margin: 0px auto;
+	min-width: 325px;
+	max-width: 960px;
+	border: 1px solid #2C4058;
+	font: 12px Arial, Helvetica, sans-serif;
+	color: #000000;
+	background-color: #CCCCCC;
+	display: flex;
+	flex-direction: column;
+}
+
+#wrapper >* {
+flex: 1 1 auto;	
+}
+
+#content {
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
+}
