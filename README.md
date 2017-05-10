@@ -227,15 +227,11 @@ wrote `-webkit-gradient` without W3C’s `gradient`,
 Autoprefixer will not add other prefixes.
 
 But [PostCSS] has a plugins to convert CSS to unprefixed state.
-Use them before Autoprefixer:
+Use it before Autoprefixer:
 
 * [postcss-unprefix]
-* [postcss-flexboxfixer]
-* [postcss-gradientfixer]
 
-[postcss-gradientfixer]: https://github.com/hallvors/postcss-gradientfixer
-[postcss-flexboxfixer]:  https://github.com/hallvors/postcss-flexboxfixer
-[postcss-unprefix]:      https://github.com/yisibl/postcss-unprefix
+[postcss-unprefix]:      https://github.com/gucong3000/postcss-unprefix
 
 #### Does Autoprefixer add `-epub-` prefix?
 
