@@ -363,6 +363,13 @@ describe('hacks', () => {
     it('supports cross-fade()',         () => test('cross-fade'));
     it('supports grid layout',          () => test('grid'));
 
+    it('supports appearance for IE', () => {
+        const instance = autoprefixer({ browsers: 'Edge 15' });
+        const result   = postcss([instance]).process('a { appearance: none }');
+        expect(result.css).toEqual(
+            'a { -webkit-appearance: none; appearance: none }');
+    });
+
     it('changes angle in gradient', () => {
         const input  = read('gradient');
         const output = read('gradient.out');

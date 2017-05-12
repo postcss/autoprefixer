@@ -606,7 +606,8 @@ f(logicalProps, { match: /x\s#2/ }, browsers =>
 );
 
 // CSS appearance
-f(require('caniuse-lite/data/features/css-appearance.js'), browsers =>
+const appearance = require('caniuse-lite/data/features/css-appearance.js');
+f(appearance, { match: /#2|x/ }, browsers =>
     prefix(['appearance'], {
         feature: 'css-appearance',
         browsers
