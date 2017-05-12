@@ -335,7 +335,7 @@ it('returns inspect string', () => {
         .toMatch(/Browsers:\s+Chrome: 25/);
 });
 
-it('trys to pick up browserslist config when no arguments provided', () => {
+it('uses browserslist config in inspect', () => {
     const origin = process.cwd();
     process.chdir(path.join(__dirname, 'cases/config'));
     expect(autoprefixer().info()).toMatch(/Browsers:\s+IE: 10/);
