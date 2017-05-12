@@ -336,10 +336,8 @@ it('returns inspect string', () => {
 });
 
 it('uses browserslist config in inspect', () => {
-    const origin = process.cwd();
-    process.chdir(path.join(__dirname, 'cases/config'));
-    expect(autoprefixer().info()).toMatch(/Browsers:\s+IE: 10/);
-    process.chdir(origin);
+    const from = path.join(__dirname, 'cases/config');
+    expect(autoprefixer().info({ from })).toMatch(/Browsers:\s+IE: 10/);
 });
 
 describe('hacks', () => {
