@@ -335,6 +335,13 @@ it('returns inspect string', () => {
         .toMatch(/Browsers:\s+Chrome: 25/);
 });
 
+it('trys to pick up browserslist config when no arguments provided', () => {
+    const origin = process.cwd();
+    process.chdir(path.join(__dirname, 'cases/config'));
+    expect(autoprefixer().info()).toMatch(/Browsers:\s+IE: 10/);
+    process.chdir(origin);
+});
+
 describe('hacks', () => {
 
     it('ignores prefix IE filter',      () => test('filter'));
