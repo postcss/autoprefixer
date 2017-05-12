@@ -18,3 +18,7 @@ p {
 .old {
     width: fill-available;
 }
+
+.grid {
+    grid-template-columns: minmax(100px, min-content);
+}

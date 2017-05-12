@@ -406,7 +406,8 @@ f(require('caniuse-lite/data/features/intrinsic-width.js'), browsers =>
             'width', 'min-width', 'max-width',
             'height', 'min-height', 'max-height',
             'inline-size', 'min-inline-size', 'max-inline-size',
-            'block-size', 'min-block-size', 'max-block-size'
+            'block-size', 'min-block-size', 'max-block-size',
+            'grid-template', 'grid-template-rows', 'grid-template-columns'
         ],
         feature: 'intrinsic-width',
         browsers

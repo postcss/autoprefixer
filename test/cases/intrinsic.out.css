@@ -30,3 +30,9 @@ p {
     width: -moz-available;
     width: fill-available;
 }
+
+.grid {
+    grid-template-columns: minmax(100px, -webkit-min-content);
+    grid-template-columns: minmax(100px, -moz-min-content);
+    grid-template-columns: minmax(100px, min-content);
+}

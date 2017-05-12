@@ -48,7 +48,7 @@ const selectorer = autoprefixer({
     browsers: ['Chrome 25', 'Firefox > 17', 'IE 10']
 });
 const intrinsicer = autoprefixer({
-    browsers: ['Chrome 25', 'Firefox 22']
+    browsers: ['Chrome 25', 'Firefox 22', 'Safari 10']
 });
 const imagerender = autoprefixer({
     browsers: ['iOS 8', 'iOS 6.1', 'FF 22', 'IE 11']
