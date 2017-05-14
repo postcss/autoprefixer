@@ -1,6 +1,12 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 7.1 “Universitas litterarum”
+* Add `unicode-bidi` support.
+* Add `-webkit-appearance` support for Edge.
+* Add `from` option to `info()`.
+* Fix intrinsic widths prefixes in Grid Layout.
+
 ## 7.0.1
 * Fix Autoprefixer for old JS runtimes.
 
