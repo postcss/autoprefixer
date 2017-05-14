@@ -65,21 +65,4 @@ gulp.task('standalone', ['build:lib'], (done) => {
     });
 });
 
-gulp.task('lint', () => {
-    const eslint = require('gulp-eslint');
-
-    return gulp.src([
-        'index.js',
-        'gulpfile.js',
-        'data/**/*.js',
-        'lib/**/*.js',
-        'test/**/*.js'
-    ]).pipe(eslint()).pipe(eslint.format()).pipe(eslint.failAfterError());
-});
-
-gulp.task('test', () => {
-    const jest = require('gulp-jest').default;
-    return gulp.src('test/').pipe(jest());
-});
-
-gulp.task('default', ['lint', 'test']);
+gulp.task('default', ['build']);
