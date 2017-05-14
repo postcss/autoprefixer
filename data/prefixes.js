@@ -735,3 +735,30 @@ f(require('caniuse-lite/data/features/css-any-link.js'), browsers =>
         browsers
     })
 );
+
+// unicode-bidi
+const bidi = require('caniuse-lite/data/features/css-unicode-bidi.js');
+
+f(bidi, browsers =>
+    prefix(['isolate'], {
+        props:  ['unicode-bidi'],
+        feature: 'css-unicode-bidi',
+        browsers
+    })
+);
+
+f(bidi, { match: /y x|a x #2/ }, browsers =>
+    prefix(['plaintext'], {
+        props:  ['unicode-bidi'],
+        feature: 'css-unicode-bidi',
+        browsers
+    })
+);
+
+f(bidi, { match: /y x/ }, browsers =>
+    prefix(['isolate-override'], {
+        props:  ['unicode-bidi'],
+        feature: 'css-unicode-bidi',
+        browsers
+    })
+);
