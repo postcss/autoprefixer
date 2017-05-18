@@ -14,8 +14,8 @@
   "repository": "postcss/autoprefixer",
   "dependencies": {
     "babel-register": "^6.24.0",
-    "browserslist": "^2.1.2",
-    "caniuse-lite": "^1.0.30000669",
+    "browserslist": "^2.1.3",
+    "caniuse-lite": "^1.0.30000670",
     "normalize-range": "^0.1.2",
     "num2fraction": "^1.2.2",
     "postcss": "^6.0.1",
@@ -34,8 +34,8 @@
     "gulp-coffee": "^2.3.4",
     "gulp-json-editor": "^2.2.1",
     "gulp-replace": "^0.5.4",
-    "jest": "^20.0.1",
-    "lint-staged": "^3.4.1",
+    "jest": "^20.0.3",
+    "lint-staged": "^3.4.2",
     "pre-commit": "^1.2.2",
     "vinyl-source-stream": "^1.1.0"
   },
