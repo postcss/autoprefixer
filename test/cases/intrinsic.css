@@ -20,5 +20,17 @@ p {
 }
 
 .grid {
+    grid: min-content max-content / fit-content(500px);
+}
+
+.grid-template {
+    grid-template: min-content / fit-content(10px) max-content;
+}
+
+.grid-template-columns {
     grid-template-columns: minmax(100px, min-content);
+}
+
+.grid-auto-columns {
+    grid-auto-columns: min-content max-content;
 }
