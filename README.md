@@ -275,25 +275,10 @@ and [other PostCSS plugins].
 ```js
 module.exports = {
     module: {
-        loaders: [
-            {
-                test:   /\.css$/,
-                loader: "style-loader!css-loader!postcss-loader"
-            }
-        ]
-    }
-}
-```
-
-### Webpack 2
-
-```js
-module.exports = {
-    module: {
         rules: [
             {
                 test:   /\.css$/,
-                loader: "style-loader!css-loader!postcss-loader"
+                use: ["style-loader", "css-loader", "postcss-loader"]
             }
         ]
     }
