@@ -285,6 +285,21 @@ module.exports = {
 }
 ```
 
+### Webpack 2
+
+```js
+module.exports = {
+    module: {
+        rules: [
+            {
+                test:   /\.css$/,
+                loader: "style-loader!css-loader!postcss-loader"
+            }
+        ]
+    }
+}
+```
+
 And create a `postcss.config.js` with:
 
 ```js
