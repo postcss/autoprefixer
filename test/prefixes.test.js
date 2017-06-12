@@ -26,8 +26,10 @@ const data = {
 };
 
 const empty = new Prefixes({ }, new Browsers(data.browsers, []));
-const fill  = new Prefixes(data.prefixes,
-                     new Browsers(data.browsers, ['firefox 21', 'ie 7']));
+const fill  = new Prefixes(
+    data.prefixes,
+    new Browsers(data.browsers, ['firefox 21', 'ie 7'])
+);
 
 const cSel  = new Selector('c', ['-ms-'], fill);
 const bVal  = new Value('b', ['-ms- new'], fill);

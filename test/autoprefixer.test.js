@@ -288,7 +288,7 @@ it('works without source in nodes', () => {
     root.first.append({ prop: 'display', value: 'flex' });
     compiler(root);
     expect(root.toString()).toEqual(
-      'a {\n    display: -webkit-flex;\n    display: flex\n}');
+        'a {\n    display: -webkit-flex;\n    display: flex\n}');
 });
 
 it('takes values from other PostCSS plugins', () => {
