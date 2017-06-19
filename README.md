@@ -184,6 +184,28 @@ browsers list.
 
 [`browserslist` config]: https://github.com/ai/browserslist#config-file
 
+#### What is unprefixed version for `-webkit-min-device-pixel-ratio`?
+
+```css
+@media (min-resolution: 2dppx) {
+    .image {
+        background-image: url(image@2x.png);
+    }
+}
+```
+
+Will be compiled to:
+
+```css
+@media (-webkit-min-device-pixel-ratio: 2),
+       (-o-min-device-pixel-ratio: 2/1),
+       (min-resolution: 2dppx) {
+    .image {
+        background-image: url(image@2x.png);
+    }
+}
+```
+
 #### Does it add polyfills?
 
 No. Autoprefixer only adds prefixes.
