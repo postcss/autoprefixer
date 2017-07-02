@@ -37,7 +37,7 @@
     "jest": "^20.0.4",
     "lint-staged": "^4.0.0",
     "pre-commit": "^1.2.2",
-    "size-limit": "^0.2.0",
+    "size-limit": "^0.3.0",
     "vinyl-source-stream": "^1.1.0"
   },
   "scripts": {
