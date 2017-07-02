@@ -37,12 +37,14 @@
     "jest": "^20.0.4",
     "lint-staged": "^4.0.0",
     "pre-commit": "^1.2.2",
+    "size-limit": "^0.2.0",
     "vinyl-source-stream": "^1.1.0"
   },
   "scripts": {
     "lint-staged": "lint-staged",
     "lint": "eslint *.js lib/*.js data/*.js test/*.js",
-    "test": "jest && npm run lint && gulp"
+    "size": "size-limit --babili 250KB build/lib/autoprefixer.js",
+    "test": "jest && npm run lint && gulp && npm run size"
   },
   "lint-staged": {
     "*.js": "eslint"
