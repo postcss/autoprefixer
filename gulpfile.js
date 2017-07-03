@@ -49,20 +49,28 @@ gulp.task('standalone', ['build:lib'], (done) => {
     });
     builder.add('./lib/autoprefixer.js');
 
-    builder.bundle((error, build) => {
-        if (error) throw error;
+    builder
+        .transform('babelify', {
+            global: true,
+            presets: [
+                ['env', { node: '0.10', loose: true }]
+            ]
+        })
+        .bundle((error, build) => {
+            if (error) throw error;
 
-        fs.removeSync(path.join(__dirname, 'build'));
+            fs.removeSync(path.join(__dirname, 'build'));
 
-        const rails = path.join(__dirname, '..', 'autoprefixer-rails',
-            'vendor', 'autoprefixer.js');
-        if (fs.existsSync(rails)) {
-            fs.writeFileSync(rails, build);
-        } else {
-            fs.writeFileSync(path.join(__dirname, 'autoprefixer.js'), build);
-        }
-        done();
-    });
+            const rails = path.join(__dirname, '..', 'autoprefixer-rails',
+                'vendor', 'autoprefixer.js');
+            if (fs.existsSync(rails)) {
+                fs.writeFileSync(rails, build);
+            } else {
+                const out = path.join(__dirname, 'autoprefixer.js');
+                fs.writeFileSync(out, build);
+            }
+            done();
+        });
 });
 
 gulp.task('default', ['build']);

@@ -25,6 +25,7 @@
     "babel-eslint": "^7.2.3",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.5.2",
+    "babelify": "^7.3.0",
     "browserify": "^14.4.0",
     "eslint": "^4.1.1",
     "eslint-config-postcss": "^2.0.2",
