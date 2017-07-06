@@ -458,7 +458,8 @@ f(decoration, browsers =>
     prefix([
         'text-decoration-style',
         'text-decoration-color',
-        'text-decoration-line'
+        'text-decoration-line',
+        'text-decoration'
     ], {
         feature: 'text-decoration',
         browsers

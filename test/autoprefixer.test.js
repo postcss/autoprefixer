@@ -103,7 +103,7 @@ function prefixer(name) {
         return filterer;
     } else if (name === 'image-rendering' || name === 'writing-mode') {
         return imagerender;
-    } else if (name === 'logical') {
+    } else if (name === 'logical' || name === 'text-decoration') {
         return intrinsicer;
     } else if (name === 'supports') {
         return supporter;
@@ -362,6 +362,7 @@ describe('hacks', () => {
     it('supports writing-mode',         () => test('writing-mode'));
     it('supports cross-fade()',         () => test('cross-fade'));
     it('supports grid layout',          () => test('grid'));
+    it('supports text-decoration',      () => test('text-decoration'));
 
     it('supports appearance for IE', () => {
         const instance = autoprefixer({ browsers: 'Edge 15' });

@@ -1,0 +1,15 @@
+.shorthand {
+    text-decoration: overline double red;
+}
+
+.full {
+    text-decoration-style: double;
+}
+
+.old {
+    text-decoration: underline;
+}
+
+.global {
+    text-decoration: unset;
+}
