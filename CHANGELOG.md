@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 7.1.2
+* Fix `text-decoration` shortcut support.
+
 ## 7.1.1
 * Remove non-`-webkit-` intrinsic prefixes in Grid Layout (by 一丝).
 
