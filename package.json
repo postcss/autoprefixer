@@ -15,16 +15,16 @@
   "dependencies": {
     "babel-register": "^6.24.0",
     "browserslist": "^2.1.5",
-    "caniuse-lite": "^1.0.30000696",
+    "caniuse-lite": "^1.0.30000697",
     "normalize-range": "^0.1.2",
     "num2fraction": "^1.2.2",
-    "postcss": "^6.0.5",
+    "postcss": "^6.0.6",
     "postcss-value-parser": "^3.2.3"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
     "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-preset-env": "^1.5.2",
+    "babel-preset-env": "^1.6.0",
     "babelify": "^7.3.0",
     "browserify": "^14.4.0",
     "eslint": "^4.1.1",
@@ -36,9 +36,9 @@
     "gulp-json-editor": "^2.2.1",
     "gulp-replace": "^0.6.1",
     "jest": "^20.0.4",
-    "lint-staged": "^4.0.0",
+    "lint-staged": "^4.0.1",
     "pre-commit": "^1.2.2",
-    "size-limit": "^0.3.0",
+    "size-limit": "^0.5.0",
     "vinyl-source-stream": "^1.1.0"
   },
   "scripts": {
