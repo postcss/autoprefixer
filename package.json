@@ -27,7 +27,7 @@
     "babel-preset-env": "^1.6.0",
     "babelify": "^7.3.0",
     "browserify": "^14.4.0",
-    "eslint": "^4.1.1",
+    "eslint": "^4.2.0",
     "eslint-config-postcss": "^2.0.2",
     "fs-extra": "^3.0.1",
     "gulp": "^3.9.1",
@@ -38,20 +38,26 @@
     "jest": "^20.0.4",
     "lint-staged": "^4.0.1",
     "pre-commit": "^1.2.2",
-    "size-limit": "^0.5.0",
+    "size-limit": "^0.6.0",
     "vinyl-source-stream": "^1.1.0"
   },
   "scripts": {
     "lint-staged": "lint-staged",
     "lint": "eslint *.js lib/*.js data/*.js test/*.js",
-    "size": "size-limit --babili 250KB build/lib/autoprefixer.js",
-    "test": "jest && npm run lint && gulp && npm run size"
+    "test": "jest && npm run lint && gulp && size-limit"
   },
   "lint-staged": {
     "*.js": "eslint"
   },
   "pre-commit": [
     "lint-staged"
+  ],
+  "sizeLimit": [
+    {
+      "path": "build/lib/autoprefixer.js",
+      "babili": true,
+      "limit": "250 KB"
+    }
   ],
   "eslintConfig": {
     "extends": "eslint-config-postcss",
