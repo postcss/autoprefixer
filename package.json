@@ -15,7 +15,7 @@
   "dependencies": {
     "babel-register": "^6.24.0",
     "browserslist": "^2.1.5",
-    "caniuse-lite": "^1.0.30000697",
+    "caniuse-lite": "^1.0.30000699",
     "normalize-range": "^0.1.2",
     "num2fraction": "^1.2.2",
     "postcss": "^6.0.6",
@@ -38,7 +38,7 @@
     "jest": "^20.0.4",
     "lint-staged": "^4.0.1",
     "pre-commit": "^1.2.2",
-    "size-limit": "^0.6.0",
+    "size-limit": "^0.6.1",
     "vinyl-source-stream": "^1.1.0"
   },
   "scripts": {
