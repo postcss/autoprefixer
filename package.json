@@ -14,11 +14,11 @@
   "repository": "postcss/autoprefixer",
   "dependencies": {
     "babel-register": "^6.24.0",
-    "browserslist": "^2.2.0",
-    "caniuse-lite": "^1.0.30000701",
+    "browserslist": "^2.2.2",
+    "caniuse-lite": "^1.0.30000704",
     "normalize-range": "^0.1.2",
     "num2fraction": "^1.2.2",
-    "postcss": "^6.0.7",
+    "postcss": "^6.0.8",
     "postcss-value-parser": "^3.2.3"
   },
   "devDependencies": {
@@ -27,7 +27,7 @@
     "babel-preset-env": "^1.6.0",
     "babelify": "^7.3.0",
     "browserify": "^14.4.0",
-    "eslint": "^4.2.0",
+    "eslint": "^4.3.0",
     "eslint-config-postcss": "^2.0.2",
     "fs-extra": "^4.0.0",
     "gulp": "^3.9.1",
@@ -38,7 +38,7 @@
     "jest": "^20.0.4",
     "lint-staged": "^4.0.2",
     "pre-commit": "^1.2.2",
-    "size-limit": "^0.7.0",
+    "size-limit": "^0.7.1",
     "vinyl-source-stream": "^1.1.0"
   },
   "scripts": {
