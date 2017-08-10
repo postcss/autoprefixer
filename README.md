@@ -403,10 +403,8 @@ let style = prefixer({
 You can use the [postcss-cli] to run Autoprefixer from CLI:
 
 ```sh
-npm install --global postcss-cli autoprefixer
-postcss *.css --use autoprefixer -d build/
-# or use npx
-npx -p autoprefixer -p postcss-cli -c "postcss *.css --use autoprefixer -d build/"
+npm install postcss-cli autoprefixer
+npx postcss *.css --use autoprefixer -d build/
 ```
 
 See `postcss -h` for help.
