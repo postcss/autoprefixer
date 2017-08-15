@@ -14,7 +14,7 @@
   "repository": "postcss/autoprefixer",
   "dependencies": {
     "babel-register": "^6.24.0",
-    "browserslist": "^2.3.2",
+    "browserslist": "^2.3.3",
     "caniuse-lite": "^1.0.30000715",
     "normalize-range": "^0.1.2",
     "num2fraction": "^1.2.2",
