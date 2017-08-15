@@ -14,11 +14,11 @@
   "repository": "postcss/autoprefixer",
   "dependencies": {
     "babel-register": "^6.24.0",
-    "browserslist": "^2.3.0",
-    "caniuse-lite": "^1.0.30000711",
+    "browserslist": "^2.3.2",
+    "caniuse-lite": "^1.0.30000715",
     "normalize-range": "^0.1.2",
     "num2fraction": "^1.2.2",
-    "postcss": "^6.0.8",
+    "postcss": "^6.0.9",
     "postcss-value-parser": "^3.2.3"
   },
   "devDependencies": {
@@ -27,18 +27,18 @@
     "babel-preset-env": "^1.6.0",
     "babelify": "^7.3.0",
     "browserify": "^14.4.0",
-    "eslint": "^4.4.0",
+    "eslint": "^4.4.1",
     "eslint-config-postcss": "^2.0.2",
     "fs-extra": "^4.0.1",
     "gulp": "^3.9.1",
-    "gulp-babel": "^6.1.2",
+    "gulp-babel": "^7.0.0",
     "gulp-coffee": "^2.3.4",
     "gulp-json-editor": "^2.2.1",
     "gulp-replace": "^0.6.1",
     "jest": "^20.0.4",
     "lint-staged": "^4.0.3",
     "pre-commit": "^1.2.2",
-    "size-limit": "^0.8.0",
+    "size-limit": "^0.9.0",
     "vinyl-source-stream": "^1.1.0"
   },
   "scripts": {
@@ -55,7 +55,6 @@
   "size-limit": [
     {
       "path": "build/lib/autoprefixer.js",
-      "babili": true,
       "limit": "250 KB"
     }
   ],
