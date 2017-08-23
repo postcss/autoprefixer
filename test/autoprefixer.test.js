@@ -378,6 +378,9 @@ describe('hacks', () => {
 
         expect(result.css).toEqual(output);
         expect(result.warnings().map(i => i.toString())).toEqual([
+            'autoprefixer: <css input>:18:5: Gradient has outdated direction ' +
+            'syntax. New syntax is like `closest-side at 0 0` instead of ' +
+            '`0 0, closest-side`.',
             'autoprefixer: <css input>:38:5: Gradient has outdated direction ' +
             'syntax. New syntax is like `to left` instead of `right`.'
         ]);

@@ -14,8 +14,8 @@ div {
   background-image: radial-gradient(to left, white, black), repeating-linear-gradient(to bottom right, black, white), repeating-radial-gradient(to top, aqua, red);
 }
 
-.radial {
-    background: radial-gradient(ellipse farthest-corner, black, white);
+.old-radial {
+    background: radial-gradient(0 50%, ellipse farthest-corner, black, white);
 }
 
 .simple1 {

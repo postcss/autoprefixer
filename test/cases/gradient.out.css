@@ -23,10 +23,10 @@ div {
   background-image: radial-gradient(to left, white, black), repeating-linear-gradient(to bottom right, black, white), repeating-radial-gradient(to top, aqua, red);
 }
 
-.radial {
-    background: -webkit-radial-gradient(ellipse farthest-corner, black, white);
-    background: -o-radial-gradient(ellipse farthest-corner, black, white);
-    background: radial-gradient(ellipse farthest-corner, black, white);
+.old-radial {
+    background: -webkit-radial-gradient(0 50%, ellipse farthest-corner, black, white);
+    background: -o-radial-gradient(0 50%, ellipse farthest-corner, black, white);
+    background: radial-gradient(0 50%, ellipse farthest-corner, black, white);
 }
 
 .simple1 {
