@@ -14,11 +14,11 @@
   "repository": "postcss/autoprefixer",
   "dependencies": {
     "babel-register": "^6.26.0",
-    "browserslist": "^2.3.3",
-    "caniuse-lite": "^1.0.30000717",
+    "browserslist": "^2.4.0",
+    "caniuse-lite": "^1.0.30000718",
     "normalize-range": "^0.1.2",
     "num2fraction": "^1.2.2",
-    "postcss": "^6.0.9",
+    "postcss": "^6.0.10",
     "postcss-value-parser": "^3.2.3"
   },
   "devDependencies": {
@@ -36,7 +36,7 @@
     "gulp-json-editor": "^2.2.1",
     "gulp-replace": "^0.6.1",
     "jest": "^20.0.4",
-    "lint-staged": "^4.0.3",
+    "lint-staged": "^4.0.4",
     "pre-commit": "^1.2.2",
     "size-limit": "^0.10.0",
     "vinyl-source-stream": "^1.1.0"
