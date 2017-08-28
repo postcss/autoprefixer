@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 7.1.3
+* Add warning for old `radial-gradient` direction syntax.
+
 ## 7.1.2
 * Fix `text-decoration` shortcut support.
 
