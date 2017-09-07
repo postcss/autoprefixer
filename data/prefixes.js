@@ -646,8 +646,8 @@ f(require('caniuse-lite/data/features/css-regions.js'), browsers =>
 f(require('caniuse-lite/data/features/css-image-set.js'), browsers =>
     prefix(['image-set'], {
         props: [
-            'background', 'background-image', 'border-image', 'mask',
-            'list-style', 'list-style-image', 'content', 'mask-image'
+            'background', 'background-image', 'border-image', 'cursor',
+            'mask', 'mask-image', 'list-style', 'list-style-image', 'content'
         ],
         feature: 'css-image-set',
         browsers
