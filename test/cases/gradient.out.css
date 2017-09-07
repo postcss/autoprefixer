@@ -144,3 +144,8 @@ div {
     background: -o-linear-gradient(right, white, black);
     background: linear-gradient(-90deg, white, black);
 }
+
+.mask {
+    -webkit-mask-image: -webkit-radial-gradient(86% 86%, circle, transparent 8px, black 8px);
+            mask-image: radial-gradient(circle at 86% 86%, transparent 8px, black 8px);
+}

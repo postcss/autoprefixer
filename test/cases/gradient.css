@@ -84,3 +84,7 @@ div {
 .norm {
     background: linear-gradient(-90deg, white, black);
 }
+
+.mask {
+    mask-image: radial-gradient(circle at 86% 86%, transparent 8px, black 8px);
+}
