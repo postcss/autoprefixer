@@ -355,20 +355,20 @@ with [other PostCSS plugins].
 
 ### Other Build Tools:
 
-* **Neutrino**: [neutrino-middleware-postcss]
 * **Ruby on Rails**: [autoprefixer-rails]
+* **Neutrino**: [neutrino-middleware-postcss]
+* **Jekyll**: add `autoprefixer-rails` and `jekyll-assets` to `Gemfile`
 * **Brunch**: [postcss-brunch]
 * **Broccoli**: [broccoli-postcss]
 * **Middleman**: [middleman-autoprefixer]
 * **Mincer**: add `autoprefixer` npm package and enable it:
   `environment.enable('autoprefixer')`
-* **Jekyll**: add `autoprefixer-rails` and `jekyll-assets` to `Gemfile`
 
 [neutrino-middleware-postcss]: https://www.npmjs.com/package/neutrino-middleware-postcss
-[middleman-autoprefixer]: https://github.com/middleman/middleman-autoprefixer
-[autoprefixer-rails]:     https://github.com/ai/autoprefixer-rails
-[broccoli-postcss]:       https://github.com/jeffjewiss/broccoli-postcss
-[postcss-brunch]:         https://github.com/iamvdo/postcss-brunch
+[middleman-autoprefixer]:      https://github.com/middleman/middleman-autoprefixer
+[autoprefixer-rails]:          https://github.com/ai/autoprefixer-rails
+[broccoli-postcss]:            https://github.com/jeffjewiss/broccoli-postcss
+[postcss-brunch]:              https://github.com/iamvdo/postcss-brunch
 
 ### Preprocessors
 
