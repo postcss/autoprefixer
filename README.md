@@ -355,6 +355,7 @@ with [other PostCSS plugins].
 
 ### Other Build Tools:
 
+* **Neutrino**: [neutrino-middleware-postcss]
 * **Ruby on Rails**: [autoprefixer-rails]
 * **Brunch**: [postcss-brunch]
 * **Broccoli**: [broccoli-postcss]
@@ -363,6 +364,7 @@ with [other PostCSS plugins].
   `environment.enable('autoprefixer')`
 * **Jekyll**: add `autoprefixer-rails` and `jekyll-assets` to `Gemfile`
 
+[neutrino-middleware-postcss]: https://www.npmjs.com/package/neutrino-middleware-postcss
 [middleman-autoprefixer]: https://github.com/middleman/middleman-autoprefixer
 [autoprefixer-rails]:     https://github.com/ai/autoprefixer-rails
 [broccoli-postcss]:       https://github.com/jeffjewiss/broccoli-postcss
