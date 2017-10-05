@@ -23,6 +23,8 @@ of Autoprefixer.
 ```css
 :-webkit-full-screen a {
     display: -webkit-box;
+    
+    
     display: flex
 }
 :-moz-full-screen a {
@@ -406,7 +408,7 @@ You can use the [postcss-cli] to run Autoprefixer from CLI:
 
 ```sh
 npm install postcss-cli autoprefixer
-npx postcss *.css --use autoprefixer -d build/
+npm postcss *.css --use autoprefixer -d build/
 ```
 
 See `postcss -h` for help.
