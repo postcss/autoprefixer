@@ -23,8 +23,6 @@ of Autoprefixer.
 ```css
 :-webkit-full-screen a {
     display: -webkit-box;
-    
-    
     display: flex
 }
 :-moz-full-screen a {
