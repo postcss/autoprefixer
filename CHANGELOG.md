@@ -1,6 +1,11 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 7.1.5
+* Fix `::placeholder` prefix for Edge.
+* Fix `inherit`/`initial`/`unset` values for `flex-direction`.
+* Fix RegExp usage in gradients (by Yet Another Minion).
+
 ## 7.1.4
 * Fix `radial-gradient` direction conversion.
 * Fix `image-set` in `cursor`.
