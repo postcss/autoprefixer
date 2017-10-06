@@ -349,6 +349,8 @@ f(require('caniuse-lite/data/features/css-placeholder.js'), browsers => {
         const [name, version] = i.split(' ');
         if (name === 'firefox' && parseFloat(version) <= 18) {
             return i + ' old';
+        } else if (name === 'ie') {
+            return i + ' old';
         } else {
             return i;
         }

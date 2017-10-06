@@ -10,6 +10,9 @@
 :-ms-input-placeholder {
     color: #999
 }
+::-ms-input-placeholder {
+    color: #999
+}
 ::placeholder {
     color: #999
 }

@@ -45,7 +45,7 @@ const gradienter = autoprefixer({
     browsers: ['Chrome 25', 'Opera 12', 'Android 2.3']
 });
 const selectorer = autoprefixer({
-    browsers: ['Chrome 25', 'Firefox > 17', 'IE 10']
+    browsers: ['Chrome 25', 'Firefox > 17', 'IE 10', 'Edge 12']
 });
 const intrinsicer = autoprefixer({
     browsers: ['Chrome 25', 'Firefox 22', 'Safari 10']
