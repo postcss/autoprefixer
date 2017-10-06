@@ -70,4 +70,5 @@ a {
 }
 .inherit {
     order: inherit;
+    flex-direction: inherit;
 }

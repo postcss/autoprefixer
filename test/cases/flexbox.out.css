@@ -239,4 +239,11 @@ a {
        -moz-box-ordinal-group: inherit;
         -ms-flex-order: inherit;
             order: inherit;
+    -webkit-box-orient: inherit;
+    -webkit-box-direction: inherit;
+    -webkit-flex-direction: inherit;
+       -moz-box-orient: inherit;
+       -moz-box-direction: inherit;
+        -ms-flex-direction: inherit;
+            flex-direction: inherit;
 }
