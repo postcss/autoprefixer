@@ -45,7 +45,7 @@
   "scripts": {
     "lint-staged": "lint-staged",
     "lint": "eslint *.js lib/*.js data/*.js test/*.js",
-    "test": "jest && npm run lint && gulp && size-limit"
+    "test": "jest --coverage && npm run lint && gulp && size-limit"
   },
   "lint-staged": {
     "*.js": "eslint"
@@ -68,6 +68,13 @@
     },
     "env": {
       "jest": true
+    }
+  },
+  "jest": {
+    "coverageThreshold": {
+      "global": {
+        "statements": 97
+      }
     }
   },
   "babel": {

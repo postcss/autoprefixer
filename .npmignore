@@ -4,6 +4,7 @@
 node_modules
 yarn.lock
 build
+coverage
 autoprefixer.js
 
 test
