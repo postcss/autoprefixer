@@ -140,6 +140,9 @@ it('throws on wrong options', () => {
     expect(() => {
         autoprefixer({ browser: ['chrome 25', 'opera 12'] });
     }).toThrowError(/browsers/);
+    expect(() => {
+        autoprefixer({ browserslist: ['chrome 25', 'opera 12'] });
+    }).toThrowError(/browsers/);
 });
 
 it('sets options', () => {
