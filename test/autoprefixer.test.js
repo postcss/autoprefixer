@@ -188,6 +188,19 @@ it('saves declaration style',        () => test('style'));
 it('uses control comments',          () => test('disabled'));
 it('has actual example in docs',     () => test('example'));
 
+it('uses control comments to whole scope', () => {
+    const input  = read('scope');
+    const output = read('scope.out');
+    const result = postcss([prefixer('scope')]).process(input);
+
+    expect(result.css).toEqual(output);
+    expect(result.warnings().map(i => i.toString())).toEqual([
+        'autoprefixer: <css input>:5:5: Second Autoprefixer control comment ' +
+        'was ignored. Autoprefixer applies control comment to whole block, ' +
+        'not to next rules.'
+    ]);
+});
+
 it('prefixes transition', () => {
     const input  = read('transition');
     const output = read('transition.out');
