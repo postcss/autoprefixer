@@ -14,20 +14,21 @@
   "repository": "postcss/autoprefixer",
   "dependencies": {
     "babel-register": "^6.26.0",
-    "browserslist": "^2.5.1",
-    "caniuse-lite": "^1.0.30000748",
+    "browserslist": "^2.7.0",
+    "caniuse-lite": "^1.0.30000758",
     "normalize-range": "^0.1.2",
     "num2fraction": "^1.2.2",
-    "postcss": "^6.0.13",
+    "postcss": "^6.0.14",
     "postcss-value-parser": "^3.2.3"
   },
   "devDependencies": {
+    "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.1",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.6.1",
-    "babelify": "^7.3.0",
+    "babelify": "^8.0.0",
     "browserify": "^14.5.0",
-    "eslint": "^4.9.0",
+    "eslint": "^4.10.0",
     "eslint-config-postcss": "^2.0.2",
     "fs-extra": "^4.0.2",
     "gulp": "^3.9.1",
@@ -38,7 +39,7 @@
     "jest": "^21.2.1",
     "lint-staged": "^4.3.0",
     "pre-commit": "^1.2.2",
-    "size-limit": "^0.11.6",
+    "size-limit": "^0.12.1",
     "vinyl-source-stream": "^1.1.0"
   },
   "scripts": {
@@ -55,7 +56,7 @@
   "size-limit": [
     {
       "path": "build/lib/autoprefixer.js",
-      "limit": "239 KB"
+      "limit": "240 KB"
     }
   ],
   "eslintConfig": {
