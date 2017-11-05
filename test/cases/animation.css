@@ -1,0 +1,8 @@
+a {
+    animation-direction: alternate;
+    animation-direction: reverse;
+    animation-direction: REVERSE;
+    animation-direction: alternate-reverse;
+    animation: rotation-reverse;
+    animation: rotation-reverse reverse;
+}

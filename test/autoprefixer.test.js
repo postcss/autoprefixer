@@ -379,6 +379,7 @@ describe('hacks', () => {
     it('supports cross-fade()',         () => test('cross-fade'));
     it('supports grid layout',          () => test('grid'));
     it('supports text-decoration',      () => test('text-decoration'));
+    it('ignores modern direction',      () => test('animation'));
 
     it('supports appearance for IE', () => {
         const instance = autoprefixer({ browsers: 'Edge 15' });

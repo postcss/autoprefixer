@@ -1,0 +1,12 @@
+a {
+    -webkit-animation-direction: alternate;
+         -o-animation-direction: alternate;
+            animation-direction: alternate;
+    animation-direction: reverse;
+    animation-direction: REVERSE;
+    animation-direction: alternate-reverse;
+    -webkit-animation: rotation-reverse;
+         -o-animation: rotation-reverse;
+            animation: rotation-reverse;
+    animation: rotation-reverse reverse;
+}
