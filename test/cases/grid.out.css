@@ -34,6 +34,13 @@
     grid-column: 1 / span 3;
 }
 
+.d {
+    -ms-grid-row: 5;
+    -ms-grid-column: 1;
+    -ms-grid-row-span: 1;
+    -ms-grid-column-span: 5;
+}
+
 .webkit {
     grid: subgrid;
     grid-template-areas: "head head"

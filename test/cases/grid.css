@@ -20,6 +20,10 @@
     grid-column: 1 / span 3;
 }
 
+.d {
+    grid-area: 5 / 1 / span 1 / span 5;
+}
+
 .webkit {
     grid: subgrid;
     grid-template-areas: "head head"
