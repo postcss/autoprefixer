@@ -61,7 +61,7 @@ const resolutioner = autoprefixer({
 });
 
 function prefixer(name) {
-    if (name === 'grid') {
+    if (name === 'grid' || name === 'grid-area') {
         return grider;
     } else if (name === 'keyframes') {
         return keyframer;
@@ -133,7 +133,7 @@ const COMMONS = [
     'supports', 'viewport', 'resolution', 'logical', 'appearance',
     'advanced-filter', 'element', 'image-set', 'image-rendering',
     'mask-border', 'writing-mode', 'cross-fade', 'gradient-fix',
-    'text-emphasis-position', 'grid'
+    'text-emphasis-position', 'grid', 'grid-area'
 ];
 
 it('throws on wrong options', () => {
@@ -233,6 +233,7 @@ it('removes unnecessary prefixes', () => {
         if (type === 'cascade' ) continue;
         if (type === 'mistakes' ) continue;
         if (type === 'flex-rewrite' ) continue;
+        if (type === 'grid-area' ) continue;
         const input  = read(type + '.out');
         const output = read(type);
         expect(processor.process(input).css).toEqual(output);

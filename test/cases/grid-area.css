@@ -1,0 +1,23 @@
+.a {
+    grid-area: 5 / 1 / span 1 / span 5;
+}
+
+.b {
+    grid-area: span 1 / span 3 / 4 / 4;
+}
+
+.c {
+    grid-area: 2 / 2;
+}
+
+.d {
+    grid-area: "custom-ident";
+}
+
+.e {
+    grid-area: 2 / 2 / 3 / 8;
+}
+
+.f {
+    grid-area: 2 / 2 / 3;
+}
