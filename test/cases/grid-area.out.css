@@ -1,0 +1,40 @@
+.a {
+    -ms-grid-row: 5;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 5;
+    grid-area: 5 / 1 / span 1 / span 5;
+}
+
+.b {
+    -ms-grid-row: 3;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 3;
+    grid-area: span 1 / span 3 / 4 / 4;
+}
+
+.c {
+    -ms-grid-row: 2;
+    -ms-grid-column: 2;
+    grid-area: 2 / 2;
+}
+
+.d {
+    grid-area: "custom-ident";
+}
+
+.e {
+    -ms-grid-row: 2;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 6;
+    grid-area: 2 / 2 / 3 / 8;
+}
+
+.f {
+    -ms-grid-row: 2;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 2;
+    grid-area: 2 / 2 / 3;
+}
