@@ -145,9 +145,31 @@ it('throws on wrong options', () => {
     }).toThrowError(/browsers/);
 });
 
-it('sets options', () => {
-    const opts = { browsers: ['chrome 25', 'opera 12'], cascade: false };
-    expect(autoprefixer(opts).options).toEqual(opts);
+const options = {
+    cascade: false,
+    grid: false
+};
+
+const browsers = ['chrome 25', 'opera 12'];
+
+it('sets options via options object', () => {
+    const allOptions = Object.assign(options, { browsers });
+
+    const instance = autoprefixer(allOptions);
+    expect(instance.options).toEqual(allOptions);
+    expect(instance.browsers).toEqual(browsers);
+});
+
+it('sets options via array of browsers as first argument and object', () => {
+    const instance = autoprefixer(browsers, options);
+    expect(instance.options).toEqual(options);
+    expect(instance.browsers).toEqual(browsers);
+});
+
+it('sets options via browsers as arguments and options object', () => {
+    const instance = autoprefixer(...browsers, options);
+    expect(instance.options).toEqual(options);
+    expect(instance.browsers).toEqual(browsers);
 });
 
 it('has default browsers', () => {
