@@ -1,0 +1,27 @@
+.a {
+    grid-template: 10px repeat(4, 250px 10px) 20px / auto 1fr;
+}
+
+.b {
+    grid-template:
+        [header-left] "head head" 30px [header-right]
+        [main-left]   "nav  main" 1fr  [main-right]
+        [footer-left] "nav  foot" 30px [footer-right]
+        / 120px 1fr;
+}
+
+.c {
+    grid-template:
+        "hd hd hd hd   hd   hd   hd   hd   hd" minmax(100px, auto)
+        "sd sd sd main main main main main main" minmax(100px, auto)
+        "ft ft ft ft   ft   ft   ft   ft   ft" minmax(100px, auto)
+                / 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr ;
+}
+
+.d {
+    grid-template: 10px / 200px;
+}
+
+.e {
+    grid-template: 10px;
+}

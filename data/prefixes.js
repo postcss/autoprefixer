@@ -710,7 +710,8 @@ f(grid, browsers => {
         'grid-template-columns', 'grid-template-rows',
         'grid-row-start', 'grid-column-start',
         'grid-row-end', 'grid-column-end',
-        'grid-row', 'grid-column', 'grid-area'
+        'grid-row', 'grid-column', 'grid-area',
+        'grid-template'
     ], {
         feature: 'css-grid',
         browsers
