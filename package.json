@@ -14,8 +14,8 @@
   "repository": "postcss/autoprefixer",
   "dependencies": {
     "babel-register": "^6.26.0",
-    "browserslist": "^2.7.0",
-    "caniuse-lite": "^1.0.30000758",
+    "browserslist": "^2.8.0",
+    "caniuse-lite": "^1.0.30000760",
     "normalize-range": "^0.1.2",
     "num2fraction": "^1.2.2",
     "postcss": "^6.0.14",
@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
-    "babel-eslint": "^8.0.1",
+    "babel-eslint": "^8.0.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.6.1",
     "babelify": "^8.0.0",
@@ -39,13 +39,13 @@
     "jest": "^21.2.1",
     "lint-staged": "^4.3.0",
     "pre-commit": "^1.2.2",
-    "size-limit": "^0.12.1",
+    "size-limit": "^0.13.1",
     "vinyl-source-stream": "^1.1.0"
   },
   "scripts": {
     "lint-staged": "lint-staged",
     "lint": "eslint *.js lib/*.js data/*.js test/*.js",
-    "test": "jest && npm run lint && gulp && size-limit"
+    "test": "jest --coverage && npm run lint && gulp && size-limit"
   },
   "lint-staged": {
     "*.js": "eslint"
@@ -68,6 +68,13 @@
     },
     "env": {
       "jest": true
+    }
+  },
+  "jest": {
+    "coverageThreshold": {
+      "global": {
+        "statements": 97
+      }
     }
   },
   "babel": {
