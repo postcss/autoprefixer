@@ -149,3 +149,15 @@ div {
     -webkit-mask-image: -webkit-radial-gradient(86% 86%, circle, transparent 8px, black 8px);
             mask-image: radial-gradient(circle at 86% 86%, transparent 8px, black 8px);
 }
+
+.cover {
+    background: -webkit-radial-gradient(ellipse cover at center, white, black);
+    background: -o-radial-gradient(ellipse cover at center, white, black);
+    background: radial-gradient(ellipse cover at center, white, black);
+}
+
+.contain {
+    background: -webkit-radial-gradient(center, contain, white, black);
+    background: -o-radial-gradient(center, contain, white, black);
+    background: radial-gradient(contain at center, white, black);
+}

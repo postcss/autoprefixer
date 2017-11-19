@@ -423,7 +423,11 @@ describe('hacks', () => {
             'syntax. New syntax is like `closest-side at 0 0` instead of ' +
             '`0 0, closest-side`.',
             'autoprefixer: <css input>:38:5: Gradient has outdated direction ' +
-            'syntax. New syntax is like `to left` instead of `right`.'
+            'syntax. New syntax is like `to left` instead of `right`.',
+            'autoprefixer: <css input>:93:5: Gradient has outdated direction ' +
+            'syntax. New syntax use `farthest-corner` instead of `cover`.',
+            'autoprefixer: <css input>:97:5: Gradient has outdated direction ' +
+            'syntax. New syntax use `closest-side` instead of `contain`.'
         ]);
     });
 
