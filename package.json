@@ -40,7 +40,7 @@
     "jest": "^21.2.1",
     "lint-staged": "^5.0.0",
     "pre-commit": "^1.2.2",
-    "size-limit": "^0.13.1",
+    "size-limit": "^0.13.2",
     "vinyl-source-stream": "^1.1.0"
   },
   "bin": {
