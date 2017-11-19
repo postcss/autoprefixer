@@ -445,27 +445,6 @@ describe('hacks', () => {
         ]);
     });
 
-    it('warns on unsupported grid features', () => {
-        const css      = read('nogrid');
-        const instance = autoprefixer({ browsers: ['IE 10'], grid: true });
-        const result   = postcss([instance]).process(css);
-        expect(result.warnings().map(i => i.toString())).toEqual([
-            'autoprefixer: <css input>:2:5: IE supports only grid-row-end ' +
-            'with span. You should add grid: false option to Autoprefixer ' +
-            'and use some JS grid polyfill for full spec support',
-            'autoprefixer: <css input>:3:5: IE supports only grid-row ' +
-            'with / and span. You should add grid: false option to ' +
-            'Autoprefixer and use some JS grid polyfill for full spec support'
-        ]);
-    });
-
-    it('does not warns on unsupported grid on disabled grid', () => {
-        const css      = read('nogrid');
-        const instance = autoprefixer({ browsers: ['IE 10'], flexbox: false });
-        const result   = postcss([instance]).process(css);
-        expect(result.warnings().length).toEqual(0);
-    });
-
     it('supports intrinsic sizing', () => {
         const input  = read('intrinsic');
         const output = read('intrinsic.out');
