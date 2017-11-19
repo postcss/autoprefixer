@@ -43,6 +43,9 @@
     "size-limit": "^0.13.1",
     "vinyl-source-stream": "^1.1.0"
   },
+  "bin": {
+    "autoprefixer-info": "./bin/autoprefixer-info"
+  },
   "scripts": {
     "lint-staged": "lint-staged",
     "lint": "eslint-ci *.js lib/*.js data/*.js test/*.js",
@@ -78,6 +81,9 @@
       }
     }
   },
+  "browserslist": [
+    "last 1 edge version"
+  ],
   "babel": {
     "presets": [
       [

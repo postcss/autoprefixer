@@ -578,7 +578,38 @@ to increase performance.
 
 ## Debug
 
-You can check which browsers are selected and which properties will be prefixed:
+Run `npx autoprefixer-info` in your project directory to check
+which browsers are selected and which properties will be prefixed:
+
+```
+$ npx autoprefixer-info
+Browsers:
+  Edge: 16
+
+These browsers account for 0.04% of all users globally
+
+At-Rules:
+  @viewport: ms
+
+Selectors:
+  ::placeholder: ms
+
+Properties:
+  user-select: ms
+  hyphens: ms
+  appearance: webkit
+  scroll-snap-type: ms
+  scroll-snap-coordinate: ms
+  scroll-snap-destination: ms
+  scroll-snap-points-x: ms
+  scroll-snap-points-y: ms
+  flow-into: ms
+  flow-from: ms
+  region-fragment: ms
+  text-spacing: ms
+```
+
+JS API is also available:
 
 ```js
 var info = autoprefixer().info();
