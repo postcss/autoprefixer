@@ -47,3 +47,9 @@
         display: grid;
     }
 }
+
+@supports (justify-items: start) {
+    .foo {
+        justify-items: start;
+    }
+}

@@ -51,7 +51,7 @@ const intrinsicer = autoprefixer({
     browsers: ['Chrome 25', 'Firefox 22', 'Safari 10']
 });
 const imagerender = autoprefixer({
-    browsers: ['iOS 8', 'iOS 6.1', 'FF 22', 'IE 11']
+    browsers: ['iOS 8', 'iOS 6.1', 'FF 22', 'IE 11', 'Opera 12']
 });
 const backgrounder = autoprefixer({
     browsers: ['Firefox 3.6', 'Android 2.3']
@@ -365,9 +365,13 @@ it('has option to disable flexbox support', () => {
 
 it('has option to disable 2009 flexbox support', () => {
     const ap = autoprefixer({ browsers: ['Chrome > 19'], flexbox: 'no-2009' });
-    const css    = 'a{flex:1}';
+    const css    = 'a{flex:1;transition:flex}';
     const result = postcss([ap]).process(css);
-    expect(result.css).toEqual('a{-webkit-flex:1;flex:1}');
+    expect(result.css).toEqual('a{' +
+        '-webkit-flex:1;flex:1;' +
+        '-webkit-transition:-webkit-flex;transition:-webkit-flex;' +
+        'transition:flex;transition:flex, -webkit-flex' +
+    '}');
 });
 
 it('returns inspect string', () => {
@@ -383,6 +387,7 @@ it('uses browserslist config in inspect', () => {
 describe('hacks', () => {
 
     it('ignores prefix IE filter',      () => test('filter'));
+    it('supports webkit filters',       () => test('advanced-filter'));
     it('changes border image syntax',   () => test('border-image'));
     it('supports old Mozilla prefixes', () => test('border-radius'));
     it('supports all flexbox syntaxes', () => test('flexbox'));
@@ -424,10 +429,10 @@ describe('hacks', () => {
             '`0 0, closest-side`.',
             'autoprefixer: <css input>:38:5: Gradient has outdated direction ' +
             'syntax. New syntax is like `to left` instead of `right`.',
-            'autoprefixer: <css input>:93:5: Gradient has outdated direction ' +
-            'syntax. New syntax use `farthest-corner` instead of `cover`.',
-            'autoprefixer: <css input>:97:5: Gradient has outdated direction ' +
-            'syntax. New syntax use `closest-side` instead of `contain`.'
+            'autoprefixer: <css input>:100:5: Gradient has outdated ' +
+            'direction syntax. Replace `cover` to `farthest-corner`.',
+            'autoprefixer: <css input>:104:5: Gradient has outdated ' +
+            'direction syntax. Replace `contain` to `closest-side`.'
         ]);
     });
 

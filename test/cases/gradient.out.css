@@ -120,10 +120,28 @@ div {
 }
 
 .convert {
+    background: -webkit-gradient(linear, left bottom, left top, from(white), to(black));
+    background: -webkit-linear-gradient(bottom, white, black);
+    background: -o-linear-gradient(bottom, white, black);
+    background: linear-gradient(0deg, white, black);
+    background: -webkit-gradient(linear, left top, right top, from(white), to(black));
+    background: -webkit-linear-gradient(left, white, black);
+    background: -o-linear-gradient(left, white, black);
+    background: linear-gradient(90deg, white, black);
+    background: -webkit-gradient(linear, left top, left bottom, from(white), to(black));
+    background: -webkit-linear-gradient(top, white, black);
+    background: -o-linear-gradient(top, white, black);
+    background: linear-gradient(180deg, white, black);
     background: -webkit-gradient(linear, right top, left top, from(white), to(black));
     background: -webkit-linear-gradient(right, white, black);
     background: -o-linear-gradient(right, white, black);
     background: linear-gradient(270deg, white, black);
+}
+
+.grad {
+    background: -webkit-linear-gradient(89.1deg, white, black);
+    background: -o-linear-gradient(89.1deg, white, black);
+    background: linear-gradient(1grad, white, black);
 }
 
 .rad {
@@ -160,4 +178,11 @@ div {
     background: -webkit-radial-gradient(center, contain, white, black);
     background: -o-radial-gradient(center, contain, white, black);
     background: radial-gradient(contain at center, white, black);
+}
+
+.no-div {
+    background: -webkit-gradient(linear, left top, left bottom, from(black));
+    background: -webkit-linear-gradient(black);
+    background: -o-linear-gradient(black);
+    background: linear-gradient(black);
 }

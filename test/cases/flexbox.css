@@ -72,3 +72,13 @@ a {
     order: inherit;
     flex-direction: inherit;
 }
+@supports (display: flex) {
+    .foo {
+        display: flex;
+    }
+}
+@supports (flex: auto) {
+    .foo {
+        flex: auto;
+    }
+}
