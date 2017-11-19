@@ -26,6 +26,10 @@ gulp.task('build:docs', ['clean'], () => {
         .pipe(gulp.dest('build'));
 });
 
+gulp.task('build:bin', ['clean'], () => {
+    return gulp.src('bin/*').pipe(gulp.dest('build/bin'));
+});
+
 gulp.task('build:package', ['clean'], () => {
     const editor = require('gulp-json-editor');
 
@@ -40,7 +44,7 @@ gulp.task('build:package', ['clean'], () => {
         .pipe(gulp.dest('build'));
 });
 
-gulp.task('build', ['build:lib', 'build:docs', 'build:package']);
+gulp.task('build', ['build:lib', 'build:docs', 'build:bin', 'build:package']);
 
 gulp.task('standalone', ['build:lib'], (done) => {
     const builder = require('browserify')({
