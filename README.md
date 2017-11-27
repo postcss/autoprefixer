@@ -12,7 +12,7 @@ entirely):
 
 ```css
 :fullscreen a {
-    display: flex
+    display: flex;
 }
 ```
 
@@ -23,19 +23,19 @@ of Autoprefixer.
 ```css
 :-webkit-full-screen a {
     display: -webkit-box;
-    display: flex
+    display: flex;
 }
 :-moz-full-screen a {
-    display: flex
+    display: flex;
 }
 :-ms-fullscreen a {
     display: -ms-flexbox;
-    display: flex
+    display: flex;
 }
 :fullscreen a {
     display: -webkit-box;
     display: -ms-flexbox;
-    display: flex
+    display: flex;
 }
 ```
 
@@ -86,7 +86,7 @@ a {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
-    display: flex
+    display: flex;
 }
 ```
 
@@ -160,7 +160,7 @@ var cleaner  = postcss([ autoprefixer({ add: false, browsers: [] }) ]);
 var prefixer = postcss([ autoprefixer ]);
 
 cleaner.process(css).then(function (cleaned) {
-    return prefixer.process(cleaned.css)
+    return prefixer.process(cleaned.css);
 }).then(function (result) {
     console.log(result.css);
 });
