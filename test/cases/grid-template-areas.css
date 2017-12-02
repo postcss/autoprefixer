@@ -1,0 +1,22 @@
+.a {
+    grid-template-areas:
+        "head head"
+        "nav  main"
+        "nav  foot";
+}
+
+.b {
+    grid-area: head;
+}
+
+.c {
+    grid-area: main;
+}
+
+.d {
+    grid-area: nav;
+}
+
+.e {
+    grid-area: foot;
+}
