@@ -70,7 +70,14 @@ div {
 }
 
 .convert {
+    background: linear-gradient(0deg, white, black);
+    background: linear-gradient(90deg, white, black);
+    background: linear-gradient(180deg, white, black);
     background: linear-gradient(270deg, white, black);
+}
+
+.grad {
+    background: linear-gradient(1grad, white, black);
 }
 
 .rad {
@@ -87,4 +94,16 @@ div {
 
 .mask {
     mask-image: radial-gradient(circle at 86% 86%, transparent 8px, black 8px);
+}
+
+.cover {
+    background: radial-gradient(ellipse cover at center, white, black);
+}
+
+.contain {
+    background: radial-gradient(contain at center, white, black);
+}
+
+.no-div {
+    background: linear-gradient(black);
 }

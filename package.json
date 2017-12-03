@@ -29,6 +29,7 @@
     "babelify": "^8.0.0",
     "browserify": "^14.5.0",
     "eslint": "^4.11.0",
+    "eslint-ci": "^0.1.0",
     "eslint-config-postcss": "^2.0.2",
     "fs-extra": "^4.0.2",
     "gulp": "^3.9.1",
@@ -39,12 +40,15 @@
     "jest": "^21.2.1",
     "lint-staged": "^5.0.0",
     "pre-commit": "^1.2.2",
-    "size-limit": "^0.13.1",
+    "size-limit": "^0.13.2",
     "vinyl-source-stream": "^1.1.0"
+  },
+  "bin": {
+    "autoprefixer-info": "./bin/autoprefixer-info"
   },
   "scripts": {
     "lint-staged": "lint-staged",
-    "lint": "eslint *.js lib/*.js data/*.js test/*.js",
+    "lint": "eslint-ci *.js lib/*.js data/*.js test/*.js",
     "test": "jest --coverage && npm run lint && gulp && size-limit"
   },
   "lint-staged": {
@@ -73,10 +77,13 @@
   "jest": {
     "coverageThreshold": {
       "global": {
-        "statements": 97
+        "lines": 100
       }
     }
   },
+  "browserslist": [
+    "last 1 edge version"
+  ],
   "babel": {
     "presets": [
       [

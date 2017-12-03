@@ -12,7 +12,7 @@ entirely):
 
 ```css
 :fullscreen a {
-    display: flex
+    display: flex;
 }
 ```
 
@@ -23,19 +23,19 @@ of Autoprefixer.
 ```css
 :-webkit-full-screen a {
     display: -webkit-box;
-    display: flex
+    display: flex;
 }
 :-moz-full-screen a {
-    display: flex
+    display: flex;
 }
 :-ms-fullscreen a {
     display: -ms-flexbox;
-    display: flex
+    display: flex;
 }
 :fullscreen a {
     display: -webkit-box;
     display: -ms-flexbox;
-    display: flex
+    display: flex;
 }
 ```
 
@@ -86,7 +86,7 @@ a {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
-    display: flex
+    display: flex;
 }
 ```
 
@@ -160,7 +160,7 @@ var cleaner  = postcss([ autoprefixer({ add: false, browsers: [] }) ]);
 var prefixer = postcss([ autoprefixer ]);
 
 cleaner.process(css).then(function (cleaned) {
-    return prefixer.process(cleaned.css)
+    return prefixer.process(cleaned.css);
 }).then(function (result) {
     console.log(result.css);
 });
@@ -578,7 +578,38 @@ to increase performance.
 
 ## Debug
 
-You can check which browsers are selected and which properties will be prefixed:
+Run `npx autoprefixer-info` in your project directory to check
+which browsers are selected and which properties will be prefixed:
+
+```
+$ npx autoprefixer-info
+Browsers:
+  Edge: 16
+
+These browsers account for 0.04% of all users globally
+
+At-Rules:
+  @viewport: ms
+
+Selectors:
+  ::placeholder: ms
+
+Properties:
+  user-select: ms
+  hyphens: ms
+  appearance: webkit
+  scroll-snap-type: ms
+  scroll-snap-coordinate: ms
+  scroll-snap-destination: ms
+  scroll-snap-points-x: ms
+  scroll-snap-points-y: ms
+  flow-into: ms
+  flow-from: ms
+  region-fragment: ms
+  text-spacing: ms
+```
+
+JS API is also available:
 
 ```js
 var info = autoprefixer().info();

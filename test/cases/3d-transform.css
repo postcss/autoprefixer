@@ -4,6 +4,7 @@ a {
 }
 b {
     transform: translateX(45deg);
+    transform-origin: 0 0;
 }
 em {
     transform: rotateZ(45deg);

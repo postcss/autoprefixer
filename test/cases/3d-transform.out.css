@@ -8,6 +8,9 @@ b {
     -ms-transform: translateX(45deg);
      -o-transform: translateX(45deg);
         transform: translateX(45deg);
+    -ms-transform-origin: 0 0;
+     -o-transform-origin: 0 0;
+        transform-origin: 0 0;
 }
 em {
     -ms-transform: rotate(45deg);
