@@ -79,7 +79,10 @@
       "global": {
         "lines": 100
       }
-    }
+    },
+    "modulePathIgnorePatterns": [
+      "build/"
+    ]
   },
   "browserslist": [
     "last 1 edge version"
