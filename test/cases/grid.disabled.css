@@ -25,6 +25,13 @@
     grid-row: span 2 / 5;
 }
 
+.webkit {
+    grid: subgrid;
+    grid-template-areas: "head head"
+                         "nav  main"
+                         "foot ....";
+}
+
 .unknown {
     justify-self: start;
     -ms-flex-item-align: start;

@@ -43,6 +43,13 @@
     grid-row: span 2 / 5;
 }
 
+.webkit {
+    grid: subgrid;
+    grid-template-areas: "head head"
+                         "nav  main"
+                         "foot ....";
+}
+
 .unknown {
     -ms-grid-column-align: start;
     justify-self: start;
