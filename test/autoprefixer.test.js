@@ -413,7 +413,6 @@ describe('hacks', () => {
     it('supports image-set()',          () => test('image-set'));
     it('supports writing-mode',         () => test('writing-mode'));
     it('supports cross-fade()',         () => test('cross-fade'));
-    it('supports grid layout',          () => test('grid'));
     it('supports text-decoration',      () => test('text-decoration'));
     it('ignores modern direction',      () => test('animation'));
 
@@ -477,6 +476,19 @@ describe('hacks', () => {
             'autoprefixer: <css input>:14:5: You should use 2 values ' +
             'for text-emphasis-position For example, `under left` ' +
             'instead of just `under`.'
+        ]);
+    });
+
+    it('supports grid layout', () => {
+        const input    = read('grid');
+        const output   = read('grid.out');
+        const instance = prefixer('grid');
+        const result   = postcss([instance]).process(input);
+
+        expect(result.css).toEqual(output);
+        expect(result.warnings().map(i => i.toString())).toEqual([
+            'autoprefixer: <css input>:30:5: Can not find grid areas: ' +
+            'head, nav, main, foot'
         ]);
     });
 
