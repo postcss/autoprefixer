@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 7.2.1
+* Fix IE and other old JS runtimes support.
+
 ## 7.2 “Ordem e Progresso”
 * Add `grid-template-areas` support (by Evgeny Petukhov).
 * Add `grid-template` support (by Evgeny Petukhov).
