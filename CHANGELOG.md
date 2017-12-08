@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 7.2.2
+* Fix `_autoprefixerDisabled is undefined` issue.
+
 ## 7.2.1
 * Fix IE and other old JS runtimes support.
 
