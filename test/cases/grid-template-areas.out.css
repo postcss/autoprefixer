@@ -30,3 +30,21 @@
     -ms-grid-column: 2;
     grid-area: foot;
 }
+
+@media (max-width: 1000px) {
+    .a {
+        grid-template-areas: "head main";
+    }
+
+    .a {
+        -ms-grid-row: 1;
+        -ms-grid-column: 1;
+        grid-area: head;
+    }
+
+    .b {
+        -ms-grid-row: 1;
+        -ms-grid-column: 2;
+        grid-area: main;
+    }
+}
