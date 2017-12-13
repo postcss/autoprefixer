@@ -36,13 +36,13 @@
         grid-template-areas: "head main";
     }
 
-    .a {
+    .b {
         -ms-grid-row: 1;
         -ms-grid-column: 1;
         grid-area: head;
     }
 
-    .b {
+    .c {
         -ms-grid-row: 1;
         -ms-grid-column: 2;
         grid-area: main;
