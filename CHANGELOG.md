@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 7.2.3
+* Fix `grid-template-areas` in `@media` (by Evgeny Petukhov).
+
 ## 7.2.2
 * Fix `_autoprefixerDisabled is undefined` issue.
 
