@@ -1,6 +1,6 @@
 {
   "name": "autoprefixer",
-  "version": "7.1.6",
+  "version": "7.2.2",
   "description": "Parse CSS and add vendor prefixes to CSS rules using values from the Can I Use website",
   "keywords": [
     "autoprefixer",
@@ -14,8 +14,8 @@
   "repository": "postcss/autoprefixer",
   "dependencies": {
     "babel-register": "^6.26.0",
-    "browserslist": "^2.9.0",
-    "caniuse-lite": "^1.0.30000766",
+    "browserslist": "^2.10.0",
+    "caniuse-lite": "^1.0.30000780",
     "normalize-range": "^0.1.2",
     "num2fraction": "^1.2.2",
     "postcss": "^6.0.14",
@@ -23,22 +23,22 @@
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
-    "babel-eslint": "^8.0.2",
+    "babel-eslint": "^8.0.3",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.6.1",
     "babelify": "^8.0.0",
     "browserify": "^14.5.0",
-    "eslint": "^4.11.0",
-    "eslint-ci": "^0.1.0",
+    "eslint": "^4.12.1",
+    "eslint-ci": "^0.1.1",
     "eslint-config-postcss": "^2.0.2",
-    "fs-extra": "^4.0.2",
+    "fs-extra": "^4.0.3",
     "gulp": "^3.9.1",
     "gulp-babel": "^7.0.0",
-    "gulp-coffee": "^2.3.4",
+    "gulp-coffee": "^2.3.5",
     "gulp-json-editor": "^2.2.1",
     "gulp-replace": "^0.6.1",
     "jest": "^21.2.1",
-    "lint-staged": "^5.0.0",
+    "lint-staged": "^6.0.0",
     "pre-commit": "^1.2.2",
     "size-limit": "^0.13.2",
     "vinyl-source-stream": "^1.1.0"
@@ -60,7 +60,7 @@
   "size-limit": [
     {
       "path": "build/lib/autoprefixer.js",
-      "limit": "242 KB"
+      "limit": "250 KB"
     }
   ],
   "eslintConfig": {
@@ -79,7 +79,10 @@
       "global": {
         "lines": 100
       }
-    }
+    },
+    "modulePathIgnorePatterns": [
+      "build/"
+    ]
   },
   "browserslist": [
     "last 1 edge version"

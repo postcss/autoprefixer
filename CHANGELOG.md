@@ -1,6 +1,23 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 7.2.2
+* Fix `_autoprefixerDisabled is undefined` issue.
+
+## 7.2.1
+* Fix IE and other old JS runtimes support.
+
+## 7.2 “Ordem e Progresso”
+* Add `grid-template-areas` support (by Evgeny Petukhov).
+* Add `grid-template` support (by Evgeny Petukhov).
+* Add `grid-area` support (by Alexey Komarov).
+* Add `autoprefixer-info` CLI tool.
+* Add wrong `radial-gradient` properties warning.
+* Use current working dir on missed `from` in `info()` (by Phil Dokas).
+* Fix `grid-row` and `grid-column` support (by Alexey Komarov).
+* Do not prefix `reverse` animation direction.
+* Improve test coverage (by Dmitry Semigradsky).
+
 ## 7.1.6
 * Add warning for using `browserslist` option instead of `browsers`.
 * Add warning for multiple control comments in the same scope.
