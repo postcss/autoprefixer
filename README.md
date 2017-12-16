@@ -480,6 +480,8 @@ Every Autoprefixer runner should display this warnings.
 
 ## Disabling
 
+### Prefixes
+
 Autoprefixer was designed to have no interface – it just works.
 If you need some browser specific hack just write a prefixed property
 after the unprefixed one.
@@ -494,14 +496,23 @@ a {
 If some prefixes were generated in a wrong way,
 please create an issue on GitHub.
 
-Autoprefixer has 4 features, which can be enabled or disabled by options:
+### Features
+
+There are 4 plugin’s options to disable some Autoprefixer features.
 
 * `supports: false` will disable `@supports` parameters prefixing.
 * `flexbox: false` will disable flexbox properties prefixing.
   Or `flexbox: "no-2009"` will add prefixes only for final and IE
   versions of specification.
 * `remove: false` will disable cleaning outdated prefixes.
-* `grid: true` will enable Grid Layout prefixes for IE.
+
+You shoud set them to the plugin:
+
+```js
+autoprefixer({ grid: true });
+```
+
+### Control Comments
 
 If you do not need Autoprefixer in some part of your CSS,
 you can use control comments to disable Autoprefixer.
@@ -542,7 +553,7 @@ Function `autoprefixer(options)` returns new PostCSS plugin.
 See [PostCSS API] for plugin usage documentation.
 
 ```js
-var plugin = autoprefixer({ cascade: false });
+autoprefixer({ cascade: false })
 ```
 
 There are 8 options:
