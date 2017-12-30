@@ -25,6 +25,7 @@
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.3",
     "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-es2015-classes": "^6.24.1",
     "babel-preset-env": "^1.6.1",
     "babelify": "^8.0.0",
     "browserify": "^14.5.0",
@@ -105,6 +106,12 @@
         "transform-class-properties",
         {
           "spec": true
+        }
+      ],
+      [
+        "transform-es2015-classes",
+        {
+          "loose": true
         }
       ]
     ]
