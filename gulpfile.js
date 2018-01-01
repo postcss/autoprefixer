@@ -39,6 +39,14 @@ gulp.task('build:package', ['clean'], () => {
             json.devDependencies['babel-register'] =
                 json.dependencies['babel-register'];
             delete json.dependencies['babel-register'];
+            delete json.babel;
+            delete json.scripts;
+            delete json.jest;
+            delete json.eslintConfig;
+            delete json['size-limit'];
+            delete json['pre-commit'];
+            delete json['lint-staged'];
+            delete json.devDependencies;
             return json;
         }))
         .pipe(gulp.dest('build'));
