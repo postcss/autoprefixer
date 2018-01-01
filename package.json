@@ -34,14 +34,12 @@
     "fs-extra": "^5.0.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^7.0.0",
-    "gulp-coffee": "^2.3.5",
     "gulp-json-editor": "^2.2.1",
     "gulp-replace": "^0.6.1",
     "jest": "^21.2.1",
     "lint-staged": "^6.0.0",
     "pre-commit": "^1.2.2",
-    "size-limit": "^0.13.2",
-    "vinyl-source-stream": "^1.1.0"
+    "size-limit": "^0.13.2"
   },
   "bin": {
     "autoprefixer-info": "./bin/autoprefixer-info"
