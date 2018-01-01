@@ -36,7 +36,7 @@
     "gulp-babel": "^7.0.0",
     "gulp-json-editor": "^2.2.1",
     "gulp-replace": "^0.6.1",
-    "jest": "^21.2.1",
+    "jest": "^22.0.4",
     "lint-staged": "^6.0.0",
     "pre-commit": "^1.2.2",
     "size-limit": "^0.13.2"
@@ -73,13 +73,14 @@
     }
   },
   "jest": {
+    "testEnvironment": "node",
     "coverageThreshold": {
       "global": {
         "lines": 100
       }
     },
     "modulePathIgnorePatterns": [
-      "build/"
+      "<rootDir>/build/"
     ]
   },
   "browserslist": [
