@@ -85,7 +85,7 @@
     ]
   },
   "browserslist": [
-    "last 1 edge version"
+    "last 2 edge version"
   ],
   "babel": {
     "presets": [
@@ -93,7 +93,7 @@
         "env",
         {
           "targets": {
-            "browsers": "last 1 version",
+            "browsers": "last 2 version",
             "node": 4
           },
           "loose": true
