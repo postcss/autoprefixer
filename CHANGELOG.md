@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 7.2.5
+* Fix multiple prefixes in declaration value.
+
 ## 7.2.4
 * Fix IE 10 support.
 
