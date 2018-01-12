@@ -39,6 +39,8 @@ p {
 .grid-template {
     grid-template: -webkit-min-content / fit-content(10px) -webkit-max-content;
     grid-template: min-content / fit-content(10px) max-content;
+    grid-template: -webkit-max-content 1fr -webkit-max-content -webkit-max-content / -webkit-max-content 1fr;
+    grid-template: max-content 1fr max-content max-content / max-content 1fr;
 }
 
 .grid-template-columns {

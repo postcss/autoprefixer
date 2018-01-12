@@ -25,6 +25,7 @@ p {
 
 .grid-template {
     grid-template: min-content / fit-content(10px) max-content;
+    grid-template: max-content 1fr max-content max-content / max-content 1fr;
 }
 
 .grid-template-columns {
