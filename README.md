@@ -53,6 +53,12 @@ Twitter account for news and releases: [@autoprefixer].
 [ci-img]:           https://travis-ci.org/postcss/autoprefixer.svg
 [ci]:               https://travis-ci.org/postcss/autoprefixer
 
+## Install
+
+```
+$ npm install autoprefixer --save
+```
+
 ## Features
 
 ### Write Pure CSS
