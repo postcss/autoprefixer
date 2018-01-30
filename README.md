@@ -589,11 +589,11 @@ to increase performance.
 
 ## Debug
 
-Run `npx autoprefixer-info` in your project directory to check
+Run `npx autoprefixer-info --package autoprefixer` in your project directory to check
 which browsers are selected and which properties will be prefixed:
 
 ```
-$ npx autoprefixer-info
+$ npx autoprefixer-info --package autoprefixer
 Browsers:
   Edge: 16
 
