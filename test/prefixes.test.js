@@ -5,7 +5,7 @@ const Supports    = require('../lib/supports');
 const Selector    = require('../lib/selector');
 const OldValue    = require('../lib/old-value');
 const Value       = require('../lib/value');
-const parse       = require('postcss/lib/parse');
+const parse       = require('postcss').parse;
 
 const data = {
     browsers: require('caniuse-lite').agents,

@@ -1,5 +1,5 @@
 const AtRule = require('../lib/at-rule');
-const parse  = require('postcss/lib/parse');
+const parse  = require('postcss').parse;
 
 describe('process()', () => {
 
