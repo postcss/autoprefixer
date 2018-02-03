@@ -1,6 +1,6 @@
 const OldValue = require('../lib/old-value');
 const Value    = require('../lib//value');
-const parse    = require('postcss/lib/parse');
+const parse    = require('postcss').parse;
 
 const Prefixes = require('../lib/prefixes');
 const prefixes = new Prefixes();

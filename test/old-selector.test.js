@@ -1,5 +1,5 @@
 const Selector = require('../lib/selector');
-const parse    = require('postcss/lib/parse');
+const parse    = require('postcss').parse;
 
 const selector = new Selector('::selection', ['-moz-', '-ms-']);
 const old = selector.old('-moz-');

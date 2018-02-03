@@ -1,6 +1,6 @@
 const Declaration = require('../lib/declaration');
 const Prefixes    = require('../lib/prefixes');
-const parse       = require('postcss/lib/parse');
+const parse       = require('postcss').parse;
 
 let prefixes, tabsize;
 beforeEach(() => {
