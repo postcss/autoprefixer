@@ -2,7 +2,8 @@
     grid-template-areas:
         "head head"
         "nav  main"
-        "nav  foot";
+        "nav  foot"
+        "another";
 }
 
 .b {
@@ -31,6 +32,12 @@
     grid-area: foot;
 }
 
+.f {
+    -ms-grid-row: 3;
+    -ms-grid-column: 2;
+    grid-area: foot;
+}
+
 @media (max-width: 1000px) {
     .a {
         grid-template-areas: "head main";
@@ -43,6 +50,12 @@
     }
 
     .c {
+        -ms-grid-row: 1;
+        -ms-grid-column: 2;
+        grid-area: main;
+    }
+
+    .d {
         -ms-grid-row: 1;
         -ms-grid-column: 2;
         grid-area: main;
