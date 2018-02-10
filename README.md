@@ -11,8 +11,8 @@ Write your CSS rules without vendor prefixes (in fact, forget about them
 entirely):
 
 ```css
-:fullscreen a {
-    display: flex;
+::placeholder {
+  color: gray;
 }
 ```
 
@@ -21,21 +21,17 @@ support to apply prefixes for you. You can try the [interactive demo]
 of Autoprefixer.
 
 ```css
-:-webkit-full-screen a {
-    display: -webkit-box;
-    display: flex;
+::-webkit-input-placeholder {
+  color: gray;
 }
-:-moz-full-screen a {
-    display: flex;
+:-ms-input-placeholder {
+  color: gray;
 }
-:-ms-fullscreen a {
-    display: -ms-flexbox;
-    display: flex;
+::-ms-input-placeholder {
+  color: gray;
 }
-:fullscreen a {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
+::placeholder {
+  color: gray;
 }
 ```
 
