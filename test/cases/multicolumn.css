@@ -19,3 +19,7 @@
 .e {
     break-inside: avoid-region;
 }
+
+.f {
+    break-inside: region;
+}
