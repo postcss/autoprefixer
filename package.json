@@ -15,7 +15,7 @@
   "dependencies": {
     "babel-register": "^6.26.0",
     "browserslist": "^3.0.0",
-    "caniuse-lite": "^1.0.30000807",
+    "caniuse-lite": "^1.0.30000808",
     "normalize-range": "^0.1.2",
     "num2fraction": "^1.2.2",
     "postcss": "^6.0.17",
@@ -40,7 +40,7 @@
     "jest": "^22.2.2",
     "lint-staged": "^6.1.0",
     "pre-commit": "^1.2.2",
-    "size-limit": "^0.14.0"
+    "size-limit": "^0.14.1"
   },
   "bin": {
     "autoprefixer": "./bin/autoprefixer"
