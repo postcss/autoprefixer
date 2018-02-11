@@ -221,13 +221,13 @@ Depending on what you consider to be a “polyfill”, you can take a look at so
 other tools and libraries. If you are just looking for syntax sugar,
 you might take a look at:
 
+- [postcss-preset-env] is a plugins preset with polyfills
+  to write future CSS today.
 - [Oldie], a PostCSS plugin that handles some IE hacks (opacity, rgba, etc).
 - [postcss-flexbugs-fixes], a PostCSS plugin to fix flexbox issues.
-- [cssnext], a tool that allows you to write standard CSS syntax non-implemented
-  yet in browsers (custom properties, custom media, color functions, etc).
 
 [postcss-flexbugs-fixes]: https://github.com/luisrudge/postcss-flexbugs-fixes
-[cssnext]:                https://github.com/MoOx/postcss-cssnext
+[postcss-preset-env]:     https://github.com/jonathantneal/postcss-preset-env
 [Oldie]:                  https://github.com/jonathantneal/oldie
 
 
