@@ -1,3 +1,3 @@
-:fullscreen a {
-    display: flex
+::placeholder {
+  color: gray;
 }

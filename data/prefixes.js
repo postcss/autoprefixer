@@ -220,18 +220,19 @@ f(require('caniuse-lite/data/features/css-element-function.js'), browsers =>
 f(require('caniuse-lite/data/features/multicolumn.js'), browsers => {
     prefix([
         'columns', 'column-width', 'column-gap',
-        'column-rule', 'column-rule-color', 'column-rule-width'
+        'column-rule', 'column-rule-color', 'column-rule-width',
+        'column-count', 'column-rule-style', 'column-span', 'column-fill'
     ], {
         feature: 'multicolumn',
         browsers
     });
 
+    const noff = browsers.filter(i => !/firefox/.test(i));
     prefix([
-        'column-count', 'column-rule-style', 'column-span', 'column-fill',
         'break-before', 'break-after', 'break-inside'
     ], {
         feature: 'multicolumn',
-        browsers
+        browsers: noff
     });
 });
 
