@@ -5,8 +5,10 @@
 }
 
 .b {
-    -ms-grid-rows: 30px 1fr 30px;
-    -ms-grid-columns: 120px (250px 10px)[4] 20px;
+    -ms-grid-rows:
+        30px 1fr 30px;
+    -ms-grid-columns:
+        120px (250px 10px)[4];
     grid-template:
         [header-left] "head head" 30px [header-right]
         [main-left]   "nav  main" 1fr  [main-right]
@@ -15,8 +17,10 @@
 }
 
 .c {
-    -ms-grid-rows: minmax(100px, auto) minmax(100px, auto) minmax(100px, auto);
-    -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    -ms-grid-rows:
+        minmax(100px, auto) minmax(100px, auto) minmax(100px, auto);
+    -ms-grid-columns:
+        1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template:
         "hd hd hd hd hd hd hd hd hd" minmax(100px, auto)
         "sd sd sd mn mn mn mn mn mn" minmax(100px, auto)
@@ -66,18 +70,21 @@
     -ms-grid-column-span: 9;
     grid-area: hd;
 }
+
 .sd {
     -ms-grid-row: 2;
     -ms-grid-column: 1;
     -ms-grid-column-span: 3;
     grid-area: sd;
 }
+
 .mn {
     -ms-grid-row: 2;
     -ms-grid-column: 4;
     -ms-grid-column-span: 6;
     grid-area: mn;
 }
+
 .ft {
     -ms-grid-row: 3;
     -ms-grid-column: 1;
