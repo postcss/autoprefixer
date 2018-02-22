@@ -520,7 +520,7 @@ please create an issue on GitHub.
 
 ### Features
 
-There are 4 plugin’s options to disable some Autoprefixer features.
+You can use these plugin options to disable some of the Autoprefixer's features.
 
 * `supports: false` will disable `@supports` parameters prefixing.
 * `flexbox: false` will disable flexbox properties prefixing.
@@ -580,7 +580,7 @@ See [PostCSS API] for plugin usage documentation.
 autoprefixer({ cascade: false })
 ```
 
-There are 8 options:
+Available options are:
 
 * `browsers` (array): list of browsers query (like `last 2 versions`),
   which are supported in your project. We recommend to use `browserslist`
