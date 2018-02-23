@@ -1,4 +1,4 @@
-# Autoprefixer [![Build Status][ci-img]][ci]
+# Autoprefixer [![Cult Of Martians][cult-img]][cult]
 
 <img align="right" width="94" height="71"
      src="http://postcss.github.io/autoprefixer/logo.svg"
@@ -45,9 +45,9 @@ Twitter account for news and releases: [@autoprefixer].
 [@autoprefixer]:    https://twitter.com/autoprefixer
 [recommended]:      https://developers.google.com/web/tools/setup/setup-buildtools#dont_trip_up_with_vendor_prefixes
 [Can I Use]:        http://caniuse.com/
+[cult-img]:         http://cultofmartians.com/assets/badges/badge.svg
 [PostCSS]:          https://github.com/postcss/postcss
-[ci-img]:           https://travis-ci.org/postcss/autoprefixer.svg
-[ci]:               https://travis-ci.org/postcss/autoprefixer
+[cult]:             http://cultofmartians.com/tasks/autoprefixer-grid.html
 
 
 ## Features
