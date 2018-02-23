@@ -59,6 +59,9 @@ const backgrounder = autoprefixer({
 const resolutioner = autoprefixer({
     browsers: ['Safari 7', 'Opera 12']
 });
+const overscroller = autoprefixer({
+    browsers: ['Edge 16']
+});
 
 function prefixer(name) {
     if (
@@ -112,6 +115,8 @@ function prefixer(name) {
         return intrinsicer;
     } else if (name === 'supports') {
         return supporter;
+    } else if (name === 'overscroll-behavior') {
+        return overscroller;
     } else {
         return compiler;
     }
@@ -415,6 +420,7 @@ describe('hacks', () => {
     it('supports cross-fade()',         () => test('cross-fade'));
     it('supports text-decoration',      () => test('text-decoration'));
     it('ignores modern direction',      () => test('animation'));
+    it('supports overscroll-behavior',  () => test('overscroll-behavior'));
 
     it('supports appearance for IE', () => {
         const instance = autoprefixer({ browsers: 'Edge 15' });

@@ -769,3 +769,13 @@ f(bidi, { match: /y x/ }, browsers =>
         browsers
     })
 );
+
+
+// overscroll-behavior selector
+const over = require('caniuse-lite/data/features/css-overscroll-behavior.js');
+f(over, { match: /a #1/ }, browsers =>
+    prefix(['overscroll-behavior'], {
+        feature: 'css-overscroll-behavior',
+        browsers
+    })
+);
