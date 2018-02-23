@@ -7,15 +7,15 @@
         [header-left] "head head" 30px [header-right]
         [main-left]   "nav  main" 1fr  [main-right]
         [footer-left] "nav  foot" 30px [footer-right]
-        / 120px 1fr;
+        / 120px repeat(4, 250px 10px);
 }
 
 .c {
     grid-template:
-        "hd hd hd hd   hd   hd   hd   hd   hd" minmax(100px, auto)
-        "sd sd sd main main main main main main" minmax(100px, auto)
-        "ft ft ft ft   ft   ft   ft   ft   ft" minmax(100px, auto)
-                / 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr ;
+        "hd hd hd hd hd hd hd hd hd" minmax(100px, auto)
+        "sd sd sd mn mn mn mn mn mn" minmax(100px, auto)
+        "ft ft ft ft ft ft ft ft ft" minmax(100px, auto)
+                / 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
 .d {
@@ -24,4 +24,36 @@
 
 .e {
     grid-template: 10px;
+}
+
+.head {
+    grid-area: head;
+}
+
+.nav {
+    grid-area: nav;
+}
+
+.main {
+    grid-area: main;
+}
+
+.foot {
+    grid-area: foot;
+}
+
+.hd {
+    grid-area: hd;
+}
+
+.sd {
+    grid-area: sd;
+}
+
+.mn {
+    grid-area: mn;
+}
+
+.ft {
+    grid-area: ft;
 }
