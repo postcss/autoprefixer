@@ -40,7 +40,7 @@
     "jest": "^22.4.2",
     "lint-staged": "^7.0.0",
     "pre-commit": "^1.2.2",
-    "size-limit": "^0.14.1"
+    "size-limit": "^0.15.1"
   },
   "bin": {
     "autoprefixer": "./bin/autoprefixer"
