@@ -493,7 +493,7 @@ describe('hacks', () => {
 
         expect(result.css).toEqual(output);
         expect(result.warnings().map(i => i.toString())).toEqual([
-            'autoprefixer: <css input>:30:5: Can not find grid areas: ' +
+            'autoprefixer: <css input>:37:5: Can not find grid areas: ' +
             'head, nav, main, foot'
         ]);
     });
