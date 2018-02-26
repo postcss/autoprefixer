@@ -17,7 +17,7 @@ entirely):
 ```
 
 Autoprefixer will use the data based on current browser popularity and property
-support to apply prefixes for you. You can try the [interactive demo]
+support to apply prefixes for you. You can try the [interactive demo]
 of Autoprefixer.
 
 ```css
