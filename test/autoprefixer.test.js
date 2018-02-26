@@ -266,6 +266,7 @@ it('removes unnecessary prefixes', () => {
         if (type === 'cascade' ) continue;
         if (type === 'mistakes' ) continue;
         if (type === 'flex-rewrite' ) continue;
+        if (type === 'grid' ) continue;
         if (type === 'grid-area' ) continue;
         if (type === 'grid-template' ) continue;
         if (type === 'grid-template-areas' ) continue;
