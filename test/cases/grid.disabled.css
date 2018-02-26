@@ -32,7 +32,8 @@
     grid-row-end: 4;
 }
 
-.webkit {
+.warn {
+    grid-column-end: 3;
     grid: subgrid;
     grid-template-areas: "head head"
                          "nav  main"

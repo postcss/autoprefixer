@@ -494,8 +494,10 @@ describe('hacks', () => {
 
         expect(result.css).toEqual(output);
         expect(result.warnings().map(i => i.toString())).toEqual([
-            'autoprefixer: <css input>:37:5: Can not find grid areas: ' +
-            'head, nav, main, foot'
+            'autoprefixer: <css input>:36:5: Can not prefix grid-column-end ' +
+                '(grid-column-start is not found)',
+            'autoprefixer: <css input>:38:5: Can not find grid areas: ' +
+                'head, nav, main, foot'
         ]);
     });
 

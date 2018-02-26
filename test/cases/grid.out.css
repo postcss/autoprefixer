@@ -54,7 +54,9 @@
     grid-row-end: 4;
 }
 
-.webkit {
+.warn {
+    -ms-grid-column-span: 3;
+    grid-column-end: 3;
     grid: subgrid;
     grid-template-areas: "head head"
                          "nav  main"
