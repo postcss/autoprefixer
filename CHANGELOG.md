@@ -1,6 +1,12 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 8.1 “Rex, Familia et Ultio”
+* Add `overscroll-behavior` support.
+* Add `grid-template` shortcut support (by Evgeny Petukhov).
+* Add better `grid-column-end` and `grid-row-end` support (by Evgeny Petukhov).
+* Fix Grid properties support in `@supports`.
+
 ## 8.0 “Excelsior”
 * Use Browserslist 3.0.
 * Rename `autoprefixer-info` CLI tool to `autoprefixer --info`.
