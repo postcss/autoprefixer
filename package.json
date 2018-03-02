@@ -29,7 +29,7 @@
     "babel-preset-env": "^1.6.1",
     "babelify": "^8.0.0",
     "browserify": "^16.1.0",
-    "eslint": "^4.18.1",
+    "eslint": "^4.18.2",
     "eslint-ci": "^0.1.1",
     "eslint-config-postcss": "^2.0.2",
     "fs-extra": "^5.0.0",
@@ -40,7 +40,7 @@
     "jest": "^22.4.2",
     "lint-staged": "^7.0.0",
     "pre-commit": "^1.2.2",
-    "size-limit": "^0.15.1"
+    "size-limit": "^0.15.2"
   },
   "bin": {
     "autoprefixer": "./bin/autoprefixer"
