@@ -14,8 +14,8 @@
   "repository": "postcss/autoprefixer",
   "dependencies": {
     "babel-register": "^6.26.0",
-    "browserslist": "^3.1.1",
-    "caniuse-lite": "^1.0.30000810",
+    "browserslist": "^3.1.2",
+    "caniuse-lite": "^1.0.30000813",
     "normalize-range": "^0.1.2",
     "num2fraction": "^1.2.2",
     "postcss": "^6.0.19",
@@ -28,7 +28,7 @@
     "babel-plugin-transform-proto-to-assign": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babelify": "^8.0.0",
-    "browserify": "^16.1.0",
+    "browserify": "^16.1.1",
     "eslint": "^4.18.2",
     "eslint-ci": "^0.1.1",
     "eslint-config-postcss": "^2.0.2",
@@ -40,7 +40,7 @@
     "jest": "^22.4.2",
     "lint-staged": "^7.0.0",
     "pre-commit": "^1.2.2",
-    "size-limit": "^0.15.2"
+    "size-limit": "^0.16.1"
   },
   "bin": {
     "autoprefixer": "./bin/autoprefixer"
