@@ -66,33 +66,6 @@ Because Autoprefixer is a postprocessor for CSS,
 you can also use it with preprocessors such as Sass, Stylus or LESS.
 
 
-### Flexbox, Filters, etc.
-
-Just write normal CSS according to the latest W3C specs and Autoprefixer
-will produce the code for old browsers.
-
-```css
-a {
-    display: flex;
-}
-```
-
-compiles to:
-
-```css
-a {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-}
-```
-
-Autoprefixer has [27 special hacks] to fix web browser differences.
-
-[27 special hacks]: https://github.com/postcss/autoprefixer/tree/master/lib/hacks
-
-
 ### Only Actual Prefixes
 
 Autoprefixer utilizes the most recent data from [Can I Use]
