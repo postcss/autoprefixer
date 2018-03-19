@@ -422,6 +422,7 @@ describe('hacks', () => {
     it('supports text-decoration',      () => test('text-decoration'));
     it('ignores modern direction',      () => test('animation'));
     it('supports overscroll-behavior',  () => test('overscroll-behavior'));
+    it('supports color-adjust',         () => test('color-adjust'));
 
     it('supports appearance for IE', () => {
         const instance = autoprefixer({ browsers: 'Edge 15' });
