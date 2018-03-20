@@ -779,3 +779,12 @@ f(over, { match: /a #1/ }, browsers =>
         browsers
     })
 );
+
+// CSS color-adjust property
+f(require('caniuse-lite/data/features/css-color-adjust.json'), browsers =>
+    prefix(['color-adjust'], {
+        mistakes: ['-khtml-', '-ms-', '-moz-', '-o-'],
+        feature: 'color-adjust',
+        browsers
+    })
+);
