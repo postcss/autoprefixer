@@ -144,7 +144,7 @@ const COMMONS = [
     'advanced-filter', 'element', 'image-set', 'image-rendering',
     'mask-border', 'writing-mode', 'cross-fade', 'gradient-fix',
     'text-emphasis-position', 'grid', 'grid-area', 'grid-template',
-    'grid-template-areas'
+    'grid-template-areas', 'color-adjust'
 ];
 
 it('throws on wrong options', () => {
