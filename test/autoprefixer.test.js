@@ -144,7 +144,7 @@ const COMMONS = [
     'advanced-filter', 'element', 'image-set', 'image-rendering',
     'mask-border', 'writing-mode', 'cross-fade', 'gradient-fix',
     'text-emphasis-position', 'grid', 'grid-area', 'grid-template',
-    'grid-template-areas'
+    'grid-template-areas', 'color-adjust'
 ];
 
 it('throws on wrong options', () => {
@@ -422,6 +422,7 @@ describe('hacks', () => {
     it('supports text-decoration',      () => test('text-decoration'));
     it('ignores modern direction',      () => test('animation'));
     it('supports overscroll-behavior',  () => test('overscroll-behavior'));
+    it('supports color-adjust',         () => test('color-adjust'));
 
     it('supports appearance for IE', () => {
         const instance = autoprefixer({ browsers: 'Edge 15' });
