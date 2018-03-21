@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 8.2 “Ad Astra per Aspera”
+* Add `color-adjust` (by Sergey Lysenko, Stanislav Botev, and Yuriy Alekseyev).
+
 ## 8.1 “Rex, Familia et Ultio”
 * Add `overscroll-behavior` support.
 * Add `grid-template` shortcut support (by Evgeny Petukhov).
