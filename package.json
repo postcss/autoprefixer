@@ -14,11 +14,11 @@
   "repository": "postcss/autoprefixer",
   "dependencies": {
     "babel-register": "^6.26.0",
-    "browserslist": "^3.1.2",
+    "browserslist": "^3.2.0",
     "caniuse-lite": "^1.0.30000817",
     "normalize-range": "^0.1.2",
     "num2fraction": "^1.2.2",
-    "postcss": "^6.0.19",
+    "postcss": "^6.0.20",
     "postcss-value-parser": "^3.2.3"
   },
   "devDependencies": {
@@ -29,7 +29,7 @@
     "babel-preset-env": "^1.6.1",
     "babelify": "^8.0.0",
     "browserify": "^16.1.1",
-    "eslint": "^4.18.2",
+    "eslint": "^4.19.0",
     "eslint-ci": "^0.1.1",
     "eslint-config-postcss": "^2.0.2",
     "fs-extra": "^5.0.0",
@@ -37,10 +37,10 @@
     "gulp-babel": "^7.0.1",
     "gulp-json-editor": "^2.2.2",
     "gulp-replace": "^0.6.1",
-    "jest": "^22.4.2",
+    "jest": "^22.4.3",
     "lint-staged": "^7.0.0",
     "pre-commit": "^1.2.2",
-    "size-limit": "^0.16.1"
+    "size-limit": "^0.17.0"
   },
   "bin": {
     "autoprefixer": "./bin/autoprefixer"
