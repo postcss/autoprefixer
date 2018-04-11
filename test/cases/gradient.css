@@ -107,3 +107,12 @@ div {
 .no-div {
     background: linear-gradient(black);
 }
+
+.background-shorthand {
+    background: radial-gradient(#FFF, transparent) 0 0 / cover no-repeat #F0F;
+}
+
+.background-advanced {
+    background: radial-gradient(ellipse farthest-corner at 5px 15px, rgba(214, 168, 18, 0.7) 0%, rgba(255, 21, 177, 0.7) 50%, rgba(210, 7, 148, 0.7) 95%),
+                url(path/to/image.jpg) 50%/cover;
+}
