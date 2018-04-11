@@ -32,32 +32,20 @@
     grid-area: foot;
 }
 
-.f {
-    -ms-grid-row: 3;
-    -ms-grid-column: 2;
-    grid-area: foot;
-}
-
 @media (max-width: 1000px) {
     .a {
         grid-template-areas: "head main";
     }
-
     .b {
-        -ms-grid-row: 1;
-        -ms-grid-column: 1;
-        grid-area: head;
+        -ms-grid-row:
+        1;
+        -ms-grid-column:
+        1;
     }
-
     .c {
-        -ms-grid-row: 1;
-        -ms-grid-column: 2;
-        grid-area: main;
-    }
-
-    .d {
-        -ms-grid-row: 1;
-        -ms-grid-column: 2;
-        grid-area: main;
+        -ms-grid-row:
+        1;
+        -ms-grid-column:
+        2;
     }
 }
