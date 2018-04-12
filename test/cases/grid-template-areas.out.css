@@ -37,15 +37,11 @@
         grid-template-areas: "head main";
     }
     .b {
-        -ms-grid-row:
-        1;
-        -ms-grid-column:
-        1;
+        -ms-grid-row: 1;
+        -ms-grid-column: 1;
     }
     .c {
-        -ms-grid-row:
-        1;
-        -ms-grid-column:
-        2;
+        -ms-grid-row: 1;
+        -ms-grid-column: 2;
     }
 }
