@@ -5,10 +5,8 @@
 }
 
 .b {
-    -ms-grid-rows:
-        30px 1fr 30px;
-    -ms-grid-columns:
-        120px (250px 10px)[4];
+    -ms-grid-rows: 30px 1fr 30px;
+    -ms-grid-columns: 120px (250px 10px)[4];
     grid-template:
         [header-left] "head head" 30px [header-right]
         [main-left]   "nav  main" 1fr  [main-right]
@@ -17,10 +15,8 @@
 }
 
 .c {
-    -ms-grid-rows:
-        minmax(100px, auto) minmax(100px, auto) minmax(100px, auto);
-    -ms-grid-columns:
-        1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    -ms-grid-rows: minmax(100px, auto) minmax(100px, auto) minmax(100px, auto);
+    -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template:
         "hd hd hd hd hd hd hd hd hd" minmax(100px, auto)
         "sd sd sd mn mn mn mn mn mn" minmax(100px, auto)
@@ -94,10 +90,8 @@
 
 @media (min-width: 1000px) {
     .b {
-        -ms-grid-rows:
-            30px auto 1fr 30px;
-        -ms-grid-columns:
-            1fr;
+        -ms-grid-rows: 30px auto 1fr 30px;
+        -ms-grid-columns: 1fr;
         grid-template:
             [header-left] "head" 30px [header-right]
             [nav-left]    "nav"  auto  [nav-right]
