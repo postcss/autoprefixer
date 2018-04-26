@@ -202,24 +202,25 @@ it('passes statistics to Browserslist', () => {
         .toMatch(/Browsers:\n\s\sChrome: 11\n\s\sIE: 11\n/);
 });
 
-it('prefixes values',                () => test('values'));
-it('prefixes @keyframes',            () => test('keyframes'));
-it('prefixes @viewport',             () => test('viewport'));
-it('prefixes selectors',             () => test('selectors'));
-it('prefixes resolution query',      () => test('resolution'));
-it('removes common mistakes',        () => test('mistakes'));
-it('reads notes for prefixes',       () => test('notes'));
-it('keeps vendor-specific hacks',    () => test('vendor-hack'));
-it('keeps values with vendor hacks', () => test('value-hack'));
-it('works with comments',            () => test('comments'));
-it('uses visual cascade',            () => test('cascade'));
-it('works with properties near',     () => test('double'));
-it('checks prefixed in hacks',       () => test('check-down'));
-it('normalize cascade after remove', () => test('uncascade'));
-it('prefix decls in @supports',      () => test('supports'));
-it('saves declaration style',        () => test('style'));
-it('uses control comments',          () => test('disabled'));
-it('has actual example in docs',     () => test('example'));
+it('prefixes values',                    () => test('values'));
+it('prefixes @keyframes',                () => test('keyframes'));
+it('prefixes @viewport',                 () => test('viewport'));
+it('prefixes selectors',                 () => test('selectors'));
+it('prefixes resolution query',          () => test('resolution'));
+it('removes common mistakes',            () => test('mistakes'));
+it('reads notes for prefixes',           () => test('notes'));
+it('keeps vendor-specific hacks',        () => test('vendor-hack'));
+it('keeps values with vendor hacks',     () => test('value-hack'));
+it('works with comments',                () => test('comments'));
+it('uses visual cascade',                () => test('cascade'));
+it('works with properties near',         () => test('double'));
+it('checks prefixed in hacks',           () => test('check-down'));
+it('normalize cascade after remove',     () => test('uncascade'));
+it('prefix decls in @supports',          () => test('supports'));
+it('saves declaration style',            () => test('style'));
+it('uses control comments',              () => test('ignore-next'));
+it('uses "ignore next" control comment', () => test('disabled'));
+it('has actual example in docs',         () => test('example'));
 
 it('uses control comments to whole scope', () => {
     const input  = read('scope');

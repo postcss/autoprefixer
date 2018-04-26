@@ -1,0 +1,16 @@
+a {
+  /* autoprefixer: ignore next */
+  mask: none;
+}
+
+/* autoprefixer: ignore next */
+b {
+  mask: none;
+}
+
+/* autoprefixer: ignore next */
+@media (min-resolution: 2dppx) {
+  .image {
+      background-image: url(image@2x.png);
+  }
+}
