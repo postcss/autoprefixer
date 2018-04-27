@@ -95,8 +95,8 @@ a {
 ## Browsers
 
 Autoprefixer uses [Browserslist], so you can specify the browsers
-you want to target in your project by queries like `last 2 versions, not dead`
-or `> 5%` (see [Best Practises](https://github.com/browserslist/browserslist#best-practices)).
+you want to target in your project by queries like `> 5%`
+(see [Best Practises]).
 
 The best way to provide browsers is `.browserslistrc` config
 or `package.json` with `browserslist` key. Put it in your project root.
@@ -110,6 +110,7 @@ and default value.
 
 [Browserslist docs]: https://github.com/ai/browserslist#queries
 [babel-preset-env]:  https://github.com/babel/babel-preset-env
+[Best Practises]:    https://github.com/browserslist/browserslist#best-practices
 [Browserslist]:      https://github.com/ai/browserslist
 [Stylelint]:         http://stylelint.io/
 
@@ -555,11 +556,6 @@ autoprefixer({ cascade: false })
 
 Available options are:
 
-* `browsers` (array): list of browsers query (like `last 2 versions, not dead`),
-  which are supported in your project. We recommend to use `browserslist`
-  config or `browserslist` key in `package.json`, rather than this option
-  to share browsers with other tools. See [Browserslist docs] for available
-  queries and default value.
 * `env` (string): environment for Browserslist.
 * `cascade` (boolean): should Autoprefixer use Visual Cascade,
   if CSS is uncompressed. Default: `true`
@@ -575,6 +571,11 @@ Available options are:
   properties. Default is `false`.
 * `stats` (object): custom [usage statistics] for `> 10% in my stats`
   browsers query.
+* `browsers` (array): list of queries for target browsers. Try to not use it.
+  The best preactive is to use `.browserslistrc` config
+  or `browserslist` key in `package.json` to share target browsers
+  with Babel, ESLint and Stylelint. See [Browserslist docs]
+  for available queries and default value.
 
 Plugin object has `info()` method for debugging purpose.
 
