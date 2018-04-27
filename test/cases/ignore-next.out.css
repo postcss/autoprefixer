@@ -1,16 +1,29 @@
-a {
+ignore-property {
   /* autoprefixer: ignore next */
   mask: none;
+  background: -webkit-linear-gradient(top, white, black);
+  background: -o-linear-gradient(top, white, black);
+  background: linear-gradient(to bottom, white, black);
+}
+
+ignore-property_nospaces-comment {
+  /* autoprefixer:ignore next */
+  mask: none;
+  background: -webkit-linear-gradient(top, white, black);
+  background: -o-linear-gradient(top, white, black);
+  background: linear-gradient(to bottom, white, black);
 }
 
 /* autoprefixer: ignore next */
-b {
+ingore-rule {
   mask: none;
+  background: linear-gradient(to bottom, white, black);
 }
 
 /* autoprefixer: ignore next */
 @media (min-resolution: 2dppx) {
-  .image {
-      background-image: url(image@2x.png);
+  ignore-directive {
+      mask: none;
+      background: linear-gradient(to bottom, white, black);
   }
 }
