@@ -11,7 +11,7 @@ ignore-property_nospaces-comment {
 }
 
 /* autoprefixer: ignore next */
-ingore-rule {
+ignore-rule {
   mask: none;
   background: linear-gradient(to bottom, white, black);
 }
