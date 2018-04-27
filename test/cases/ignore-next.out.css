@@ -1,4 +1,4 @@
-ignore-property {
+it_ignore-property {
   /* autoprefixer: ignore next */
   mask: none;
   background: -webkit-linear-gradient(top, white, black);
@@ -6,7 +6,7 @@ ignore-property {
   background: linear-gradient(to bottom, white, black);
 }
 
-ignore-property_nospaces-comment {
+it_ignore-property_nospaces-comment {
   /* autoprefixer:ignore next */
   mask: none;
   background: -webkit-linear-gradient(top, white, black);
@@ -15,14 +15,14 @@ ignore-property_nospaces-comment {
 }
 
 /* autoprefixer: ignore next */
-ignore-rule {
+it_ignore-rule::placeholder {
   mask: none;
   background: linear-gradient(to bottom, white, black);
 }
 
 /* autoprefixer: ignore next */
 @media (min-resolution: 2dppx) {
-  ignore-directive {
+  it_ignore-at-rule {
       mask: none;
       background: linear-gradient(to bottom, white, black);
   }
