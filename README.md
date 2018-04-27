@@ -95,8 +95,8 @@ a {
 ## Browsers
 
 Autoprefixer uses [Browserslist], so you can specify the browsers
-you want to target in your project by queries like `last 2 versions`
-or `> 5%`.
+you want to target in your project by queries like `last 2 versions, not dead`
+or `> 5%` (see [Best Practises](https://github.com/browserslist/browserslist#best-practices)).
 
 The best way to provide browsers is `.browserslistrc` config
 or `package.json` with `browserslist` key. Put it in your project root.
@@ -555,7 +555,7 @@ autoprefixer({ cascade: false })
 
 Available options are:
 
-* `browsers` (array): list of browsers query (like `last 2 versions`),
+* `browsers` (array): list of browsers query (like `last 2 versions, not dead`),
   which are supported in your project. We recommend to use `browserslist`
   config or `browserslist` key in `package.json`, rather than this option
   to share browsers with other tools. See [Browserslist docs] for available
