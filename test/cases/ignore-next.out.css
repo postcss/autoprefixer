@@ -16,14 +16,18 @@ it_ignore-property_nospaces-comment {
 
 /* autoprefixer: ignore next */
 it_ignore-rule::placeholder {
-  mask: none;
-  background: linear-gradient(to bottom, white, black);
+  -webkit-mask: none;
+          mask: none;
 }
 
 /* autoprefixer: ignore next */
 @media (min-resolution: 2dppx) {
-  it_ignore-at-rule {
-      mask: none;
-      background: linear-gradient(to bottom, white, black);
+  it_ignore-at-rule::-webkit-input-placeholder {
+      -webkit-mask: none;
+              mask: none;
+  }
+  it_ignore-at-rule::placeholder {
+      -webkit-mask: none;
+              mask: none;
   }
 }
