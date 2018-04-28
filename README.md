@@ -523,11 +523,24 @@ b {
     /* autoprefixer: off */
     transition: 1s; /* it will not be prefixed */
 }
+
+c {
+    /* autoprefixer: ignore next */
+    transition: 1s; /* it will not be prefixed */
+    border-radius: 10px; /* it will be prefixed */
+}
 ```
 
 Control comments disable Autoprefixer within the whole rule in which
 you place it. In the above example, Autoprefixer will be disabled
 in the entire `b` rule scope, not only after the comment.
+
+For single rule / property exlusions should be used folowing comment:
+```css
+/* autoprefixer: ignore next */
+```
+Autoprefixer will be disabled only for  `transition` property 
+in the `c` rule scope.
 
 You can also use comments recursively:
 
