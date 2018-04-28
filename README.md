@@ -515,32 +515,27 @@ If you do not need Autoprefixer in some part of your CSS,
 you can use control comments to disable Autoprefixer.
 
 ```css
-a {
+.a {
     transition: 1s; /* it will be prefixed */
 }
 
-b {
+.b {
     /* autoprefixer: off */
     transition: 1s; /* it will not be prefixed */
 }
 
-c {
+.c {
     /* autoprefixer: ignore next */
     transition: 1s; /* it will not be prefixed */
     border-radius: 10px; /* it will be prefixed */
 }
 ```
 
-Control comments disable Autoprefixer within the whole rule in which
-you place it. In the above example, Autoprefixer will be disabled
-in the entire `b` rule scope, not only after the comment.
+There is two types of control commens:
 
-For single rule / property exlusions should be used folowing comment:
-```css
-/* autoprefixer: ignore next */
-```
-Autoprefixer will be disabled only for  `transition` property 
-in the `c` rule scope.
+* `/* autoprefixer: off */` disable the whole block *before* and after comment.
+* `/* autoprefixer: ignore next */` disable only next property
+  or next rule selector or at-rule parameters (but not rule/at-rule body).
 
 You can also use comments recursively:
 
