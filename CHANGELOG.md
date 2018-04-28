@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 8.4 “Non in aves, sed in angues”
+* Add `/* autoprefixer: ignore next */` control comment (by Pavel Vostrikov).
+
 ## 8.3 “Benigno Numine”
 * Add `@media` support to `grid-template` (by Evgeny Petukhov).
 * Fix `radial-gradient` direction warning (by Gustavo Real).
