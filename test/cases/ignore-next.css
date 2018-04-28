@@ -1,23 +1,23 @@
-it_ignore-property {
+.ignore-property {
   /* autoprefixer: ignore next */
   mask: none;
   background: linear-gradient(to bottom, white, black);
 }
 
-it_ignore-property_nospaces-comment {
+.ignore-property_nospaces-comment {
   /* autoprefixer:ignore next */
   mask: none;
   background: linear-gradient(to bottom, white, black);
 }
 
 /* autoprefixer: ignore next */
-it_ignore-rule::placeholder {
+.ignore-rule::placeholder {
   mask: none;
 }
 
 /* autoprefixer: ignore next */
 @media (min-resolution: 2dppx) {
-  it_ignore-at-rule::placeholder {
+  .ignore-at-rule::placeholder {
       mask: none;
   }
 }
