@@ -527,7 +527,7 @@ you can use control comments to disable Autoprefixer.
 .c {
     /* autoprefixer: ignore next */
     transition: 1s; /* it will not be prefixed */
-    border-radius: 10px; /* it will be prefixed */
+    mask: url(image.png); /* it will be prefixed */
 }
 ```
 
