@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 8.4.1
+* Fix working in old PostCSS versions (by Diablohu).
+
 ## 8.4 “Non in aves, sed in angues”
 * Add `/* autoprefixer: ignore next */` control comment (by Pavel Vostrikov).
 
