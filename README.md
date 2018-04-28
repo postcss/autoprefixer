@@ -535,7 +535,7 @@ There is two types of control commens:
 
 * `/* autoprefixer: off */` disable the whole block *before* and after comment.
 * `/* autoprefixer: ignore next */` disable only next property
-  or next rule selector or at-rule parameters (but not rule/at-rule body).
+  or next rule selector or at-rule parameters (but not rule/at‑rule body).
 
 You can also use comments recursively:
 
@@ -550,7 +550,11 @@ You can also use comments recursively:
 ```
 
 In Sass/SCSS you can use all the disable options above, add an exclamation mark
-in the start of comment: `/*! autoprefixer: off */`.
+in the start of comment:
+
+```scss
+/*! autoprefixer: off */
+```
 
 
 ## Options
