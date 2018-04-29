@@ -1,9 +1,9 @@
 .a {
     grid-gap: 1rem;
-    -ms-grid-rows: 1fr 1rem 1fr 1rem 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    -ms-grid-rows: 1fr 1rem minmax(100px, 1fr) 1rem 2fr;
+    grid-template-rows: 1fr minmax(100px, 1fr) 2fr;
     -ms-grid-columns: 1fr 1rem 1fr 1rem 1fr;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     grid-template-areas:
         "head head  head"
         "nav  main  main"

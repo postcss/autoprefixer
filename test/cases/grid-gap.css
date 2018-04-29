@@ -1,7 +1,7 @@
 .a {
     grid-gap: 1rem;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr minmax(100px, 1fr) 2fr;
+    grid-template-columns: repeat(3, 1fr);
     grid-template-areas:
         "head head  head"
         "nav  main  main"
