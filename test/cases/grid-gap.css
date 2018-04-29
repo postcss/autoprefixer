@@ -1,0 +1,25 @@
+.a {
+    grid-gap: 1rem;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+        "head head  head"
+        "nav  main  main"
+        "nav  foot  foot";
+}
+
+.b {
+    grid-area: head;
+}
+
+.c {
+    grid-area: main;
+}
+
+.d {
+    grid-area: nav;
+}
+
+.e {
+    grid-area: foot;
+}

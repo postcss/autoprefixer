@@ -66,6 +66,7 @@ const overscroller = autoprefixer({
 function prefixer(name) {
     if (
         name === 'grid' ||
+        name === 'grid-gap' ||
         name === 'grid-area' ||
         name === 'grid-template' ||
         name === 'grid-template-areas'
@@ -144,7 +145,7 @@ const COMMONS = [
     'advanced-filter', 'element', 'image-set', 'image-rendering',
     'mask-border', 'writing-mode', 'cross-fade', 'gradient-fix',
     'text-emphasis-position', 'grid', 'grid-area', 'grid-template',
-    'grid-template-areas', 'color-adjust'
+    'grid-template-areas', 'grid-gap', 'color-adjust'
 ];
 
 it('throws on wrong options', () => {
@@ -268,6 +269,7 @@ it('removes unnecessary prefixes', () => {
         if (type === 'mistakes' ) continue;
         if (type === 'flex-rewrite' ) continue;
         if (type === 'grid' ) continue;
+        if (type === 'grid-gap' ) continue;
         if (type === 'grid-area' ) continue;
         if (type === 'grid-template' ) continue;
         if (type === 'grid-template-areas' ) continue;
