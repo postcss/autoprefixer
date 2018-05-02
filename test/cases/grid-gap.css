@@ -23,3 +23,28 @@
 .e {
     grid-area: foot;
 }
+
+.a-shortcut {
+    grid-gap: 1rem;
+    grid-template:
+        "head-shortcut head-shortcut  head-shortcut" 1fr
+        "nav-shortcut  main-shortcut  main-shortcut" minmax(100px, 1fr)
+        "nav-shortcut  foot-shortcut  foot-shortcut" 2fr /
+        1fr 100px 1fr;
+}
+
+.b-shortcut {
+    grid-area: head-shortcut;
+}
+
+.c-shortcut {
+    grid-area: main-shortcut;
+}
+
+.d-shortcut {
+    grid-area: nav-shortcut;
+}
+
+.e-shortcut {
+    grid-area: foot-shortcut;
+}

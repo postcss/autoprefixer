@@ -37,3 +37,42 @@
     -ms-grid-column-span: 3;
     grid-area: foot;
 }
+
+.a-shortcut {
+    grid-gap: 1rem;
+    -ms-grid-rows: 1fr 1rem minmax(100px, 1fr) 1rem 2fr;
+    -ms-grid-columns: 1fr 1rem 100px 1rem 1fr;
+    grid-template:
+        "head-shortcut head-shortcut  head-shortcut" 1fr
+        "nav-shortcut  main-shortcut  main-shortcut" minmax(100px, 1fr)
+        "nav-shortcut  foot-shortcut  foot-shortcut" 2fr /
+        1fr 100px 1fr;
+}
+
+.b-shortcut {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 5;
+    grid-area: head-shortcut;
+}
+
+.c-shortcut {
+    -ms-grid-row: 3;
+    -ms-grid-column: 3;
+    -ms-grid-column-span: 3;
+    grid-area: main-shortcut;
+}
+
+.d-shortcut {
+    -ms-grid-row: 3;
+    -ms-grid-row-span: 3;
+    -ms-grid-column: 1;
+    grid-area: nav-shortcut;
+}
+
+.e-shortcut {
+    -ms-grid-row: 5;
+    -ms-grid-column: 3;
+    -ms-grid-column-span: 3;
+    grid-area: foot-shortcut;
+}
