@@ -584,7 +584,7 @@ Available options are:
 * `stats` (object): custom [usage statistics] for `> 10% in my stats`
   browsers query.
 * `browsers` (array): list of queries for target browsers. Try to not use it.
-  The best preactive is to use `.browserslistrc` config
+  The best practice is to use `.browserslistrc` config
   or `browserslist` key in `package.json` to share target browsers
   with Babel, ESLint and Stylelint. See [Browserslist docs]
   for available queries and default value.
