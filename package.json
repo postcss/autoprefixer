@@ -15,7 +15,7 @@
   "dependencies": {
     "babel-register": "^6.26.0",
     "browserslist": "^3.2.6",
-    "caniuse-lite": "^1.0.30000832",
+    "caniuse-lite": "^1.0.30000835",
     "normalize-range": "^0.1.2",
     "num2fraction": "^1.2.2",
     "postcss": "^6.0.22",
@@ -38,7 +38,7 @@
     "gulp-json-editor": "^2.3.0",
     "gulp-replace": "^0.6.1",
     "jest": "^22.4.3",
-    "lint-staged": "^7.0.5",
+    "lint-staged": "^7.1.0",
     "pre-commit": "^1.2.2",
     "size-limit": "^0.17.0"
   },
