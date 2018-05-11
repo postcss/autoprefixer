@@ -531,7 +531,6 @@ you can use control comments to disable Autoprefixer.
 }
 ```
 
-
 There are two types of control comments:
 
 * `/* autoprefixer: off */` disable the whole block *before* and after comment.
