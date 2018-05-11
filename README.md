@@ -502,7 +502,7 @@ You can use these plugin options to disable some of the Autoprefixer's features.
   versions of specification.
 * `remove: false` will disable cleaning outdated prefixes.
 
-You shoud set them to the plugin:
+You should set them to the plugin:
 
 ```js
 autoprefixer({ grid: true });
@@ -531,7 +531,7 @@ you can use control comments to disable Autoprefixer.
 }
 ```
 
-There is two types of control commens:
+There is two types of control comments:
 
 * `/* autoprefixer: off */` disable the whole block *before* and after comment.
 * `/* autoprefixer: ignore next */` disable only next property
