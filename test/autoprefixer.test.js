@@ -66,6 +66,7 @@ const overscroller = autoprefixer({
 function prefixer(name) {
     if (
         name === 'grid' ||
+        name === 'grid-gap' ||
         name === 'grid-area' ||
         name === 'grid-template' ||
         name === 'grid-template-areas'
@@ -144,7 +145,7 @@ const COMMONS = [
     'advanced-filter', 'element', 'image-set', 'image-rendering',
     'mask-border', 'writing-mode', 'cross-fade', 'gradient-fix',
     'text-emphasis-position', 'grid', 'grid-area', 'grid-template',
-    'grid-template-areas', 'color-adjust'
+    'grid-template-areas', 'grid-gap', 'color-adjust'
 ];
 
 it('throws on wrong options', () => {
@@ -268,6 +269,7 @@ it('removes unnecessary prefixes', () => {
         if (type === 'mistakes' ) continue;
         if (type === 'flex-rewrite' ) continue;
         if (type === 'grid' ) continue;
+        if (type === 'grid-gap' ) continue;
         if (type === 'grid-area' ) continue;
         if (type === 'grid-template' ) continue;
         if (type === 'grid-template-areas' ) continue;
@@ -498,8 +500,18 @@ describe('hacks', () => {
         expect(result.warnings().map(i => i.toString())).toEqual([
             'autoprefixer: <css input>:36:5: Can not prefix grid-column-end ' +
                 '(grid-column-start is not found)',
-            'autoprefixer: <css input>:38:5: Can not find grid areas: ' +
-                'head, nav, main, foot'
+            'autoprefixer: <css input>:39:5: Can not impliment grid-gap ' +
+                'without grid-tamplate-columns',
+            'autoprefixer: <css input>:39:5: Can not find grid areas: ' +
+                'head, nav, main, foot',
+            'autoprefixer: <css input>:47:5: Can not impliment grid-gap ' +
+                'without grid-tamplate-columns',
+            'autoprefixer: <css input>:47:5: Can not find grid areas: a',
+            'autoprefixer: <css input>:55:5: Can not impliment grid-gap ' +
+                'without grid-tamplate-columns',
+            'autoprefixer: <css input>:55:5: Can not find grid areas: b',
+            'autoprefixer: <css input>:63:5: Can not find grid areas: c',
+            'autoprefixer: <css input>:71:5: Can not find grid areas: d'
         ]);
     });
 
