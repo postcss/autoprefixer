@@ -1,6 +1,11 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 8.5 “Muito Nobre e Sempre Leal”
+* Add `grid-gap` support (by Evgeny Petukhov).
+* Fix radial gradients direction fix.
+* Fix docs (by Phani Kandula and Huáng Jùnliàng).
+
 ## 8.4.1
 * Fix working in old PostCSS versions (by Diablohu).
 
