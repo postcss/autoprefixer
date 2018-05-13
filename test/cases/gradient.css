@@ -117,3 +117,11 @@ div {
                 radial-gradient(#FFF, transparent),
                 url(path/to/image.jpg) 50%/cover;
 }
+
+.multiradial {
+    mask-image: radial-gradient(circle closest-corner at 100% 50%, #000, transparent);
+}
+
+.broken {
+    mask-image: radial-gradient(white, black);
+}
