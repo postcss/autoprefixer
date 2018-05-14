@@ -549,7 +549,7 @@ You can also use comments recursively:
 }
 ```
 
-In Sass/SCSS you can use all the disable options above, add an exclamation mark
+In Sass/SCSS/Less you can use all the disable options above, add an exclamation mark
 in the start of comment:
 
 ```scss
