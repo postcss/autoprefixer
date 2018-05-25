@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 8.5.1
+* Remove unnecessary warning on `-webkit-fill-available`.
+
 ## 8.5 “Muito Nobre e Sempre Leal”
 * Add `grid-gap` support (by Evgeny Petukhov).
 * Fix radial gradients direction fix.
