@@ -35,3 +35,7 @@ p {
 .grid-auto-columns {
     grid-auto-columns: min-content max-content;
 }
+
+.ignore {
+    width: -webkit-fill-available;
+}

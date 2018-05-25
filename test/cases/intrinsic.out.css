@@ -52,3 +52,7 @@ p {
     grid-auto-columns: -webkit-min-content -webkit-max-content;
     grid-auto-columns: min-content max-content;
 }
+
+.ignore {
+    width: -webkit-fill-available;
+}
