@@ -26,6 +26,14 @@
     grid-template: 10px;
 }
 
+.f {
+    grid-gap: 10px;
+    grid-template:
+        "a b"
+        "c d" /
+        1fr 1fr;
+}
+
 .head {
     grid-area: head;
 }

@@ -34,6 +34,16 @@
     grid-template: 10px;
 }
 
+.f {
+    grid-gap: 10px;
+    -ms-grid-rows: auto 10px auto;
+    -ms-grid-columns: 1fr 10px 1fr;
+    grid-template:
+        "a b"
+        "c d" /
+        1fr 1fr;
+}
+
 .head {
     -ms-grid-row: 1;
     -ms-grid-column: 1;
