@@ -26,6 +26,14 @@
     grid-template: 10px;
 }
 
+.f {
+    grid-template:
+        "head head"
+        "nav main" 20px
+        "nav foot"
+        / 1fr 1fr;
+}
+
 .head {
     grid-area: head;
 }
