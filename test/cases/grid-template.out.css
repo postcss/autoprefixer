@@ -35,13 +35,13 @@
 }
 
 .f {
-    grid-gap: 10px;
-    -ms-grid-rows: auto 10px auto;
-    -ms-grid-columns: 1fr 10px 1fr;
+    -ms-grid-rows: auto 20px auto;
+    -ms-grid-columns: 1fr 1fr;
     grid-template:
-        "a b"
-        "c d" /
-        1fr 1fr;
+        "head head"
+        "nav main" 20px
+        "nav foot"
+        / 1fr 1fr;
 }
 
 .head {

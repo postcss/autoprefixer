@@ -27,11 +27,11 @@
 }
 
 .f {
-    grid-gap: 10px;
     grid-template:
-        "a b"
-        "c d" /
-        1fr 1fr;
+        "head head"
+        "nav main" 20px
+        "nav foot"
+        / 1fr 1fr;
 }
 
 .head {
