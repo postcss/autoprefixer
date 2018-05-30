@@ -1,6 +1,6 @@
 {
   "name": "autoprefixer",
-  "version": "8.5.1",
+  "version": "8.5.2",
   "description": "Parse CSS and add vendor prefixes to CSS rules using values from the Can I Use website",
   "keywords": [
     "autoprefixer",
