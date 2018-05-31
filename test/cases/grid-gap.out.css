@@ -39,8 +39,8 @@
 }
 
 .f {
-    grid-gap: 10px;
-    -ms-grid-columns: 1fr 10px 1fr 10px 1fr;
+    gap: 10px 20px;
+    -ms-grid-columns: 1fr 20px 1fr 20px 1fr;
     grid-template-columns: 1fr 1fr 1fr;
     -ms-grid-rows: auto 10px auto 10px auto;
     grid-template-areas:
@@ -50,9 +50,9 @@
 }
 
 .a-shortcut {
-    grid-gap: 1rem;
+    grid-gap: 1rem 2rem;
     -ms-grid-rows: 1fr 1rem minmax(100px, 1fr) 1rem 2fr;
-    -ms-grid-columns: 1fr 1rem 100px 1rem 1fr;
+    -ms-grid-columns: 1fr 2rem 100px 2rem 1fr;
     grid-template:
         "head-shortcut head-shortcut  head-shortcut" 1fr
         "nav-shortcut  main-shortcut  main-shortcut" minmax(100px, 1fr)
