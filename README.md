@@ -588,6 +588,8 @@ Available options are:
   or `browserslist` key in `package.json` to share target browsers
   with Babel, ESLint and Stylelint. See [Browserslist docs]
   for available queries and default value.
+* `ignoreUnknownVersions` (boolean): do not raise error on unknown browser
+  version in Browserslist config or `browsers` option. Default is `false`.
 
 Plugin object has `info()` method for debugging purpose.
 

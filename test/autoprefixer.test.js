@@ -400,6 +400,17 @@ it('uses browserslist config in inspect', () => {
     expect(autoprefixer().info({ from })).toMatch(/Browsers:\s+IE: 10/);
 });
 
+it('ignores unknown versions on request', () => {
+    expect(() => {
+        autoprefixer({ browsers: ['ie 100'] }).info();
+    }).toThrowError();
+    expect(() => {
+        autoprefixer({
+            browsers: ['ie 100'], ignoreUnknownVersions: true
+        }).info();
+    }).not.toThrowError();
+});
+
 describe('hacks', () => {
 
     it('ignores prefix IE filter',      () => test('filter'));
