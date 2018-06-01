@@ -25,7 +25,7 @@
 }
 
 .f {
-    grid-gap: 10px;
+    gap: 10px 20px;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas:
         "head head head"
@@ -34,7 +34,7 @@
 }
 
 .a-shortcut {
-    grid-gap: 1rem;
+    grid-gap: 1rem 2rem;
     grid-template:
         "head-shortcut head-shortcut  head-shortcut" 1fr
         "nav-shortcut  main-shortcut  main-shortcut" minmax(100px, 1fr)
