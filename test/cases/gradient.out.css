@@ -169,8 +169,8 @@ div {
 }
 
 .cover {
-    background: -webkit-radial-gradient(ellipse cover at center, white, black);
-    background: -o-radial-gradient(ellipse cover at center, white, black);
+    background: -webkit-radial-gradient(center, ellipse cover, white, black);
+    background: -o-radial-gradient(center, ellipse cover, white, black);
     background: radial-gradient(ellipse cover at center, white, black);
 }
 
@@ -185,4 +185,32 @@ div {
     background: -webkit-linear-gradient(black);
     background: -o-linear-gradient(black);
     background: linear-gradient(black);
+}
+
+.background-shorthand {
+    background: -webkit-radial-gradient(#FFF, transparent) 0 0 / cover no-repeat #F0F;
+    background: -o-radial-gradient(#FFF, transparent) 0 0 / cover no-repeat #F0F;
+    background: radial-gradient(#FFF, transparent) 0 0 / cover no-repeat #F0F;
+}
+
+.background-advanced {
+    background: -webkit-radial-gradient(5px 15px, ellipse farthest-corner, rgba(214, 168, 18, 0.7) 0%, rgba(255, 21, 177, 0.7) 50%, rgba(210, 7, 148, 0.7) 95%),
+                -webkit-radial-gradient(#FFF, transparent),
+                url(path/to/image.jpg) 50%/cover;
+    background: -o-radial-gradient(5px 15px, ellipse farthest-corner, rgba(214, 168, 18, 0.7) 0%, rgba(255, 21, 177, 0.7) 50%, rgba(210, 7, 148, 0.7) 95%),
+                -o-radial-gradient(#FFF, transparent),
+                url(path/to/image.jpg) 50%/cover;
+    background: radial-gradient(ellipse farthest-corner at 5px 15px, rgba(214, 168, 18, 0.7) 0%, rgba(255, 21, 177, 0.7) 50%, rgba(210, 7, 148, 0.7) 95%),
+                radial-gradient(#FFF, transparent),
+                url(path/to/image.jpg) 50%/cover;
+}
+
+.multiradial {
+    -webkit-mask-image: -webkit-radial-gradient(100% 50%, circle closest-corner, #000, transparent);
+            mask-image: radial-gradient(circle closest-corner at 100% 50%, #000, transparent);
+}
+
+.broken {
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+            mask-image: radial-gradient(white, black);
 }

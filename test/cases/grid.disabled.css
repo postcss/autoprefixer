@@ -35,9 +35,42 @@
 .warn {
     grid-column-end: 3;
     grid: subgrid;
+    grid-gap: 1rem;
     grid-template-areas: "head head"
                          "nav  main"
                          "foot ....";
+}
+
+.warn-gap-rows {
+    grid-gap: 1rem;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+        "a a"
+        "a a";
+}
+
+.warn-gap-rows {
+    grid-column-gap: 1rem;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+        "b b"
+        "b b";
+}
+
+.warn-gap-columns {
+    grid-gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "c c"
+        "c c";
+}
+
+.warn-gap-columns {
+    grid-row-gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "d d"
+        "d d";
 }
 
 .unknown {

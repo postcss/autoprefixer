@@ -95,8 +95,8 @@ a {
 ## Browsers
 
 Autoprefixer uses [Browserslist], so you can specify the browsers
-you want to target in your project by queries like `last 2 versions`
-or `> 5%`.
+you want to target in your project by queries like `> 5%`
+(see [Best Practises]).
 
 The best way to provide browsers is `.browserslistrc` config
 or `package.json` with `browserslist` key. Put it in your project root.
@@ -110,6 +110,7 @@ and default value.
 
 [Browserslist docs]: https://github.com/ai/browserslist#queries
 [babel-preset-env]:  https://github.com/babel/babel-preset-env
+[Best Practises]:    https://github.com/browserslist/browserslist#best-practices
 [Browserslist]:      https://github.com/ai/browserslist
 [Stylelint]:         http://stylelint.io/
 
@@ -501,7 +502,7 @@ You can use these plugin options to disable some of the Autoprefixer's features.
   versions of specification.
 * `remove: false` will disable cleaning outdated prefixes.
 
-You shoud set them to the plugin:
+You should set them to the plugin:
 
 ```js
 autoprefixer({ grid: true });
@@ -514,19 +515,27 @@ If you do not need Autoprefixer in some part of your CSS,
 you can use control comments to disable Autoprefixer.
 
 ```css
-a {
+.a {
     transition: 1s; /* it will be prefixed */
 }
 
-b {
+.b {
     /* autoprefixer: off */
     transition: 1s; /* it will not be prefixed */
 }
+
+.c {
+    /* autoprefixer: ignore next */
+    transition: 1s; /* it will not be prefixed */
+    mask: url(image.png); /* it will be prefixed */
+}
 ```
 
-Control comments disable Autoprefixer within the whole rule in which
-you place it. In the above example, Autoprefixer will be disabled
-in the entire `b` rule scope, not only after the comment.
+There are two types of control comments:
+
+* `/* autoprefixer: off */` disable the whole block *before* and after comment.
+* `/* autoprefixer: ignore next */` disable only next property
+  or next rule selector or at-rule parameters (but not rule/at‑rule body).
 
 You can also use comments recursively:
 
@@ -540,8 +549,12 @@ You can also use comments recursively:
 }
 ```
 
-In Sass/SCSS you can use all the disable options above, add an exclamation mark
-in the start of comment: `/*! autoprefixer: off */`.
+In Sass/SCSS/Less you can use all the disable options above, add an exclamation mark
+in the start of comment:
+
+```scss
+/*! autoprefixer: off */
+```
 
 
 ## Options
@@ -555,11 +568,6 @@ autoprefixer({ cascade: false })
 
 Available options are:
 
-* `browsers` (array): list of browsers query (like `last 2 versions`),
-  which are supported in your project. We recommend to use `browserslist`
-  config or `browserslist` key in `package.json`, rather than this option
-  to share browsers with other tools. See [Browserslist docs] for available
-  queries and default value.
 * `env` (string): environment for Browserslist.
 * `cascade` (boolean): should Autoprefixer use Visual Cascade,
   if CSS is uncompressed. Default: `true`
@@ -575,6 +583,13 @@ Available options are:
   properties. Default is `false`.
 * `stats` (object): custom [usage statistics] for `> 10% in my stats`
   browsers query.
+* `browsers` (array): list of queries for target browsers. Try to not use it.
+  The best practice is to use `.browserslistrc` config
+  or `browserslist` key in `package.json` to share target browsers
+  with Babel, ESLint and Stylelint. See [Browserslist docs]
+  for available queries and default value.
+* `ignoreUnknownVersions` (boolean): do not raise error on unknown browser
+  version in Browserslist config or `browsers` option. Default is `false`.
 
 Plugin object has `info()` method for debugging purpose.
 

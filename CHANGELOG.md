@@ -1,6 +1,35 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 8.6 “Follow Reason”
+* Add `gap` support (by Evgeny Petukhov).
+* Add two values support for `grid-gap` and `gap` (by Evgeny Petukhov).
+* Add `ignoreUnknownVersions` option for Browserslist.
+
+## 8.5.2
+* Fix `grid-template` support wit auto row sizes (by Yury Timofeev).
+
+## 8.5.1
+* Remove unnecessary warning on `-webkit-fill-available`.
+
+## 8.5 “Muito Nobre e Sempre Leal”
+* Add `grid-gap` support (by Evgeny Petukhov).
+* Fix radial gradients direction fix.
+* Fix docs (by Phani Kandula and Huáng Jùnliàng).
+
+## 8.4.1
+* Fix working in old PostCSS versions (by Diablohu).
+
+## 8.4 “Non in aves, sed in angues”
+* Add `/* autoprefixer: ignore next */` control comment (by Pavel Vostrikov).
+
+## 8.3 “Benigno Numine”
+* Add `@media` support to `grid-template` (by Evgeny Petukhov).
+* Fix `radial-gradient` direction warning (by Gustavo Real).
+
+## 8.2 “Ad Astra per Aspera”
+* Add `color-adjust` (by Sergey Lysenko, Stanislav Botev, and Yuriy Alekseyev).
+
 ## 8.1 “Rex, Familia et Ultio”
 * Add `overscroll-behavior` support.
 * Add `grid-template` shortcut support (by Evgeny Petukhov).

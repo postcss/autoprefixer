@@ -5,10 +5,8 @@
 }
 
 .b {
-    -ms-grid-rows:
-        30px 1fr 30px;
-    -ms-grid-columns:
-        120px (250px 10px)[4];
+    -ms-grid-rows: 30px 1fr 30px;
+    -ms-grid-columns: 120px (250px 10px)[4];
     grid-template:
         [header-left] "head head" 30px [header-right]
         [main-left]   "nav  main" 1fr  [main-right]
@@ -17,10 +15,8 @@
 }
 
 .c {
-    -ms-grid-rows:
-        minmax(100px, auto) minmax(100px, auto) minmax(100px, auto);
-    -ms-grid-columns:
-        1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    -ms-grid-rows: minmax(100px, auto) minmax(100px, auto) minmax(100px, auto);
+    -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template:
         "hd hd hd hd hd hd hd hd hd" minmax(100px, auto)
         "sd sd sd mn mn mn mn mn mn" minmax(100px, auto)
@@ -36,6 +32,16 @@
 
 .e {
     grid-template: 10px;
+}
+
+.f {
+    -ms-grid-rows: auto 20px auto;
+    -ms-grid-columns: 1fr 1fr;
+    grid-template:
+        "head head"
+        "nav main" 20px
+        "nav foot"
+        / 1fr 1fr;
 }
 
 .head {
@@ -90,4 +96,33 @@
     -ms-grid-column: 1;
     -ms-grid-column-span: 9;
     grid-area: ft;
+}
+
+@media (min-width: 1000px) {
+    .b {
+        -ms-grid-rows: 30px auto 1fr 30px;
+        -ms-grid-columns: 1fr;
+        grid-template:
+            [header-left] "head" 30px [header-right]
+            [nav-left]    "nav"  auto  [nav-right]
+            [main-left]   "main" 1fr  [main-right]
+            [footer-left] "foot" 30px [footer-right]
+            / 1fr;
+    }
+    .head {
+        -ms-grid-row: 1;
+        -ms-grid-column: 1;
+    }
+    .nav {
+        -ms-grid-row: 2;
+        -ms-grid-column: 1;
+    }
+    .main {
+        -ms-grid-row: 3;
+        -ms-grid-column: 1;
+    }
+    .foot {
+        -ms-grid-row: 4;
+        -ms-grid-column: 1;
+    }
 }

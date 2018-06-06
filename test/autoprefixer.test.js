@@ -66,6 +66,7 @@ const overscroller = autoprefixer({
 function prefixer(name) {
     if (
         name === 'grid' ||
+        name === 'grid-gap' ||
         name === 'grid-area' ||
         name === 'grid-template' ||
         name === 'grid-template-areas'
@@ -144,7 +145,7 @@ const COMMONS = [
     'advanced-filter', 'element', 'image-set', 'image-rendering',
     'mask-border', 'writing-mode', 'cross-fade', 'gradient-fix',
     'text-emphasis-position', 'grid', 'grid-area', 'grid-template',
-    'grid-template-areas', 'color-adjust'
+    'grid-template-areas', 'grid-gap', 'color-adjust'
 ];
 
 it('throws on wrong options', () => {
@@ -202,24 +203,25 @@ it('passes statistics to Browserslist', () => {
         .toMatch(/Browsers:\n\s\sChrome: 11\n\s\sIE: 11\n/);
 });
 
-it('prefixes values',                () => test('values'));
-it('prefixes @keyframes',            () => test('keyframes'));
-it('prefixes @viewport',             () => test('viewport'));
-it('prefixes selectors',             () => test('selectors'));
-it('prefixes resolution query',      () => test('resolution'));
-it('removes common mistakes',        () => test('mistakes'));
-it('reads notes for prefixes',       () => test('notes'));
-it('keeps vendor-specific hacks',    () => test('vendor-hack'));
-it('keeps values with vendor hacks', () => test('value-hack'));
-it('works with comments',            () => test('comments'));
-it('uses visual cascade',            () => test('cascade'));
-it('works with properties near',     () => test('double'));
-it('checks prefixed in hacks',       () => test('check-down'));
-it('normalize cascade after remove', () => test('uncascade'));
-it('prefix decls in @supports',      () => test('supports'));
-it('saves declaration style',        () => test('style'));
-it('uses control comments',          () => test('disabled'));
-it('has actual example in docs',     () => test('example'));
+it('prefixes values',                    () => test('values'));
+it('prefixes @keyframes',                () => test('keyframes'));
+it('prefixes @viewport',                 () => test('viewport'));
+it('prefixes selectors',                 () => test('selectors'));
+it('prefixes resolution query',          () => test('resolution'));
+it('removes common mistakes',            () => test('mistakes'));
+it('reads notes for prefixes',           () => test('notes'));
+it('keeps vendor-specific hacks',        () => test('vendor-hack'));
+it('keeps values with vendor hacks',     () => test('value-hack'));
+it('works with comments',                () => test('comments'));
+it('uses visual cascade',                () => test('cascade'));
+it('works with properties near',         () => test('double'));
+it('checks prefixed in hacks',           () => test('check-down'));
+it('normalize cascade after remove',     () => test('uncascade'));
+it('prefix decls in @supports',          () => test('supports'));
+it('saves declaration style',            () => test('style'));
+it('uses ignore next control comments',  () => test('ignore-next'));
+it('uses block control comments',        () => test('disabled'));
+it('has actual example in docs',         () => test('example'));
 
 it('uses control comments to whole scope', () => {
     const input  = read('scope');
@@ -267,6 +269,7 @@ it('removes unnecessary prefixes', () => {
         if (type === 'mistakes' ) continue;
         if (type === 'flex-rewrite' ) continue;
         if (type === 'grid' ) continue;
+        if (type === 'grid-gap' ) continue;
         if (type === 'grid-area' ) continue;
         if (type === 'grid-template' ) continue;
         if (type === 'grid-template-areas' ) continue;
@@ -397,6 +400,17 @@ it('uses browserslist config in inspect', () => {
     expect(autoprefixer().info({ from })).toMatch(/Browsers:\s+IE: 10/);
 });
 
+it('ignores unknown versions on request', () => {
+    expect(() => {
+        autoprefixer({ browsers: ['ie 100'] }).info();
+    }).toThrowError();
+    expect(() => {
+        autoprefixer({
+            browsers: ['ie 100'], ignoreUnknownVersions: true
+        }).info();
+    }).not.toThrowError();
+});
+
 describe('hacks', () => {
 
     it('ignores prefix IE filter',      () => test('filter'));
@@ -497,8 +511,18 @@ describe('hacks', () => {
         expect(result.warnings().map(i => i.toString())).toEqual([
             'autoprefixer: <css input>:36:5: Can not prefix grid-column-end ' +
                 '(grid-column-start is not found)',
-            'autoprefixer: <css input>:38:5: Can not find grid areas: ' +
-                'head, nav, main, foot'
+            'autoprefixer: <css input>:39:5: Can not impliment grid-gap ' +
+                'without grid-tamplate-columns',
+            'autoprefixer: <css input>:39:5: Can not find grid areas: ' +
+                'head, nav, main, foot',
+            'autoprefixer: <css input>:47:5: Can not impliment grid-gap ' +
+                'without grid-tamplate-columns',
+            'autoprefixer: <css input>:47:5: Can not find grid areas: a',
+            'autoprefixer: <css input>:55:5: Can not impliment grid-gap ' +
+                'without grid-tamplate-columns',
+            'autoprefixer: <css input>:55:5: Can not find grid areas: b',
+            'autoprefixer: <css input>:63:5: Can not find grid areas: c',
+            'autoprefixer: <css input>:71:5: Can not find grid areas: d'
         ]);
     });
 
