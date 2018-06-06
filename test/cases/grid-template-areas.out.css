@@ -45,3 +45,29 @@
         -ms-grid-column: 2;
     }
 }
+
+.foo {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[2];
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+        'a   b'
+        'c   d';
+}
+@media (min-width: 600px) {
+    .foo {
+        grid-template-areas: 'a   b   c   d';
+    }
+}
+.bar {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    grid-area: a;
+}
+@media (min-width: 600px) {
+    .bar {
+        -ms-grid-row: 1;
+        -ms-grid-column: 1;
+    }
+}

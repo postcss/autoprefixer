@@ -27,3 +27,19 @@
         grid-template-areas: "head main";
     }
 }
+
+.foo {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+        'a   b'
+        'c   d';
+}
+@media (min-width: 600px) {
+    .foo {
+        grid-template-areas: 'a   b   c   d';
+    }
+}
+.bar {
+    grid-area: a;
+}
