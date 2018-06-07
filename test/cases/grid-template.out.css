@@ -8,9 +8,9 @@
     -ms-grid-rows: 30px 1fr 30px;
     -ms-grid-columns: 120px (250px 10px)[4];
     grid-template:
-        [header-left] 'head head' 30px [header-right]
-        [main-left] 'nav  main' 1fr [main-right]
-        [footer-left] 'nav  foot' 30px [footer-right]
+        [header-left] "head head" 30px [header-right]
+        [main-left] "nav  main" 1fr [main-right]
+        [footer-left] "nav  foot" 30px [footer-right]
         / 120px repeat(4, 250px 10px);
 }
 
@@ -18,9 +18,9 @@
     -ms-grid-rows: minmax(100px, auto) minmax(100px, auto) minmax(100px, auto);
     -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template:
-        'hd hd hd hd hd hd hd hd hd' minmax(100px, auto)
-        'sd sd sd mn mn mn mn mn mn' minmax(100px, auto)
-        'ft ft ft ft ft ft ft ft ft' minmax(100px, auto)
+        "hd hd hd hd hd hd hd hd hd" minmax(100px, auto)
+        "sd sd sd mn mn mn mn mn mn" minmax(100px, auto)
+        "ft ft ft ft ft ft ft ft ft" minmax(100px, auto)
         / 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
@@ -38,9 +38,9 @@
     -ms-grid-rows: auto 20px auto;
     -ms-grid-columns: 1fr 1fr;
     grid-template:
-        'head head'
-        'nav main' 20px
-        'nav foot'
+        "head head"
+        "nav main" 20px
+        "nav foot"
         / 1fr 1fr;
 }
 
@@ -103,10 +103,10 @@
         -ms-grid-rows: 30px auto 1fr 30px;
         -ms-grid-columns: 1fr;
         grid-template:
-            [header-left] 'head' 30px [header-right]
-            [nav-left] 'nav' auto [nav-right]
-            [main-left] 'main' 1fr [main-right]
-            [footer-left] 'foot' 30px [footer-right]
+            [header-left] "head" 30px [header-right]
+            [nav-left] "nav" auto [nav-right]
+            [main-left] "main" 1fr [main-right]
+            [footer-left] "foot" 30px [footer-right]
             / 1fr;
     }
     .head {
@@ -133,12 +133,12 @@
     -ms-grid-columns: (1fr)[2];
     grid-template-columns: repeat(2, 1fr);
     grid-template-areas:
-        'a   b'
-        'c   d';
+        "a   b"
+        "c   d";
 }
 @media (min-width: 600px) {
     .foo {
-        grid-template-areas: 'a   b   c   d';
+        grid-template-areas: "a   b   c   d";
     }
 }
 .bar {
