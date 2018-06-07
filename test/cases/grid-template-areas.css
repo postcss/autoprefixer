@@ -6,6 +6,12 @@
         "another";
 }
 
+@media (max-width: 1000px) {
+    .a {
+        grid-template-areas: "head main";
+    }
+}
+
 .b {
     grid-area: head;
 }
@@ -20,10 +26,4 @@
 
 .e {
     grid-area: foot;
-}
-
-@media (max-width: 1000px) {
-    .a {
-        grid-template-areas: "head main";
-    }
 }

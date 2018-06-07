@@ -10,6 +10,17 @@
         / 120px repeat(4, 250px 10px);
 }
 
+@media (min-width: 1000px) {
+    .b {
+        grid-template:
+            [header-left] "head" 30px [header-right]
+            [nav-left]    "nav"  auto  [nav-right]
+            [main-left]   "main" 1fr  [main-right]
+            [footer-left] "foot" 30px [footer-right]
+            / 1fr;
+    }
+}
+
 .c {
     grid-template:
         "hd hd hd hd hd hd hd hd hd" minmax(100px, auto)
@@ -64,15 +75,4 @@
 
 .ft {
     grid-area: ft;
-}
-
-@media (min-width: 1000px) {
-    .b {
-        grid-template:
-            [header-left] "head" 30px [header-right]
-            [nav-left]    "nav"  auto  [nav-right]
-            [main-left]   "main" 1fr  [main-right]
-            [footer-left] "foot" 30px [footer-right]
-            / 1fr;
-    }
 }
