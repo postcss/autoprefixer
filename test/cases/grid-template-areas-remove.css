@@ -1,0 +1,29 @@
+.a {
+    grid-template-areas:
+        "head head"
+        "nav  main"
+        "nav  foot"
+        "another";
+}
+
+@media (max-width: 1000px) {
+    .a {
+        grid-template-areas: "head main";
+    }
+}
+
+.b {
+    grid-area: head;
+}
+
+.c {
+    grid-area: main;
+}
+
+.d {
+    grid-area: nav;
+}
+
+.e {
+    grid-area: foot;
+}
