@@ -34,7 +34,7 @@
 
 @media (max-width: 1000px) {
     .a {
-        grid-template-areas: "head main";
+        grid-template-areas: "head main article";
     }
     .b {
         -ms-grid-row: 1;
@@ -43,5 +43,16 @@
     .c {
         -ms-grid-row: 1;
         -ms-grid-column: 2;
+    }
+}
+
+.f {
+    grid-area: article;
+}
+
+@media (max-width: 1000px) {
+    .f {
+        -ms-grid-row: 1;
+        -ms-grid-column: 3;
     }
 }

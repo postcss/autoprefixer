@@ -9,7 +9,7 @@
     -ms-grid-columns: 120px (250px 10px)[4];
     grid-template:
         [header-left] "head head" 30px [header-right]
-        [main-left]   "nav  main" 1fr  [main-right]
+        [main-left] "nav  main" 1fr [main-right]
         [footer-left] "nav  foot" 30px [footer-right]
         / 120px repeat(4, 250px 10px);
 }
@@ -21,7 +21,7 @@
         "hd hd hd hd hd hd hd hd hd" minmax(100px, auto)
         "sd sd sd mn mn mn mn mn mn" minmax(100px, auto)
         "ft ft ft ft ft ft ft ft ft" minmax(100px, auto)
-                / 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        / 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
 .d {
@@ -100,13 +100,14 @@
 
 @media (min-width: 1000px) {
     .b {
-        -ms-grid-rows: 30px auto 1fr 30px;
+        -ms-grid-rows: 30px auto 1fr 30px auto;
         -ms-grid-columns: 1fr;
         grid-template:
             [header-left] "head" 30px [header-right]
-            [nav-left]    "nav"  auto  [nav-right]
-            [main-left]   "main" 1fr  [main-right]
+            [nav-left] "nav" auto [nav-right]
+            [main-left] "main" 1fr [main-right]
             [footer-left] "foot" 30px [footer-right]
+            [article-left] "article" auto [article-right]
             / 1fr;
     }
     .head {
@@ -123,6 +124,17 @@
     }
     .foot {
         -ms-grid-row: 4;
+        -ms-grid-column: 1;
+    }
+}
+
+.article {
+  grid-area: article;
+}
+
+@media (min-width: 1000px) {
+    .article {
+        -ms-grid-row: 5;
         -ms-grid-column: 1;
     }
 }

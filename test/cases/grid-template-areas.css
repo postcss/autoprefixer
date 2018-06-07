@@ -24,6 +24,10 @@
 
 @media (max-width: 1000px) {
     .a {
-        grid-template-areas: "head main";
+        grid-template-areas: "head main article";
     }
+}
+
+.f {
+    grid-area: article;
 }
