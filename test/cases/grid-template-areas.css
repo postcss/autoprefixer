@@ -24,31 +24,10 @@
 
 @media (max-width: 1000px) {
     .a {
-        grid-template-areas: "head main";
+        grid-template-areas: "head main article";
     }
 }
 
-.az {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-areas:
-        'a   b'
-        'c   d';
-}
-@media (min-width: 600px) {
-    .az {
-        grid-template-areas: 'a   b   c   d';
-    }
-}
-.aa {
-    grid-area: a;
-}
-.ab {
-    grid-area: b;
-}
-.ac {
-    grid-area: c;
-}
-.ad {
-    grid-area: d;
+.f {
+    grid-area: article;
 }

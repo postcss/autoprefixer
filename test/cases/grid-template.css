@@ -73,22 +73,11 @@
             [nav-left] "nav" auto [nav-right]
             [main-left] "main" 1fr [main-right]
             [footer-left] "foot" 30px [footer-right]
+            [article-left] "article" auto [article-right]
             / 1fr;
     }
 }
 
-.foo {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-areas:
-        "a   b"
-        "c   d";
-}
-@media (min-width: 600px) {
-    .foo {
-        grid-template-areas: "a   b   c   d";
-    }
-}
-.bar {
-    grid-area: a;
+.article {
+  grid-area: article;
 }
