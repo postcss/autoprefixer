@@ -28,7 +28,7 @@
     }
 }
 
-.foo {
+.az {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-areas:
@@ -36,10 +36,19 @@
         'c   d';
 }
 @media (min-width: 600px) {
-    .foo {
+    .az {
         grid-template-areas: 'a   b   c   d';
     }
 }
-.bar {
+.aa {
     grid-area: a;
+}
+.ab {
+    grid-area: b;
+}
+.ac {
+    grid-area: c;
+}
+.ad {
+    grid-area: d;
 }
