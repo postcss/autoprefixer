@@ -76,3 +76,42 @@
 .ft {
     grid-area: ft;
 }
+
+.grid {
+    display: grid;
+    grid-gap: 10px;
+    grid-template:
+        "a   b" 100px
+        "c   d" 100px
+        "e   f" 100px /
+        1fr  1fr;
+}
+
+@media (min-width: 600px){
+    .grid {
+        grid-gap: 10px;
+        grid-template:
+            "a   b   c" 100px
+            "d   e   f" 100px /
+            1fr 1fr 1fr;
+    }
+}
+
+.cell-A {
+    grid-area: a;
+}
+.cell-B {
+    grid-area: b;
+}
+.cell-C {
+    grid-area: c;
+}
+.cell-D {
+    grid-area: d;
+}
+.cell-E {
+    grid-area: e;
+}
+.cell-F {
+    grid-area: f;
+}
