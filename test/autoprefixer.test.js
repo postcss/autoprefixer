@@ -522,7 +522,11 @@ describe('hacks', () => {
                 'without grid-tamplate-columns',
             'autoprefixer: <css input>:55:5: Can not find grid areas: b',
             'autoprefixer: <css input>:63:5: Can not find grid areas: c',
-            'autoprefixer: <css input>:71:5: Can not find grid areas: d'
+            'autoprefixer: <css input>:71:5: Can not find grid areas: d',
+            'autoprefixer: <css input>:99:5: grid-column-span is not part ' +
+                'of final Grid Layout. Use grid-column.',
+            'autoprefixer: <css input>:100:5: grid-row-span is not part ' +
+                'of final Grid Layout. Use grid-row.'
         ]);
     });
 

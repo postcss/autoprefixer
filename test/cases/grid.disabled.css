@@ -96,3 +96,8 @@
         justify-items: start;
     }
 }
+
+.warn {
+    grid-column-span: 2;
+    grid-row-span: 2;
+}
