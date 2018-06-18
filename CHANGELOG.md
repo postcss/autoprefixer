@@ -1,6 +1,11 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 8.6.3
+* Add warnings for unsupported Grid features.
+* Add warnings about wrong Grid properties.
+* Add note about `grid` option for grid properties in `autoprefixer --info`.
+
 ## 8.6.2
 * Fix error during adding Grid prefixes in `@media` (by Evgeny Petukhov).
 
