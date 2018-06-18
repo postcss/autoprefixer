@@ -22,6 +22,10 @@ const data = {
             browsers: ['firefox 21'],
             selector:   true
         },
+        'grid': {
+            browsers: ['ie 6'],
+            props:    ['display']
+        },
         'grid-row': {
             browsers: ['ie 6']
         },
@@ -63,11 +67,12 @@ it('returns selected browsers and prefixes', () => {
         '  grid-row *: ms\n' +
         '  transition: moz\n' +
         '\n' +
-        '* - Prefixes will be added only on grid: true option.\n' +
-        '\n' +
         'Values:\n' +
         '  b: moz, ms\n' +
-        '  c: moz\n'
+        '  c: moz\n' +
+        '  grid *: ms\n' +
+        '\n' +
+        '* - Prefixes will be added only on grid: true option.\n'
     );
 });
 
