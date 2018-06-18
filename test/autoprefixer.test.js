@@ -526,7 +526,17 @@ describe('hacks', () => {
             'autoprefixer: <css input>:99:5: grid-column-span is not part ' +
                 'of final Grid Layout. Use grid-column.',
             'autoprefixer: <css input>:100:5: grid-row-span is not part ' +
-                'of final Grid Layout. Use grid-row.'
+                'of final Grid Layout. Use grid-row.',
+            'autoprefixer: <css input>:101:5: grid-auto-columns is not ' +
+                'supported by IE',
+            'autoprefixer: <css input>:102:5: grid-auto-rows is not ' +
+                'supported by IE',
+            'autoprefixer: <css input>:103:5: grid-auto-flow is not ' +
+                'supported by IE',
+            'autoprefixer: <css input>:104:35: auto-fill value is not ' +
+                'supported by IE',
+            'autoprefixer: <css input>:105:32: auto-fit value is not ' +
+                'supported by IE'
         ]);
     });
 
