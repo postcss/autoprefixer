@@ -22,6 +22,9 @@ const data = {
             browsers: ['firefox 21'],
             selector:   true
         },
+        'grid-row': {
+            browsers: ['ie 6']
+        },
         '@keyframes': {
             browsers: ['firefox 21']
         },
@@ -57,7 +60,10 @@ it('returns selected browsers and prefixes', () => {
         '\n' +
         'Properties:\n' +
         '  a: webkit, moz\n' +
+        '  grid-row *: ms\n' +
         '  transition: moz\n' +
+        '\n' +
+        '* - Prefixes will be added only on grid: true option.\n' +
         '\n' +
         'Values:\n' +
         '  b: moz, ms\n' +
@@ -67,18 +73,17 @@ it('returns selected browsers and prefixes', () => {
 
 it('doesn\'t show transitions unless they are necessary', () => {
     const browsers = new Browsers(data.browsers,
-        ['chrome 30', 'firefox 20', 'ie 6']);
+        ['chrome 30', 'firefox 20']);
     const prefixes = new Prefixes(data.prefixes, browsers);
 
     const coverage = browserslist.coverage(
-        ['chrome 30', 'firefox 20', 'ie 6']);
+        ['chrome 30', 'firefox 20']);
     const round    = Math.round(coverage * 100) / 100.0;
 
     expect(info(prefixes)).toEqual(
         'Browsers:\n' +
         '  Chrome: 30\n' +
         '  Firefox: 20\n' +
-        '  IE: 6\n' +
         '\n' +
         `These browsers account for ${ round }% ` +
         'of all users globally\n' +
@@ -87,7 +92,7 @@ it('doesn\'t show transitions unless they are necessary', () => {
         '  a: webkit, moz\n' +
         '\n' +
         'Values:\n' +
-        '  b: moz, ms\n'
+        '  b: moz\n'
     );
 });
 
