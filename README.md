@@ -96,7 +96,7 @@ a {
 
 Autoprefixer uses [Browserslist], so you can specify the browsers
 you want to target in your project by queries like `> 5%`
-(see [Best Practises]).
+(see [Best Practices]).
 
 The best way to provide browsers is `.browserslistrc` config
 or `package.json` with `browserslist` key. Put it in your project root.
@@ -110,7 +110,7 @@ and default value.
 
 [Browserslist docs]: https://github.com/ai/browserslist#queries
 [babel-preset-env]:  https://github.com/babel/babel-preset-env
-[Best Practises]:    https://github.com/browserslist/browserslist#best-practices
+[Best Practices]:    https://github.com/browserslist/browserslist#best-practices
 [Browserslist]:      https://github.com/ai/browserslist
 [Stylelint]:         http://stylelint.io/
 
