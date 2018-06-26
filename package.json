@@ -15,10 +15,10 @@
   "dependencies": {
     "babel-register": "^6.26.0",
     "browserslist": "^3.2.8",
-    "caniuse-lite": "^1.0.30000856",
+    "caniuse-lite": "^1.0.30000859",
     "normalize-range": "^0.1.2",
     "num2fraction": "^1.2.2",
-    "postcss": "^6.0.22",
+    "postcss": "^6.0.23",
     "postcss-value-parser": "^3.2.3"
   },
   "devDependencies": {
