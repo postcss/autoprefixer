@@ -50,48 +50,6 @@ Twitter account for news and releases: [@autoprefixer].
 [cult]:             http://cultofmartians.com/tasks/autoprefixer-grid.html
 
 
-## Features
-
-### Write Pure CSS
-
-Working with Autoprefixer is simple: just forget about vendor prefixes
-and write normal CSS according to the latest W3C specs. You don’t need
-a special language (like Sass) or remember where you must use mixins.
-
-Autoprefixer supports selectors (like `:fullscreen` and `::selection`),
-unit function (`calc()`), at‑rules (`@supports` and `@keyframes`)
-and properties.
-
-Because Autoprefixer is a postprocessor for CSS,
-you can also use it with preprocessors such as Sass, Stylus or LESS.
-
-
-### Only Actual Prefixes
-
-Autoprefixer utilizes the most recent data from [Can I Use]
-to add only necessary vendor prefixes.
-
-It also removes old, unnecessary prefixes from your CSS
-(like `border-radius` prefixes, produced by many CSS libraries).
-
-```css
-a {
-    -webkit-border-radius: 5px;
-            border-radius: 5px;
-}
-```
-
-compiles to:
-
-```css
-a {
-    border-radius: 5px;
-}
-```
-
-[Can I Use]: http://caniuse.com/
-
-
 ## Browsers
 
 Autoprefixer uses [Browserslist], so you can specify the browsers
@@ -113,33 +71,6 @@ and default value.
 [Best Practices]:    https://github.com/browserslist/browserslist#best-practices
 [Browserslist]:      https://github.com/ai/browserslist
 [Stylelint]:         http://stylelint.io/
-
-
-## Outdated Prefixes
-
-By default, Autoprefixer also removes outdated prefixes.
-
-You can disable this behavior with the `remove: false` option. If you have
-no legacy code, this option will make Autoprefixer about 10% faster.
-
-Also, you can set the `add: false` option. Autoprefixer will only clean outdated
-prefixes, but will not add any new prefixes.
-
-Autoprefixer adds new prefixes between any unprefixed properties and already
-written prefixes in your CSS. If it will break the expected prefixes order,
-you can clean all prefixes from your CSS and then
-add the necessary prefixes again:
-
-```js
-var cleaner  = postcss([ autoprefixer({ add: false, browsers: [] }) ]);
-var prefixer = postcss([ autoprefixer ]);
-
-cleaner.process(css).then(function (cleaned) {
-    return prefixer.process(cleaned.css);
-}).then(function (result) {
-    console.log(result.css);
-});
-```
 
 
 ## FAQ
