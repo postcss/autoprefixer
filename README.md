@@ -147,13 +147,13 @@ cleaner.process(css).then(function (cleaned) {
 #### Does Autoprefixer polyfills Grids for IE 10-11?
 
 Autoprefixer can be used to use Grid Layout for IE. But this polyfill will not
-work in 100 % cases, this is why it is disabled by default.
+work in 100 % cases. This is why it is disabled by default.
 
 First, you need to enable Grid prefixes by `grid: true` option.
 
-Second, you need to test every fix with Grid in IE. It is not, enable
-and forget featur. But it is still very useful. Financial Times and Yandex
-use it in production.
+Second, you need to test every fix with Grid in IE. It is not,
+enable and forget featur. But it is still very useful.
+Financial Times and Yandex use it in production.
 
 Third, there is not auto placement and all grid cell position must be set
 explicitly. However, Autoprefixer can covert even `grid-template`
