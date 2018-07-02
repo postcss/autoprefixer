@@ -249,6 +249,27 @@ for prefixing ePub3 properties.
 #### What are the caveats of grid support in Internet explorer?
 
 Internet explorer requires implicit grid item assignment. That means that you have to manually assign your grid items to rows and cells if you want grid support.
+For example if you want a 2 column grid layout you would do this:
+```css
+.grid-container
+{
+  display: grid;
+}
+
+.grid-container > :nth-child(1)
+{
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.grid-container > :nth-child(2)
+{
+  grid-column: 2;
+  grid-row: 1;
+}
+```
+
+You can find more examples in this [CSS-tricks article](https://css-tricks.com/css-grid-in-ie-debunking-common-ie-grid-misconceptions/).
 
 
 ## Usage
