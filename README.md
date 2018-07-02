@@ -144,6 +144,57 @@ cleaner.process(css).then(function (cleaned) {
 
 ## FAQ
 
+#### Does Autoprefixer polyfills Grids for IE 10-11?
+
+Autoprefixer can be used to use Grid Layout for IE. But this polyfill will not
+work in 100 % cases, this is why it is disabled by default.
+
+First, you need to enable Grid prefixes by `grid: true` option.
+
+Second, you need to test every fix with Grid in IE. It is not, enable
+and forget featur. But it is still very useful. Financial Times and Yandex
+use it in production.
+
+Third, there is not auto placement and all grid cell position must be set
+explicitly. However, Autoprefixer can covert even `grid-template`
+and `grid-gap` (but only when they are together).
+
+```css
+.page {
+    display: grid;
+    grid-gap: 33px;
+    grid-template:
+        "head head  head" 1fr
+        "nav  main  main" minmax(100px, 1fr)
+        "nav  foot  foot" 2fr /
+        1fr   100px 1fr;
+}
+.page__head {
+    grid-area: head;
+}
+.page__nav {
+    grid-area: nav;
+}
+.page__main {
+    grid-area: main;
+}
+.page__footer {
+    grid-area: foot;
+}
+```
+
+See also:
+
+* [The guide about Grids in IE and Autoprefixer].
+* [`postcss-gap-properties`] to use new `gap` property
+  instead of old `grid-gap`.
+* [`postcss-grid-kiss`] has alternate “everything in one property” syntax,
+  which make using Autoprefixer’s Grid safer.
+
+[The guide about Grids in IE and Autoprefixer]: https://css-tricks.com/css-grid-in-ie-debunking-common-ie-grid-misconceptions/)
+[`postcss-gap-properties`]:                     https://github.com/jonathantneal/postcss-gap-properties
+[`postcss-grid-kiss`]:                          https://github.com/sylvainpolletvillard/postcss-grid-kiss
+
 #### No prefixes in production
 
 Many other tools contain Autoprefixer. For example, webpack uses Autoprefixer
@@ -245,31 +296,6 @@ for prefixing ePub3 properties.
 #### Why doesn’t Autoprefixer transform generic font-family `system-ui`?
 
 `system-ui` is technically not a prefix and the transformation is not future-proof. But you can use [postcss-font-family-system-ui](https://github.com/JLHwung/postcss-font-family-system-ui) to transform `system-ui` to a practical font-family list.
-
-#### What are the caveats of grid support in Internet explorer?
-
-Internet explorer requires implicit grid item assignment. That means that you have to manually assign your grid items to rows and cells if you want grid support.
-For example if you want a 2 column grid layout you would do this:
-```css
-.grid-container
-{
-  display: grid;
-}
-
-.grid-container > :nth-child(1)
-{
-  grid-column: 1;
-  grid-row: 1;
-}
-
-.grid-container > :nth-child(2)
-{
-  grid-column: 2;
-  grid-row: 1;
-}
-```
-
-You can find more examples in this [CSS-tricks article](https://css-tricks.com/css-grid-in-ie-debunking-common-ie-grid-misconceptions/).
 
 
 ## Usage
