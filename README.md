@@ -246,6 +246,10 @@ for prefixing ePub3 properties.
 
 `system-ui` is technically not a prefix and the transformation is not future-proof. But you can use [postcss-font-family-system-ui](https://github.com/JLHwung/postcss-font-family-system-ui) to transform `system-ui` to a practical font-family list.
 
+#### What are the caveats of grid support in Internet explorer?
+
+Internet explorer requires implicit grid item assignment. That means that you have to manually assign your grid items to rows and cells if you want grid support.
+
 
 ## Usage
 
