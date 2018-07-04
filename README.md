@@ -123,7 +123,7 @@ See also:
 * [`postcss-grid-kiss`] has alternate “everything in one property” syntax,
   which make using Autoprefixer’s Grid safer.
 
-[The guide about Grids in IE and Autoprefixer]: https://css-tricks.com/css-grid-in-ie-debunking-common-ie-grid-misconceptions/
+[The guide about Grids in IE and Autoprefixer]: https://css-tricks.com/css-grid-in-ie-css-grid-and-the-new-autoprefixer/
 [`postcss-gap-properties`]:                     https://github.com/jonathantneal/postcss-gap-properties
 [`postcss-grid-kiss`]:                          https://github.com/sylvainpolletvillard/postcss-grid-kiss
 
