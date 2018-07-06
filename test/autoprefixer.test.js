@@ -540,6 +540,13 @@ describe('hacks', () => {
         ]);
     });
 
+    it('shows Grid warnings only for IE', () => {
+        const input    = 'a { grid-template-rows: repeat(auto-fit, 1px) }';
+        const instance = autoprefixer({ browsers: 'chrome 27', grid: true });
+        const result   = postcss([instance]).process(input);
+        expect(result.warnings()).toEqual([]);
+    });
+
     it('ignores values for CSS3PIE props', () => {
         const css = read('pie');
         expect(postcss([compiler]).process(css).css).toEqual(css);
