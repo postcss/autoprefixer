@@ -101,6 +101,6 @@
     grid-auto-columns: 100px;
     grid-auto-rows: 100px;
     grid-auto-flow: column;
-    grid-template-columns: repeat(auto-fill, minmax(400px,1fr));
-    grid-template-rows: repeat(auto-fit, minmax(400px,1fr));
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(400px, 1fr));
 }
