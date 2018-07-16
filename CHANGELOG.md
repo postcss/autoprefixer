@@ -1,6 +1,12 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 9.0 “A Mari Usque Ad Mare”
+* Remove Node.js 9 and Node.js 4 support.
+* Remove IE and “dead” browsers from Babel.
+* Use PostCSS 7.0.
+* Use Browserslist 4.0.
+
 ## 8.6.5
 * Do not show Grid warnings if IE was not selected.
 
