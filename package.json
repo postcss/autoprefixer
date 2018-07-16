@@ -12,6 +12,9 @@
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
   "license": "MIT",
   "repository": "postcss/autoprefixer",
+  "engines": {
+    "node": ">=6.0.0"
+  },
   "dependencies": {
     "babel-register": "^6.26.0",
     "browserslist": "^4.0.1",
@@ -31,7 +34,15 @@
     "browserify": "^16.2.2",
     "eslint": "^5.1.0",
     "eslint-ci": "^0.1.1",
-    "eslint-config-postcss": "^2.0.2",
+    "eslint-config-logux": "^23.0.2",
+    "eslint-config-postcss": "^3.0.2",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jest": "^21.17.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-security": "^1.4.0",
+    "eslint-plugin-standard": "^3.1.0",
     "fs-extra": "^6.0.1",
     "gulp": "^3.9.1",
     "gulp-babel": "^7.0.1",
@@ -47,7 +58,7 @@
   },
   "scripts": {
     "lint-staged": "lint-staged",
-    "lint": "eslint-ci *.js lib/*.js data/*.js test/*.js",
+    "lint": "eslint-ci *.js lib/*.js data/*.js test/*.js bin/*",
     "test": "jest --coverage && npm run lint && gulp && size-limit"
   },
   "lint-staged": {
@@ -59,25 +70,52 @@
   "size-limit": [
     {
       "path": "build/lib/autoprefixer.js",
-      "limit": "103 KB"
+      "limit": "100 KB"
     }
   ],
   "eslintConfig": {
     "extends": "eslint-config-postcss",
     "parser": "babel-eslint",
     "rules": {
-      "complexity": "off",
-      "camelcase": "off"
+      "security/detect-non-literal-regexp": "off",
+      "security/detect-unsafe-regex": "off",
+      "no-unused-expressions": "off",
+      "valid-jsdoc": "off"
     },
-    "env": {
-      "jest": true
-    }
+    "overrides": [
+      {
+        "files": [
+          "gulpfile.js",
+          "index.js"
+        ],
+        "rules": {
+          "node/no-unpublished-require": "off",
+          "global-require": "off"
+        }
+      },
+      {
+        "files": [
+          "bin/autoprefixer"
+        ],
+        "rules": {
+          "global-require": "off"
+        }
+      },
+      {
+        "files": [
+          "*.test.js"
+        ],
+        "rules": {
+          "jest/no-disabled-tests": "off"
+        }
+      }
+    ]
   },
   "jest": {
     "testEnvironment": "node",
     "coverageThreshold": {
       "global": {
-        "lines": 100
+        "lines": 99.96
       }
     },
     "modulePathIgnorePatterns": [
