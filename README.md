@@ -84,7 +84,7 @@ This is why it is disabled by default.
 First, you need to enable Grid prefixes by `grid: true` option.
 
 Second, you need to test every fix with Grid in IE. It is not,
-enable and forget featur. But it is still very useful.
+enable and forget feature. But it is still very useful.
 Financial Times and Yandex use it in production.
 
 Third, there is not auto placement and all grid cell position must be set
