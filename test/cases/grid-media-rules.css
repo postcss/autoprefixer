@@ -1,0 +1,24 @@
+@media (min-width: 30em) {
+  .wrapper {
+    display: grid;
+    grid-template-areas: "a b";
+  }
+}
+
+@media (min-width: 60em) {
+  .wrapper {
+    grid-template-areas: "a b";
+  }
+}
+
+@media (min-width: 30em) {
+  .a {
+    grid-area: a;
+  }
+}
+
+@media (min-width: 30em) {
+  .b {
+    grid-area: b;
+  }
+}
