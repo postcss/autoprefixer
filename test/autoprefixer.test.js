@@ -279,6 +279,13 @@ it('removes unnecessary prefixes', () => {
   }
 })
 
+it('media does not should nested', () => {
+  const processor = postcss([grider])
+  const input = read('grid-media-rules')
+  const output = read('grid-media-rules.out')
+  expect(processor.process(input).css).toEqual(output)
+})
+
 it('does not remove unnecessary prefixes on request', () => {
   for (const type of ['transition', 'values', 'fullscreen']) {
     const keeper = autoprefixer({ browsers: [], remove: false })
