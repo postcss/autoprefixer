@@ -32,7 +32,7 @@
     "babel-preset-env": "^1.7.0",
     "babelify": "^8.0.0",
     "browserify": "^16.2.2",
-    "eslint": "^5.1.0",
+    "eslint": "^5.2.0",
     "eslint-ci": "^0.1.1",
     "eslint-config-logux": "^23.0.4",
     "eslint-config-postcss": "^3.0.3",
