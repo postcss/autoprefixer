@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 9.0.1
+* Fix nested at-rules in Grid prefixes (by Ivan Malov).
+
 ## 9.0 “A Mari Usque Ad Mare”
 * Remove Node.js 9 and Node.js 4 support.
 * Remove IE and “dead” browsers from Babel.
