@@ -553,6 +553,26 @@ describe('hacks', () => {
     expect(result.warnings()).toEqual([])
   })
 
+  // TODO: add normal warnings output
+  it('shows warning if grid-area has a non-unique identifier', () => {
+    const input = read('grid-template')
+    const output = read('grid-template.out')
+    const instance = prefixer('grid-area')
+    const result = postcss([instance]).process(input)
+
+    expect(result.css).toEqual(output)
+    expect(result.warnings().map(i => i.toString())).toEqual([
+      'autoprefixer: <css input>:49:5: ' +
+        'grid-area identifier is not unique: head',
+      'autoprefixer: <css input>:53:5: ' +
+        'grid-area identifier is not unique: nav',
+      'autoprefixer: <css input>:57:5: ' +
+        'grid-area identifier is not unique: main',
+      'autoprefixer: <css input>:61:5: ' +
+        'grid-area identifier is not unique: foot'
+    ])
+  })
+
   it('ignores values for CSS3PIE props', () => {
     const css = read('pie')
     expect(postcss([compiler]).process(css).css).toEqual(css)
