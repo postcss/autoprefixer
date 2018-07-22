@@ -553,7 +553,6 @@ describe('hacks', () => {
     expect(result.warnings()).toEqual([])
   })
 
-  // TODO: add normal warnings output
   it('shows warning if grid-area has a non-unique identifier', () => {
     const input = read('grid-template')
     const output = read('grid-template.out')
