@@ -97,6 +97,26 @@
     }
 }
 
+.g {
+    display: grid;
+    grid-gap: 10px;
+    grid-template:
+        "g   g" 100px
+        "g   g" 100px
+        "h   h" 100px /
+        1fr  1fr;
+}
+
+.g-conflict {
+    display: grid;
+    grid-gap: 10px;
+    grid-template:
+        "g   g" 100px
+        "g   g" 100px
+        "h   h" 100px /
+        1fr  1fr;
+}
+
 .cell-A {
     grid-area: a;
 }
@@ -114,4 +134,31 @@
 }
 .cell-F {
     grid-area: f;
+}
+
+.h {
+    grid-area: h;
+}
+
+.i {
+    grid-area: h;
+}
+
+.j {
+    grid-area: g;
+}
+
+@media(min-width: 400px) {
+    .h {
+        grid-area: h;
+    }
+    .i {
+        grid-area: g;
+    }
+    .j {
+        grid-area: g;
+    }
+    .g > .j {
+        grid-area: g;
+    }
 }

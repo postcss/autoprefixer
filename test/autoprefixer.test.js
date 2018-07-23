@@ -568,7 +568,17 @@ describe('hacks', () => {
       'autoprefixer: <css input>:57:5: ' +
         'grid-area identifier is not unique: main',
       'autoprefixer: <css input>:61:5: ' +
-        'grid-area identifier is not unique: foot'
+        'grid-area identifier is not unique: foot',
+      'autoprefixer: <css input>:140:5: ' +
+        'grid-area identifier is not unique: h',
+      'autoprefixer: <css input>:144:5: ' +
+        'grid-area identifier is not unique: h',
+      'autoprefixer: <css input>:148:5: ' +
+        'grid-area identifier is not unique: g',
+      'autoprefixer: <css input>:156:9: ' +
+        'grid-area identifier is not unique: g',
+      'autoprefixer: <css input>:162:9: ' +
+        'grid-area identifier is not unique: g'
     ])
   })
 
