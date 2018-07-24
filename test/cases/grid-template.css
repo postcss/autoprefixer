@@ -97,26 +97,6 @@
     }
 }
 
-.g {
-    display: grid;
-    grid-gap: 10px;
-    grid-template:
-        "g   g" 100px
-        "g   g" 100px
-        "h   h" 100px /
-        1fr  1fr;
-}
-
-.g-conflict {
-    display: grid;
-    grid-gap: 10px;
-    grid-template:
-        "g   g" 100px
-        "g   g" 100px
-        "h   h" 100px /
-        1fr  1fr;
-}
-
 .cell-A {
     grid-area: a;
 }
@@ -136,29 +116,145 @@
     grid-area: f;
 }
 
-.h {
-    grid-area: h;
+.g {
+    display: grid;
+    grid-gap: 10px;
+    grid-template:
+        "g   g" 100px
+        "g   g" 100px
+        "h   h" 100px /
+        1fr  1fr;
 }
 
-.i {
-    grid-area: h;
+/* Should trigger a warning */
+.g-conflict {
+    display: grid;
+    grid-gap: 10px;
+    grid-template:
+        "g   g" 100px
+        "g   g" 100px
+        "h   h" 100px /
+        1fr  1fr;
 }
 
-.j {
+@media (min-width: 600px) {
+  /* This should *not* trigger a warning */
+  .g {
+    display: grid;
+    grid-gap: 10px;
+    grid-template:
+        "g   h" 100px /
+        1fr  1fr;
+  }
+
+  /* This *should* trigger a warning */
+  .g-conflict-2 {
+    display: grid;
+    grid-gap: 10px;
+    grid-template:
+        "g   h" 100px /
+        1fr  1fr;
+  }
+}
+
+/* comma list tests */
+/* None of these should throw any warnings (unless specified) */
+.i, .j {
+  display: grid;
+  grid-gap: 10px;
+  grid-template:
+      "i    j" 100px /
+      1fr  1fr;
+}
+
+@media (max-width: 600px) {
+  .i {
+    grid-template:
+      "i" 100px
+      "j" 100px /
+      1fr;
+  }
+  .j {
+    grid-template:
+      "i" 100px
+      "j" 100px /
+      1fr;
+  }
+
+  /* This one should throw a warning */
+  .k {
+    grid-template:
+      "i" 100px
+      "j" 100px /
+      1fr;
+  }
+}
+
+@media (min-width: 900px) {
+  .i, .j {
+    display: grid;
+    grid-gap: 10px;
+    grid-template:
+      "i" 100px
+      "j" 100px /
+      1fr;
+  }
+}
+
+/* media query test */
+@media (min-width: 601px) {
+  .l {
+    display: grid;
+    grid-gap: 10px;
+    grid-template:
+        "l   m" 100px /
+        1fr  1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .l {
+    display: grid;
+    grid-gap: 10px;
+    grid-template:
+        "l   m" 100px /
+        1fr  1fr;
+  }
+
+  /* this should display a warning */
+  .z {
+    display: grid;
+    grid-gap: 10px;
+    grid-template:
+        "m   z" 100px /
+        1fr  1fr;
+  }
+}
+
+.k-1 {
     grid-area: g;
 }
 
-@media(min-width: 400px) {
-    .h {
-        grid-area: h;
-    }
-    .i {
-        grid-area: g;
-    }
-    .j {
-        grid-area: g;
-    }
-    .g > .j {
-        grid-area: g;
-    }
+.k-2 {
+    grid-area: h;
+}
+
+.k-3 {
+    grid-area: i;
+}
+
+.k-4 {
+    grid-area: j;
+}
+
+.k-6 {
+    grid-area: l;
+}
+
+.k-6 {
+    grid-area: m;
+}
+
+.k-7 {
+    grid-area: z;
 }

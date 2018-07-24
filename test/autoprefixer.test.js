@@ -553,7 +553,7 @@ describe('hacks', () => {
     expect(result.warnings()).toEqual([])
   })
 
-  it('shows warning if grid-area has a non-unique identifier', () => {
+  it('shows warning if grid-template has a duplicate area name', () => {
     const input = read('grid-template')
     const output = read('grid-template.out')
     const instance = prefixer('grid-area')
@@ -561,24 +561,16 @@ describe('hacks', () => {
 
     expect(result.css).toEqual(output)
     expect(result.warnings().map(i => i.toString())).toEqual([
-      'autoprefixer: <css input>:49:5: ' +
-        'grid-area identifier is not unique: head',
-      'autoprefixer: <css input>:53:5: ' +
-        'grid-area identifier is not unique: nav',
-      'autoprefixer: <css input>:57:5: ' +
-        'grid-area identifier is not unique: main',
-      'autoprefixer: <css input>:61:5: ' +
-        'grid-area identifier is not unique: foot',
-      'autoprefixer: <css input>:140:5: ' +
-        'grid-area identifier is not unique: h',
-      'autoprefixer: <css input>:144:5: ' +
-        'grid-area identifier is not unique: h',
-      'autoprefixer: <css input>:148:5: ' +
-        'grid-area identifier is not unique: g',
-      'autoprefixer: <css input>:156:9: ' +
-        'grid-area identifier is not unique: g',
-      'autoprefixer: <css input>:162:9: ' +
-        'grid-area identifier is not unique: g'
+      'autoprefixer: <css input>:41:5: ' +
+        'duplicate area names: head, nav, main, foot',
+      'autoprefixer: <css input>:133:5: ' +
+        'duplicate area names: g, h',
+      'autoprefixer: <css input>:154:5: ' +
+        'duplicate area names: g, h',
+      'autoprefixer: <css input>:186:5: ' +
+        'duplicate area names: i, j',
+      'autoprefixer: <css input>:228:5: ' +
+        'duplicate area name: m'
     ])
   })
 
