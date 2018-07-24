@@ -12,6 +12,7 @@
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
   "license": "MIT",
   "repository": "postcss/autoprefixer",
+  "homepage": "https://github.com/postcss/autoprefixer",
   "engines": {
     "node": ">=6.0.0"
   },
