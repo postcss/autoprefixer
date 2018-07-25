@@ -561,16 +561,26 @@ describe('hacks', () => {
 
     expect(result.css).toEqual(output)
     expect(result.warnings().map(i => i.toString())).toEqual([
-      'autoprefixer: <css input>:41:5: ' +
-        'duplicate area names: head, nav, main, foot',
-      'autoprefixer: <css input>:133:5: ' +
-        'duplicate area names: g, h',
-      'autoprefixer: <css input>:154:5: ' +
-        'duplicate area names: g, h',
-      'autoprefixer: <css input>:186:5: ' +
-        'duplicate area names: i, j',
-      'autoprefixer: <css input>:228:5: ' +
-        'duplicate area name: m'
+      `autoprefixer: <css input>:41:5: 
+        duplicate area names detected in rule: .f
+        duplicate area names: head, nav, main, foot
+        duplicate area names cause unexpected behavior in IE`,
+      `autoprefixer: <css input>:133:5: 
+        duplicate area names detected in rule: .g-conflict
+        duplicate area names: g, h
+        duplicate area names cause unexpected behavior in IE`,
+      `autoprefixer: <css input>:154:5: 
+        duplicate area names detected in rule: .g-conflict-2
+        duplicate area names: g, h
+        duplicate area names cause unexpected behavior in IE`,
+      `autoprefixer: <css input>:186:5: 
+        duplicate area names detected in rule: .k
+        duplicate area names: i, j
+        duplicate area names cause unexpected behavior in IE`,
+      `autoprefixer: <css input>:228:5: 
+        duplicate area name detected in rule: .z
+        duplicate area name: m
+        duplicate area names cause unexpected behavior in IE`
     ])
   })
 
