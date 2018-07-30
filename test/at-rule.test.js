@@ -1,17 +1,17 @@
-const AtRule = require('../lib/at-rule')
-const parse = require('postcss').parse
+let AtRule = require('../lib/at-rule')
+let parse = require('postcss').parse
 
 describe('process()', () => {
   it('adds prefixes', () => {
-    const keyframes = new AtRule('@keyframes', ['-moz-', '-ms-'])
+    let keyframes = new AtRule('@keyframes', ['-moz-', '-ms-'])
 
-    const css = parse('@-moz-keyframes b {} ' +
-                          '@-ms-keyframes a {} ' +
-                          '@keyframes a {}')
+    let css = parse('@-moz-keyframes b {} ' +
+                    '@-ms-keyframes a {} ' +
+                    '@keyframes a {}')
     keyframes.process(css.last)
     expect(css.toString()).toEqual('@-moz-keyframes b {} ' +
-                                       '@-ms-keyframes a {} ' +
-                                       '@-moz-keyframes a {} ' +
-                                       '@keyframes a {}')
+                                   '@-ms-keyframes a {} ' +
+                                   '@-moz-keyframes a {} ' +
+                                   '@keyframes a {}')
   })
 })

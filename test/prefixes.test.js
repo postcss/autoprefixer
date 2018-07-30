@@ -1,15 +1,15 @@
-const agents = require('caniuse-lite').agents
-const parse = require('postcss').parse
+let agents = require('caniuse-lite').agents
+let parse = require('postcss').parse
 
-const Declaration = require('../lib/declaration')
-const Prefixes = require('../lib/prefixes')
-const Browsers = require('../lib/browsers')
-const Supports = require('../lib/supports')
-const Selector = require('../lib/selector')
-const OldValue = require('../lib/old-value')
-const Value = require('../lib/value')
+let Declaration = require('../lib/declaration')
+let Prefixes = require('../lib/prefixes')
+let Browsers = require('../lib/browsers')
+let Supports = require('../lib/supports')
+let Selector = require('../lib/selector')
+let OldValue = require('../lib/old-value')
+let Value = require('../lib/value')
 
-const data = {
+let data = {
   browsers: agents,
   prefixes: {
     a: {
@@ -27,19 +27,19 @@ const data = {
   }
 }
 
-const empty = new Prefixes({ }, new Browsers(data.browsers, []))
-const fill = new Prefixes(
+let empty = new Prefixes({ }, new Browsers(data.browsers, []))
+let fill = new Prefixes(
   data.prefixes,
   new Browsers(data.browsers, ['firefox 21', 'ie 7'])
 )
 
-const cSel = new Selector('c', ['-ms-'], fill)
-const bVal = new Value('b', ['-ms- new'], fill)
-const aProp = new Declaration('a', ['-moz-'], fill)
+let cSel = new Selector('c', ['-ms-'], fill)
+let bVal = new Value('b', ['-ms- new'], fill)
+let aProp = new Declaration('a', ['-moz-'], fill)
 aProp.values = [bVal]
 
 function old (prefixed) {
-  const name = prefixed.replace(/-[^-]+-( old)?/, '')
+  let name = prefixed.replace(/-[^-]+-( old)?/, '')
   return new OldValue(name, prefixed)
 }
 
@@ -100,7 +100,7 @@ describe('.cleaner()', () => {
   })
 
   it('returns Prefixes with empty browsers', () => {
-    const cleaner = new Prefixes(data.prefixes,
+    let cleaner = new Prefixes(data.prefixes,
       new Browsers(data.browsers, []))
     expect(Object.keys(fill.cleaner().add)).toHaveLength(2)
     expect(fill.cleaner().remove).toEqual(cleaner.remove)
@@ -147,25 +147,25 @@ describe('values()', () => {
 describe('group()', () => {
   describe('down()', () => {
     it('checks prefix group', () => {
-      const css = parse('a { -ms-a: 1; -o-a: 1; a: 1; b: 2 }')
-      const props = []
+      let css = parse('a { -ms-a: 1; -o-a: 1; a: 1; b: 2 }')
+      let props = []
 
       empty.group(css.first.first).down(i => props.push(i.prop))
       expect(props).toEqual(['-o-a', 'a'])
     })
 
     it('checks prefix groups', () => {
-      const css = parse('a { -ms-a: 1; -o-a: 1; ' +
+      let css = parse('a { -ms-a: 1; -o-a: 1; ' +
                               'a: -o-calc(1); a: 1; a: 2 }')
-      const props = []
+      let props = []
 
       empty.group(css.first.first).down(i => props.push(i.prop))
       expect(props).toEqual(['-o-a', 'a', 'a'])
     })
 
     it('returns check decls inside group', () => {
-      const css = parse('a { -moz-a: 1; -ms-a: 1; -o-a: 1; a: 1 }')
-      const decl = css.first.first
+      let css = parse('a { -moz-a: 1; -ms-a: 1; -o-a: 1; a: 1 }')
+      let decl = css.first.first
 
       expect(empty.group(decl).down(i => i.prop === '-o-a')).toBeTruthy()
       expect(empty.group(decl).down(i => i.prop === '-o-b')).toBeFalsy()
@@ -174,25 +174,25 @@ describe('group()', () => {
 
   describe('up()', () => {
     it('checks prefix group', () => {
-      const css = parse('a { b: 2; -ms-a: 1; -o-a: 1; a: 1 }')
-      const props = []
+      let css = parse('a { b: 2; -ms-a: 1; -o-a: 1; a: 1 }')
+      let props = []
 
       empty.group(css.first.nodes[3]).up(i => props.push(i.prop))
       expect(props).toEqual(['-o-a', '-ms-a'])
     })
 
     it('checks prefix groups', () => {
-      const css = parse('a { a: 2; -ms-a: 1; ' +
+      let css = parse('a { a: 2; -ms-a: 1; ' +
                               '-o-a: 1; a: -o-calc(1); a: 1  }')
-      const props = []
+      let props = []
 
       empty.group(css.first.nodes[4]).up(i => props.push(i.prop))
       expect(props).toEqual(['a', '-o-a', '-ms-a'])
     })
 
     it('returns check decls inside group', () => {
-      const css = parse('a { -moz-a: 1; -ms-a: 1; -o-a: 1; a: 1 }')
-      const decl = css.first.nodes[3]
+      let css = parse('a { -moz-a: 1; -ms-a: 1; -o-a: 1; a: 1 }')
+      let decl = css.first.nodes[3]
 
       expect(empty.group(decl).up(i => i.prop === '-ms-a')).toBeTruthy()
       expect(empty.group(decl).up(i => i.prop === '-ms-b')).toBeFalsy()

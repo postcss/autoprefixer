@@ -1,4 +1,4 @@
-const brackets = require('../lib/brackets')
+let brackets = require('../lib/brackets')
 
 describe('.parse()', () => {
   it('parses simple string', () => {

@@ -1,9 +1,9 @@
-const OldValue = require('../lib/old-value')
-const Value = require('../lib//value')
-const parse = require('postcss').parse
+let OldValue = require('../lib/old-value')
+let Value = require('../lib//value')
+let parse = require('postcss').parse
 
-const Prefixes = require('../lib/prefixes')
-const prefixes = new Prefixes()
+let Prefixes = require('../lib/prefixes')
+let prefixes = new Prefixes()
 
 let calc
 beforeEach(() => {
@@ -12,8 +12,8 @@ beforeEach(() => {
 
 describe('.save()', () => {
   it('clones declaration', () => {
-    const css = parse('a { prop: v }')
-    const width = css.first.first
+    let css = parse('a { prop: v }')
+    let width = css.first.first
 
     width._autoprefixerValues = { '-ms-': '-ms-v' }
     Value.save(prefixes, width)
@@ -22,8 +22,8 @@ describe('.save()', () => {
   })
 
   it('updates declaration with prefix', () => {
-    const css = parse('a { -ms-prop: v }')
-    const width = css.first.first
+    let css = parse('a { -ms-prop: v }')
+    let width = css.first.first
 
     width._autoprefixerValues = { '-ms-': '-ms-v' }
     Value.save(prefixes, width)
@@ -32,8 +32,8 @@ describe('.save()', () => {
   })
 
   it('ignores on another prefix property', () => {
-    const css = parse('a { -ms-prop: v; prop: v }')
-    const width = css.first.last
+    let css = parse('a { -ms-prop: v; prop: v }')
+    let width = css.first.last
 
     width._autoprefixerValues = { '-ms-': '-ms-v' }
     Value.save(prefixes, width)
@@ -42,8 +42,8 @@ describe('.save()', () => {
   })
 
   it('ignores prefixes without changes', () => {
-    const css = parse('a { prop: v }')
-    const width = css.first.first
+    let css = parse('a { prop: v }')
+    let width = css.first.first
 
     width._autoprefixerValues = { '-ms-': 'v' }
     Value.save(prefixes, width)
@@ -54,7 +54,7 @@ describe('.save()', () => {
 
 describe('check()', () => {
   it('checks value in string', () => {
-    const css = parse('a { 0: calc(1px + 1em); ' +
+    let css = parse('a { 0: calc(1px + 1em); ' +
                           '1: 1px calc(1px + 1em); ' +
                           '2: (calc(1px + 1em)); ' +
                           '3: -ms-calc; ' +
@@ -86,8 +86,8 @@ describe('replace()', () => {
 
 describe('process()', () => {
   it('adds prefixes', () => {
-    const css = parse('a { width: calc(1em) calc(1%) }')
-    const width = css.first.first
+    let css = parse('a { width: calc(1em) calc(1%) }')
+    let width = css.first.first
 
     calc.process(width)
     expect(width._autoprefixerValues).toEqual({
@@ -97,16 +97,16 @@ describe('process()', () => {
   })
 
   it('checks parents prefix', () => {
-    const css = parse('::-moz-fullscreen a { width: calc(1%) }')
-    const width = css.first.first
+    let css = parse('::-moz-fullscreen a { width: calc(1%) }')
+    let width = css.first.first
 
     calc.process(width)
     expect(width._autoprefixerValues).toEqual({ '-moz-': '-moz-calc(1%)' })
   })
 
   it('checks property prefix', () => {
-    const css = parse('a { -moz-width: calc(1%); -o-width: calc(1%) }')
-    const decls = css.first.nodes
+    let css = parse('a { -moz-width: calc(1%); -o-width: calc(1%) }')
+    let decls = css.first.nodes
 
     calc.process(decls[0])
     expect(decls[0]._autoprefixerValues).toEqual({

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const mode = process.argv[2]
+let mode = process.argv[2]
 if (mode === '--info') {
   process.stdout.write(
     require('../')().info() + '\n')

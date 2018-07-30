@@ -22,7 +22,7 @@
     "caniuse-lite": "^1.0.30000865",
     "normalize-range": "^0.1.2",
     "num2fraction": "^1.2.2",
-    "postcss": "^7.0.1",
+    "postcss": "^7.0.2",
     "postcss-value-parser": "^3.2.3"
   },
   "devDependencies": {
@@ -35,7 +35,7 @@
     "browserify": "^16.2.2",
     "eslint": "^5.2.0",
     "eslint-ci": "^0.1.1",
-    "eslint-config-logux": "^23.0.4",
+    "eslint-config-logux": "^23.1.0",
     "eslint-config-postcss": "^3.0.3",
     "eslint-config-standard": "^11.0.0",
     "eslint-plugin-import": "^2.13.0",
@@ -47,12 +47,12 @@
     "fs-extra": "^7.0.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^7.0.1",
-    "gulp-json-editor": "^2.4.1",
+    "gulp-json-editor": "^2.4.2",
     "gulp-replace": "^1.0.0",
-    "jest": "^23.4.1",
+    "jest": "^23.4.2",
     "lint-staged": "^7.2.0",
     "pre-commit": "^1.2.2",
-    "size-limit": "^0.18.5"
+    "size-limit": "^0.19.0"
   },
   "bin": {
     "autoprefixer": "./bin/autoprefixer"

@@ -1,7 +1,7 @@
-const Browsers = require('../lib/browsers')
+let Browsers = require('../lib/browsers')
 
-const data = require('caniuse-lite').agents
-const path = require('path')
+let data = require('caniuse-lite').agents
+let path = require('path')
 
 describe('.prefixes()', () => {
   it('returns prefixes by default data', () => {
@@ -19,17 +19,17 @@ describe('.withPrefix()', () => {
 
 describe('parse()', () => {
   it('allows to select no browsers', () => {
-    const browsers = new Browsers(data, [])
+    let browsers = new Browsers(data, [])
     expect(browsers.selected).toHaveLength(0)
   })
 
   it('selects by older version', () => {
-    const browsers = new Browsers(data, ['ie < 7'])
+    let browsers = new Browsers(data, ['ie < 7'])
     expect(browsers.selected).toEqual(['ie 6', 'ie 5.5'])
   })
 
   it('combines requirements', () => {
-    const browsers = new Browsers(data, ['ie 10', 'ie < 6'])
+    let browsers = new Browsers(data, ['ie 10', 'ie < 6'])
     expect(browsers.selected).toEqual(['ie 10', 'ie 5.5'])
   })
 
@@ -46,7 +46,7 @@ describe('parse()', () => {
   })
 
   it('uses browserslist config', () => {
-    const css = path.join(__dirname, 'cases/config/test.css')
+    let css = path.join(__dirname, 'cases/config/test.css')
     expect((new Browsers(data, undefined, { from: css })).selected)
       .toEqual(['ie 10'])
   })
@@ -54,12 +54,12 @@ describe('parse()', () => {
 
 describe('prefix()', () => {
   it('returns browser prefix', () => {
-    const browsers = new Browsers(data, ['chrome 30'])
+    let browsers = new Browsers(data, ['chrome 30'])
     expect(browsers.prefix('chrome 30')).toEqual('-webkit-')
   })
 
   it('returns right prefix for Operas', () => {
-    const browsers = new Browsers(data, ['last 1 opera version'])
+    let browsers = new Browsers(data, ['last 1 opera version'])
     expect(browsers.prefix('opera 12')).toEqual('-o-')
     expect(browsers.prefix(browsers.selected[0])).toEqual('-webkit-')
     expect(browsers.prefix('op_mob 12')).toEqual('-o-')
@@ -69,7 +69,7 @@ describe('prefix()', () => {
 
 describe('isSelected()', () => {
   it('return true for selected browsers', () => {
-    const browsers = new Browsers(data, ['chrome 30', 'chrome 31'])
+    let browsers = new Browsers(data, ['chrome 30', 'chrome 31'])
     expect(browsers.isSelected('chrome 30')).toBeTruthy()
     expect(browsers.isSelected('ie 6')).toBeFalsy()
   })

@@ -1,9 +1,9 @@
-const Prefixes = require('../lib/prefixes')
-const Browsers = require('../lib/browsers')
-const Supports = require('../lib/supports')
-const brackets = require('../lib/brackets')
+let Prefixes = require('../lib/prefixes')
+let Browsers = require('../lib/browsers')
+let Supports = require('../lib/supports')
+let brackets = require('../lib/brackets')
 
-const browsers = new Browsers({
+let browsers = new Browsers({
   firefox: {
     prefix: 'moz',
     versions: ['firefox 22']
@@ -11,7 +11,7 @@ const browsers = new Browsers({
 }, [
   'firefox 22', 'firefox 21'
 ])
-const prefixes = new Prefixes({
+let prefixes = new Prefixes({
   a: {
     browsers: ['firefox 22']
   },
@@ -20,15 +20,15 @@ const prefixes = new Prefixes({
     props: 'c'
   }
 }, browsers)
-const supports = new Supports(Prefixes, prefixes)
+let supports = new Supports(Prefixes, prefixes)
 
 function rm (str) {
-  const ast = supports.normalize(brackets.parse(str))
+  let ast = supports.normalize(brackets.parse(str))
   return brackets.stringify(supports.remove(ast, str))
 }
 
 function clean (str) {
-  const ast = supports.normalize(brackets.parse(str))
+  let ast = supports.normalize(brackets.parse(str))
   return brackets.stringify(supports.cleanBrackets(ast))
 }
 
@@ -50,20 +50,20 @@ describe('parse()', () => {
 
 describe('virtual()', () => {
   it('returns virtual rule', () => {
-    const decl = supports.virtual('color: black')
+    let decl = supports.virtual('color: black')
     expect(decl.type).toEqual('rule')
     expect(decl.toString()).toEqual('a{color: black}')
   })
 
   it('works with broken CSS', () => {
-    const decl = supports.virtual('color black')
+    let decl = supports.virtual('color black')
     expect(decl.type).toEqual('rule')
   })
 })
 
 describe('prefixed()', () => {
   it('returns decls with prefixed property', () => {
-    const decls = supports.prefixed('a: one')
+    let decls = supports.prefixed('a: one')
 
     expect(decls).toHaveLength(2)
     expect(decls[0].toString()).toEqual('-moz-a: one')
@@ -71,7 +71,7 @@ describe('prefixed()', () => {
   })
 
   it('returns decls with prefixed value', () => {
-    const decls = supports.prefixed('c: b')
+    let decls = supports.prefixed('c: b')
 
     expect(decls).toHaveLength(2)
     expect(decls[0].toString()).toEqual('c: -moz-b')
@@ -145,19 +145,19 @@ describe('cleanBrackets()', () => {
 
 describe('process()', () => {
   it('adds params with prefixed value', () => {
-    const rule = { params: '(c: b)' }
+    let rule = { params: '(c: b)' }
     supports.process(rule)
     expect(rule.params).toEqual('((c: -moz-b) or (c: b))')
   })
 
   it('adds params with prefixed function', () => {
-    const rule = { params: '(c: b(1))' }
+    let rule = { params: '(c: b(1))' }
     supports.process(rule)
     expect(rule.params).toEqual('((c: -moz-b(1)) or (c: b(1)))')
   })
 
   it('replaces params with prefixed property', () => {
-    const rule = { params: '(color black) and not (a: 1)' }
+    let rule = { params: '(color black) and not (a: 1)' }
     supports.process(rule)
     expect(rule.params)
       .toEqual('(color black) and not ((-moz-a: 1) or (a: 1))')

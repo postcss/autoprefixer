@@ -1,5 +1,5 @@
-const Prefixer = require('../lib/prefixer')
-const parse = require('postcss').parse
+let Prefixer = require('../lib/prefixer')
+let parse = require('postcss').parse
 
 let prefix, css
 beforeEach(() => {
@@ -40,11 +40,11 @@ describe('.load()', () => {
 
 describe('.clone()', () => {
   it('cleans custom properties', () => {
-    const rule = css.first.first
+    let rule = css.first.first
     rule._autoprefixerPrefix = '-ms-'
     rule._autoprefixerValues = { '-ms-': 1 }
 
-    const cloned = Prefixer.clone(rule, { selector: 'from' })
+    let cloned = Prefixer.clone(rule, { selector: 'from' })
     expect(cloned.selector).toEqual('from')
 
     expect(cloned._autoprefixerPrefix).not.toBeDefined()
@@ -52,8 +52,8 @@ describe('.clone()', () => {
   })
 
   it('fixed declaration between', () => {
-    const parsed = parse('a { color : black }')
-    const cloned = Prefixer.clone(parsed.first.first)
+    let parsed = parse('a { color : black }')
+    let cloned = Prefixer.clone(parsed.first.first)
     expect(cloned.raws.between).toEqual(' : ')
   })
 })
@@ -72,7 +72,7 @@ describe('parentPrefix', () => {
   })
 
   it('finds in parents', () => {
-    const decl = css.first.first
+    let decl = css.first.first
     expect(prefix.parentPrefix(decl)).toEqual('-ms-')
     expect(prefix.parentPrefix(css.nodes[2])).toBeFalsy()
   })
@@ -90,7 +90,7 @@ describe('parentPrefix', () => {
   })
 
   it('works with selector contained --', () => {
-    const parsed = parse(':--a { color: black }')
+    let parsed = parse(':--a { color: black }')
     expect(prefix.parentPrefix(parsed.first.first)).toBeFalsy()
   })
 })

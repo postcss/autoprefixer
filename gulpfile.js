@@ -1,6 +1,6 @@
-const gulp = require('gulp')
-const path = require('path')
-const fs = require('fs-extra')
+let gulp = require('gulp')
+let path = require('path')
+let fs = require('fs-extra')
 
 gulp.task('clean', done => {
   fs.remove(path.join(__dirname, 'autoprefixer.js'), () => {
@@ -9,7 +9,7 @@ gulp.task('clean', done => {
 })
 
 gulp.task('build:lib', ['clean'], () => {
-  const babel = require('gulp-babel')
+  let babel = require('gulp-babel')
 
   return gulp.src(['{lib,data}/**/*.js'])
     .pipe(babel())
@@ -17,7 +17,7 @@ gulp.task('build:lib', ['clean'], () => {
 })
 
 gulp.task('build:docs', ['clean'], () => {
-  const ignore = require('fs').readFileSync('.npmignore').toString()
+  let ignore = require('fs').readFileSync('.npmignore').toString()
     .trim().split(/\n+/)
     .concat(['.npmignore', 'index.js', 'package.json', 'logo.svg', 'AUTHORS'])
     .map(i => '!' + i)
@@ -31,7 +31,7 @@ gulp.task('build:bin', ['clean'], () => {
 })
 
 gulp.task('build:package', ['clean'], () => {
-  const editor = require('gulp-json-editor')
+  let editor = require('gulp-json-editor')
 
   return gulp.src('./package.json')
     .pipe(editor(json => {
@@ -55,7 +55,7 @@ gulp.task('build:package', ['clean'], () => {
 gulp.task('build', ['build:lib', 'build:docs', 'build:bin', 'build:package'])
 
 gulp.task('standalone', ['build:lib'], done => {
-  const builder = require('browserify')({
+  let builder = require('browserify')({
     basedir: path.join(__dirname, 'build'),
     standalone: 'autoprefixer'
   })
@@ -73,12 +73,12 @@ gulp.task('standalone', ['build:lib'], done => {
 
       fs.removeSync(path.join(__dirname, 'build'))
 
-      const rails = path.join(__dirname, '..', 'autoprefixer-rails',
+      let rails = path.join(__dirname, '..', 'autoprefixer-rails',
         'vendor', 'autoprefixer.js')
       if (fs.existsSync(rails)) {
         fs.writeFileSync(rails, build)
       } else {
-        const out = path.join(__dirname, 'autoprefixer.js')
+        let out = path.join(__dirname, 'autoprefixer.js')
         fs.writeFileSync(out, build)
       }
       done()

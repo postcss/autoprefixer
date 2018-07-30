@@ -1,11 +1,11 @@
-const browserslist = require('browserslist')
-const agents = require('caniuse-lite').agents
+let browserslist = require('browserslist')
+let agents = require('caniuse-lite').agents
 
-const Browsers = require('../lib/browsers')
-const Prefixes = require('../lib/prefixes')
-const info = require('../lib/info')
+let Browsers = require('../lib/browsers')
+let Prefixes = require('../lib/prefixes')
+let info = require('../lib/info')
 
-const data = {
+let data = {
   browsers: agents,
   prefixes: {
     'a': {
@@ -41,13 +41,13 @@ const data = {
 }
 
 it('returns selected browsers and prefixes', () => {
-  const browsers = new Browsers(data.browsers,
+  let browsers = new Browsers(data.browsers,
     ['chrome 30', 'firefox 21', 'firefox 20', 'ie 6'])
-  const prefixes = new Prefixes(data.prefixes, browsers)
+  let prefixes = new Prefixes(data.prefixes, browsers)
 
-  const coverage = browserslist.coverage(
+  let coverage = browserslist.coverage(
     ['chrome 30', 'firefox 21', 'firefox 20', 'ie 6'])
-  const round = Math.round(coverage * 100) / 100.0
+  let round = Math.round(coverage * 100) / 100.0
 
   expect(info(prefixes)).toEqual(
     'Browsers:\n' +
@@ -79,13 +79,13 @@ it('returns selected browsers and prefixes', () => {
 })
 
 it('doesn\'t show transitions unless they are necessary', () => {
-  const browsers = new Browsers(data.browsers,
+  let browsers = new Browsers(data.browsers,
     ['chrome 30', 'firefox 20'])
-  const prefixes = new Prefixes(data.prefixes, browsers)
+  let prefixes = new Prefixes(data.prefixes, browsers)
 
-  const coverage = browserslist.coverage(
+  let coverage = browserslist.coverage(
     ['chrome 30', 'firefox 20'])
-  const round = Math.round(coverage * 100) / 100.0
+  let round = Math.round(coverage * 100) / 100.0
 
   expect(info(prefixes)).toEqual(
     'Browsers:\n' +
@@ -104,13 +104,13 @@ it('doesn\'t show transitions unless they are necessary', () => {
 })
 
 it('returns string for empty prefixes', () => {
-  const browsers = new Browsers(data.browsers, ['ie 7'])
-  const prefixes = new Prefixes(data.prefixes, browsers)
+  let browsers = new Browsers(data.browsers, ['ie 7'])
+  let prefixes = new Prefixes(data.prefixes, browsers)
   expect(info(prefixes)).toMatch(/remove Autoprefixer/)
 })
 
 it('returns string for empty browsers', () => {
-  const browsers = new Browsers(data.browsers, [])
-  const prefixes = new Prefixes(data.prefixes, browsers)
+  let browsers = new Browsers(data.browsers, [])
+  let prefixes = new Prefixes(data.prefixes, browsers)
   expect(info(prefixes)).toEqual('No browsers selected')
 })

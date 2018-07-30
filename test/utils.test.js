@@ -1,4 +1,4 @@
-const utils = require('../lib/utils')
+let utils = require('../lib/utils')
 
 describe('.error()', () => {
   it('raises an error', () => {
@@ -35,14 +35,14 @@ describe('.removeNote()', () => {
 
 describe('.escapeRegexp()', () => {
   it('escapes RegExp symbols', () => {
-    const string = utils.escapeRegexp('^[()\\]')
+    let string = utils.escapeRegexp('^[()\\]')
     expect(string).toEqual('\\^\\[\\(\\)\\\\\\]')
   })
 })
 
 describe('.regexp()', () => {
   it('generates RegExp that finds tokens in CSS values', () => {
-    const regexp = utils.regexp('foo')
+    let regexp = utils.regexp('foo')
     function check (string) {
       return string.match(regexp) !== null
     }
@@ -77,12 +77,12 @@ describe('.regexp()', () => {
 
 describe('.editList()', () => {
   it('does save without changes', () => {
-    const list = utils.editList('a,\nb, c', parsed => parsed)
+    let list = utils.editList('a,\nb, c', parsed => parsed)
     expect(list).toEqual('a,\nb, c')
   })
 
   it('changes list', () => {
-    const list = utils.editList('a, b', (parsed, edit) => {
+    let list = utils.editList('a, b', (parsed, edit) => {
       expect(parsed).toEqual(['a', 'b'])
       expect(edit).toEqual([])
       return ['1', '2']
@@ -91,12 +91,12 @@ describe('.editList()', () => {
   })
 
   it('saves comma', () => {
-    const list = utils.editList('a,\nb', () => ['1', '2'])
+    let list = utils.editList('a,\nb', () => ['1', '2'])
     expect(list).toEqual('1,\n2')
   })
 
   it('parse one value', () => {
-    const list = utils.editList('1', parsed => [parsed[0], '2'])
+    let list = utils.editList('1', parsed => [parsed[0], '2'])
     expect(list).toEqual('1, 2')
   })
 })

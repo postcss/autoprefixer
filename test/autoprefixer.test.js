@@ -1,65 +1,65 @@
-const autoprefixer = require('../lib/autoprefixer')
+let autoprefixer = require('../lib/autoprefixer')
 
-const postcss = require('postcss')
-const path = require('path')
-const fs = require('fs')
+let postcss = require('postcss')
+let path = require('path')
+let fs = require('fs')
 
-const grider = autoprefixer({
+let grider = autoprefixer({
   browsers: ['Chrome 25', 'Edge 12', 'IE 10'],
   cascade: false,
   grid: true
 })
 
-const cleaner = autoprefixer({
+let cleaner = autoprefixer({
   browsers: []
 })
-const compiler = autoprefixer({
+let compiler = autoprefixer({
   browsers: ['Chrome 25', 'Opera 12']
 })
-const filterer = autoprefixer({
+let filterer = autoprefixer({
   browsers: ['Chrome 25', 'Safari 9', 'Firefox 39']
 })
-const borderer = autoprefixer({
+let borderer = autoprefixer({
   browsers: ['Safari 4', 'Firefox 3.6']
 })
-const cascader = autoprefixer({
+let cascader = autoprefixer({
   browsers: ['Chrome > 19', 'Firefox 21', 'IE 10'],
   cascade: true
 })
-const keyframer = autoprefixer({
+let keyframer = autoprefixer({
   browsers: ['Chrome > 19', 'Opera 12']
 })
-const flexboxer = autoprefixer({
+let flexboxer = autoprefixer({
   browsers: ['Chrome > 19', 'Firefox 21', 'IE 10']
 })
-const without3d = autoprefixer({
+let without3d = autoprefixer({
   browsers: ['Opera 12', 'IE > 0']
 })
-const supporter = autoprefixer({
+let supporter = autoprefixer({
   browsers: ['Chrome 25', 'Chrome 28', 'IE > 0']
 })
-const uncascader = autoprefixer({
+let uncascader = autoprefixer({
   browsers: ['Firefox 15']
 })
-const gradienter = autoprefixer({
+let gradienter = autoprefixer({
   browsers: ['Chrome 25', 'Opera 12', 'Android 2.3']
 })
-const selectorer = autoprefixer({
+let selectorer = autoprefixer({
   browsers: ['Chrome 25', 'Firefox > 17', 'IE 10', 'Edge 12']
 })
-const intrinsicer = autoprefixer({
+let intrinsicer = autoprefixer({
   browsers: ['Chrome 25', 'Firefox 22', 'Safari 10']
 })
-const imagerender = autoprefixer({
+let imagerender = autoprefixer({
   browsers: ['iOS 8', 'iOS 6.1', 'FF 22', 'IE 11', 'Opera 12']
 })
-const backgrounder = autoprefixer({
+let backgrounder = autoprefixer({
   browsers: ['Firefox 3.6', 'Android 2.3']
 })
-const resolutioner = autoprefixer({
+let resolutioner = autoprefixer({
   browsers: ['Safari 7', 'Opera 12']
 })
-const overscroller = autoprefixer({
+let overscroller = autoprefixer({
   browsers: ['Edge 16']
 })
 
@@ -124,14 +124,14 @@ function prefixer (name) {
 }
 
 function read (name) {
-  const file = path.join(__dirname, '/cases/' + name + '.css')
+  let file = path.join(__dirname, '/cases/' + name + '.css')
   return fs.readFileSync(file).toString()
 }
 
 function check (from, instance = prefixer(from)) {
-  const input = read(from)
-  const output = read(from + '.out')
-  const result = postcss([instance]).process(input)
+  let input = read(from)
+  let output = read(from + '.out')
+  let result = postcss([instance]).process(input)
   expect(result.warnings()).toHaveLength(0)
   expect(result.css).toEqual(output)
 }
@@ -157,29 +157,29 @@ it('throws on wrong options', () => {
   }).toThrowError(/browsers/)
 })
 
-const options = {
+let options = {
   cascade: false,
   grid: false
 }
 
-const browsers = ['chrome 25', 'opera 12']
+let browsers = ['chrome 25', 'opera 12']
 
 it('sets options via options object', () => {
-  const allOptions = Object.assign(options, { browsers })
+  let allOptions = Object.assign(options, { browsers })
 
-  const instance = autoprefixer(allOptions)
+  let instance = autoprefixer(allOptions)
   expect(instance.options).toEqual(allOptions)
   expect(instance.browsers).toEqual(browsers)
 })
 
 it('sets options via array of browsers as first argument and object', () => {
-  const instance = autoprefixer(browsers, options)
+  let instance = autoprefixer(browsers, options)
   expect(instance.options).toEqual(options)
   expect(instance.browsers).toEqual(browsers)
 })
 
 it('sets options via browsers as arguments and options object', () => {
-  const instance = autoprefixer(...browsers, options)
+  let instance = autoprefixer(...browsers, options)
   expect(instance.options).toEqual(options)
   expect(instance.browsers).toEqual(browsers)
 })
@@ -189,7 +189,7 @@ it('has default browsers', () => {
 })
 
 it('passes statistics to Browserslist', () => {
-  const stats = {
+  let stats = {
     chrome: {
       10: 10,
       11: 40
@@ -224,9 +224,9 @@ it('uses block control comments', () => check('disabled'))
 it('has actual example in docs', () => check('example'))
 
 it('uses control comments to whole scope', () => {
-  const input = read('scope')
-  const output = read('scope.out')
-  const result = postcss([prefixer('scope')]).process(input)
+  let input = read('scope')
+  let output = read('scope.out')
+  let result = postcss([prefixer('scope')]).process(input)
 
   expect(result.css).toEqual(output)
   expect(result.warnings().map(i => i.toString())).toEqual([
@@ -237,9 +237,9 @@ it('uses control comments to whole scope', () => {
 })
 
 it('prefixes transition', () => {
-  const input = read('transition')
-  const output = read('transition.out')
-  const result = postcss([prefixer('transition')]).process(input)
+  let input = read('transition')
+  let output = read('transition.out')
+  let result = postcss([prefixer('transition')]).process(input)
 
   expect(result.css).toEqual(output)
   expect(result.warnings().map(i => i.toString())).toEqual([
@@ -250,20 +250,20 @@ it('prefixes transition', () => {
 })
 
 it('works with broken transition', () => {
-  const input = 'a{transition:,,}'
-  const output = 'a{-webkit-transition:;-o-transition:;transition:}'
-  const result = postcss([prefixer('transition')]).process(input)
+  let input = 'a{transition:,,}'
+  let output = 'a{-webkit-transition:;-o-transition:;transition:}'
+  let result = postcss([prefixer('transition')]).process(input)
   expect(result.css).toEqual(output)
 })
 
 it('should ignore spaces inside values', () => {
-  const css = read('trim')
+  let css = read('trim')
   expect(postcss([flexboxer]).process(css).css).toEqual(css)
 })
 
 it('removes unnecessary prefixes', () => {
-  const processor = postcss([cleaner])
-  for (const type of COMMONS) {
+  let processor = postcss([cleaner])
+  for (let type of COMMONS) {
     if (type === 'gradient-fix') continue
     if (type === 'cascade') continue
     if (type === 'mistakes') continue
@@ -273,47 +273,47 @@ it('removes unnecessary prefixes', () => {
     if (type === 'grid-area') continue
     if (type === 'grid-template') continue
     if (type === 'grid-template-areas') continue
-    const input = read(type + '.out')
-    const output = read(type)
+    let input = read(type + '.out')
+    let output = read(type)
     expect(processor.process(input).css).toEqual(output)
   }
 })
 
 it('media does not should nested', () => {
-  const processor = postcss([grider])
-  const input = read('grid-media-rules')
-  const output = read('grid-media-rules.out')
+  let processor = postcss([grider])
+  let input = read('grid-media-rules')
+  let output = read('grid-media-rules.out')
   expect(processor.process(input).css).toEqual(output)
 })
 
 it('does not remove unnecessary prefixes on request', () => {
-  for (const type of ['transition', 'values', 'fullscreen']) {
-    const keeper = autoprefixer({ browsers: [], remove: false })
-    const css = read(type + '.out')
+  for (let type of ['transition', 'values', 'fullscreen']) {
+    let keeper = autoprefixer({ browsers: [], remove: false })
+    let css = read(type + '.out')
     expect(postcss([keeper]).process(css).css).toEqual(css)
   }
 })
 
 it('does not add prefixes on request', () => {
-  for (const type of ['transition', 'values', 'fullscreen']) {
-    const remover = autoprefixer({ browsers: ['Opera 12'], add: false })
-    const unprefixed = read(type)
+  for (let type of ['transition', 'values', 'fullscreen']) {
+    let remover = autoprefixer({ browsers: ['Opera 12'], add: false })
+    let unprefixed = read(type)
     expect(postcss([remover]).process(unprefixed).css).toEqual(unprefixed)
   }
 })
 
 it('prevents doubling prefixes', () => {
-  for (const type of COMMONS) {
-    const processor = postcss([prefixer(type)])
-    const input = read(type)
-    const output = read(type + '.out')
+  for (let type of COMMONS) {
+    let processor = postcss([prefixer(type)])
+    let input = read(type)
+    let output = read(type + '.out')
     expect(processor.process(processor.process(input)).css).toEqual(output)
   }
 })
 
 it('parses difficult files', () => {
-  const input = read('syntax')
-  const result = postcss([cleaner]).process(input)
+  let input = read('syntax')
+  let result = postcss([cleaner]).process(input)
   expect(result.css).toEqual(input)
 })
 
@@ -330,23 +330,23 @@ it('shows file name in parse error', () => {
 })
 
 it('uses browserslist config', () => {
-  const from = path.join(__dirname, 'cases/config/test.css')
-  const input = read('config/test')
-  const output = read('config/test.out')
-  const processor = postcss([autoprefixer])
+  let from = path.join(__dirname, 'cases/config/test.css')
+  let input = read('config/test')
+  let output = read('config/test.out')
+  let processor = postcss([autoprefixer])
   expect(processor.process(input, { from }).css).toEqual(output)
 })
 
 it('sets browserslist environment', () => {
-  const from = path.join(__dirname, 'cases/config/test.css')
-  const input = read('config/test')
-  const output = read('config/test.production')
-  const processor = postcss([autoprefixer({ env: 'production' })])
+  let from = path.join(__dirname, 'cases/config/test.css')
+  let input = read('config/test')
+  let output = read('config/test.production')
+  let processor = postcss([autoprefixer({ env: 'production' })])
   expect(processor.process(input, { from }).css).toEqual(output)
 })
 
 it('works without source in nodes', () => {
-  const root = postcss.root()
+  let root = postcss.root()
   root.append({ selector: 'a' })
   root.first.append({ prop: 'display', value: 'flex' })
   compiler(root)
@@ -360,36 +360,36 @@ it('takes values from other PostCSS plugins', () => {
       i.value = 'calc(0)'
     })
   }
-  const result = postcss([plugin, compiler]).process('a{width:0/**/0}')
+  let result = postcss([plugin, compiler]).process('a{width:0/**/0}')
   expect(result.css).toEqual('a{width:-webkit-calc(0);width:calc(0)}')
 })
 
 it('has option to disable @supports support', () => {
-  const css = '@supports (cursor: grab) {}'
-  const instance = autoprefixer({ browsers: ['Chrome 28'], supports: false })
-  const result = postcss([instance]).process(css)
+  let css = '@supports (cursor: grab) {}'
+  let instance = autoprefixer({ browsers: ['Chrome 28'], supports: false })
+  let result = postcss([instance]).process(css)
   expect(result.css).toEqual(css)
 })
 
 it('has disabled grid options by default', () => {
-  const ap = autoprefixer({ browsers: ['Edge 12', 'IE 10'] })
-  const input = read('grid')
-  const output = read('grid.disabled')
-  const result = postcss([ap]).process(input)
+  let ap = autoprefixer({ browsers: ['Edge 12', 'IE 10'] })
+  let input = read('grid')
+  let output = read('grid.disabled')
+  let result = postcss([ap]).process(input)
   expect(result.css).toEqual(output)
 })
 
 it('has option to disable flexbox support', () => {
-  const css = read('flexbox')
-  const instance = autoprefixer({ browsers: ['IE 10'], flexbox: false })
-  const result = postcss([instance]).process(css)
+  let css = read('flexbox')
+  let instance = autoprefixer({ browsers: ['IE 10'], flexbox: false })
+  let result = postcss([instance]).process(css)
   expect(result.css).toEqual(css)
 })
 
 it('has option to disable 2009 flexbox support', () => {
-  const ap = autoprefixer({ browsers: ['Chrome > 19'], flexbox: 'no-2009' })
-  const css = 'a{flex:1;transition:flex}'
-  const result = postcss([ap]).process(css)
+  let ap = autoprefixer({ browsers: ['Chrome > 19'], flexbox: 'no-2009' })
+  let css = 'a{flex:1;transition:flex}'
+  let result = postcss([ap]).process(css)
   expect(result.css).toEqual('a{' +
         '-webkit-flex:1;flex:1;' +
         '-webkit-transition:-webkit-flex;transition:-webkit-flex;' +
@@ -403,7 +403,7 @@ it('returns inspect string', () => {
 })
 
 it('uses browserslist config in inspect', () => {
-  const from = path.join(__dirname, 'cases/config')
+  let from = path.join(__dirname, 'cases/config')
   expect(autoprefixer().info({ from })).toMatch(/Browsers:\s+IE: 10/)
 })
 
@@ -445,16 +445,16 @@ describe('hacks', () => {
   it('supports color-adjust', () => check('color-adjust'))
 
   it('supports appearance for IE', () => {
-    const instance = autoprefixer({ browsers: 'Edge 15' })
-    const result = postcss([instance]).process('a { appearance: none }')
+    let instance = autoprefixer({ browsers: 'Edge 15' })
+    let result = postcss([instance]).process('a { appearance: none }')
     expect(result.css).toEqual(
       'a { -webkit-appearance: none; appearance: none }')
   })
 
   it('changes angle in gradient', () => {
-    const input = read('gradient')
-    const output = read('gradient.out')
-    const result = postcss([prefixer('gradient')]).process(input)
+    let input = read('gradient')
+    let output = read('gradient.out')
+    let result = postcss([prefixer('gradient')]).process(input)
 
     expect(result.css).toEqual(output)
     expect(result.warnings().map(i => i.toString())).toEqual([
@@ -471,7 +471,7 @@ describe('hacks', () => {
   })
 
   it('warns on old flexbox display', () => {
-    const result = postcss([flexboxer]).process('a{ display: box; }')
+    let result = postcss([flexboxer]).process('a{ display: box; }')
     expect(result.css).toEqual('a{ display: box; }')
     expect(result.warnings().map(i => i.toString())).toEqual([
       'autoprefixer: <css input>:1:4: You should write display: flex ' +
@@ -480,9 +480,9 @@ describe('hacks', () => {
   })
 
   it('supports intrinsic sizing', () => {
-    const input = read('intrinsic')
-    const output = read('intrinsic.out')
-    const result = postcss([prefixer('intrinsic')]).process(input)
+    let input = read('intrinsic')
+    let output = read('intrinsic.out')
+    let result = postcss([prefixer('intrinsic')]).process(input)
 
     expect(result.css).toEqual(output)
     expect(result.warnings().map(i => i.toString())).toEqual([
@@ -494,10 +494,10 @@ describe('hacks', () => {
   })
 
   it('supports text-emphasis', () => {
-    const input = read('text-emphasis-position')
-    const output = read('text-emphasis-position.out')
-    const instance = prefixer('text-emphasis-position')
-    const result = postcss([instance]).process(input)
+    let input = read('text-emphasis-position')
+    let output = read('text-emphasis-position.out')
+    let instance = prefixer('text-emphasis-position')
+    let result = postcss([instance]).process(input)
 
     expect(result.css).toEqual(output)
     expect(result.warnings().map(i => i.toString())).toEqual([
@@ -508,10 +508,10 @@ describe('hacks', () => {
   })
 
   it('supports grid layout', () => {
-    const input = read('grid')
-    const output = read('grid.out')
-    const instance = prefixer('grid')
-    const result = postcss([instance]).process(input)
+    let input = read('grid')
+    let output = read('grid.out')
+    let instance = prefixer('grid')
+    let result = postcss([instance]).process(input)
 
     expect(result.css).toEqual(output)
     expect(result.warnings().map(i => i.toString())).toEqual([
@@ -547,17 +547,17 @@ describe('hacks', () => {
   })
 
   it('shows Grid warnings only for IE', () => {
-    const input = 'a { grid-template-rows: repeat(auto-fit, 1px) }'
-    const instance = autoprefixer({ browsers: 'chrome 27', grid: true })
-    const result = postcss([instance]).process(input)
+    let input = 'a { grid-template-rows: repeat(auto-fit, 1px) }'
+    let instance = autoprefixer({ browsers: 'chrome 27', grid: true })
+    let result = postcss([instance]).process(input)
     expect(result.warnings()).toEqual([])
   })
 
   it('shows warning if grid-template has a duplicate area name', () => {
-    const input = read('grid-template')
-    const output = read('grid-template.out')
-    const instance = prefixer('grid-area')
-    const result = postcss([instance]).process(input)
+    let input = read('grid-template')
+    let output = read('grid-template.out')
+    let instance = prefixer('grid-area')
+    let result = postcss([instance]).process(input)
 
     expect(result.css).toEqual(output)
     expect(result.warnings().map(i => i.toString())).toEqual([
@@ -595,15 +595,15 @@ describe('hacks', () => {
   })
 
   it('ignores values for CSS3PIE props', () => {
-    const css = read('pie')
+    let css = read('pie')
     expect(postcss([compiler]).process(css).css).toEqual(css)
   })
 
   it('add prefix for backface-visibility for Safari 9', () => {
-    const input = 'a{ ' +
+    let input = 'a{ ' +
                       'backface-visibility: hidden; ' +
                       'transform-style: preserve-3d }'
-    const ap = autoprefixer({ browsers: ['Safari 9'], flexbox: false })
+    let ap = autoprefixer({ browsers: ['Safari 9'], flexbox: false })
     expect(postcss([ap]).process(input).css).toEqual(
       'a{ ' +
             '-webkit-backface-visibility: hidden; ' +
