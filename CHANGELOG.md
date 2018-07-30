@@ -1,6 +1,10 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 9.0.2
+* Show warning on Grid area names conflict (by Bogdan).
+* Fix documentation (by Sven Wagner).
+
 ## 9.0.1
 * Fix nested at-rules in Grid prefixes (by Ivan Malov).
 
