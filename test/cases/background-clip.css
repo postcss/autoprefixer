@@ -1,10 +1,7 @@
 a {
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
     background-clip: text;
 }
 
 b {
-    -webkit-background-clip: content-box;
     background-clip: content-box;
 }

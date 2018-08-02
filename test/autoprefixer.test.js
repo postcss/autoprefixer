@@ -62,6 +62,9 @@ let resolutioner = autoprefixer({
 let overscroller = autoprefixer({
   browsers: ['Edge 16']
 })
+let clipper = autoprefixer({
+  browsers: ['Safari 7', 'Edge 14']
+})
 
 function prefixer (name) {
   if (
@@ -97,7 +100,7 @@ function prefixer (name) {
   } else if (name === 'background-size') {
     return backgrounder
   } else if (name === 'background-clip') {
-    return cleaner
+    return clipper
   } else if (name === 'uncascade') {
     return uncascader
   } else if (name === 'example') {
