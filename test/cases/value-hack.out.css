@@ -1,14 +1,14 @@
 .not-hack {
-    width: calc(30% + 1px);
-    display: flex;
-    transition: filter 1s;
+  width: calc(30% + 1px);
+  display: flex;
+  transition: filter 1s;
 }
 
 .not-hack2 {
-    transition: filter 1s;
+  transition: filter 1s;
 }
 
 .hack {
-    width: -webkit-calc(30% + 1px);
-    display: -webkit-box;
+  width: -webkit-calc(30% + 1px);
+  display: -webkit-box;
 }

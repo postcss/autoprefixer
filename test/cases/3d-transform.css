@@ -1,16 +1,16 @@
 a {
-    transition: transform 1s;
-    transform: rotateX(45deg);
+  transition: transform 1s;
+  transform: rotateX(45deg);
 }
 b {
-    transform: translateX(45deg);
-    transform-origin: 0 0;
+  transform: translateX(45deg);
+  transform-origin: 0 0;
 }
 em {
-    transform: rotateZ(45deg);
+  transform: rotateZ(45deg);
 }
 @keyframes anim {
-    from {
-        transform: rotate(90deg);
-    }
+  from {
+    transform: rotate(90deg);
+  }
 }

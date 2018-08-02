@@ -1,10 +1,10 @@
 a {
-    margin-block-start: 1px;
-    margin-inline-start: 1px;
-    padding-inline-end: 1px;
+  margin-block-start: 1px;
+  margin-inline-start: 1px;
+  padding-inline-end: 1px;
 }
 
 .border {
-    border-block-end: 1px;
-    border-inline-end: 1px;
+  border-block-end: 1px;
+  border-inline-end: 1px;
 }

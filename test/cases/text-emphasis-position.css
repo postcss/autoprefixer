@@ -1,15 +1,15 @@
 a {
-    text-emphasis-position: over left;
+  text-emphasis-position: over left;
 }
 
 em {
-    text-emphasis-position: under right;
+  text-emphasis-position: under right;
 }
 
 .reverse {
-    text-emphasis-position: left over;
+  text-emphasis-position: left over;
 }
 
 .wrong {
-    text-emphasis-position: over;
+  text-emphasis-position: over;
 }

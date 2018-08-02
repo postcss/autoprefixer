@@ -1,4 +1,4 @@
 a {
-    flex-basis: 8.33333%;
-    flex-basis: calc(100% / 12 * 1)
+  flex-basis: 8.33333%;
+  flex-basis: calc(100% / 12 * 1)
 }

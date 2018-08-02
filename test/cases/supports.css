@@ -2,27 +2,27 @@
   (cursor: grab) or
   not (mask: none) and
   (color: black) {
-    a {
-        color: black;
-    }
+  a {
+    color: black;
+  }
 }
 
 @supports not (display: flex) {
-    a {
-        color: #000;
-    }
+  a {
+    color: #000;
+  }
 }
 
 @supports ((perspective: 1px) and (not (-webkit-overflow-scrolling: touch))) {
-    a {
-        color: #000;
-    }
+  a {
+    color: #000;
+  }
 }
 
 @supports (animation-name: test) and ((animation-timing-function: steps(4, end)) or (animation-timing-function: step-end)) {
-    animation-name: test;
+  animation-name: test;
 }
 
 @supports (transition: color 1s) {
-    transition: color 1s;
+  transition: color 1s;
 }

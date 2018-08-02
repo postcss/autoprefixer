@@ -1,19 +1,19 @@
 a {
-    -webkit-text-emphasis-position: over;
-            text-emphasis-position: over left;
+  -webkit-text-emphasis-position: over;
+          text-emphasis-position: over left;
 }
 
 em {
-    -webkit-text-emphasis-position: under;
-            text-emphasis-position: under right;
+  -webkit-text-emphasis-position: under;
+          text-emphasis-position: under right;
 }
 
 .reverse {
-    -webkit-text-emphasis-position: over;
-            text-emphasis-position: left over;
+  -webkit-text-emphasis-position: over;
+          text-emphasis-position: left over;
 }
 
 .wrong {
-    -webkit-text-emphasis-position: over;
-            text-emphasis-position: over;
+  -webkit-text-emphasis-position: over;
+          text-emphasis-position: over;
 }

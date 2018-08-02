@@ -18,6 +18,6 @@
 /* autoprefixer: ignore next */
 @media (min-resolution: 2dppx) {
   .ignore-at-rule::placeholder {
-      mask: none;
+    mask: none;
   }
 }

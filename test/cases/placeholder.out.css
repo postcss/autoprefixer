@@ -1,21 +1,21 @@
 ::-webkit-input-placeholder {
-    color: #999
+  color: #999
 }
 :-moz-placeholder {
-    color: #999
+  color: #999
 }
 ::-moz-placeholder {
-    color: #999
+  color: #999
 }
 :-ms-input-placeholder {
-    color: #999
+  color: #999
 }
 ::-ms-input-placeholder {
-    color: #999
+  color: #999
 }
 ::placeholder {
-    color: #999
+  color: #999
 }
 :placeholder-shown {
-    background: #eee
+  background: #eee
 }

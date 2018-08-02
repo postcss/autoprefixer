@@ -1,29 +1,29 @@
 a {
-    transition: color 200ms, transform 200ms;
-    transform: rotate(10deg);
+  transition: color 200ms, transform 200ms;
+  transform: rotate(10deg);
 }
 
 div {
-    transition-property: filter;
-    animation-name: rotating;
+  transition-property: filter;
+  animation-name: rotating;
 }
 
 .good {
-    transition-property: filter;
-    transition-duration: 1s;
+  transition-property: filter;
+  transition-duration: 1s;
 }
 
 .good2 {
-    transition-property: color, filter;
-    transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
+  transition-property: color, filter;
+  transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
 }
 
 .bad {
-    /* safe with different node types */
-    transition-property: color, filter;
-    transition-duration: 1s, 2s;
+  /* safe with different node types */
+  transition-property: color, filter;
+  transition-duration: 1s, 2s;
 }
 
 .revert {
-    transition: 200ms transform;
+  transition: 200ms transform;
 }

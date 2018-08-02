@@ -1,31 +1,31 @@
 a {
-    -o-transition: -o-transform 1s;
-    transition: transform 1s;
-    transition: transform 1s, -o-transform 1s;
-    transform: rotateX(45deg);
+  -o-transition: -o-transform 1s;
+  transition: transform 1s;
+  transition: transform 1s, -o-transform 1s;
+  transform: rotateX(45deg);
 }
 b {
-    -ms-transform: translateX(45deg);
-     -o-transform: translateX(45deg);
-        transform: translateX(45deg);
-    -ms-transform-origin: 0 0;
-     -o-transform-origin: 0 0;
-        transform-origin: 0 0;
+  -ms-transform: translateX(45deg);
+   -o-transform: translateX(45deg);
+      transform: translateX(45deg);
+  -ms-transform-origin: 0 0;
+   -o-transform-origin: 0 0;
+      transform-origin: 0 0;
 }
 em {
-    -ms-transform: rotate(45deg);
-     -o-transform: rotateZ(45deg);
-        transform: rotateZ(45deg);
+  -ms-transform: rotate(45deg);
+   -o-transform: rotateZ(45deg);
+      transform: rotateZ(45deg);
 }
 @-o-keyframes anim {
-    from {
-        -o-transform: rotate(90deg);
-           transform: rotate(90deg);
-    }
+  from {
+    -o-transform: rotate(90deg);
+       transform: rotate(90deg);
+  }
 }
 @keyframes anim {
-    from {
-        -o-transform: rotate(90deg);
-           transform: rotate(90deg);
-    }
+  from {
+    -o-transform: rotate(90deg);
+       transform: rotate(90deg);
+  }
 }

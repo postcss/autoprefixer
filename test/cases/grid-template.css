@@ -1,140 +1,140 @@
 .a {
-    grid-template: 10px repeat(4, 250px 10px) 20px / auto 1fr;
+  grid-template: 10px repeat(4, 250px 10px) 20px / auto 1fr;
 }
 
 .b {
-    grid-template:
-        [header-left] "head head" 30px [header-right]
-        [main-left]   "nav  main" 1fr  [main-right]
-        [footer-left] "nav  foot" 30px [footer-right]
-        / 120px repeat(4, 250px 10px);
+  grid-template:
+      [header-left] "head head" 30px [header-right]
+      [main-left]   "nav  main" 1fr  [main-right]
+      [footer-left] "nav  foot" 30px [footer-right]
+      / 120px repeat(4, 250px 10px);
 }
 
 @media (min-width: 1000px) {
-    .b {
-        grid-template:
-            [header-left] "head" 30px [header-right]
-            [nav-left]    "nav"  auto  [nav-right]
-            [main-left]   "main" 1fr  [main-right]
-            [footer-left] "foot" 30px [footer-right]
-            / 1fr;
-    }
+  .b {
+    grid-template:
+        [header-left] "head" 30px [header-right]
+        [nav-left]    "nav"  auto  [nav-right]
+        [main-left]   "main" 1fr  [main-right]
+        [footer-left] "foot" 30px [footer-right]
+        / 1fr;
+  }
 }
 
 .c {
-    grid-template:
-        "hd hd hd hd hd hd hd hd hd" minmax(100px, auto)
-        "sd sd sd mn mn mn mn mn mn" minmax(100px, auto)
-        "ft ft ft ft ft ft ft ft ft" minmax(100px, auto)
-                / 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template:
+      "hd hd hd hd hd hd hd hd hd" minmax(100px, auto)
+      "sd sd sd mn mn mn mn mn mn" minmax(100px, auto)
+      "ft ft ft ft ft ft ft ft ft" minmax(100px, auto)
+              / 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
 .d {
-    grid-template: 10px / 200px;
+  grid-template: 10px / 200px;
 }
 
 .e {
-    grid-template: 10px;
+  grid-template: 10px;
 }
 
 .f {
-    grid-template:
-        "head head"
-        "nav main" 20px
-        "nav foot"
-        / 1fr 1fr;
+  grid-template:
+      "head head"
+      "nav main" 20px
+      "nav foot"
+      / 1fr 1fr;
 }
 
 .head {
-    grid-area: head;
+  grid-area: head;
 }
 
 .nav {
-    grid-area: nav;
+  grid-area: nav;
 }
 
 .main {
-    grid-area: main;
+  grid-area: main;
 }
 
 .foot {
-    grid-area: foot;
+  grid-area: foot;
 }
 
 .hd {
-    grid-area: hd;
+  grid-area: hd;
 }
 
 .sd {
-    grid-area: sd;
+  grid-area: sd;
 }
 
 .mn {
-    grid-area: mn;
+  grid-area: mn;
 }
 
 .ft {
-    grid-area: ft;
+  grid-area: ft;
 }
 
 .grid {
-    display: grid;
-    grid-gap: 10px;
-    grid-template:
-        "a   b" 100px
-        "c   d" 100px
-        "e   f" 100px /
-        1fr  1fr;
+  display: grid;
+  grid-gap: 10px;
+  grid-template:
+      "a   b" 100px
+      "c   d" 100px
+      "e   f" 100px /
+      1fr  1fr;
 }
 
 @media (min-width: 600px){
-    .grid {
-        grid-gap: 10px;
-        grid-template:
-            "a   b   c" 100px
-            "d   e   f" 100px /
-            1fr 1fr 1fr;
-    }
+  .grid {
+    grid-gap: 10px;
+    grid-template:
+        "a   b   c" 100px
+        "d   e   f" 100px /
+        1fr 1fr 1fr;
+  }
 }
 
 .cell-A {
-    grid-area: a;
+  grid-area: a;
 }
 .cell-B {
-    grid-area: b;
+  grid-area: b;
 }
 .cell-C {
-    grid-area: c;
+  grid-area: c;
 }
 .cell-D {
-    grid-area: d;
+  grid-area: d;
 }
 .cell-E {
-    grid-area: e;
+  grid-area: e;
 }
 .cell-F {
-    grid-area: f;
+  grid-area: f;
 }
 
 .g {
-    display: grid;
-    grid-gap: 10px;
-    grid-template:
-        "g   g" 100px
-        "g   g" 100px
-        "h   h" 100px /
-        1fr  1fr;
+  display: grid;
+  grid-gap: 10px;
+  grid-template:
+      "g   g" 100px
+      "g   g" 100px
+      "h   h" 100px /
+      1fr  1fr;
 }
 
 /* Should trigger a warning */
 .g-conflict {
-    display: grid;
-    grid-gap: 10px;
-    grid-template:
-        "g   g" 100px
-        "g   g" 100px
-        "h   h" 100px /
-        1fr  1fr;
+  display: grid;
+  grid-gap: 10px;
+  grid-template:
+      "g   g" 100px
+      "g   g" 100px
+      "h   h" 100px /
+      1fr  1fr;
 }
 
 @media (min-width: 600px) {
@@ -232,29 +232,29 @@
 }
 
 .k-1 {
-    grid-area: g;
+  grid-area: g;
 }
 
 .k-2 {
-    grid-area: h;
+  grid-area: h;
 }
 
 .k-3 {
-    grid-area: i;
+  grid-area: i;
 }
 
 .k-4 {
-    grid-area: j;
+  grid-area: j;
 }
 
 .k-6 {
-    grid-area: l;
+  grid-area: l;
 }
 
 .k-6 {
-    grid-area: m;
+  grid-area: m;
 }
 
 .k-7 {
-    grid-area: z;
+  grid-area: z;
 }

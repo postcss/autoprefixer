@@ -1,15 +1,15 @@
 .none {
-    overscroll-behavior: none;
+  overscroll-behavior: none;
 }
 
 .contain {
-    overscroll-behavior: contain;
+  overscroll-behavior: contain;
 }
 
 .auto {
-    overscroll-behavior: auto;
+  overscroll-behavior: auto;
 }
 
 .inherit {
-    overscroll-behavior: inherit;
+  overscroll-behavior: inherit;
 }

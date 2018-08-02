@@ -23,11 +23,11 @@
 /* autoprefixer: ignore next */
 @media (min-resolution: 2dppx) {
   .ignore-at-rule::-webkit-input-placeholder {
-      -webkit-mask: none;
-              mask: none;
+    -webkit-mask: none;
+            mask: none;
   }
   .ignore-at-rule::placeholder {
-      -webkit-mask: none;
-              mask: none;
+    -webkit-mask: none;
+            mask: none;
   }
 }
