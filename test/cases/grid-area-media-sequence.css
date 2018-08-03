@@ -1,0 +1,64 @@
+.grid-template-sequence {
+  display: grid;
+  grid-template:
+      "foo foo"
+      "bar bar"
+      "baz baz"
+      / 1fr 1fr;
+}
+
+@media (min-width: 300px) {
+  .grid-template-sequence {
+    grid-template:
+      "foo foo"
+      "bar bar" 20px
+      / 1fr 1fr;
+  }
+}
+
+@media (min-width: 600px) {
+  .grid-template-sequence {
+    grid-template:
+      "foo foo"
+      "bar bar" 20px
+      / 1fr 1fr;
+  }
+}
+
+@media (min-width: 900px) {
+  .grid-template-sequence {
+    grid-template:
+      "foo foo"
+      "foo foo"
+      "bar bar" 20px
+      / 1fr 1fr;
+  }
+}
+
+.foo {
+  grid-area: foo;
+}
+
+.bar {
+  grid-area: bar;
+}
+
+@media (max-width: 900px) {
+  .grid-2 {
+    grid-template:
+      "a a"
+      "a a"
+      "b b" 20px
+      / 1fr 1fr;
+  }
+}
+
+@media (max-width: 400px) {
+  .grid-2 {
+    grid-template:
+      "a a"
+      "a a"
+      "b b" 20px
+      / 1fr 1fr;
+  }
+}

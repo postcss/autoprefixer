@@ -597,6 +597,14 @@ describe('hacks', () => {
     ])
   })
 
+  it('should preserve @media rules with grid-area', () => {
+    let input = read('grid-area-media-sequence')
+    let output = read('grid-area-media-sequence.out')
+    let instance = prefixer('grid-area')
+    let result = postcss([instance]).process(input)
+    expect(result.css).toEqual(output)
+  })
+
   it('ignores values for CSS3PIE props', () => {
     let css = read('pie')
     expect(postcss([compiler]).process(css).css).toEqual(css)
