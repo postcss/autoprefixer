@@ -178,7 +178,7 @@ Depending on what you consider to be a “polyfill”, you can take a look at so
 other tools and libraries. If you are just looking for syntax sugar,
 you might take a look at:
 
-- [postcss-preset-env] is a plugins preset with polyfills
+- [postcss-preset-env] is a plugins preset with polyfills and Autoprefixer
   to write future CSS today.
 - [Oldie], a PostCSS plugin that handles some IE hacks (opacity, rgba, etc).
 - [postcss-flexbugs-fixes], a PostCSS plugin to fix flexbox issues.
