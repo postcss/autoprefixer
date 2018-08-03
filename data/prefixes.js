@@ -302,8 +302,16 @@ f(require('caniuse-lite/data/features/calc'), browsers =>
 
 // Background options
 f(require('caniuse-lite/data/features/background-img-opts'), browsers =>
-  prefix(['background-clip', 'background-origin', 'background-size'], {
+  prefix(['background-origin', 'background-size'], {
     feature: 'background-img-opts',
+    browsers
+  })
+)
+
+// background-clip: text
+f(require('caniuse-lite/data/features/background-clip-text'), browsers =>
+  prefix(['background-clip'], {
+    feature: 'background-clip-text',
     browsers
   })
 )

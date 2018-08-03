@@ -1,29 +1,29 @@
 a {
-    background-image: -webkit-cross-fade(url(foo.png), url(bar.png), 20%);
-    background-image: cross-fade(20% url(foo.png), url(bar.png));
+  background-image: -webkit-cross-fade(url(foo.png), url(bar.png), 20%);
+  background-image: cross-fade(20% url(foo.png), url(bar.png));
 }
 
 b {
-    background-image: -webkit-cross-fade(url(foo.png), url(bar.png), 0.5);
-    background-image: cross-fade(url(foo.png), url(bar.png));
+  background-image: -webkit-cross-fade(url(foo.png), url(bar.png), 0.5);
+  background-image: cross-fade(url(foo.png), url(bar.png));
 }
 
 h1 {
-    background-image: -webkit-cross-fade(url(foo.png), url(bar.png), 10.823%);
-    background-image: cross-fade(10.823% url(foo.png), url(bar.png));
+  background-image: -webkit-cross-fade(url(foo.png), url(bar.png), 10.823%);
+  background-image: cross-fade(10.823% url(foo.png), url(bar.png));
 }
 
 h2 {
-    background-image: -webkit-cross-fade(url(foo.png), url(bar.png), 0.59);
-    background-image: cross-fade(0.59 url(foo.png), url(bar.png));
+  background-image: -webkit-cross-fade(url(foo.png), url(bar.png), 0.59);
+  background-image: cross-fade(0.59 url(foo.png), url(bar.png));
 }
 
 h3 {
-    background-image: -webkit-cross-fade(url(foo.png), url(bar.png), .59);
-    background-image: cross-fade(.59 url(foo.png), url(bar.png));
+  background-image: -webkit-cross-fade(url(foo.png), url(bar.png), .59);
+  background-image: cross-fade(.59 url(foo.png), url(bar.png));
 }
 
 .foo {
-    background-image: -webkit-cross-fade(linear-gradient(white, black), radial-gradient(circle closest-corner, white, black), .59);
-    background-image: cross-fade(.59 linear-gradient(white, black), radial-gradient(circle closest-corner, white, black));
+  background-image: -webkit-cross-fade(linear-gradient(white, black), radial-gradient(circle closest-corner, white, black), .59);
+  background-image: cross-fade(.59 linear-gradient(white, black), radial-gradient(circle closest-corner, white, black));
 }

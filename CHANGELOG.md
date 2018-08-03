@@ -1,6 +1,10 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 9.1 “Equality before the law”
+* Add `background-clip: text` support.
+* Fix adding Grid span for IE (by Bogdan).
+
 ## 9.0.2
 * Show warning on Grid area names conflict (by Bogdan).
 * Fix documentation (by Sven Wagner).

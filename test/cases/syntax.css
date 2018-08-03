@@ -1,17 +1,17 @@
 @page {
-    margin: 0.5cm;
+  margin: 0.5cm;
 }
 
 /* comment */
 
 @-moz-document url-prefix() {
-    a {
-        color: black;
-    }
+  a {
+    color: black;
+  }
 }
 
 a {
-    /* c */
-    color/**/: white;
-    padding: 0 /*{}*/ 1px /*}*/ 2px;
+  /* c */
+  color/**/: white;
+  padding: 0 /*{}*/ 1px /*}*/ 2px;
 }

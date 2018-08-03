@@ -1,63 +1,63 @@
 a {
-    -webkit-transition: color 200ms, -webkit-transform 200ms;
-    transition: color 200ms, -webkit-transform 200ms;
-    -o-transition: color 200ms, -o-transform 200ms;
-    transition: color 200ms, transform 200ms;
-    transition: color 200ms, transform 200ms, -webkit-transform 200ms, -o-transform 200ms;
-    -webkit-transform: rotate(10deg);
-         -o-transform: rotate(10deg);
-            transform: rotate(10deg);
+  -webkit-transition: color 200ms, -webkit-transform 200ms;
+  transition: color 200ms, -webkit-transform 200ms;
+  -o-transition: color 200ms, -o-transform 200ms;
+  transition: color 200ms, transform 200ms;
+  transition: color 200ms, transform 200ms, -webkit-transform 200ms, -o-transform 200ms;
+  -webkit-transform: rotate(10deg);
+       -o-transform: rotate(10deg);
+          transform: rotate(10deg);
 }
 
 div {
-    -webkit-transition-property: -webkit-filter;
-    transition-property: -webkit-filter;
-    -o-transition-property: filter;
-    transition-property: filter;
-    transition-property: filter, -webkit-filter;
-    -webkit-animation-name: rotating;
-         -o-animation-name: rotating;
-            animation-name: rotating;
+  -webkit-transition-property: -webkit-filter;
+  transition-property: -webkit-filter;
+  -o-transition-property: filter;
+  transition-property: filter;
+  transition-property: filter, -webkit-filter;
+  -webkit-animation-name: rotating;
+       -o-animation-name: rotating;
+          animation-name: rotating;
 }
 
 .good {
-    -webkit-transition-property: -webkit-filter;
-    transition-property: -webkit-filter;
-    -o-transition-property: filter;
-    transition-property: filter;
-    transition-property: filter, -webkit-filter;
-    -webkit-transition-duration: 1s;
-         -o-transition-duration: 1s;
-            transition-duration: 1s;
+  -webkit-transition-property: -webkit-filter;
+  transition-property: -webkit-filter;
+  -o-transition-property: filter;
+  transition-property: filter;
+  transition-property: filter, -webkit-filter;
+  -webkit-transition-duration: 1s;
+       -o-transition-duration: 1s;
+          transition-duration: 1s;
 }
 
 .good2 {
-    -webkit-transition-property: color, -webkit-filter;
-    transition-property: color, -webkit-filter;
-    -o-transition-property: color, filter;
-    transition-property: color, filter;
-    transition-property: color, filter, -webkit-filter;
-    -webkit-transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
-         -o-transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
-            transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
+  -webkit-transition-property: color, -webkit-filter;
+  transition-property: color, -webkit-filter;
+  -o-transition-property: color, filter;
+  transition-property: color, filter;
+  transition-property: color, filter, -webkit-filter;
+  -webkit-transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
+       -o-transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
+          transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
 }
 
 .bad {
-    /* safe with different node types */
-    -webkit-transition-property: color, -webkit-filter;
-    transition-property: color, -webkit-filter;
-    -o-transition-property: color, filter;
-    transition-property: color, filter;
-    transition-property: color, filter, -webkit-filter;
-    -webkit-transition-duration: 1s, 2s;
-         -o-transition-duration: 1s, 2s;
-            transition-duration: 1s, 2s;
+  /* safe with different node types */
+  -webkit-transition-property: color, -webkit-filter;
+  transition-property: color, -webkit-filter;
+  -o-transition-property: color, filter;
+  transition-property: color, filter;
+  transition-property: color, filter, -webkit-filter;
+  -webkit-transition-duration: 1s, 2s;
+       -o-transition-duration: 1s, 2s;
+          transition-duration: 1s, 2s;
 }
 
 .revert {
-    -webkit-transition: 200ms -webkit-transform;
-    transition: 200ms -webkit-transform;
-    -o-transition: 200ms -o-transform;
-    transition: 200ms transform;
-    transition: 200ms transform, 200ms -webkit-transform, 200ms -o-transform;
+  -webkit-transition: 200ms -webkit-transform;
+  transition: 200ms -webkit-transform;
+  -o-transition: 200ms -o-transform;
+  transition: 200ms transform;
+  transition: 200ms transform, 200ms -webkit-transform, 200ms -o-transform;
 }

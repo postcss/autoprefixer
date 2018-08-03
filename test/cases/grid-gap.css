@@ -1,68 +1,68 @@
 .a {
-    grid-gap: 1rem;
-    grid-template-rows: 1fr minmax(100px, 1fr) 2fr;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-areas:
-        "head head  head"
-        "nav  main  main"
-        "nav  foot  foot";
+  grid-gap: 1rem;
+  grid-template-rows: 1fr minmax(100px, 1fr) 2fr;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+      "head head  head"
+      "nav  main  main"
+      "nav  foot  foot";
 }
 
 .b {
-    grid-area: head;
+  grid-area: head;
 }
 
 .c {
-    grid-area: main;
+  grid-area: main;
 }
 
 .d {
-    grid-area: nav;
+  grid-area: nav;
 }
 
 .e {
-    grid-area: foot;
+  grid-area: foot;
 }
 
 .f {
-    gap: 10px 20px;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-areas:
-        "head head head"
-        "nav main main"
-        "nav foot foot";
+  gap: 10px 20px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:
+      "head head head"
+      "nav main main"
+      "nav foot foot";
 }
 
 .a-shortcut {
-    grid-gap: 1rem 2rem;
-    grid-template:
-        "head-shortcut head-shortcut  head-shortcut" 1fr
-        "nav-shortcut  main-shortcut  main-shortcut" minmax(100px, 1fr)
-        "nav-shortcut  foot-shortcut  foot-shortcut" 2fr /
-        1fr 100px 1fr;
+  grid-gap: 1rem 2rem;
+  grid-template:
+      "head-shortcut head-shortcut  head-shortcut" 1fr
+      "nav-shortcut  main-shortcut  main-shortcut" minmax(100px, 1fr)
+      "nav-shortcut  foot-shortcut  foot-shortcut" 2fr /
+      1fr 100px 1fr;
 }
 
 .b-shortcut {
-    grid-area: head-shortcut;
+  grid-area: head-shortcut;
 }
 
 .c-shortcut {
-    grid-area: main-shortcut;
+  grid-area: main-shortcut;
 }
 
 .d-shortcut {
-    grid-area: nav-shortcut;
+  grid-area: nav-shortcut;
 }
 
 .e-shortcut {
-    grid-area: foot-shortcut;
+  grid-area: foot-shortcut;
 }
 
 .f-shortcut {
-    grid-gap: 10px;
-    grid-template:
-        "head-shortcut head-shortcut head-shortcut"
-        "nav-shortcut main-shortcut main-shortcut"
-        "nav-shortcut foot-shortcut foot-shortcut"
-        / 1fr 1fr 1fr;
+  grid-gap: 10px;
+  grid-template:
+      "head-shortcut head-shortcut head-shortcut"
+      "nav-shortcut main-shortcut main-shortcut"
+      "nav-shortcut foot-shortcut foot-shortcut"
+      / 1fr 1fr 1fr;
 }

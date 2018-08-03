@@ -1,17 +1,17 @@
 .not-hack {
-    width: -webkit-calc(30% + 1px);
-    width: calc(30% + 1px);
-    display: -webkit-box;
-    display: flex;
-    transition: -webkit-filter 1s, filter 1s;
+  width: -webkit-calc(30% + 1px);
+  width: calc(30% + 1px);
+  display: -webkit-box;
+  display: flex;
+  transition: -webkit-filter 1s, filter 1s;
 }
 
 .not-hack2 {
-    transition: -webkit-filter 1s;
-    transition: filter 1s;
+  transition: -webkit-filter 1s;
+  transition: filter 1s;
 }
 
 .hack {
-    width: -webkit-calc(30% + 1px);
-    display: -webkit-box;
+  width: -webkit-calc(30% + 1px);
+  display: -webkit-box;
 }

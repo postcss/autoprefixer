@@ -1,6 +1,6 @@
 {
   "name": "autoprefixer",
-  "version": "9.0.2",
+  "version": "9.1.0",
   "description": "Parse CSS and add vendor prefixes to CSS rules using values from the Can I Use website",
   "keywords": [
     "autoprefixer",
@@ -18,7 +18,7 @@
   "dependencies": {
     "babel-register": "^6.26.0",
     "browserslist": "^4.0.1",
-    "caniuse-lite": "^1.0.30000865",
+    "caniuse-lite": "^1.0.30000872",
     "normalize-range": "^0.1.2",
     "num2fraction": "^1.2.2",
     "postcss": "^7.0.2",

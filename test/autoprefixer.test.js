@@ -62,6 +62,9 @@ let resolutioner = autoprefixer({
 let overscroller = autoprefixer({
   browsers: ['Edge 16']
 })
+let clipper = autoprefixer({
+  browsers: ['Safari 7', 'Edge 14']
+})
 
 function prefixer (name) {
   if (
@@ -97,7 +100,7 @@ function prefixer (name) {
   } else if (name === 'background-size') {
     return backgrounder
   } else if (name === 'background-clip') {
-    return cleaner
+    return clipper
   } else if (name === 'uncascade') {
     return uncascader
   } else if (name === 'example') {
@@ -230,7 +233,7 @@ it('uses control comments to whole scope', () => {
 
   expect(result.css).toEqual(output)
   expect(result.warnings().map(i => i.toString())).toEqual([
-    'autoprefixer: <css input>:5:5: Second Autoprefixer control comment ' +
+    'autoprefixer: <css input>:5:3: Second Autoprefixer control comment ' +
         'was ignored. Autoprefixer applies control comment to whole block, ' +
         'not to next rules.'
   ])
@@ -243,7 +246,7 @@ it('prefixes transition', () => {
 
   expect(result.css).toEqual(output)
   expect(result.warnings().map(i => i.toString())).toEqual([
-    'autoprefixer: <css input>:23:5: Replace transition-property ' +
+    'autoprefixer: <css input>:23:3: Replace transition-property ' +
         'to transition, because Autoprefixer could not support any cases ' +
         'of transition-property and other transition-*'
   ])
@@ -458,14 +461,14 @@ describe('hacks', () => {
 
     expect(result.css).toEqual(output)
     expect(result.warnings().map(i => i.toString())).toEqual([
-      'autoprefixer: <css input>:18:5: Gradient has outdated direction ' +
+      'autoprefixer: <css input>:18:3: Gradient has outdated direction ' +
             'syntax. New syntax is like `closest-side at 0 0` instead of ' +
             '`0 0, closest-side`.',
-      'autoprefixer: <css input>:38:5: Gradient has outdated direction ' +
+      'autoprefixer: <css input>:38:3: Gradient has outdated direction ' +
             'syntax. New syntax is like `to left` instead of `right`.',
-      'autoprefixer: <css input>:100:5: Gradient has outdated ' +
+      'autoprefixer: <css input>:100:3: Gradient has outdated ' +
             'direction syntax. Replace `cover` to `farthest-corner`.',
-      'autoprefixer: <css input>:104:5: Gradient has outdated ' +
+      'autoprefixer: <css input>:104:3: Gradient has outdated ' +
             'direction syntax. Replace `contain` to `closest-side`.'
     ])
   })
@@ -486,9 +489,9 @@ describe('hacks', () => {
 
     expect(result.css).toEqual(output)
     expect(result.warnings().map(i => i.toString())).toEqual([
-      'autoprefixer: <css input>:15:5: Replace fill to stretch, ' +
+      'autoprefixer: <css input>:15:3: Replace fill to stretch, ' +
             'because spec had been changed',
-      'autoprefixer: <css input>:19:5: Replace fill-available ' +
+      'autoprefixer: <css input>:19:3: Replace fill-available ' +
             'to stretch, because spec had been changed'
     ])
   })
@@ -501,7 +504,7 @@ describe('hacks', () => {
 
     expect(result.css).toEqual(output)
     expect(result.warnings().map(i => i.toString())).toEqual([
-      'autoprefixer: <css input>:14:5: You should use 2 values ' +
+      'autoprefixer: <css input>:14:3: You should use 2 values ' +
             'for text-emphasis-position For example, `under left` ' +
             'instead of just `under`.'
     ])
@@ -515,33 +518,33 @@ describe('hacks', () => {
 
     expect(result.css).toEqual(output)
     expect(result.warnings().map(i => i.toString())).toEqual([
-      'autoprefixer: <css input>:36:5: Can not prefix grid-column-end ' +
+      'autoprefixer: <css input>:36:3: Can not prefix grid-column-end ' +
                 '(grid-column-start is not found)',
-      'autoprefixer: <css input>:39:5: Can not impliment grid-gap ' +
+      'autoprefixer: <css input>:39:3: Can not impliment grid-gap ' +
                 'without grid-tamplate-columns',
-      'autoprefixer: <css input>:39:5: Can not find grid areas: ' +
+      'autoprefixer: <css input>:39:3: Can not find grid areas: ' +
                 'head, nav, main, foot',
-      'autoprefixer: <css input>:47:5: Can not impliment grid-gap ' +
+      'autoprefixer: <css input>:47:3: Can not impliment grid-gap ' +
                 'without grid-tamplate-columns',
-      'autoprefixer: <css input>:47:5: Can not find grid areas: a',
-      'autoprefixer: <css input>:55:5: Can not impliment grid-gap ' +
+      'autoprefixer: <css input>:47:3: Can not find grid areas: a',
+      'autoprefixer: <css input>:55:3: Can not impliment grid-gap ' +
                 'without grid-tamplate-columns',
-      'autoprefixer: <css input>:55:5: Can not find grid areas: b',
-      'autoprefixer: <css input>:63:5: Can not find grid areas: c',
-      'autoprefixer: <css input>:71:5: Can not find grid areas: d',
-      'autoprefixer: <css input>:99:5: grid-column-span is not part ' +
+      'autoprefixer: <css input>:55:3: Can not find grid areas: b',
+      'autoprefixer: <css input>:63:3: Can not find grid areas: c',
+      'autoprefixer: <css input>:71:3: Can not find grid areas: d',
+      'autoprefixer: <css input>:99:3: grid-column-span is not part ' +
                 'of final Grid Layout. Use grid-column.',
-      'autoprefixer: <css input>:100:5: grid-row-span is not part ' +
+      'autoprefixer: <css input>:100:3: grid-row-span is not part ' +
                 'of final Grid Layout. Use grid-row.',
-      'autoprefixer: <css input>:101:5: grid-auto-columns is not ' +
+      'autoprefixer: <css input>:101:3: grid-auto-columns is not ' +
                 'supported by IE',
-      'autoprefixer: <css input>:102:5: grid-auto-rows is not ' +
+      'autoprefixer: <css input>:102:3: grid-auto-rows is not ' +
                 'supported by IE',
-      'autoprefixer: <css input>:103:5: grid-auto-flow is not ' +
+      'autoprefixer: <css input>:103:3: grid-auto-flow is not ' +
                 'supported by IE',
-      'autoprefixer: <css input>:104:35: auto-fill value is not ' +
+      'autoprefixer: <css input>:104:33: auto-fill value is not ' +
                 'supported by IE',
-      'autoprefixer: <css input>:105:32: auto-fit value is not ' +
+      'autoprefixer: <css input>:105:30: auto-fit value is not ' +
                 'supported by IE'
     ])
   })
@@ -562,13 +565,13 @@ describe('hacks', () => {
     expect(result.css).toEqual(output)
     expect(result.warnings().map(i => i.toString())).toEqual([
       [
-        `autoprefixer: <css input>:41:5: `,
+        `autoprefixer: <css input>:41:3: `,
         `  duplicate area names detected in rule: .f`,
         `  duplicate area names: head, nav, main, foot`,
         `  duplicate area names cause unexpected behavior in IE`
       ].join('\n'),
       [
-        `autoprefixer: <css input>:133:5: `,
+        `autoprefixer: <css input>:133:3: `,
         `  duplicate area names detected in rule: .g-conflict`,
         `  duplicate area names: g, h`,
         `  duplicate area names cause unexpected behavior in IE`

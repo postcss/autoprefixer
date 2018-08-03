@@ -1,29 +1,29 @@
 .a {
-    grid-template-areas:
-        "head head"
-        "nav  main"
-        "nav  foot"
-        "another";
+  grid-template-areas:
+      "head head"
+      "nav  main"
+      "nav  foot"
+      "another";
 }
 
 @media (max-width: 1000px) {
-    .a {
-        grid-template-areas: "head main";
-    }
+  .a {
+    grid-template-areas: "head main";
+  }
 }
 
 .b {
-    grid-area: head;
+  grid-area: head;
 }
 
 .c {
-    grid-area: main;
+  grid-area: main;
 }
 
 .d {
-    grid-area: nav;
+  grid-area: nav;
 }
 
 .e {
-    grid-area: foot;
+  grid-area: foot;
 }
