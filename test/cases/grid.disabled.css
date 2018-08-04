@@ -110,3 +110,7 @@
 .baz {
   grid-column: span 3;
 }
+
+.bar {
+  grid-row: span 3;
+}

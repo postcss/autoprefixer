@@ -145,3 +145,8 @@
   -ms-grid-column-span: 3;
   grid-column: span 3;
 }
+
+.bar {
+  -ms-grid-row-span: 3;
+  grid-row: span 3;
+}
