@@ -104,3 +104,11 @@
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   grid-template-rows: repeat(auto-fit, minmax(400px, 1fr));
 }
+
+.baz {
+  grid-column: span 3;
+}
+
+.bar {
+  grid-row: span 3;
+}
