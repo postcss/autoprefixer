@@ -19,7 +19,7 @@ Once your PR is accepted it will incorporated into the next main release of Auto
 Before you begin contributing make sure you have a [GitHub account](https://github.com/signup/free).
 * [Fork the repository](https://github.com/postcssAautoprefixer)
 * Clone a copy of it to your computer: `git clone https://github.com/USERNAME/autoprefixer`
-* run `yarn install` or `npm install` this will install all dependencies needed to run tests
+* run `yarn install` this will install all dependencies needed to run tests
 * File an issue, see [filing issues](#filing-issues)
 * Once issue is discussed and accepted, you can begin making the necessary changes
 
@@ -59,8 +59,6 @@ TODO
 Issues, questions, or comments about existing features should be filed as an issue. Support for new features also requires filing a new issue. You can file an issue [here](https://github.com/postcssAautoprefixer/issues).
 
 ## Guidelines and tips
-
-* Check for unnecessary whitespace with `git diff --check` before committing
 * Make logical, meaningful and brief commits
 * Push changes to your local feature branch first, Like this: `git push origin fix/background-image`
 * Submit a [Pull Request](https://help.github.com/articles/creating-a-pull-request/) with the description of the feature/fix/enhancement that you want to propose
