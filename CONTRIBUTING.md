@@ -1,6 +1,5 @@
 <img width="94" height="71" src="logo.svg" title="Autoprefixer logo by Anton Lovchikov">
 
-
 # Contributing to Autoprefixer
 Please feel free to contribute to Autoprefixer by submitting Pull Requests to add new features, ehancements, bug fixes, etc. If you're not sure whether a PR should be created for something, [open an issue](https://github.com/postcssAautoprefixer/issues) to ask about it first. Check the specific section depending on the type of contribution you want to make.
 
@@ -9,6 +8,7 @@ Please feel free to contribute to Autoprefixer by submitting Pull Requests to ad
  * [Changing an existing prefix](#changing-an-existing-prefix)
  * [Fixing bugs](#fixing-bugs)
  * [Filing issues](#filing-issues)
+ * [Running Tests](#running-tests)
  * [Tips and guidelines](#guidelines-and-tips)
 
 Once your PR is accepted it will incorporated into the next main release of Autoprefixer.
@@ -46,8 +46,7 @@ tip: use 'add', 'fix' or 'enhancement' to indicate on your type of contribution
 
 * Load this hack in `lib/prefixes.js`. [See example](https://github.com/postcss/autoprefixer/blob/73c7b6ab090a9a9a03869b3099096af00be7eb7d/lib/prefixes.js)
 
-
-Add tests to `test/autoprefixer.test.js` to test that Autoprefixer works with Chrome and Edge browsers adds only -webkit- prefix. [See details here](https://github.com/postcss/autoprefixer/commit/73c7b6ab090a9a9a03869b3099096af00be7eb7d)
+* Add tests to `test/autoprefixer.test.js` to test that Autoprefixer works with Chrome and Edge browsers adds only -webkit- prefix. [See details here](https://github.com/postcss/autoprefixer/commit/73c7b6ab090a9a9a03869b3099096af00be7eb7d)
 
 ## Changing an existing prefix
 TODO
@@ -57,6 +56,9 @@ TODO
 
 ## Filing issues
 Issues, questions, or comments about existing features should be filed as an issue. Support for new features also requires filing a new issue. You can file an issue [here](https://github.com/postcssAautoprefixer/issues).
+
+## Running Tests
+TODO
 
 ## Guidelines and tips
 * Make logical, meaningful and brief commits
