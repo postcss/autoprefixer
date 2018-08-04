@@ -11,7 +11,6 @@ The contribution process consists of three steps:
 
 Once your PR is accepted it will incorporated into the next main release of Autoprefixer.
 
-
 ## Important
 Autoprefixer works by pulling data from [caniuse](https://caniuse.com/). Therefore it's important that support for a particular CSS feature is available there before we can enable support for it here. You can check the listing of features that need to be added [here](https://caniuse.com/issue-list).
 
@@ -26,7 +25,6 @@ Before you begin contributing make sure you have a [GitHub account](https://gith
 Issues, questions, or comments about existing features should be filed as an issue. Support for new features also requires filing a new issue. You can file an issue [here](https://github.com/postcssAautoprefixer/issues).
 
 ## Making Changes
-
 We'll explain how would you go about adding a CSS feature to Autoprefixer. For example, we'll add support for a CSS feature called `background-clip: text`
 
 Note: Remember that the feature that you want to add must also be supported on [caniuse](https://caniuse).
