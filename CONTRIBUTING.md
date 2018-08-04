@@ -4,7 +4,6 @@
 Please feel free to contribute to Autoprefixer by submitting Pull Requests to add new features, ehancements, bug fixes, etc. If you're not sure whether a PR should be created for something, open an issue to ask about it first.
 
 The contribution process consists of three steps:
-
 1. Fork the repository
 2. Make the fix
 3. Submit a pull request
@@ -13,7 +12,6 @@ Once your PR is accepted it will incorporated into the next main release of Auto
 
 ## Important
 Autoprefixer works by pulling data from [caniuse](https://caniuse.com/). Therefore it's important that support for a particular CSS feature is available there before we can enable support for it here. You can check the listing of features that need to be added [here](https://caniuse.com/issue-list).
-
 
 ## Getting Started
 Before you begin contributing make sure you have a [GitHub account](https://github.com/signup/free).
@@ -28,7 +26,6 @@ Issues, questions, or comments about existing features should be filed as an iss
 We'll explain how would you go about adding a CSS feature to Autoprefixer. For example, we'll add support for a CSS feature called `background-clip: text`
 
 Note: Remember that the feature that you want to add must also be supported on [caniuse](https://caniuse).
-
 
 * Once you made a fork, clone a copy of it to your computer: `git clone https://github.com/USERNAME/autoprefixer`
 
