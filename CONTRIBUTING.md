@@ -19,6 +19,7 @@ Once your PR is accepted it will incorporated into the next main release of Auto
 Before you begin contributing make sure you have a [GitHub account](https://github.com/signup/free).
 * [Fork the repository](https://github.com/postcssAautoprefixer)
 * Clone a copy of it to your computer: `git clone https://github.com/USERNAME/autoprefixer`
+* Ensure that you have the [Yarn](https://yarnpkg.com/) package manager installed
 * run `yarn install` this will install all dependencies needed to run tests
 * File an issue, see [filing issues](#filing-issues)
 * Once issue is discussed and accepted, you can begin making the necessary changes
@@ -42,11 +43,18 @@ tip: use 'add', 'fix' or 'enhancement' to indicate on your type of contribution
   ```
 * Add a hack to the `libs/hacks` folder using the name of the CSS feature as the filename.
 
-* Create a a class which will extends `Value`. In that hack class change the prefix for IE to -webkit-. See appearance hack. [See complete example](https://github.com/postcss/Autoprefixer/blob/73c7b6ab090a9a9a03869b3099096af00be7eb7d/lib/hacks/background-clip.js)
+* Create a class that extends `Value`. In his new class change the prefix for `IE` to `-webkit-`. [See complete example](https://github.com/postcss/Autoprefixer/blob/73c7b6ab090a9a9a03869b3099096af00be7eb7d/lib/hacks/background-clip.js)
 
-* Load this hack in `lib/prefixes.js`. [See example](https://github.com/postcss/autoprefixer/blob/73c7b6ab090a9a9a03869b3099096af00be7eb7d/lib/prefixes.js)
+* Load the new class in `lib/prefixes.js`. We refer to a new added class as a 'hack'. To load it we use `Declaration` module and call the `hack` method on the new class we created earlier. Like this:
+  ```
+  Declaration.hack(require('./hacks/background-clip'))
+  ```
+[See detailed example](https://github.com/postcss/autoprefixer/blob/73c7b6ab090a9a9a03869b3099096af00be7eb7d/lib/prefixes.js)
 
-* Add tests to `test/autoprefixer.test.js` to test that Autoprefixer works with Chrome and Edge browsers adds only -webkit- prefix. [See details here](https://github.com/postcss/autoprefixer/commit/73c7b6ab090a9a9a03869b3099096af00be7eb7d)
+* Add unit tests to:
+  - `test/autoprefixer.test.js` to test that Autoprefixer works with Chrome and Edge browsers adds only -webkit- prefix. [See details here](https://github.com/postcss/autoprefixer/commit/73c7b6ab090a9a9a03869b3099096af00be7eb7d)
+  - `test/cases/background-clip.css` TODO: Explain how to add unit test to the CSS
+
 
 ## Changing an existing prefix
 TODO
@@ -58,7 +66,8 @@ TODO
 Issues, questions, or comments about existing features should be filed as an issue. Support for new features also requires filing a new issue. You can file an issue [here](https://github.com/postcssAautoprefixer/issues).
 
 ## Running Tests
-TODO
+Autoprefixer needs units test to verify that a given prefix will work as expected. Depending on the type of change being made you'll need to add...
+TODO: Explain what files need to be modified depending on the type of contribution being made (add, change or fix)
 
 ## Guidelines and tips
 * Make logical, meaningful and brief commits
