@@ -133,11 +133,10 @@
 
 @media (max-width: 1400px){
   .grid-2 {
-    grid-template-areas:
-      "x   y   z"
-      "x   y   z";
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 100px);
+    grid-template:
+      "x   y   z" 100px
+      "x   y   z" 100px
+      / 1fr 1fr;
   }
 }
 

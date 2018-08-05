@@ -152,7 +152,6 @@
 
 @media (min-width: 900px){
   .grid {
-    grid-gap: 20px;
     grid-template-areas:
       "a   b   c   d   e   f";
     -ms-grid-columns: 1fr 20px 1fr 20px 1fr 20px 1fr 20px 1fr 20px 1fr;
@@ -180,14 +179,12 @@
 
 @media (max-width: 1400px){
   .grid-2 {
-    grid-gap: 50px;
-    grid-template-areas:
-      "x   y   z"
-      "x   y   z";
-    -ms-grid-columns: 1fr 50px 1fr 50px 1fr;
-    grid-template-columns: repeat(3, 1fr);
     -ms-grid-rows: 100px 50px 100px;
-    grid-template-rows: repeat(2, 100px);
+    -ms-grid-columns: 1fr 50px 1fr;
+    grid-template:
+      "x   y   z" 100px
+      "x   y   z" 100px
+      / 1fr 1fr;
   }
 }
 
@@ -206,7 +203,6 @@
 
 @media (max-width: 700px){
   .grid-2 {
-    grid-gap: 20px;
     grid-template-areas:
       "x   x   y   y   z   z";
     -ms-grid-columns: 1fr 20px 1fr 20px 1fr 20px 1fr 20px 1fr 20px 1fr;
@@ -218,7 +214,6 @@
 
 @media (max-width: 400px){
   .grid-2 {
-    grid-gap: 20px;
     grid-template-areas:
       "x"
       "x"
