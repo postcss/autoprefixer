@@ -49,7 +49,7 @@ tip: use 'add', 'fix' or 'enhancement' to indicate on your type of contribution
   ```
   Declaration.hack(require('./hacks/background-clip'))
   ```
-[See detailed example](https://github.com/postcss/autoprefixer/blob/73c7b6ab090a9a9a03869b3099096af00be7eb7d/lib/prefixes.js)
+  [See detailed example](https://github.com/postcss/autoprefixer/blob/73c7b6ab090a9a9a03869b3099096af00be7eb7d/lib/prefixes.js)
 
 * Add unit tests to:
   - `test/autoprefixer.test.js` to test that Autoprefixer works with Chrome and Edge browsers adds only -webkit- prefix. [See details here](https://github.com/postcss/autoprefixer/commit/73c7b6ab090a9a9a03869b3099096af00be7eb7d)
