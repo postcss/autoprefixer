@@ -590,8 +590,14 @@ describe('hacks', () => {
       ].join('\n'),
       [
         `autoprefixer: <css input>:228:5: `,
-        `  duplicate area name detected in rule: .z`,
+        `  duplicate area name detected in rule: .m`,
         `  duplicate area name: m`,
+        `  duplicate area names cause unexpected behavior in IE`
+      ].join('\n'),
+      [
+        `autoprefixer: <css input>:237:5: `,
+        `  duplicate area name detected in rule: .z, .second-z`,
+        `  duplicate area name: z`,
         `  duplicate area names cause unexpected behavior in IE`
       ].join('\n')
     ])

@@ -48,3 +48,227 @@
   -ms-grid-column: 2;
   grid-area: foot;
 }
+
+/****************\
+  CONFLICT TEST
+\****************/
+
+.grid {
+  display: -ms-grid;
+  display: grid;
+  grid-template-areas: "a b";
+}
+
+.grid.conflict {
+  display: -ms-grid;
+  display: grid;
+  grid-template-areas:
+    "a"
+    "b";
+}
+
+.a {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: a;
+}
+.b {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: b;
+}
+
+.grid.conflict > .a {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+}
+.grid.conflict > .b {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+}
+
+/****************\
+  MQ CONFLICT TEST
+\****************/
+
+.grid {
+  display: -ms-grid;
+  display: grid;
+  grid-template-areas: "a b";
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-areas:
+      "a"
+      "b";
+  }
+}
+
+.grid.conflict {
+  display: -ms-grid;
+  display: grid;
+  grid-template-areas:
+    "a"
+    "b";
+}
+
+@media (min-width: 601px) {
+  .grid.conflict {
+    grid-template-areas: "a b";
+  }
+}
+
+.a {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: a;
+}
+
+.b {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: b;
+}
+
+@media (max-width: 600px) {
+  .a {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+  }
+  .b {
+    -ms-grid-row: 2;
+    -ms-grid-column: 1;
+  }
+}
+
+.grid.conflict > .a {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+}
+
+.grid.conflict > .b {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+}
+
+@media (min-width: 601px) {
+  .grid.conflict > .a {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+  }
+  .grid.conflict > .b {
+    -ms-grid-row: 1;
+    -ms-grid-column: 2;
+  }
+}
+
+/*************************\
+  OVERRIDE CONFLICT TESTS
+\*************************/
+
+.grid-overide {
+  display: -ms-grid;
+  display: grid;
+  grid-template-areas: "overide";
+}
+
+.grid-overide > .cell {
+  grid-area: overide;
+}
+
+.grid-overide .cell {
+  grid-area: overide;
+}
+
+.grand-parent .mother {
+  display: -ms-grid;
+  display: grid;
+  grid-template-areas: "child";
+}
+.grand-parent .father {
+  display: -ms-grid;
+  display: grid;
+  grid-template-areas: "child";
+}
+
+.grand-parent .mother .cell {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: child;
+}
+.grand-parent .mother > .cell {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: child;
+}
+
+.grand-parent .father .cell {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: child;
+}
+.grand-parent .father > .cell {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: child;
+}
+
+/* emit warning */
+.uncle .cell {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: child;
+}
+
+/* emit warning */
+.uncle > .cell {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: child;
+}
+
+/* emit warning */
+.grand-parent .uncle .cell {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: child;
+}
+
+/* emit warning */
+.grand-parent .uncle > .cell {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: child;
+}
+
+/*************************\
+  MULTI SELECTOR TEST
+\*************************/
+
+.grand-parent .uncle,
+.grand-parent .aunt {
+  display: -ms-grid;
+  display: grid;
+  grid-template-areas: "cousin";
+}
+.grand-parent .uncle .cousin {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: cousin;
+}
+.grand-parent .uncle > .cousin {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: cousin;
+}
+.grand-parent .aunt .cousin {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: cousin;
+}
+.grand-parent .aunt > .cousin {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: cousin;
+}

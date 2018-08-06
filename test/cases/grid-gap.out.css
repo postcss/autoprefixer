@@ -38,6 +38,54 @@
   grid-area: foot;
 }
 
+.f > .b {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 5;
+}
+
+.f > .c {
+  -ms-grid-row: 3;
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 3;
+}
+
+.f > .d {
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 3;
+  -ms-grid-column: 1;
+}
+
+.f > .e {
+  -ms-grid-row: 5;
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 3;
+}
+
+.f > .b {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 5;
+}
+
+.f > .c {
+  -ms-grid-row: 3;
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 3;
+}
+
+.f > .d {
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 3;
+  -ms-grid-column: 1;
+}
+
+.f > .e {
+  -ms-grid-row: 5;
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 3;
+}
+
 .f {
   gap: 10px 20px;
   -ms-grid-columns: 1fr 20px 1fr 20px 1fr;
@@ -88,6 +136,30 @@
   grid-area: foot-shortcut;
 }
 
+.f-shortcut > .b-shortcut {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 5;
+}
+
+.f-shortcut > .c-shortcut {
+  -ms-grid-row: 3;
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 3;
+}
+
+.f-shortcut > .d-shortcut {
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 3;
+  -ms-grid-column: 1;
+}
+
+.f-shortcut > .e-shortcut {
+  -ms-grid-row: 5;
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 3;
+}
+
 .f-shortcut {
   grid-gap: 10px;
   -ms-grid-rows: auto 10px auto 10px auto;
@@ -97,4 +169,133 @@
       "nav-shortcut main-shortcut main-shortcut"
       "nav-shortcut foot-shortcut foot-shortcut"
       / 1fr 1fr 1fr;
+}
+
+.grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 100px 100px 100px;
+  -ms-grid-columns: 1fr 1fr;
+  grid-template:
+    "a   b" 100px
+    "c   d" 100px
+    "e   f" 100px /
+    1fr  1fr;
+}
+
+.grid-2 {
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 50px;
+  -ms-grid-rows: 100px 50px 100px 50px 100px;
+  -ms-grid-columns: 1fr 50px 1fr;
+  grid-template:
+    "x   x" 100px
+    "y   y" 100px
+    "z   z" 100px /
+    1fr  1fr;
+}
+
+@media (min-width: 600px){
+  .grid {
+    grid-gap: 10px;
+    grid-template-areas:
+      "a   b   c"
+      "d   e   f";
+    -ms-grid-columns: 1fr 10px 1fr 10px 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    -ms-grid-rows: 100px 10px 100px;
+    grid-template-rows: repeat(2, 100px);
+  }
+}
+
+@media (min-width: 700px){
+  .grid {
+    grid-gap: 20px;
+    grid-template-areas:
+      "a   b   c"
+      "d   e   f";
+    -ms-grid-columns: 1fr 20px 1fr 20px 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    -ms-grid-rows: 100px 20px 100px;
+    grid-template-rows: repeat(2, 100px);
+  }
+}
+
+@media (min-width: 900px){
+  .grid {
+    grid-template-areas:
+      "a   b   c   d   e   f";
+    -ms-grid-columns: 1fr 20px 1fr 20px 1fr 20px 1fr 20px 1fr 20px 1fr;
+    grid-template-columns: repeat(6, 1fr);
+    -ms-grid-rows: 100px;
+    grid-template-rows: 100px;
+  }
+}
+
+@media (max-width: 400px){
+  .grid {
+    grid-template-areas:
+      "a"
+      "b"
+      "c"
+      "d"
+      "e"
+      "f";
+    -ms-grid-columns: 1fr;
+    grid-template-columns: 1fr;
+    -ms-grid-rows: (100px)[6];
+    grid-template-rows: repeat(6, 100px);
+  }
+}
+
+@media (max-width: 1400px){
+  .grid-2 {
+    -ms-grid-rows: 100px 50px 100px;
+    -ms-grid-columns: 1fr 50px 1fr;
+    grid-template:
+      "x   y   z" 100px
+      "x   y   z" 100px
+      / 1fr 1fr;
+  }
+}
+
+@media (max-width: 1000px){
+  .grid-2 {
+    grid-gap: 20px;
+    grid-template-areas:
+      "x   y   z"
+      "x   y   z";
+    -ms-grid-columns: 1fr 20px 1fr 20px 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    -ms-grid-rows: 100px 20px 100px;
+    grid-template-rows: repeat(2, 100px);
+  }
+}
+
+@media (max-width: 700px){
+  .grid-2 {
+    grid-template-areas:
+      "x   x   y   y   z   z";
+    -ms-grid-columns: 1fr 20px 1fr 20px 1fr 20px 1fr 20px 1fr 20px 1fr;
+    grid-template-columns: repeat(6, 1fr);
+    -ms-grid-rows: 100px;
+    grid-template-rows: 100px;
+  }
+}
+
+@media (max-width: 400px){
+  .grid-2 {
+    grid-template-areas:
+      "x"
+      "x"
+      "y"
+      "y"
+      "z"
+      "z";
+    -ms-grid-columns: 1fr;
+    grid-template-columns: 1fr;
+    -ms-grid-rows: 100px 20px 100px 20px 100px 20px 100px 20px 100px 20px 100px;
+    grid-template-rows: repeat(6, 100px);
+  }
 }

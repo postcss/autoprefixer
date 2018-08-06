@@ -222,11 +222,20 @@
   }
 
   /* this should display a warning */
-  .z {
+  .m {
     display: grid;
     grid-gap: 10px;
     grid-template:
         "m   z" 100px /
+        1fr  1fr;
+  }
+
+  /* this should display a warning */
+  .z, .second-z {
+    display: grid;
+    grid-gap: 10px;
+    grid-template:
+        ".   z" 100px /
         1fr  1fr;
   }
 }
@@ -247,14 +256,14 @@
   grid-area: j;
 }
 
-.k-6 {
+.k-5 {
   grid-area: l;
 }
 
-.k-6 {
+.k-6, .k-7 {
   grid-area: m;
 }
 
-.k-7 {
+.k-8, .k-9 {
   grid-area: z;
 }

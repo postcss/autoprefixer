@@ -140,3 +140,22 @@
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   grid-template-rows: repeat(auto-fit, minmax(400px, 1fr));
 }
+
+.baz {
+  -ms-grid-column-span: 3;
+  grid-column: span 3;
+}
+
+.bar {
+  -ms-grid-row-span: 3;
+  grid-row: span 3;
+}
+
+.warn-display-contents {
+  display: -ms-grid;
+  display: grid;
+}
+/* Emit warning if grid enabled */
+.warn-display-contents .grid {
+  display: contents;
+}
