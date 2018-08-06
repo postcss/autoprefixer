@@ -14,7 +14,7 @@ Please feel free to contribute to Autoprefixer by submitting Pull Requests to ad
 
 Once your PR is accepted it will incorporated into the next main release of Autoprefixer.
 
-**Important**: Autoprefixer works by leveraging data from [caniuse](https://caniuse.com/). Therefore it's important that support for a particular CSS feature is available there before we can enable support for it here. You can check the listing of features that need to be added [here](https://caniuse.com/issue-list).
+**Important**: Autoprefixer works by leveraging data from [can I use](https://caniuse.com/). Therefore it's important that support for a particular CSS feature is available there before we can enable support for it here. You can check the listing of features that need to be added [here](https://caniuse.com/issue-list).
 
 ## Getting started
 Before you begin contributing make sure you have a [GitHub account](https://github.com/signup/free).
@@ -28,7 +28,7 @@ Before you begin contributing make sure you have a [GitHub account](https://gith
 ## Adding a prefix
 We'll explain how would you go about adding a CSS feature to Autoprefixer. For example, we'll add support for a CSS feature called `background-clip: text`
 
-Note: Remember that the feature that you want to add must also be supported on [caniuse](https://caniuse).
+Note: Remember that the feature that you want to add must also be supported on [can I use](https://caniuse).
 
 * Create a topic branch from the `master` branch. Like this: `git checkout -b add/background-clip-text`
 tip: use 'add', 'fix' or 'enhancement' to indicate on your type of contribution
