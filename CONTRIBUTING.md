@@ -9,6 +9,7 @@ Please feel free to contribute to Autoprefixer by submitting Pull Requests to ad
  * [Fixing bugs](#fixing-bugs)
  * [Filing issues](#filing-issues)
  * [Running Tests](#running-tests)
+ * [Creating a Hack](#creating-a-hack)
  * [Tips and guidelines](#guidelines-and-tips)
 
 Once your PR is accepted it will incorporated into the next main release of Autoprefixer.
@@ -68,6 +69,9 @@ Issues, questions, or comments about existing features should be filed as an iss
 ## Running Tests
 Autoprefixer needs units test to verify that a given prefix will work as expected. Depending on the type of change being made you'll need to add...
 TODO: Explain what files need to be modified depending on the type of contribution being made (add, change or fix)
+
+## Creating a hack
+TODO
 
 ## Guidelines and tips
 * Make logical, meaningful and brief commits
