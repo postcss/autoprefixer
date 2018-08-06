@@ -13,7 +13,7 @@ Please feel free to contribute to Autoprefixer by submitting Pull Requests to ad
 
 Once your PR is accepted it will incorporated into the next main release of Autoprefixer.
 
-**Important**: Autoprefixer works by pulling data from [caniuse](https://caniuse.com/). Therefore it's important that support for a particular CSS feature is available there before we can enable support for it here. You can check the listing of features that need to be added [here](https://caniuse.com/issue-list).
+**Important**: Autoprefixer works by leveraging data from [caniuse](https://caniuse.com/). Therefore it's important that support for a particular CSS feature is available there before we can enable support for it here. You can check the listing of features that need to be added [here](https://caniuse.com/issue-list).
 
 ## Getting started
 Before you begin contributing make sure you have a [GitHub account](https://github.com/signup/free).
@@ -49,7 +49,7 @@ tip: use 'add', 'fix' or 'enhancement' to indicate on your type of contribution
   ```
   Declaration.hack(require('./hacks/background-clip'))
   ```
-  [See detailed example](https://github.com/postcss/autoprefixer/blob/73c7b6ab090a9a9a03869b3099096af00be7eb7d/lib/prefixes.js)
+  g[See detailed example](https://github.com/postcss/autoprefixer/blob/73c7b6ab090a9a9a03869b3099096af00be7eb7d/lib/prefixes.js)
 
 * Add unit tests to:
   - `test/autoprefixer.test.js` to test that Autoprefixer works with Chrome and Edge browsers adds only -webkit- prefix. [See details here](https://github.com/postcss/autoprefixer/commit/73c7b6ab090a9a9a03869b3099096af00be7eb7d)
