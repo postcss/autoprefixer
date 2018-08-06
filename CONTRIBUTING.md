@@ -68,7 +68,9 @@ Issues, questions, or comments about existing features should be filed as an iss
 
 ## Running Tests
 Autoprefixer needs units test to verify that a given prefix will work as expected. Depending on the type of change being made you'll need to add...
-TODO: Explain what files need to be modified depending on the type of contribution being made (add, change or fix)
+For tests, you need to add `test/cases/PROP.css` with input and `test/cases/PROP.out.css`. Where `PROP` is the name of the feature you're adding support for.
+
+If you need specific browsers for the test, add Autoprefixer instance [here](https://github.com/postcss/autoprefixer/blob/master/test/autoprefixer.test.js#L69). Then add test [here](https://github.com/postcss/autoprefixer/blob/master/test/autoprefixer.test.js#L424) 
 
 ## Creating a hack
 TODO
