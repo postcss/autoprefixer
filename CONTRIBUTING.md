@@ -74,6 +74,22 @@ TODO
 ## Filing issues
 Issues, questions, or comments about existing features should be filed as an issue. Support for new features also requires filing a new issue. You can file an issue [here](https://github.com/postcssAautoprefixer/issues).
 
+- If you have problems with the output CSS from Autoprefixer; you'll need to post:
+
+  1. Input CSS
+  2. Output CSS
+  3. Expected output CSS
+  4. Run `npm ls | grep autoprefixer` and check output
+  5. Browserslist config. If you use `browsers` option, create Browserslist config first.
+
+- If Autoprefixer throws error:
+
+  1. Input CSS
+  2. Run `npm ls | grep autoprefixer` and check output
+  3. Run `npm ls | grep postcss` and check output
+  4. Browserslist config
+  5. Error stacktrace (with example for users who don’t know what is stacktrace)
+
 ## Running Tests
 Autoprefixer needs units test to verify that a given prefix will work as expected. Depending on the type of change being made you'll need to add...
 For tests, you need to add `test/cases/PROP.css` with input and `test/cases/PROP.out.css`. Where `PROP` is the name of the feature you're adding support for.
