@@ -27,3 +27,142 @@
 .e {
   grid-area: foot;
 }
+
+/****************\
+  CONFLICT TESTS
+\****************/
+
+.grid {
+  display: grid;
+  grid-template-areas:
+    "a-conflict b-conflict";
+}
+
+.grid.conflict {
+  display: grid;
+  grid-template-areas:
+    "a-conflict"
+    "b-conflict";
+}
+
+.a { grid-area: a-conflict; }
+.b { grid-area: b-conflict; }
+
+/****************\
+  MQ CONFLICT TEST
+\****************/
+.grid-mq {
+  display: grid;
+  grid-template-areas: "a-mq b-mq";
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-areas:
+      "a-mq"
+      "b-mq";
+  }
+}
+
+.grid.conflict {
+  display: grid;
+  grid-template-areas:
+    "a-mq"
+    "b-mq";
+}
+
+@media (min-width: 601px) {
+  .grid.conflict {
+    grid-template-areas: "a-mq b-mq";
+  }
+}
+
+.a {
+  grid-area: a-mq;
+}
+
+.b {
+  grid-area: b-mq;
+}
+
+/*************************\
+  OVERRIDE CONFLICT TESTS
+\*************************/
+
+.grid-overide {
+  display: grid;
+  grid-template-areas: "overide";
+}
+
+.grid-overide > .cell {
+  grid-area: overide;
+}
+
+.grid-overide .cell {
+  grid-area: overide;
+}
+
+.grand-parent .mother {
+  display: grid;
+  grid-template-areas: "child";
+}
+.grand-parent .father {
+  display: grid;
+  grid-template-areas: "child";
+}
+
+.grand-parent .mother .cell {
+  grid-area: child;
+}
+.grand-parent .mother > .cell {
+  grid-area: child;
+}
+
+.grand-parent .father .cell {
+  grid-area: child;
+}
+.grand-parent .father > .cell {
+  grid-area: child;
+}
+
+/* emit warning */
+.uncle .cell {
+  grid-area: child;
+}
+
+/* emit warning */
+.uncle > .cell {
+  grid-area: child;
+}
+
+/* emit warning */
+.grand-parent .uncle .cell {
+  grid-area: child;
+}
+
+/* emit warning */
+.grand-parent .uncle > .cell {
+  grid-area: child;
+}
+
+/*************************\
+  MULTI SELECTOR TEST
+\*************************/
+
+.grand-parent .uncle,
+.grand-parent .aunt {
+  display: grid;
+  grid-template-areas: "cousin";
+}
+.grand-parent .uncle .cousin {
+  grid-area: cousin;
+}
+.grand-parent .uncle > .cousin {
+  grid-area: cousin;
+}
+.grand-parent .aunt .cousin {
+  grid-area: cousin;
+}
+.grand-parent .aunt > .cousin {
+  grid-area: cousin;
+}

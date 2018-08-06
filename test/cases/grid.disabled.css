@@ -114,3 +114,10 @@
 .bar {
   grid-row: span 3;
 }
+
+.warn-display-contents {
+  display: grid;
+}
+.warn-display-contents .grid {
+  display: contents;
+}
