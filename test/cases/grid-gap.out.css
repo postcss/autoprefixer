@@ -38,6 +38,54 @@
   grid-area: foot;
 }
 
+.f > .b {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 5;
+}
+
+.f > .c {
+  -ms-grid-row: 3;
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 3;
+}
+
+.f > .d {
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 3;
+  -ms-grid-column: 1;
+}
+
+.f > .e {
+  -ms-grid-row: 5;
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 3;
+}
+
+.f > .b {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 5;
+}
+
+.f > .c {
+  -ms-grid-row: 3;
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 3;
+}
+
+.f > .d {
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 3;
+  -ms-grid-column: 1;
+}
+
+.f > .e {
+  -ms-grid-row: 5;
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 3;
+}
+
 .f {
   gap: 10px 20px;
   -ms-grid-columns: 1fr 20px 1fr 20px 1fr;
@@ -86,6 +134,30 @@
   -ms-grid-column: 3;
   -ms-grid-column-span: 3;
   grid-area: foot-shortcut;
+}
+
+.f-shortcut > .b-shortcut {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 5;
+}
+
+.f-shortcut > .c-shortcut {
+  -ms-grid-row: 3;
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 3;
+}
+
+.f-shortcut > .d-shortcut {
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 3;
+  -ms-grid-column: 1;
+}
+
+.f-shortcut > .e-shortcut {
+  -ms-grid-row: 5;
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 3;
 }
 
 .f-shortcut {
