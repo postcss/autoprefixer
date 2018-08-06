@@ -64,7 +64,12 @@ tip: use 'add', 'fix' or 'enhancement' to indicate on your type of contribution
 TODO
 
 ## Fixing Bugs
-TODO
+1. Create
+2. Add test (same as above)
+3. You can send PR. The issue with tests if better than issue just with text
+4. But if you fix it, it will be always better
+5. yarn test
+6. Send PR
 
 ## Filing issues
 Issues, questions, or comments about existing features should be filed as an issue. Support for new features also requires filing a new issue. You can file an issue [here](https://github.com/postcssAautoprefixer/issues).
