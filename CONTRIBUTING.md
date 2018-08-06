@@ -55,6 +55,9 @@ tip: use 'add', 'fix' or 'enhancement' to indicate on your type of contribution
 * Add unit tests to:
   - `test/autoprefixer.test.js` to test that Autoprefixer works with Chrome and Edge browsers adds only -webkit- prefix. [See details here](https://github.com/postcss/autoprefixer/commit/73c7b6ab090a9a9a03869b3099096af00be7eb7d)
   - `test/cases/background-clip.css` TODO: Explain how to add unit test to the CSS
+  - Run yarn test
+  - Push branch with updated commits to your copy of the fork
+  - Create and send PR to Autoprefixer
 
 
 ## Changing an existing prefix
