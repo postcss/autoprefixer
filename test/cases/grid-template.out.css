@@ -544,3 +544,7 @@
     -ms-grid-column: 3;
   }
 }
+
+.k-10 {
+  grid-area: z;
+}

@@ -563,8 +563,10 @@ describe('hacks', () => {
     let result = postcss([instance]).process(input)
 
     expect(result.css).toEqual(output)
-    expect(result.warnings().map(i => i.toString())).toEqual([
-      [
+    expect(result.warnings()
+      .map(i => i.toString())
+      .filter(str => str.includes('duplicate')))
+      .toEqual([[
         `autoprefixer: <css input>:41:3: `,
         `  duplicate area names detected in rule: .f`,
         `  duplicate area names: head, nav, main, foot`,
@@ -599,8 +601,7 @@ describe('hacks', () => {
         `  duplicate area name detected in rule: .z, .second-z`,
         `  duplicate area name: z`,
         `  duplicate area names cause unexpected behavior in IE`
-      ].join('\n')
-    ])
+      ].join('\n')])
   })
 
   it('should preserve @media rules with grid-area', () => {
