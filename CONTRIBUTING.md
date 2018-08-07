@@ -44,7 +44,7 @@ tip: use 'add', 'fix' or 'enhancement' to indicate on your type of contribution
   ```
 * In order to add support for a new feature we need to add a hack to the `libs/hacks` folder using the name of the CSS feature as the filename. Tip: 'hack' is the actual support for the new feature.
 
-* Create a class that extends `Value`. In his new class change the prefix for `IE` to `-webkit-`. [See complete example](https://github.com/postcss/Autoprefixer/blob/73c7b6ab090a9a9a03869b3099096af00be7eb7d/lib/hacks/background-clip.js)
+* Create a class that extends `Value`. In this new class change the prefix for `IE` to `-webkit-`. [See complete example](https://github.com/postcss/Autoprefixer/blob/73c7b6ab090a9a9a03869b3099096af00be7eb7d/lib/hacks/background-clip.js)
 
 * Load the new class in `lib/prefixes.js`. We refer to a new added class as a 'hack'. To load it we use `Declaration` module and call the `hack` method on the new class we created earlier. Like this:
   ```
