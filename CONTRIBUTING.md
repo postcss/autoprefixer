@@ -88,7 +88,7 @@ TODO
 2. Add test (same as above)
 3. You can send PR. The issue with tests if better than issue just with text
 4. But if you fix it, it will be always better
-5. yarn test
+5. Run `yarn test` from the command line
 6. Send PR
 
 ## Running Tests
