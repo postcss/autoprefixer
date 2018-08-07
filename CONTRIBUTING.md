@@ -41,7 +41,7 @@ Before you begin contributing make sure you have a [GitHub account](https://gith
 * [Fork the repository](https://github.com/postcssAautoprefixer)
 * Clone a copy of it to your computer: `git clone https://github.com/USERNAME/autoprefixer`
 * Ensure that you have the [Yarn](https://yarnpkg.com/) package manager installed
-* run `yarn install` this will install all dependencies needed to run tests
+* Run `yarn install` this will install all dependencies needed to run tests
 * File an issue, see [filing issues](#filing-issues)
 * Once issue is discussed and accepted, you can begin making the necessary changes
 
