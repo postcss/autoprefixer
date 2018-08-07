@@ -37,7 +37,7 @@
     -ms-grid-rows: auto auto 20px;
     -ms-grid-columns: 1fr 1fr;
     grid-template:
-      "foo foo"
+      "x foo"
       "foo foo"
       "bar bar" 20px
       / 1fr 1fr;
@@ -84,6 +84,10 @@
   }
 }
 
+.x {
+  grid-area: x;
+}
+
 @media (min-width: 900px) {
   .foo {
     -ms-grid-row: 1;
@@ -95,6 +99,10 @@
     -ms-grid-row: 3;
     -ms-grid-column: 1;
     -ms-grid-column-span: 2;
+  }
+  .x {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
   }
 }
 
