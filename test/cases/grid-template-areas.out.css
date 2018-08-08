@@ -50,32 +50,32 @@
 }
 
 /****************\
-  CONFLICT TEST
+  CONFLICT TESTS
 \****************/
 
 .grid {
   display: -ms-grid;
   display: grid;
-  grid-template-areas: "a b";
+  grid-template-areas: "a-conflict b-conflict";
 }
 
 .grid.conflict {
   display: -ms-grid;
   display: grid;
   grid-template-areas:
-    "a"
-    "b";
+    "a-conflict"
+    "b-conflict";
 }
 
 .a {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
-  grid-area: a;
+  grid-area: a-conflict;
 }
 .b {
   -ms-grid-row: 1;
   -ms-grid-column: 2;
-  grid-area: b;
+  grid-area: b-conflict;
 }
 
 .grid.conflict > .a {
@@ -91,17 +91,17 @@
   MQ CONFLICT TEST
 \****************/
 
-.grid {
+.grid-mq {
   display: -ms-grid;
   display: grid;
-  grid-template-areas: "a b";
+  grid-template-areas: "a-mq b-mq";
 }
 
 @media (max-width: 600px) {
-  .grid {
+  .grid-mq {
     grid-template-areas:
-      "a"
-      "b";
+      "a-mq"
+      "b-mq";
   }
 }
 
@@ -109,26 +109,26 @@
   display: -ms-grid;
   display: grid;
   grid-template-areas:
-    "a"
-    "b";
+    "a-mq"
+    "b-mq";
 }
 
 @media (min-width: 601px) {
   .grid.conflict {
-    grid-template-areas: "a b";
+    grid-template-areas: "a-mq b-mq";
   }
 }
 
 .a {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
-  grid-area: a;
+  grid-area: a-mq;
 }
 
 .b {
   -ms-grid-row: 1;
   -ms-grid-column: 2;
-  grid-area: b;
+  grid-area: b-mq;
 }
 
 @media (max-width: 600px) {
