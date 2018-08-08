@@ -28,7 +28,7 @@
 @media (min-width: 900px) {
   .grid-template-sequence {
     grid-template:
-      "foo foo"
+      "x foo"
       "foo foo"
       "bar bar" 20px
       / 1fr 1fr;
@@ -41,6 +41,10 @@
 
 .bar {
   grid-area: bar;
+}
+
+.x {
+  grid-area: x;
 }
 
 @media (max-width: 900px) {

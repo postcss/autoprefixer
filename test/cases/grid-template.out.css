@@ -427,6 +427,7 @@
     -ms-grid-row: 1;
     -ms-grid-row-span: 1;
     -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
   }
   .k-2 {
     -ms-grid-row: 1;
@@ -501,7 +502,7 @@
   grid-area: m;
 }
 
-@media (max-width: 600px) {
+@media (min-width: 601px) {
   .k-5 {
     -ms-grid-row: 1;
     -ms-grid-column: 1;
@@ -512,7 +513,7 @@
   }
 }
 
-@media (min-width: 601px) {
+@media (max-width: 600px) {
   .k-5 {
     -ms-grid-row: 1;
     -ms-grid-column: 1;

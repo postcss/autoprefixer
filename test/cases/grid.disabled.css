@@ -118,6 +118,7 @@
 .warn-display-contents {
   display: grid;
 }
+/* Emit warning if grid enabled */
 .warn-display-contents .grid {
   display: contents;
 }
