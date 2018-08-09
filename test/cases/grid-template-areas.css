@@ -57,7 +57,7 @@
 }
 
 @media (max-width: 600px) {
-  .grid {
+  .grid-mq {
     grid-template-areas:
       "a-mq"
       "b-mq";

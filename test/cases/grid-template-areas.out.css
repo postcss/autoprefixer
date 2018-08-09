@@ -56,7 +56,8 @@
 .grid {
   display: -ms-grid;
   display: grid;
-  grid-template-areas: "a-conflict b-conflict";
+  grid-template-areas:
+    "a-conflict b-conflict";
 }
 
 .grid.conflict {
@@ -67,17 +68,8 @@
     "b-conflict";
 }
 
-.a {
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
-  grid-area: a-conflict;
-}
-.b {
-  -ms-grid-row: 1;
-  -ms-grid-column: 2;
-  grid-area: b-conflict;
-}
-
+.a { -ms-grid-row: 1; -ms-grid-column: 1; grid-area: a-conflict; }
+.b { -ms-grid-row: 1; -ms-grid-column: 2; grid-area: b-conflict; }
 .grid.conflict > .a {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
@@ -90,7 +82,6 @@
 /****************\
   MQ CONFLICT TEST
 \****************/
-
 .grid-mq {
   display: -ms-grid;
   display: grid;
@@ -174,10 +165,14 @@
 }
 
 .grid-overide > .cell {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
   grid-area: overide;
 }
 
 .grid-overide .cell {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
   grid-area: overide;
 }
 
