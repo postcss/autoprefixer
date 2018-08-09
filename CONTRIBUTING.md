@@ -33,7 +33,7 @@ Issues, questions, or comments about existing features should be filed as an iss
   2. Run `npm ls | grep autoprefixer` and check output
   3. Run `npm ls | grep postcss` and check output
   4. Browserslist config
-  5. Error stacktrace (with example for users who don’t know what is stacktrace)
+  5. Error stacktrace (copy and paste the error message that you get so we can identify where the problem is)
 
 ## Getting started
 Before you begin contributing make sure you have a [GitHub account](https://github.com/signup/free).
