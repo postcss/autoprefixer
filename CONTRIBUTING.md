@@ -17,7 +17,7 @@ Once your PR is accepted it will incorporated into the next main release of Auto
 **Important**: Autoprefixer works by leveraging data from [Can I use](https://caniuse.com/). Therefore it's important that support for a particular CSS feature is available there before we can enable support for it here. You can check the listing of features that need to be added [here](https://caniuse.com/issue-list).
 
 ## Filing issues
-Issues, questions, or comments about existing features should be filed as an issue. Support for new features also requires filing a new issue. You can file an issue [here](https://github.com/postcssAautoprefixer/issues).
+Issues, questions, or comments about existing features should be filed as an issue. Support for new features also requires filing a new issue. You can file an issue [here](https://github.com/postcss/autoprefixer/issues).
 
 - If you have problems with the output CSS from Autoprefixer; you'll need to post:
 
