@@ -8,7 +8,6 @@ Please feel free to contribute to Autoprefixer by submitting Pull Requests to ad
 * [Adding a new prefix](#adding-a-prefix)
 * [Changing an existing prefix](#changing-an-existing-prefix)
 * [Fixing bugs](#fixing-bugs)
-
 * [Running Tests](#running-tests)
 * [Creating a Hack](#creating-a-hack)
 * [Tips and guidelines](#guidelines-and-tips)
@@ -84,7 +83,7 @@ tip: use 'add', 'fix' or 'enhancement' to indicate on your type of contribution
 TODO
 
 ## Fixing Bugs
-1. Create
+1. Create issue
 2. Add test (same as above)
 3. You can send PR. The issue with tests if better than issue just with text
 4. But if you fix it, it will be always better
