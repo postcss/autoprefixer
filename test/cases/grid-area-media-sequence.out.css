@@ -89,18 +89,18 @@
 }
 
 @media (min-width: 900px) {
-  .grid-template-sequence > .foo {
+  .foo {
     -ms-grid-row: 1;
     -ms-grid-row-span: 2;
     -ms-grid-column: 1;
     -ms-grid-column-span: 2;
   }
-  .grid-template-sequence > .bar {
+  .bar {
     -ms-grid-row: 3;
     -ms-grid-column: 1;
     -ms-grid-column-span: 2;
   }
-  .grid-template-sequence > .x {
+  .x {
     -ms-grid-row: 1;
     -ms-grid-column: 1;
   }
