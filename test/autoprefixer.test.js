@@ -545,7 +545,9 @@ describe('hacks', () => {
       'autoprefixer: <css input>:104:33: auto-fill value is not ' +
                 'supported by IE',
       'autoprefixer: <css input>:105:30: auto-fit value is not ' +
-                'supported by IE'
+                'supported by IE',
+      'autoprefixer: <css input>:121:3: Please do not use ' +
+      'display: contents; if you have grid setting enabled'
     ])
   })
 
