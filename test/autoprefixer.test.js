@@ -604,6 +604,31 @@ describe('hacks', () => {
       ].join('\n')])
   })
 
+  it('warns if rule with grid-area has no parent with grid-template', () => {
+    let input = read('grid-template-areas')
+    let output = read('grid-template-areas.out')
+    let instance = prefixer('grid-area')
+    let result = postcss([instance]).process(input)
+
+    expect(result.css).toEqual(output)
+    expect(result.warnings()
+      .map(i => i.toString())
+      .filter(str => str.includes('grid-template')))
+      .toEqual([
+        'autoprefixer: <css input>:130:3: Autoprefixer cannot find ' +
+        'grid-template with selector: .uncle',
+        'autoprefixer: <css input>:135:3: Autoprefixer cannot find ' +
+        'grid-template with selector: .uncle',
+        'autoprefixer: <css input>:140:3: Autoprefixer cannot find ' +
+        'grid-template with selector: .grand-parent .uncle',
+        'autoprefixer: <css input>:145:3: Autoprefixer cannot find ' +
+        'grid-template with selector: .grand-parent .uncle',
+        'autoprefixer: <css input>:158:3: Autoprefixer cannot find ' +
+        'grid-template with selector: .grand-parent .uncle',
+        'autoprefixer: <css input>:161:3: Autoprefixer cannot find ' +
+        'grid-template with selector: .grand-parent .uncle'
+      ])
+  })
   it('should preserve @media rules with grid-area', () => {
     let input = read('grid-area-media-sequence')
     let output = read('grid-area-media-sequence.out')
