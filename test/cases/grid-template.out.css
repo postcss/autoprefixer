@@ -436,9 +436,6 @@
     -ms-grid-column: 3;
     -ms-grid-column-span: 1;
   }
-}
-
-@media (min-width: 600px) {
   .g-conflict-2 > .k-1 {
     -ms-grid-row: 1;
     -ms-grid-column: 1;
@@ -470,9 +467,6 @@
     -ms-grid-row: 2;
     -ms-grid-column: 1;
   }
-}
-
-@media (max-width: 600px) {
   .k > .k-3 {
     -ms-grid-row: 1;
     -ms-grid-column: 1;
