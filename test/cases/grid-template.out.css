@@ -523,18 +523,15 @@
 }
 
 @media (max-width: 600px) {
-  .z > .k-8, .z > .k-9, .second-z > .k-8, .second-z > .k-9 {
-    -ms-grid-row: 1;
-    -ms-grid-column: 3;
-  }
-}
-
-@media (max-width: 600px) {
   .m > .k-6, .m > .k-7 {
     -ms-grid-row: 1;
     -ms-grid-column: 1;
   }
   .m > .k-8, .m > .k-9 {
+    -ms-grid-row: 1;
+    -ms-grid-column: 3;
+  }
+  .z > .k-8, .z > .k-9, .second-z > .k-8, .second-z > .k-9 {
     -ms-grid-row: 1;
     -ms-grid-column: 3;
   }
