@@ -629,9 +629,18 @@ describe('hacks', () => {
         'grid-template with selector: .grand-parent .uncle'
       ])
   })
+
   it('should preserve @media rules with grid-area', () => {
     let input = read('grid-area-media-sequence')
     let output = read('grid-area-media-sequence.out')
+    let instance = prefixer('grid-area')
+    let result = postcss([instance]).process(input)
+    expect(result.css).toEqual(output)
+  })
+
+  it('should merge complex duplicate grid-areas successfully', () => {
+    let input = read('duplicate-grid-areas-above')
+    let output = read('duplicate-grid-areas-above.out')
     let instance = prefixer('grid-area')
     let result = postcss([instance]).process(input)
     expect(result.css).toEqual(output)
