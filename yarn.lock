@@ -2261,10 +2261,6 @@ eslint-config-logux@^24.0.0:
   dependencies:
     globals "^11.7.0"
 
-eslint-config-postcss@^3.0.5:
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/eslint-config-postcss/-/eslint-config-postcss-3.0.5.tgz#b2865f68cd66f2189ee915ba9e213f4d92147beb"
-
 eslint-config-standard@^11.0.0:
   version "11.0.0"
   resolved "https://registry.yarnpkg.com/eslint-config-standard/-/eslint-config-standard-11.0.0.tgz#87ee0d3c9d95382dc761958cbb23da9eea31e0ba"

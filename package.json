@@ -35,7 +35,6 @@
     "eslint": "^5.3.0",
     "eslint-ci": "^0.1.1",
     "eslint-config-logux": "^24.0.0",
-    "eslint-config-postcss": "^3.0.5",
     "eslint-config-standard": "^11.0.0",
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-jest": "^21.21.0",
@@ -75,7 +74,7 @@
     }
   ],
   "eslintConfig": {
-    "extends": "eslint-config-postcss",
+    "extends": "eslint-config-logux/node",
     "parser": "babel-eslint",
     "rules": {
       "security/detect-non-literal-regexp": "off",
