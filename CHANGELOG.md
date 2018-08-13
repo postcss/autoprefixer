@@ -1,12 +1,19 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 9.1.1
+* Retain `grid-gap` through `@media` (by Bogdan Dolin).
+* Fix `grid-template` and  `@media` (by Bogdan Dolin).
+* Fix Grid areas searching error (by Bogdan Dolin).
+* Fix `span X` Grid prefix (by Bogdan Dolin).
+* Fix docs (by Eduard Kyvenko).
+
 ## 9.1 “Equality before the law”
 * Add `background-clip: text` support.
-* Fix adding Grid span for IE (by Bogdan).
+* Fix adding Grid span for IE (by Bogdan Dolin).
 
 ## 9.0.2
-* Show warning on Grid area names conflict (by Bogdan).
+* Show warning on Grid area names conflict (by Bogdan Dolin).
 * Fix documentation (by Sven Wagner).
 
 ## 9.0.1
