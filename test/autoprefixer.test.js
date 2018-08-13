@@ -558,54 +558,6 @@ describe('hacks', () => {
     expect(result.warnings()).toEqual([])
   })
 
-  it('shows warning if grid-template has a duplicate area name', () => {
-    let input = read('grid-template')
-    let output = read('grid-template.out')
-    let instance = prefixer('grid-area')
-    let result = postcss([instance]).process(input)
-
-    expect(result.css).toEqual(output)
-    expect(result.warnings()
-      .map(i => i.toString())
-      .filter(str => str.includes('duplicate')))
-      .toEqual([[
-        `autoprefixer: <css input>:41:3: `,
-        `  duplicate area names detected in rule: .f`,
-        `  duplicate area names: head, nav, main, foot`,
-        `  duplicate area names cause unexpected behavior in IE`
-      ].join('\n'),
-      [
-        `autoprefixer: <css input>:133:3: `,
-        `  duplicate area names detected in rule: .g-conflict`,
-        `  duplicate area names: g, h`,
-        `  duplicate area names cause unexpected behavior in IE`
-      ].join('\n'),
-      [
-        `autoprefixer: <css input>:154:5: `,
-        `  duplicate area names detected in rule: .g-conflict-2`,
-        `  duplicate area names: g, h`,
-        `  duplicate area names cause unexpected behavior in IE`
-      ].join('\n'),
-      [
-        `autoprefixer: <css input>:186:5: `,
-        `  duplicate area names detected in rule: .k`,
-        `  duplicate area names: i, j`,
-        `  duplicate area names cause unexpected behavior in IE`
-      ].join('\n'),
-      [
-        `autoprefixer: <css input>:228:5: `,
-        `  duplicate area name detected in rule: .m`,
-        `  duplicate area name: m`,
-        `  duplicate area names cause unexpected behavior in IE`
-      ].join('\n'),
-      [
-        `autoprefixer: <css input>:237:5: `,
-        `  duplicate area name detected in rule: .z, .second-z`,
-        `  duplicate area name: z`,
-        `  duplicate area names cause unexpected behavior in IE`
-      ].join('\n')])
-  })
-
   it('warns if rule with grid-area has no parent with grid-template', () => {
     let input = read('grid-template-areas')
     let instance = prefixer('grid-area')
