@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 9.1.2
+* Fix `autoprefixer --info` in new Node.js.
+
 ## 9.1.1
 * Retain `grid-gap` through `@media` (by Bogdan Dolin).
 * Fix `grid-template` and  `@media` (by Bogdan Dolin).
