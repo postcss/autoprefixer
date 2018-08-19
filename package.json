@@ -106,7 +106,7 @@
           "*.test.js"
         ],
         "rules": {
-          "jest/no-disabled-tests": "off"
+          "jest/expect-expect": "off"
         }
       }
     ]
