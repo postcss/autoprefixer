@@ -18,7 +18,7 @@
   "dependencies": {
     "babel-register": "^6.26.0",
     "browserslist": "^4.0.2",
-    "caniuse-lite": "^1.0.30000877",
+    "caniuse-lite": "^1.0.30000878",
     "normalize-range": "^0.1.2",
     "num2fraction": "^1.2.2",
     "postcss": "^7.0.2",
