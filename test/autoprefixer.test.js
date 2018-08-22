@@ -44,6 +44,9 @@ let uncascader = autoprefixer({
 let gradienter = autoprefixer({
   browsers: ['Chrome 25', 'Opera 12', 'Android 2.3']
 })
+let ffgradienter = autoprefixer({
+  browsers: ['Chrome 25', 'Opera 12', 'Firefox 6']
+})
 let selectorer = autoprefixer({
   browsers: ['Chrome 25', 'Firefox > 17', 'IE 10', 'Edge 12']
 })
@@ -85,6 +88,8 @@ function prefixer (name) {
     return cleaner
   } else if (name === 'gradient') {
     return gradienter
+  } else if (name === 'gradient-fix') {
+    return ffgradienter
   } else if (name === 'flexbox' || name === 'flex-rewrite') {
     return flexboxer
   } else if (name === 'double') {
@@ -471,6 +476,8 @@ describe('hacks', () => {
       'autoprefixer: <css input>:104:3: Gradient has outdated ' +
             'direction syntax. Replace `contain` to `closest-side`.'
     ])
+
+    check('gradient-fix')
   })
 
   it('warns on old flexbox display', () => {

@@ -153,7 +153,7 @@ f(gradients, { match: /y\sx/ }, browsers =>
 
 f(gradients, { match: /a\sx/ }, browsers => {
   browsers = browsers.map(i => {
-    if (/op/.test(i)) {
+    if (/firefox|op/.test(i)) {
       return i
     } else {
       return `${ i } old`
