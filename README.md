@@ -586,7 +586,7 @@ $ npx autoprefixer --info
 Browsers:
   Edge: 16
 
-These browsers account for 0.04% of all users globally
+These browsers account for 0.26% of all users globally
 
 At-Rules:
   @viewport: ms
@@ -595,18 +595,20 @@ Selectors:
   ::placeholder: ms
 
 Properties:
-  user-select: ms
-  hyphens: ms
   appearance: webkit
-  scroll-snap-type: ms
+  flow-from: ms
+  flow-into: ms
+  hyphens: ms
+  overscroll-behavior: ms
+  region-fragment: ms
   scroll-snap-coordinate: ms
   scroll-snap-destination: ms
   scroll-snap-points-x: ms
   scroll-snap-points-y: ms
-  flow-into: ms
-  flow-from: ms
-  region-fragment: ms
+  scroll-snap-type: ms
+  text-size-adjust: ms
   text-spacing: ms
+  user-select: ms
 ```
 
 JS API is also available:
