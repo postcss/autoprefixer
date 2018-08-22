@@ -69,10 +69,10 @@ let clipper = autoprefixer({
 function prefixer (name) {
   if (
     name === 'grid' ||
-        name === 'grid-gap' ||
-        name === 'grid-area' ||
-        name === 'grid-template' ||
-        name === 'grid-template-areas'
+    name === 'grid-gap' ||
+    name === 'grid-area' ||
+    name === 'grid-template' ||
+    name === 'grid-template-areas'
   ) {
     return grider
   } else if (name === 'keyframes') {
