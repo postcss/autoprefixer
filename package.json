@@ -124,20 +124,18 @@
       "<rootDir>/build/"
     ]
   },
+  "browserslist": [
+    "last 2 version",
+    "not dead",
+    "not Explorer 11",
+    "not ExplorerMobile 11",
+    "node 6"
+  ],
   "babel": {
     "presets": [
       [
         "@babel/env",
         {
-          "targets": {
-            "browsers": [
-              "last 2 version",
-              "not dead",
-              "not Explorer 11",
-              "not ExplorerMobile 11"
-            ],
-            "node": 6
-          },
           "loose": true
         }
       ]
