@@ -36,9 +36,7 @@ gulp.task('build:package', ['clean'], () => {
   return gulp.src('./package.json')
     .pipe(editor(json => {
       json.main = 'lib/autoprefixer'
-      json.devDependencies['babel-register'] =
-                json.dependencies['babel-register']
-      delete json.dependencies['babel-register']
+      delete json.devDependencies
       delete json.babel
       delete json.scripts
       delete json.jest
