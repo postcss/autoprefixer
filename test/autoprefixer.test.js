@@ -109,7 +109,7 @@ function prefixer (name) {
   } else if (name === 'uncascade') {
     return uncascader
   } else if (name === 'example') {
-    return autoprefixer
+    return autoprefixer({ browsers: ['defaults'] })
   } else if (name === 'viewport' || name === 'appearance') {
     return flexboxer
   } else if (name === 'resolution') {
