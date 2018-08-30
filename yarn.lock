@@ -1260,9 +1260,9 @@ babel-types@^6.0.0, babel-types@^6.18.0, babel-types@^6.26.0:
     lodash "^4.17.4"
     to-fast-properties "^1.0.3"
 
-babelify@^8.0.0:
-  version "8.0.0"
-  resolved "https://registry.yarnpkg.com/babelify/-/babelify-8.0.0.tgz#6f60f5f062bfe7695754ef2403b842014a580ed3"
+babelify@^9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/babelify/-/babelify-9.0.0.tgz#6b2e39ffeeda3765aee60eeb5b581fd947cc64ec"
 
 babylon@^6.18.0:
   version "6.18.0"

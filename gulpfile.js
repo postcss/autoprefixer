@@ -63,7 +63,14 @@ gulp.task('standalone', ['build:lib'], done => {
     .transform('babelify', {
       global: true,
       presets: [
-        ['env', { node: '0.10', loose: true }]
+        [
+          '@babel/env', {
+            targets: {
+              node: 6
+            },
+            loose: true
+          }
+        ]
       ]
     })
     .bundle((error, build) => {

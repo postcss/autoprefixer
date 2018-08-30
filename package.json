@@ -32,7 +32,7 @@
     "babel-core": "^7.0.0-0",
     "babel-eslint": "^9.0.0",
     "babel-jest": "^23.4.2",
-    "babelify": "^8.0.0",
+    "babelify": "^9.0.0",
     "browserify": "^16.2.2",
     "eslint": "^5.4.0",
     "eslint-ci": "^0.1.1",
