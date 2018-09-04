@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 9.1.4
+* Use Babel 7.
+
 ## 9.1.3
 * Sort properties in `autoprefixer --info` alphabetically.
 * Fix old Firefox gradient prefix.
