@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 9.1.5
+* Remove `@babel/register` from dependencies.
+
 ## 9.1.4
 * Use Babel 7.
 
