@@ -1832,7 +1832,7 @@ component-emitter@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/component-emitter/-/component-emitter-1.2.1.tgz#137918d6d78283f7df7a6b7c5a63e140e69425e6"
 
-compression-webpack-plugin@^1.1.11:
+compression-webpack-plugin@^1.1.12:
   version "1.1.12"
   resolved "https://registry.yarnpkg.com/compression-webpack-plugin/-/compression-webpack-plugin-1.1.12.tgz#becd2aec620ace96bb3fe9a42a55cf48acc8b4d4"
   dependencies:
@@ -6458,14 +6458,14 @@ sisteransi@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-0.1.1.tgz#5431447d5f7d1675aac667ccd0b865a4994cb3ce"
 
-size-limit@^0.19.3:
-  version "0.19.3"
-  resolved "https://registry.yarnpkg.com/size-limit/-/size-limit-0.19.3.tgz#719b9877516503cc550c9aff31c1c992b3b5bba9"
+size-limit@^0.20.0:
+  version "0.20.0"
+  resolved "https://registry.yarnpkg.com/size-limit/-/size-limit-0.20.0.tgz#bae0eb371305623b2a0079b9e9160c8e4cde60c7"
   dependencies:
     bytes "^3.0.0"
     chalk "^2.4.1"
     ci-job-number "^0.3.0"
-    compression-webpack-plugin "^1.1.11"
+    compression-webpack-plugin "^1.1.12"
     cosmiconfig "^5.0.6"
     css-loader "^1.0.0"
     escape-string-regexp "^1.0.5"
@@ -6475,7 +6475,7 @@ size-limit@^0.19.3:
     memory-fs "^0.4.1"
     read-pkg-up "^4.0.0"
     style-loader "^0.23.0"
-    webpack "^4.17.1"
+    webpack "^4.17.2"
     webpack-bundle-analyzer "^2.13.1"
     yargs "^12.0.1"
 
@@ -6822,7 +6822,7 @@ syntax-error@^1.1.1:
 
 table@^4.0.3:
   version "4.0.3"
-  resolved "https://registry.yarnpkg.com/table/-/table-4.0.3.tgz#00b5e2b602f1794b9acaf9ca908a76386a7813bc"
+  resolved "http://registry.npmjs.org/table/-/table-4.0.3.tgz#00b5e2b602f1794b9acaf9ca908a76386a7813bc"
   dependencies:
     ajv "^6.0.1"
     ajv-keywords "^3.0.0"
@@ -7305,7 +7305,7 @@ webpack-sources@^1.0.1, webpack-sources@^1.1.0, webpack-sources@^1.2.0:
     source-list-map "^2.0.0"
     source-map "~0.6.1"
 
-webpack@^4.17.1:
+webpack@^4.17.2:
   version "4.17.2"
   resolved "https://registry.yarnpkg.com/webpack/-/webpack-4.17.2.tgz#49feb20205bd15f0a5f1fe0a12097d5d9931878d"
   dependencies:
