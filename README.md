@@ -67,7 +67,7 @@ See [Browserslist docs] for queries, browser names, config format,
 and default value.
 
 [Browserslist docs]: https://github.com/ai/browserslist#queries
-[babel-preset-env]:  https://github.com/babel/babel-preset-env
+[babel-preset-env]:  https://github.com/babel/babel/tree/master/packages/babel-preset-env
 [Best Practices]:    https://github.com/browserslist/browserslist#best-practices
 [Browserslist]:      https://github.com/ai/browserslist
 [Stylelint]:         http://stylelint.io/
