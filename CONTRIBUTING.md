@@ -65,21 +65,20 @@ tip: use 'add', 'fix' or 'enhancement' to indicate on your type of contribution
 
 * In order to add support for a new feature we need to add a hack to the `libs/hacks` folder using the name of the CSS feature as the filename. Tip: 'hack' is the actual support for the new feature.
 
-* Create a class that extends `Value`. In this new class change the prefix for `IE` to `-webkit-`. [See complete example](https://github.com/postcss/Autoprefixer/blob/73c7b6ab090a9a9a03869b3099096af00be7eb7d/lib/hacks/background-clip.js)
+* Create a class that extends `Value`. In this new class change the prefix for `IE` to `-webkit-`. [See complete example](https://github.com/postcss/Autoprefixer/blob/master/lib/hacks/background-clip.js)
 
 * Load the new class in `lib/prefixes.js`. To load it we use `Declaration` module and call the `hack` method on the new class we created earlier (we refer to a new added class as a 'hack'). Like this:
   ```js
   Declaration.hack(require('./hacks/background-clip'))
   ```
-  [See detailed example](https://github.com/postcss/autoprefixer/blob/73c7b6ab090a9a9a03869b3099096af00be7eb7d/lib/prefixes.js)
+  [See detailed example](https://github.com/postcss/autoprefixer/blob/maste/lib/prefixes.js)
 
 * Add unit tests to:
   - `test/autoprefixer.test.js` to test that Autoprefixer works with Chrome and Edge browsers adds only -webkit- prefix. [See details here](https://github.com/postcss/autoprefixer/commit/73c7b6ab090a9a9a03869b3099096af00be7eb7d)
   - `test/cases/background-clip.css` TODO: Explain how to add unit test to the CSS
-  - Run yarn test
+  - Run `yarn test`
   - Push branch with updated commits to your copy of the fork
   - Create and send PR to Autoprefixer
-
 
 ## Changing an existing prefix
 TODO
@@ -93,10 +92,9 @@ TODO
 6. Send PR
 
 ## Running Tests
-Autoprefixer needs units test to verify that a given prefix will work as expected. Depending on the type of change being made you'll need to add...
-For tests, you need to add `test/cases/PROP.css` with input and `test/cases/PROP.out.css`. Where `PROP` is the name of the feature you're adding support for.
+Autoprefixer needs units test to verify that a given prefix will work as expected. Depending on the type of change being made you'll need to add some tests. You need to add `test/cases/PROP.css` with input and `test/cases/PROP.out.css` with output. Where `PROP` is the name of the feature you're adding support for.
 
-If you need specific browsers for the test, add Autoprefixer instance [here](https://github.com/postcss/autoprefixer/blob/master/test/autoprefixer.test.js#L69). Then add test [here](https://github.com/postcss/autoprefixer/blob/master/test/autoprefixer.test.js#L424) 
+If you need specific browsers for the test, add Autoprefixer instance [here](https://github.com/postcss/autoprefixer/blob/master/test/autoprefixer.test.js#L69). Then add test [here](https://github.com/postcss/autoprefixer/blob/master/test/autoprefixer.test.js#L424). 
 
 ## Creating a hack
 TODO
