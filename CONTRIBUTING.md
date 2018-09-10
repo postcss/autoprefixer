@@ -1,7 +1,7 @@
 <img width="94" height="71" src="logo.svg" title="Autoprefixer logo by Anton Lovchikov">
 
 # Contributing to Autoprefixer
-Please feel free to contribute to Autoprefixer by submitting Pull Requests to add new features, ehancements, bug fixes, etc. If you're not sure whether a PR should be created for something, [open an issue](https://github.com/postcssAautoprefixer/issues) to ask about it first. Check the specific section depending on the type of contribution you want to make.
+Please feel free to contribute to Autoprefixer by submitting Pull Requests to add new features, enhancements, bug fixes, etc. If you're not sure whether a PR should be created for something, [open an issue](https://github.com/postcss/autoprefixer/issues) to ask about it first. Check the specific section depending on the type of contribution you want to make.
 
 * [Filing issues](#filing-issues)
 * [Getting started](#getting-started)
