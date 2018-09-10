@@ -53,7 +53,8 @@ Note: Remember that the feature that you want to add must also be supported on [
 tip: use 'add', 'fix' or 'enhancement' to indicate on your type of contribution
 
 * To add support for a CSS feature you must call the convert function inside of `data/prefixes.js` and specify three parameters: data, options and a callback. Like this:
-  ```
+
+  ```js
   f(require('caniuse-lite/data/features/background-clip-text'), browsers =>
     prefix(['background-clip'], {
       feature: 'background-clip-text',
@@ -61,12 +62,13 @@ tip: use 'add', 'fix' or 'enhancement' to indicate on your type of contribution
     })
   )
   ```
+
 * In order to add support for a new feature we need to add a hack to the `libs/hacks` folder using the name of the CSS feature as the filename. Tip: 'hack' is the actual support for the new feature.
 
 * Create a class that extends `Value`. In this new class change the prefix for `IE` to `-webkit-`. [See complete example](https://github.com/postcss/Autoprefixer/blob/73c7b6ab090a9a9a03869b3099096af00be7eb7d/lib/hacks/background-clip.js)
 
 * Load the new class in `lib/prefixes.js`. To load it we use `Declaration` module and call the `hack` method on the new class we created earlier (we refer to a new added class as a 'hack'). Like this:
-  ```
+  ```js
   Declaration.hack(require('./hacks/background-clip'))
   ```
   [See detailed example](https://github.com/postcss/autoprefixer/blob/73c7b6ab090a9a9a03869b3099096af00be7eb7d/lib/prefixes.js)
