@@ -47,7 +47,7 @@ Before you begin contributing make sure you have a [GitHub account](https://gith
 ## Adding a prefix
 We'll explain how would you go about adding a CSS feature to Autoprefixer. For example, we'll add support for a CSS feature called `background-clip: text`
 
-Note: Remember that the feature that you want to add must also be supported on [Can I use](https://caniuse).
+Note: Remember that the feature that you want to add must also be supported on [Can I use](https://caniuse.com/).
 
 * Create a topic branch from the `master` branch. Like this: `git checkout -b add/background-clip-text`
 tip: use 'add', 'fix' or 'enhancement' to indicate on your type of contribution
