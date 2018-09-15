@@ -24,7 +24,7 @@
   }
 }
 
-@media (min-width: 60em) {
+@media (min-width: 30em) {
   .a {
     -ms-grid-row: 1;
     -ms-grid-column: 1;
@@ -35,7 +35,7 @@
   }
 }
 
-@media (min-width: 30em) {
+@media (min-width: 60em) {
   .a {
     -ms-grid-row: 1;
     -ms-grid-column: 1;
