@@ -567,18 +567,14 @@ describe('hacks', () => {
       .map(i => i.toString())
       .filter(str => str.includes('grid-template')))
       .toEqual([
-        'autoprefixer: <css input>:130:3: Autoprefixer cannot find ' +
-        'grid-template with selector: .uncle',
         'autoprefixer: <css input>:135:3: Autoprefixer cannot find ' +
         'grid-template with selector: .uncle',
         'autoprefixer: <css input>:140:3: Autoprefixer cannot find ' +
-        'grid-template with selector: .grand-parent .uncle',
+        'grid-template with selector: .uncle',
         'autoprefixer: <css input>:145:3: Autoprefixer cannot find ' +
-        'grid-template with selector: .grand-parent .uncle',
-        'autoprefixer: <css input>:158:3: Autoprefixer cannot find ' +
-        'grid-template with selector: .grand-parent .uncle',
-        'autoprefixer: <css input>:161:3: Autoprefixer cannot find ' +
-        'grid-template with selector: .grand-parent .uncle'
+        'grid-template with selector: .grand-parent .uncle-second',
+        'autoprefixer: <css input>:150:3: Autoprefixer cannot find ' +
+        'grid-template with selector: .grand-parent .uncle-second'
       ])
   })
 
