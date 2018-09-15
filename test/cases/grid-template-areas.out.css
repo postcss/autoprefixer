@@ -25,18 +25,6 @@
   grid-area: main;
 }
 
-@media (max-width: 1000px) {
-  .b {
-    -ms-grid-row: 1;
-    -ms-grid-column: 1;
-    -ms-grid-column-span: 1;
-  }
-  .c {
-    -ms-grid-row: 1;
-    -ms-grid-column: 2;
-  }
-}
-
 .d {
   -ms-grid-row: 2;
   -ms-grid-row-span: 2;
@@ -48,6 +36,18 @@
   -ms-grid-row: 3;
   -ms-grid-column: 2;
   grid-area: foot;
+}
+
+@media (max-width: 1000px) {
+  .b {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+  }
+  .c {
+    -ms-grid-row: 1;
+    -ms-grid-column: 2;
+  }
 }
 
 /****************\
@@ -69,12 +69,23 @@
     "b-conflict";
 }
 
-.a { -ms-grid-row: 1; -ms-grid-column: 1; grid-area: a-conflict; }
-.b { -ms-grid-row: 1; -ms-grid-column: 2; grid-area: b-conflict; }
+.a {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: a-conflict;
+}
+
 .grid.conflict > .a {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
 }
+
+.b {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: b-conflict;
+}
+
 .grid.conflict > .b {
   -ms-grid-row: 2;
   -ms-grid-column: 1;
@@ -117,10 +128,20 @@
   grid-area: a-mq;
 }
 
+.grid.conflict > .a {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+}
+
 .b {
   -ms-grid-row: 1;
   -ms-grid-column: 2;
   grid-area: b-mq;
+}
+
+.grid.conflict > .b {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
 }
 
 @media (max-width: 600px) {
@@ -132,16 +153,6 @@
     -ms-grid-row: 2;
     -ms-grid-column: 1;
   }
-}
-
-.grid.conflict > .a {
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
-}
-
-.grid.conflict > .b {
-  -ms-grid-row: 2;
-  -ms-grid-column: 1;
 }
 
 @media (min-width: 601px) {
@@ -185,7 +196,7 @@
 .grand-parent .father {
   display: -ms-grid;
   display: grid;
-  grid-template-areas: "child";
+  grid-template-areas: "child child";
 }
 
 .grand-parent .mother .cell {
@@ -202,11 +213,13 @@
 .grand-parent .father .cell {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
   grid-area: child;
 }
 .grand-parent .father > .cell {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
   grid-area: child;
 }
 
@@ -225,14 +238,14 @@
 }
 
 /* emit warning */
-.grand-parent .uncle .cell {
+.grand-parent .uncle-second .cell {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: child;
 }
 
 /* emit warning */
-.grand-parent .uncle > .cell {
+.grand-parent .uncle-second > .cell {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: child;

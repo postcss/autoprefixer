@@ -45,8 +45,13 @@
     "b-conflict";
 }
 
-.a { grid-area: a-conflict; }
-.b { grid-area: b-conflict; }
+.a {
+  grid-area: a-conflict;
+}
+
+.b {
+  grid-area: b-conflict;
+}
 
 /****************\
   MQ CONFLICT TEST
@@ -108,7 +113,7 @@
 }
 .grand-parent .father {
   display: grid;
-  grid-template-areas: "child";
+  grid-template-areas: "child child";
 }
 
 .grand-parent .mother .cell {
@@ -136,12 +141,12 @@
 }
 
 /* emit warning */
-.grand-parent .uncle .cell {
+.grand-parent .uncle-second .cell {
   grid-area: child;
 }
 
 /* emit warning */
-.grand-parent .uncle > .cell {
+.grand-parent .uncle-second > .cell {
   grid-area: child;
 }
 
