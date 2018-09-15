@@ -1,3 +1,7 @@
+/*******************************\
+  COMPLEX DUPLICATE AREAS TEST 1
+\*******************************/
+
 #main > #content {
   grid-area: content;
 }
@@ -38,25 +42,25 @@
     -ms-grid-row: 1;
     -ms-grid-column: 5;
   }
-  #main.has-first-sidebar > .sidebar {
-    -ms-grid-row: 1;
-    -ms-grid-column: 3;
-  }
   #main.has-second-sidebar > #content {
     -ms-grid-row: 1;
     -ms-grid-column: 3;
-  }
-  #main.has-second-sidebar > .sidebar.second {
-    -ms-grid-row: 1;
-    -ms-grid-column: 5;
   }
   #main.has-first-sidebar.has-second-sidebar > #content {
     -ms-grid-row: 1;
     -ms-grid-column: 5;
   }
+  #main > .sidebar {
+    -ms-grid-row: 1;
+    -ms-grid-column: 3;
+  }
   #main.has-first-sidebar.has-second-sidebar > .sidebar {
     -ms-grid-row: 1;
     -ms-grid-column: 3;
+  }
+  #main > .sidebar.second {
+    -ms-grid-row: 1;
+    -ms-grid-column: 5;
   }
   #main.has-first-sidebar.has-second-sidebar > .sidebar.second {
     -ms-grid-row: 1;
@@ -92,25 +96,25 @@
     -ms-grid-row: 1;
     -ms-grid-column: 5;
   }
+  #main.has-second-sidebar > #content {
+    -ms-grid-row: 1;
+    -ms-grid-column: 3;
+  }
+  #main.has-first-sidebar.has-second-sidebar > #content {
+    -ms-grid-row: 1;
+    -ms-grid-column: 5;
+  }
   #main.has-first-sidebar > .sidebar {
     -ms-grid-row: 1;
     -ms-grid-column: 3;
   }
-  #main.has-second-sidebar > #content {
+  #main.has-first-sidebar.has-second-sidebar > .sidebar {
     -ms-grid-row: 1;
     -ms-grid-column: 3;
   }
   #main.has-second-sidebar > .sidebar.second {
     -ms-grid-row: 1;
     -ms-grid-column: 5;
-  }
-  #main.has-first-sidebar.has-second-sidebar > #content {
-    -ms-grid-row: 1;
-    -ms-grid-column: 5;
-  }
-  #main.has-first-sidebar.has-second-sidebar > .sidebar {
-    -ms-grid-row: 1;
-    -ms-grid-column: 3;
   }
   #main.has-first-sidebar.has-second-sidebar > .sidebar.second {
     -ms-grid-row: 1;
@@ -146,11 +150,19 @@
     -ms-grid-row: 1;
     -ms-grid-column: 5;
   }
+  #main.has-second-sidebar > #content {
+    -ms-grid-row: 1;
+    -ms-grid-column: 3;
+  }
+  #main.has-first-sidebar.has-second-sidebar > #content {
+    -ms-grid-row: 1;
+    -ms-grid-column: 5;
+  }
   #main.has-first-sidebar > .sidebar {
     -ms-grid-row: 1;
     -ms-grid-column: 3;
   }
-  #main.has-second-sidebar > #content {
+  #main.has-first-sidebar.has-second-sidebar > .sidebar {
     -ms-grid-row: 1;
     -ms-grid-column: 3;
   }
@@ -158,15 +170,130 @@
     -ms-grid-row: 1;
     -ms-grid-column: 5;
   }
-  #main.has-first-sidebar.has-second-sidebar > #content {
+  #main.has-first-sidebar.has-second-sidebar > .sidebar.second {
     -ms-grid-row: 1;
-    -ms-grid-column: 5;
+    -ms-grid-column: 7;
   }
-  #main.has-first-sidebar.has-second-sidebar > .sidebar {
+}
+
+/*******************************\
+  COMPLEX DUPLICATE AREAS TEST 2
+\*******************************/
+
+#main-second {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: auto;
+  -ms-grid-columns: 20% 1em 1fr 20%;
+  grid-template: "..... ... content-2 ....."/20% 1em 1fr 20%;
+}
+#main-second.has-first-sidebar {
+  -ms-grid-rows: auto;
+  -ms-grid-columns: 20% 1em 300px 30px 1fr 20%;
+  grid-template: "..... ... first-sb-2 .... content-2 ....."/20% 1em 300px 30px 1fr 20%;
+}
+#main-second.has-second-sidebar {
+  -ms-grid-rows: auto;
+  -ms-grid-columns: 20% 1em 1fr 30px 300px 20%;
+  grid-template: "..... ... content-2 .... second-sb-2 ....."/20% 1em 1fr 30px 300px 20%;
+}
+#main-second.has-first-sidebar.has-second-sidebar {
+  -ms-grid-rows: auto;
+  -ms-grid-columns: 20% 1em 200px 30px 1fr 30px 200px 20%;
+  grid-template: "..... ... first-sb-2 .... content-2 .... second-sb-2 ....."/20% 1em 200px 30px 1fr 30px 200px 20%;
+}
+
+@media (max-width: 960px) {
+  #main-second {
+    -ms-grid-rows: auto;
+    -ms-grid-columns: 2em 1em 1fr 2em;
+    grid-template: "..... ... content-2 ....."/2em 1em 1fr 2em;
+  }
+  #main-second.has-first-sidebar {
+    -ms-grid-rows: auto;
+    -ms-grid-columns: 2em 1em 200px 30px 1fr 2em;
+    grid-template: "..... ... first-sb-2 .... content-2 ....."/2em 1em 200px 30px 1fr 2em;
+  }
+  #main-second.has-second-sidebar {
+    -ms-grid-rows: auto;
+    -ms-grid-columns: 2em 1em 1fr 30px 200px 2em;
+    grid-template: "..... ... content-2 .... second-sb-2 ....."/2em 1em 1fr 30px 200px 2em;
+  }
+  #main-second.has-first-sidebar.has-second-sidebar {
+    -ms-grid-rows: auto;
+    -ms-grid-columns: 2em 1em 150px 30px 1fr 30px 150px 2em;
+    grid-template: "..... ... first-sb-2 .... content-2 .... second-sb-2 ....."/2em 1em 150px 30px 1fr 30px 150px 2em;
+  }
+}
+
+.content {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: content-2;
+}
+
+#main-second.has-first-sidebar > .content {
+  -ms-grid-row: 1;
+  -ms-grid-column: 5;
+}
+
+#main-second.has-second-sidebar > .content {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+}
+
+#main-second.has-first-sidebar.has-second-sidebar > .content {
+  -ms-grid-row: 1;
+  -ms-grid-column: 5;
+}
+.sidebar {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: first-sb-2;
+}
+#main-second.has-first-sidebar.has-second-sidebar > .sidebar {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+}
+.sidebar.second {
+  -ms-grid-row: 1;
+  -ms-grid-column: 5;
+  grid-area: second-sb-2;
+}
+#main-second.has-first-sidebar.has-second-sidebar > .sidebar.second {
+  -ms-grid-row: 1;
+  -ms-grid-column: 7;
+}
+@media (max-width: 960px) {
+  .content {
     -ms-grid-row: 1;
     -ms-grid-column: 3;
   }
-  #main.has-first-sidebar.has-second-sidebar > .sidebar.second {
+  #main-second.has-first-sidebar > .content {
+    -ms-grid-row: 1;
+    -ms-grid-column: 5;
+  }
+  #main-second.has-second-sidebar > .content {
+    -ms-grid-row: 1;
+    -ms-grid-column: 3;
+  }
+  #main-second.has-first-sidebar.has-second-sidebar > .content {
+    -ms-grid-row: 1;
+    -ms-grid-column: 5;
+  }
+  .sidebar {
+    -ms-grid-row: 1;
+    -ms-grid-column: 3;
+  }
+  #main-second.has-first-sidebar.has-second-sidebar > .sidebar {
+    -ms-grid-row: 1;
+    -ms-grid-column: 3;
+  }
+  .sidebar.second {
+    -ms-grid-row: 1;
+    -ms-grid-column: 5;
+  }
+  #main-second.has-first-sidebar.has-second-sidebar > .sidebar.second {
     -ms-grid-row: 1;
     -ms-grid-column: 7;
   }

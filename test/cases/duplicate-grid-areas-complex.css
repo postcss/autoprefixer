@@ -1,3 +1,7 @@
+/*******************************\
+  COMPLEX DUPLICATE AREAS TEST 1
+\*******************************/
+
 #main > #content {
   grid-area: content;
 }
@@ -49,4 +53,47 @@
   #main.has-first-sidebar.has-second-sidebar {
     grid-template: "..... ... first-sb .... content .... second-sb ....."/2em 1em 150px 30px 1fr 30px 150px 2em;
   }
+}
+
+/*******************************\
+  COMPLEX DUPLICATE AREAS TEST 2
+\*******************************/
+
+#main-second {
+  display: grid;
+  grid-template: "..... ... content-2 ....."/20% 1em 1fr 20%;
+}
+#main-second.has-first-sidebar {
+  grid-template: "..... ... first-sb-2 .... content-2 ....."/20% 1em 300px 30px 1fr 20%;
+}
+#main-second.has-second-sidebar {
+  grid-template: "..... ... content-2 .... second-sb-2 ....."/20% 1em 1fr 30px 300px 20%;
+}
+#main-second.has-first-sidebar.has-second-sidebar {
+  grid-template: "..... ... first-sb-2 .... content-2 .... second-sb-2 ....."/20% 1em 200px 30px 1fr 30px 200px 20%;
+}
+
+@media (max-width: 960px) {
+  #main-second {
+    grid-template: "..... ... content-2 ....."/2em 1em 1fr 2em;
+  }
+  #main-second.has-first-sidebar {
+    grid-template: "..... ... first-sb-2 .... content-2 ....."/2em 1em 200px 30px 1fr 2em;
+  }
+  #main-second.has-second-sidebar {
+    grid-template: "..... ... content-2 .... second-sb-2 ....."/2em 1em 1fr 30px 200px 2em;
+  }
+  #main-second.has-first-sidebar.has-second-sidebar {
+    grid-template: "..... ... first-sb-2 .... content-2 .... second-sb-2 ....."/2em 1em 150px 30px 1fr 30px 150px 2em;
+  }
+}
+
+.content {
+  grid-area: content-2;
+}
+.sidebar {
+  grid-area: first-sb-2;
+}
+.sidebar.second {
+  grid-area: second-sb-2;
 }

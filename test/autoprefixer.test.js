@@ -587,8 +587,8 @@ describe('hacks', () => {
   })
 
   it('should merge complex duplicate grid-areas successfully', () => {
-    let input = read('duplicate-grid-areas-above')
-    let output = read('duplicate-grid-areas-above.out')
+    let input = read('duplicate-grid-areas-complex')
+    let output = read('duplicate-grid-areas-complex.out')
     let instance = prefixer('grid-area')
     let result = postcss([instance]).process(input)
     expect(result.css).toEqual(output)
