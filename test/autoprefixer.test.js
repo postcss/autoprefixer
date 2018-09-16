@@ -590,7 +590,7 @@ describe('hacks', () => {
     expect(result.css).toEqual(output)
   })
 
-  it('should merge complex duplicate grid-areas successfully', () => {
+  it('should merge complex duplicate grid-area rules successfully', () => {
     let input = read('duplicate-grid-areas-complex')
     let output = read('duplicate-grid-areas-complex.out')
     let instance = prefixer('grid-area')
