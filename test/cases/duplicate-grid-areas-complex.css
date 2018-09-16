@@ -97,3 +97,8 @@
 .sidebar.second {
   grid-area: second-sb-2;
 }
+
+/* rule with not found identifier (should not break the compiler) */
+.hello {
+  grid-area: world;
+}

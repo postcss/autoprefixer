@@ -298,3 +298,8 @@
     -ms-grid-column: 7;
   }
 }
+
+/* rule with not found identifier (should not break the compiler) */
+.hello {
+  grid-area: world;
+}
