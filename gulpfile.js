@@ -36,17 +36,16 @@ gulp.task('build:package', ['clean'], () => {
   return gulp.src('./package.json')
     .pipe(editor(json => {
       json.main = 'lib/autoprefixer'
-      json.devDependencies['babel-register'] =
-                json.dependencies['babel-register']
-      delete json.dependencies['babel-register']
+      delete json.devDependencies
       delete json.babel
       delete json.scripts
       delete json.jest
+      delete json.browserslist
       delete json.eslintConfig
       delete json['size-limit']
       delete json['pre-commit']
       delete json['lint-staged']
-      delete json.devDependencies
+      delete json.dependencies['@babel/register']
       return json
     }))
     .pipe(gulp.dest('build'))
@@ -65,7 +64,14 @@ gulp.task('standalone', ['build:lib'], done => {
     .transform('babelify', {
       global: true,
       presets: [
-        ['env', { node: '0.10', loose: true }]
+        [
+          '@babel/env', {
+            targets: {
+              node: 6
+            },
+            loose: true
+          }
+        ]
       ]
     })
     .bundle((error, build) => {

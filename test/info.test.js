@@ -12,13 +12,13 @@ let data = {
       browsers: ['firefox 21', 'firefox 20', 'chrome 30'],
       transition: true
     },
-    'b': {
-      browsers: ['ie 6', 'firefox 20'],
-      props: ['a', '*']
-    },
     'c': {
       browsers: ['firefox 21'],
       props: ['c']
+    },
+    'b': {
+      browsers: ['ie 6', 'firefox 20'],
+      props: ['a', '*']
     },
     'd': {
       browsers: ['firefox 21'],

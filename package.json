@@ -1,6 +1,6 @@
 {
   "name": "autoprefixer",
-  "version": "9.1.0",
+  "version": "9.1.5",
   "description": "Parse CSS and add vendor prefixes to CSS rules using values from the Can I Use website",
   "keywords": [
     "autoprefixer",
@@ -16,42 +16,44 @@
     "node": ">=6.0.0"
   },
   "dependencies": {
-    "babel-register": "^6.26.0",
-    "browserslist": "^4.0.1",
-    "caniuse-lite": "^1.0.30000872",
+    "@babel/register": "^7.0.0",
+    "browserslist": "^4.1.0",
+    "caniuse-lite": "^1.0.30000884",
     "normalize-range": "^0.1.2",
     "num2fraction": "^1.2.2",
     "postcss": "^7.0.2",
     "postcss-value-parser": "^3.2.3"
   },
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-eslint": "^8.2.6",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-proto-to-assign": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babelify": "^8.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-transform-proto-to-assign": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "babel-core": "^7.0.0-0",
+    "babel-eslint": "^9.0.0",
+    "babel-jest": "^23.4.2",
+    "babelify": "^9.0.0",
     "browserify": "^16.2.2",
-    "eslint": "^5.2.0",
+    "eslint": "^5.5.0",
     "eslint-ci": "^0.1.1",
-    "eslint-config-logux": "^23.1.0",
-    "eslint-config-postcss": "^3.0.3",
-    "eslint-config-standard": "^11.0.0",
-    "eslint-plugin-import": "^2.13.0",
-    "eslint-plugin-jest": "^21.18.0",
+    "eslint-config-logux": "^25.0.1",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^21.22.0",
     "eslint-plugin-node": "^7.0.1",
-    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-prefer-let": "^1.0.1",
+    "eslint-plugin-promise": "^4.0.0",
     "eslint-plugin-security": "^1.4.0",
-    "eslint-plugin-standard": "^3.1.0",
+    "eslint-plugin-standard": "^4.0.0",
     "fs-extra": "^7.0.0",
     "gulp": "^3.9.1",
-    "gulp-babel": "^7.0.1",
+    "gulp-babel": "^8.0.0",
     "gulp-json-editor": "^2.4.2",
     "gulp-replace": "^1.0.0",
-    "jest": "^23.4.2",
-    "lint-staged": "^7.2.0",
+    "jest": "^23.5.0",
+    "lint-staged": "^7.2.2",
     "pre-commit": "^1.2.2",
-    "size-limit": "^0.19.0"
+    "size-limit": "^0.20.0"
   },
   "bin": {
     "autoprefixer": "./bin/autoprefixer"
@@ -74,7 +76,7 @@
     }
   ],
   "eslintConfig": {
-    "extends": "eslint-config-postcss",
+    "extends": "eslint-config-logux/node",
     "parser": "babel-eslint",
     "rules": {
       "security/detect-non-literal-regexp": "off",
@@ -106,7 +108,7 @@
           "*.test.js"
         ],
         "rules": {
-          "jest/no-disabled-tests": "off"
+          "jest/expect-expect": "off"
         }
       }
     ]
@@ -122,30 +124,28 @@
       "<rootDir>/build/"
     ]
   },
+  "browserslist": [
+    "last 2 version",
+    "not dead",
+    "not Explorer 11",
+    "not ExplorerMobile 11",
+    "node 6"
+  ],
   "babel": {
     "presets": [
       [
-        "env",
+        "@babel/env",
         {
-          "targets": {
-            "browsers": [
-              "last 2 version",
-              "not dead",
-              "not Explorer 11",
-              "not ExplorerMobile 11"
-            ],
-            "node": 6
-          },
           "loose": true
         }
       ]
     ],
     "plugins": [
       [
-        "transform-proto-to-assign"
+        "@babel/transform-proto-to-assign"
       ],
       [
-        "transform-class-properties",
+        "@babel/proposal-class-properties",
         {
           "spec": true
         }
