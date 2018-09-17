@@ -198,6 +198,11 @@
   display: grid;
   grid-template-areas: "child child";
 }
+.grand-parent .father-second {
+  display: -ms-grid;
+  display: grid;
+  grid-template-areas: "child-unique";
+}
 
 .grand-parent .mother .cell {
   -ms-grid-row: 1;
@@ -251,6 +256,19 @@
   grid-area: child;
 }
 
+/* must not emit warning */
+.uncle .cell {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: child-unique;
+}
+
+/* must not emit warning */
+.uncle > .cell {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: child-unique;
+}
 /*************************\
   MULTI SELECTOR TEST
 \*************************/
