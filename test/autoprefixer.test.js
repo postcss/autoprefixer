@@ -604,8 +604,8 @@ describe('hacks', () => {
   })
 
   it('should merge complex duplicate grid-area rules successfully', () => {
-    let input = read('duplicate-grid-areas-complex')
-    let output = read('duplicate-grid-areas-complex.out')
+    let input = read('grid-areas-duplicate-complex')
+    let output = read('grid-areas-duplicate-complex.out')
     let instance = prefixer('grid-area')
     let result = postcss([instance]).process(input)
     expect(result.css).toEqual(output)
@@ -618,14 +618,14 @@ describe('hacks', () => {
 
   it('add prefix for backface-visibility for Safari 9', () => {
     let input = 'a{ ' +
-                      'backface-visibility: hidden; ' +
-                      'transform-style: preserve-3d }'
+                'backface-visibility: hidden; ' +
+                'transform-style: preserve-3d }'
     let ap = autoprefixer({ browsers: ['Safari 9'], flexbox: false })
     expect(postcss([ap]).process(input).css).toEqual(
       'a{ ' +
-            '-webkit-backface-visibility: hidden; ' +
-            'backface-visibility: hidden; ' +
-            'transform-style: preserve-3d }'
+      '-webkit-backface-visibility: hidden; ' +
+      'backface-visibility: hidden; ' +
+      'transform-style: preserve-3d }'
     )
   })
 })
