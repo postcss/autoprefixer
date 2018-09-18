@@ -94,7 +94,7 @@ gulp.task('standalone', ['build:lib'], done => {
 })
 
 gulp.task('compile-playground', () => {
-  let autoprefixer = require('./build')
+  let autoprefixer = require('./build') // @codingStandardsIgnoreLine
   return gulp.src('./playground/playground.input.css')
     .pipe(rename('playground.output.css'))
     .pipe(postcss([autoprefixer({ grid: true })]))
