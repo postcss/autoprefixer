@@ -83,6 +83,7 @@
     "rules": {
       "security/detect-non-literal-regexp": "off",
       "security/detect-unsafe-regex": "off",
+      "node/no-missing-require": "off",
       "no-unused-expressions": "off",
       "valid-jsdoc": "off"
     },
