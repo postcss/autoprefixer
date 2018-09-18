@@ -119,7 +119,11 @@
   display: grid;
   grid-template-areas: "child-unique";
 }
-
+@media (min-width: 600px) {
+  .grand-parent .father-second {
+    grid-template-areas: "child-unique child-unique";
+  }
+}
 .grand-parent .mother .cell {
   grid-area: child;
 }
@@ -151,6 +155,16 @@
 
 /* emit warning */
 .grand-parent .uncle-second > .cell {
+  grid-area: child;
+}
+
+/* emit warning */
+.grand-parent .father.uncle .cell {
+  grid-area: child;
+}
+
+/* emit warning */
+.grand-parent.uncle .father > .cell {
   grid-area: child;
 }
 

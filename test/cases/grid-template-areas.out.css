@@ -203,7 +203,11 @@
   display: grid;
   grid-template-areas: "child-unique";
 }
-
+@media (min-width: 600px) {
+  .grand-parent .father-second {
+    grid-template-areas: "child-unique child-unique";
+  }
+}
 .grand-parent .mother .cell {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
@@ -256,6 +260,21 @@
   grid-area: child;
 }
 
+/* emit warning */
+.grand-parent .father.uncle .cell {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: child;
+}
+
+/* emit warning */
+.grand-parent.uncle .father > .cell {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: child;
+}
+
 /* must not emit warning */
 .uncle .cell {
   -ms-grid-row: 1;
@@ -268,6 +287,18 @@
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: child-unique;
+}
+@media (min-width: 600px) {
+  .uncle .cell {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+  }
+  .uncle > .cell {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+  }
 }
 /*************************\
   MULTI SELECTOR TEST
