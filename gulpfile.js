@@ -1,6 +1,8 @@
 let gulp = require('gulp')
 let path = require('path')
 let fs = require('fs-extra')
+let postcss = require('gulp-postcss')
+let rename = require('gulp-rename')
 
 gulp.task('clean', done => {
   fs.remove(path.join(__dirname, 'autoprefixer.js'), () => {
@@ -89,6 +91,27 @@ gulp.task('standalone', ['build:lib'], done => {
       }
       done()
     })
+})
+
+gulp.task('compile-playground', () => {
+  let autoprefixer = require('./build') // @codingStandardsIgnoreLine
+  return gulp.src('./playground/playground.input.css')
+    .pipe(rename('playground.output.css'))
+    .pipe(postcss([autoprefixer({ grid: true })]))
+    .pipe(gulp.dest('./playground'))
+})
+
+gulp.task('initialise-playground', ['build'], () => {
+  return gulp.start('compile-playground')
+})
+
+gulp.task('watch-playground', () => {
+  return gulp.watch('./playground/playground.input.css', ['compile-playground'])
+})
+
+// Experiment with the current implementation of the code
+gulp.task('play', ['initialise-playground'], () => {
+  gulp.start('watch-playground')
 })
 
 gulp.task('default', ['build'])
