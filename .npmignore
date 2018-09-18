@@ -6,6 +6,7 @@ build
 coverage
 autoprefixer.js
 
+playground
 test
 .travis.yml
 
