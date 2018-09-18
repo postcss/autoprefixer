@@ -25,17 +25,6 @@
   grid-area: main;
 }
 
-@media (max-width: 1000px) {
-  .b {
-    -ms-grid-row: 1;
-    -ms-grid-column: 1;
-  }
-  .c {
-    -ms-grid-row: 1;
-    -ms-grid-column: 2;
-  }
-}
-
 .d {
   -ms-grid-row: 2;
   -ms-grid-row-span: 2;
@@ -47,4 +36,313 @@
   -ms-grid-row: 3;
   -ms-grid-column: 2;
   grid-area: foot;
+}
+
+@media (max-width: 1000px) {
+  .b {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+  }
+  .c {
+    -ms-grid-row: 1;
+    -ms-grid-column: 2;
+  }
+}
+
+/****************\
+  CONFLICT TESTS
+\****************/
+
+.grid {
+  display: -ms-grid;
+  display: grid;
+  grid-template-areas:
+    "a-conflict b-conflict";
+}
+
+.grid.conflict {
+  display: -ms-grid;
+  display: grid;
+  grid-template-areas:
+    "a-conflict"
+    "b-conflict";
+}
+
+.a {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: a-conflict;
+}
+
+.grid.conflict > .a {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+}
+
+.b {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: b-conflict;
+}
+
+.grid.conflict > .b {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+}
+
+/****************\
+  MQ CONFLICT TEST
+\****************/
+.grid-mq {
+  display: -ms-grid;
+  display: grid;
+  grid-template-areas: "a-mq b-mq";
+}
+
+@media (max-width: 600px) {
+  .grid-mq {
+    grid-template-areas:
+      "a-mq"
+      "b-mq";
+  }
+}
+
+.grid.conflict {
+  display: -ms-grid;
+  display: grid;
+  grid-template-areas:
+    "a-mq"
+    "b-mq";
+}
+
+@media (min-width: 601px) {
+  .grid.conflict {
+    grid-template-areas: "a-mq b-mq";
+  }
+}
+
+.a {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: a-mq;
+}
+
+.grid.conflict > .a {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+}
+
+.b {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: b-mq;
+}
+
+.grid.conflict > .b {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+}
+
+@media (max-width: 600px) {
+  .a {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+  }
+  .b {
+    -ms-grid-row: 2;
+    -ms-grid-column: 1;
+  }
+}
+
+@media (min-width: 601px) {
+  .grid.conflict > .a {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+  }
+  .grid.conflict > .b {
+    -ms-grid-row: 1;
+    -ms-grid-column: 2;
+  }
+}
+
+/*************************\
+  OVERRIDE CONFLICT TESTS
+\*************************/
+
+.grid-overide {
+  display: -ms-grid;
+  display: grid;
+  grid-template-areas: "overide";
+}
+
+.grid-overide > .cell {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: overide;
+}
+
+.grid-overide .cell {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: overide;
+}
+
+.grand-parent .mother {
+  display: -ms-grid;
+  display: grid;
+  grid-template-areas: "child";
+}
+.grand-parent .father {
+  display: -ms-grid;
+  display: grid;
+  grid-template-areas: "child child";
+}
+.grand-parent .father-second {
+  display: -ms-grid;
+  display: grid;
+  grid-template-areas: "child-unique";
+}
+@media (min-width: 600px) {
+  .grand-parent .father-second {
+    grid-template-areas: "child-unique child-unique";
+  }
+}
+.grand-parent .mother .cell {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: child;
+}
+.grand-parent .mother > .cell {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: child;
+}
+
+.grand-parent .father .cell {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: child;
+}
+.grand-parent .father > .cell {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: child;
+}
+
+/* emit warning */
+.uncle .cell {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: child;
+}
+
+/* emit warning */
+.uncle > .cell {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: child;
+}
+
+/* emit warning */
+.grand-parent .uncle-second .cell {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: child;
+}
+
+/* emit warning */
+.grand-parent .uncle-second > .cell {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: child;
+}
+
+/* emit warning */
+.grand-parent .father.uncle .cell {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: child;
+}
+
+/* emit warning */
+.grand-parent.uncle .father > .cell {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: child;
+}
+
+/* must not emit warning */
+.uncle .cell {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: child-unique;
+}
+
+/* must not emit warning */
+.uncle > .cell {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: child-unique;
+}
+@media (min-width: 600px) {
+  .uncle .cell {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+  }
+  .uncle > .cell {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+  }
+}
+/*************************\
+  MULTI SELECTOR TEST
+\*************************/
+
+.grand-parent .uncle,
+.grand-parent .aunt {
+  display: -ms-grid;
+  display: grid;
+  grid-template-areas: "cousin";
+}
+.grand-parent .uncle .cousin {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: cousin;
+}
+.grand-parent .uncle > .cousin {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: cousin;
+}
+.grand-parent .aunt .cousin {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: cousin;
+}
+.grand-parent .aunt > .cousin {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: cousin;
+}
+
+/*************************\
+  CONTROL COMMENTS TEST
+\*************************/
+
+/* must not add prefixes */
+.uncle .cell {
+  /* autoprefixer: off */
+  grid-area: child;
+}
+
+/* must not add prefixes */
+.uncle .cell {
+  /* autoprefixer: ignore next */
+  grid-area: child;
 }

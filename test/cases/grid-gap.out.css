@@ -17,11 +17,23 @@
   grid-area: head;
 }
 
+.f > .b {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 5;
+}
+
 .c {
   -ms-grid-row: 3;
   -ms-grid-column: 3;
   -ms-grid-column-span: 3;
   grid-area: main;
+}
+
+.f > .c {
+  -ms-grid-row: 3;
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 3;
 }
 
 .d {
@@ -31,11 +43,23 @@
   grid-area: nav;
 }
 
+.f > .d {
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 3;
+  -ms-grid-column: 1;
+}
+
 .e {
   -ms-grid-row: 5;
   -ms-grid-column: 3;
   -ms-grid-column-span: 3;
   grid-area: foot;
+}
+
+.f > .e {
+  -ms-grid-row: 5;
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 3;
 }
 
 .f {
@@ -67,11 +91,23 @@
   grid-area: head-shortcut;
 }
 
+.f-shortcut > .b-shortcut {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 5;
+}
+
 .c-shortcut {
   -ms-grid-row: 3;
   -ms-grid-column: 3;
   -ms-grid-column-span: 3;
   grid-area: main-shortcut;
+}
+
+.f-shortcut > .c-shortcut {
+  -ms-grid-row: 3;
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 3;
 }
 
 .d-shortcut {
@@ -81,11 +117,23 @@
   grid-area: nav-shortcut;
 }
 
+.f-shortcut > .d-shortcut {
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 3;
+  -ms-grid-column: 1;
+}
+
 .e-shortcut {
   -ms-grid-row: 5;
   -ms-grid-column: 3;
   -ms-grid-column-span: 3;
   grid-area: foot-shortcut;
+}
+
+.f-shortcut > .e-shortcut {
+  -ms-grid-row: 5;
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 3;
 }
 
 .f-shortcut {

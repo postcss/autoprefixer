@@ -150,3 +150,12 @@
   -ms-grid-row-span: 3;
   grid-row: span 3;
 }
+
+.warn-display-contents {
+  display: -ms-grid;
+  display: grid;
+}
+/* Emit warning if grid enabled */
+.warn-display-contents .grid {
+  display: contents;
+}

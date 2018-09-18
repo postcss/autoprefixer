@@ -1,0 +1,104 @@
+/*******************************\
+  COMPLEX DUPLICATE AREAS TEST 1
+\*******************************/
+
+#main > #content {
+  grid-area: content;
+}
+#main > .sidebar {
+  grid-area: first-sb;
+}
+#main > .sidebar.second {
+  grid-area: second-sb;
+}
+@media (min-width: 660px) {
+  #main {
+    display: grid;
+    grid-template: "..... ... content ....."/20% 1em 1fr 20%;
+  }
+  #main.has-first-sidebar {
+    grid-template: "..... ... first-sb .... content ....."/20% 1em 300px 30px 1fr 20%;
+  }
+  #main.has-second-sidebar {
+    grid-template: "..... ... content .... second-sb ....."/20% 1em 1fr 30px 300px 20%;
+  }
+  #main.has-first-sidebar.has-second-sidebar {
+    grid-template: "..... ... first-sb .... content .... second-sb ....."/20% 1em 200px 30px 1fr 30px 200px 20%;
+  }
+}
+@media (max-width: 1499px) {
+  #main {
+    grid-template: "..... ... content ....."/10% 1em 1fr 10%;
+  }
+  #main.has-first-sidebar {
+    grid-template: "..... ... first-sb .... content ....."/10% 1em 250px 30px 1fr 10%;
+  }
+  #main.has-second-sidebar {
+    grid-template: "..... ... content .... second-sb ....."/10% 1em 1fr 30px 250px 10%;
+  }
+  #main.has-first-sidebar.has-second-sidebar {
+    grid-template: "..... ... first-sb .... content .... second-sb ....."/10% 1em 200px 30px 1fr 30px 200px 10%;
+  }
+}
+@media (max-width: 959px) {
+  #main {
+    grid-template: "..... ... content ....."/2em 1em 1fr 2em;
+  }
+  #main.has-first-sidebar {
+    grid-template: "..... ... first-sb .... content ....."/2em 1em 200px 30px 1fr 2em;
+  }
+  #main.has-second-sidebar {
+    grid-template: "..... ... content .... second-sb ....."/2em 1em 1fr 30px 200px 2em;
+  }
+  #main.has-first-sidebar.has-second-sidebar {
+    grid-template: "..... ... first-sb .... content .... second-sb ....."/2em 1em 150px 30px 1fr 30px 150px 2em;
+  }
+}
+
+/*******************************\
+  COMPLEX DUPLICATE AREAS TEST 2
+\*******************************/
+
+#main-second {
+  display: grid;
+  grid-template: "..... ... content-2 ....."/20% 1em 1fr 20%;
+}
+#main-second.has-first-sidebar {
+  grid-template: "..... ... first-sb-2 .... content-2 ....."/20% 1em 300px 30px 1fr 20%;
+}
+#main-second.has-second-sidebar {
+  grid-template: "..... ... content-2 .... second-sb-2 ....."/20% 1em 1fr 30px 300px 20%;
+}
+#main-second.has-first-sidebar.has-second-sidebar {
+  grid-template: "..... ... first-sb-2 .... content-2 .... second-sb-2 ....."/20% 1em 200px 30px 1fr 30px 200px 20%;
+}
+
+@media (max-width: 960px) {
+  #main-second {
+    grid-template: "..... ... content-2 ....."/2em 1em 1fr 2em;
+  }
+  #main-second.has-first-sidebar {
+    grid-template: "..... ... first-sb-2 .... content-2 ....."/2em 1em 200px 30px 1fr 2em;
+  }
+  #main-second.has-second-sidebar {
+    grid-template: "..... ... content-2 .... second-sb-2 ....."/2em 1em 1fr 30px 200px 2em;
+  }
+  #main-second.has-first-sidebar.has-second-sidebar {
+    grid-template: "..... ... first-sb-2 .... content-2 .... second-sb-2 ....."/2em 1em 150px 30px 1fr 30px 150px 2em;
+  }
+}
+
+.content {
+  grid-area: content-2;
+}
+.sidebar {
+  grid-area: first-sb-2;
+}
+.sidebar.second {
+  grid-area: second-sb-2;
+}
+
+/* rule with not found identifier (should not break the compiler) */
+.hello {
+  grid-area: world;
+}

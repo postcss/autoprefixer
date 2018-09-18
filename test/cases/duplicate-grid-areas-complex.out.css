@@ -1,0 +1,305 @@
+/*******************************\
+  COMPLEX DUPLICATE AREAS TEST 1
+\*******************************/
+
+#main > #content {
+  grid-area: content;
+}
+#main > .sidebar {
+  grid-area: first-sb;
+}
+#main > .sidebar.second {
+  grid-area: second-sb;
+}
+@media (min-width: 660px) {
+  #main {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-rows: auto;
+    -ms-grid-columns: 20% 1em 1fr 20%;
+    grid-template: "..... ... content ....."/20% 1em 1fr 20%;
+  }
+  #main.has-first-sidebar {
+    -ms-grid-rows: auto;
+    -ms-grid-columns: 20% 1em 300px 30px 1fr 20%;
+    grid-template: "..... ... first-sb .... content ....."/20% 1em 300px 30px 1fr 20%;
+  }
+  #main.has-second-sidebar {
+    -ms-grid-rows: auto;
+    -ms-grid-columns: 20% 1em 1fr 30px 300px 20%;
+    grid-template: "..... ... content .... second-sb ....."/20% 1em 1fr 30px 300px 20%;
+  }
+  #main.has-first-sidebar.has-second-sidebar {
+    -ms-grid-rows: auto;
+    -ms-grid-columns: 20% 1em 200px 30px 1fr 30px 200px 20%;
+    grid-template: "..... ... first-sb .... content .... second-sb ....."/20% 1em 200px 30px 1fr 30px 200px 20%;
+  }
+  #main > #content {
+    -ms-grid-row: 1;
+    -ms-grid-column: 3;
+  }
+  #main.has-first-sidebar > #content {
+    -ms-grid-row: 1;
+    -ms-grid-column: 5;
+  }
+  #main.has-second-sidebar > #content {
+    -ms-grid-row: 1;
+    -ms-grid-column: 3;
+  }
+  #main.has-first-sidebar.has-second-sidebar > #content {
+    -ms-grid-row: 1;
+    -ms-grid-column: 5;
+  }
+  #main > .sidebar {
+    -ms-grid-row: 1;
+    -ms-grid-column: 3;
+  }
+  #main.has-first-sidebar.has-second-sidebar > .sidebar {
+    -ms-grid-row: 1;
+    -ms-grid-column: 3;
+  }
+  #main > .sidebar.second {
+    -ms-grid-row: 1;
+    -ms-grid-column: 5;
+  }
+  #main.has-first-sidebar.has-second-sidebar > .sidebar.second {
+    -ms-grid-row: 1;
+    -ms-grid-column: 7;
+  }
+}
+@media (max-width: 1499px) {
+  #main {
+    -ms-grid-rows: auto;
+    -ms-grid-columns: 10% 1em 1fr 10%;
+    grid-template: "..... ... content ....."/10% 1em 1fr 10%;
+  }
+  #main.has-first-sidebar {
+    -ms-grid-rows: auto;
+    -ms-grid-columns: 10% 1em 250px 30px 1fr 10%;
+    grid-template: "..... ... first-sb .... content ....."/10% 1em 250px 30px 1fr 10%;
+  }
+  #main.has-second-sidebar {
+    -ms-grid-rows: auto;
+    -ms-grid-columns: 10% 1em 1fr 30px 250px 10%;
+    grid-template: "..... ... content .... second-sb ....."/10% 1em 1fr 30px 250px 10%;
+  }
+  #main.has-first-sidebar.has-second-sidebar {
+    -ms-grid-rows: auto;
+    -ms-grid-columns: 10% 1em 200px 30px 1fr 30px 200px 10%;
+    grid-template: "..... ... first-sb .... content .... second-sb ....."/10% 1em 200px 30px 1fr 30px 200px 10%;
+  }
+  #main > #content {
+    -ms-grid-row: 1;
+    -ms-grid-column: 3;
+  }
+  #main.has-first-sidebar > #content {
+    -ms-grid-row: 1;
+    -ms-grid-column: 5;
+  }
+  #main.has-second-sidebar > #content {
+    -ms-grid-row: 1;
+    -ms-grid-column: 3;
+  }
+  #main.has-first-sidebar.has-second-sidebar > #content {
+    -ms-grid-row: 1;
+    -ms-grid-column: 5;
+  }
+  #main.has-first-sidebar > .sidebar {
+    -ms-grid-row: 1;
+    -ms-grid-column: 3;
+  }
+  #main.has-first-sidebar.has-second-sidebar > .sidebar {
+    -ms-grid-row: 1;
+    -ms-grid-column: 3;
+  }
+  #main.has-second-sidebar > .sidebar.second {
+    -ms-grid-row: 1;
+    -ms-grid-column: 5;
+  }
+  #main.has-first-sidebar.has-second-sidebar > .sidebar.second {
+    -ms-grid-row: 1;
+    -ms-grid-column: 7;
+  }
+}
+@media (max-width: 959px) {
+  #main {
+    -ms-grid-rows: auto;
+    -ms-grid-columns: 2em 1em 1fr 2em;
+    grid-template: "..... ... content ....."/2em 1em 1fr 2em;
+  }
+  #main.has-first-sidebar {
+    -ms-grid-rows: auto;
+    -ms-grid-columns: 2em 1em 200px 30px 1fr 2em;
+    grid-template: "..... ... first-sb .... content ....."/2em 1em 200px 30px 1fr 2em;
+  }
+  #main.has-second-sidebar {
+    -ms-grid-rows: auto;
+    -ms-grid-columns: 2em 1em 1fr 30px 200px 2em;
+    grid-template: "..... ... content .... second-sb ....."/2em 1em 1fr 30px 200px 2em;
+  }
+  #main.has-first-sidebar.has-second-sidebar {
+    -ms-grid-rows: auto;
+    -ms-grid-columns: 2em 1em 150px 30px 1fr 30px 150px 2em;
+    grid-template: "..... ... first-sb .... content .... second-sb ....."/2em 1em 150px 30px 1fr 30px 150px 2em;
+  }
+  #main > #content {
+    -ms-grid-row: 1;
+    -ms-grid-column: 3;
+  }
+  #main.has-first-sidebar > #content {
+    -ms-grid-row: 1;
+    -ms-grid-column: 5;
+  }
+  #main.has-second-sidebar > #content {
+    -ms-grid-row: 1;
+    -ms-grid-column: 3;
+  }
+  #main.has-first-sidebar.has-second-sidebar > #content {
+    -ms-grid-row: 1;
+    -ms-grid-column: 5;
+  }
+  #main.has-first-sidebar > .sidebar {
+    -ms-grid-row: 1;
+    -ms-grid-column: 3;
+  }
+  #main.has-first-sidebar.has-second-sidebar > .sidebar {
+    -ms-grid-row: 1;
+    -ms-grid-column: 3;
+  }
+  #main.has-second-sidebar > .sidebar.second {
+    -ms-grid-row: 1;
+    -ms-grid-column: 5;
+  }
+  #main.has-first-sidebar.has-second-sidebar > .sidebar.second {
+    -ms-grid-row: 1;
+    -ms-grid-column: 7;
+  }
+}
+
+/*******************************\
+  COMPLEX DUPLICATE AREAS TEST 2
+\*******************************/
+
+#main-second {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: auto;
+  -ms-grid-columns: 20% 1em 1fr 20%;
+  grid-template: "..... ... content-2 ....."/20% 1em 1fr 20%;
+}
+#main-second.has-first-sidebar {
+  -ms-grid-rows: auto;
+  -ms-grid-columns: 20% 1em 300px 30px 1fr 20%;
+  grid-template: "..... ... first-sb-2 .... content-2 ....."/20% 1em 300px 30px 1fr 20%;
+}
+#main-second.has-second-sidebar {
+  -ms-grid-rows: auto;
+  -ms-grid-columns: 20% 1em 1fr 30px 300px 20%;
+  grid-template: "..... ... content-2 .... second-sb-2 ....."/20% 1em 1fr 30px 300px 20%;
+}
+#main-second.has-first-sidebar.has-second-sidebar {
+  -ms-grid-rows: auto;
+  -ms-grid-columns: 20% 1em 200px 30px 1fr 30px 200px 20%;
+  grid-template: "..... ... first-sb-2 .... content-2 .... second-sb-2 ....."/20% 1em 200px 30px 1fr 30px 200px 20%;
+}
+
+@media (max-width: 960px) {
+  #main-second {
+    -ms-grid-rows: auto;
+    -ms-grid-columns: 2em 1em 1fr 2em;
+    grid-template: "..... ... content-2 ....."/2em 1em 1fr 2em;
+  }
+  #main-second.has-first-sidebar {
+    -ms-grid-rows: auto;
+    -ms-grid-columns: 2em 1em 200px 30px 1fr 2em;
+    grid-template: "..... ... first-sb-2 .... content-2 ....."/2em 1em 200px 30px 1fr 2em;
+  }
+  #main-second.has-second-sidebar {
+    -ms-grid-rows: auto;
+    -ms-grid-columns: 2em 1em 1fr 30px 200px 2em;
+    grid-template: "..... ... content-2 .... second-sb-2 ....."/2em 1em 1fr 30px 200px 2em;
+  }
+  #main-second.has-first-sidebar.has-second-sidebar {
+    -ms-grid-rows: auto;
+    -ms-grid-columns: 2em 1em 150px 30px 1fr 30px 150px 2em;
+    grid-template: "..... ... first-sb-2 .... content-2 .... second-sb-2 ....."/2em 1em 150px 30px 1fr 30px 150px 2em;
+  }
+}
+
+.content {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: content-2;
+}
+
+#main-second.has-first-sidebar > .content {
+  -ms-grid-row: 1;
+  -ms-grid-column: 5;
+}
+
+#main-second.has-second-sidebar > .content {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+}
+
+#main-second.has-first-sidebar.has-second-sidebar > .content {
+  -ms-grid-row: 1;
+  -ms-grid-column: 5;
+}
+.sidebar {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: first-sb-2;
+}
+#main-second.has-first-sidebar.has-second-sidebar > .sidebar {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+}
+.sidebar.second {
+  -ms-grid-row: 1;
+  -ms-grid-column: 5;
+  grid-area: second-sb-2;
+}
+#main-second.has-first-sidebar.has-second-sidebar > .sidebar.second {
+  -ms-grid-row: 1;
+  -ms-grid-column: 7;
+}
+@media (max-width: 960px) {
+  .content {
+    -ms-grid-row: 1;
+    -ms-grid-column: 3;
+  }
+  #main-second.has-first-sidebar > .content {
+    -ms-grid-row: 1;
+    -ms-grid-column: 5;
+  }
+  #main-second.has-second-sidebar > .content {
+    -ms-grid-row: 1;
+    -ms-grid-column: 3;
+  }
+  #main-second.has-first-sidebar.has-second-sidebar > .content {
+    -ms-grid-row: 1;
+    -ms-grid-column: 5;
+  }
+  .sidebar {
+    -ms-grid-row: 1;
+    -ms-grid-column: 3;
+  }
+  #main-second.has-first-sidebar.has-second-sidebar > .sidebar {
+    -ms-grid-row: 1;
+    -ms-grid-column: 3;
+  }
+  .sidebar.second {
+    -ms-grid-row: 1;
+    -ms-grid-column: 5;
+  }
+  #main-second.has-first-sidebar.has-second-sidebar > .sidebar.second {
+    -ms-grid-row: 1;
+    -ms-grid-column: 7;
+  }
+}
+
+/* rule with not found identifier (should not break the compiler) */
+.hello {
+  grid-area: world;
+}

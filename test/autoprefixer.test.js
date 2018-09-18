@@ -552,7 +552,9 @@ describe('hacks', () => {
       'autoprefixer: <css input>:104:33: auto-fill value is not ' +
                 'supported by IE',
       'autoprefixer: <css input>:105:30: auto-fit value is not ' +
-                'supported by IE'
+                'supported by IE',
+      'autoprefixer: <css input>:121:3: Please do not use ' +
+      'display: contents; if you have grid setting enabled'
     ])
   })
 
@@ -563,50 +565,47 @@ describe('hacks', () => {
     expect(result.warnings()).toEqual([])
   })
 
-  it('shows warning if grid-template has a duplicate area name', () => {
-    let input = read('grid-template')
-    let output = read('grid-template.out')
+  it('warns if rule with grid-area has no parent with grid-template', () => {
+    let input = read('grid-template-areas')
     let instance = prefixer('grid-area')
     let result = postcss([instance]).process(input)
 
-    expect(result.css).toEqual(output)
-    expect(result.warnings().map(i => i.toString())).toEqual([
-      [
-        `autoprefixer: <css input>:41:3: `,
-        `  duplicate area names detected in rule: .f`,
-        `  duplicate area names: head, nav, main, foot`,
-        `  duplicate area names cause unexpected behavior in IE`
-      ].join('\n'),
-      [
-        `autoprefixer: <css input>:133:3: `,
-        `  duplicate area names detected in rule: .g-conflict`,
-        `  duplicate area names: g, h`,
-        `  duplicate area names cause unexpected behavior in IE`
-      ].join('\n'),
-      [
-        `autoprefixer: <css input>:154:5: `,
-        `  duplicate area names detected in rule: .g-conflict-2`,
-        `  duplicate area names: g, h`,
-        `  duplicate area names cause unexpected behavior in IE`
-      ].join('\n'),
-      [
-        `autoprefixer: <css input>:186:5: `,
-        `  duplicate area names detected in rule: .k`,
-        `  duplicate area names: i, j`,
-        `  duplicate area names cause unexpected behavior in IE`
-      ].join('\n'),
-      [
-        `autoprefixer: <css input>:228:5: `,
-        `  duplicate area name detected in rule: .z`,
-        `  duplicate area name: m`,
-        `  duplicate area names cause unexpected behavior in IE`
-      ].join('\n')
-    ])
+    expect(result.warnings()
+      .map(i => i.toString())
+      .filter(str => str.includes('grid-template')))
+      .toEqual([
+        'autoprefixer: <css input>:143:3: Autoprefixer cannot find ' +
+        'a grid-template containing the duplicate grid-area ' +
+        '"child" with full selector matching: .uncle',
+        'autoprefixer: <css input>:148:3: Autoprefixer cannot find ' +
+        'a grid-template containing the duplicate grid-area ' +
+        '"child" with full selector matching: .uncle',
+        'autoprefixer: <css input>:153:3: Autoprefixer cannot find ' +
+        'a grid-template containing the duplicate grid-area ' +
+        '"child" with full selector matching: .grand-parent .uncle-second',
+        'autoprefixer: <css input>:158:3: Autoprefixer cannot find ' +
+        'a grid-template containing the duplicate grid-area ' +
+        '"child" with full selector matching: .grand-parent .uncle-second',
+        'autoprefixer: <css input>:163:3: Autoprefixer cannot find ' +
+        'a grid-template containing the duplicate grid-area ' +
+        '"child" with full selector matching: .grand-parent .father.uncle',
+        'autoprefixer: <css input>:168:3: Autoprefixer cannot find ' +
+        'a grid-template containing the duplicate grid-area ' +
+        '"child" with full selector matching: .grand-parent.uncle .father'
+      ])
   })
 
   it('should preserve @media rules with grid-area', () => {
     let input = read('grid-area-media-sequence')
     let output = read('grid-area-media-sequence.out')
+    let instance = prefixer('grid-area')
+    let result = postcss([instance]).process(input)
+    expect(result.css).toEqual(output)
+  })
+
+  it('should merge complex duplicate grid-area rules successfully', () => {
+    let input = read('duplicate-grid-areas-complex')
+    let output = read('duplicate-grid-areas-complex.out')
     let instance = prefixer('grid-area')
     let result = postcss([instance]).process(input)
     expect(result.css).toEqual(output)
