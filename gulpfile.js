@@ -106,9 +106,10 @@ gulp.task('initialise-playground', ['build'], () => {
 })
 
 gulp.task('watch-playground', () => {
-  return gulp.watch('./playground/playground.input.css', ['compile-playground'])
+  return gulp.watch('./playground/input.css', ['compile-playground'])
 })
 
+// Run "gulp play" to experiment with the current implementation of the code
 gulp.task('play', ['initialise-playground'], () => {
   gulp.start('watch-playground')
 })
