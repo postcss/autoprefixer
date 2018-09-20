@@ -120,3 +120,8 @@
 .warn-display-contents .grid {
   display: contents;
 }
+
+.warn_ei {
+  align-items: center;
+  display: grid;
+}

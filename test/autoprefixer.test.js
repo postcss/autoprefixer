@@ -554,7 +554,10 @@ describe('hacks', () => {
       'autoprefixer: <css input>:105:30: auto-fit value is not ' +
                 'supported by IE',
       'autoprefixer: <css input>:121:3: Please do not use ' +
-      'display: contents; if you have grid setting enabled'
+      'display: contents; if you have grid setting enabled',
+      'autoprefixer: <css input>:126:3: IE does not support align-content, ' +
+                'align-items, justify-content and justify-items on ' +
+                'grid containers'
     ])
   })
 

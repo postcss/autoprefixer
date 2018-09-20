@@ -122,3 +122,9 @@
 .warn-display-contents .grid {
   display: contents;
 }
+
+.warn_ei {
+  -ms-flex-align: center;
+      align-items: center;
+  display: grid;
+}

@@ -159,3 +159,11 @@
 .warn-display-contents .grid {
   display: contents;
 }
+
+.warn_ei {
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -ms-grid;
+  display: grid;
+}
