@@ -572,10 +572,10 @@ describe('hacks', () => {
     expect(result.warnings()
       .map(i => i.toString()))
       .toEqual([
-        'autoprefixer: <css input>:28:3: You already have grid-area ' +
+        'autoprefixer: <css input>:28:3: You already have a grid-area ' +
         'declaration present in the rule. You should use either ' +
         'grid-area or grid-row, not both',
-        'autoprefixer: <css input>:29:3: You already have grid-area ' +
+        'autoprefixer: <css input>:29:3: You already have a grid-area ' +
         'declaration present in the rule. You should use either ' +
         'grid-area or grid-column, not both'
       ])
