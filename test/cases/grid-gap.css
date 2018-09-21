@@ -86,6 +86,15 @@
     1fr  1fr;
 }
 
+.grid-2.modifier {
+  grid-template-areas:
+    "x   x"
+    "y   y"
+    "z   z";
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 100px);
+}
+
 @media (min-width: 600px){
   .grid {
     grid-gap: 10px;
@@ -138,11 +147,34 @@
       "x   y   z" 100px
       / 1fr 1fr;
   }
+  .grid-2.modifier {
+    grid-template-areas:
+      "x   x"
+      "y   y"
+      "z   z";
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 100px);
+  }
+  .grid-2.modifier.modifier-b {
+    grid-template-areas:
+      "x   x"
+      "y   y"
+      "z   z";
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 100px);
+  }
 }
 
 @media (max-width: 1000px){
   .grid-2 {
     grid-gap: 20px;
+    grid-template-areas:
+      "x   y   z"
+      "x   y   z";
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 100px);
+  }
+  .grid-2.modifier {
     grid-template-areas:
       "x   y   z"
       "x   y   z";
@@ -158,6 +190,14 @@
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: 100px;
   }
+  .grid-2.modifier {
+    grid-gap: 70px;
+    grid-template-areas:
+      "x   y   z"
+      "x   y   z";
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 100px);
+  }
 }
 
 @media (max-width: 400px){
@@ -171,5 +211,12 @@
       "z";
     grid-template-columns: 1fr;
     grid-template-rows: repeat(6, 100px);
+  }
+  .grid-2.modifier {
+    grid-template-areas:
+      "x   y   z"
+      "x   y   z";
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 100px);
   }
 }
