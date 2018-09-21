@@ -121,17 +121,17 @@
   display: contents;
 }
 
-.warn_ei_align {
+.warn_ie_align {
   align-items: center;
   display: grid;
 }
 
-.warn_ei_justify {
+.warn_ie_justify {
   justify-items: center;
   display: grid;
 }
 
-.warn_ei_justify_content {
+.warn_ie_justify_content {
   justify-content: center;
   display: grid;
 }

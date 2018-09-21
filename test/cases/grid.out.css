@@ -160,7 +160,7 @@
   display: contents;
 }
 
-.warn_ei_align {
+.warn_ie_align {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
@@ -168,13 +168,13 @@
   display: grid;
 }
 
-.warn_ei_justify {
+.warn_ie_justify {
   justify-items: center;
   display: -ms-grid;
   display: grid;
 }
 
-.warn_ei_justify_content {
+.warn_ie_justify_content {
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
