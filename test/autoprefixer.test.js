@@ -565,6 +565,22 @@ describe('hacks', () => {
     expect(result.warnings()).toEqual([])
   })
 
+  it('warns if rule has both grid-area and grid-(row|column) decls', () => {
+    let input = read('grid-area')
+    let instance = prefixer('grid-area')
+    let result = postcss([instance]).process(input)
+    expect(result.warnings()
+      .map(i => i.toString()))
+      .toEqual([
+        'autoprefixer: <css input>:28:3: You already have grid-area ' +
+        'declaration present in the rule. You should use either ' +
+        'grid-area or grid-row, not both',
+        'autoprefixer: <css input>:29:3: You already have grid-area ' +
+        'declaration present in the rule. You should use either ' +
+        'grid-area or grid-column, not both'
+      ])
+  })
+
   it('warns if rule with grid-area has no parent with grid-template', () => {
     let input = read('grid-template-areas')
     let instance = prefixer('grid-area')

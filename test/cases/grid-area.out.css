@@ -38,3 +38,12 @@
   -ms-grid-column: 2;
   grid-area: 2 / 2 / 3;
 }
+
+/* emit warning */
+.g {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  grid-area: 3 / 1;
+  grid-row: 1;
+  grid-column: 2;
+}
