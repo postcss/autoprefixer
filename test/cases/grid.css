@@ -131,6 +131,11 @@
   display: grid;
 }
 
+.warn_ie_align_content {
+  align-content: center;
+  display: grid;
+}
+
 .warn_ie_justify_content {
   justify-content: center;
   display: grid;
