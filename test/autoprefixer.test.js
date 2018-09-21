@@ -555,9 +555,18 @@ describe('hacks', () => {
                 'supported by IE',
       'autoprefixer: <css input>:121:3: Please do not use ' +
       'display: contents; if you have grid setting enabled',
-      'autoprefixer: <css input>:126:3: IE does not support align-content, ' +
-                'align-items, justify-content and justify-items on ' +
-                'grid containers'
+      'autoprefixer: <css input>:126:3: IE does not support align-items and ' +
+                'justify-items on grid containers. ' +
+                'You can use align-self and justify-self insted. Often the ' +
+                'easiest way to put align-self and justify-self' +
+                ' to .grid-selector > *',
+      'autoprefixer: <css input>:131:3: IE does not support align-items and ' +
+                'justify-items on grid containers. ' +
+                'You can use align-self and justify-self insted. Often the ' +
+                'easiest way to put align-self and justify-self' +
+                ' to .grid-selector > *',
+      'autoprefixer: <css input>:136:3: IE does not support align-content ' +
+                'and justify-content on grid containers.'
     ])
   })
 
