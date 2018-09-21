@@ -1,4 +1,5 @@
 let utils = require('../lib/utils')
+let parse = require('postcss').parse
 
 describe('.error()', () => {
   it('raises an error', () => {
@@ -98,5 +99,22 @@ describe('.editList()', () => {
   it('parse one value', () => {
     let list = utils.editList('1', parsed => [parsed[0], '2'])
     expect(list).toEqual('1, 2')
+  })
+})
+
+describe('checkParents()', () => {
+  it('checks value in parents', () => {
+    let cssOne = parse('@supports (grid-auto-rows: auto) {' +
+                          '.div {' +
+                          'grid-auto-rows: auto;' +
+                          '}' +
+                          '}').first.first
+    let cssTwo = parse('.div {' +
+                          'grid-auto-rows: auto;' +
+                          '}')
+    expect(utils.checkParents(cssOne, 'supports', 'grid-auto-rows'))
+      .toBeTruthy()
+    expect(utils.checkParents(cssTwo, 'supports', 'grid-auto-rows'))
+      .toBeFalsy()
   })
 })
