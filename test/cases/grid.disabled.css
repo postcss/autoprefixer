@@ -123,7 +123,7 @@
   display: contents;
 }
 
-.warn_ei_align {
+.warn_ie_align {
   -ms-flex-align: center;
       align-items: center;
   display: grid;

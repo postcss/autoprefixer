@@ -175,8 +175,8 @@
 }
 
 .warn_ie_align_content {
-  -webkit-align-content: center;
   -ms-flex-line-pack: center;
+  -webkit-align-content: center;
   align-content: center;
   display: -ms-grid;
   display: grid;
