@@ -543,18 +543,26 @@ describe('hacks', () => {
                 'of final Grid Layout. Use grid-column.',
       'autoprefixer: <css input>:100:3: grid-row-span is not part ' +
                 'of final Grid Layout. Use grid-row.',
-      'autoprefixer: <css input>:101:3: grid-auto-columns is not ' +
-                'supported by IE',
-      'autoprefixer: <css input>:102:3: grid-auto-rows is not ' +
-                'supported by IE',
-      'autoprefixer: <css input>:103:3: grid-auto-flow is not ' +
-                'supported by IE',
-      'autoprefixer: <css input>:104:33: auto-fill value is not ' +
-                'supported by IE',
-      'autoprefixer: <css input>:105:30: auto-fit value is not ' +
-                'supported by IE',
-      'autoprefixer: <css input>:121:3: Please do not use ' +
-      'display: contents; if you have grid setting enabled'
+      'autoprefixer: <css input>:101:3: grid-auto-columns is not supported ' +
+                'by IE',
+      'autoprefixer: <css input>:102:3: grid-auto-rows is not supported by IE',
+      'autoprefixer: <css input>:103:3: grid-auto-flow is not supported by IE',
+      'autoprefixer: <css input>:104:33: auto-fill value is not supported ' +
+                'by IE',
+      'autoprefixer: <css input>:105:30: auto-fit value is not supported ' +
+                'by IE',
+      'autoprefixer: <css input>:121:3: Please do not use display: contents;' +
+                ' if you have grid setting enabled',
+      'autoprefixer: <css input>:125:3: IE does not support align-items, ' +
+                'justify-items, or place-items on grid containers. ' +
+                'Try using align-self or justify-self on child elements ' +
+                'instead. Example: .grid > * { align-self: center }',
+      'autoprefixer: <css input>:130:3: IE does not support align-items, ' +
+                'justify-items, or place-items on grid containers. ' +
+      'Try using align-self or justify-self on child elements instead. ' +
+                'Example: .grid > * { justify-self: center }',
+      'autoprefixer: <css input>:135:3: IE does not support align-content, ' +
+                'justify-content, or place-content on grid containers.'
     ])
   })
 

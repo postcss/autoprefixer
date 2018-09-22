@@ -122,3 +122,20 @@
 .warn-display-contents .grid {
   display: contents;
 }
+
+.warn_ie_align {
+  -ms-flex-align: center;
+      align-items: center;
+  display: grid;
+}
+
+.warn_ie_justify {
+  justify-items: center;
+  display: grid;
+}
+
+.warn_ie_justify_content {
+  -ms-flex-pack: center;
+      justify-content: center;
+  display: grid;
+}
