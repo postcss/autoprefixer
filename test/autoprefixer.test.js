@@ -563,9 +563,7 @@ describe('hacks', () => {
         '  IE does not support justify-items on grid containers.\n' +
         '  Try using justify-self on child elements instead.\n' +
         '  Example: .grid > * { justify-self: center }\n',
-      'autoprefixer: <css input>:135:3: IE does not support align-content ' +
-                'on grid containers.',
-      'autoprefixer: <css input>:140:3: IE does not support justify-content ' +
+      'autoprefixer: <css input>:135:3: IE does not support justify-content ' +
                 'on grid containers.'
     ])
   })
