@@ -147,6 +147,20 @@
       / 1fr 1fr 1fr;
 }
 
+.parent .grid {
+  grid-gap: 30px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 100px 30px 100px 30px 100px;
+  -ms-grid-columns: 1fr 30px 1fr;
+  grid-template:
+    "a   b" 100px
+    "c   d" 100px
+    "e   f" 100px /
+    1fr  1fr;
+}
+
+/* must not inherit gap from .parent .grid */
 .grid {
   display: -ms-grid;
   display: grid;
@@ -172,6 +186,19 @@
     1fr  1fr;
 }
 
+.grid-2.modifier-b {
+  grid-gap: 22px;
+  grid-template-areas:
+    "x   x"
+    "y   y"
+    "z   z";
+  -ms-grid-columns: 1fr 22px 1fr;
+  grid-template-columns: repeat(2, 1fr);
+  -ms-grid-rows: 100px 22px 100px 22px 100px;
+  grid-template-rows: repeat(3, 100px);
+}
+
+/* must inherit gap from .grid-2 */
 .grid-2.modifier {
   grid-template-areas:
     "x   x"
@@ -183,6 +210,7 @@
   grid-template-rows: repeat(3, 100px);
 }
 
+/* must inherit gap from .grid-2 */
 .parent .grid-2 {
   grid-template-areas:
     "x   x"
@@ -256,6 +284,7 @@
       "x   y   z" 100px
       / 1fr 1fr;
   }
+  /* must inherit gap from .grid-2 */
   .grid-2.modifier {
     grid-template-areas:
       "x   x"
@@ -266,7 +295,8 @@
     -ms-grid-rows: 100px 50px 100px 50px 100px;
     grid-template-rows: repeat(3, 100px);
   }
-  .grid-2.modifier.modifier-b {
+  /* must inherit gap from .grid-2 */
+  .grid-2.modifier.modifier-c {
     grid-template-areas:
       "x   x"
       "y   y"
@@ -276,6 +306,7 @@
     -ms-grid-rows: 100px 50px 100px 50px 100px;
     grid-template-rows: repeat(3, 100px);
   }
+  /* must inherit gap from .grid-2 */
   .parent .grid-2 {
     grid-template-areas:
       "x   x"
@@ -299,6 +330,7 @@
     -ms-grid-rows: 100px 20px 100px;
     grid-template-rows: repeat(2, 100px);
   }
+  /* must inherit gap from .grid-2 */
   .grid-2.modifier {
     grid-template-areas:
       "x   y   z"
@@ -319,6 +351,7 @@
     -ms-grid-rows: 100px;
     grid-template-rows: 100px;
   }
+  /* must NOT inherit gap from .grid-2 */
   .grid-2.modifier {
     grid-gap: 70px;
     grid-template-areas:
@@ -345,6 +378,7 @@
     -ms-grid-rows: 100px 20px 100px 20px 100px 20px 100px 20px 100px 20px 100px;
     grid-template-rows: repeat(6, 100px);
   }
+  /* must inherit gap from .grid-2.modifier */
   .grid-2.modifier {
     grid-template-areas:
       "x   y   z"
