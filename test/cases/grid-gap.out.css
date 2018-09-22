@@ -183,6 +183,17 @@
   grid-template-rows: repeat(3, 100px);
 }
 
+.parent .grid-2 {
+  grid-template-areas:
+    "x   x"
+    "y   y"
+    "z   z";
+  -ms-grid-columns: 1fr 50px 1fr;
+  grid-template-columns: repeat(2, 1fr);
+  -ms-grid-rows: 100px 50px 100px 50px 100px;
+  grid-template-rows: repeat(3, 100px);
+}
+
 @media (min-width: 600px){
   .grid {
     grid-gap: 10px;
@@ -256,6 +267,16 @@
     grid-template-rows: repeat(3, 100px);
   }
   .grid-2.modifier.modifier-b {
+    grid-template-areas:
+      "x   x"
+      "y   y"
+      "z   z";
+    -ms-grid-columns: 1fr 50px 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    -ms-grid-rows: 100px 50px 100px 50px 100px;
+    grid-template-rows: repeat(3, 100px);
+  }
+  .parent .grid-2 {
     grid-template-areas:
       "x   x"
       "y   y"

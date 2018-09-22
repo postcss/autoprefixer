@@ -95,6 +95,15 @@
   grid-template-rows: repeat(3, 100px);
 }
 
+.parent .grid-2 {
+  grid-template-areas:
+    "x   x"
+    "y   y"
+    "z   z";
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 100px);
+}
+
 @media (min-width: 600px){
   .grid {
     grid-gap: 10px;
@@ -156,6 +165,14 @@
     grid-template-rows: repeat(3, 100px);
   }
   .grid-2.modifier.modifier-b {
+    grid-template-areas:
+      "x   x"
+      "y   y"
+      "z   z";
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 100px);
+  }
+  .parent .grid-2 {
     grid-template-areas:
       "x   x"
       "y   y"
