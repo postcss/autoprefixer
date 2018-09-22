@@ -555,11 +555,11 @@ describe('hacks', () => {
                 'supported by IE',
       'autoprefixer: <css input>:121:3: Please do not use ' +
           'display: contents; if you have grid setting enabled',
-      'autoprefixer: <css input>:125:3:\n' +
+      'autoprefixer: <css input>:125:3: \n' +
         '  IE does not support align-items on grid containers.\n' +
         '  Try using align-self on child elements instead.\n' +
         '  Example: .grid > * { align-self: center }\n',
-      'autoprefixer: <css input>:130:3:\n' +
+      'autoprefixer: <css input>:130:3: \n' +
         '  IE does not support justify-items on grid containers.\n' +
         '  Try using justify-self on child elements instead.\n' +
         '  Example: .grid > * { justify-self: center }\n',
