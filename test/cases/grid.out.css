@@ -174,14 +174,6 @@
   display: grid;
 }
 
-.warn_ie_align_content {
-  -webkit-align-content: center;
-  -ms-flex-line-pack: center;
-  align-content: center;
-  display: -ms-grid;
-  display: grid;
-}
-
 .warn_ie_justify_content {
   -webkit-justify-content: center;
   -ms-flex-pack: center;
