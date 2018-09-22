@@ -123,18 +123,18 @@
   display: contents;
 }
 
-.warn_ie_align {
+.warn_ei_align {
   -ms-flex-align: center;
       align-items: center;
   display: grid;
 }
 
-.warn_ie_justify {
+.warn_ei_justify {
   justify-items: center;
   display: grid;
 }
 
-.warn_ie_justify_content {
+.warn_ei_justify_content {
   -ms-flex-pack: center;
       justify-content: center;
   display: grid;

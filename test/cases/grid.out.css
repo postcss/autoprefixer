@@ -137,9 +137,7 @@
   grid-auto-columns: 100px;
   grid-auto-rows: 100px;
   grid-auto-flow: column;
-  -ms-grid-columns: (minmax(400px, 1fr))[auto-fill];
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  -ms-grid-rows: (minmax(400px, 1fr))[auto-fit];
   grid-template-rows: repeat(auto-fit, minmax(400px, 1fr));
 }
 
@@ -172,6 +170,14 @@
 
 .warn_ie_justify {
   justify-items: center;
+  display: -ms-grid;
+  display: grid;
+}
+
+.warn_ie_align_content {
+  -webkit-align-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
   display: -ms-grid;
   display: grid;
 }
