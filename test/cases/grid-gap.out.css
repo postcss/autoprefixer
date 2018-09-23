@@ -198,6 +198,42 @@
   grid-template-rows: repeat(3, 100px);
 }
 
+/* must inherit gap from .grid-2.modifier-b */
+.grid-2.modifier-b.foo {
+  grid-template-areas:
+    "x   x"
+    "y   y"
+    "z   z";
+  -ms-grid-columns: 1fr 22px 1fr;
+  grid-template-columns: repeat(2, 1fr);
+  -ms-grid-rows: 100px 22px 100px 22px 100px;
+  grid-template-rows: repeat(3, 100px);
+}
+
+/* must inherit gap from .grid-2.modifier-b */
+.grid-2.modifier-b.bar {
+  grid-template-areas:
+    "x   x"
+    "y   y"
+    "z   z";
+  -ms-grid-columns: 1fr 22px 1fr;
+  grid-template-columns: repeat(2, 1fr);
+  -ms-grid-rows: 100px 22px 100px 22px 100px;
+  grid-template-rows: repeat(3, 100px);
+}
+
+/* must inherit gap from .grid-2.modifier-b */
+.parent .grid-2.modifier-b.bar {
+  grid-template-areas:
+    "x   x"
+    "y   y"
+    "z   z";
+  -ms-grid-columns: 1fr 22px 1fr;
+  grid-template-columns: repeat(2, 1fr);
+  -ms-grid-rows: 100px 22px 100px 22px 100px;
+  grid-template-rows: repeat(3, 100px);
+}
+
 /* must inherit gap from .grid-2 */
 .grid-2.modifier {
   grid-template-areas:
@@ -333,8 +369,8 @@
   /* must inherit gap from .grid-2 */
   .grid-2.modifier {
     grid-template-areas:
-      "x   y   z"
-      "x   y   z";
+      "hi   hi   hi"
+      "hi   hi   hi";
     -ms-grid-columns: 1fr 20px 1fr 20px 1fr;
     grid-template-columns: repeat(3, 1fr);
     -ms-grid-rows: 100px 20px 100px;

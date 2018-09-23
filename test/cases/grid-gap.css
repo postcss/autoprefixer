@@ -107,6 +107,36 @@
   grid-template-rows: repeat(3, 100px);
 }
 
+/* must inherit gap from .grid-2.modifier-b */
+.grid-2.modifier-b.foo {
+  grid-template-areas:
+    "x   x"
+    "y   y"
+    "z   z";
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 100px);
+}
+
+/* must inherit gap from .grid-2.modifier-b */
+.grid-2.modifier-b.bar {
+  grid-template-areas:
+    "x   x"
+    "y   y"
+    "z   z";
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 100px);
+}
+
+/* must inherit gap from .grid-2.modifier-b */
+.parent .grid-2.modifier-b.bar {
+  grid-template-areas:
+    "x   x"
+    "y   y"
+    "z   z";
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 100px);
+}
+
 /* must inherit gap from .grid-2 */
 .grid-2.modifier {
   grid-template-areas:
@@ -220,8 +250,8 @@
   /* must inherit gap from .grid-2 */
   .grid-2.modifier {
     grid-template-areas:
-      "x   y   z"
-      "x   y   z";
+      "hi   hi   hi"
+      "hi   hi   hi";
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 100px);
   }
