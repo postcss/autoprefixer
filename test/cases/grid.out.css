@@ -159,3 +159,25 @@
 .warn-display-contents .grid {
   display: contents;
 }
+
+.warn_ie_align {
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -ms-grid;
+  display: grid;
+}
+
+.warn_ie_justify {
+  justify-items: center;
+  display: -ms-grid;
+  display: grid;
+}
+
+.warn_ie_justify_content {
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  display: -ms-grid;
+  display: grid;
+}

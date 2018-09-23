@@ -120,3 +120,18 @@
 .warn-display-contents .grid {
   display: contents;
 }
+
+.warn_ie_align {
+  align-items: center;
+  display: grid;
+}
+
+.warn_ie_justify {
+  justify-items: center;
+  display: grid;
+}
+
+.warn_ie_justify_content {
+  justify-content: center;
+  display: grid;
+}
