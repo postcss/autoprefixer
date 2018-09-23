@@ -100,3 +100,38 @@ describe('.editList()', () => {
     expect(list).toEqual('1, 2')
   })
 })
+
+describe('.splitSelector()', () => {
+  it('splits simple selectors into an array', () => {
+    let arr1 = utils.splitSelector('#foo.bar')
+    let arr2 = utils.splitSelector('.foo, .bar')
+    expect(arr1).toEqual([
+      [
+        ['#foo', '.bar']
+      ]
+    ])
+    expect(arr2).toEqual([
+      [['.foo']],
+      [['.bar']]
+    ])
+  })
+
+  it('splits complex selectors into an array', () => {
+    let arr = utils.splitSelector(
+      '#foo.bar .child-one.mod .child-two.mod, .baz, .hello'
+    )
+    expect(arr).toEqual([
+      [
+        ['#foo', '.bar'],
+        ['.child-one', '.mod'],
+        ['.child-two', '.mod']
+      ],
+      [
+        ['.baz']
+      ],
+      [
+        ['.hello']
+      ]
+    ])
+  })
+})
