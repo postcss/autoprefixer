@@ -526,45 +526,43 @@ describe('hacks', () => {
     expect(result.css).toEqual(output)
     expect(result.warnings().map(i => i.toString())).toEqual([
       'autoprefixer: <css input>:36:3: Can not prefix grid-column-end ' +
-                '(grid-column-start is not found)',
+        '(grid-column-start is not found)',
       'autoprefixer: <css input>:39:3: Can not impliment grid-gap ' +
-                'without grid-tamplate-columns',
+        'without grid-tamplate-columns',
       'autoprefixer: <css input>:39:3: Can not find grid areas: ' +
-                'head, nav, main, foot',
+        'head, nav, main, foot',
       'autoprefixer: <css input>:47:3: Can not impliment grid-gap ' +
-                'without grid-tamplate-columns',
+        'without grid-tamplate-columns',
       'autoprefixer: <css input>:47:3: Can not find grid areas: a',
       'autoprefixer: <css input>:55:3: Can not impliment grid-gap ' +
-                'without grid-tamplate-columns',
+        'without grid-tamplate-columns',
       'autoprefixer: <css input>:55:3: Can not find grid areas: b',
       'autoprefixer: <css input>:63:3: Can not find grid areas: c',
       'autoprefixer: <css input>:71:3: Can not find grid areas: d',
       'autoprefixer: <css input>:99:3: grid-column-span is not part ' +
-                'of final Grid Layout. Use grid-column.',
+        'of final Grid Layout. Use grid-column.',
       'autoprefixer: <css input>:100:3: grid-row-span is not part ' +
-                'of final Grid Layout. Use grid-row.',
+        'of final Grid Layout. Use grid-row.',
       'autoprefixer: <css input>:101:3: grid-auto-columns is not ' +
-                'supported by IE',
+        'supported by IE',
       'autoprefixer: <css input>:102:3: grid-auto-rows is not ' +
-                'supported by IE',
+        'supported by IE',
       'autoprefixer: <css input>:103:3: grid-auto-flow is not ' +
-                'supported by IE',
+        'supported by IE',
       'autoprefixer: <css input>:104:33: auto-fill value is not ' +
-                'supported by IE',
+        'supported by IE',
       'autoprefixer: <css input>:105:30: auto-fit value is not ' +
-                'supported by IE',
+        'supported by IE',
       'autoprefixer: <css input>:121:3: Please do not use ' +
-          'display: contents; if you have grid setting enabled',
-      'autoprefixer: <css input>:125:3: \n' +
-        '  IE does not support align-items on grid containers.\n' +
-        '  Try using align-self on child elements instead.\n' +
-        '  Example: .grid > * { align-self: center }\n',
-      'autoprefixer: <css input>:130:3: \n' +
-        '  IE does not support justify-items on grid containers.\n' +
-        '  Try using justify-self on child elements instead.\n' +
-        '  Example: .grid > * { justify-self: center }\n',
+        'display: contents; if you have grid setting enabled',
+      'autoprefixer: <css input>:125:3: IE does not support align-items ' +
+        'on grid containers. Try using align-self on child elements instead: ' +
+        '.warn_ie_align > * { align-self: center }',
+      'autoprefixer: <css input>:130:3: IE does not support justify-items ' +
+        'on grid containers. Try using justify-self on child elements ' +
+        'instead: .warn_ie_justify > * { justify-self: center }',
       'autoprefixer: <css input>:135:3: IE does not support justify-content ' +
-                'on grid containers.'
+        'on grid containers'
     ])
   })
 
