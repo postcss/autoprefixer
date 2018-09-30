@@ -194,10 +194,7 @@ Developers are often surprised by how few prefixes are required today.
 If Autoprefixer doesn’t add prefixes to your CSS, check if they’re still
 required on [Can I Use].
 
-There is a [list with all supported] properties, values, and selectors.
-
-[list with all supported]: https://github.com/postcss/autoprefixer/wiki/support-list
-[Can I Use]:               http://caniuse.com/
+[Can I Use]: http://caniuse.com/
 
 
 #### Why Autoprefixer uses unprefixed properties in `@-webkit-keyframes`?
