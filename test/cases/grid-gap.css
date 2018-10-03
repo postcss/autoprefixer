@@ -67,6 +67,17 @@
       / 1fr 1fr 1fr;
 }
 
+.parent .grid {
+  grid-gap: 30px;
+  display: grid;
+  grid-template:
+    "a   b" 100px
+    "c   d" 100px
+    "e   f" 100px /
+    1fr  1fr;
+}
+
+/* must not inherit gap from .parent .grid */
 .grid {
   display: grid;
   grid-template:
@@ -84,6 +95,66 @@
     "y   y" 100px
     "z   z" 100px /
     1fr  1fr;
+}
+
+.grid-2.modifier-b {
+  grid-gap: 22px;
+  grid-template-areas:
+    "x   x"
+    "y   y"
+    "z   z";
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 100px);
+}
+
+/* must inherit gap from .grid-2.modifier-b */
+.grid-2.modifier-b.foo {
+  grid-template-areas:
+    "x   x"
+    "y   y"
+    "z   z";
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 100px);
+}
+
+/* must inherit gap from .grid-2.modifier-b */
+.grid-2.modifier-b.bar {
+  grid-template-areas:
+    "x   x"
+    "y   y"
+    "z   z";
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 100px);
+}
+
+/* must inherit gap from .grid-2.modifier-b */
+.parent .grid-2.modifier-b.bar {
+  grid-template-areas:
+    "x   x"
+    "y   y"
+    "z   z";
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 100px);
+}
+
+/* must inherit gap from .grid-2 */
+.grid-2.modifier {
+  grid-template-areas:
+    "x   x"
+    "y   y"
+    "z   z";
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 100px);
+}
+
+/* must inherit gap from .grid-2 */
+.parent .grid-2 {
+  grid-template-areas:
+    "x   x"
+    "y   y"
+    "z   z";
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 100px);
 }
 
 @media (min-width: 600px){
@@ -138,6 +209,33 @@
       "x   y   z" 100px
       / 1fr 1fr;
   }
+  /* must inherit gap from .grid-2 */
+  .grid-2.modifier {
+    grid-template-areas:
+      "x   x"
+      "y   y"
+      "z   z";
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 100px);
+  }
+  /* must inherit gap from .grid-2 */
+  .grid-2.modifier.modifier-c {
+    grid-template-areas:
+      "x   x"
+      "y   y"
+      "z   z";
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 100px);
+  }
+  /* must inherit gap from .grid-2 */
+  .parent .grid-2 {
+    grid-template-areas:
+      "x   x"
+      "y   y"
+      "z   z";
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 100px);
+  }
 }
 
 @media (max-width: 1000px){
@@ -149,6 +247,14 @@
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 100px);
   }
+  /* must inherit gap from .grid-2 */
+  .grid-2.modifier {
+    grid-template-areas:
+      "hi   hi   hi"
+      "hi   hi   hi";
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 100px);
+  }
 }
 
 @media (max-width: 700px){
@@ -157,6 +263,15 @@
       "x   x   y   y   z   z";
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: 100px;
+  }
+  /* must NOT inherit gap from .grid-2 */
+  .grid-2.modifier {
+    grid-gap: 70px;
+    grid-template-areas:
+      "x   y   z"
+      "x   y   z";
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 100px);
   }
 }
 
@@ -171,5 +286,13 @@
       "z";
     grid-template-columns: 1fr;
     grid-template-rows: repeat(6, 100px);
+  }
+  /* must inherit gap from .grid-2.modifier */
+  .grid-2.modifier {
+    grid-template-areas:
+      "x   y   z"
+      "x   y   z";
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 100px);
   }
 }

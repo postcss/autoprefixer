@@ -304,7 +304,7 @@
 
 @media (max-width: 600px) {
   .i {
-    -ms-grid-rows: 100px 100px;
+    -ms-grid-rows: 100px 10px 100px;
     -ms-grid-columns: 1fr;
     grid-template:
       "i" 100px
@@ -312,7 +312,7 @@
       1fr;
   }
   .j {
-    -ms-grid-rows: 100px 100px;
+    -ms-grid-rows: 100px 10px 100px;
     -ms-grid-columns: 1fr;
     grid-template:
       "i" 100px
@@ -472,11 +472,11 @@
     -ms-grid-column: 1;
   }
   .k-4 {
-    -ms-grid-row: 2;
+    -ms-grid-row: 3;
     -ms-grid-column: 1;
   }
   .k-4 {
-    -ms-grid-row: 2;
+    -ms-grid-row: 3;
     -ms-grid-column: 1;
   }
   .k > .k-4 {
