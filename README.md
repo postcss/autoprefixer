@@ -53,18 +53,17 @@ Twitter account for news and releases: [@autoprefixer].
 ## Browsers
 
 Autoprefixer uses [Browserslist], so you can specify the browsers
-you want to target in your project by queries like `> 5%`
+you want to target in your project with queries like `> 5%`
 (see [Best Practices]).
 
-The best way to provide browsers is `.browserslistrc` config
-or `package.json` with `browserslist` key. Put it in your project root.
+The best way to provide browsers is a `.browserslistrc` file in your project
+root, or by adding a `browserslist` key to your `package.json`.
 
-We recommend to avoid Autoprefixer option and use `.browserslistrc` config
-or `package.json`. In this case browsers will be shared with other tools
-like [babel-preset-env] or [Stylelint].
+We recommend the use of these options over passing options to Autoprefixer so
+that the config can be shared with other tools such as [babel-preset-env] and
+[Stylelint].
 
-See [Browserslist docs] for queries, browser names, config format,
-and default value.
+See [Browserslist docs] for queries, browser names, config format, and defaults.
 
 [Browserslist docs]: https://github.com/ai/browserslist#queries
 [babel-preset-env]:  https://github.com/babel/babel/tree/master/packages/babel-preset-env
@@ -77,19 +76,18 @@ and default value.
 
 #### Does Autoprefixer polyfill Grid Layout for IE?
 
-Autoprefixer can be used to use Grid Layout for IE 10 and IE 11.
-But this polyfill will not work in 100 % cases.
-This is why it is disabled by default.
+Autoprefixer can be used to use Grid Layout for IE 10 and IE 11, but this
+polyfill will not work in 100% of cases. This is why it is disabled by default.
 
 First, you need to enable Grid prefixes by `grid: true` option.
 
-Second, you need to test every fix with Grid in IE. It is not,
-enable and forget feature. But it is still very useful.
+Second, you need to test every fix with Grid in IE. It is not an enable and
+forget feature, but it is still very useful.
 Financial Times and Yandex use it in production.
 
-Third, there is not auto placement and all grid cell position must be set
-explicitly. However, Autoprefixer can covert even `grid-template`
-and `grid-gap` (but only when they are together).
+Third, there is no auto placement, so all grid cell positions must be set
+explicitly. Autoprefixer _can_ covert `grid-template` and `grid-gap`, but only
+when both are used together.
 
 ```css
 .page {
@@ -132,19 +130,18 @@ See also:
 Many other tools contain Autoprefixer. For example, webpack uses Autoprefixer
 to minify CSS by cleaning unnecessary prefixes.
 
-If you set browsers list to Autoprefixer by `browsers` option, only first
-Autoprefixer will know your browsers. Autoprefixer inside webpack will use
-default browsers list. As result, webpack will remove prefixes, that first
-Autoprefixer added.
+If you pass your browsers to Autoprefixer using its `browsers` option, the other
+tools will use their own config, leading webpack to remove the prefixes that
+the first Autoprefixer added.
 
-You need to put your browsers to [`browserslist` config] in project root —
-as result all tools (Autoprefixer, cssnano, doiuse, cssnext) will use same
-browsers list.
+To avoid this, ensure you use either the [browserslist config file] or
+`browsers` key in your `package.json`, so that all tools (Autoprefixer,
+cssnano, doiuse, cssnext, etc) use the same browsers list.
 
-[`browserslist` config]: https://github.com/ai/browserslist#config-file
+[browserslist config file]: https://github.com/ai/browserslist#config-file
 
 
-#### What is unprefixed version for `-webkit-min-device-pixel-ratio`?
+#### What is the unprefixed version of `-webkit-min-device-pixel-ratio`?
 
 ```css
 @media (min-resolution: 2dppx) {
@@ -197,10 +194,10 @@ required on [Can I Use].
 [Can I Use]: http://caniuse.com/
 
 
-#### Why Autoprefixer uses unprefixed properties in `@-webkit-keyframes`?
+#### Why does Autoprefixer use unprefixed properties in `@-webkit-keyframes`?
 
-Browser teams can remove some prefixes before others. So we try to use
-all combinations of prefixed/unprefixed values.
+Browser teams can remove some prefixes before others, so we try to use all
+combinations of prefixed/unprefixed values.
 
 
 #### How to work with legacy `-webkit-` only code?
@@ -209,7 +206,7 @@ Autoprefixer needs unprefixed property to add prefixes. So if you only
 wrote `-webkit-gradient` without W3C’s `gradient`,
 Autoprefixer will not add other prefixes.
 
-But [PostCSS] has a plugins to convert CSS to unprefixed state.
+But [PostCSS] has plugins to convert CSS to unprefixed state.
 Use [postcss-unprefix] before Autoprefixer.
 
 [postcss-unprefix]: https://github.com/gucong3000/postcss-unprefix
@@ -218,13 +215,19 @@ Use [postcss-unprefix] before Autoprefixer.
 #### Does Autoprefixer add `-epub-` prefix?
 
 No, Autoprefixer works only with browsers prefixes from Can I Use.
-But you can use [postcss-epub](https://github.com/Rycochet/postcss-epub)
+But you can use [postcss-epub]
 for prefixing ePub3 properties.
+
+[postcss-epub]: https://github.com/Rycochet/postcss-epub
 
 
 #### Why doesn’t Autoprefixer transform generic font-family `system-ui`?
 
-`system-ui` is technically not a prefix and the transformation is not future-proof. But you can use [postcss-font-family-system-ui](https://github.com/JLHwung/postcss-font-family-system-ui) to transform `system-ui` to a practical font-family list.
+`system-ui` is technically not a prefix and the transformation is not
+future-proof. You can use [postcss-font-family-system-ui] to transform
+`system-ui` to a practical font-family list.
+
+[postcss-font-family-system-ui]: https://github.com/JLHwung/postcss-font-family-system-ui
 
 
 ## Usage
@@ -250,8 +253,8 @@ gulp.task('autoprefixer', function () {
 With `gulp-postcss` you also can combine Autoprefixer
 with [other PostCSS plugins].
 
-[other PostCSS plugins]: https://github.com/postcss/postcss#plugins
 [gulp-postcss]:          https://github.com/postcss/gulp-postcss
+[other PostCSS plugins]: https://github.com/postcss/postcss#plugins
 
 
 ### Webpack
@@ -388,7 +391,7 @@ See `postcss -h` for help.
 ### JavaScript
 
 You can use Autoprefixer with [PostCSS] in your Node.js application
-or if you want to develop an Autoprefixer plugin for new environment.
+or if you want to develop an Autoprefixer plugin for a new environment.
 
 ```js
 var autoprefixer = require('autoprefixer');
@@ -402,7 +405,7 @@ postcss([ autoprefixer ]).process(css).then(function (result) {
 });
 ```
 
-There is also [standalone build] for the browser or as a non-Node.js runtime.
+There is also a [standalone build] for the browser or for a non-Node.js runtime.
 
 You can use [html-autoprefixer] to process HTML with inlined CSS.
 
@@ -415,13 +418,13 @@ You can use [html-autoprefixer] to process HTML with inlined CSS.
 
 Autoprefixer should be used in assets build tools. Text editor plugins are not
 a good solution, because prefixes decrease code readability and you will need
-to change value in all prefixed properties.
+to change values in all prefixed properties.
 
 I recommend you to learn how to use build tools like [Gulp].
 They work much better and will open you a whole new world of useful plugins
-and automatization.
+and automation.
 
-But, if you can’t move to a build tool, you can use text editor plugins:
+If you can’t move to a build tool, you can use text editor plugins:
 
 * [Sublime Text](https://github.com/sindresorhus/sublime-autoprefixer)
 * [Brackets](https://github.com/mikaeljorhult/brackets-autoprefixer)
@@ -433,8 +436,8 @@ But, if you can’t move to a build tool, you can use text editor plugins:
 
 ## Warnings
 
-Autoprefixer uses the [PostCSS warning API] to warn about really important problems
-in your CSS:
+Autoprefixer uses the [PostCSS warning API] to warn about really important
+problems in your CSS:
 
 * Old direction syntax in gradients.
 * Old unprefixed `display: box` instead of `display: flex`
@@ -448,7 +451,7 @@ result.warnings().forEach(function (warn) {
 });
 ```
 
-Every Autoprefixer runner should display this warnings.
+Every Autoprefixer runner should display these warnings.
 
 [PostCSS warning API]: https://github.com/postcss/postcss/blob/master/docs/api.md#warning-class
 
@@ -468,13 +471,14 @@ a {
 }
 ```
 
-If some prefixes were generated in a wrong way,
-please create an issue on GitHub.
+If some prefixes were generated incorrectly, please create an [issue on GitHub].
+
+[issue on GitHub]: https://github.com/postcss/autoprefixer/issues
 
 
 ### Features
 
-You can use these plugin options to disable some of the Autoprefixer's features.
+You can use these plugin options to disable some of Autoprefixer’s features.
 
 * `supports: false` will disable `@supports` parameters prefixing.
 * `flexbox: false` will disable flexbox properties prefixing.
@@ -496,18 +500,18 @@ you can use control comments to disable Autoprefixer.
 
 ```css
 .a {
-    transition: 1s; /* it will be prefixed */
+    transition: 1s; /* will be prefixed */
 }
 
 .b {
     /* autoprefixer: off */
-    transition: 1s; /* it will not be prefixed */
+    transition: 1s; /* will not be prefixed */
 }
 
 .c {
     /* autoprefixer: ignore next */
-    transition: 1s; /* it will not be prefixed */
-    mask: url(image.png); /* it will be prefixed */
+    transition: 1s; /* will not be prefixed */
+    mask: url(image.png); /* will be prefixed */
 }
 ```
 
@@ -532,7 +536,7 @@ You can also use comments recursively:
 
 ## Options
 
-Function `autoprefixer(options)` returns new PostCSS plugin.
+Function `autoprefixer(options)` returns a new PostCSS plugin.
 See [PostCSS API] for plugin usage documentation.
 
 ```js
