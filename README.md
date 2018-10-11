@@ -516,6 +516,7 @@ There are two types of control comments:
 * `/* autoprefixer: off */` disable the whole block *before* and after comment.
 * `/* autoprefixer: ignore next */` disable only next property
   or next rule selector or at-rule parameters (but not rule/at‑rule body).
+* `/* autoprefixer grid: on */` enable grid option
 
 You can also use comments recursively:
 

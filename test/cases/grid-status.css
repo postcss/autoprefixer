@@ -1,0 +1,23 @@
+/* autoprefixer grid: on */
+
+.grid-disabled {
+  /* autoprefixer: off */
+  display: grid;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 100px 100px;
+}
+
+.grid-status-off {
+  /* autoprefixer grid: off */
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 100px 100px;
+}
+
+.grid-2 {
+  display: grid;
+}

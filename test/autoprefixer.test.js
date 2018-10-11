@@ -244,6 +244,14 @@ it('uses control comments to whole scope', () => {
   ])
 })
 
+it('sets grid option via comment', () => {
+  let input = read('grid-status')
+  let output = read('grid-status.out')
+  let ap = autoprefixer({ browsers: ['last 2 versions', 'Explorer 11'] })
+  let result = postcss([ap]).process(input)
+  expect(result.css).toEqual(output)
+})
+
 it('prefixes transition', () => {
   let input = read('transition')
   let output = read('transition.out')
