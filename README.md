@@ -533,6 +533,43 @@ You can also use comments recursively:
 }
 ```
 
+### Grid-specific Control Comments
+
+If you need specific behavior for grids transformation in some part of your CSS,
+you can use control comments to disable or enable for grids transformation.
+
+```css
+.a {
+    display: grid; /* will be prefixed */
+}
+
+.b {
+    /* autoprefixer grid: off */
+    display: grid; /* will not be prefixed */
+}
+
+.c {
+    /* autoprefixer grid: on */
+    display: grid; /* will be prefixed */
+}
+```
+
+There are two types of control comments:
+
+* `/* autoprefixer grid: on */` disable the whole block *before* and after comment.
+* `/* autoprefixer grid: on */` enable the whole block *before* and after comment.
+
+You can also use comments recursively:
+
+```css
+/* autoprefixer grid: off */
+@supports (transition: all) {
+    /* autoprefixer grid: on */
+    a {
+        /* autoprefixer grid: off */
+    }
+}
+```
 
 ## Options
 
