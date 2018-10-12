@@ -249,7 +249,16 @@ it('sets grid option via comment', () => {
   let output = read('grid-status.out')
   let ap = autoprefixer({ browsers: ['last 2 versions', 'Explorer 11'] })
   let result = postcss([ap]).process(input)
+
   expect(result.css).toEqual(output)
+  expect(result.warnings().map(i => i.toString())).toEqual([
+    'autoprefixer: <css input>:2:1: Second Autoprefixer grid control ' +
+        'comment was ignored. Autoprefixer applies control comment ' +
+        'to whole block, not to next rules.',
+    'autoprefixer: <css input>:17:3: Second Autoprefixer grid control ' +
+        'comment was ignored. Autoprefixer applies control comment ' +
+        'to whole block, not to next rules.'
+  ])
 })
 
 it('prefixes transition', () => {

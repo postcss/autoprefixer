@@ -1,4 +1,5 @@
 /* autoprefixer grid: on */
+/* autoprefixer grid: off */
 
 .grid-disabled {
   /* autoprefixer: off */
@@ -15,6 +16,7 @@
 }
 
 .grid-status-off {
+  /* autoprefixer grid: off */
   /* autoprefixer grid: off */
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
