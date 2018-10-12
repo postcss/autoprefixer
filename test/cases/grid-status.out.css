@@ -1,0 +1,29 @@
+/* autoprefixer grid: on */
+/* autoprefixer grid: off */
+
+.grid-disabled {
+  /* autoprefixer: off */
+  display: grid;
+}
+
+.grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  -ms-grid-rows: 100px 100px;
+      grid-template-rows: 100px 100px;
+}
+
+.grid-status-off {
+  /* autoprefixer grid: off */
+  /* autoprefixer grid: off */
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 100px 100px;
+}
+
+.grid-2 {
+  display: -ms-grid;
+  display: grid;
+}
