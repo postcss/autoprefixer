@@ -4,12 +4,15 @@
 .grid-disabled {
   /* autoprefixer: off */
   display: grid;
+  grid-auto-flow: column;
 }
 
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 100px 100px;
+  /* autoprefixer: ignore next */
+  grid-auto-flow: column;
 }
 
 .grid-status-off {

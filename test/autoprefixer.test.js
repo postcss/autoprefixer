@@ -255,7 +255,7 @@ it('sets grid option via comment', () => {
     'autoprefixer: <css input>:2:1: Second Autoprefixer grid control ' +
         'comment was ignored. Autoprefixer applies control comment ' +
         'to whole block, not to next rules.',
-    'autoprefixer: <css input>:17:3: Second Autoprefixer grid control ' +
+    'autoprefixer: <css input>:20:3: Second Autoprefixer grid control ' +
         'comment was ignored. Autoprefixer applies control comment ' +
         'to whole block, not to next rules.'
   ])
