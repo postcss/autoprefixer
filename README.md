@@ -79,7 +79,7 @@ See [Browserslist docs] for queries, browser names, config format, and defaults.
 Autoprefixer can be used to use Grid Layout for IE 10 and IE 11, but this
 polyfill will not work in 100% of cases. This is why it is disabled by default.
 
-First, you need to enable Grid prefixes by `grid: true` option.
+First, you need to enable Grid prefixes by `grid: true` option or `/* autoprefixer grid: on */` comment.
 
 Second, you need to test every fix with Grid in IE. It is not an enable and
 forget feature, but it is still very useful.
@@ -480,6 +480,7 @@ If some prefixes were generated incorrectly, please create an [issue on GitHub].
 
 You can use these plugin options to disable some of Autoprefixer’s features.
 
+* `grid: true` will enable `-ms-` prefixes for Grid Layout.
 * `supports: false` will disable `@supports` parameters prefixing.
 * `flexbox: false` will disable flexbox properties prefixing.
   Or `flexbox: "no-2009"` will add prefixes only for final and IE
@@ -558,7 +559,8 @@ Available options are:
   properties. With `"no-2009"` value Autoprefixer will add prefixes only
   for final and IE versions of specification. Default is `true`.
 * `grid` (boolean): should Autoprefixer add IE prefixes for Grid Layout
-  properties. Default is `false`.
+  properties. Default is `false`. You can also use `/* autoprefixer grid: on */`
+  comment in CSS.
 * `stats` (object): custom [usage statistics] for `> 10% in my stats`
   browsers query.
 * `browsers` (array): list of queries for target browsers. Try to not use it.
