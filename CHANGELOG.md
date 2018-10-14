@@ -1,6 +1,14 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 9.2 “Onyi est glavnaya krepost”
+* Add `/* autoprefixer grid: on */` control comment (by Andrey Alexandrov).
+* Add duplicate `grid-area` support (by Bogdan Dolin).
+* Fix `grid-gap` support for rules with different specifity (by Bogdan Dolin).
+* Disable Grid in `@supports` at-rule with non-supported Grid features.
+* Improve Grid warnings (by Daniel Tonon).
+* Improve docs (by Joshua Hall, Mat Gadd, Roy Revelt, and Ivan).
+
 ## 9.1.5
 * Remove `@babel/register` from dependencies.
 
