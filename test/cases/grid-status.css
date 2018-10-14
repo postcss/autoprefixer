@@ -26,3 +26,10 @@
 .grid-2 {
   display: grid;
 }
+
+@supports (grid-auto-rows: 100px) {
+  .disabled {
+    display: grid;
+    grid-auto-rows: 100px;
+  }
+}
