@@ -354,21 +354,10 @@ f(require('caniuse-lite/data/features/css-selection'), browsers =>
 
 // Placeholder selector
 f(require('caniuse-lite/data/features/css-placeholder'), browsers => {
-  browsers = browsers.map(i => {
-    let [name, version] = i.split(' ')
-    if (name === 'firefox' && parseFloat(version) <= 18) {
-      return i + ' old'
-    } else if (name === 'ie') {
-      return i + ' old'
-    } else {
-      return i
-    }
-  })
-
   prefix(['::placeholder'], {
     selector: true,
     feature: 'css-placeholder',
-    browsers
+    browsers: browsers.concat(['ie 10 old', 'ie 11 old', 'firefox 18 old'])
   })
 })
 
