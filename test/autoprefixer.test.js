@@ -336,6 +336,20 @@ it('prevents doubling prefixes', () => {
   }
 })
 
+it('does not broke AST', () => {
+  function checkParent (node) {
+    node.walk(child => {
+      expect(child.parent).toBeDefined()
+      if (child.nodes) checkParent(child)
+    })
+  }
+  for (let type of COMMONS) {
+    let processor = postcss([prefixer(type)])
+    let input = read(type)
+    checkParent(processor.process(input).root)
+  }
+})
+
 it('parses difficult files', () => {
   let input = read('syntax')
   let result = postcss([cleaner]).process(input)
