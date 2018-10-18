@@ -140,6 +140,11 @@
   display: grid;
 }
 
+.warn_place_items {
+  place-items: start end;
+  display: grid;
+}
+
 .place-self-a {
   place-self: center;
 }

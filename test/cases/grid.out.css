@@ -182,6 +182,12 @@
   display: grid;
 }
 
+.warn_place_items {
+  place-items: start end;
+  display: -ms-grid;
+  display: grid;
+}
+
 .place-self-a {
   -ms-grid-row-align: center;
   -ms-grid-column-align: center;
