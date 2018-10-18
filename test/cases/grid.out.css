@@ -181,3 +181,15 @@
   display: -ms-grid;
   display: grid;
 }
+
+.place-self-a {
+  -ms-grid-row-align: center;
+  -ms-grid-column-align: center;
+  place-self: center;
+}
+
+.place-self-b {
+  -ms-grid-row-align: start;
+  -ms-grid-column-align: end;
+  place-self: start end;
+}

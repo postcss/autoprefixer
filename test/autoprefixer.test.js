@@ -593,7 +593,10 @@ describe('hacks', () => {
         'on grid containers. Try using justify-self on child elements ' +
         'instead: .warn_ie_justify > * { justify-self: center }',
       'autoprefixer: <css input>:135:3: IE does not support justify-content ' +
-        'on grid containers'
+        'on grid containers',
+      'autoprefixer: <css input>:140:3: IE does not support place-items ' +
+        'on grid containers. Try using place-self on child elements ' +
+        'instead: .warn_place_items > * { place-self: start end }'
     ])
   })
 

@@ -135,3 +135,11 @@
   justify-content: center;
   display: grid;
 }
+
+.place-self-a {
+  place-self: center;
+}
+
+.place-self-b {
+  place-self: start end;
+}
