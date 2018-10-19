@@ -35,7 +35,8 @@
 .grid {
   display: grid;
   grid-template-areas:
-    "a-conflict b-conflict";
+    "a-conflict a-conflict"
+    "b-conflict b-conflict";
 }
 
 .grid.conflict {

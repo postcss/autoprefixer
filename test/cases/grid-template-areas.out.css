@@ -58,7 +58,8 @@
   display: -ms-grid;
   display: grid;
   grid-template-areas:
-    "a-conflict b-conflict";
+    "a-conflict a-conflict"
+    "b-conflict b-conflict";
 }
 
 .grid.conflict {
@@ -72,23 +73,27 @@
 .a {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
   grid-area: a-conflict;
 }
 
 .grid.conflict > .a {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
 }
 
 .b {
-  -ms-grid-row: 1;
-  -ms-grid-column: 2;
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
   grid-area: b-conflict;
 }
 
 .grid.conflict > .b {
   -ms-grid-row: 2;
   -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
 }
 
 /****************\
