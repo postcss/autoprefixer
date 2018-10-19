@@ -629,22 +629,22 @@ describe('hacks', () => {
       .map(i => i.toString())
       .filter(str => str.includes('grid-template')))
       .toEqual([
-        'autoprefixer: <css input>:143:3: Autoprefixer cannot find ' +
+        'autoprefixer: <css input>:144:3: Autoprefixer cannot find ' +
         'a grid-template containing the duplicate grid-area ' +
         '"child" with full selector matching: .uncle',
-        'autoprefixer: <css input>:148:3: Autoprefixer cannot find ' +
+        'autoprefixer: <css input>:149:3: Autoprefixer cannot find ' +
         'a grid-template containing the duplicate grid-area ' +
         '"child" with full selector matching: .uncle',
-        'autoprefixer: <css input>:153:3: Autoprefixer cannot find ' +
+        'autoprefixer: <css input>:154:3: Autoprefixer cannot find ' +
         'a grid-template containing the duplicate grid-area ' +
         '"child" with full selector matching: .grand-parent .uncle-second',
-        'autoprefixer: <css input>:158:3: Autoprefixer cannot find ' +
+        'autoprefixer: <css input>:159:3: Autoprefixer cannot find ' +
         'a grid-template containing the duplicate grid-area ' +
         '"child" with full selector matching: .grand-parent .uncle-second',
-        'autoprefixer: <css input>:163:3: Autoprefixer cannot find ' +
+        'autoprefixer: <css input>:164:3: Autoprefixer cannot find ' +
         'a grid-template containing the duplicate grid-area ' +
         '"child" with full selector matching: .grand-parent .father.uncle',
-        'autoprefixer: <css input>:168:3: Autoprefixer cannot find ' +
+        'autoprefixer: <css input>:169:3: Autoprefixer cannot find ' +
         'a grid-template containing the duplicate grid-area ' +
         '"child" with full selector matching: .grand-parent.uncle .father'
       ])
