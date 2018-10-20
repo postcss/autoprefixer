@@ -724,7 +724,7 @@ f(grid, browsers => {
     'grid-row-start', 'grid-column-start',
     'grid-row-end', 'grid-column-end',
     'grid-row', 'grid-column', 'grid-area',
-    'grid-template', 'grid-template-areas'
+    'grid-template', 'grid-template-areas', 'place-self'
   ], {
     feature: 'css-grid',
     browsers
