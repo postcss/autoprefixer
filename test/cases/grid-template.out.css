@@ -433,7 +433,9 @@
   }
   .g-conflict-2 > .k-1 {
     -ms-grid-row: 1;
+    -ms-grid-row-span: 1;
     -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
   }
   .k-2 {
     -ms-grid-row: 1;
@@ -443,6 +445,7 @@
   .g-conflict-2 > .k-2 {
     -ms-grid-row: 1;
     -ms-grid-column: 3;
+    -ms-grid-column-span: 1;
   }
 }
 
