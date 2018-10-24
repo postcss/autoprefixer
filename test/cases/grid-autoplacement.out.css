@@ -25,7 +25,7 @@
 .grid-repeat {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 30px 1fr 30px 1fr 30px 1fr;
+  -ms-grid-columns: 1fr 30px 2fr 30px 1fr 30px 2fr 30px 1fr 30px 2fr 30px 1fr 30px 2fr;
   grid-template-columns: repeat(4, 1fr 2fr);
   -ms-grid-rows: auto 30px auto;
   grid-template-rows: repeat(2, auto);
