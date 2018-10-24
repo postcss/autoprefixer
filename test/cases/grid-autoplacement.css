@@ -31,3 +31,17 @@
     grid-gap: 30px;
   }
 }
+
+/* Must consider autoflow value */
+.grid-flow-column {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto auto;
+  grid-gap: 30px;
+}
+
+/* Show warning if rows are not defined */
+.grid-warning {
+  grid-template-columns: 1fr 1fr 1fr;
+}
