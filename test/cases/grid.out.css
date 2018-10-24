@@ -199,3 +199,17 @@
   -ms-grid-column-align: end;
   place-self: start end;
 }
+
+/* must have correct -ms-grid-rows/columns values */
+.grid-correct-rows-columns {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 50px 20px 1fr 20px 2fr 20px 1fr 20px 2fr 20px 50px;
+  grid-template-columns: 50px repeat(2, 1fr 2fr) 50px;
+  -ms-grid-rows: auto 20px 100px;
+  grid-template-rows: repeat(1, auto 100px);
+  grid-gap: 20px;
+  grid-template-areas:
+    ". . . . . ."
+    ". . . . . .";
+}

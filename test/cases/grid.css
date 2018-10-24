@@ -148,3 +148,14 @@
 .place-self-b {
   place-self: start end;
 }
+
+/* must have correct -ms-grid-rows/columns values */
+.grid-correct-rows-columns {
+  display: grid;
+  grid-template-columns: 50px repeat(2, 1fr 2fr) 50px;
+  grid-template-rows: repeat(1, auto 100px);
+  grid-gap: 20px;
+  grid-template-areas:
+    ". . . . . ."
+    ". . . . . .";
+}
