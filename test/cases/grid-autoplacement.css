@@ -1,0 +1,33 @@
+
+.grid-basic {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-gap: 30px;
+}
+
+/* Must work with repeat function */
+.grid-repeat {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr 2fr);
+  grid-template-rows: repeat(2, auto);
+  grid-gap: 30px;
+}
+
+/* Complex case */
+.grid-complex {
+  display: grid;
+  grid-template-columns: 1fr repeat(2, minmax(100px, 200px)) 1fr;
+  grid-template-rows: 100px repeat(2, auto);
+  grid-gap: 30px 5px;
+}
+
+/* Must work inside media */
+@media (min-width: 400px) {
+  .grid-media {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    grid-gap: 30px;
+  }
+}
