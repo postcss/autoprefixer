@@ -600,6 +600,14 @@ describe('hacks', () => {
     ])
   })
 
+  it('supports grid autoplacement', () => {
+    let input = read('grid-autoplacement')
+    let output = read('grid-autoplacement.out')
+    let instance = prefixer('grid')
+    let result = postcss([instance]).process(input)
+    expect(result.css).toEqual(output)
+  })
+
   it('shows Grid warnings only for IE', () => {
     let input = 'a { grid-template-rows: repeat(auto-fit, 1px) }'
     let instance = autoprefixer({ browsers: 'chrome 27', grid: true })
