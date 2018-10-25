@@ -580,9 +580,6 @@ describe('hacks', () => {
         'supported by IE',
       'autoprefixer: <css input>:102:3: grid-auto-rows is not ' +
         'supported by IE',
-      // TODO: remove this warning later
-      // 'autoprefixer: <css input>:103:3: grid-auto-flow is not ' +
-      //   'supported by IE',
       'autoprefixer: <css input>:104:33: auto-fill value is not ' +
         'supported by IE',
       'autoprefixer: <css input>:105:30: auto-fit value is not ' +
@@ -599,7 +596,8 @@ describe('hacks', () => {
         'on grid containers',
       'autoprefixer: <css input>:140:3: IE does not support place-items ' +
         'on grid containers. Try using place-self on child elements ' +
-        'instead: .warn_place_items > * { place-self: start end }'
+        'instead: .warn_place_items > * { place-self: start end }',
+      'autoprefixer: <css input>:164:3: grid-auto-flow is not supported by IE'
     ])
   })
 
@@ -611,9 +609,6 @@ describe('hacks', () => {
     expect(result.css).toEqual(output)
 
     expect(result.warnings().map(i => i.toString())).toEqual([
-      // TODO: remove this warning later
-      // 'autoprefixer: <css input>:38:3: grid-auto-flow' +
-      // 'is not supported by IE',
       'autoprefixer: <css input>:47:3: grid-auto-flow: dense ' +
         'is not supported by IE',
       'autoprefixer: <css input>:48:3: Autoplacement does not work ' +
