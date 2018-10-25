@@ -580,8 +580,9 @@ describe('hacks', () => {
         'supported by IE',
       'autoprefixer: <css input>:102:3: grid-auto-rows is not ' +
         'supported by IE',
-      'autoprefixer: <css input>:103:3: grid-auto-flow is not ' +
-        'supported by IE',
+      // TODO: remove this warning later
+      // 'autoprefixer: <css input>:103:3: grid-auto-flow is not ' +
+      //   'supported by IE',
       'autoprefixer: <css input>:104:33: auto-fill value is not ' +
         'supported by IE',
       'autoprefixer: <css input>:105:30: auto-fit value is not ' +
@@ -611,8 +612,11 @@ describe('hacks', () => {
 
     expect(result.warnings().map(i => i.toString())).toEqual([
       // TODO: remove this warning later
-      'autoprefixer: <css input>:38:3: grid-auto-flow is not supported by IE',
-      'autoprefixer: <css input>:46:3: Autoplacement does not work ' +
+      // 'autoprefixer: <css input>:38:3: grid-auto-flow' +
+      // 'is not supported by IE',
+      'autoprefixer: <css input>:47:3: grid-auto-flow: dense ' +
+        'is not supported by IE',
+      'autoprefixer: <css input>:48:3: Autoplacement does not work ' +
         'without grid-template-rows property'
     ])
   })

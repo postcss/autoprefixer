@@ -184,8 +184,10 @@
   -ms-grid-column: 5;
 }
 
-/* Show warning if rows are not defined */
+/* Show warning if rows are not defined
+   and dense value is used */
 .grid-warning {
+  grid-auto-flow: dense;
   -ms-grid-columns: 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr;
 }

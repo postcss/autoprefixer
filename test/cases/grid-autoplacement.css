@@ -41,7 +41,9 @@
   grid-gap: 30px;
 }
 
-/* Show warning if rows are not defined */
+/* Show warning if rows are not defined
+   and dense value is used */
 .grid-warning {
+  grid-auto-flow: dense;
   grid-template-columns: 1fr 1fr 1fr;
 }
