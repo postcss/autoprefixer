@@ -612,7 +612,9 @@ describe('hacks', () => {
       'autoprefixer: <css input>:47:3: grid-auto-flow: dense ' +
         'is not supported by IE',
       'autoprefixer: <css input>:48:3: Autoplacement does not work ' +
-        'without grid-template-rows property'
+        'without grid-template-rows property',
+      'autoprefixer: <css input>:53:3: grid-auto-flow works only if grid-temp' +
+      'late-rows and grid-template-columns are present in the same rule'
     ])
   })
 

@@ -186,8 +186,13 @@
 
 /* Show warning if rows are not defined
    and dense value is used */
-.grid-warning {
-  grid-auto-flow: dense;
+.grid-warning-dense {
+  grid-auto-flow: column dense;
   -ms-grid-columns: 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr;
+}
+
+/* Show warning autoflow used without rows/columns */
+.grid-warning-autoflow {
+  grid-auto-flow: column;
 }
