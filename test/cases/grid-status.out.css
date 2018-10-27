@@ -37,3 +37,37 @@
     grid-auto-rows: 100px;
   }
 }
+
+.grid-autoplace-enabled {
+  /* autoprefixer grid autoplace: on */
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 30px 1fr 30px 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  -ms-grid-rows: auto;
+  grid-template-rows: auto;
+  grid-gap: 30px;
+}
+
+.grid-autoplace-enabled > *:nth-child(1) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+}
+
+.grid-autoplace-enabled > *:nth-child(2) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+}
+
+.grid-autoplace-enabled > *:nth-child(3) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 5;
+}
+
+/* autoprefixer grid autoplace: on */
+.grid-autoplace-disabled {
+  /* autoprefixer grid: off */
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-gap: 30px;
+}

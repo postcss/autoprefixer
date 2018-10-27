@@ -196,3 +196,12 @@
 .grid-warning-autoflow {
   grid-auto-flow: column;
 }
+
+.grid-autoplace-disabled {
+  /* autoprefixer grid autoplace: off */
+  -ms-grid-columns: 1fr 30px 1fr 30px 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  -ms-grid-rows: auto;
+  grid-template-rows: auto;
+  grid-gap: 30px;
+}
