@@ -97,7 +97,7 @@ gulp.task('compile-playground', () => {
   let autoprefixer = require('./build')
   return gulp.src('./playground/input.css')
     .pipe(rename('output.css'))
-    .pipe(postcss([autoprefixer({ grid: true })]))
+    .pipe(postcss([autoprefixer({ grid: 'autoplace' })]))
     .pipe(gulp.dest('./playground'))
 })
 
