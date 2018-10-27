@@ -604,7 +604,11 @@ describe('hacks', () => {
   it('supports grid autoplacement', () => {
     let input = read('grid-autoplacement')
     let output = read('grid-autoplacement.out')
-    let instance = prefixer('grid')
+    let instance = autoprefixer({
+      browsers: ['Chrome 25', 'Edge 12', 'IE 10'],
+      cascade: false,
+      grid: 'autoplace'
+    })
     let result = postcss([instance]).process(input)
     expect(result.css).toEqual(output)
 
