@@ -54,7 +54,7 @@
 }
 
 .grid-autoplace-disabled {
-  /* autoprefixer grid autoplace: off */
+  /* autoprefixer grid: no-autoplace */
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto;
   grid-gap: 30px;

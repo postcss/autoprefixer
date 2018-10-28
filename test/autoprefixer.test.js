@@ -253,14 +253,14 @@ it('sets grid option via comment', () => {
   expect(result.css).toEqual(output)
   expect(result.warnings().map(i => i.toString())).toEqual([
     'autoprefixer: <css input>:2:1: Second Autoprefixer grid control ' +
-        'comment was ignored. Autoprefixer applies control comment ' +
-        'to whole block, not to next rules.',
-    'autoprefixer: <css input>:45:1: Second Autoprefixer grid control ' +
-        'comment was ignored. Autoprefixer applies control comment ' +
-        'to whole block, not to next rules.',
+        'comment was ignored. Autoprefixer applies control comments ' +
+        'to the whole block, not to the next rules.',
     'autoprefixer: <css input>:20:3: Second Autoprefixer grid control ' +
-        'comment was ignored. Autoprefixer applies control comment ' +
-        'to whole block, not to next rules.'
+        'comment was ignored. Autoprefixer applies control comments ' +
+        'to the whole block, not to the next rules.',
+    'autoprefixer: <css input>:47:3: Second Autoprefixer grid control ' +
+        'comment was ignored. Autoprefixer applies control comments ' +
+        'to the whole block, not to the next rules.'
   ])
 })
 

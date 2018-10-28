@@ -198,7 +198,7 @@
 }
 
 .grid-autoplace-disabled {
-  /* autoprefixer grid autoplace: off */
+  /* autoprefixer grid: no-autoplace */
   -ms-grid-columns: 1fr 30px 1fr 30px 1fr;
   grid-template-columns: 1fr 1fr 1fr;
   -ms-grid-rows: auto;

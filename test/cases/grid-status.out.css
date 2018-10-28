@@ -39,7 +39,7 @@
 }
 
 .grid-autoplace-enabled {
-  /* autoprefixer grid autoplace: on */
+  /* autoprefixer grid: autoplace */
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 30px 1fr 30px 1fr;
@@ -64,10 +64,18 @@
   -ms-grid-column: 5;
 }
 
-/* autoprefixer grid autoplace: on */
 .grid-autoplace-disabled {
   /* autoprefixer grid: off */
+  /* autoprefixer grid: autoplace */
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto;
   grid-gap: 30px;
+}
+
+.grid-autoplace-disabled-2 {
+  /* autoprefixer grid: no-autoplace */
+  -ms-grid-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  -ms-grid-rows: auto;
+  grid-template-rows: auto;
 }
