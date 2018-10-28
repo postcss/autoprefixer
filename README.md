@@ -522,6 +522,7 @@ There are three types of control comments:
 * `/* autoprefixer: ignore next */` disable only next property
   or next rule selector or at-rule parameters (but not rule/at‑rule body).
 * `/* autoprefixer grid: on */` enable grid option. Use `off` to disable this option.
+* `/* autoprefixer grid: autoplace */` enable grid option with autoplacement support. Use `no-autoplace` to disable this option.
 
 You can also use comments recursively:
 
@@ -558,9 +559,13 @@ Available options are:
 * `flexbox` (boolean|string): should Autoprefixer add prefixes for flexbox
   properties. With `"no-2009"` value Autoprefixer will add prefixes only
   for final and IE versions of specification. Default is `true`.
-* `grid` (boolean): should Autoprefixer add IE prefixes for Grid Layout
+* `grid` (boolean|"autoplace"): should Autoprefixer add IE prefixes for Grid Layout
   properties. Default is `false`. You can also use `/* autoprefixer grid: on */`
   comment in CSS.
+  * `grid` has support for `autoplace` value, which works in the same
+    way as `grid: true` but also adds autoplacement feature for grid cells in IE.
+    You can use CSS comment `/* autoprefixer grid: autoplace */` to enable this
+    feature
 * `stats` (object): custom [usage statistics] for `> 10% in my stats`
   browsers query.
 * `browsers` (array): list of queries for target browsers. Try to not use it.
