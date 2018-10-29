@@ -570,7 +570,7 @@ There are three types of control comments:
   grid translations for the whole block:
     * `autoplace`: enable grid translations with autoplacement support.
     * `no-autoplace`: enable grid translations with autoplacement support *disabled*.
-      (for backwards compatibility, `on` can also be used for this purpose)
+      (alias for deprecated value `on`)
     * `off`: disable all grid translations.
 
 You can also use comments recursively:
