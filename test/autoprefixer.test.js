@@ -7,7 +7,7 @@ let fs = require('fs')
 let grider = autoprefixer({
   browsers: ['Chrome 25', 'Edge 12', 'IE 10'],
   cascade: false,
-  grid: true
+  grid: 'autoplace'
 })
 
 let cleaner = autoprefixer({
@@ -607,11 +607,7 @@ describe('hacks', () => {
   it('supports grid autoplacement', () => {
     let input = read('grid-autoplacement')
     let output = read('grid-autoplacement.out')
-    let instance = autoprefixer({
-      browsers: ['Chrome 25', 'Edge 12', 'IE 10'],
-      cascade: false,
-      grid: 'autoplace'
-    })
+    let instance = prefixer('grid')
     let result = postcss([instance]).process(input)
     expect(result.css).toEqual(output)
 
