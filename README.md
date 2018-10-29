@@ -50,6 +50,48 @@ Twitter account for news and releases: [@autoprefixer].
 [cult]:             http://cultofmartians.com/tasks/autoprefixer-grid.html
 
 
+
+## Contents  <!-- omit in toc -->
+
+<details>
+  <summary>View table of contents</summary>
+
+- [Browsers](#browsers)
+- [FAQ](#faq)
+        - [Does Autoprefixer polyfill Grid Layout for IE?](#does-autoprefixer-polyfill-grid-layout-for-ie)
+        - [No prefixes in production](#no-prefixes-in-production)
+        - [What is the unprefixed version of `-webkit-min-device-pixel-ratio`?](#what-is-the-unprefixed-version-of--webkit-min-device-pixel-ratio)
+        - [Does it add polyfills?](#does-it-add-polyfills)
+        - [Why doesn’t Autoprefixer add prefixes to `border-radius`?](#why-doesnt-autoprefixer-add-prefixes-to-border-radius)
+        - [Why does Autoprefixer use unprefixed properties in `@-webkit-keyframes`?](#why-does-autoprefixer-use-unprefixed-properties-in--webkit-keyframes)
+        - [How to work with legacy `-webkit-` only code?](#how-to-work-with-legacy--webkit--only-code)
+        - [Does Autoprefixer add `-epub-` prefix?](#does-autoprefixer-add--epub--prefix)
+        - [Why doesn’t Autoprefixer transform generic font-family `system-ui`?](#why-doesnt-autoprefixer-transform-generic-font-family-system-ui)
+- [Usage](#usage)
+    - [Gulp](#gulp)
+    - [Webpack](#webpack)
+    - [Grunt](#grunt)
+    - [Other Build Tools:](#other-build-tools)
+    - [Preprocessors](#preprocessors)
+    - [CSS-in-JS](#css-in-js)
+    - [GUI Tools](#gui-tools)
+    - [CLI](#cli)
+    - [JavaScript](#javascript)
+    - [Text Editors and IDE](#text-editors-and-ide)
+- [Warnings](#warnings)
+- [Disabling](#disabling)
+    - [Prefixes](#prefixes)
+    - [Features](#features)
+    - [Control Comments](#control-comments)
+- [Options](#options)
+- [Grid Autoplacement support in IE](#grid-autoplacement-support-in-ie)
+    - [Autoplacement limitations](#autoplacement-limitations)
+        - [Both columns and rows must be defined](#both-columns-and-rows-must-be-defined)
+        - [No manual cell placement or column/row spans allowed inside an autoplacement grid](#no-manual-cell-placement-or-columnrow-spans-allowed-inside-an-autoplacement-grid)
+- [Debug](#debug)
+
+</details>
+
 ## Browsers
 
 Autoprefixer uses [Browserslist], so you can specify the browsers
