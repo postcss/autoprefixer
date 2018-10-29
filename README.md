@@ -58,15 +58,15 @@ Twitter account for news and releases: [@autoprefixer].
 
 - [Browsers](#browsers)
 - [FAQ](#faq)
-        - [Does Autoprefixer polyfill Grid Layout for IE?](#does-autoprefixer-polyfill-grid-layout-for-ie)
-        - [No prefixes in production](#no-prefixes-in-production)
-        - [What is the unprefixed version of `-webkit-min-device-pixel-ratio`?](#what-is-the-unprefixed-version-of--webkit-min-device-pixel-ratio)
-        - [Does it add polyfills?](#does-it-add-polyfills)
-        - [Why doesn’t Autoprefixer add prefixes to `border-radius`?](#why-doesnt-autoprefixer-add-prefixes-to-border-radius)
-        - [Why does Autoprefixer use unprefixed properties in `@-webkit-keyframes`?](#why-does-autoprefixer-use-unprefixed-properties-in--webkit-keyframes)
-        - [How to work with legacy `-webkit-` only code?](#how-to-work-with-legacy--webkit--only-code)
-        - [Does Autoprefixer add `-epub-` prefix?](#does-autoprefixer-add--epub--prefix)
-        - [Why doesn’t Autoprefixer transform generic font-family `system-ui`?](#why-doesnt-autoprefixer-transform-generic-font-family-system-ui)
+    - [Does Autoprefixer polyfill Grid Layout for IE?](#does-autoprefixer-polyfill-grid-layout-for-ie)
+    - [No prefixes in production](#no-prefixes-in-production)
+    - [What is the unprefixed version of `-webkit-min-device-pixel-ratio`?](#what-is-the-unprefixed-version-of--webkit-min-device-pixel-ratio)
+    - [Does it add polyfills?](#does-it-add-polyfills)
+    - [Why doesn’t Autoprefixer add prefixes to `border-radius`?](#why-doesnt-autoprefixer-add-prefixes-to-border-radius)
+    - [Why does Autoprefixer use unprefixed properties in `@-webkit-keyframes`?](#why-does-autoprefixer-use-unprefixed-properties-in--webkit-keyframes)
+    - [How to work with legacy `-webkit-` only code?](#how-to-work-with-legacy--webkit--only-code)
+    - [Does Autoprefixer add `-epub-` prefix?](#does-autoprefixer-add--epub--prefix)
+    - [Why doesn’t Autoprefixer transform generic font-family `system-ui`?](#why-doesnt-autoprefixer-transform-generic-font-family-system-ui)
 - [Usage](#usage)
     - [Gulp](#gulp)
     - [Webpack](#webpack)
@@ -116,7 +116,7 @@ See [Browserslist docs] for queries, browser names, config format, and defaults.
 
 ## FAQ
 
-#### Does Autoprefixer polyfill Grid Layout for IE?
+### Does Autoprefixer polyfill Grid Layout for IE?
 
 Autoprefixer can be used to use Grid Layout for IE 10 and IE 11, but this
 polyfill will not work in 100% of cases. This is why it is disabled by default.
@@ -167,7 +167,7 @@ See also:
 [`postcss-gap-properties`]:                     https://github.com/jonathantneal/postcss-gap-properties
 [`postcss-grid-kiss`]:                          https://github.com/sylvainpolletvillard/postcss-grid-kiss
 
-#### No prefixes in production
+### No prefixes in production
 
 Many other tools contain Autoprefixer. For example, webpack uses Autoprefixer
 to minify CSS by cleaning unnecessary prefixes.
@@ -183,7 +183,7 @@ cssnano, doiuse, cssnext, etc) use the same browsers list.
 [browserslist config file]: https://github.com/ai/browserslist#config-file
 
 
-#### What is the unprefixed version of `-webkit-min-device-pixel-ratio`?
+### What is the unprefixed version of `-webkit-min-device-pixel-ratio`?
 
 ```css
 @media (min-resolution: 2dppx) {
@@ -206,7 +206,7 @@ Will be compiled to:
 ```
 
 
-#### Does it add polyfills?
+### Does it add polyfills?
 
 No. Autoprefixer only adds prefixes.
 
@@ -227,7 +227,7 @@ you might take a look at:
 [Oldie]:                  https://github.com/jonathantneal/oldie
 
 
-#### Why doesn’t Autoprefixer add prefixes to `border-radius`?
+### Why doesn’t Autoprefixer add prefixes to `border-radius`?
 
 Developers are often surprised by how few prefixes are required today.
 If Autoprefixer doesn’t add prefixes to your CSS, check if they’re still
@@ -236,13 +236,13 @@ required on [Can I Use].
 [Can I Use]: http://caniuse.com/
 
 
-#### Why does Autoprefixer use unprefixed properties in `@-webkit-keyframes`?
+### Why does Autoprefixer use unprefixed properties in `@-webkit-keyframes`?
 
 Browser teams can remove some prefixes before others, so we try to use all
 combinations of prefixed/unprefixed values.
 
 
-#### How to work with legacy `-webkit-` only code?
+### How to work with legacy `-webkit-` only code?
 
 Autoprefixer needs unprefixed property to add prefixes. So if you only
 wrote `-webkit-gradient` without W3C’s `gradient`,
@@ -254,7 +254,7 @@ Use [postcss-unprefix] before Autoprefixer.
 [postcss-unprefix]: https://github.com/gucong3000/postcss-unprefix
 
 
-#### Does Autoprefixer add `-epub-` prefix?
+### Does Autoprefixer add `-epub-` prefix?
 
 No, Autoprefixer works only with browsers prefixes from Can I Use.
 But you can use [postcss-epub]
@@ -263,7 +263,7 @@ for prefixing ePub3 properties.
 [postcss-epub]: https://github.com/Rycochet/postcss-epub
 
 
-#### Why doesn’t Autoprefixer transform generic font-family `system-ui`?
+### Why doesn’t Autoprefixer transform generic font-family `system-ui`?
 
 `system-ui` is technically not a prefix and the transformation is not
 future-proof. You can use [postcss-font-family-system-ui] to transform
