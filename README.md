@@ -891,7 +891,7 @@ This will be the output:
 }
 ```
 
-IE will place **both** `.grid-cell`, `::before` and `::after` in row 1 column 1.
+IE will place `.grid-cell`, `::before` and `::after` in row 1 column 1.
 Modern browsers on the other hand will place `::before` in row 1 column 1,
 `.grid-cell` in row 1 column 2, and `::after` in row 2 column 1.
 
