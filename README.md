@@ -851,7 +851,11 @@ And you write this CSS:
 }
 
 .grid::before {
-  content: '';
+  content: 'before';
+}
+
+.grid::after {
+  content: 'after';
 }
 ```
 
