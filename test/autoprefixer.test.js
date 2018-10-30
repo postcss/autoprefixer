@@ -421,6 +421,30 @@ it('has disabled grid options by default', () => {
   expect(result.css).toEqual(output)
 })
 
+it('has different outputs for different grid options', () => {
+  function ap (gridValue) {
+    return autoprefixer({ browsers: ['Edge 12', 'IE 10'], grid: gridValue })
+  }
+  let input = read('grid-options')
+  let outputAutoplace = read('grid-options.autoplace.out')
+  let outputNoAutoplace = read('grid-options.no-autoplace.out')
+  let outputDisabled = read('grid-options.disabled.out')
+
+  let resultAutoplace = postcss([ap('autoplace')]).process(input)
+  let resultNoAutoplace = postcss([ap('no-autoplace')]).process(input)
+  let resultEnabled = postcss([ap(true)]).process(input)
+  let resultDisabled = postcss([ap(false)]).process(input)
+
+  // output for grid: 'autoplace'
+  expect(resultAutoplace.css).toEqual(outputAutoplace)
+  // output for grid: 'no-autoplace'
+  expect(resultNoAutoplace.css).toEqual(outputNoAutoplace)
+  // output for grid: true is the same as for 'no-autoplace'
+  expect(resultEnabled.css).toEqual(outputNoAutoplace)
+  // output for grid: false
+  expect(resultDisabled.css).toEqual(outputDisabled)
+})
+
 it('has option to disable flexbox support', () => {
   let css = read('flexbox')
   let instance = autoprefixer({ browsers: ['IE 10'], flexbox: false })
