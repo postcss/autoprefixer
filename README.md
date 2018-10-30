@@ -89,6 +89,7 @@ Twitter account for news and releases: [@autoprefixer].
     - [Autoplacement limitations](#autoplacement-limitations)
         - [Both columns and rows must be defined](#both-columns-and-rows-must-be-defined)
         - [No manual cell placement or column/row spans allowed inside an autoplacement grid](#no-manual-cell-placement-or-columnrow-spans-allowed-inside-an-autoplacement-grid)
+        - [Do not create `::before` and `::after` pseudo elements](#do-not-create-before-and-after-pseudo-elements)
 - [Debug](#debug)
 
 </details>
@@ -830,6 +831,71 @@ If manual cell placement is required, we recommend using `grid-template` or
 }
 ```
 
+#### Do not create `::before` and `::after` pseudo elements
+
+Let's say you have this HTML:
+
+```html
+<div class="grid">
+    <div class="grid-cell"></div>
+</div>
+```
+
+And you write this CSS:
+
+```css
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+}
+
+.grid::before {
+  content: '';
+}
+```
+
+This will be the output:
+
+```css
+.grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: auto;
+  grid-template-rows: auto;
+}
+
+.grid > *:nth-child(1) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+}
+
+
+.grid > *:nth-child(2) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+}
+
+.grid::before {
+  content: 'before';
+}
+
+.grid::after {
+  content: 'after';
+}
+```
+
+IE will place **both** `.grid-cell`, `::before` and `::after` in row 1 column 1.
+Modern browsers on the other hand will place `::before` in row 1 column 1,
+`.grid-cell` in row 1 column 2, and `::after` in row 2 column 1.
+
+See this [Code Pen](https://codepen.io/daniel-tonon/pen/gBymVw) to see a visualization
+of the issue. View the Code Pen in both a modern browser and IE to see the difference.
+
+Note that you can still create `::before` and `::after` elements as long as you manually
+place them outside the explicit grid.
 
 ## Debug
 
