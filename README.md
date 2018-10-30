@@ -122,7 +122,7 @@ See [Browserslist docs] for queries, browser names, config format, and defaults.
 Autoprefixer can be used to translate modern CSS Grid syntax into IE 10 and IE 11 syntax,
 but this polyfill will not work in 100% of cases. This is why it is disabled by default.
 
-First, you need to enable Grid prefixes by using either the `grid: true` option or the `/* autoprefixer grid: autoplace */` control comment.
+First, you need to enable Grid prefixes by using either the `grid: "autoplace"` option or the `/* autoprefixer grid: autoplace */` control comment.
 
 Second, you need to test every fix with Grid in IE. It is not an enable and
 forget feature, but it is still very useful.
@@ -625,8 +625,11 @@ Available options are:
 * `grid` (boolean|"autoplace"): should Autoprefixer add IE prefixes for Grid Layout
   properties?
   * `false` (default): prevent Autoprefixer from outputting CSS Grid translations.
-  * `"autoplace"`: enable Autoprefixer grid translations and *include* autoplacement support. You can also use `/* autoprefixer grid: autoplace */` in your CSS.
-  * `true`: enable Autoprefixer grid translations but *exclude* autoplacement support. You can also use `/* autoprefixer grid: no-autoplace */` in your CSS.
+  * `"autoplace"`: enable Autoprefixer grid translations and *include* autoplacement
+    support. You can also use `/* autoprefixer grid: autoplace */` in your CSS.
+  * `"no-autoplace"`: enable Autoprefixer grid translations but *exclude* autoplacement
+    support. You can also use `/* autoprefixer grid: no-autoplace */` in your CSS.
+    (alias for the deprecated `true` value)
 * `stats` (object): custom [usage statistics] for `> 10% in my stats`
   browsers query.
 * `browsers` (array): list of queries for target browsers. Try to not use it.
