@@ -522,10 +522,10 @@ If some prefixes were generated incorrectly, please create an [issue on GitHub].
 
 ### Features
 
-You can use these plugin options to disable some of Autoprefixer’s features.
+You can use these plugin options to control some of Autoprefixer’s features.
 
 * `grid: "autoplace"` will enable `-ms-` prefixes for Grid Layout including some
-  [limited autoplacment support](#grid-autoplacement-support-in-ie).
+  [limited autoplacement support](#grid-autoplacement-support-in-ie).
 * `supports: false` will disable `@supports` parameters prefixing.
 * `flexbox: false` will disable flexbox properties prefixing.
   Or `flexbox: "no-2009"` will add prefixes only for final and IE
@@ -623,7 +623,7 @@ Available options are:
 * `flexbox` (boolean|string): should Autoprefixer add prefixes for flexbox
   properties. With `"no-2009"` value Autoprefixer will add prefixes only
   for final and IE versions of specification. Default is `true`.
-* `grid` (boolean|"autoplace"): should Autoprefixer add IE prefixes for Grid Layout
+* `grid` (false|"autoplace"|"no-autoplace"): should Autoprefixer add IE prefixes for Grid Layout
   properties?
   * `false` (default): prevent Autoprefixer from outputting CSS Grid translations.
   * `"autoplace"`: enable Autoprefixer grid translations and *include* autoplacement
