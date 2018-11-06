@@ -641,7 +641,9 @@ describe('hacks', () => {
       'autoprefixer: <css input>:48:3: Autoplacement does not work ' +
         'without grid-template-rows property',
       'autoprefixer: <css input>:53:3: grid-auto-flow works only if grid-temp' +
-      'late-rows and grid-template-columns are present in the same rule'
+      'late-rows and grid-template-columns are present in the same rule',
+      'autoprefixer: <css input>:61:3: grid-gap works only if grid-temp' +
+      'late(-areas) is declared or when grid option is set to "autoplace"'
     ])
   })
 
