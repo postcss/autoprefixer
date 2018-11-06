@@ -53,10 +53,14 @@
   grid-auto-flow: column;
 }
 
-/* Show warning disable autoplace and show warning about grid-gap */
 .grid-autoplace-disabled {
   /* autoprefixer grid: no-autoplace */
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto;
+  grid-gap: 30px;
+}
+
+.grid-autoplace-gap-warn {
+  grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 30px;
 }

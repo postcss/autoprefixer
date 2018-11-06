@@ -197,12 +197,17 @@
   grid-auto-flow: column;
 }
 
-/* Show warning disable autoplace and show warning about grid-gap */
 .grid-autoplace-disabled {
   /* autoprefixer grid: no-autoplace */
   -ms-grid-columns: 1fr 30px 1fr 30px 1fr;
   grid-template-columns: 1fr 1fr 1fr;
   -ms-grid-rows: auto;
   grid-template-rows: auto;
+  grid-gap: 30px;
+}
+
+.grid-autoplace-gap-warn {
+  -ms-grid-columns: 1fr 30px 1fr 30px 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 30px;
 }
