@@ -90,6 +90,7 @@ Twitter account for news and releases: [@autoprefixer].
         - [Both columns and rows must be defined](#both-columns-and-rows-must-be-defined)
         - [No manual cell placement or column/row spans allowed inside an autoplacement grid](#no-manual-cell-placement-or-columnrow-spans-allowed-inside-an-autoplacement-grid)
         - [Do not create `::before` and `::after` pseudo elements](#do-not-create-before-and-after-pseudo-elements)
+        - [When changing the `grid gap` value, columns and rows must be re-declared](#when-changing-the-grid-gap-value-columns-and-rows-must-be-re-declared)
 - [Debug](#debug)
 
 </details>
@@ -900,6 +901,56 @@ of the issue. View the Code Pen in both a modern browser and IE to see the diffe
 
 Note that you can still create `::before` and `::after` elements as long as you manually
 place them outside the explicit grid.
+
+#### When changing the `grid gap` value, columns and rows must be re-declared
+
+If you wish to change the size of a `grid-gap`, you will need to redeclare the grid columns and rows.
+
+```css
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-gap: 50px;
+}
+
+/* This will *NOT* work in IE */
+@media (max-width: 600px) {
+  .grid {
+    grid-gap: 20px;
+  }
+}
+
+/* This will *NOT* work in IE */
+.grid.small-gap {
+  grid-gap: 20px;
+}
+```
+
+```css
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-gap: 50px;
+}
+
+/* This *WILL* work in IE */
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-gap: 20px;
+  }
+}
+
+/* This *WILL* work in IE */
+.grid.small-gap {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-gap: 20px;
+}
+```
 
 ## Debug
 
