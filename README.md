@@ -627,12 +627,12 @@ Available options are:
   for final and IE versions of specification. Default is `true`.
 * `grid` (false|"autoplace"|"no-autoplace"): should Autoprefixer add IE prefixes for Grid Layout
   properties?
-  * `false` (default): prevent Autoprefixer from outputting CSS Grid translations.
-  * `"autoplace"`: enable Autoprefixer grid translations and *include* autoplacement
-    support. You can also use `/* autoprefixer grid: autoplace */` in your CSS.
-  * `"no-autoplace"`: enable Autoprefixer grid translations but *exclude* autoplacement
-    support. You can also use `/* autoprefixer grid: no-autoplace */` in your CSS.
-    (alias for the deprecated `true` value)
+    * `false` (default): prevent Autoprefixer from outputting CSS Grid translations.
+    * `"autoplace"`: enable Autoprefixer grid translations and *include* autoplacement
+      support. You can also use `/* autoprefixer grid: autoplace */` in your CSS.
+    * `"no-autoplace"`: enable Autoprefixer grid translations but *exclude* autoplacement
+      support. You can also use `/* autoprefixer grid: no-autoplace */` in your CSS.
+      (alias for the deprecated `true` value)
 * `stats` (object): custom [usage statistics] for `> 10% in my stats`
   browsers query.
 * `browsers` (array): list of queries for target browsers. Try to not use it.
@@ -678,33 +678,33 @@ Autoprefixer supports autoplacement by using `nth-child` CSS selectors. It creat
 /* autoprefixer grid: autoplace */
 
 .autoplacement-example {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr 20px 1fr;
-  grid-template-columns: 1fr 1fr;
-  -ms-grid-rows: auto 20px auto;
-  grid-template-rows: auto auto;
-  grid-gap: 20px;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 20px 1fr;
+    grid-template-columns: 1fr 1fr;
+    -ms-grid-rows: auto 20px auto;
+    grid-template-rows: auto auto;
+    grid-gap: 20px;
 }
 
 .autoplacement-example > *:nth-child(1) {
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
 }
 
 .autoplacement-example > *:nth-child(2) {
-  -ms-grid-row: 1;
-  -ms-grid-column: 3;
+    -ms-grid-row: 1;
+    -ms-grid-column: 3;
 }
 
 .autoplacement-example > *:nth-child(3) {
-  -ms-grid-row: 3;
-  -ms-grid-column: 1;
+    -ms-grid-row: 3;
+    -ms-grid-column: 1;
 }
 
 .autoplacement-example > *:nth-child(4) {
-  -ms-grid-row: 3;
-  -ms-grid-column: 3;
+    -ms-grid-row: 3;
+    -ms-grid-column: 3;
 }
 ```
 
@@ -781,8 +781,8 @@ so unfortunately this little snippet will _never_ be IE friendly.
 
 ```css
 .grid {
-  /* This will never be IE friendly */
-  grid-template-columns: repeat(auto-fit, min-max(200px, 1fr))
+    /* This will never be IE friendly */
+    grid-template-columns: repeat(auto-fit, min-max(200px, 1fr))
 }
 ```
 
@@ -861,17 +861,17 @@ And you write this CSS:
 
 ```css
 .grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
 }
 
 .grid::before {
-  content: 'before';
+    content: 'before';
 }
 
 .grid::after {
-  content: 'after';
+    content: 'after';
 }
 ```
 
@@ -879,31 +879,31 @@ This will be the output:
 
 ```css
 .grid {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr 1fr;
-  grid-template-columns: 1fr 1fr;
-  -ms-grid-rows: auto;
-  grid-template-rows: auto;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    -ms-grid-rows: auto;
+    grid-template-rows: auto;
 }
 
 .grid > *:nth-child(1) {
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
 }
 
 
 .grid > *:nth-child(2) {
-  -ms-grid-row: 1;
-  -ms-grid-column: 2;
+    -ms-grid-row: 1;
+    -ms-grid-column: 2;
 }
 
 .grid::before {
-  content: 'before';
+    content: 'before';
 }
 
 .grid::after {
-  content: 'after';
+    content: 'after';
 }
 ```
 
@@ -923,47 +923,47 @@ If you wish to change the size of a `grid-gap`, you will need to redeclare the g
 
 ```css
 .grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto;
-  grid-gap: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-gap: 50px;
 }
 
 /* This will *NOT* work in IE */
 @media (max-width: 600px) {
-  .grid {
-    grid-gap: 20px;
-  }
+    .grid {
+        grid-gap: 20px;
+    }
 }
 
 /* This will *NOT* work in IE */
 .grid.small-gap {
-  grid-gap: 20px;
+    grid-gap: 20px;
 }
 ```
 
 ```css
 .grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto;
-  grid-gap: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-gap: 50px;
 }
 
 /* This *WILL* work in IE */
 @media (max-width: 600px) {
-  .grid {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
-    grid-gap: 20px;
-  }
+    .grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        grid-gap: 20px;
+    }
 }
 
 /* This *WILL* work in IE */
 .grid.small-gap {
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto;
-  grid-gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-gap: 20px;
 }
 ```
 
