@@ -88,6 +88,7 @@ Twitter account for news and releases: [@autoprefixer].
     - [Beware of enabling autoplacment in already existing projects](#beware-of-enabling-autoplacment-in-already-existing-projects)
     - [Autoplacement limitations](#autoplacement-limitations)
         - [Both columns and rows must be defined](#both-columns-and-rows-must-be-defined)
+        - [Repeat auto-fit and auto-fill are not supported](#repeat-auto-fit-and-auto-fill-are-not-supported)
         - [No manual cell placement or column/row spans allowed inside an autoplacement grid](#no-manual-cell-placement-or-columnrow-spans-allowed-inside-an-autoplacement-grid)
         - [Do not create `::before` and `::after` pseudo elements](#do-not-create-before-and-after-pseudo-elements)
         - [When changing the `grid gap` value, columns and rows must be re-declared](#when-changing-the-grid-gap-value-columns-and-rows-must-be-re-declared)
@@ -768,6 +769,20 @@ so that Autoprefixer knows how many `nth-child` selectors to generate.
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(10, auto);
+}
+```
+
+#### Repeat auto-fit and auto-fill are not supported
+
+The `repeat(auto-fit, ...)` and `repeat(auto-fill, ...)` grid functionality relies on
+knowledge from the browser about screen dimensions and the number of available grid
+items for it to work properly. Autoprefixer does not have access to this information
+so unfortunately this little snippet will _never_ be IE friendly.
+
+```css
+.grid {
+  /* This will never be IE friendly */
+  grid-template-columns: repeat(auto-fit, min-max(200px, 1fr))
 }
 ```
 
