@@ -85,7 +85,7 @@ Twitter account for news and releases: [@autoprefixer].
     - [Control Comments](#control-comments)
 - [Options](#options)
 - [Grid Autoplacement support in IE](#grid-autoplacement-support-in-ie)
-    - [Beware of enabling autoplacment in already existing projects](#beware-of-enabling-autoplacment-in-already-existing-projects)
+    - [Beware of enabling autoplacement in old projects](#beware-of-enabling-autoplacement-in-old-projects)
     - [Autoplacement limitations](#autoplacement-limitations)
         - [Both columns and rows must be defined](#both-columns-and-rows-must-be-defined)
         - [Repeat auto-fit and auto-fill are not supported](#repeat-auto-fit-and-auto-fill-are-not-supported)
@@ -708,10 +708,18 @@ Autoprefixer supports autoplacement by using `nth-child` CSS selectors. It creat
 }
 ```
 
-### Beware of enabling autoplacment in already existing projects
+### Beware of enabling autoplacement in old projects
 
 Be careful about enabling autoplacement in any already established projects that have
 previously not used Autoprefixer's grid autoplacement feature before.
+
+If this was your html:
+
+```html
+<div class="grid">
+  <div class="grid-cell"></div>
+</div>
+```
 
 The following CSS will not work as expected with the autoplacement feature enabled:
 
@@ -730,11 +738,10 @@ The following CSS will not work as expected with the autoplacement feature enabl
 }
 ```
 
-Swapping the rules around so that the grid template styles are declared first will fix
-the issue:
+Swapping the rules around will not fix the issue either:
 
 ```css
-/* Place grid template styles before the grid cell styles to be safe */
+/* Also unsafe to use this CSS */
 
 .grid {
     display: grid;
@@ -748,9 +755,58 @@ the issue:
 }
 ```
 
-So as long as the grid cell styles are always declared after the grid-template styles,
-it should be safe to enable autoplacment in old projects.
+One way to deal with this issue is to disable autoplacement in the
+grid-declaration rule:
 
+```css
+/* Disable autoplacement to fix the issue */
+
+.grid {
+    /* autoprefixer grid: no-autoplace */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+.grid-cell {
+    grid-column: 2;
+    grid-row: 2;
+}
+```
+
+The absolute best way to integrate autoplacement into already existing projects though is
+to leave autoplacement turned off by default and then use a control comment to enable it
+when needed. This method is far less likely to cause something on the site to break.
+
+```css
+/* Disable autoplacement by default in old projects */
+/* autoprefixer grid: no-autoplace */
+
+/* Old code will function the same way it always has */
+.old-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+.old-grid-cell {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+/* Enable autoplacement when you want to use it in new code */
+.new-autoplace-friendly-grid {
+    /* autoprefixer grid: autoplace */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, auto);
+}
+```
+
+Note that the `grid: "no-autoplace"` setting and the
+`/* autoprefixer grid: no-autoplace */` control comment share identical functionality
+to the `grid: true` setting and the `/* autoprefixer grid: on */` control comment.
+There is no need to refactor old code to use `no-autoplace` in place of the old
+`true` and `on` statements.
 
 ### Autoplacement limitations
 
