@@ -585,6 +585,8 @@ describe('hacks', () => {
     expect(result.warnings().map(i => i.toString())).toEqual([
       'autoprefixer: <css input>:3:3: Autoplacement does not work ' +
         'without grid-template-rows property',
+      'autoprefixer: <css input>:12:3: Autoplacement does not work ' +
+        'without grid-template-columns property',
       'autoprefixer: <css input>:36:3: Can not prefix grid-column-end ' +
         '(grid-column-start is not found)',
       'autoprefixer: <css input>:39:3: Can not impliment grid-gap ' +
