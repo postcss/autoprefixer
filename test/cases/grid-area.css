@@ -28,3 +28,19 @@
   grid-row: 1;
   grid-column: 2;
 }
+
+.h {
+  grid-area: 3 / 1;
+  grid-column: 1 / span 4;
+}
+
+/* there should be no warning */
+.i {
+  grid-area: 3 / 1;
+  grid-column-end: span 4;
+}
+
+.j {
+  grid-area: 3 / 1;
+  grid-row-end: span 4;
+}
