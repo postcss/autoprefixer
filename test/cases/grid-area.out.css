@@ -47,3 +47,28 @@
   grid-row: 1;
   grid-column: 2;
 }
+
+.h {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  grid-area: 3 / 1;
+  -ms-grid-column-span: 4;
+  grid-column: 1 / span 4;
+}
+
+/* there should be no warning */
+.i {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  grid-area: 3 / 1;
+  -ms-grid-column-span: 4;
+  grid-column-end: span 4;
+}
+
+.j {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  grid-area: 3 / 1;
+  -ms-grid-row-span: 4;
+  grid-row-end: span 4;
+}
