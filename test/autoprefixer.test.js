@@ -674,6 +674,9 @@ describe('hacks', () => {
         'grid-area or grid-row, not both',
         'autoprefixer: <css input>:29:3: You already have a grid-area ' +
         'declaration present in the rule. You should use either ' +
+        'grid-area or grid-column, not both',
+        'autoprefixer: <css input>:34:3: You already have a grid-area ' +
+        'declaration present in the rule. You should use either ' +
         'grid-area or grid-column, not both'
       ])
   })

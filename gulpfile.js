@@ -45,7 +45,7 @@ gulp.task('build:package', ['clean'], () => {
       delete json.browserslist
       delete json.eslintConfig
       delete json['size-limit']
-      delete json['pre-commit']
+      delete json['husky']
       delete json['lint-staged']
       delete json.dependencies['@babel/register']
       return json
