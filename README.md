@@ -336,6 +336,41 @@ module.exports = {
 [webpack]:               http://webpack.github.io/
 
 
+### CSS-in-JS
+
+The best way to use PostCSS with CSS-in-JS is [`astroturf`].
+Add it’s loader to your `webpack.config.js`:
+
+```js
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'postcss-loader'],
+      },
+      {
+        test: /\.jsx?$/,
+        use: ['babel-loader', 'astroturf/loader'],
+      }
+    ]
+  }
+}
+```
+
+Then create `postcss.config.js`:
+
+```js
+module.exports = {
+  plugins: [
+    require('autoprefixer')
+  ]
+}
+```
+
+[`astroturf`]: https://github.com/4Catalyzer/astroturf
+
+
 ### Grunt
 
 In Grunt you can use [grunt-postcss] with `autoprefixer` npm package.
@@ -396,22 +431,6 @@ with [other PostCSS plugins].
 [less-plugin-autoprefix]: https://github.com/less/less-plugin-autoprefix
 [autoprefixer-stylus]:    https://github.com/jenius/autoprefixer-stylus
 [autoprefixer-rails#compass]:     https://github.com/ai/autoprefixer-rails#compass
-
-
-### CSS-in-JS
-
-There is [postcss-js] to use Autoprefixer in React Inline Styles, [Free Style],
-Radium and other CSS-in-JS solutions.
-
-```js
-let prefixer = postcssJs.sync([ autoprefixer ]);
-let style = prefixer({
-    display: 'flex'
-});
-```
-
-[postcss-js]: https://github.com/postcss/postcss-js
-[Free Style]: https://github.com/blakeembrey/free-style
 
 
 ### GUI Tools
