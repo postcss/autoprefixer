@@ -70,12 +70,9 @@ Twitter account for news and releases: [@autoprefixer].
 - [Usage](#usage)
     - [Gulp](#gulp)
     - [Webpack](#webpack)
-    - [Grunt](#grunt)
-    - [Other Build Tools:](#other-build-tools)
-    - [Preprocessors](#preprocessors)
     - [CSS-in-JS](#css-in-js)
-    - [GUI Tools](#gui-tools)
     - [CLI](#cli)
+    - [Other Build Tools](#other-build-tools)
     - [JavaScript](#javascript)
     - [Text Editors and IDE](#text-editors-and-ide)
 - [Warnings](#warnings)
@@ -371,41 +368,23 @@ module.exports = {
 [`astroturf`]: https://github.com/4Catalyzer/astroturf
 
 
-### Grunt
+### CLI
 
-In Grunt you can use [grunt-postcss] with `autoprefixer` npm package.
+You can use the [postcss-cli] to run Autoprefixer from CLI:
 
-```js
-module.exports = function(grunt) {
-    grunt.loadNpmTasks('grunt-postcss');
-
-    grunt.initConfig({
-        postcss: {
-            options: {
-                map: true,
-                processors: [
-                    require('autoprefixer')
-                ]
-            },
-            dist: {
-                src: 'css/*.css'
-            }
-        }
-    });
-
-    grunt.registerTask('default', ['postcss:dist']);
-};
+```sh
+npm install postcss-cli autoprefixer
+npx postcss *.css --use autoprefixer -d build/
 ```
 
-With `grunt-postcss` you also can combine Autoprefixer
-with [other PostCSS plugins].
+See `postcss -h` for help.
 
-[other PostCSS plugins]: https://github.com/postcss/postcss#plugins
-[grunt-postcss]:         https://github.com/nDmitry/grunt-postcss
+[postcss-cli]: https://github.com/postcss/postcss-cli
 
 
-### Other Build Tools:
+### Other Build Tools
 
+* **Grunt:** [grunt-postcss]
 * **Ruby on Rails**: [autoprefixer-rails]
 * **Neutrino**: [neutrino-middleware-postcss]
 * **Jekyll**: add `autoprefixer-rails` and `jekyll-assets` to `Gemfile`
@@ -420,9 +399,10 @@ with [other PostCSS plugins].
 [autoprefixer-rails]:          https://github.com/ai/autoprefixer-rails
 [broccoli-postcss]:            https://github.com/jeffjewiss/broccoli-postcss
 [postcss-brunch]:              https://github.com/iamvdo/postcss-brunch
+[grunt-postcss]:               https://github.com/nDmitry/grunt-postcss
 
 
-### Preprocessors
+#### Preprocessors
 
 * **Less**: [less-plugin-autoprefix]
 * **Stylus**: [autoprefixer-stylus]
@@ -433,24 +413,10 @@ with [other PostCSS plugins].
 [autoprefixer-rails#compass]:     https://github.com/ai/autoprefixer-rails#compass
 
 
-### GUI Tools
+#### GUI Tools
 
 * [CodeKit](https://codekitapp.com/help/autoprefixer/)
 * [Prepros](https://prepros.io)
-
-
-### CLI
-
-You can use the [postcss-cli] to run Autoprefixer from CLI:
-
-```sh
-npm install postcss-cli autoprefixer
-npx postcss *.css --use autoprefixer -d build/
-```
-
-See `postcss -h` for help.
-
-[postcss-cli]: https://github.com/postcss/postcss-cli
 
 
 ### JavaScript
