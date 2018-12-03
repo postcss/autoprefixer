@@ -50,11 +50,7 @@ Twitter account for news and releases: [@autoprefixer].
 [cult]:             http://cultofmartians.com/tasks/autoprefixer-grid.html
 
 
-
-## Contents  <!-- omit in toc -->
-
-<details>
-  <summary>View table of contents</summary>
+## Contents
 
 - [Browsers](#browsers)
 - [FAQ](#faq)
@@ -80,8 +76,6 @@ Twitter account for news and releases: [@autoprefixer].
 - [Options](#options)
 - [Grid Autoplacement support in IE](#grid-autoplacement-support-in-ie)
 - [Debug](#debug)
-
-</details>
 
 ## Browsers
 
