@@ -7,7 +7,7 @@ let fs = require('fs')
 let grider = autoprefixer({
   browsers: ['Chrome 25', 'Edge 12', 'IE 10'],
   cascade: false,
-  grid: true
+  grid: 'autoplace'
 })
 
 let cleaner = autoprefixer({
@@ -253,11 +253,14 @@ it('sets grid option via comment', () => {
   expect(result.css).toEqual(output)
   expect(result.warnings().map(i => i.toString())).toEqual([
     'autoprefixer: <css input>:2:1: Second Autoprefixer grid control ' +
-        'comment was ignored. Autoprefixer applies control comment ' +
-        'to whole block, not to next rules.',
+        'comment was ignored. Autoprefixer applies control comments ' +
+        'to the whole block, not to the next rules.',
     'autoprefixer: <css input>:20:3: Second Autoprefixer grid control ' +
-        'comment was ignored. Autoprefixer applies control comment ' +
-        'to whole block, not to next rules.'
+        'comment was ignored. Autoprefixer applies control comments ' +
+        'to the whole block, not to the next rules.',
+    'autoprefixer: <css input>:47:3: Second Autoprefixer grid control ' +
+        'comment was ignored. Autoprefixer applies control comments ' +
+        'to the whole block, not to the next rules.'
   ])
 })
 
@@ -418,6 +421,30 @@ it('has disabled grid options by default', () => {
   expect(result.css).toEqual(output)
 })
 
+it('has different outputs for different grid options', () => {
+  function ap (gridValue) {
+    return autoprefixer({ browsers: ['Edge 12', 'IE 10'], grid: gridValue })
+  }
+  let input = read('grid-options')
+  let outputAutoplace = read('grid-options.autoplace.out')
+  let outputNoAutoplace = read('grid-options.no-autoplace.out')
+  let outputDisabled = read('grid-options.disabled.out')
+
+  let resultAutoplace = postcss([ap('autoplace')]).process(input)
+  let resultNoAutoplace = postcss([ap('no-autoplace')]).process(input)
+  let resultEnabled = postcss([ap(true)]).process(input)
+  let resultDisabled = postcss([ap(false)]).process(input)
+
+  // output for grid: 'autoplace'
+  expect(resultAutoplace.css).toEqual(outputAutoplace)
+  // output for grid: 'no-autoplace'
+  expect(resultNoAutoplace.css).toEqual(outputNoAutoplace)
+  // output for grid: true is the same as for 'no-autoplace'
+  expect(resultEnabled.css).toEqual(outputNoAutoplace)
+  // output for grid: false
+  expect(resultDisabled.css).toEqual(outputDisabled)
+})
+
 it('has option to disable flexbox support', () => {
   let css = read('flexbox')
   let instance = autoprefixer({ browsers: ['IE 10'], flexbox: false })
@@ -556,6 +583,10 @@ describe('hacks', () => {
 
     expect(result.css).toEqual(output)
     expect(result.warnings().map(i => i.toString())).toEqual([
+      'autoprefixer: <css input>:3:3: Autoplacement does not work ' +
+        'without grid-template-rows property',
+      'autoprefixer: <css input>:12:3: Autoplacement does not work ' +
+        'without grid-template-columns property',
       'autoprefixer: <css input>:36:3: Can not prefix grid-column-end ' +
         '(grid-column-start is not found)',
       'autoprefixer: <css input>:39:3: Can not impliment grid-gap ' +
@@ -578,8 +609,6 @@ describe('hacks', () => {
         'supported by IE',
       'autoprefixer: <css input>:102:3: grid-auto-rows is not ' +
         'supported by IE',
-      'autoprefixer: <css input>:103:3: grid-auto-flow is not ' +
-        'supported by IE',
       'autoprefixer: <css input>:104:33: auto-fill value is not ' +
         'supported by IE',
       'autoprefixer: <css input>:105:30: auto-fit value is not ' +
@@ -596,7 +625,33 @@ describe('hacks', () => {
         'on grid containers',
       'autoprefixer: <css input>:140:3: IE does not support place-items ' +
         'on grid containers. Try using place-self on child elements ' +
-        'instead: .warn_place_items > * { place-self: start end }'
+        'instead: .warn_place_items > * { place-self: start end }',
+      'autoprefixer: <css input>:164:3: grid-auto-flow is not supported by IE'
+    ])
+  })
+
+  it('supports grid autoplacement', () => {
+    let input = read('grid-autoplacement')
+    let output = read('grid-autoplacement.out')
+    let instance = prefixer('grid')
+    let result = postcss([instance]).process(input)
+    expect(result.css).toEqual(output)
+
+    expect(result.warnings().map(i => i.toString())).toEqual([
+      'autoprefixer: <css input>:47:3: grid-auto-flow: dense ' +
+        'is not supported by IE',
+      'autoprefixer: <css input>:48:3: Autoplacement does not work ' +
+        'without grid-template-rows property',
+      'autoprefixer: <css input>:53:3: grid-auto-flow works only if grid-temp' +
+      'late-rows and grid-template-columns are present in the same rule',
+      'autoprefixer: <css input>:60:3: grid-gap only works if grid-temp' +
+      'late(-areas) is being used',
+      'autoprefixer: <css input>:64:3: Autoplacement does not work ' +
+      'without grid-template-rows property',
+      'autoprefixer: <css input>:65:3: grid-gap only works if grid-temp' +
+      'late(-areas) is being used or both rows and columns have been ' +
+      'declared and cells have not been ' +
+      'manually placed inside the explicit grid'
     ])
   })
 

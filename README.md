@@ -50,6 +50,52 @@ Twitter account for news and releases: [@autoprefixer].
 [cult]:             http://cultofmartians.com/tasks/autoprefixer-grid.html
 
 
+
+## Contents  <!-- omit in toc -->
+
+<details>
+  <summary>View table of contents</summary>
+
+- [Browsers](#browsers)
+- [FAQ](#faq)
+    - [Does Autoprefixer polyfill Grid Layout for IE?](#does-autoprefixer-polyfill-grid-layout-for-ie)
+    - [No prefixes in production](#no-prefixes-in-production)
+    - [What is the unprefixed version of `-webkit-min-device-pixel-ratio`?](#what-is-the-unprefixed-version-of--webkit-min-device-pixel-ratio)
+    - [Does it add polyfills?](#does-it-add-polyfills)
+    - [Why doesn’t Autoprefixer add prefixes to `border-radius`?](#why-doesnt-autoprefixer-add-prefixes-to-border-radius)
+    - [Why does Autoprefixer use unprefixed properties in `@-webkit-keyframes`?](#why-does-autoprefixer-use-unprefixed-properties-in--webkit-keyframes)
+    - [How to work with legacy `-webkit-` only code?](#how-to-work-with-legacy--webkit--only-code)
+    - [Does Autoprefixer add `-epub-` prefix?](#does-autoprefixer-add--epub--prefix)
+    - [Why doesn’t Autoprefixer transform generic font-family `system-ui`?](#why-doesnt-autoprefixer-transform-generic-font-family-system-ui)
+- [Usage](#usage)
+    - [Gulp](#gulp)
+    - [Webpack](#webpack)
+    - [Grunt](#grunt)
+    - [Other Build Tools:](#other-build-tools)
+    - [Preprocessors](#preprocessors)
+    - [CSS-in-JS](#css-in-js)
+    - [GUI Tools](#gui-tools)
+    - [CLI](#cli)
+    - [JavaScript](#javascript)
+    - [Text Editors and IDE](#text-editors-and-ide)
+- [Warnings](#warnings)
+- [Disabling](#disabling)
+    - [Prefixes](#prefixes)
+    - [Features](#features)
+    - [Control Comments](#control-comments)
+- [Options](#options)
+- [Grid Autoplacement support in IE](#grid-autoplacement-support-in-ie)
+    - [Beware of enabling autoplacment in already existing projects](#beware-of-enabling-autoplacment-in-already-existing-projects)
+    - [Autoplacement limitations](#autoplacement-limitations)
+        - [Both columns and rows must be defined](#both-columns-and-rows-must-be-defined)
+        - [Repeat auto-fit and auto-fill are not supported](#repeat-auto-fit-and-auto-fill-are-not-supported)
+        - [No manual cell placement or column/row spans allowed inside an autoplacement grid](#no-manual-cell-placement-or-columnrow-spans-allowed-inside-an-autoplacement-grid)
+        - [Do not create `::before` and `::after` pseudo elements](#do-not-create-before-and-after-pseudo-elements)
+        - [When changing the `grid gap` value, columns and rows must be re-declared](#when-changing-the-grid-gap-value-columns-and-rows-must-be-re-declared)
+- [Debug](#debug)
+
+</details>
+
 ## Browsers
 
 Autoprefixer uses [Browserslist], so you can specify the browsers
@@ -74,20 +120,20 @@ See [Browserslist docs] for queries, browser names, config format, and defaults.
 
 ## FAQ
 
-#### Does Autoprefixer polyfill Grid Layout for IE?
+### Does Autoprefixer polyfill Grid Layout for IE?
 
-Autoprefixer can be used to use Grid Layout for IE 10 and IE 11, but this
-polyfill will not work in 100% of cases. This is why it is disabled by default.
+Autoprefixer can be used to translate modern CSS Grid syntax into IE 10 and IE 11 syntax,
+but this polyfill will not work in 100% of cases. This is why it is disabled by default.
 
-First, you need to enable Grid prefixes by `grid: true` option or `/* autoprefixer grid: on */` comment.
+First, you need to enable Grid prefixes by using either the `grid: "autoplace"` option or the `/* autoprefixer grid: autoplace */` control comment.
 
 Second, you need to test every fix with Grid in IE. It is not an enable and
 forget feature, but it is still very useful.
 Financial Times and Yandex use it in production.
 
-Third, there is no auto placement, so all grid cell positions must be set
-explicitly. Autoprefixer _can_ covert `grid-template` and `grid-gap`, but only
-when both are used together.
+Third, there is only very limited auto placement support. Read the [Grid Autoplacement support in IE](#grid-autoplacement-support-in-ie) section for more details.
+
+Fourth, if you are not using the autoplacment feature, the best way to use Autoprefixer is by using  `grid-template` or `grid-template-areas`.
 
 ```css
 .page {
@@ -119,13 +165,13 @@ See also:
 * [`postcss-gap-properties`] to use new `gap` property
   instead of old `grid-gap`.
 * [`postcss-grid-kiss`] has alternate “everything in one property” syntax,
-  which make using Autoprefixer’s Grid safer.
+  which makes using Autoprefixer’s Grid translations safer.
 
 [The guide about Grids in IE and Autoprefixer]: https://css-tricks.com/css-grid-in-ie-css-grid-and-the-new-autoprefixer/
 [`postcss-gap-properties`]:                     https://github.com/jonathantneal/postcss-gap-properties
 [`postcss-grid-kiss`]:                          https://github.com/sylvainpolletvillard/postcss-grid-kiss
 
-#### No prefixes in production
+### No prefixes in production
 
 Many other tools contain Autoprefixer. For example, webpack uses Autoprefixer
 to minify CSS by cleaning unnecessary prefixes.
@@ -141,7 +187,7 @@ cssnano, doiuse, cssnext, etc) use the same browsers list.
 [browserslist config file]: https://github.com/ai/browserslist#config-file
 
 
-#### What is the unprefixed version of `-webkit-min-device-pixel-ratio`?
+### What is the unprefixed version of `-webkit-min-device-pixel-ratio`?
 
 ```css
 @media (min-resolution: 2dppx) {
@@ -164,7 +210,7 @@ Will be compiled to:
 ```
 
 
-#### Does it add polyfills?
+### Does it add polyfills?
 
 No. Autoprefixer only adds prefixes.
 
@@ -185,7 +231,7 @@ you might take a look at:
 [Oldie]:                  https://github.com/jonathantneal/oldie
 
 
-#### Why doesn’t Autoprefixer add prefixes to `border-radius`?
+### Why doesn’t Autoprefixer add prefixes to `border-radius`?
 
 Developers are often surprised by how few prefixes are required today.
 If Autoprefixer doesn’t add prefixes to your CSS, check if they’re still
@@ -194,13 +240,13 @@ required on [Can I Use].
 [Can I Use]: http://caniuse.com/
 
 
-#### Why does Autoprefixer use unprefixed properties in `@-webkit-keyframes`?
+### Why does Autoprefixer use unprefixed properties in `@-webkit-keyframes`?
 
 Browser teams can remove some prefixes before others, so we try to use all
 combinations of prefixed/unprefixed values.
 
 
-#### How to work with legacy `-webkit-` only code?
+### How to work with legacy `-webkit-` only code?
 
 Autoprefixer needs unprefixed property to add prefixes. So if you only
 wrote `-webkit-gradient` without W3C’s `gradient`,
@@ -212,7 +258,7 @@ Use [postcss-unprefix] before Autoprefixer.
 [postcss-unprefix]: https://github.com/gucong3000/postcss-unprefix
 
 
-#### Does Autoprefixer add `-epub-` prefix?
+### Does Autoprefixer add `-epub-` prefix?
 
 No, Autoprefixer works only with browsers prefixes from Can I Use.
 But you can use [postcss-epub]
@@ -221,7 +267,7 @@ for prefixing ePub3 properties.
 [postcss-epub]: https://github.com/Rycochet/postcss-epub
 
 
-#### Why doesn’t Autoprefixer transform generic font-family `system-ui`?
+### Why doesn’t Autoprefixer transform generic font-family `system-ui`?
 
 `system-ui` is technically not a prefix and the transformation is not
 future-proof. You can use [postcss-font-family-system-ui] to transform
@@ -478,19 +524,20 @@ If some prefixes were generated incorrectly, please create an [issue on GitHub].
 
 ### Features
 
-You can use these plugin options to disable some of Autoprefixer’s features.
+You can use these plugin options to control some of Autoprefixer’s features.
 
-* `grid: true` will enable `-ms-` prefixes for Grid Layout.
+* `grid: "autoplace"` will enable `-ms-` prefixes for Grid Layout including some
+  [limited autoplacement support](#grid-autoplacement-support-in-ie).
 * `supports: false` will disable `@supports` parameters prefixing.
 * `flexbox: false` will disable flexbox properties prefixing.
   Or `flexbox: "no-2009"` will add prefixes only for final and IE
   versions of specification.
 * `remove: false` will disable cleaning outdated prefixes.
 
-You should set them to the plugin:
+You should set them inside the plugin like so:
 
 ```js
-autoprefixer({ grid: true });
+autoprefixer({ grid: "autoplace" });
 ```
 
 
@@ -518,10 +565,16 @@ you can use control comments to disable Autoprefixer.
 
 There are three types of control comments:
 
-* `/* autoprefixer: off */` disable the whole block *before* and after comment.
-* `/* autoprefixer: ignore next */` disable only next property
+* `/* autoprefixer: (on|off) */`: enable/disable all Autoprefixer translations for the
+  whole block both *before* and *after* the comment.
+* `/* autoprefixer: ignore next */`: disable Autoprefixer only for the next property
   or next rule selector or at-rule parameters (but not rule/at‑rule body).
-* `/* autoprefixer grid: on */` enable grid option. Use `off` to disable this option.
+* `/* autoprefixer grid: (autoplace|no-autoplace|off) */`: control how Autoprefixer handles
+  grid translations for the whole block:
+    * `autoplace`: enable grid translations with autoplacement support.
+    * `no-autoplace`: enable grid translations with autoplacement support *disabled*.
+      (alias for deprecated value `on`)
+    * `off`: disable all grid translations.
 
 You can also use comments recursively:
 
@@ -532,6 +585,20 @@ You can also use comments recursively:
     a {
         /* autoprefixer: off */
     }
+}
+```
+
+Note that comments that disable the whole block should not be featured in the same
+block twice:
+
+```css
+/* How not to use block level control comments */
+
+.do-not-do-this {
+    /* autoprefixer: off */
+    transition: 1s;
+    /* autoprefixer: on */
+    transform: rotate(20deg);
 }
 ```
 
@@ -558,9 +625,14 @@ Available options are:
 * `flexbox` (boolean|string): should Autoprefixer add prefixes for flexbox
   properties. With `"no-2009"` value Autoprefixer will add prefixes only
   for final and IE versions of specification. Default is `true`.
-* `grid` (boolean): should Autoprefixer add IE prefixes for Grid Layout
-  properties. Default is `false`. You can also use `/* autoprefixer grid: on */`
-  comment in CSS.
+* `grid` (false|"autoplace"|"no-autoplace"): should Autoprefixer add IE prefixes for Grid Layout
+  properties?
+    * `false` (default): prevent Autoprefixer from outputting CSS Grid translations.
+    * `"autoplace"`: enable Autoprefixer grid translations and *include* autoplacement
+      support. You can also use `/* autoprefixer grid: autoplace */` in your CSS.
+    * `"no-autoplace"`: enable Autoprefixer grid translations but *exclude* autoplacement
+      support. You can also use `/* autoprefixer grid: no-autoplace */` in your CSS.
+      (alias for the deprecated `true` value)
 * `stats` (object): custom [usage statistics] for `> 10% in my stats`
   browsers query.
 * `browsers` (array): list of queries for target browsers. Try to not use it.
@@ -579,6 +651,321 @@ to increase performance.
 [usage statistics]: https://github.com/ai/browserslist#custom-usage-data
 [PostCSS API]:      http://api.postcss.org
 
+## Grid Autoplacement support in IE
+
+If the `grid` option is set to `"autoplace"`, limited autoplacement support is added to Autoprefixers grid translations. You can also use the `/* autoprefixer grid: autoplace */` control comment to enable autoplacement
+
+Autoprefixer will only autoplace grid cells if both `grid-template-rows` and `grid-template-columns` has been set. If `grid-template` or `grid-template-areas` has been set, Autoprefixer will use area based cell placement instead.
+
+Autoprefixer supports autoplacement by using `nth-child` CSS selectors. It creates [number of columns] x [number of rows] `nth-child` selectors. For this reason Autoplacement is only supported within the explicit grid.
+
+```css
+/* Input CSS */
+
+/* autoprefixer grid: autoplace */
+
+.autoplacement-example {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-gap: 20px;
+}
+```
+
+```css
+/* Output CSS */
+
+/* autoprefixer grid: autoplace */
+
+.autoplacement-example {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 20px 1fr;
+    grid-template-columns: 1fr 1fr;
+    -ms-grid-rows: auto 20px auto;
+    grid-template-rows: auto auto;
+    grid-gap: 20px;
+}
+
+.autoplacement-example > *:nth-child(1) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+}
+
+.autoplacement-example > *:nth-child(2) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 3;
+}
+
+.autoplacement-example > *:nth-child(3) {
+    -ms-grid-row: 3;
+    -ms-grid-column: 1;
+}
+
+.autoplacement-example > *:nth-child(4) {
+    -ms-grid-row: 3;
+    -ms-grid-column: 3;
+}
+```
+
+### Beware of enabling autoplacment in already existing projects
+
+Be careful about enabling autoplacement in any already established projects that have
+previously not used Autoprefixer's grid autoplacement feature before.
+
+The following CSS will not work as expected with the autoplacement feature enabled:
+
+```css
+/* Unsafe CSS when Autoplacement is enabled */
+
+.grid-cell {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+```
+
+Swapping the rules around so that the grid template styles are declared first will fix
+the issue:
+
+```css
+/* Place grid template styles before the grid cell styles to be safe */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+.grid-cell {
+    grid-column: 2;
+    grid-row: 2;
+}
+```
+
+So as long as the grid cell styles are always declared after the grid-template styles,
+it should be safe to enable autoplacment in old projects.
+
+
+### Autoplacement limitations
+
+#### Both columns and rows must be defined
+
+Autoplacement only works inside the explicit grid. The columns and rows need to be defined
+so that Autoprefixer knows how many `nth-child` selectors to generate.
+
+```css
+.not-allowed {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.is-allowed {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(10, auto);
+}
+```
+
+#### Repeat auto-fit and auto-fill are not supported
+
+The `repeat(auto-fit, ...)` and `repeat(auto-fill, ...)` grid functionality relies on
+knowledge from the browser about screen dimensions and the number of available grid
+items for it to work properly. Autoprefixer does not have access to this information
+so unfortunately this little snippet will _never_ be IE friendly.
+
+```css
+.grid {
+    /* This will never be IE friendly */
+    grid-template-columns: repeat(auto-fit, min-max(200px, 1fr))
+}
+```
+
+#### No manual cell placement or column/row spans allowed inside an autoplacement grid
+
+Elements must not be manually placed or given column/row spans inside an autoplacement
+grid. Only the most basic of autoplacement grids are supported. Grid cells can still be
+placed manually outside the the explicit grid though. Support for manually placing
+individual grid cells inside an explicit autoplacement grid is planned for a
+future release.
+
+```css
+.autoplacement-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, auto);
+}
+
+/*
+    grid cells placed inside the explicit grid
+    will break the layout in IE
+*/
+.not-permitted-grid-cell {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+/*
+    grid cells placed outside the
+    explicit grid will work in IE
+*/
+.permitted-grid-cell {
+    grid-column: 1 / span 2;
+    grid-row: 4;
+}
+```
+
+If manual cell placement is required, we recommend using `grid-template` or
+`grid-template-areas` instead:
+
+```css
+.page {
+    display: grid;
+    grid-gap: 30px;
+    grid-template:
+        "head head"
+        "nav  main" minmax(100px, 1fr)
+        "foot foot" /
+        200px 1fr;
+}
+.page__head {
+    grid-area: head;
+}
+.page__nav {
+    grid-area: nav;
+}
+.page__main {
+    grid-area: main;
+}
+.page__footer {
+    grid-area: foot;
+}
+```
+
+#### Do not create `::before` and `::after` pseudo elements
+
+Let's say you have this HTML:
+
+```html
+<div class="grid">
+    <div class="grid-cell"></div>
+</div>
+```
+
+And you write this CSS:
+
+```css
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+}
+
+.grid::before {
+    content: 'before';
+}
+
+.grid::after {
+    content: 'after';
+}
+```
+
+This will be the output:
+
+```css
+.grid {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    -ms-grid-rows: auto;
+    grid-template-rows: auto;
+}
+
+.grid > *:nth-child(1) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+}
+
+
+.grid > *:nth-child(2) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 2;
+}
+
+.grid::before {
+    content: 'before';
+}
+
+.grid::after {
+    content: 'after';
+}
+```
+
+IE will place `.grid-cell`, `::before` and `::after` in row 1 column 1.
+Modern browsers on the other hand will place `::before` in row 1 column 1,
+`.grid-cell` in row 1 column 2, and `::after` in row 2 column 1.
+
+See this [Code Pen](https://codepen.io/daniel-tonon/pen/gBymVw) to see a visualization
+of the issue. View the Code Pen in both a modern browser and IE to see the difference.
+
+Note that you can still create `::before` and `::after` elements as long as you manually
+place them outside the explicit grid.
+
+#### When changing the `grid gap` value, columns and rows must be re-declared
+
+If you wish to change the size of a `grid-gap`, you will need to redeclare the grid columns and rows.
+
+```css
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-gap: 50px;
+}
+
+/* This will *NOT* work in IE */
+@media (max-width: 600px) {
+    .grid {
+        grid-gap: 20px;
+    }
+}
+
+/* This will *NOT* work in IE */
+.grid.small-gap {
+    grid-gap: 20px;
+}
+```
+
+```css
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-gap: 50px;
+}
+
+/* This *WILL* work in IE */
+@media (max-width: 600px) {
+    .grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        grid-gap: 20px;
+    }
+}
+
+/* This *WILL* work in IE */
+.grid.small-gap {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-gap: 20px;
+}
+```
 
 ## Debug
 

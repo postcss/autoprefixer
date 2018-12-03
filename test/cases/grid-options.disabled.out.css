@@ -1,0 +1,79 @@
+/*****************\
+  AREAS ALGORITHM
+\*****************/
+
+.grid-template-areas {
+  display: grid;
+  grid-template-areas:
+    "a-conflict a-conflict"
+    "b-conflict b-conflict";
+}
+
+.grid-template-areas.conflict {
+  display: grid;
+  grid-template-areas:
+    "a-conflict"
+    "b-conflict";
+}
+
+.a {
+  grid-area: a-conflict;
+}
+
+.b {
+  grid-area: b-conflict;
+}
+
+.grid-template {
+  grid-template:
+      [header-left] "head head" 30px [header-right]
+      [main-left]   "nav  main" 1fr  [main-right]
+      [footer-left] "nav  foot" 30px [footer-right]
+      / 120px repeat(4, 250px 10px);
+}
+
+@media (min-width: 1000px) {
+  .grid-template {
+    grid-template:
+        [header-left] "head" 30px [header-right]
+        [nav-left]    "nav"  auto  [nav-right]
+        [main-left]   "main" 1fr  [main-right]
+        [footer-left] "foot" 30px [footer-right]
+        / 1fr;
+  }
+}
+
+.grid-template.conflict {
+  grid-template:
+      "head head"
+      "nav main" 20px
+      "nav foot"
+      / 1fr 1fr;
+}
+
+.head {
+  grid-area: head;
+}
+
+.main {
+  grid-area: main;
+}
+
+.nav {
+  grid-area: nav;
+}
+
+.foot {
+  grid-area: foot;
+}
+
+/*********************\
+  AUTOPLACE ALGORITHM
+\*********************/
+
+.grid-autoplace {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-gap: 30px;
+}

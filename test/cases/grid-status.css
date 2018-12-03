@@ -33,3 +33,25 @@
     grid-auto-rows: 100px;
   }
 }
+
+.grid-autoplace-enabled {
+  /* autoprefixer grid: autoplace */
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-gap: 30px;
+}
+
+.grid-autoplace-disabled {
+  /* autoprefixer grid: off */
+  /* autoprefixer grid: autoplace */
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-gap: 30px;
+}
+
+.grid-autoplace-disabled-2 {
+  /* autoprefixer grid: no-autoplace */
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+}
