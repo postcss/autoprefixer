@@ -167,3 +167,16 @@
       ". ."
       ". .";
 }
+
+.center-wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-areas:
+    ". z z ."
+    ". z z .";
+}
+.center-item {
+  grid-area: z;
+  align-self: center;
+  justify-self: center;
+}
