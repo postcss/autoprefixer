@@ -77,18 +77,8 @@ Twitter account for news and releases: [@autoprefixer].
     - [Text Editors and IDE](#text-editors-and-ide)
 - [Warnings](#warnings)
 - [Disabling](#disabling)
-    - [Prefixes](#prefixes)
-    - [Features](#features)
-    - [Control Comments](#control-comments)
 - [Options](#options)
 - [Grid Autoplacement support in IE](#grid-autoplacement-support-in-ie)
-    - [Beware of enabling autoplacement in old projects](#beware-of-enabling-autoplacement-in-old-projects)
-    - [Autoplacement limitations](#autoplacement-limitations)
-        - [Both columns and rows must be defined](#both-columns-and-rows-must-be-defined)
-        - [Repeat auto-fit and auto-fill are not supported](#repeat-auto-fit-and-auto-fill-are-not-supported)
-        - [No manual cell placement or column/row spans allowed inside an autoplacement grid](#no-manual-cell-placement-or-columnrow-spans-allowed-inside-an-autoplacement-grid)
-        - [Do not create `::before` and `::after` pseudo elements](#do-not-create-before-and-after-pseudo-elements)
-        - [When changing the `grid gap` value, columns and rows must be re-declared](#when-changing-the-grid-gap-value-columns-and-rows-must-be-re-declared)
 - [Debug](#debug)
 
 </details>
