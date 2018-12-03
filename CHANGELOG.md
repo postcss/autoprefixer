@@ -3,7 +3,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 9.4 “Advance Australia”
 * Add Grid autoplacment for `-ms-` (by Bogdan Dolin).
-* Improve docs and wargnins (by Daniel Tonon).
+* Improve docs and warnings (by Daniel Tonon).
 * Remove some unnecessary warnings for Grid (by Andrey Alexandrov).
 
 ## 9.3.1
