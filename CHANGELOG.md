@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 9.4.1
+* Fix unnecessary Flexbox prefixes in Grid elements.
+
 ## 9.4 “Advance Australia”
 * Add Grid autoplacment for `-ms-` (by Bogdan Dolin).
 * Improve docs and warnings (by Daniel Tonon).
