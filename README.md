@@ -114,7 +114,7 @@ Financial Times and Yandex use it in production.
 
 Third, there is only very limited auto placement support. Read the [Grid Autoplacement support in IE](#grid-autoplacement-support-in-ie) section for more details.
 
-Fourth, if you are not using the autoplacment feature, the best way to use Autoprefixer is by using  `grid-template` or `grid-template-areas`.
+Fourth, if you are not using the autoplacement feature, the best way to use Autoprefixer is by using  `grid-template` or `grid-template-areas`.
 
 ```css
 .page {
