@@ -41,10 +41,10 @@ Twitter account for news and releases: [@autoprefixer].
 <img src="https://evilmartians.com/badges/sponsored-by-evil-martians.svg" alt="Sponsored by Evil Martians" width="236" height="54">
 </a>
 
-[interactive demo]: http://autoprefixer.github.io/
+[interactive demo]: https://autoprefixer.github.io/
 [@autoprefixer]:    https://twitter.com/autoprefixer
 [recommended]:      https://developers.google.com/web/tools/setup/setup-buildtools#dont_trip_up_with_vendor_prefixes
-[Can I Use]:        http://caniuse.com/
+[Can I Use]:        https://caniuse.com/
 [cult-img]:         http://cultofmartians.com/assets/badges/badge.svg
 [PostCSS]:          https://github.com/postcss/postcss
 [cult]:             http://cultofmartians.com/tasks/autoprefixer-grid.html
@@ -96,7 +96,7 @@ See [Browserslist docs] for queries, browser names, config format, and defaults.
 [babel-preset-env]:  https://github.com/babel/babel/tree/master/packages/babel-preset-env
 [Best Practices]:    https://github.com/browserslist/browserslist#best-practices
 [Browserslist]:      https://github.com/ai/browserslist
-[Stylelint]:         http://stylelint.io/
+[Stylelint]:         https://stylelint.io/
 
 
 ## FAQ
@@ -218,7 +218,7 @@ Developers are often surprised by how few prefixes are required today.
 If Autoprefixer doesn’t add prefixes to your CSS, check if they’re still
 required on [Can I Use].
 
-[Can I Use]: http://caniuse.com/
+[Can I Use]: https://caniuse.com/
 
 
 ### Why does Autoprefixer use unprefixed properties in `@-webkit-keyframes`?
@@ -446,7 +446,7 @@ If you can’t move to a build tool, you can use text editor plugins:
 * [Atom Editor](https://github.com/sindresorhus/atom-autoprefixer)
 * [Visual Studio](https://github.com/madskristensen/WebCompiler)
 
-[Gulp]:  http://gulpjs.com/
+[Gulp]:  https://gulpjs.com/
 
 
 ## Warnings
