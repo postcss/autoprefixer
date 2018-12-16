@@ -547,6 +547,23 @@ describe('hacks', () => {
     ])
   })
 
+  it('warns on mixed support usage', () => {
+    let css =
+      'a { display: flex; align-content: start; justify-content: end; }'
+    let result = postcss([
+      autoprefixer({
+        browsers: ['IE 11']
+      })
+    ]).process(css)
+    expect(result.css).toEqual(css)
+    expect(result.warnings().map(i => i.toString())).toEqual([
+      'autoprefixer: <css input>:1:20: start value has mixed support, ' +
+        'consider using flex-start instead',
+      'autoprefixer: <css input>:1:42: end value has mixed support, ' +
+        'consider using flex-end instead'
+    ])
+  })
+
   it('supports intrinsic sizing', () => {
     let input = read('intrinsic')
     let output = read('intrinsic.out')
