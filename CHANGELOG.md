@@ -1,6 +1,10 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 9.4.3
+* Add warning to force `flex-start` instead of `start` (by Antoine du Hamel).
+* Fix docs (by Christian Oliff).
+
 ## 9.4.2
 * Fix Grid autoplacement warning.
 
