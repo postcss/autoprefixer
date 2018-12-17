@@ -10,15 +10,15 @@ gulp.task('clean', done => {
   })
 })
 
-gulp.task('build:lib', ['clean'], () => {
+gulp.task('build:lib', gulp.series('clean', () => {
   let babel = require('gulp-babel')
 
   return gulp.src(['{lib,data}/**/*.js'])
     .pipe(babel())
     .pipe(gulp.dest('build/'))
-})
+}))
 
-gulp.task('build:docs', ['clean'], () => {
+gulp.task('build:docs', () => {
   let ignore = require('fs').readFileSync('.npmignore').toString()
     .trim().split(/\n+/)
     .concat(['.npmignore', 'index.js', 'package.json', 'logo.svg', 'AUTHORS'])
@@ -28,11 +28,11 @@ gulp.task('build:docs', ['clean'], () => {
     .pipe(gulp.dest('build'))
 })
 
-gulp.task('build:bin', ['clean'], () => {
+gulp.task('build:bin', () => {
   return gulp.src('bin/*').pipe(gulp.dest('build/bin'))
 })
 
-gulp.task('build:package', ['clean'], () => {
+gulp.task('build:package', () => {
   let editor = require('gulp-json-editor')
 
   return gulp.src('./package.json')
@@ -53,9 +53,10 @@ gulp.task('build:package', ['clean'], () => {
     .pipe(gulp.dest('build'))
 })
 
-gulp.task('build', ['build:lib', 'build:docs', 'build:bin', 'build:package'])
+gulp.task('build',
+  gulp.series('clean', 'build:lib', 'build:docs', 'build:bin', 'build:package'))
 
-gulp.task('standalone', ['build:lib'], done => {
+gulp.task('standalone', gulp.series('clean', 'build:lib', done => {
   let builder = require('browserify')({
     basedir: path.join(__dirname, 'build'),
     standalone: 'autoprefixer'
@@ -91,7 +92,7 @@ gulp.task('standalone', ['build:lib'], done => {
       }
       done()
     })
-})
+}))
 
 gulp.task('compile-playground', () => {
   let autoprefixer = require('./build')
@@ -101,17 +102,16 @@ gulp.task('compile-playground', () => {
     .pipe(gulp.dest('./playground'))
 })
 
-gulp.task('initialise-playground', ['build'], () => {
+gulp.task('initialise-playground', gulp.series('build', () => {
   return gulp.start('compile-playground')
-})
+}))
 
 gulp.task('watch-playground', () => {
   return gulp.watch('./playground/input.css', ['compile-playground'])
 })
 
-// Run "gulp play" to experiment with the current implementation of the code
-gulp.task('play', ['initialise-playground'], () => {
+gulp.task('play', gulp.series('initialise-playground', () => {
   gulp.start('watch-playground')
-})
+}))
 
-gulp.task('default', ['build'])
+gulp.task('default', gulp.series('build'))
