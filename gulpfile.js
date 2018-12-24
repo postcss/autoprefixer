@@ -1,12 +1,13 @@
 let gulp = require('gulp')
-let path = require('path')
 let fs = require('fs-extra')
 let postcss = require('gulp-postcss')
 let rename = require('gulp-rename')
 
+function join (...folderPath) { return folderPath.join('/') }
+
 gulp.task('clean', done => {
-  fs.remove(path.join(__dirname, 'autoprefixer.js'), () => {
-    fs.remove(path.join(__dirname, 'build'), done)
+  fs.remove(join(__dirname, 'autoprefixer.js'), () => {
+    fs.remove(join(__dirname, 'build'), done)
   })
 })
 
@@ -58,7 +59,7 @@ gulp.task('build',
 
 gulp.task('standalone', gulp.series('clean', 'build:lib', done => {
   let builder = require('browserify')({
-    basedir: path.join(__dirname, 'build'),
+    basedir: join(__dirname, 'build'),
     standalone: 'autoprefixer'
   })
   builder.add('./lib/autoprefixer.js')
@@ -80,14 +81,14 @@ gulp.task('standalone', gulp.series('clean', 'build:lib', done => {
     .bundle((error, build) => {
       if (error) throw error
 
-      fs.removeSync(path.join(__dirname, 'build'))
+      fs.removeSync(join(__dirname, 'build'))
 
-      let rails = path.join(__dirname, '..', 'autoprefixer-rails',
+      let rails = join(__dirname, '..', 'autoprefixer-rails',
         'vendor', 'autoprefixer.js')
       if (fs.existsSync(rails)) {
         fs.writeFileSync(rails, build)
       } else {
-        let out = path.join(__dirname, 'autoprefixer.js')
+        let out = join(__dirname, 'autoprefixer.js')
         fs.writeFileSync(out, build)
       }
       done()
