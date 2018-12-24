@@ -54,8 +54,10 @@ gulp.task('build:package', () => {
     .pipe(gulp.dest('build'))
 })
 
-gulp.task('build',
-  gulp.series('clean', 'build:lib', 'build:docs', 'build:bin', 'build:package'))
+gulp.task('build', gulp.series(
+  'clean',
+  gulp.parallel('build:lib', 'build:docs', 'build:bin', 'build:package')
+))
 
 gulp.task('standalone', gulp.series('clean', 'build:lib', done => {
   let builder = require('browserify')({
@@ -103,16 +105,12 @@ gulp.task('compile-playground', () => {
     .pipe(gulp.dest('./playground'))
 })
 
-gulp.task('initialise-playground', gulp.series('build', () => {
-  return gulp.start('compile-playground')
-}))
+gulp.task('initialise-playground', gulp.series('build', 'compile-playground'))
 
 gulp.task('watch-playground', () => {
-  return gulp.watch('./playground/input.css', ['compile-playground'])
+  return gulp.watch('./playground/input.css', gulp.series('compile-playground'))
 })
 
-gulp.task('play', gulp.series('initialise-playground', () => {
-  gulp.start('watch-playground')
-}))
+gulp.task('play', gulp.series('initialise-playground', 'watch-playground'))
 
 gulp.task('default', gulp.series('build'))
