@@ -607,14 +607,14 @@ describe('hacks', () => {
       'autoprefixer: <css input>:36:3: Can not prefix grid-column-end ' +
         '(grid-column-start is not found)',
       'autoprefixer: <css input>:39:3: Can not impliment grid-gap ' +
-        'without grid-tamplate-columns',
+        'without grid-template-columns',
       'autoprefixer: <css input>:39:3: Can not find grid areas: ' +
         'head, nav, main, foot',
       'autoprefixer: <css input>:47:3: Can not impliment grid-gap ' +
-        'without grid-tamplate-columns',
+        'without grid-template-columns',
       'autoprefixer: <css input>:47:3: Can not find grid areas: a',
       'autoprefixer: <css input>:55:3: Can not impliment grid-gap ' +
-        'without grid-tamplate-columns',
+        'without grid-template-columns',
       'autoprefixer: <css input>:55:3: Can not find grid areas: b',
       'autoprefixer: <css input>:63:3: Can not find grid areas: c',
       'autoprefixer: <css input>:71:3: Can not find grid areas: d',
