@@ -21,6 +21,6 @@
 }
 .rtl-horizontal-tb-override-direction {
   writing-mode: horizontal-tb;
-  direction: ltr;
   direction: rtl;
+  direction: ltr;
 }
