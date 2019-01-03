@@ -7,3 +7,20 @@
 .three {
   writing-mode: vertical-lr;
 }
+.rtl-vertical-rl {
+  writing-mode: vertical-rl;
+  direction: rtl;
+}
+.rtl-vertical-lr {
+  writing-mode: vertical-lr;
+  direction: rtl;
+}
+.rtl-horizontal-tb {
+  writing-mode: horizontal-tb;
+  direction: rtl;
+}
+.rtl-horizontal-tb-override-direction {
+  writing-mode: horizontal-tb;
+  direction: ltr;
+  direction: rtl;
+}
