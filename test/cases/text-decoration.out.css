@@ -17,3 +17,18 @@
 .global {
   text-decoration: unset;
 }
+
+.skip {
+  -webkit-text-decoration-skip: spaces;
+          text-decoration-skip: spaces;
+}
+
+.ink {
+  -webkit-text-decoration-skip: ink;
+          text-decoration-skip-ink: auto;
+}
+
+.old-ink {
+  -webkit-text-decoration-skip: ink;
+          text-decoration-skip: ink;
+}

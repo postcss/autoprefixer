@@ -13,3 +13,15 @@
 .global {
   text-decoration: unset;
 }
+
+.skip {
+  text-decoration-skip: spaces;
+}
+
+.ink {
+  text-decoration-skip-ink: auto;
+}
+
+.old-ink {
+  text-decoration-skip: ink;
+}

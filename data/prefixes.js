@@ -481,8 +481,8 @@ f(decoration, browsers =>
   })
 )
 
-f(decoration, { match: /x.*#[23]/ }, browsers =>
-  prefix(['text-decoration-skip'], {
+f(decoration, { match: /x.*#[235]/ }, browsers =>
+  prefix(['text-decoration-skip', 'text-decoration-skip-ink'], {
     feature: 'text-decoration',
     browsers
   })

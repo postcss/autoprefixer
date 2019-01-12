@@ -505,7 +505,6 @@ describe('hacks', () => {
   it('supports image-set()', () => check('image-set'))
   it('supports writing-mode', () => check('writing-mode'))
   it('supports cross-fade()', () => check('cross-fade'))
-  it('supports text-decoration', () => check('text-decoration'))
   it('ignores modern direction', () => check('animation'))
   it('supports overscroll-behavior', () => check('overscroll-behavior'))
   it('supports color-adjust', () => check('color-adjust'))
@@ -760,5 +759,17 @@ describe('hacks', () => {
       'backface-visibility: hidden; ' +
       'transform-style: preserve-3d }'
     )
+  })
+
+  it('supports text-decoration', () => {
+    let input = read('text-decoration')
+    let instance = prefixer('text-decoration')
+    let result = postcss([instance]).process(input)
+    expect(result.warnings()
+      .map(i => i.toString()))
+      .toEqual([
+        'autoprefixer: <css input>:26:3: Replace text-decoration-skip: ink ' +
+        'to text-decoration-skip-ink: auto, because spec had been changed'
+      ])
   })
 })
