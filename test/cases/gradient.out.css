@@ -214,3 +214,9 @@ div {
   -webkit-mask-image: -webkit-radial-gradient(white, black);
           mask-image: radial-gradient(white, black);
 }
+
+.loop {
+  background-image: url("https://test.com/lol(test.png"), -webkit-radial-gradient(yellow, black, yellow);
+  background-image: url("https://test.com/lol(test.png"), -o-radial-gradient(yellow, black, yellow);
+  background-image: url("https://test.com/lol(test.png"), radial-gradient(yellow, black, yellow);
+}

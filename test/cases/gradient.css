@@ -125,3 +125,7 @@ div {
 .broken {
   mask-image: radial-gradient(white, black);
 }
+
+.loop {
+  background-image: url("https://test.com/lol(test.png"), radial-gradient(yellow, black, yellow);
+}
