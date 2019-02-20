@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 9.4.8
+* Fix `calc()` support in Grid gap.
+
 ## 9.4.7
 * Fix infinite loop on mismatched parens.
 
