@@ -22,28 +22,28 @@
   "dependencies": {
     "@babel/register": "^7.0.0",
     "browserslist": "^4.4.1",
-    "caniuse-lite": "^1.0.30000932",
+    "caniuse-lite": "^1.0.30000938",
     "normalize-range": "^0.1.2",
     "num2fraction": "^1.2.2",
     "postcss": "^7.0.14",
     "postcss-value-parser": "^3.3.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.2.2",
-    "@babel/plugin-proposal-class-properties": "^7.3.0",
+    "@babel/core": "^7.3.3",
+    "@babel/plugin-proposal-class-properties": "^7.3.3",
     "@babel/plugin-transform-proto-to-assign": "^7.2.0",
     "@babel/preset-env": "^7.3.1",
     "@logux/eslint-config": "^27.0.0",
     "babel-core": "^7.0.0-0",
     "babel-eslint": "^10.0.1",
-    "babel-jest": "^24.0.0",
+    "babel-jest": "^24.1.0",
     "babelify": "^10.0.0",
     "browserify": "^16.2.3",
-    "eslint": "^5.12.1",
+    "eslint": "^5.14.1",
     "eslint-ci": "^1.0.0",
     "eslint-config-standard": "^12.0.0",
-    "eslint-plugin-import": "^2.15.0",
-    "eslint-plugin-jest": "^22.1.3",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jest": "^22.3.0",
     "eslint-plugin-node": "^8.0.1",
     "eslint-plugin-prefer-let": "^1.0.1",
     "eslint-plugin-promise": "^4.0.1",
@@ -57,8 +57,8 @@
     "gulp-rename": "^1.4.0",
     "gulp-replace": "^1.0.0",
     "husky": "^1.3.1",
-    "jest": "^24.0.0",
-    "lint-staged": "^8.1.1",
+    "jest": "^24.1.0",
+    "lint-staged": "^8.1.4",
     "size-limit": "^0.21.1"
   },
   "bin": {
@@ -75,7 +75,7 @@
   "size-limit": [
     {
       "path": "build/lib/autoprefixer.js",
-      "limit": "106 KB"
+      "limit": "107 KB"
     }
   ],
   "eslintConfig": {
