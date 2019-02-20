@@ -73,6 +73,16 @@
       "nav foot foot";
 }
 
+.calc {
+  -ms-grid-rows: 1fr -webkit-calc(1% + 5px) 1fr;
+  -ms-grid-rows: 1fr calc(1% + 5px) 1fr;
+  -ms-grid-columns: 1fr -webkit-calc(1% + 5px) 1fr;
+  -ms-grid-columns: 1fr calc(1% + 5px) 1fr;
+  grid-template: 1fr 1fr / 1fr 1fr;
+  gap: -webkit-calc(1% + 5px);
+  gap: calc(1% + 5px);
+}
+
 .a-shortcut {
   grid-gap: 1rem 2rem;
   -ms-grid-rows: 1fr 1rem minmax(100px, 1fr) 1rem 2fr;
