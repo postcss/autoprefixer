@@ -351,3 +351,44 @@
   /* autoprefixer: ignore next */
   grid-area: child;
 }
+
+.grid-example {
+  display: -ms-grid;
+  display: grid;
+}
+
+@media (max-width: 767.98px) {
+  .grid-example {
+    grid-template-areas:
+      'first first'
+      'second third';
+  }
+}
+
+.grid-area-first {
+  grid-area: first;
+}
+  
+.grid-area-second {
+  grid-area: second;
+}
+
+.grid-area-third {
+  grid-area: third;
+}
+
+@media (max-width: 767.98px) {
+  .grid-area-first {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+  }
+  .grid-area-second {
+    -ms-grid-row: 2;
+    -ms-grid-column: 1;
+  }
+  .grid-area-third {
+    -ms-grid-row: 2;
+    -ms-grid-column: 2;
+  }
+}
