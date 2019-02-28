@@ -319,7 +319,7 @@ module.exports = {
 
 [other PostCSS plugins]: https://github.com/postcss/postcss#plugins
 [postcss-loader]:        https://github.com/postcss/postcss-loader
-[webpack]:               http://webpack.github.io/
+[webpack]:               https://webpack.js.org/
 
 
 ### CSS-in-JS
