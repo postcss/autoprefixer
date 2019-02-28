@@ -444,7 +444,7 @@ If you can’t move to a build tool, you can use text editor plugins:
 * [Sublime Text](https://github.com/sindresorhus/sublime-autoprefixer)
 * [Brackets](https://github.com/mikaeljorhult/brackets-autoprefixer)
 * [Atom Editor](https://github.com/sindresorhus/atom-autoprefixer)
-* [Visual Studio](https://github.com/madskristensen/WebCompiler)
+* Visual Studio with the [WebCompiler](https://github.com/madskristensen/WebCompiler) extension. ([Enable Autoprefixer](https://stackoverflow.com/a/54908636/2440))
 
 [Gulp]:  https://gulpjs.com/
 
