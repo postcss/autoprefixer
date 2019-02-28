@@ -435,7 +435,7 @@ Autoprefixer should be used in assets build tools. Text editor plugins are not
 a good solution, because prefixes decrease code readability and you will need
 to change values in all prefixed properties.
 
-I recommend you to learn how to use build tools like [Gulp].
+I recommend you to learn how to use build tools like [Parcel].
 They work much better and will open you a whole new world of useful plugins
 and automation.
 
@@ -444,9 +444,10 @@ If you can’t move to a build tool, you can use text editor plugins:
 * [Sublime Text](https://github.com/sindresorhus/sublime-autoprefixer)
 * [Brackets](https://github.com/mikaeljorhult/brackets-autoprefixer)
 * [Atom Editor](https://github.com/sindresorhus/atom-autoprefixer)
-* [Visual Studio](https://github.com/madskristensen/WebCompiler) ([how to](https://stackoverflow.com/a/54908636/2440))
+* [Visual Studio](https://github.com/madskristensen/WebCompiler)
+  ([how to](https://stackoverflow.com/a/54908636/2440))
 
-[Gulp]:  https://gulpjs.com/
+[Parcel]: https://parceljs.org/
 
 
 ## Warnings
