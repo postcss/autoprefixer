@@ -103,18 +103,23 @@ See [Browserslist docs] for queries, browser names, config format, and defaults.
 
 ### Does Autoprefixer polyfill Grid Layout for IE?
 
-Autoprefixer can be used to translate modern CSS Grid syntax into IE 10 and IE 11 syntax,
-but this polyfill will not work in 100% of cases. This is why it is disabled by default.
+Autoprefixer can be used to translate modern CSS Grid syntax into IE 10
+and IE 11 syntax, but this polyfill will not work in 100% of cases.
+This is why it is disabled by default.
 
-First, you need to enable Grid prefixes by using either the `grid: "autoplace"` option or the `/* autoprefixer grid: autoplace */` control comment.
+First, you need to enable Grid prefixes by using either the `grid: "autoplace"`
+option or the `/* autoprefixer grid: autoplace */` control comment.
 
 Second, you need to test every fix with Grid in IE. It is not an enable and
 forget feature, but it is still very useful.
 Financial Times and Yandex use it in production.
 
-Third, there is only very limited auto placement support. Read the [Grid Autoplacement support in IE](#grid-autoplacement-support-in-ie) section for more details.
+Third, there is only very limited auto placement support. Read the
+[Grid Autoplacement support in IE](#grid-autoplacement-support-in-ie) section
+for more details.
 
-Fourth, if you are not using the autoplacement feature, the best way to use Autoprefixer is by using  `grid-template` or `grid-template-areas`.
+Fourth, if you are not using the autoplacement feature, the best way
+to use Autoprefixer is by using  `grid-template` or `grid-template-areas`.
 
 ```css
 .page {
@@ -594,14 +599,17 @@ Available options are:
   parameters. Default is `true`.
 * `flexbox` (boolean|string): should Autoprefixer add prefixes for flexbox
   properties. With `"no-2009"` value Autoprefixer will add prefixes only
-  for final and IE versions of specification. Default is `true`.
-* `grid` (false|"autoplace"|"no-autoplace"): should Autoprefixer add IE prefixes for Grid Layout
-  properties?
-    * `false` (default): prevent Autoprefixer from outputting CSS Grid translations.
-    * `"autoplace"`: enable Autoprefixer grid translations and *include* autoplacement
-      support. You can also use `/* autoprefixer grid: autoplace */` in your CSS.
-    * `"no-autoplace"`: enable Autoprefixer grid translations but *exclude* autoplacement
-      support. You can also use `/* autoprefixer grid: no-autoplace */` in your CSS.
+  for final and IE 10 versions of specification. Default is `true`.
+* `grid` (false|"autoplace"|"no-autoplace"): should Autoprefixer
+  add IE 10-11 prefixes for Grid Layout properties?
+    * `false` (default): prevent Autoprefixer from outputting
+       CSS Grid translations.
+    * `"autoplace"`: enable Autoprefixer grid translations
+      and *include* autoplacement support. You can also use
+      `/* autoprefixer grid: autoplace */` in your CSS.
+    * `"no-autoplace"`: enable Autoprefixer grid translations
+      but *exclude* autoplacement support. You can also use
+      `/* autoprefixer grid: no-autoplace */` in your CSS.
       (alias for the deprecated `true` value)
 * `stats` (object): custom [usage statistics] for `> 10% in my stats`
   browsers query.
@@ -814,11 +822,11 @@ so unfortunately this little snippet will _never_ be IE friendly.
 
 #### No manual cell placement or column/row spans allowed inside an autoplacement grid
 
-Elements must not be manually placed or given column/row spans inside an autoplacement
-grid. Only the most basic of autoplacement grids are supported. Grid cells can still be
-placed manually outside the the explicit grid though. Support for manually placing
-individual grid cells inside an explicit autoplacement grid is planned for a
-future release.
+Elements must not be manually placed or given column/row spans inside
+an autoplacement grid. Only the most basic of autoplacement grids are supported.
+Grid cells can still be placed manually outside the the explicit grid though.
+Support for manually placing individual grid cells inside an explicit
+autoplacement grid is planned for a future release.
 
 ```css
 .autoplacement-grid {
