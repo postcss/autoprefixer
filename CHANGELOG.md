@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 9.4.10
+* Add warning for named Grid rows.
+
 ## 9.4.9
 * Fix `grid-template` and `@media` case (by Bogdan Dolin).
 
