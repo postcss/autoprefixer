@@ -642,8 +642,16 @@ describe('hacks', () => {
       'autoprefixer: <css input>:140:3: IE does not support place-items ' +
         'on grid containers. Try using place-self on child elements ' +
         'instead: .warn_place_items > * { place-self: start end }',
-      'autoprefixer: <css input>:164:3: grid-auto-flow is not supported by IE'
+      'autoprefixer: <css input>:164:3: grid-auto-flow is not supported by IE',
+      'autoprefixer: <css input>:186:26: Autoprefixer currently does not ' +
+        'support line names. Try using grid-template-areas instead.'
     ])
+
+    let input2 = read('grid-template')
+    let output2 = read('grid-template.out')
+    let instance2 = prefixer('grid-template')
+    let result2 = postcss([instance2]).process(input2)
+    expect(result2.css).toEqual(output2)
   })
 
   it('supports grid autoplacement', () => {

@@ -243,3 +243,20 @@
   -ms-grid-column-align: center;
   justify-self: center;
 }
+
+.named {
+  -ms-grid-rows: 1fr;
+  grid-template-rows: 1fr;
+  -ms-grid-columns: [content] 1fr;
+  grid-template-columns: [content] 1fr;
+}
+
+.named > *:nth-child(1) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+}
+
+.named > *:nth-child(2) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+}

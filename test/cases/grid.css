@@ -180,3 +180,8 @@
   align-self: center;
   justify-self: center;
 }
+
+.named {
+  grid-template-rows: 1fr;
+  grid-template-columns: [content] 1fr;
+}
