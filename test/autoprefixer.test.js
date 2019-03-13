@@ -502,6 +502,7 @@ describe('hacks', () => {
   it('supports all placeholders', () => check('placeholder'))
   it('supports image-rendering', () => check('image-rendering'))
   it('supports border-box mask', () => check('mask-border'))
+  it('supports mask-composite', () => check('mask-composite'))
   it('supports image-set()', () => check('image-set'))
   it('supports writing-mode', () => check('writing-mode'))
   it('supports cross-fade()', () => check('cross-fade'))
