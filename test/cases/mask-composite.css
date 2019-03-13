@@ -1,0 +1,23 @@
+a {
+  mask: url(add.png) add, url(substract.png);
+}
+
+a {
+  mask: url(intersect.png) intersect, url(exclude.png);
+}
+
+a {
+  mask: url(image.png) intersect, url(image.png) add, url(image.png);
+}
+
+a {
+  mask-composite: add;
+}
+
+a {
+  mask-composite:;
+}
+
+a {
+  mask-composite: add, substract, exclude;
+}
