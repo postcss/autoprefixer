@@ -136,11 +136,14 @@ function read (name) {
   return fs.readFileSync(file).toString()
 }
 
+function universalizer (string) {
+  return string.split('\r').join('')
+}
+
 function check (from, instance = prefixer(from)) {
   let input = read(from)
   let output = read(from + '.out')
   let result = postcss([instance]).process(input)
-  function universalizer (string) { return string.split('\r').join('') }
   expect(result.warnings()).toHaveLength(0)
   expect(universalizer(result.css)).toEqual(universalizer(output))
 }
@@ -332,7 +335,6 @@ it('does not add prefixes on request', () => {
 })
 
 it('prevents doubling prefixes', () => {
-  function universalizer (string) { return string.split('\r').join('') }
   for (let type of COMMONS) {
     let processor = postcss([prefixer(type)])
     let input = read(type)
