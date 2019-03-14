@@ -137,7 +137,7 @@ function read (name) {
 }
 
 function universalizer (string) {
-  return string.split('\r').join('')
+  return string.replace(/\r/g, '')
 }
 
 function check (from, instance = prefixer(from)) {
