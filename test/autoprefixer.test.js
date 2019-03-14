@@ -136,12 +136,16 @@ function read (name) {
   return fs.readFileSync(file).toString()
 }
 
+function universalizer (string) {
+  return string.split('\r').join('')
+}
+
 function check (from, instance = prefixer(from)) {
   let input = read(from)
   let output = read(from + '.out')
   let result = postcss([instance]).process(input)
   expect(result.warnings()).toHaveLength(0)
-  expect(result.css).toEqual(output)
+  expect(universalizer(result.css)).toEqual(universalizer(output))
 }
 
 const COMMONS = [
@@ -335,7 +339,8 @@ it('prevents doubling prefixes', () => {
     let processor = postcss([prefixer(type)])
     let input = read(type)
     let output = read(type + '.out')
-    expect(processor.process(processor.process(input)).css).toEqual(output)
+    let result = processor.process(processor.process(input)).css
+    expect(universalizer(result)).toEqual(universalizer(output))
   }
 })
 
