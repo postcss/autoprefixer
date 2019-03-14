@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 9.5 “Draco dormiens nunquam titillandus”
+* Add `mask-composite` support (by Semen Levenson).
+
 ## 9.4.10
 * Add warning for named Grid rows.
 
