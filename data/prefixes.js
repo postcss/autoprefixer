@@ -197,7 +197,8 @@ f(require('caniuse-lite/data/features/css-filter-function'), browsers =>
 )
 
 // Backdrop-filter
-f(require('caniuse-lite/data/features/css-backdrop-filter'), browsers =>
+let backdrop = require('caniuse-lite/data/features/css-backdrop-filter')
+f(backdrop, { match: /y\sx|y\s#2/ }, browsers =>
   prefix(['backdrop-filter'], {
     feature: 'css-backdrop-filter',
     browsers
