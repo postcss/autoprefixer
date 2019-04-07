@@ -114,7 +114,7 @@
     "testEnvironment": "node",
     "coverageThreshold": {
       "global": {
-        "lines": 99.96
+        "lines": 100
       }
     },
     "modulePathIgnorePatterns": [

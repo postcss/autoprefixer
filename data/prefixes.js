@@ -569,7 +569,7 @@ f(require('caniuse-lite/data/features/css-deviceadaptation'), browsers =>
 
 // Resolution Media Queries
 let resolut = require('caniuse-lite/data/features/css-media-resolution')
-f(resolut, { match: /( x($| )|a #3)/ }, browsers =>
+f(resolut, { match: /( x($| )|a #2)/ }, browsers =>
   prefix(['@resolution'], {
     feature: 'css-media-resolution',
     browsers

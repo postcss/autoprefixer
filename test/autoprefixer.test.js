@@ -60,7 +60,7 @@ let backgrounder = autoprefixer({
   browsers: ['Firefox 3.6', 'Android 2.3']
 })
 let resolutioner = autoprefixer({
-  browsers: ['Safari 7', 'Opera 12']
+  browsers: ['Safari 7', 'Opera 12', 'Firefox 15']
 })
 let overscroller = autoprefixer({
   browsers: ['Edge 17']
