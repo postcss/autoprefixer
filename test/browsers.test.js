@@ -1,7 +1,8 @@
-let Browsers = require('../lib/browsers')
 
 let data = require('caniuse-lite').agents
 let path = require('path')
+
+let Browsers = require('../lib/browsers')
 
 describe('.prefixes()', () => {
   it('returns prefixes by default data', () => {

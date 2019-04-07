@@ -1,8 +1,9 @@
-let OldValue = require('../lib/old-value')
-let Value = require('../lib//value')
 let parse = require('postcss').parse
 
 let Prefixes = require('../lib/prefixes')
+let OldValue = require('../lib/old-value')
+let Value = require('../lib/value')
+
 let prefixes = new Prefixes()
 
 let calc

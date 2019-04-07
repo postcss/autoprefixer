@@ -1,5 +1,6 @@
-let Selector = require('../lib/selector')
 let parse = require('postcss').parse
+
+let Selector = require('../lib/selector')
 
 let selector
 beforeEach(() => {

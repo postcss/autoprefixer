@@ -1,5 +1,6 @@
-let AtRule = require('../lib/at-rule')
 let parse = require('postcss').parse
+
+let AtRule = require('../lib/at-rule')
 
 describe('process()', () => {
   it('adds prefixes', () => {

@@ -1,5 +1,6 @@
-let Prefixer = require('../lib/prefixer')
 let parse = require('postcss').parse
+
+let Prefixer = require('../lib/prefixer')
 
 let prefix, css
 beforeEach(() => {

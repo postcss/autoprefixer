@@ -1,6 +1,7 @@
+let parse = require('postcss').parse
+
 let Declaration = require('../lib/declaration')
 let Prefixes = require('../lib/prefixes')
-let parse = require('postcss').parse
 
 let prefixes, tabsize
 beforeEach(() => {

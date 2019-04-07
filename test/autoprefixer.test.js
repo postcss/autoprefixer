@@ -1,8 +1,8 @@
-let autoprefixer = require('../lib/autoprefixer')
-
 let postcss = require('postcss')
 let path = require('path')
 let fs = require('fs')
+
+let autoprefixer = require('../lib/autoprefixer')
 
 let grider = autoprefixer({
   browsers: ['Chrome 25', 'Edge 12', 'IE 10'],
