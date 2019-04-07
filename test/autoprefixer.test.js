@@ -63,7 +63,7 @@ let resolutioner = autoprefixer({
   browsers: ['Safari 7', 'Opera 12']
 })
 let overscroller = autoprefixer({
-  browsers: ['Edge 16']
+  browsers: ['Edge 17']
 })
 let clipper = autoprefixer({
   browsers: ['Safari 7', 'Edge 14']
@@ -104,6 +104,8 @@ function prefixer (name) {
     return without3d
   } else if (name === 'background-size') {
     return backgrounder
+  } else if (name === 'backdrop-filter') {
+    return overscroller
   } else if (name === 'background-clip') {
     return clipper
   } else if (name === 'uncascade') {
@@ -514,6 +516,7 @@ describe('hacks', () => {
   it('ignores modern direction', () => check('animation'))
   it('supports overscroll-behavior', () => check('overscroll-behavior'))
   it('supports color-adjust', () => check('color-adjust'))
+  it('supports backdrop-filter', () => check('backdrop-filter'))
 
   it('supports appearance for IE', () => {
     let instance = autoprefixer({ browsers: 'Edge 15' })
