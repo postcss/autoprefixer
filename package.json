@@ -21,8 +21,8 @@
   },
   "dependencies": {
     "@babel/register": "^7.4.0",
-    "browserslist": "^4.5.4",
-    "caniuse-lite": "^1.0.30000957",
+    "browserslist": "^4.5.5",
+    "caniuse-lite": "^1.0.30000963",
     "normalize-range": "^0.1.2",
     "num2fraction": "^1.2.2",
     "postcss": "^7.0.14",
@@ -33,7 +33,7 @@
     "@babel/plugin-proposal-class-properties": "^7.4.0",
     "@babel/plugin-transform-proto-to-assign": "^7.4.3",
     "@babel/preset-env": "^7.4.3",
-    "@logux/eslint-config": "^28.0.0",
+    "@logux/eslint-config": "^28.2.0",
     "babel-core": "^7.0.0-0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.7.1",
@@ -42,25 +42,25 @@
     "eslint": "^5.16.0",
     "eslint-ci": "^1.0.0",
     "eslint-config-standard": "^12.0.0",
-    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-import": "^2.17.2",
     "eslint-plugin-import-helpers": "^0.1.4",
-    "eslint-plugin-jest": "^22.4.1",
+    "eslint-plugin-jest": "^22.5.1",
     "eslint-plugin-node": "^8.0.1",
     "eslint-plugin-prefer-let": "^1.0.1",
     "eslint-plugin-promise": "^4.1.1",
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-standard": "^4.0.0",
     "fs-extra": "^7.0.1",
-    "gulp": "^4.0.0",
+    "gulp": "^4.0.1",
     "gulp-babel": "^8.0.0",
     "gulp-json-editor": "^2.5.1",
     "gulp-postcss": "^8.0.0",
     "gulp-rename": "^1.4.0",
     "gulp-replace": "^1.0.0",
-    "husky": "^1.3.1",
+    "husky": "^2.1.0",
     "jest": "^24.7.1",
     "lint-staged": "^8.1.5",
-    "size-limit": "^1.0.1"
+    "size-limit": "^1.1.2"
   },
   "bin": {
     "autoprefixer": "./bin/autoprefixer"
@@ -86,8 +86,7 @@
       "security/detect-non-literal-regexp": "off",
       "security/detect-unsafe-regex": "off",
       "node/no-missing-require": "off",
-      "no-unused-expressions": "off",
-      "valid-jsdoc": "off"
+      "no-unused-expressions": "off"
     },
     "overrides": [
       {
