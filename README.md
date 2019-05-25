@@ -600,13 +600,13 @@ Available options are:
       (alias for the deprecated `true` value)
 * `stats` (object): custom [usage statistics] for `> 10% in my stats`
   browsers query.
-* `browsers` (array): list of queries for target browsers. Try to not use it.
-  The best practice is to use `.browserslistrc` config
+* `overrideBrowserslist` (array): list of queries for target browsers.
+  Try to not use it. The best practice is to use `.browserslistrc` config
   or `browserslist` key in `package.json` to share target browsers
   with Babel, ESLint and Stylelint. See [Browserslist docs]
   for available queries and default value.
 * `ignoreUnknownVersions` (boolean): do not raise error on unknown browser
-  version in Browserslist config or `browsers` option. Default is `false`.
+  version in Browserslist config. Default is `false`.
 
 Plugin object has `info()` method for debugging purpose.
 

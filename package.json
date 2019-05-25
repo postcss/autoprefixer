@@ -23,6 +23,7 @@
     "@babel/register": "^7.4.4",
     "browserslist": "^4.5.6",
     "caniuse-lite": "^1.0.30000966",
+    "chalk": "^2.4.2",
     "normalize-range": "^0.1.2",
     "num2fraction": "^1.2.2",
     "postcss": "^7.0.16",
@@ -127,6 +128,9 @@
     "not ExplorerMobile 11",
     "node 6"
   ],
+  "browser": {
+    "chalk": false
+  },
   "babel": {
     "presets": [
       [
