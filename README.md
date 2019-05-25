@@ -160,21 +160,6 @@ See also:
 [`postcss-gap-properties`]:                     https://github.com/jonathantneal/postcss-gap-properties
 [`postcss-grid-kiss`]:                          https://github.com/sylvainpolletvillard/postcss-grid-kiss
 
-### No prefixes in production
-
-Many other tools contain Autoprefixer. For example, webpack uses Autoprefixer
-to minify CSS by cleaning unnecessary prefixes.
-
-If you pass your browsers to Autoprefixer using its `browsers` option, the other
-tools will use their own config, leading webpack to remove the prefixes that
-the first Autoprefixer added.
-
-To avoid this, ensure you use either the [browserslist config file] or
-`browsers` key in your `package.json`, so that all tools (Autoprefixer,
-cssnano, doiuse, cssnext, etc) use the same browsers list.
-
-[browserslist config file]: https://github.com/ai/browserslist#config-file
-
 
 ### What is the unprefixed version of `-webkit-min-device-pixel-ratio`?
 
@@ -250,8 +235,7 @@ Use [postcss-unprefix] before Autoprefixer.
 ### Does Autoprefixer add `-epub-` prefix?
 
 No, Autoprefixer works only with browsers prefixes from Can I Use.
-But you can use [postcss-epub]
-for prefixing ePub3 properties.
+But you can use [postcss-epub] for prefixing ePub3 properties.
 
 [postcss-epub]: https://github.com/Rycochet/postcss-epub
 
