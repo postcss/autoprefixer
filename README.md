@@ -58,7 +58,6 @@ Twitter account for news and releases: [@autoprefixer].
 - [Browsers](#browsers)
 - [FAQ](#faq)
     - [Does Autoprefixer polyfill Grid Layout for IE?](#does-autoprefixer-polyfill-grid-layout-for-ie)
-    - [No prefixes in production](#no-prefixes-in-production)
     - [What is the unprefixed version of `-webkit-min-device-pixel-ratio`?](#what-is-the-unprefixed-version-of--webkit-min-device-pixel-ratio)
     - [Does it add polyfills?](#does-it-add-polyfills)
     - [Why doesn’t Autoprefixer add prefixes to `border-radius`?](#why-doesnt-autoprefixer-add-prefixes-to-border-radius)
