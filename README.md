@@ -14,6 +14,10 @@ entirely):
 ::placeholder {
   color: gray;
 }
+
+.image {
+  background-image: url(image@1x.png);
+}
 @media (min-resolution: 2dppx) {
   .image {
     background-image: url(image@2x.png);
@@ -40,6 +44,10 @@ of Autoprefixer.
 }
 ::placeholder {
   color: gray;
+}
+
+.image {
+  background-image: url(image@1x.png);
 }
 @media (-webkit-min-device-pixel-ratio: 2),
        (-o-min-device-pixel-ratio: 2/1),
