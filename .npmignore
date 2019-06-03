@@ -9,5 +9,6 @@ autoprefixer.js
 playground
 test
 .travis.yml
+.github
 
 gulpfile.js
