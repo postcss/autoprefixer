@@ -801,3 +801,11 @@ f(require('caniuse-lite/data/features/css-color-adjust'), browsers =>
     browsers
   })
 )
+
+// text-orientation
+f(require('caniuse-lite/data/features/css-text-orientation'), browsers =>
+  prefix(['text-orientation'], {
+    feature: 'css-text-orientation',
+    browsers
+  })
+)
