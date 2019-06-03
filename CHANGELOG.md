@@ -1,6 +1,13 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 9.6 “Nunc id vides, nunc ne vides”
+* Show warning about Browserslist config on `browser` option.
+* Add warning-less `overrideBrowserslist` option.
+* Add `text-orientation` support.
+* Add `min-resolution: 2x` alias support.
+* Add `.github/CONTRIBUTING.md` (by Juan Martin Marco).
+
 ## 9.5.1
 * Fix `backdrop-filter` for Edge (by Oleh Aloshkin).
 * Fix `min-resolution` media query support in Firefox < 16.
