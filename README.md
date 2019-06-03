@@ -14,6 +14,11 @@ entirely):
 ::placeholder {
   color: gray;
 }
+@media (min-resolution: 2dppx) {
+  .image {
+    background-image: url(image@2x.png);
+  }
+}
 ```
 
 Autoprefixer will use the data based on current browser popularity and property
@@ -35,6 +40,13 @@ of Autoprefixer.
 }
 ::placeholder {
   color: gray;
+}
+@media (-webkit-min-device-pixel-ratio: 2),
+       (-o-min-device-pixel-ratio: 2/1),
+       (min-resolution: 2dppx) {
+  .image {
+    background-image: url(image@2x.png);
+  }
 }
 ```
 
@@ -58,7 +70,6 @@ Twitter account for news and releases: [@autoprefixer].
 - [Browsers](#browsers)
 - [FAQ](#faq)
     - [Does Autoprefixer polyfill Grid Layout for IE?](#does-autoprefixer-polyfill-grid-layout-for-ie)
-    - [What is the unprefixed version of `-webkit-min-device-pixel-ratio`?](#what-is-the-unprefixed-version-of--webkit-min-device-pixel-ratio)
     - [Does it add polyfills?](#does-it-add-polyfills)
     - [Why doesn’t Autoprefixer add prefixes to `border-radius`?](#why-doesnt-autoprefixer-add-prefixes-to-border-radius)
     - [Why does Autoprefixer use unprefixed properties in `@-webkit-keyframes`?](#why-does-autoprefixer-use-unprefixed-properties-in--webkit-keyframes)
@@ -125,25 +136,25 @@ to use Autoprefixer is by using  `grid-template` or `grid-template-areas`.
 
 ```css
 .page {
-    display: grid;
-    grid-gap: 33px;
-    grid-template:
-        "head head  head" 1fr
-        "nav  main  main" minmax(100px, 1fr)
-        "nav  foot  foot" 2fr /
-        1fr   100px 1fr;
+  display: grid;
+  grid-gap: 33px;
+  grid-template:
+    "head head  head" 1fr
+    "nav  main  main" minmax(100px, 1fr)
+    "nav  foot  foot" 2fr /
+    1fr   100px 1fr;
 }
 .page__head {
-    grid-area: head;
+  grid-area: head;
 }
 .page__nav {
-    grid-area: nav;
+  grid-area: nav;
 }
 .page__main {
-    grid-area: main;
+  grid-area: main;
 }
 .page__footer {
-    grid-area: foot;
+  grid-area: foot;
 }
 ```
 
@@ -158,29 +169,6 @@ See also:
 [The guide about Grids in IE and Autoprefixer]: https://css-tricks.com/css-grid-in-ie-css-grid-and-the-new-autoprefixer/
 [`postcss-gap-properties`]:                     https://github.com/jonathantneal/postcss-gap-properties
 [`postcss-grid-kiss`]:                          https://github.com/sylvainpolletvillard/postcss-grid-kiss
-
-
-### What is the unprefixed version of `-webkit-min-device-pixel-ratio`?
-
-```css
-@media (min-resolution: 2dppx) {
-    .image {
-        background-image: url(image@2x.png);
-    }
-}
-```
-
-Will be compiled to:
-
-```css
-@media (-webkit-min-device-pixel-ratio: 2),
-       (-o-min-device-pixel-ratio: 2/1),
-       (min-resolution: 2dppx) {
-    .image {
-        background-image: url(image@2x.png);
-    }
-}
-```
 
 
 ### Does it add polyfills?
@@ -255,17 +243,17 @@ future-proof. You can use [postcss-font-family-system-ui] to transform
 In Gulp you can use [gulp-postcss] with `autoprefixer` npm package.
 
 ```js
-gulp.task('autoprefixer', function () {
-    var postcss      = require('gulp-postcss');
-    var sourcemaps   = require('gulp-sourcemaps');
-    var autoprefixer = require('autoprefixer');
+gulp.task('autoprefixer', () => {
+  const autoprefixer = require('autoprefixer')
+  const sourcemaps = require('gulp-sourcemaps')
+  const postcss = require('gulp-postcss')
 
-    return gulp.src('./src/*.css')
-        .pipe(sourcemaps.init())
-        .pipe(postcss([ autoprefixer() ]))
-        .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest('./dest'));
-});
+  return gulp.src('./src/*.css')
+    .pipe(sourcemaps.init())
+    .pipe(postcss([ autoprefixer() ]))
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest('./dest'))
+})
 ```
 
 With `gulp-postcss` you also can combine Autoprefixer
@@ -282,14 +270,14 @@ and [other PostCSS plugins].
 
 ```js
 module.exports = {
-    module: {
-        rules: [
-            {
-                test: /\.css$/,
-                use: ["style-loader", "css-loader", "postcss-loader"]
-            }
-        ]
-    }
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader", "postcss-loader"]
+      }
+    ]
+  }
 }
 ```
 
@@ -400,15 +388,15 @@ You can use Autoprefixer with [PostCSS] in your Node.js application
 or if you want to develop an Autoprefixer plugin for a new environment.
 
 ```js
-var autoprefixer = require('autoprefixer');
-var postcss      = require('postcss');
+const autoprefixer = require('autoprefixer')
+const postcss = require('postcss')
 
-postcss([ autoprefixer ]).process(css).then(function (result) {
-    result.warnings().forEach(function (warn) {
-        console.warn(warn.toString());
-    });
-    console.log(result.css);
-});
+postcss([ autoprefixer ]).process(css).then(result => {
+  result.warnings().forEach(warn => {
+    console.warn(warn.toString())
+  })
+  console.log(result.css)
+})
 ```
 
 There is also a [standalone build] for the browser or for a non-Node.js runtime.
@@ -453,9 +441,9 @@ problems in your CSS:
 You can get warnings from `result.warnings()`:
 
 ```js
-result.warnings().forEach(function (warn) {
-    console.warn(warn.toString());
-});
+result.warnings().forEach(warn => {
+  console.warn(warn.toString())
+})
 ```
 
 Every Autoprefixer runner should display these warnings.
@@ -473,8 +461,8 @@ after the unprefixed one.
 
 ```css
 a {
-    transform: scale(0.5);
-    -moz-transform: scale(0.6);
+  transform: scale(0.5);
+  -moz-transform: scale(0.6);
 }
 ```
 
@@ -498,7 +486,7 @@ You can use these plugin options to control some of Autoprefixer’s features.
 You should set them inside the plugin like so:
 
 ```js
-autoprefixer({ grid: "autoplace" });
+autoprefixer({ grid: 'autoplace' })
 ```
 
 
@@ -509,18 +497,18 @@ you can use control comments to disable Autoprefixer.
 
 ```css
 .a {
-    transition: 1s; /* will be prefixed */
+  transition: 1s; /* will be prefixed */
 }
 
 .b {
-    /* autoprefixer: off */
-    transition: 1s; /* will not be prefixed */
+  /* autoprefixer: off */
+  transition: 1s; /* will not be prefixed */
 }
 
 .c {
-    /* autoprefixer: ignore next */
-    transition: 1s; /* will not be prefixed */
-    mask: url(image.png); /* will be prefixed */
+  /* autoprefixer: ignore next */
+  transition: 1s; /* will not be prefixed */
+  mask: url(image.png); /* will be prefixed */
 }
 ```
 
@@ -532,20 +520,20 @@ There are three types of control comments:
   or next rule selector or at-rule parameters (but not rule/at‑rule body).
 * `/* autoprefixer grid: (autoplace|no-autoplace|off) */`: control how Autoprefixer handles
   grid translations for the whole block:
-    * `autoplace`: enable grid translations with autoplacement support.
-    * `no-autoplace`: enable grid translations with autoplacement support *disabled*.
-      (alias for deprecated value `on`)
-    * `off`: disable all grid translations.
+  * `autoplace`: enable grid translations with autoplacement support.
+  * `no-autoplace`: enable grid translations with autoplacement
+    support *disabled* (alias for deprecated value `on`).
+  * `off`: disable all grid translations.
 
 You can also use comments recursively:
 
 ```css
 /* autoprefixer: off */
 @supports (transition: all) {
-    /* autoprefixer: on */
-    a {
-        /* autoprefixer: off */
-    }
+  /* autoprefixer: on */
+  a {
+    /* autoprefixer: off */
+  }
 }
 ```
 
@@ -556,10 +544,10 @@ block twice:
 /* How not to use block level control comments */
 
 .do-not-do-this {
-    /* autoprefixer: off */
-    transition: 1s;
-    /* autoprefixer: on */
-    transform: rotate(20deg);
+  /* autoprefixer: off */
+  transition: 1s;
+  /* autoprefixer: on */
+  transform: rotate(20deg);
 }
 ```
 
@@ -629,10 +617,10 @@ Autoprefixer supports autoplacement by using `nth-child` CSS selectors. It creat
 /* autoprefixer grid: autoplace */
 
 .autoplacement-example {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
-    grid-gap: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  grid-gap: 20px;
 }
 ```
 
@@ -642,33 +630,33 @@ Autoprefixer supports autoplacement by using `nth-child` CSS selectors. It creat
 /* autoprefixer grid: autoplace */
 
 .autoplacement-example {
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-columns: 1fr 20px 1fr;
-    grid-template-columns: 1fr 1fr;
-    -ms-grid-rows: auto 20px auto;
-    grid-template-rows: auto auto;
-    grid-gap: 20px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 20px 1fr;
+  grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: auto 20px auto;
+  grid-template-rows: auto auto;
+  grid-gap: 20px;
 }
 
 .autoplacement-example > *:nth-child(1) {
-    -ms-grid-row: 1;
-    -ms-grid-column: 1;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
 }
 
 .autoplacement-example > *:nth-child(2) {
-    -ms-grid-row: 1;
-    -ms-grid-column: 3;
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
 }
 
 .autoplacement-example > *:nth-child(3) {
-    -ms-grid-row: 3;
-    -ms-grid-column: 1;
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
 }
 
 .autoplacement-example > *:nth-child(4) {
-    -ms-grid-row: 3;
-    -ms-grid-column: 3;
+  -ms-grid-row: 3;
+  -ms-grid-column: 3;
 }
 ```
 
@@ -691,14 +679,14 @@ The following CSS will not work as expected with the autoplacement feature enabl
 /* Unsafe CSS when Autoplacement is enabled */
 
 .grid-cell {
-    grid-column: 2;
-    grid-row: 2;
+  grid-column: 2;
+  grid-row: 2;
 }
 
 .grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
 }
 ```
 
@@ -708,14 +696,14 @@ Swapping the rules around will not fix the issue either:
 /* Also unsafe to use this CSS */
 
 .grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
 }
 
 .grid-cell {
-    grid-column: 2;
-    grid-row: 2;
+  grid-column: 2;
+  grid-row: 2;
 }
 ```
 
@@ -726,15 +714,15 @@ grid-declaration rule:
 /* Disable autoplacement to fix the issue */
 
 .grid {
-    /* autoprefixer grid: no-autoplace */
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+  /* autoprefixer grid: no-autoplace */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
 }
 
 .grid-cell {
-    grid-column: 2;
-    grid-row: 2;
+  grid-column: 2;
+  grid-row: 2;
 }
 ```
 
@@ -748,21 +736,21 @@ when needed. This method is far less likely to cause something on the site to br
 
 /* Old code will function the same way it always has */
 .old-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
 }
 .old-grid-cell {
-    grid-column: 2;
-    grid-row: 2;
+  grid-column: 2;
+  grid-row: 2;
 }
 
 /* Enable autoplacement when you want to use it in new code */
 .new-autoplace-friendly-grid {
-    /* autoprefixer grid: autoplace */
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, auto);
+  /* autoprefixer grid: autoplace */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, auto);
 }
 ```
 
@@ -781,14 +769,14 @@ so that Autoprefixer knows how many `nth-child` selectors to generate.
 
 ```css
 .not-allowed {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .is-allowed {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(10, auto);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(10, auto);
 }
 ```
 
@@ -801,8 +789,8 @@ so unfortunately this little snippet will _never_ be IE friendly.
 
 ```css
 .grid {
-    /* This will never be IE friendly */
-    grid-template-columns: repeat(auto-fit, min-max(200px, 1fr))
+  /* This will never be IE friendly */
+  grid-template-columns: repeat(auto-fit, min-max(200px, 1fr))
 }
 ```
 
@@ -816,27 +804,23 @@ autoplacement grid is planned for a future release.
 
 ```css
 .autoplacement-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, auto);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, auto);
 }
 
-/*
-    grid cells placed inside the explicit grid
-    will break the layout in IE
-*/
+/* Grid cells placed inside the explicit grid
+   will break the layout in IE */
 .not-permitted-grid-cell {
-    grid-column: 1;
-    grid-row: 1;
+  grid-column: 1;
+  grid-row: 1;
 }
 
-/*
-    grid cells placed outside the
-    explicit grid will work in IE
-*/
+/* Grid cells placed outside the
+   explicit grid will work in IE */
 .permitted-grid-cell {
-    grid-column: 1 / span 2;
-    grid-row: 4;
+  grid-column: 1 / span 2;
+  grid-row: 4;
 }
 ```
 
@@ -845,25 +829,25 @@ If manual cell placement is required, we recommend using `grid-template` or
 
 ```css
 .page {
-    display: grid;
-    grid-gap: 30px;
-    grid-template:
-        "head head"
-        "nav  main" minmax(100px, 1fr)
-        "foot foot" /
-        200px 1fr;
+  display: grid;
+  grid-gap: 30px;
+  grid-template:
+      "head head"
+      "nav  main" minmax(100px, 1fr)
+      "foot foot" /
+      200px 1fr;
 }
 .page__head {
-    grid-area: head;
+  grid-area: head;
 }
 .page__nav {
-    grid-area: nav;
+  grid-area: nav;
 }
 .page__main {
-    grid-area: main;
+  grid-area: main;
 }
 .page__footer {
-    grid-area: foot;
+  grid-area: foot;
 }
 ```
 
@@ -873,7 +857,7 @@ Let's say you have this HTML:
 
 ```html
 <div class="grid">
-    <div class="grid-cell"></div>
+  <div class="grid-cell"></div>
 </div>
 ```
 
@@ -881,17 +865,17 @@ And you write this CSS:
 
 ```css
 .grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
 }
 
 .grid::before {
-    content: 'before';
+  content: 'before';
 }
 
 .grid::after {
-    content: 'after';
+  content: 'after';
 }
 ```
 
@@ -899,31 +883,31 @@ This will be the output:
 
 ```css
 .grid {
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-columns: 1fr 1fr;
-    grid-template-columns: 1fr 1fr;
-    -ms-grid-rows: auto;
-    grid-template-rows: auto;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: auto;
+  grid-template-rows: auto;
 }
 
 .grid > *:nth-child(1) {
-    -ms-grid-row: 1;
-    -ms-grid-column: 1;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
 }
 
 
 .grid > *:nth-child(2) {
-    -ms-grid-row: 1;
-    -ms-grid-column: 2;
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
 }
 
 .grid::before {
-    content: 'before';
+  content: 'before';
 }
 
 .grid::after {
-    content: 'after';
+  content: 'after';
 }
 ```
 
@@ -943,47 +927,47 @@ If you wish to change the size of a `grid-gap`, you will need to redeclare the g
 
 ```css
 .grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
-    grid-gap: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-gap: 50px;
 }
 
 /* This will *NOT* work in IE */
 @media (max-width: 600px) {
-    .grid {
-        grid-gap: 20px;
-    }
+  .grid {
+    grid-gap: 20px;
+  }
 }
 
 /* This will *NOT* work in IE */
 .grid.small-gap {
-    grid-gap: 20px;
+  grid-gap: 20px;
 }
 ```
 
 ```css
 .grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
-    grid-gap: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-gap: 50px;
 }
 
 /* This *WILL* work in IE */
 @media (max-width: 600px) {
-    .grid {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto;
-        grid-gap: 20px;
-    }
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-gap: 20px;
+  }
 }
 
 /* This *WILL* work in IE */
 .grid.small-gap {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
-    grid-gap: 20px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-gap: 20px;
 }
 ```
 
@@ -1025,8 +1009,7 @@ Properties:
 JS API is also available:
 
 ```js
-var info = autoprefixer().info();
-console.log(info);
+console.log(autoprefixer().info())
 ```
 
 
