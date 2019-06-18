@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@babel/register": "^7.4.4",
-    "browserslist": "^4.6.1",
+    "browserslist": "^4.6.3",
     "caniuse-lite": "^1.0.30000971",
     "chalk": "^2.4.2",
     "normalize-range": "^0.1.2",
