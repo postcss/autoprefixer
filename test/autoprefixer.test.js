@@ -811,4 +811,11 @@ describe('hacks', () => {
         'to text-decoration-skip-ink: auto, because spec had been changed'
       ])
   })
+
+  it('supports -webkit-line-clamp', () => {
+    let input = read('webkit-line-clamp')
+    let result = postcss([cleaner]).process(input)
+    expect(result.css).toEqual(input)
+    expect(result.warnings()).toHaveLength(0)
+  })
 })
