@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 9.6.1
+* Fix `-webkit-line-clamp` truncating multi-line text support.
+
 ## 9.6 “Nunc id vides, nunc ne vides”
 * Show warning about Browserslist config on `browser` option.
 * Add warning-less `overrideBrowserslist` option.
