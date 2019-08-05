@@ -1,5 +1,3 @@
-/* eslint-disable import-helpers/order-imports */
-
 let unpack = require('caniuse-lite').feature
 
 function browsersSort (a, b) {
