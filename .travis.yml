@@ -4,8 +4,9 @@ node_js:
   - node
   - "10"
   - "8"
-  - "6"
 install:
   - yarn install --ignore-engines
-env:
-  ESTIMO_DISABLE=1
+matrix:
+  include:
+    node_js: "6"
+    env: ESTIMO_DISABLE=1
