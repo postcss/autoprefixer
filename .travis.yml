@@ -7,3 +7,5 @@ node_js:
   - "6"
 install:
   - yarn install --ignore-engines
+env:
+  ESTIMO_DISABLE=1

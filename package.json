@@ -22,7 +22,7 @@
   "dependencies": {
     "@babel/register": "^7.5.5",
     "browserslist": "^4.6.6",
-    "caniuse-lite": "^1.0.30000988",
+    "caniuse-lite": "^1.0.30000989",
     "chalk": "^2.4.2",
     "normalize-range": "^0.1.2",
     "num2fraction": "^1.2.2",
@@ -130,11 +130,7 @@
     ]
   },
   "browserslist": [
-    "last 2 version",
-    "not dead",
-    "not Explorer 11",
-    "not ExplorerMobile 11",
-    "node 6"
+    "defaults"
   ],
   "browser": {
     "chalk": false
