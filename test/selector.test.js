@@ -44,7 +44,8 @@ describe('prefixeds()', () => {
       '-webkit-': '::-webkit-selection',
       '-moz-': '::-moz-selection',
       '-ms-': '::-ms-selection',
-      '-o-': '::-o-selection' })
+      '-o-': '::-o-selection'
+    })
   })
 })
 
