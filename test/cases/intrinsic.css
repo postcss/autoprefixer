@@ -19,6 +19,10 @@ p {
   width: fill-available;
 }
 
+.ok {
+  width: calc(100% - var(--jqx-circular-progress-bar-fill-size));
+}
+
 .grid {
   grid: min-content max-content / fit-content(500px);
 }
