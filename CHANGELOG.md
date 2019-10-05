@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 9.6.2
+* Fix false `Replace fill to stretch` warning.
+
 ## 9.6.1
 * Fix `-webkit-line-clamp` truncating multi-line text support.
 
