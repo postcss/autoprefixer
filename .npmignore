@@ -1,14 +1,13 @@
-.editorconfig
-
-node_modules
+yarn-error.log
 yarn.lock
-build
-coverage
-autoprefixer.js
 
-playground
-test
+.editorconfig
+test/
+coverage/
 .travis.yml
-.github
 
+.github/
+playground/
+build/
+autoprefixer.js
 gulpfile.js
