@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 9.6.3
+* Fix `Cannot read property 'startsWith' of undefined` error.
+
 ## 9.6.2
 * Fix false `Replace fill to stretch` warning.
 
