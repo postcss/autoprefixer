@@ -22,7 +22,14 @@ gulp.task('build:lib', gulp.series('clean', () => {
 gulp.task('build:docs', () => {
   let ignore = require('fs').readFileSync('.npmignore').toString()
     .trim().split(/\n+/)
-    .concat(['.npmignore', 'index.js', 'package.json', 'logo.svg', 'AUTHORS'])
+    .concat([
+      '.npmignore',
+      'index.js',
+      'package.json',
+      'logo.svg',
+      'AUTHORS',
+      'node_modules'
+    ])
     .map(i => '!' + i)
 
   return gulp.src(['*'].concat(ignore))
