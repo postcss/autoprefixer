@@ -28,7 +28,7 @@ describe('regexp()', () => {
 })
 
 describe('check()', () => {
-  it('shecks rule selectors', () => {
+  it('checks rule selectors', () => {
     let css = parse('body .selection {}, ' +
             ':::selection {}, body ::selection {}')
     expect(selector.check(css.nodes[0])).toBeFalsy()
@@ -38,13 +38,15 @@ describe('check()', () => {
 })
 
 describe('prefixeds()', () => {
-  it('returns all avaiable prefixed selectors', () => {
+  it('returns all available prefixed selectors', () => {
     let css = parse('::selection {}')
     expect(selector.prefixeds(css.first)).toEqual({
-      '-webkit-': '::-webkit-selection',
-      '-moz-': '::-moz-selection',
-      '-ms-': '::-ms-selection',
-      '-o-': '::-o-selection'
+      '::selection': {
+        '-webkit-': '::-webkit-selection',
+        '-moz-': '::-moz-selection',
+        '-ms-': '::-ms-selection',
+        '-o-': '::-o-selection'
+      }
     })
   })
 })
