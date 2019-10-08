@@ -38,6 +38,25 @@ describe('check()', () => {
 })
 
 describe('prefixeds()', () => {
+  it('returns all available prefixed selectors for grouping rule', () => {
+    let css = parse('.c::selection, .d:read-only {}')
+    let rSel = new Selector(':read-only', ['-moz-'])
+    expect(rSel.prefixeds(css.first)).toEqual({
+      '::selection': {
+        '-webkit-': '.c::-webkit-selection',
+        '-moz-': '.c::-moz-selection',
+        '-ms-': '.c::-ms-selection',
+        '-o-': '.c::-o-selection'
+      },
+      ':read-only': {
+        '-webkit-': '.d:-webkit-read-only',
+        '-moz-': '.d:-moz-read-only',
+        '-ms-': '.d:-ms-read-only',
+        '-o-': '.d:-o-read-only'
+      }
+    })
+  })
+
   it('returns all available prefixed selectors', () => {
     let css = parse('::selection {}')
     expect(selector.prefixeds(css.first)).toEqual({
