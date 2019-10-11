@@ -54,3 +54,11 @@
 :read-only {
   color: black;
 }
+
+.f:-moz-read-write, .g:-moz-read-write {
+  background: #fff;
+}
+
+.f:read-write, .g:read-write {
+  background: #fff;
+}

@@ -17,3 +17,7 @@
 :read-only {
   color: black;
 }
+
+.f:read-write, .g:read-write {
+  background: #fff;
+}

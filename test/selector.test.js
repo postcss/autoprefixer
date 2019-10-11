@@ -1,10 +1,32 @@
+let agents = require('caniuse-lite').agents
 let parse = require('postcss').parse
 
+let Browsers = require('../lib/browsers')
+let Prefixes = require('../lib/prefixes')
 let Selector = require('../lib/selector')
+
+let data = {
+  browsers: agents,
+  prefixes: {
+    '::selection': {
+      selector: true,
+      browsers: ['firefox 21', 'firefox 20 old', 'chrome 30', 'ie 6']
+    },
+    ':read-only': {
+      selector: true,
+      browsers: ['ie 7', 'firefox 20']
+    }
+  }
+}
+
+let fill = new Prefixes(
+  data.prefixes,
+  new Browsers(data.browsers, ['firefox 21', 'ie 7'])
+)
 
 let selector
 beforeEach(() => {
-  selector = new Selector('::selection', ['-moz-', '-ms-'])
+  selector = new Selector('::selection', ['-moz-', '-ms-'], fill)
 })
 
 describe('prefixed()', () => {
@@ -40,7 +62,7 @@ describe('check()', () => {
 describe('prefixeds()', () => {
   it('returns all available prefixed selectors for grouping rule', () => {
     let css = parse('.c::selection, .d:read-only {}')
-    let rSel = new Selector(':read-only', ['-moz-'])
+    let rSel = new Selector(':read-only', ['-moz-'], fill)
     expect(rSel.prefixeds(css.first)).toEqual({
       '::selection': {
         '-webkit-': '.c::-webkit-selection',
