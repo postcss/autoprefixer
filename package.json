@@ -22,7 +22,7 @@
   "dependencies": {
     "@babel/register": "^7.6.2",
     "browserslist": "^4.7.0",
-    "caniuse-lite": "^1.0.30000998",
+    "caniuse-lite": "^1.0.30000999",
     "chalk": "^2.4.2",
     "normalize-range": "^0.1.2",
     "num2fraction": "^1.2.2",
@@ -30,11 +30,11 @@
     "postcss-value-parser": "^4.0.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.6.2",
+    "@babel/core": "^7.6.4",
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/plugin-transform-proto-to-assign": "^7.5.5",
-    "@babel/preset-env": "^7.6.2",
-    "@logux/eslint-config": "^32.2.0",
+    "@babel/preset-env": "^7.6.3",
+    "@logux/eslint-config": "^33.0.0",
     "@size-limit/preset-small-lib": "^2.1.6",
     "babel-core": "^7.0.0-0",
     "babel-eslint": "^10.0.3",
@@ -46,13 +46,13 @@
     "eslint-config-standard": "^14.1.0",
     "eslint-plugin-es5": "^1.4.1",
     "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jest": "^22.17.0",
+    "eslint-plugin-jest": "^22.19.0",
     "eslint-plugin-node": "^10.0.0",
     "eslint-plugin-prefer-let": "^1.0.1",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-standard": "^4.0.1",
-    "eslint-plugin-unicorn": "^12.0.2",
+    "eslint-plugin-unicorn": "^12.1.0",
     "fs-extra": "^8.1.0",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
@@ -60,9 +60,9 @@
     "gulp-postcss": "^8.0.0",
     "gulp-rename": "^1.4.0",
     "gulp-replace": "^1.0.0",
-    "husky": "^3.0.8",
+    "husky": "^3.0.9",
     "jest": "^24.9.0",
-    "lint-staged": "^9.4.1"
+    "lint-staged": "^9.4.2"
   },
   "bin": {
     "autoprefixer": "./bin/autoprefixer"
