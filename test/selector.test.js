@@ -28,7 +28,7 @@ describe('regexp()', () => {
 })
 
 describe('check()', () => {
-  it('shecks rule selectors', () => {
+  it('checks rule selectors', () => {
     let css = parse('body .selection {}, ' +
             ':::selection {}, body ::selection {}')
     expect(selector.check(css.nodes[0])).toBeFalsy()
@@ -38,13 +38,36 @@ describe('check()', () => {
 })
 
 describe('prefixeds()', () => {
-  it('returns all avaiable prefixed selectors', () => {
+  it('grouping rule gets correct _autoprefixerPrefixeds property', () => {
+    let css = parse('.c::selection, .d:read-only {}')
+    let rSel = new Selector(':read-only', ['-moz-'])
+    selector.prefixeds(css.first)
+    rSel.prefixeds(css.first)
+    expect(css.first._autoprefixerPrefixeds).toEqual({
+      '::selection': {
+        '-webkit-': '.c::-webkit-selection',
+        '-moz-': '.c::-moz-selection',
+        '-ms-': '.c::-ms-selection',
+        '-o-': '.c::-o-selection'
+      },
+      ':read-only': {
+        '-webkit-': '.d:-webkit-read-only',
+        '-moz-': '.d:-moz-read-only',
+        '-ms-': '.d:-ms-read-only',
+        '-o-': '.d:-o-read-only'
+      }
+    })
+  })
+
+  it('returns all available prefixed selectors', () => {
     let css = parse('::selection {}')
     expect(selector.prefixeds(css.first)).toEqual({
-      '-webkit-': '::-webkit-selection',
-      '-moz-': '::-moz-selection',
-      '-ms-': '::-ms-selection',
-      '-o-': '::-o-selection'
+      '::selection': {
+        '-webkit-': '::-webkit-selection',
+        '-moz-': '::-moz-selection',
+        '-ms-': '::-ms-selection',
+        '-o-': '::-o-selection'
+      }
     })
   })
 })

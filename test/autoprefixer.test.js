@@ -44,6 +44,10 @@ let uncascader = autoprefixer({
 let gradienter = autoprefixer({
   overrideBrowserslist: ['Chrome 25', 'Opera 12', 'Android 2.3']
 })
+let grouping = autoprefixer({
+  overrideBrowserslist: ['Chrome 25', 'Firefox > 17', 'IE 10', 'Edge 12'],
+  grid: 'autoplace'
+})
 let ffgradienter = autoprefixer({
   overrideBrowserslist: ['Chrome 25', 'Opera 12', 'Firefox 6']
 })
@@ -90,6 +94,8 @@ function prefixer (name) {
     return gradienter
   } else if (name === 'gradient-fix') {
     return ffgradienter
+  } else if (name === 'grouping-rule') {
+    return grouping
   } else if (name === 'flexbox' || name === 'flex-rewrite') {
     return flexboxer
   } else if (name === 'double') {
@@ -244,6 +250,7 @@ it('saves declaration style', () => check('style'))
 it('uses ignore next control comments', () => check('ignore-next'))
 it('uses block control comments', () => check('disabled'))
 it('has actual example in docs', () => check('example'))
+it('process grouping rules correctly', () => check('grouping-rule'))
 
 it('uses control comments to whole scope', () => {
   let input = read('scope')
