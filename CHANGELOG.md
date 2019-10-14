@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 9.6.5
+* Fix selector prefixing (by Andrey Alexandrov).
+
 ## 9.6.4
 * Now the real fix for `'startsWith' of undefined` error.
 
