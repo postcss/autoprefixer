@@ -10,7 +10,7 @@
     "postcss-plugin"
   ],
   "scripts": {
-    "lint": "eslint-ci .",
+    "lint": "eslint-ci . bin/*",
     "test": "jest --coverage && npm run lint && gulp && size-limit"
   },
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
