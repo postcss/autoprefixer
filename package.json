@@ -10,7 +10,7 @@
     "postcss-plugin"
   ],
   "scripts": {
-    "lint": "eslint-ci *.js lib/*.js data/*.js test/*.js bin/*",
+    "lint": "eslint-ci .",
     "test": "jest --coverage && npm run lint && gulp && size-limit"
   },
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
@@ -120,6 +120,9 @@
       }
     ]
   },
+  "eslintIgnore": [
+    "build/"
+  ],
   "jest": {
     "testEnvironment": "node",
     "coverageThreshold": {
