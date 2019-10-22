@@ -1,0 +1,14 @@
+input[type=range]::-moz-range-thumb {
+  -moz-transition: color 200ms, transform 200ms, -moz-transform 200ms;
+  transition: color 200ms, transform 200ms;
+  transition: color 200ms, transform 200ms, -moz-transform 200ms;
+  -moz-transform: rotate(10deg);
+       transform: rotate(10deg);
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-transition: none;
+  transition: none;
+  -webkit-transition-property: all;
+  transition-property: all;
+}
