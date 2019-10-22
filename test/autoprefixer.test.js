@@ -168,6 +168,10 @@ const COMMONS = [
   'grid-template-areas', 'grid-gap', 'color-adjust'
 ]
 
+afterEach(() => {
+  delete process.env.AUTOPREFIX_GRID
+})
+
 it('throws on wrong options', () => {
   expect(() => {
     autoprefixer({ browser: ['chrome 25', 'opera 12'] })
@@ -458,19 +462,36 @@ it('has different outputs for different grid options', () => {
   let outputNoAutoplace = read('grid-options.no-autoplace.out')
   let outputDisabled = read('grid-options.disabled.out')
 
-  let resultAutoplace = postcss([ap('autoplace')]).process(input)
-  let resultNoAutoplace = postcss([ap('no-autoplace')]).process(input)
-  let resultEnabled = postcss([ap(true)]).process(input)
-  let resultDisabled = postcss([ap(false)]).process(input)
+  let resultAutoplace = postcss([ap('autoplace')]).process(input).css
+  let resultNoAutoplace = postcss([ap('no-autoplace')]).process(input).css
+  let resultEnabled = postcss([ap(true)]).process(input).css
+  let resultDisabled = postcss([ap(false)]).process(input).css
 
   // output for grid: 'autoplace'
-  expect(resultAutoplace.css).toEqual(outputAutoplace)
+  expect(resultAutoplace).toEqual(outputAutoplace)
   // output for grid: 'no-autoplace'
-  expect(resultNoAutoplace.css).toEqual(outputNoAutoplace)
+  expect(resultNoAutoplace).toEqual(outputNoAutoplace)
   // output for grid: true is the same as for 'no-autoplace'
-  expect(resultEnabled.css).toEqual(outputNoAutoplace)
+  expect(resultEnabled).toEqual(outputNoAutoplace)
   // output for grid: false
-  expect(resultDisabled.css).toEqual(outputDisabled)
+  expect(resultDisabled).toEqual(outputDisabled)
+})
+
+it('has different outputs for different grid environment variables', () => {
+  function ap (gridValue) {
+    process.env.AUTOPREFIX_GRID = gridValue
+    return autoprefixer({ overrideBrowserslist: ['Edge 12', 'IE 10'] })
+  }
+  let input = read('grid-options')
+  let outputAutoplace = read('grid-options.autoplace.out')
+  let outputNoAutoplace = read('grid-options.no-autoplace.out')
+  let outputDisabled = read('grid-options.disabled.out')
+
+  let resultAutoplace = postcss([ap('autoplace')]).process(input).css
+  expect(resultAutoplace).toEqual(outputAutoplace)
+
+  let resultNoAutoplace = postcss([ap('no-autoplace')]).process(input).css
+  expect(resultNoAutoplace).toEqual(outputNoAutoplace)
 })
 
 it('has option to disable flexbox support', () => {

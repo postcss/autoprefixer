@@ -113,10 +113,10 @@ that the config can be shared with other tools such as [babel-preset-env] and
 
 See [Browserslist docs] for queries, browser names, config format, and defaults.
 
-[Browserslist docs]: https://github.com/ai/browserslist#queries
+[Browserslist docs]: https://github.com/browserslist/browserslist#queries
 [babel-preset-env]:  https://github.com/babel/babel/tree/master/packages/babel-preset-env
 [Best Practices]:    https://github.com/browserslist/browserslist#best-practices
-[Browserslist]:      https://github.com/ai/browserslist
+[Browserslist]:      https://github.com/browserslist/browserslist
 [Stylelint]:         https://stylelint.io/
 
 
@@ -130,6 +130,8 @@ This is why it is disabled by default.
 
 First, you need to enable Grid prefixes by using either the `grid: "autoplace"`
 option or the `/* autoprefixer grid: autoplace */` control comment.
+Also you can use environment variable to enable Grid:
+`AUTOPREFIX_GRID=autoplace npm build`.
 
 Second, you need to test every fix with Grid in IE. It is not an enable and
 forget feature, but it is still very useful.
@@ -582,7 +584,7 @@ Available options are:
 * `flexbox` (boolean|string): should Autoprefixer add prefixes for flexbox
   properties. With `"no-2009"` value Autoprefixer will add prefixes only
   for final and IE 10 versions of specification. Default is `true`.
-* `grid` (false|"autoplace"|"no-autoplace"): should Autoprefixer
+* `grid` (false|`"autoplace"`|`"no-autoplace"`): should Autoprefixer
   add IE 10-11 prefixes for Grid Layout properties?
     * `false` (default): prevent Autoprefixer from outputting
        CSS Grid translations.
@@ -608,12 +610,35 @@ Plugin object has `info()` method for debugging purpose.
 You can use PostCSS processor to process several CSS files
 to increase performance.
 
-[usage statistics]: https://github.com/ai/browserslist#custom-usage-data
+[usage statistics]: https://github.com/browserslist/browserslist#custom-usage-data
 [PostCSS API]:      http://api.postcss.org
+
+## Environment Variables
+
+* `AUTOPREFIX_GRID`: (`autoplace`|`no-autoplace`) should Autoprefixer
+  add IE 10-11 prefixes for Grid Layout properties?
+    * `autoplace`: enable Autoprefixer grid translations
+      and *include* autoplacement support.
+    * `no-autoplace`: enable Autoprefixer grid translations
+      but *exclude* autoplacement support.
+
+Environment variables is useful, when you can change Autoprefixer options.
+For instance, in Create React App.
+
+Add variable before CLI command, which will build your CSS:
+
+```sh
+AUTOPREFIX_GRID=autoplace npm build
+```
+
+See also [Browserslist environment variables].
+
+[Browserslist environment variables]: https://github.com/browserslist/browserslist#environment-variables
 
 ## Grid Autoplacement support in IE
 
-If the `grid` option is set to `"autoplace"`, limited autoplacement support is added to Autoprefixers grid translations. You can also use the `/* autoprefixer grid: autoplace */` control comment to enable autoplacement
+If the `grid` option is set to `"autoplace"`, limited autoplacement support is added to Autoprefixers grid translations. You can also use the `/* autoprefixer grid: autoplace */` control comment or `AUTOPREFIX_GRID=autoplace npm build`
+environment variable.
 
 Autoprefixer will only autoplace grid cells if both `grid-template-rows` and `grid-template-columns` has been set. If `grid-template` or `grid-template-areas` has been set, Autoprefixer will use area based cell placement instead.
 
@@ -734,9 +759,10 @@ grid-declaration rule:
 }
 ```
 
-The absolute best way to integrate autoplacement into already existing projects though is
-to leave autoplacement turned off by default and then use a control comment to enable it
-when needed. This method is far less likely to cause something on the site to break.
+The absolute best way to integrate autoplacement into already existing projects
+though is to leave autoplacement turned off by default and then use a control
+comment to enable it when needed. This method is far less likely to cause
+something on the site to break.
 
 ```css
 /* Disable autoplacement by default in old projects */
@@ -763,10 +789,10 @@ when needed. This method is far less likely to cause something on the site to br
 ```
 
 Note that the `grid: "no-autoplace"` setting and the
-`/* autoprefixer grid: no-autoplace */` control comment share identical functionality
-to the `grid: true` setting and the `/* autoprefixer grid: on */` control comment.
-There is no need to refactor old code to use `no-autoplace` in place of the old
-`true` and `on` statements.
+`/* autoprefixer grid: no-autoplace */` control comment share identical
+functionality to the `grid: true` setting and the `/* autoprefixer grid: on */`
+control comment. There is no need to refactor old code to use `no-autoplace`
+in place of the old `true` and `on` statements.
 
 ### Autoplacement limitations
 
@@ -1019,7 +1045,6 @@ JS API is also available:
 ```js
 console.log(autoprefixer().info())
 ```
-
 
 ## Security Contact
 
