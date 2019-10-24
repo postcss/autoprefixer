@@ -3,6 +3,7 @@ cache: yarn
 node_js:
   - node
   - "10"
+  - "12"
   - "8"
 install:
   - yarn install --ignore-engines
