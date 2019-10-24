@@ -1,6 +1,10 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 9.7 “Ad Victoriam”
+* Add `AUTOPREFIXER_GRID` env variable to enable Grid Layout polyfill for IE.
+* Fix `Cannot read property 'grid' of undefined` error.
+
 ## 9.6.5
 * Fix selector prefixing (by Andrey Alexandrov).
 
