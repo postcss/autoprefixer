@@ -131,7 +131,7 @@ This is why it is disabled by default.
 First, you need to enable Grid prefixes by using either the `grid: "autoplace"`
 option or the `/* autoprefixer grid: autoplace */` control comment.
 Also you can use environment variable to enable Grid:
-`AUTOPREFIX_GRID=autoplace npm build`.
+`AUTOPREFIXER_GRID=autoplace npm build`.
 
 Second, you need to test every fix with Grid in IE. It is not an enable and
 forget feature, but it is still very useful.
@@ -615,7 +615,7 @@ to increase performance.
 
 ## Environment Variables
 
-* `AUTOPREFIX_GRID`: (`autoplace`|`no-autoplace`) should Autoprefixer
+* `AUTOPREFIXER_GRID`: (`autoplace`|`no-autoplace`) should Autoprefixer
   add IE 10-11 prefixes for Grid Layout properties?
     * `autoplace`: enable Autoprefixer grid translations
       and *include* autoplacement support.
@@ -628,7 +628,7 @@ For instance, in Create React App.
 Add variable before CLI command, which will build your CSS:
 
 ```sh
-AUTOPREFIX_GRID=autoplace npm build
+AUTOPREFIXER_GRID=autoplace npm build
 ```
 
 See also [Browserslist environment variables].
@@ -637,12 +637,18 @@ See also [Browserslist environment variables].
 
 ## Grid Autoplacement support in IE
 
-If the `grid` option is set to `"autoplace"`, limited autoplacement support is added to Autoprefixers grid translations. You can also use the `/* autoprefixer grid: autoplace */` control comment or `AUTOPREFIX_GRID=autoplace npm build`
-environment variable.
+If the `grid` option is set to `"autoplace"`, limited autoplacement support is added to Autoprefixers grid translations. You can also use
+the `/* autoprefixer grid: autoplace */` control comment or
+`AUTOPREFIXER_GRID=autoplace npm build` environment variable.
 
-Autoprefixer will only autoplace grid cells if both `grid-template-rows` and `grid-template-columns` has been set. If `grid-template` or `grid-template-areas` has been set, Autoprefixer will use area based cell placement instead.
+Autoprefixer will only autoplace grid cells if both `grid-template-rows`
+and `grid-template-columns` has been set. If `grid-template`
+or `grid-template-areas` has been set, Autoprefixer will use area based
+cell placement instead.
 
-Autoprefixer supports autoplacement by using `nth-child` CSS selectors. It creates [number of columns] x [number of rows] `nth-child` selectors. For this reason Autoplacement is only supported within the explicit grid.
+Autoprefixer supports autoplacement by using `nth-child` CSS selectors.
+It creates [number of columns] x [number of rows] `nth-child` selectors.
+For this reason Autoplacement is only supported within the explicit grid.
 
 ```css
 /* Input CSS */

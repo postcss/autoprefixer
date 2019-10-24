@@ -169,7 +169,7 @@ const COMMONS = [
 ]
 
 afterEach(() => {
-  delete process.env.AUTOPREFIX_GRID
+  delete process.env.AUTOPREFIXER_GRID
 })
 
 it('throws on wrong options', () => {
@@ -479,7 +479,7 @@ it('has different outputs for different grid options', () => {
 
 it('has different outputs for different grid environment variables', () => {
   function ap (gridValue) {
-    process.env.AUTOPREFIX_GRID = gridValue
+    process.env.AUTOPREFIXER_GRID = gridValue
     return autoprefixer({ overrideBrowserslist: ['Edge 12', 'IE 10'] })
   }
   let input = read('grid-options')
