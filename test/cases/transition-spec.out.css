@@ -12,3 +12,59 @@ input[type=range]::-webkit-slider-thumb {
   -webkit-transition-property: all;
   transition-property: all;
 }
+
+button::-moz-submit-invalid {
+  opacity: 1;
+  -moz-transform: translateX(45px);
+       transform: translateX(45px);
+  -moz-transition: opacity 0.5s 2s, transform 0.5s 0.5s, -moz-transform 0.5s 0.5s;
+  transition: opacity 0.5s 2s, transform 0.5s 0.5s;
+  transition: opacity 0.5s 2s, transform 0.5s 0.5s, -moz-transform 0.5s 0.5s;
+}
+
+@supports (transition: opacity 0.5s 2s, transform 0.5s 0.5s) {
+  button::-moz-submit-invalid {
+    opacity: 1;
+    -moz-transform: translateX(45px);
+         transform: translateX(45px);
+    -moz-transition: opacity 0.5s 2s, transform 0.5s 0.5s, -moz-transform 0.5s 0.5s;
+    transition: opacity 0.5s 2s, transform 0.5s 0.5s;
+    transition: opacity 0.5s 2s, transform 0.5s 0.5s, -moz-transform 0.5s 0.5s;
+  }
+
+  button {
+    opacity: 1;
+    -webkit-transform: translateX(45px);
+       -moz-transform: translateX(45px);
+         -o-transform: translateX(45px);
+            transform: translateX(45px);
+    -webkit-transition: opacity 0.5s 2s, -webkit-transform 0.5s 0.5s;
+    transition: opacity 0.5s 2s, -webkit-transform 0.5s 0.5s;
+    -o-transition: opacity 0.5s 2s, -o-transform 0.5s 0.5s;
+    -moz-transition: opacity 0.5s 2s, transform 0.5s 0.5s, -moz-transform 0.5s 0.5s;
+    transition: opacity 0.5s 2s, transform 0.5s 0.5s;
+    transition: opacity 0.5s 2s, transform 0.5s 0.5s, -webkit-transform 0.5s 0.5s, -moz-transform 0.5s 0.5s, -o-transform 0.5s 0.5s;
+  }
+}
+
+button::-webkit-search-cancel-button {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-transition: color 200ms, -webkit-transform 200ms;
+  transition: color 200ms, -webkit-transform 200ms;
+  transition: color 200ms, transform 200ms;
+  transition: color 200ms, transform 200ms, -webkit-transform 200ms;
+  -webkit-transform: rotate(10deg);
+          transform: rotate(10deg);
+}
+
+button::-webkit-search-cancel-button {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-transition: color 200ms, -webkit-transform 200ms;
+  transition: color 200ms, -webkit-transform 200ms;
+  transition: color 200ms, transform 200ms;
+  transition: color 200ms, transform 200ms, -webkit-transform 200ms;
+  -webkit-transform: rotate(10deg);
+          transform: rotate(10deg);
+}
