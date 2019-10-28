@@ -400,17 +400,19 @@ f(require('caniuse-lite/data/features/css3-tabsize'), browsers =>
 // Intrinsic & extrinsic sizing
 let intrinsic = require('caniuse-lite/data/features/intrinsic-width')
 
+let sizeProps = [
+  'width', 'min-width', 'max-width',
+  'height', 'min-height', 'max-height',
+  'inline-size', 'min-inline-size', 'max-inline-size',
+  'block-size', 'min-block-size', 'max-block-size',
+  'grid', 'grid-template',
+  'grid-template-rows', 'grid-template-columns',
+  'grid-auto-columns', 'grid-auto-rows'
+]
+
 f(intrinsic, browsers =>
-  prefix(['max-content', 'min-content', 'fit-content'], {
-    props: [
-      'width', 'min-width', 'max-width',
-      'height', 'min-height', 'max-height',
-      'inline-size', 'min-inline-size', 'max-inline-size',
-      'block-size', 'min-block-size', 'max-block-size',
-      'grid', 'grid-template',
-      'grid-template-rows', 'grid-template-columns',
-      'grid-auto-columns', 'grid-auto-rows'
-    ],
+  prefix(['max-content', 'min-content'], {
+    props: sizeProps,
     feature: 'intrinsic-width',
     browsers
   })
@@ -418,15 +420,15 @@ f(intrinsic, browsers =>
 
 f(intrinsic, { match: /x|\s#4/ }, browsers =>
   prefix(['fill', 'fill-available', 'stretch'], {
-    props: [
-      'width', 'min-width', 'max-width',
-      'height', 'min-height', 'max-height',
-      'inline-size', 'min-inline-size', 'max-inline-size',
-      'block-size', 'min-block-size', 'max-block-size',
-      'grid', 'grid-template',
-      'grid-template-rows', 'grid-template-columns',
-      'grid-auto-columns', 'grid-auto-rows'
-    ],
+    props: sizeProps,
+    feature: 'intrinsic-width',
+    browsers
+  })
+)
+
+f(require('caniuse-lite/data/features/fit-content'), browsers =>
+  prefix(['fit-content'], {
+    props: sizeProps,
     feature: 'intrinsic-width',
     browsers
   })
