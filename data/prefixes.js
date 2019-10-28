@@ -411,7 +411,7 @@ let sizeProps = [
 ]
 
 f(intrinsic, browsers =>
-  prefix(['max-content', 'min-content'], {
+  prefix(['max-content', 'min-content', 'fit-content'], {
     props: sizeProps,
     feature: 'intrinsic-width',
     browsers
@@ -420,14 +420,6 @@ f(intrinsic, browsers =>
 
 f(intrinsic, { match: /x|\s#4/ }, browsers =>
   prefix(['fill', 'fill-available', 'stretch'], {
-    props: sizeProps,
-    feature: 'intrinsic-width',
-    browsers
-  })
-)
-
-f(require('caniuse-lite/data/features/fit-content'), browsers =>
-  prefix(['fit-content'], {
     props: sizeProps,
     feature: 'intrinsic-width',
     browsers
