@@ -411,7 +411,7 @@ let sizeProps = [
 ]
 
 f(intrinsic, browsers =>
-  prefix(['max-content', 'min-content', 'fit-content'], {
+  prefix(['max-content', 'min-content'], {
     props: sizeProps,
     feature: 'intrinsic-width',
     browsers
@@ -420,6 +420,14 @@ f(intrinsic, browsers =>
 
 f(intrinsic, { match: /x|\s#4/ }, browsers =>
   prefix(['fill', 'fill-available', 'stretch'], {
+    props: sizeProps,
+    feature: 'intrinsic-width',
+    browsers
+  })
+)
+
+f(intrinsic, { match: /x|\s#5/ }, browsers =>
+  prefix(['fit-content'], {
     props: sizeProps,
     feature: 'intrinsic-width',
     browsers
