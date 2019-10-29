@@ -167,8 +167,8 @@ describe('group()', () => {
       let css = parse('a { -moz-a: 1; -ms-a: 1; -o-a: 1; a: 1 }')
       let decl = css.first.first
 
-      expect(empty.group(decl).down(i => i.prop === '-o-a')).toBeTruthy()
-      expect(empty.group(decl).down(i => i.prop === '-o-b')).toBeFalsy()
+      expect(empty.group(decl).down(i => i.prop === '-o-a')).toBe(true)
+      expect(empty.group(decl).down(i => i.prop === '-o-b')).toBe(false)
     })
   })
 
@@ -194,8 +194,8 @@ describe('group()', () => {
       let css = parse('a { -moz-a: 1; -ms-a: 1; -o-a: 1; a: 1 }')
       let decl = css.first.nodes[3]
 
-      expect(empty.group(decl).up(i => i.prop === '-ms-a')).toBeTruthy()
-      expect(empty.group(decl).up(i => i.prop === '-ms-b')).toBeFalsy()
+      expect(empty.group(decl).up(i => i.prop === '-ms-a')).toBe(true)
+      expect(empty.group(decl).up(i => i.prop === '-ms-b')).toBe(false)
     })
   })
 })

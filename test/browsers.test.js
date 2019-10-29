@@ -13,8 +13,8 @@ describe('.prefixes()', () => {
 
 describe('.withPrefix()', () => {
   it('finds possible prefix', () => {
-    expect(Browsers.withPrefix('1 -o-calc(1)')).toBeTruthy()
-    expect(Browsers.withPrefix('1 calc(1)')).toBeFalsy()
+    expect(Browsers.withPrefix('1 -o-calc(1)')).toBe(true)
+    expect(Browsers.withPrefix('1 calc(1)')).toBe(false)
   })
 })
 
@@ -71,7 +71,7 @@ describe('prefix()', () => {
 describe('isSelected()', () => {
   it('return true for selected browsers', () => {
     let browsers = new Browsers(data, ['chrome 30', 'chrome 31'])
-    expect(browsers.isSelected('chrome 30')).toBeTruthy()
-    expect(browsers.isSelected('ie 6')).toBeFalsy()
+    expect(browsers.isSelected('chrome 30')).toBe(true)
+    expect(browsers.isSelected('ie 6')).toBe(false)
   })
 })

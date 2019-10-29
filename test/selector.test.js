@@ -16,14 +16,14 @@ describe('prefixed()', () => {
 describe('regexp()', () => {
   it('creates regexp for prefix', () => {
     let regexp = selector.regexp('-moz-')
-    expect(regexp.test('::-moz-selection')).toBeTruthy()
-    expect(regexp.test('::selection')).toBeFalsy()
+    expect(regexp.test('::-moz-selection')).toBe(true)
+    expect(regexp.test('::selection')).toBe(false)
   })
 
   it('creates regexp without prefix', () => {
     let regexp = selector.regexp()
-    expect(regexp.test('::-moz-selection')).toBeFalsy()
-    expect(regexp.test('::selection')).toBeTruthy()
+    expect(regexp.test('::-moz-selection')).toBe(false)
+    expect(regexp.test('::selection')).toBe(true)
   })
 })
 
@@ -31,9 +31,9 @@ describe('check()', () => {
   it('checks rule selectors', () => {
     let css = parse('body .selection {}, ' +
             ':::selection {}, body ::selection {}')
-    expect(selector.check(css.nodes[0])).toBeFalsy()
-    expect(selector.check(css.nodes[1])).toBeFalsy()
-    expect(selector.check(css.nodes[2])).toBeTruthy()
+    expect(selector.check(css.nodes[0])).toBe(false)
+    expect(selector.check(css.nodes[1])).toBe(false)
+    expect(selector.check(css.nodes[2])).toBe(true)
   })
 })
 
@@ -81,28 +81,24 @@ describe('already()', () => {
 
   it('returns false on first element', () => {
     let css = parse('::selection {}')
-    expect(selector.already(css.first, prefixeds, '-moz-'))
-      .toBeFalsy()
+    expect(selector.already(css.first, prefixeds, '-moz-')).toBe(false)
   })
 
   it('stops on another type', () => {
     let css = parse('::-moz-selection {} ' +
             '@keyframes anim {} ::selection {}')
-    expect(selector.already(css.nodes[2], prefixeds, '-moz-'))
-      .toBeFalsy()
+    expect(selector.already(css.nodes[2], prefixeds, '-moz-')).toBe(false)
   })
 
   it('stops on another selector', () => {
     let css = parse('::-moz-selection {} a {} ::selection {}')
-    expect(selector.already(css.nodes[2], prefixeds, '-moz-'))
-      .toBeFalsy()
+    expect(selector.already(css.nodes[2], prefixeds, '-moz-')).toBe(false)
   })
 
   it('finds prefixed even if unknown prefix is between', () => {
     let css = parse('::-moz-selection {} ' +
             '::-o-selection {} ::selection {}')
-    expect(selector.already(css.nodes[2], prefixeds, '-moz-'))
-      .toBeTruthy()
+    expect(selector.already(css.nodes[2], prefixeds, '-moz-')).toBe(true)
   })
 })
 

@@ -61,7 +61,7 @@ describe('.clone()', () => {
 
 describe('parentPrefix', () => {
   it('works with root node', () => {
-    expect(prefix.parentPrefix(css)).toBeFalsy()
+    expect(prefix.parentPrefix(css)).toBe(false)
   })
 
   it('finds in at-rules', () => {
@@ -75,7 +75,7 @@ describe('parentPrefix', () => {
   it('finds in parents', () => {
     let decl = css.first.first
     expect(prefix.parentPrefix(decl)).toEqual('-ms-')
-    expect(prefix.parentPrefix(css.nodes[2])).toBeFalsy()
+    expect(prefix.parentPrefix(css.nodes[2])).toBe(false)
   })
 
   it('caches prefix', () => {
@@ -83,15 +83,15 @@ describe('parentPrefix', () => {
     expect(css.first._autoprefixerPrefix).toEqual('-ms-')
 
     css.first._autoprefixerPrefix = false
-    expect(prefix.parentPrefix(css.first)).toBeFalsy()
+    expect(prefix.parentPrefix(css.first)).toBe(false)
   })
 
   it('finds only browsers prefixes', () => {
-    expect(prefix.parentPrefix(css.nodes[2])).toBeFalsy()
+    expect(prefix.parentPrefix(css.nodes[2])).toBe(false)
   })
 
   it('works with selector contained --', () => {
     let parsed = parse(':--a { color: black }')
-    expect(prefix.parentPrefix(parsed.first.first)).toBeFalsy()
+    expect(prefix.parentPrefix(parsed.first.first)).toBe(false)
   })
 })

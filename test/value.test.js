@@ -61,12 +61,12 @@ describe('check()', () => {
                           '3: -ms-calc; ' +
                           '4: calced; }')
 
-    expect(calc.check(css.first.nodes[0])).toBeTruthy()
-    expect(calc.check(css.first.nodes[1])).toBeTruthy()
-    expect(calc.check(css.first.nodes[2])).toBeTruthy()
+    expect(calc.check(css.first.nodes[0])).toBe(true)
+    expect(calc.check(css.first.nodes[1])).toBe(true)
+    expect(calc.check(css.first.nodes[2])).toBe(true)
 
-    expect(calc.check(css.first.nodes[3])).toBeFalsy()
-    expect(calc.check(css.first.nodes[4])).toBeFalsy()
+    expect(calc.check(css.first.nodes[3])).toBe(false)
+    expect(calc.check(css.first.nodes[4])).toBe(false)
   })
 })
 

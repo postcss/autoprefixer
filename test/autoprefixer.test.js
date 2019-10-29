@@ -175,10 +175,10 @@ afterEach(() => {
 it('throws on wrong options', () => {
   expect(() => {
     autoprefixer({ browser: ['chrome 25', 'opera 12'] })
-  }).toThrowError(/overrideBrowserslist/)
+  }).toThrow(/overrideBrowserslist/)
   expect(() => {
     autoprefixer({ browserslist: ['chrome 25', 'opera 12'] })
-  }).toThrowError(/overrideBrowserslist/)
+  }).toThrow(/overrideBrowserslist/)
 })
 
 let options = {
@@ -390,13 +390,13 @@ it('parses difficult files', () => {
 it('marks parsing errors', () => {
   expect(() => {
     postcss([cleaner]).process('a {').css
-  }).toThrowError('<css input>:1:1: Unclosed block')
+  }).toThrow('<css input>:1:1: Unclosed block')
 })
 
 it('shows file name in parse error', () => {
   expect(() => {
     postcss([cleaner]).process('a {', { from: 'a.css' }).css
-  }).toThrowError(/a.css:1:1: /)
+  }).toThrow(/a.css:1:1: /)
 })
 
 it('uses browserslist config', () => {
@@ -529,12 +529,12 @@ it('uses browserslist config in inspect', () => {
 it('ignores unknown versions on request', () => {
   expect(() => {
     autoprefixer({ overrideBrowserslist: ['ie 100'] }).info()
-  }).toThrowError()
+  }).toThrow(/Unknown version 100 of ie/)
   expect(() => {
     autoprefixer({
       overrideBrowserslist: ['ie 100'], ignoreUnknownVersions: true
     }).info()
-  }).not.toThrowError()
+  }).not.toThrow()
 })
 
 describe('hacks', () => {

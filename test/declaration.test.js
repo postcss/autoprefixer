@@ -11,10 +11,10 @@ beforeEach(() => {
 
 describe('otherPrefixes()', () => {
   it('checks values for other prefixes', () => {
-    expect(tabsize.otherPrefixes('black', '-moz-')).toBeFalsy()
-    expect(tabsize.otherPrefixes('-moz-black', '-moz-')).toBeFalsy()
-    expect(tabsize.otherPrefixes('-dev-black', '-moz-')).toBeFalsy()
-    expect(tabsize.otherPrefixes('-ms-black', '-moz-')).toBeTruthy()
+    expect(tabsize.otherPrefixes('black', '-moz-')).toBe(false)
+    expect(tabsize.otherPrefixes('-moz-black', '-moz-')).toBe(false)
+    expect(tabsize.otherPrefixes('-dev-black', '-moz-')).toBe(false)
+    expect(tabsize.otherPrefixes('-ms-black', '-moz-')).toBe(true)
   })
 })
 
@@ -25,19 +25,19 @@ describe('needCascade()', () => {
 
   it('returns true by default', () => {
     let css = parse('a {\n  tab-size: 4 }')
-    expect(tabsize.needCascade(css.first.first)).toBeTruthy()
+    expect(tabsize.needCascade(css.first.first)).toBe(true)
   })
 
   it('return false is disabled', () => {
     prefixes.options.cascade = false
     let css = parse('a {\n  tab-size: 4 }')
-    expect(tabsize.needCascade(css.first.first)).toBeFalsy()
+    expect(tabsize.needCascade(css.first.first)).toBe(false)
   })
 
   it('returns false on declarations in one line', () => {
     let css = parse('a { tab-size: 4 } a {\n  tab-size: 4 }')
-    expect(tabsize.needCascade(css.first.first)).toBeFalsy()
-    expect(tabsize.needCascade(css.last.first)).toBeTruthy()
+    expect(tabsize.needCascade(css.first.first)).toBe(false)
+    expect(tabsize.needCascade(css.last.first)).toBe(true)
   })
 })
 

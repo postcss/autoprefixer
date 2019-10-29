@@ -15,7 +15,7 @@ describe('.error()', () => {
       error = e
     }
 
-    expect(error.autoprefixer).toBeTruthy()
+    expect(error.autoprefixer).toBe(true)
   })
 })
 
@@ -47,17 +47,17 @@ describe('.regexp()', () => {
       return string.match(regexp) !== null
     }
 
-    expect(check('foo')).toBeTruthy()
-    expect(check('Foo')).toBeTruthy()
-    expect(check('one, foo, two')).toBeTruthy()
-    expect(check('one(),foo(),two()')).toBeTruthy()
+    expect(check('foo')).toBe(true)
+    expect(check('Foo')).toBe(true)
+    expect(check('one, foo, two')).toBe(true)
+    expect(check('one(),foo(),two()')).toBe(true)
 
     expect('foo(), a, foo'.replace(regexp, '$1b$2'))
       .toEqual('bfoo(), a, bfoo')
 
-    expect(check('foob')).toBeFalsy()
-    expect(check('(foo)')).toBeFalsy()
-    expect(check('-a-foo')).toBeFalsy()
+    expect(check('foob')).toBe(false)
+    expect(check('(foo)')).toBe(false)
+    expect(check('-a-foo')).toBe(false)
   })
 
   it('escapes string if needed', () => {
@@ -66,12 +66,12 @@ describe('.regexp()', () => {
       return string.match(regexp) !== null
     }
 
-    expect(check('a')).toBeFalsy()
-    expect(check('(a|b)')).toBeTruthy()
+    expect(check('a')).toBe(false)
+    expect(check('(a|b)')).toBe(true)
 
     regexp = utils.regexp('(a|b)', false)
-    expect(check('a')).toBeTruthy()
-    expect(check('b')).toBeTruthy()
+    expect(check('a')).toBe(true)
+    expect(check('b')).toBe(true)
   })
 })
 
