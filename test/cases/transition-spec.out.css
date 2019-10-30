@@ -48,6 +48,7 @@ button::-moz-submit-invalid {
 }
 
 button::-webkit-search-cancel-button {
+  display: -webkit-box;
   display: -webkit-flex;
   display: flex;
   -webkit-transition: color 200ms, -webkit-transform 200ms;
@@ -59,6 +60,7 @@ button::-webkit-search-cancel-button {
 }
 
 button::-webkit-search-cancel-button {
+  display: -webkit-box;
   display: -webkit-flex;
   display: flex;
   -webkit-transition: color 200ms, -webkit-transform 200ms;
@@ -67,4 +69,24 @@ button::-webkit-search-cancel-button {
   transition: color 200ms, transform 200ms, -webkit-transform 200ms;
   -webkit-transform: rotate(10deg);
           transform: rotate(10deg);
+}
+
+.a::-webkit-search-cancel-button {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-flow: row;
+          flex-flow: row;
+  -webkit-box-ordinal-group: 1;
+  -webkit-order: 0;
+          order: 0;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 1 2;
+          flex: 0 1 2;
+  -webkit-transition: -webkit-box-flex 200ms, -webkit-flex 200ms;
+  transition: -webkit-box-flex 200ms, -webkit-flex 200ms;
+  transition: flex 200ms;
+  transition: flex 200ms, -webkit-box-flex 200ms, -webkit-flex 200ms;
 }

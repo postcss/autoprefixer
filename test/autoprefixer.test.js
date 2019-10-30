@@ -55,7 +55,7 @@ let selectorer = autoprefixer({
   overrideBrowserslist: ['Chrome 25', 'Firefox > 17', 'IE 10', 'Edge 12']
 })
 let transitionSpec = autoprefixer({
-  overrideBrowserslist: ['Chrome 25', 'Firefox 14', 'IE 10', 'Opera 12']
+  overrideBrowserslist: ['Chrome > 19', 'Firefox 14', 'IE 10', 'Opera 12']
 })
 let intrinsicer = autoprefixer({
   overrideBrowserslist: ['Chrome 25', 'Firefox 22', 'Safari 10']
