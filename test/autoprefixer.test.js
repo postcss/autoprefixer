@@ -54,6 +54,9 @@ let ffgradienter = autoprefixer({
 let selectorer = autoprefixer({
   overrideBrowserslist: ['Chrome 25', 'Firefox > 17', 'IE 10', 'Edge 12']
 })
+let transitionSpec = autoprefixer({
+  overrideBrowserslist: ['Chrome > 19', 'Firefox 14', 'IE 10', 'Opera 12']
+})
 let intrinsicer = autoprefixer({
   overrideBrowserslist: ['Chrome 25', 'Firefox 22', 'Safari 10']
 })
@@ -134,6 +137,8 @@ function prefixer (name) {
     return supporter
   } else if (name === 'overscroll-behavior') {
     return overscroller
+  } else if (name === 'transition-spec') {
+    return transitionSpec
   } else {
     return compiler
   }
@@ -255,6 +260,7 @@ it('uses ignore next control comments', () => check('ignore-next'))
 it('uses block control comments', () => check('disabled'))
 it('has actual example in docs', () => check('example'))
 it('process grouping rules correctly', () => check('grouping-rule'))
+it('transition on vendor specific rule', () => check('transition-spec'))
 
 it('uses control comments to whole scope', () => {
   let input = read('scope')
