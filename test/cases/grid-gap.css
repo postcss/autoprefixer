@@ -33,6 +33,11 @@
       "nav foot foot";
 }
 
+.calc {
+  grid-template: 1fr 1fr / 1fr 1fr;
+  gap: calc(1% + 5px);
+}
+
 .a-shortcut {
   grid-gap: 1rem 2rem;
   grid-template:

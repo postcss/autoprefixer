@@ -1,38 +1,46 @@
 let gulp = require('gulp')
-let path = require('path')
 let fs = require('fs-extra')
 let postcss = require('gulp-postcss')
 let rename = require('gulp-rename')
 
+function join (...folderPath) { return folderPath.join('/') }
+
 gulp.task('clean', done => {
-  fs.remove(path.join(__dirname, 'autoprefixer.js'), () => {
-    fs.remove(path.join(__dirname, 'build'), done)
+  fs.remove(join(__dirname, 'autoprefixer.js'), () => {
+    fs.remove(join(__dirname, 'build'), done)
   })
 })
 
-gulp.task('build:lib', ['clean'], () => {
+gulp.task('build:lib', gulp.series('clean', () => {
   let babel = require('gulp-babel')
 
   return gulp.src(['{lib,data}/**/*.js'])
     .pipe(babel())
     .pipe(gulp.dest('build/'))
-})
+}))
 
-gulp.task('build:docs', ['clean'], () => {
+gulp.task('build:docs', () => {
   let ignore = require('fs').readFileSync('.npmignore').toString()
     .trim().split(/\n+/)
-    .concat(['.npmignore', 'index.js', 'package.json', 'logo.svg', 'AUTHORS'])
+    .concat([
+      '.npmignore',
+      'index.js',
+      'package.json',
+      'logo.svg',
+      'AUTHORS',
+      'node_modules'
+    ])
     .map(i => '!' + i)
 
   return gulp.src(['*'].concat(ignore))
     .pipe(gulp.dest('build'))
 })
 
-gulp.task('build:bin', ['clean'], () => {
+gulp.task('build:bin', () => {
   return gulp.src('bin/*').pipe(gulp.dest('build/bin'))
 })
 
-gulp.task('build:package', ['clean'], () => {
+gulp.task('build:package', () => {
   let editor = require('gulp-json-editor')
 
   return gulp.src('./package.json')
@@ -44,8 +52,8 @@ gulp.task('build:package', ['clean'], () => {
       delete json.jest
       delete json.browserslist
       delete json.eslintConfig
+      delete json.husky
       delete json['size-limit']
-      delete json['husky']
       delete json['lint-staged']
       delete json.dependencies['@babel/register']
       return json
@@ -53,11 +61,14 @@ gulp.task('build:package', ['clean'], () => {
     .pipe(gulp.dest('build'))
 })
 
-gulp.task('build', ['build:lib', 'build:docs', 'build:bin', 'build:package'])
+gulp.task('build', gulp.series(
+  'clean',
+  gulp.parallel('build:lib', 'build:docs', 'build:bin', 'build:package')
+))
 
-gulp.task('standalone', ['build:lib'], done => {
+gulp.task('standalone', gulp.series('clean', 'build:lib', done => {
   let builder = require('browserify')({
-    basedir: path.join(__dirname, 'build'),
+    basedir: join(__dirname, 'build'),
     standalone: 'autoprefixer'
   })
   builder.add('./lib/autoprefixer.js')
@@ -79,19 +90,19 @@ gulp.task('standalone', ['build:lib'], done => {
     .bundle((error, build) => {
       if (error) throw error
 
-      fs.removeSync(path.join(__dirname, 'build'))
+      fs.removeSync(join(__dirname, 'build'))
 
-      let rails = path.join(__dirname, '..', 'autoprefixer-rails',
+      let rails = join(__dirname, '..', 'autoprefixer-rails',
         'vendor', 'autoprefixer.js')
       if (fs.existsSync(rails)) {
         fs.writeFileSync(rails, build)
       } else {
-        let out = path.join(__dirname, 'autoprefixer.js')
+        let out = join(__dirname, 'autoprefixer.js')
         fs.writeFileSync(out, build)
       }
       done()
     })
-})
+}))
 
 gulp.task('compile-playground', () => {
   let autoprefixer = require('./build')
@@ -101,17 +112,12 @@ gulp.task('compile-playground', () => {
     .pipe(gulp.dest('./playground'))
 })
 
-gulp.task('initialise-playground', ['build'], () => {
-  return gulp.start('compile-playground')
-})
+gulp.task('initialise-playground', gulp.series('build', 'compile-playground'))
 
 gulp.task('watch-playground', () => {
-  return gulp.watch('./playground/input.css', ['compile-playground'])
+  return gulp.watch('./playground/input.css', gulp.series('compile-playground'))
 })
 
-// Run "gulp play" to experiment with the current implementation of the code
-gulp.task('play', ['initialise-playground'], () => {
-  gulp.start('watch-playground')
-})
+gulp.task('play', gulp.series('initialise-playground', 'watch-playground'))
 
-gulp.task('default', ['build'])
+gulp.task('default', gulp.series('build'))

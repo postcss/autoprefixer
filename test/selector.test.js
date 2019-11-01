@@ -1,5 +1,6 @@
-let Selector = require('../lib/selector')
 let parse = require('postcss').parse
+
+let Selector = require('../lib/selector')
 
 let selector
 beforeEach(() => {
@@ -15,35 +16,59 @@ describe('prefixed()', () => {
 describe('regexp()', () => {
   it('creates regexp for prefix', () => {
     let regexp = selector.regexp('-moz-')
-    expect(regexp.test('::-moz-selection')).toBeTruthy()
-    expect(regexp.test('::selection')).toBeFalsy()
+    expect(regexp.test('::-moz-selection')).toBe(true)
+    expect(regexp.test('::selection')).toBe(false)
   })
 
   it('creates regexp without prefix', () => {
     let regexp = selector.regexp()
-    expect(regexp.test('::-moz-selection')).toBeFalsy()
-    expect(regexp.test('::selection')).toBeTruthy()
+    expect(regexp.test('::-moz-selection')).toBe(false)
+    expect(regexp.test('::selection')).toBe(true)
   })
 })
 
 describe('check()', () => {
-  it('shecks rule selectors', () => {
+  it('checks rule selectors', () => {
     let css = parse('body .selection {}, ' +
             ':::selection {}, body ::selection {}')
-    expect(selector.check(css.nodes[0])).toBeFalsy()
-    expect(selector.check(css.nodes[1])).toBeFalsy()
-    expect(selector.check(css.nodes[2])).toBeTruthy()
+    expect(selector.check(css.nodes[0])).toBe(false)
+    expect(selector.check(css.nodes[1])).toBe(false)
+    expect(selector.check(css.nodes[2])).toBe(true)
   })
 })
 
 describe('prefixeds()', () => {
-  it('returns all avaiable prefixed selectors', () => {
+  it('grouping rule gets correct _autoprefixerPrefixeds property', () => {
+    let css = parse('.c::selection, .d:read-only {}')
+    let rSel = new Selector(':read-only', ['-moz-'])
+    selector.prefixeds(css.first)
+    rSel.prefixeds(css.first)
+    expect(css.first._autoprefixerPrefixeds).toEqual({
+      '::selection': {
+        '-webkit-': '.c::-webkit-selection',
+        '-moz-': '.c::-moz-selection',
+        '-ms-': '.c::-ms-selection',
+        '-o-': '.c::-o-selection'
+      },
+      ':read-only': {
+        '-webkit-': '.d:-webkit-read-only',
+        '-moz-': '.d:-moz-read-only',
+        '-ms-': '.d:-ms-read-only',
+        '-o-': '.d:-o-read-only'
+      }
+    })
+  })
+
+  it('returns all available prefixed selectors', () => {
     let css = parse('::selection {}')
     expect(selector.prefixeds(css.first)).toEqual({
-      '-webkit-': '::-webkit-selection',
-      '-moz-': '::-moz-selection',
-      '-ms-': '::-ms-selection',
-      '-o-': '::-o-selection' })
+      '::selection': {
+        '-webkit-': '::-webkit-selection',
+        '-moz-': '::-moz-selection',
+        '-ms-': '::-ms-selection',
+        '-o-': '::-o-selection'
+      }
+    })
   })
 })
 
@@ -56,28 +81,24 @@ describe('already()', () => {
 
   it('returns false on first element', () => {
     let css = parse('::selection {}')
-    expect(selector.already(css.first, prefixeds, '-moz-'))
-      .toBeFalsy()
+    expect(selector.already(css.first, prefixeds, '-moz-')).toBe(false)
   })
 
   it('stops on another type', () => {
     let css = parse('::-moz-selection {} ' +
             '@keyframes anim {} ::selection {}')
-    expect(selector.already(css.nodes[2], prefixeds, '-moz-'))
-      .toBeFalsy()
+    expect(selector.already(css.nodes[2], prefixeds, '-moz-')).toBe(false)
   })
 
   it('stops on another selector', () => {
     let css = parse('::-moz-selection {} a {} ::selection {}')
-    expect(selector.already(css.nodes[2], prefixeds, '-moz-'))
-      .toBeFalsy()
+    expect(selector.already(css.nodes[2], prefixeds, '-moz-')).toBe(false)
   })
 
   it('finds prefixed even if unknown prefix is between', () => {
     let css = parse('::-moz-selection {} ' +
             '::-o-selection {} ::selection {}')
-    expect(selector.already(css.nodes[2], prefixeds, '-moz-'))
-      .toBeTruthy()
+    expect(selector.already(css.nodes[2], prefixeds, '-moz-')).toBe(true)
   })
 })
 

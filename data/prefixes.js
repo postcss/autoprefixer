@@ -197,7 +197,8 @@ f(require('caniuse-lite/data/features/css-filter-function'), browsers =>
 )
 
 // Backdrop-filter
-f(require('caniuse-lite/data/features/css-backdrop-filter'), browsers =>
+let backdrop = require('caniuse-lite/data/features/css-backdrop-filter')
+f(backdrop, { match: /y\sx|y\s#2/ }, browsers =>
   prefix(['backdrop-filter'], {
     feature: 'css-backdrop-filter',
     browsers
@@ -399,17 +400,19 @@ f(require('caniuse-lite/data/features/css3-tabsize'), browsers =>
 // Intrinsic & extrinsic sizing
 let intrinsic = require('caniuse-lite/data/features/intrinsic-width')
 
+let sizeProps = [
+  'width', 'min-width', 'max-width',
+  'height', 'min-height', 'max-height',
+  'inline-size', 'min-inline-size', 'max-inline-size',
+  'block-size', 'min-block-size', 'max-block-size',
+  'grid', 'grid-template',
+  'grid-template-rows', 'grid-template-columns',
+  'grid-auto-columns', 'grid-auto-rows'
+]
+
 f(intrinsic, browsers =>
-  prefix(['max-content', 'min-content', 'fit-content'], {
-    props: [
-      'width', 'min-width', 'max-width',
-      'height', 'min-height', 'max-height',
-      'inline-size', 'min-inline-size', 'max-inline-size',
-      'block-size', 'min-block-size', 'max-block-size',
-      'grid', 'grid-template',
-      'grid-template-rows', 'grid-template-columns',
-      'grid-auto-columns', 'grid-auto-rows'
-    ],
+  prefix(['max-content', 'min-content'], {
+    props: sizeProps,
     feature: 'intrinsic-width',
     browsers
   })
@@ -417,15 +420,15 @@ f(intrinsic, browsers =>
 
 f(intrinsic, { match: /x|\s#4/ }, browsers =>
   prefix(['fill', 'fill-available', 'stretch'], {
-    props: [
-      'width', 'min-width', 'max-width',
-      'height', 'min-height', 'max-height',
-      'inline-size', 'min-inline-size', 'max-inline-size',
-      'block-size', 'min-block-size', 'max-block-size',
-      'grid', 'grid-template',
-      'grid-template-rows', 'grid-template-columns',
-      'grid-auto-columns', 'grid-auto-rows'
-    ],
+    props: sizeProps,
+    feature: 'intrinsic-width',
+    browsers
+  })
+)
+
+f(intrinsic, { match: /x|\s#5/ }, browsers =>
+  prefix(['fit-content'], {
+    props: sizeProps,
     feature: 'intrinsic-width',
     browsers
   })
@@ -481,8 +484,8 @@ f(decoration, browsers =>
   })
 )
 
-f(decoration, { match: /x.*#[23]/ }, browsers =>
-  prefix(['text-decoration-skip'], {
+f(decoration, { match: /x.*#[235]/ }, browsers =>
+  prefix(['text-decoration-skip', 'text-decoration-skip-ink'], {
     feature: 'text-decoration',
     browsers
   })
@@ -566,7 +569,7 @@ f(require('caniuse-lite/data/features/css-deviceadaptation'), browsers =>
 
 // Resolution Media Queries
 let resolut = require('caniuse-lite/data/features/css-media-resolution')
-f(resolut, { match: /( x($| )|a #3)/ }, browsers =>
+f(resolut, { match: /( x($| )|a #2)/ }, browsers =>
   prefix(['@resolution'], {
     feature: 'css-media-resolution',
     browsers
@@ -795,6 +798,14 @@ f(over, { match: /a #1/ }, browsers =>
 f(require('caniuse-lite/data/features/css-color-adjust'), browsers =>
   prefix(['color-adjust'], {
     feature: 'css-color-adjust',
+    browsers
+  })
+)
+
+// text-orientation
+f(require('caniuse-lite/data/features/css-text-orientation'), browsers =>
+  prefix(['text-orientation'], {
+    feature: 'css-text-orientation',
     browsers
   })
 )

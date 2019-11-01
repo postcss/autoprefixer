@@ -1,9 +1,78 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 9.7.1
+* Avoid unnecessary transitions in prefixed selectors (by Andrey Alexandrov).
+* Fix `fit-content` for Firefox.
+
+## 9.7 “Ad Victoriam”
+* Add `AUTOPREFIXER_GRID` env variable to enable Grid Layout polyfill for IE.
+* Fix `Cannot read property 'grid' of undefined` error.
+
+## 9.6.5
+* Fix selector prefixing (by Andrey Alexandrov).
+
+## 9.6.4
+* Now the real fix for `'startsWith' of undefined` error.
+
+## 9.6.3
+* Fix `Cannot read property 'startsWith' of undefined` error.
+
+## 9.6.2
+* Fix false `Replace fill to stretch` warning.
+
+## 9.6.1
+* Fix `-webkit-line-clamp` truncating multi-line text support.
+
+## 9.6 “Nunc id vides, nunc ne vides”
+* Show warning about Browserslist config on `browser` option.
+* Add warning-less `overrideBrowserslist` option.
+* Add `text-orientation` support.
+* Add `min-resolution: 2x` alias support.
+* Add `.github/CONTRIBUTING.md` (by Juan Martin Marco).
+
+## 9.5.1
+* Fix `backdrop-filter` for Edge (by Oleh Aloshkin).
+* Fix `min-resolution` media query support in Firefox < 16.
+
+## 9.5 “Draco dormiens nunquam titillandus”
+* Add `mask-composite` support (by Semen Levenson).
+
+## 9.4.10
+* Add warning for named Grid rows.
+
+## 9.4.9
+* Fix `grid-template` and `@media` case (by Bogdan Dolin).
+
+## 9.4.8
+* Fix `calc()` support in Grid gap.
+
+## 9.4.7
+* Fix infinite loop on mismatched parens.
+
+## 9.4.6
+* Fix warning text (by Albert Juhé Lluveras).
+
+## 9.4.5
+* Fix `text-decoration-skip-ink` support.
+
+## 9.4.4
+* Use `direction` value for `-ms-writing-mode` (by Denys Kniazevych).
+* Fix warning text (by @zzzzBov).
+
+## 9.4.3
+* Add warning to force `flex-start` instead of `start` (by Antoine du Hamel).
+* Fix docs (by Christian Oliff).
+
+## 9.4.2
+* Fix Grid autoplacement warning.
+
+## 9.4.1
+* Fix unnecessary Flexbox prefixes in Grid elements.
+
 ## 9.4 “Advance Australia”
-* Add Grid autoplacment for `-ms-` (by Bogdan Dolin).
-* Improve docs and wargnins (by Daniel Tonon).
+* Add Grid autoplacement for `-ms-` (by Bogdan Dolin).
+* Improve docs and warnings (by Daniel Tonon).
 * Remove some unnecessary warnings for Grid (by Andrey Alexandrov).
 
 ## 9.3.1

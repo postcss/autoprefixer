@@ -31,6 +31,11 @@ p {
   width: fill-available;
 }
 
+.ok {
+  width: -webkit-calc(100% - var(--jqx-circular-progress-bar-fill-size));
+  width: calc(100% - var(--jqx-circular-progress-bar-fill-size));
+}
+
 .grid {
   grid: -webkit-min-content -webkit-max-content / fit-content(500px);
   grid: min-content max-content / fit-content(500px);
