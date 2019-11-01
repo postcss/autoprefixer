@@ -95,6 +95,8 @@ Twitter account for news and releases: [@autoprefixer].
 - [Warnings](#warnings)
 - [Disabling](#disabling)
 - [Options](#options)
+- [Environment variables](#environment-variables)
+  - [Using environment variables to support CSS Grid prefixes in Create React App](#using-environment-variables-to-support-css-grid-prefixes-in-create-react-app)
 - [Grid Autoplacement support in IE](#grid-autoplacement-support-in-ie)
 - [Debug](#debug)
 
@@ -622,16 +624,48 @@ to increase performance.
     * `no-autoplace`: enable Autoprefixer grid translations
       but *exclude* autoplacement support.
 
-Environment variables is useful, when you can change Autoprefixer options.
-For instance, in Create React App.
+Environment variables are useful, when you want to change Autoprefixer options but don't have access to config files.
+[Create React App] is a good example of this.
 
-Add variable before CLI command, which will build your CSS:
+[Create React App]: (https://reactjs.org/docs/create-a-new-react-app.html#create-react-app)
 
-```sh
-AUTOPREFIXER_GRID=autoplace npm build
+### Using environment variables to support CSS Grid prefixes in Create React App
+
+1. Run the command `npm install autoprefixer@latest`
+2. Under `"browserslist"` > `"development"` in the package.json file, add `"last 1 ie version"`
+
+```
+"browserslist": {
+  "production": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ],
+  "development": [
+    "last 1 chrome version",
+    "last 1 firefox version",
+    "last 1 safari version",
+    "last 1 ie version"
+  ]
+}
 ```
 
-See also [Browserslist environment variables].
+3. Update `"scripts"` in the package.json file to the following:
+
+```
+"scripts": {
+  "start": "set AUTOPREFIXER_GRID=autoplace && react-scripts start",
+  "build": "set AUTOPREFIXER_GRID=autoplace && react-scripts build",
+  "test": "set AUTOPREFIXER_GRID=autoplace && react-scripts test",
+  "eject": "react-scripts eject"
+},
+```
+
+Replace `autoplace` with `no-autoplace` in the above example if you prefer to disable Autoprefixer Grid autoplacement support.
+
+Now when you run `npm start` you will see CSS Grid prefixes automatically being applied to your output CSS.
+
+See also [Browserslist environment variables] for more examples on how to use environment variables in your project.
 
 [Browserslist environment variables]: https://github.com/browserslist/browserslist#environment-variables
 
