@@ -1,6 +1,10 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 9.7.1
+* Avoid unnecessary transitions in prefixed selectors (by Andrey Alexandrov).
+* Fix `fit-content` for Firefox.
+
 ## 9.7 “Ad Victoriam”
 * Add `AUTOPREFIXER_GRID` env variable to enable Grid Layout polyfill for IE.
 * Fix `Cannot read property 'grid' of undefined` error.
