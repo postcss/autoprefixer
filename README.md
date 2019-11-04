@@ -631,7 +631,12 @@ Environment variables are useful, when you want to change Autoprefixer options b
 
 ### Using environment variables to support CSS Grid prefixes in Create React App
 
-1. Run the command `npm install autoprefixer@latest`
+1. Install the latest version of Autoprefixer and [cross-env](https://www.npmjs.com/package/cross-env):
+
+```
+npm install autoprefixer@latest cross-env --save-dev
+```
+
 2. Under `"browserslist"` > `"development"` in the package.json file, add `"last 1 ie version"`
 
 ```
@@ -654,9 +659,9 @@ Environment variables are useful, when you want to change Autoprefixer options b
 
 ```
 "scripts": {
-  "start": "set AUTOPREFIXER_GRID=autoplace && react-scripts start",
-  "build": "set AUTOPREFIXER_GRID=autoplace && react-scripts build",
-  "test": "set AUTOPREFIXER_GRID=autoplace && react-scripts test",
+  "start": "cross-env AUTOPREFIXER_GRID=autoplace react-scripts start",
+  "build": "cross-env AUTOPREFIXER_GRID=autoplace react-scripts build",
+  "test": "cross-env AUTOPREFIXER_GRID=autoplace react-scripts test",
   "eject": "react-scripts eject"
 },
 ```
