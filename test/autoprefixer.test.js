@@ -115,7 +115,7 @@ function prefixer (name) {
     return backgrounder
   } else if (name === 'backdrop-filter') {
     return overscroller
-  } else if (name === 'background-clip') {
+  } else if (name === 'background-clip' || name === 'user-select') {
     return clipper
   } else if (name === 'uncascade') {
     return uncascader
@@ -569,6 +569,7 @@ describe('hacks', () => {
   it('supports overscroll-behavior', () => check('overscroll-behavior'))
   it('supports color-adjust', () => check('color-adjust'))
   it('supports backdrop-filter', () => check('backdrop-filter'))
+  it('supports user-select hack for IE', () => check('user-select'))
 
   it('supports appearance for IE', () => {
     let instance = autoprefixer({ overrideBrowserslist: 'Edge 15' })
