@@ -13,6 +13,10 @@
     "lint": "eslint-ci . bin/*",
     "test": "jest --coverage && npm run lint && gulp && size-limit"
   },
+  "funding": {
+    "type": "tidelift",
+    "url": "https://tidelift.com/funding/github/npm/autoprefixer"
+  },
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
   "license": "MIT",
   "repository": "postcss/autoprefixer",
