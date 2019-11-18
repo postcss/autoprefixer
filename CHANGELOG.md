@@ -1,6 +1,10 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 9.7.2
+* Add `-ms-user-select: element` support.
+* Add funding link for `npm fund`.
+
 ## 9.7.1
 * Avoid unnecessary transitions in prefixed selectors (by Andrey Alexandrov).
 * Fix `fit-content` for Firefox.
