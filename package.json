@@ -39,7 +39,7 @@
     "@babel/plugin-transform-proto-to-assign": "^7.5.5",
     "@babel/preset-env": "^7.7.1",
     "@logux/eslint-config": "^34.0.1",
-    "@size-limit/preset-small-lib": "^2.2.1",
+    "@size-limit/preset-small-lib": "2.1.6",
     "babel-core": "^7.0.0-0",
     "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9.0",
