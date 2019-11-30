@@ -10,5 +10,4 @@ install:
 matrix:
   include:
     node_js: "6"
-    script: npx jest
-    env: ESTIMO_DISABLE=1
+    script: yarn run jest
