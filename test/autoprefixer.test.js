@@ -543,6 +543,10 @@ it('ignores unknown versions on request', () => {
   }).not.toThrow()
 })
 
+it('works with CSS Modules', () => {
+  postcss([autoprefixer()]).process(':export { selectors: _1q6ho_2 }').css
+})
+
 describe('hacks', () => {
   it('ignores prefix IE filter', () => check('filter'))
   it('supports webkit filters', () => check('advanced-filter'))
