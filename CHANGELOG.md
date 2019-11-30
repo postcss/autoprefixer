@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 9.7.3
+* Fix compatibility with PostCSS Modules.
+
 ## 9.7.2
 * Add `-ms-user-select: element` support.
 * Add funding link for `npm fund`.
