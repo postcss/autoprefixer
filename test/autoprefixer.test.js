@@ -139,6 +139,8 @@ function prefixer (name) {
     return overscroller
   } else if (name === 'transition-spec') {
     return transitionSpec
+  } else if (name === 'at-rules') {
+    return intrinsicer
   } else {
     return compiler
   }
@@ -261,6 +263,7 @@ it('uses block control comments', () => check('disabled'))
 it('has actual example in docs', () => check('example'))
 it('process grouping rules correctly', () => check('grouping-rule'))
 it('transition on vendor specific rule', () => check('transition-spec'))
+it('ignore prefix in vendor at rules', () => check('at-rules'))
 
 it('uses control comments to whole scope', () => {
   let input = read('scope')

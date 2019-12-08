@@ -1,0 +1,33 @@
+body {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+.block {
+  -webkit-transform: translate(20px, 30px);
+          transform: translate(20px, 30px);
+}
+
+@-webkit-region .region {
+  .block {
+    -webkit-transform: translate(20px, 30px);
+            transform: translate(20px, 30px);
+  }
+
+  .block__button {
+    -webkit-appearance: none;
+            appearance: none;
+  }
+}
+
+@-moz-document domain('example.com') {
+  body {
+    -moz-appearance: none;
+         appearance: none;
+  }
+
+  .block {
+    transform: translate(20px, 30px);
+  }
+}
