@@ -1,0 +1,27 @@
+body {
+  appearance: none;
+}
+
+.block {
+  transform: translate(20px, 30px);
+}
+
+@-webkit-region .region {
+  .block {
+    transform: translate(20px, 30px);
+  }
+
+  .block__button {
+    appearance: none;
+  }
+}
+
+@-moz-document domain('example.com') {
+  body {
+    appearance: none;
+  }
+
+  .block {
+    transform: translate(20px, 30px);
+  }
+}
