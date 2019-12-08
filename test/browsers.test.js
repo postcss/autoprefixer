@@ -1,4 +1,3 @@
-
 let data = require('caniuse-lite').agents
 let path = require('path')
 

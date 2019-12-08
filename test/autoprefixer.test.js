@@ -75,6 +75,9 @@ let overscroller = autoprefixer({
 let clipper = autoprefixer({
   overrideBrowserslist: ['Safari 7', 'Edge 14']
 })
+let example = autoprefixer({
+  overrideBrowserslist: ['defaults']
+})
 
 function prefixer (name) {
   if (
@@ -85,62 +88,68 @@ function prefixer (name) {
     name === 'grid-template-areas'
   ) {
     return grider
+  } else if (
+    name === 'filter' ||
+    name === 'advanced-filter' ||
+    name === 'element'
+  ) {
+    return filterer
+  } else if (
+    name === 'vendor-hack' ||
+    name === 'value-hack' ||
+    name === 'mistakes'
+  ) {
+    return cleaner
+  } else if (
+    name === 'flexbox' ||
+    name === 'flex-rewrite' ||
+    name === 'double' ||
+    name === 'viewport' ||
+    name === 'appearance'
+  ) {
+    return flexboxer
+  } else if (
+    name === 'intrinsic' ||
+    name === 'multicolumn' ||
+    name === 'logical' ||
+    name === 'text-decoration' ||
+    name === 'at-rules'
+  ) {
+    return intrinsicer
+  } else if (name === 'selectors' || name === 'placeholder') {
+    return selectorer
+  } else if (name === 'backdrop-filter' || name === 'overscroll-behavior') {
+    return overscroller
+  } else if (name === 'background-clip' || name === 'user-select') {
+    return clipper
+  } else if (name === 'image-rendering' || name === 'writing-mode') {
+    return imagerender
   } else if (name === 'keyframes') {
     return keyframer
   } else if (name === 'border-radius') {
     return borderer
-  } else if (name === 'vendor-hack' || name === 'value-hack') {
-    return cleaner
-  } else if (name === 'mistakes') {
-    return cleaner
   } else if (name === 'gradient') {
     return gradienter
   } else if (name === 'gradient-fix') {
     return ffgradienter
   } else if (name === 'grouping-rule') {
     return grouping
-  } else if (name === 'flexbox' || name === 'flex-rewrite') {
-    return flexboxer
-  } else if (name === 'double') {
-    return flexboxer
-  } else if (name === 'selectors' || name === 'placeholder') {
-    return selectorer
-  } else if (name === 'intrinsic' || name === 'multicolumn') {
-    return intrinsicer
   } else if (name === 'cascade') {
     return cascader
   } else if (name === '3d-transform') {
     return without3d
   } else if (name === 'background-size') {
     return backgrounder
-  } else if (name === 'backdrop-filter') {
-    return overscroller
-  } else if (name === 'background-clip' || name === 'user-select') {
-    return clipper
   } else if (name === 'uncascade') {
     return uncascader
   } else if (name === 'example') {
-    return autoprefixer({ overrideBrowserslist: ['defaults'] })
-  } else if (name === 'viewport' || name === 'appearance') {
-    return flexboxer
+    return example
   } else if (name === 'resolution') {
     return resolutioner
-  } else if (name === 'filter' || name === 'advanced-filter') {
-    return filterer
-  } else if (name === 'element') {
-    return filterer
-  } else if (name === 'image-rendering' || name === 'writing-mode') {
-    return imagerender
-  } else if (name === 'logical' || name === 'text-decoration') {
-    return intrinsicer
   } else if (name === 'supports') {
     return supporter
-  } else if (name === 'overscroll-behavior') {
-    return overscroller
   } else if (name === 'transition-spec') {
     return transitionSpec
-  } else if (name === 'at-rules') {
-    return intrinsicer
   } else {
     return compiler
   }
