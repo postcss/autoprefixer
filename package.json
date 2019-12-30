@@ -13,6 +13,7 @@
     "lint": "eslint-ci . bin/*",
     "test": "jest --coverage && npm run lint && gulp && size-limit"
   },
+  "bin": "./bin/autoprefixer",
   "funding": {
     "type": "tidelift",
     "url": "https://tidelift.com/funding/github/npm/autoprefixer"
@@ -67,9 +68,6 @@
     "husky": "^3.1.0",
     "jest": "^24.9.0",
     "lint-staged": "^9.5.0"
-  },
-  "bin": {
-    "autoprefixer": "./bin/autoprefixer"
   },
   "lint-staged": {
     "*.js": "eslint"
