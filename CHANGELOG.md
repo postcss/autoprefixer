@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 9.7.4
+* Fix warning text (by Dmitry Ishkov).
+
 ## 9.7.3
 * Fix compatibility with PostCSS Modules.
 
