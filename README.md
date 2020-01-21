@@ -460,7 +460,7 @@ result.warnings().forEach(warn => {
 
 Every Autoprefixer runner should display these warnings.
 
-[PostCSS warning API]: https://github.com/postcss/postcss/blob/master/docs/api.md#warning-class
+[PostCSS warning API]: http://api.postcss.org/Warning.html
 
 
 ## Disabling
