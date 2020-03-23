@@ -11,7 +11,7 @@
   ],
   "scripts": {
     "lint": "eslint-ci . bin/*",
-    "test": "jest --coverage && npm run lint && gulp && size-limit"
+    "test": "jest-ci --coverage && npm run lint && gulp && size-limit"
   },
   "bin": "./bin/autoprefixer",
   "funding": {
@@ -67,6 +67,7 @@
     "gulp-replace": "^1.0.0",
     "husky": "^4.2.3",
     "jest": "^24.9.0",
+    "jest-ci": "^0.1.1",
     "lint-staged": "^9.5.0",
     "size-limit": "^4.4.1"
   },
