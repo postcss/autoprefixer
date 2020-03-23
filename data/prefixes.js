@@ -418,13 +418,20 @@ f(intrinsic, browsers =>
   })
 )
 
-f(intrinsic, { match: /x|\s#4/ }, browsers =>
+f(intrinsic, { match: /x|\s#4/ }, browsers => {
+  browsers = browsers.map(i => {
+    if (/safari/.test(i)) {
+      return i
+    } else {
+      return `${ i } old`
+    }
+  })
   prefix(['fill', 'fill-available', 'stretch'], {
     props: sizeProps,
     feature: 'intrinsic-width',
     browsers
   })
-)
+})
 
 f(intrinsic, { match: /x|\s#5/ }, browsers =>
   prefix(['fit-content'], {
