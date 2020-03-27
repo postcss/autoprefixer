@@ -432,6 +432,7 @@ and automation.
 
 If you can’t move to a build tool, you can use text editor plugins:
 
+* [Visual Studio Code](https://github.com/mrmlnc/vscode-autoprefixer)
 * [Sublime Text](https://github.com/sindresorhus/sublime-autoprefixer)
 * [Brackets](https://github.com/mikaeljorhult/brackets-autoprefixer)
 * [Atom Editor](https://github.com/sindresorhus/atom-autoprefixer)
