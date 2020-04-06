@@ -1,6 +1,5 @@
 a {
   width: -webkit-fill-available;
-  width: -webkit-stretch;
   width: -moz-available;
   width: stretch;
 }
@@ -22,14 +21,12 @@ p {
 
 .outdated {
   width: -webkit-fill-available;
-  width: -webkit-stretch;
   width: -moz-available;
   width: fill;
 }
 
 .old {
   width: -webkit-fill-available;
-  width: -webkit-stretch;
   width: -moz-available;
   width: fill-available;
 }
