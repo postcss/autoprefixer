@@ -113,6 +113,7 @@ Twitter account for news and releases: [@autoprefixer].
     * [When changing the `grid gap` value, columns and rows must be re-declared](#when-changing-the-grid-gap-value-columns-and-rows-must-be-re-declared)
 * [Debug](#debug)
 * [Security Contact](#security-contact)
+* [For Enterprise](#for-enterprise)
 
 ## Browsers
 
@@ -1111,8 +1112,12 @@ Tidelift will coordinate the fix and disclosure.
 
 [Tidelift security contact]: https://tidelift.com/security
 
-## For enterprise
+## For Enterprise
 
 Available as part of the Tidelift Subscription.
 
-The maintainers of `autoprefixer` and thousands of other packages are working with Tidelift to deliver commercial support and maintenance for the open source dependencies you use to build your applications. Save time, reduce risk, and improve code health, while paying the maintainers of the exact dependencies you use. [Learn more.](https://tidelift.com/subscription/pkg/npm-autoprefixer?utm_source=npm-autoprefixer&utm_medium=referral&utm_campaign=enterprise&utm_term=repo)
+The maintainers of `autoprefixer` and thousands of other packages are working
+with Tidelift to deliver commercial support and maintenance for the open source
+dependencies you use to build your applications. Save time, reduce risk,
+and improve code health, while paying the maintainers of the exact dependencies
+you use. [Learn more.](https://tidelift.com/subscription/pkg/npm-autoprefixer?utm_source=npm-autoprefixer&utm_medium=referral&utm_campaign=enterprise&utm_term=repo)
