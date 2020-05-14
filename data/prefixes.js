@@ -362,6 +362,15 @@ f(require('caniuse-lite/data/features/css-placeholder'), browsers => {
   })
 })
 
+// Placeholder-shown selector
+f(require('caniuse-lite/data/features/css-placeholder-shown'), browsers => {
+  prefix([':placeholder-shown'], {
+    selector: true,
+    feature: 'css-placeholder-shown',
+    browsers
+  })
+})
+
 // Hyphenation
 f(require('caniuse-lite/data/features/css-hyphens'), browsers =>
   prefix(['hyphens'], {
