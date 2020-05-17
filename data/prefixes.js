@@ -364,6 +364,7 @@ f(require('caniuse-lite/data/features/css-placeholder'), browsers => {
 
 // Placeholder-shown selector
 f(require('caniuse-lite/data/features/css-placeholder-shown'), browsers => {
+  console.log(browsers)
   prefix([':placeholder-shown'], {
     selector: true,
     feature: 'css-placeholder-shown',
