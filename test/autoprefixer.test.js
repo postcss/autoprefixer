@@ -54,6 +54,9 @@ let ffgradienter = autoprefixer({
 let selectorer = autoprefixer({
   overrideBrowserslist: ['Chrome 25', 'Firefox > 17', 'IE 10', 'Edge 12']
 })
+let placeholderShowner = autoprefixer({
+  overrideBrowserslist: ['IE >= 10']
+})
 let transitionSpec = autoprefixer({
   overrideBrowserslist: ['Chrome > 19', 'Firefox 14', 'IE 10', 'Opera 12']
 })
@@ -118,6 +121,8 @@ function prefixer (name) {
     return intrinsicer
   } else if (name === 'selectors' || name === 'placeholder') {
     return selectorer
+  } else if (name === 'placeholder-shown') {
+    return placeholderShowner
   } else if (name === 'backdrop-filter' || name === 'overscroll-behavior') {
     return overscroller
   } else if (name === 'background-clip' || name === 'user-select') {
@@ -175,7 +180,8 @@ function check (from, instance = prefixer(from)) {
 const COMMONS = [
   'transition', 'values', 'keyframes', 'gradient', 'flex-rewrite',
   'flexbox', 'filter', 'border-image', 'border-radius', 'notes', 'selectors',
-  'placeholder', 'fullscreen', 'intrinsic', 'mistakes', 'custom-prefix',
+  'placeholder', 'placeholder-shown', 'fullscreen',
+  'intrinsic', 'mistakes', 'custom-prefix',
   'cascade', 'double', 'multicolumn', '3d-transform', 'background-size',
   'supports', 'viewport', 'resolution', 'logical', 'appearance',
   'advanced-filter', 'element', 'image-set', 'image-rendering',
@@ -575,6 +581,7 @@ describe('hacks', () => {
   it('supports logical properties', () => check('logical'))
   it('supports appearance', () => check('appearance'))
   it('supports all placeholders', () => check('placeholder'))
+  it('supports placeholder-shown', () => check('placeholder-shown'))
   it('supports image-rendering', () => check('image-rendering'))
   it('supports border-box mask', () => check('mask-border'))
   it('supports mask-composite', () => check('mask-composite'))
