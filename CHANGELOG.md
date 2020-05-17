@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 9.8 “Vigilo Confido”
+* Add `:placeholder-shown` support (by Tanguy Krotoff).
+
 ## 9.7.6
 * Revert `-webkit-stretch` fix.
 
