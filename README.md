@@ -389,7 +389,7 @@ See `postcss -h` for help.
 [autoprefixer-rails]:          https://github.com/ai/autoprefixer-rails
 [broccoli-postcss]:            https://github.com/jeffjewiss/broccoli-postcss
 [postcss-brunch]:              https://github.com/iamvdo/postcss-brunch
-[grunt-postcss]:               https://github.com/nDmitry/grunt-postcss
+[grunt-postcss]:               https://github.com/C-Lodder/grunt-postcss
 
 
 #### Preprocessors
