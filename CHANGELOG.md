@@ -1,6 +1,10 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 9.8.1
+* Replace `chalk` to `kleur` (by Luke Edwards).
+* Update docs (by @mbomb007).
+
 ## 9.8 “Vigilo Confido”
 * Add `:placeholder-shown` support (by Tanguy Krotoff).
 
