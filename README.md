@@ -30,9 +30,6 @@ support to apply prefixes for you. You can try the [interactive demo]
 of Autoprefixer.
 
 ```css
-::-webkit-input-placeholder {
-  color: gray;
-}
 ::-moz-placeholder {
   color: gray;
 }
@@ -50,7 +47,6 @@ of Autoprefixer.
   background-image: url(image@1x.png);
 }
 @media (-webkit-min-device-pixel-ratio: 2),
-       (-o-min-device-pixel-ratio: 2/1),
        (min-resolution: 2dppx) {
   .image {
     background-image: url(image@2x.png);
