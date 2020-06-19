@@ -25,22 +25,22 @@
     "node": ">=6.0.0"
   },
   "dependencies": {
-    "@babel/register": "^7.9.0",
+    "@babel/register": "^7.10.3",
     "browserslist": "^4.12.0",
-    "caniuse-lite": "^1.0.30001061",
+    "caniuse-lite": "^1.0.30001084",
     "kleur": "^4.0.1",
     "normalize-range": "^0.1.2",
     "num2fraction": "^1.2.2",
-    "postcss": "^7.0.30",
+    "postcss": "^7.0.32",
     "postcss-value-parser": "^4.1.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.6",
-    "@babel/plugin-proposal-class-properties": "^7.8.3",
-    "@babel/plugin-transform-proto-to-assign": "^7.8.3",
-    "@babel/preset-env": "^7.9.6",
+    "@babel/core": "^7.10.3",
+    "@babel/plugin-proposal-class-properties": "^7.10.1",
+    "@babel/plugin-transform-proto-to-assign": "^7.10.1",
+    "@babel/preset-env": "^7.10.3",
     "@logux/eslint-config": "^35.0.3",
-    "@size-limit/preset-small-lib": "4.4.5",
+    "@size-limit/preset-small-lib": "4.5.1",
     "babel-core": "^7.0.0-0",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^25.2.6",
@@ -50,8 +50,8 @@
     "eslint-ci": "^1.0.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-es5": "^1.5.0",
-    "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-jest": "^23.8.2",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-jest": "^23.13.2",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prefer-let": "^1.0.1",
     "eslint-plugin-promise": "^4.2.1",
@@ -68,8 +68,8 @@
     "husky": "^4.2.5",
     "jest": "^24.9.0",
     "jest-ci": "^0.1.1",
-    "lint-staged": "^9.5.0",
-    "size-limit": "^4.4.5"
+    "lint-staged": "^10.2.11",
+    "size-limit": "^4.5.1"
   },
   "lint-staged": {
     "*.js": "eslint"
@@ -82,7 +82,7 @@
   "size-limit": [
     {
       "path": "build/lib/autoprefixer.js",
-      "limit": "115 KB"
+      "limit": "116 KB"
     }
   ],
   "eslintConfig": {
