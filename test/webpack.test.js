@@ -1,8 +1,8 @@
-jest.doMock('chalk', () => ({ }))
+jest.doMock('kleur/colors', () => ({ }))
 
 let autoprefixer = require('../lib/autoprefixer')
 
-it('works without chalk', () => {
+it('works without kleur', () => {
   jest.spyOn(console, 'warn').mockImplementation(() => true)
   let instance = autoprefixer({ browsers: ['last 1 version'] })
   expect(instance.browsers).toEqual(['last 1 version'])
