@@ -2,7 +2,7 @@
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 9.8.2
-* Remove old Node.js <13.7 from supported engines, because of buggy ESM support.
+* Remove Node.js 13.0-13.7 from supported engines, because of buggy ESM support.
 
 ## 9.8.1
 * Replace `chalk` to `kleur` (by Luke Edwards).
