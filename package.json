@@ -22,7 +22,7 @@
   "license": "MIT",
   "repository": "postcss/autoprefixer",
   "engines": {
-    "node": >=6"
+    "node": ">=6"
   },
   "dependencies": {
     "@babel/register": "^7.10.3",
