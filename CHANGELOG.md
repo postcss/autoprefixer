@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 9.8.3
+* Return old non-LTS Node.js versions to avoid breaking changes.
+
 ## 9.8.2
 * Remove Node.js 13.0-13.7 from supported engines, because of buggy ESM support.
 
