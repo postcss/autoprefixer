@@ -21,14 +21,11 @@
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
   "license": "MIT",
   "repository": "postcss/autoprefixer",
-  "engines": {
-    "node": "^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7"
-  },
   "dependencies": {
     "@babel/register": "^7.10.3",
     "browserslist": "^4.12.0",
     "caniuse-lite": "^1.0.30001087",
-    "kleur": "^4.0.1",
+    "colorette": "^1.2.0",
     "normalize-range": "^0.1.2",
     "num2fraction": "^1.2.2",
     "postcss": "^7.0.32",
@@ -40,7 +37,7 @@
     "@babel/plugin-transform-proto-to-assign": "^7.10.1",
     "@babel/preset-env": "^7.10.3",
     "@logux/eslint-config": "^35.0.3",
-    "@size-limit/preset-small-lib": "4.5.1",
+    "@size-limit/preset-small-lib": "4.5.2",
     "babel-core": "^7.0.0-0",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^25.2.6",
@@ -69,7 +66,7 @@
     "jest": "^24.9.0",
     "jest-ci": "^0.1.1",
     "lint-staged": "^10.2.11",
-    "size-limit": "^4.5.1"
+    "size-limit": "^4.5.2"
   },
   "lint-staged": {
     "*.js": "eslint"
@@ -142,6 +139,7 @@
     "defaults"
   ],
   "browser": {
+    "colorette": false,
     "chalk": false
   },
   "babel": {
