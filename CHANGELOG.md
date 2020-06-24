@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 9.8.4
+* Replace color output library.
+
 ## 9.8.3
 * Return old non-LTS Node.js versions to avoid breaking changes.
 
