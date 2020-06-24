@@ -10,4 +10,6 @@ install:
 matrix:
   include:
     node_js: "6"
-    script: yarn run jest
+    script: |
+      yarn run jest
+      bash <(curl -s https://codecov.io/bash)
