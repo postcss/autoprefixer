@@ -702,33 +702,33 @@ describe('hacks', () => {
       'autoprefixer: <css input>:55:3: Can not find grid areas: b',
       'autoprefixer: <css input>:63:3: Can not find grid areas: c',
       'autoprefixer: <css input>:71:3: Can not find grid areas: d',
-      'autoprefixer: <css input>:99:3: grid-column-span is not part ' +
+      'autoprefixer: <css input>:106:3: grid-column-span is not part ' +
         'of final Grid Layout. Use grid-column.',
-      'autoprefixer: <css input>:100:3: grid-row-span is not part ' +
+      'autoprefixer: <css input>:107:3: grid-row-span is not part ' +
         'of final Grid Layout. Use grid-row.',
-      'autoprefixer: <css input>:101:3: grid-auto-columns is not ' +
+      'autoprefixer: <css input>:108:3: grid-auto-columns is not ' +
         'supported by IE',
-      'autoprefixer: <css input>:102:3: grid-auto-rows is not ' +
+      'autoprefixer: <css input>:109:3: grid-auto-rows is not ' +
         'supported by IE',
-      'autoprefixer: <css input>:104:33: auto-fill value is not ' +
+      'autoprefixer: <css input>:111:33: auto-fill value is not ' +
         'supported by IE',
-      'autoprefixer: <css input>:105:30: auto-fit value is not ' +
+      'autoprefixer: <css input>:112:30: auto-fit value is not ' +
         'supported by IE',
-      'autoprefixer: <css input>:121:3: Please do not use ' +
+      'autoprefixer: <css input>:128:3: Please do not use ' +
         'display: contents; if you have grid setting enabled',
-      'autoprefixer: <css input>:125:3: IE does not support align-items ' +
+      'autoprefixer: <css input>:132:3: IE does not support align-items ' +
         'on grid containers. Try using align-self on child elements instead: ' +
         '.warn_ie_align > * { align-self: center }',
-      'autoprefixer: <css input>:130:3: IE does not support justify-items ' +
+      'autoprefixer: <css input>:137:3: IE does not support justify-items ' +
         'on grid containers. Try using justify-self on child elements ' +
         'instead: .warn_ie_justify > * { justify-self: center }',
-      'autoprefixer: <css input>:135:3: IE does not support justify-content ' +
+      'autoprefixer: <css input>:142:3: IE does not support justify-content ' +
         'on grid containers',
-      'autoprefixer: <css input>:140:3: IE does not support place-items ' +
+      'autoprefixer: <css input>:147:3: IE does not support place-items ' +
         'on grid containers. Try using place-self on child elements ' +
         'instead: .warn_place_items > * { place-self: start end }',
-      'autoprefixer: <css input>:164:3: grid-auto-flow is not supported by IE',
-      'autoprefixer: <css input>:186:26: Autoprefixer currently does not ' +
+      'autoprefixer: <css input>:171:3: grid-auto-flow is not supported by IE',
+      'autoprefixer: <css input>:193:26: Autoprefixer currently does not ' +
         'support line names. Try using grid-template-areas instead.'
     ])
 

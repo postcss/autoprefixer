@@ -85,6 +85,15 @@
       align-self: flex-end;
 }
 
+/* should add grid prefixes because a flex container can be a grid item */
+.align-justify-grid-flex {
+  display: -ms-flexbox;
+  display: flex;
+  justify-self: start;
+  -ms-flex-item-align: end;
+      align-self: end;
+}
+
 @supports (display: grid) {
   .foo {
     display: grid;
