@@ -690,6 +690,7 @@ describe('hacks', () => {
         'without grid-template-columns property',
       'autoprefixer: <css input>:36:3: Can not prefix grid-column-end ' +
         '(grid-column-start is not found)',
+      'autoprefixer: <css input>:37:3: IE does not support subgrid',
       'autoprefixer: <css input>:39:3: Can not implement grid-gap ' +
         'without grid-template-columns',
       'autoprefixer: <css input>:39:3: Can not find grid areas: ' +
