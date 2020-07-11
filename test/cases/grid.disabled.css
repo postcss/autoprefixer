@@ -41,6 +41,16 @@
                        "foot ....";
 }
 
+.no-warn {
+  /* autoprefixer grid: off */
+  grid-column-end: 3;
+  grid: subgrid;
+  grid-gap: 1rem;
+  grid-template-areas: "head head"
+                       "nav  main"
+                       "foot ....";
+}
+
 .warn-gap-rows {
   grid-gap: 1rem;
   grid-template-rows: 1fr 1fr;
