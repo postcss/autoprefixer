@@ -79,7 +79,7 @@
   "size-limit": [
     {
       "path": "build/lib/autoprefixer.js",
-      "limit": "116 KB"
+      "limit": "125 KB"
     }
   ],
   "eslintConfig": {
