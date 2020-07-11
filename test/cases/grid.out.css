@@ -128,6 +128,19 @@
   align-self: flex-end;
 }
 
+/* should add grid prefixes because a flex container can be a grid item */
+.align-justify-grid-flex {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-grid-column-align: start;
+  justify-self: start;
+  -webkit-align-self: end;
+  -ms-flex-item-align: end;
+  -ms-grid-row-align: end;
+  align-self: end;
+}
+
 @supports ((display: -ms-grid) or (display: grid)) {
   .foo {
     display: -ms-grid;

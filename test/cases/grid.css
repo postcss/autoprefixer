@@ -93,6 +93,13 @@
   align-self: flex-end;
 }
 
+/* should add grid prefixes because a flex container can be a grid item */
+.align-justify-grid-flex {
+  display: flex;
+  justify-self: start;
+  align-self: end;
+}
+
 @supports (display: grid) {
   .foo {
     display: grid;
