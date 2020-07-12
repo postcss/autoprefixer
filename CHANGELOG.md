@@ -3,6 +3,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 9.8.5
 * Improved Grid Layout warnings (by Daniel Tonon).
+* Fix for align/justify-self grid prefixes not getting applied if the grid item is set to `display: flex` (by Daniel Tonon).
 
 ## 9.8.4
 * Replace color output library.
