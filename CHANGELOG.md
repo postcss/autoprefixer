@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 9.8.6
+* Fixed `env` option.
+
 ## 9.8.5
 * Improved Grid Layout warnings (by Daniel Tonon).
 * Fixed `align-self` and `justify-self` with `display: flex` (by Daniel Tonon).
