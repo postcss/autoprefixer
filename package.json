@@ -14,9 +14,10 @@
   ],
   "scripts": {
     "lint": "eslint-ci . bin/*",
-    "test": "jest-ci --coverage && npm run lint && gulp && size-limit"
+    "test": "jest-ci --coverage && npm run lint && size-limit"
   },
-  "bin": "./bin/autoprefixer",
+  "main": "lib/autoprefixer.js",
+  "bin": "bin/autoprefixer",
   "funding": {
     "type": "tidelift",
     "url": "https://tidelift.com/funding/github/npm/autoprefixer"
@@ -25,7 +26,6 @@
   "license": "MIT",
   "repository": "postcss/autoprefixer",
   "dependencies": {
-    "@babel/register": "^7.10.5",
     "browserslist": "^4.12.0",
     "caniuse-lite": "^1.0.30001109",
     "colorette": "^1.2.1",
@@ -34,17 +34,13 @@
     "postcss": "^7.0.32",
     "postcss-value-parser": "^4.1.0"
   },
+  "browser": {
+    "colorette": false,
+    "chalk": false
+  },
   "devDependencies": {
-    "@babel/core": "^7.10.5",
-    "@babel/plugin-proposal-class-properties": "^7.10.4",
-    "@babel/plugin-transform-proto-to-assign": "^7.10.5",
-    "@babel/preset-env": "^7.10.4",
     "@logux/eslint-config": "^35.0.3",
     "@size-limit/preset-small-lib": "4.5.5",
-    "babel-core": "^7.0.0-0",
-    "babel-eslint": "^10.1.0",
-    "babel-jest": "^25.2.6",
-    "babelify": "^10.0.0",
     "eslint": "^6.8.0",
     "eslint-ci": "^1.0.0",
     "eslint-config-standard": "^14.1.1",
@@ -58,12 +54,6 @@
     "eslint-plugin-standard": "^4.0.1",
     "eslint-plugin-unicorn": "^16.0.1",
     "fs-extra": "^8.1.0",
-    "gulp": "^4.0.2",
-    "gulp-babel": "^8.0.0",
-    "gulp-json-editor": "^2.5.4",
-    "gulp-postcss": "^8.0.0",
-    "gulp-rename": "^2.0.0",
-    "gulp-replace": "^1.0.0",
     "husky": "^4.2.5",
     "jest": "^24.9.0",
     "jest-ci": "^0.1.1",
@@ -71,7 +61,7 @@
     "size-limit": "^4.5.5"
   },
   "lint-staged": {
-    "*.js": "eslint"
+    "*.js": "eslint --fix"
   },
   "husky": {
     "hooks": {
@@ -80,13 +70,11 @@
   },
   "size-limit": [
     {
-      "path": "build/lib/autoprefixer.js",
       "limit": "125 KB"
     }
   ],
   "eslintConfig": {
     "extends": "@logux/eslint-config/node",
-    "parser": "babel-eslint",
     "rules": {
       "security/detect-non-literal-regexp": "off",
       "security/detect-unsafe-regex": "off",
@@ -95,16 +83,6 @@
       "no-unused-vars": "off"
     },
     "overrides": [
-      {
-        "files": [
-          "gulpfile.js",
-          "index.js"
-        ],
-        "rules": {
-          "node/no-unpublished-require": "off",
-          "global-require": "off"
-        }
-      },
       {
         "files": [
           "bin/autoprefixer"
@@ -123,46 +101,12 @@
       }
     ]
   },
-  "eslintIgnore": [
-    "build/"
-  ],
   "jest": {
     "testEnvironment": "node",
     "coverageThreshold": {
       "global": {
         "lines": 100
       }
-    },
-    "modulePathIgnorePatterns": [
-      "<rootDir>/build/"
-    ]
-  },
-  "browserslist": [
-    "defaults"
-  ],
-  "browser": {
-    "colorette": false,
-    "chalk": false
-  },
-  "babel": {
-    "presets": [
-      [
-        "@babel/env",
-        {
-          "loose": true
-        }
-      ]
-    ],
-    "plugins": [
-      [
-        "@babel/transform-proto-to-assign"
-      ],
-      [
-        "@babel/proposal-class-properties",
-        {
-          "spec": true
-        }
-      ]
-    ]
+    }
   }
 }

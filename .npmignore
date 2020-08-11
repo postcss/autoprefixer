@@ -7,6 +7,3 @@ coverage
 .travis.yml
 
 .github
-playground
-build
-gulpfile.js

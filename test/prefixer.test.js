@@ -14,8 +14,8 @@ describe('.hack()', () => {
   it('registers hacks for subclasses', () => {
     class A extends Prefixer {}
     class Hack extends A {
-            static names = ['a', 'b'];
     }
+    Hack.names = ['a', 'b']
 
     A.hack(Hack)
 
@@ -27,10 +27,16 @@ describe('.hack()', () => {
 describe('.load()', () => {
   it('loads hacks', () => {
     class A extends Prefixer {
-            klass = 'a';
+      constructor () {
+        super()
+        this.klass = 'a'
+      }
     }
     class Hack extends A {
-            klass = 'hack';
+      constructor () {
+        super()
+        this.klass = 'hack'
+      }
     }
     A.hacks = { hacked: Hack }
 
