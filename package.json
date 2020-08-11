@@ -2,6 +2,9 @@
   "name": "autoprefixer",
   "version": "9.8.6",
   "description": "Parse CSS and add vendor prefixes to CSS rules using values from the Can I Use website",
+  "engines": {
+    "node": "^10 || ^12 || >=14"
+  },
   "keywords": [
     "autoprefixer",
     "css",
