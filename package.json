@@ -31,7 +31,7 @@
     "colorette": "^1.2.1",
     "normalize-range": "^0.1.2",
     "num2fraction": "^1.2.2",
-    "postcss": "^7.0.32",
+    "postcss": "postcss/postcss#ose",
     "postcss-value-parser": "^4.1.0"
   },
   "browser": {
@@ -70,7 +70,7 @@
   },
   "size-limit": [
     {
-      "limit": "115 KB"
+      "limit": "120 KB"
     }
   ],
   "eslintConfig": {
