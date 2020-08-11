@@ -9,5 +9,4 @@ coverage
 .github
 playground
 build
-autoprefixer.js
 gulpfile.js

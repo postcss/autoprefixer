@@ -66,44 +66,6 @@ gulp.task('build', gulp.series(
   gulp.parallel('build:lib', 'build:docs', 'build:bin', 'build:package')
 ))
 
-gulp.task('standalone', gulp.series('clean', 'build:lib', done => {
-  let builder = require('browserify')({
-    basedir: join(__dirname, 'build'),
-    standalone: 'autoprefixer'
-  })
-  builder.add('./lib/autoprefixer.js')
-
-  builder
-    .transform('babelify', {
-      global: true,
-      presets: [
-        [
-          '@babel/env', {
-            targets: {
-              node: 6
-            },
-            loose: true
-          }
-        ]
-      ]
-    })
-    .bundle((error, build) => {
-      if (error) throw error
-
-      fs.removeSync(join(__dirname, 'build'))
-
-      let rails = join(__dirname, '..', 'autoprefixer-rails',
-        'vendor', 'autoprefixer.js')
-      if (fs.existsSync(rails)) {
-        fs.writeFileSync(rails, build)
-      } else {
-        let out = join(__dirname, 'autoprefixer.js')
-        fs.writeFileSync(out, build)
-      }
-      done()
-    })
-}))
-
 gulp.task('compile-playground', () => {
   let autoprefixer = require('./build')
   return gulp.src('./playground/input.css')

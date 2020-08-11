@@ -45,7 +45,6 @@
     "babel-eslint": "^10.1.0",
     "babel-jest": "^25.2.6",
     "babelify": "^10.0.0",
-    "browserify": "^16.5.1",
     "eslint": "^6.8.0",
     "eslint-ci": "^1.0.0",
     "eslint-config-standard": "^14.1.1",
