@@ -2,8 +2,9 @@ yarn-error.log
 yarn.lock
 
 .editorconfig
-test
-coverage
+test/
+coverage/
 .travis.yml
 
-.github
+.github/
+logo.svg
