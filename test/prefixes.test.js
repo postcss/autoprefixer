@@ -27,7 +27,7 @@ let data = {
   }
 }
 
-let empty = new Prefixes({ }, new Browsers(data.browsers, []))
+let empty = new Prefixes({}, new Browsers(data.browsers, []))
 let fill = new Prefixes(
   data.prefixes,
   new Browsers(data.browsers, ['firefox 21', 'ie 7'])
@@ -73,24 +73,26 @@ describe('preprocess()', () => {
   })
 
   it('preprocesses prefixes remove data', () => {
-    expect(JSON.stringify(fill.remove)).toEqual(JSON.stringify({
-      'selectors': [cSel.old('-moz-')],
-      '-webkit-a': {
-        remove: true
-      },
-      '-ms-a': {
-        remove: true
-      },
-      '-moz- olda': {
-        remove: true
-      },
-      'a': {
-        values: [old('-ms-b'), old('-moz-b'), old('-webkit-b')]
-      },
-      '*': {
-        values: [old('-ms-b'), old('-moz-b'), old('-webkit-b')]
-      }
-    }))
+    expect(JSON.stringify(fill.remove)).toEqual(
+      JSON.stringify({
+        'selectors': [cSel.old('-moz-')],
+        '-webkit-a': {
+          remove: true
+        },
+        '-ms-a': {
+          remove: true
+        },
+        '-moz- olda': {
+          remove: true
+        },
+        'a': {
+          values: [old('-ms-b'), old('-moz-b'), old('-webkit-b')]
+        },
+        '*': {
+          values: [old('-ms-b'), old('-moz-b'), old('-webkit-b')]
+        }
+      })
+    )
   })
 })
 
@@ -100,8 +102,7 @@ describe('.cleaner()', () => {
   })
 
   it('returns Prefixes with empty browsers', () => {
-    let cleaner = new Prefixes(data.prefixes,
-      new Browsers(data.browsers, []))
+    let cleaner = new Prefixes(data.prefixes, new Browsers(data.browsers, []))
     expect(Object.keys(fill.cleaner().add)).toHaveLength(2)
     expect(fill.cleaner().remove).toEqual(cleaner.remove)
   })
@@ -155,8 +156,7 @@ describe('group()', () => {
     })
 
     it('checks prefix groups', () => {
-      let css = parse('a { -ms-a: 1; -o-a: 1; ' +
-                              'a: -o-calc(1); a: 1; a: 2 }')
+      let css = parse('a { -ms-a: 1; -o-a: 1; ' + 'a: -o-calc(1); a: 1; a: 2 }')
       let props = []
 
       empty.group(css.first.first).down(i => props.push(i.prop))
@@ -182,8 +182,9 @@ describe('group()', () => {
     })
 
     it('checks prefix groups', () => {
-      let css = parse('a { a: 2; -ms-a: 1; ' +
-                              '-o-a: 1; a: -o-calc(1); a: 1  }')
+      let css = parse(
+        'a { a: 2; -ms-a: 1; ' + '-o-a: 1; a: -o-calc(1); a: 1  }'
+      )
       let props = []
 
       empty.group(css.first.nodes[4]).up(i => props.push(i.prop))

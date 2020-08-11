@@ -1,4 +1,4 @@
-jest.doMock('colorette', () => ({ }))
+jest.doMock('colorette', () => ({}))
 
 let autoprefixer = require('../lib/autoprefixer')
 

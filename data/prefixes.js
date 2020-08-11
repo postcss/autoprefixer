@@ -17,7 +17,7 @@ function f (data, opts, callback) {
   data = unpack(data)
 
   if (!callback) {
-    [callback, opts] = [opts, {}]
+    ;[callback, opts] = [opts, {}]
   }
 
   let match = opts.match || /\sx($|\s)/
@@ -57,14 +57,20 @@ module.exports = result
 
 // Border Radius
 f(require('caniuse-lite/data/features/border-radius'), browsers =>
-  prefix([
-    'border-radius', 'border-top-left-radius', 'border-top-right-radius',
-    'border-bottom-right-radius', 'border-bottom-left-radius'
-  ], {
-    mistakes: ['-khtml-', '-ms-', '-o-'],
-    feature: 'border-radius',
-    browsers
-  })
+  prefix(
+    [
+      'border-radius',
+      'border-top-left-radius',
+      'border-top-right-radius',
+      'border-bottom-right-radius',
+      'border-bottom-left-radius'
+    ],
+    {
+      mistakes: ['-khtml-', '-ms-', '-o-'],
+      feature: 'border-radius',
+      browsers
+    }
+  )
 )
 
 // Box Shadow
@@ -78,28 +84,43 @@ f(require('caniuse-lite/data/features/css-boxshadow'), browsers =>
 
 // Animation
 f(require('caniuse-lite/data/features/css-animation'), browsers =>
-  prefix([
-    'animation', 'animation-name', 'animation-duration',
-    'animation-delay', 'animation-direction', 'animation-fill-mode',
-    'animation-iteration-count', 'animation-play-state',
-    'animation-timing-function', '@keyframes'
-  ], {
-    mistakes: ['-khtml-', '-ms-'],
-    feature: 'css-animation',
-    browsers
-  })
+  prefix(
+    [
+      'animation',
+      'animation-name',
+      'animation-duration',
+      'animation-delay',
+      'animation-direction',
+      'animation-fill-mode',
+      'animation-iteration-count',
+      'animation-play-state',
+      'animation-timing-function',
+      '@keyframes'
+    ],
+    {
+      mistakes: ['-khtml-', '-ms-'],
+      feature: 'css-animation',
+      browsers
+    }
+  )
 )
 
 // Transition
 f(require('caniuse-lite/data/features/css-transitions'), browsers =>
-  prefix([
-    'transition', 'transition-property', 'transition-duration',
-    'transition-delay', 'transition-timing-function'
-  ], {
-    mistakes: ['-khtml-', '-ms-'],
-    browsers,
-    feature: 'css-transitions'
-  })
+  prefix(
+    [
+      'transition',
+      'transition-property',
+      'transition-duration',
+      'transition-delay',
+      'transition-timing-function'
+    ],
+    {
+      mistakes: ['-khtml-', '-ms-'],
+      browsers,
+      feature: 'css-transitions'
+    }
+  )
 )
 
 // Transform 2D
@@ -137,18 +158,29 @@ f(transforms3d, { match: /y\sx|y\s#2/ }, browsers =>
 let gradients = require('caniuse-lite/data/features/css-gradients')
 
 f(gradients, { match: /y\sx/ }, browsers =>
-  prefix([
-    'linear-gradient', 'repeating-linear-gradient',
-    'radial-gradient', 'repeating-radial-gradient'
-  ], {
-    props: [
-      'background', 'background-image', 'border-image', 'mask',
-      'list-style', 'list-style-image', 'content', 'mask-image'
+  prefix(
+    [
+      'linear-gradient',
+      'repeating-linear-gradient',
+      'radial-gradient',
+      'repeating-radial-gradient'
     ],
-    mistakes: ['-ms-'],
-    feature: 'css-gradients',
-    browsers
-  })
+    {
+      props: [
+        'background',
+        'background-image',
+        'border-image',
+        'mask',
+        'list-style',
+        'list-style-image',
+        'content',
+        'mask-image'
+      ],
+      mistakes: ['-ms-'],
+      feature: 'css-gradients',
+      browsers
+    }
+  )
 )
 
 f(gradients, { match: /a\sx/ }, browsers => {
@@ -156,16 +188,21 @@ f(gradients, { match: /a\sx/ }, browsers => {
     if (/firefox|op/.test(i)) {
       return i
     } else {
-      return `${ i } old`
+      return `${i} old`
     }
   })
-  return add([
-    'linear-gradient', 'repeating-linear-gradient',
-    'radial-gradient', 'repeating-radial-gradient'
-  ], {
-    feature: 'css-gradients',
-    browsers
-  })
+  return add(
+    [
+      'linear-gradient',
+      'repeating-linear-gradient',
+      'radial-gradient',
+      'repeating-radial-gradient'
+    ],
+    {
+      feature: 'css-gradients',
+      browsers
+    }
+  )
 })
 
 // Box sizing
@@ -188,8 +225,14 @@ f(require('caniuse-lite/data/features/css-filters'), browsers =>
 f(require('caniuse-lite/data/features/css-filter-function'), browsers =>
   prefix(['filter-function'], {
     props: [
-      'background', 'background-image', 'border-image', 'mask',
-      'list-style', 'list-style-image', 'content', 'mask-image'
+      'background',
+      'background-image',
+      'border-image',
+      'mask',
+      'list-style',
+      'list-style-image',
+      'content',
+      'mask-image'
     ],
     feature: 'css-filter-function',
     browsers
@@ -209,8 +252,14 @@ f(backdrop, { match: /y\sx|y\s#2/ }, browsers =>
 f(require('caniuse-lite/data/features/css-element-function'), browsers =>
   prefix(['element'], {
     props: [
-      'background', 'background-image', 'border-image', 'mask',
-      'list-style', 'list-style-image', 'content', 'mask-image'
+      'background',
+      'background-image',
+      'border-image',
+      'mask',
+      'list-style',
+      'list-style-image',
+      'content',
+      'mask-image'
     ],
     feature: 'css-element-function',
     browsers
@@ -219,19 +268,27 @@ f(require('caniuse-lite/data/features/css-element-function'), browsers =>
 
 // Multicolumns
 f(require('caniuse-lite/data/features/multicolumn'), browsers => {
-  prefix([
-    'columns', 'column-width', 'column-gap',
-    'column-rule', 'column-rule-color', 'column-rule-width',
-    'column-count', 'column-rule-style', 'column-span', 'column-fill'
-  ], {
-    feature: 'multicolumn',
-    browsers
-  })
+  prefix(
+    [
+      'columns',
+      'column-width',
+      'column-gap',
+      'column-rule',
+      'column-rule-color',
+      'column-rule-width',
+      'column-count',
+      'column-rule-style',
+      'column-span',
+      'column-fill'
+    ],
+    {
+      feature: 'multicolumn',
+      browsers
+    }
+  )
 
   let noff = browsers.filter(i => !/firefox/.test(i))
-  prefix([
-    'break-before', 'break-after', 'break-inside'
-  ], {
+  prefix(['break-before', 'break-after', 'break-inside'], {
     feature: 'multicolumn',
     browsers: noff
   })
@@ -253,7 +310,7 @@ f(flexbox, { match: /a\sx/ }, browsers => {
     if (/ie|firefox/.test(i)) {
       return i
     } else {
-      return `${ i } 2009`
+      return `${i} 2009`
     }
   })
   prefix(['display-flex', 'inline-flex'], {
@@ -265,13 +322,22 @@ f(flexbox, { match: /a\sx/ }, browsers => {
     feature: 'flexbox',
     browsers
   })
-  prefix([
-    'flex-direction', 'flex-wrap', 'flex-flow', 'justify-content',
-    'order', 'align-items', 'align-self', 'align-content'
-  ], {
-    feature: 'flexbox',
-    browsers
-  })
+  prefix(
+    [
+      'flex-direction',
+      'flex-wrap',
+      'flex-flow',
+      'justify-content',
+      'order',
+      'align-items',
+      'align-self',
+      'align-content'
+    ],
+    {
+      feature: 'flexbox',
+      browsers
+    }
+  )
 })
 
 f(flexbox, { match: /y\sx/ }, browsers => {
@@ -283,13 +349,22 @@ f(flexbox, { match: /y\sx/ }, browsers => {
     feature: 'flexbox',
     browsers
   })
-  add([
-    'flex-direction', 'flex-wrap', 'flex-flow', 'justify-content',
-    'order', 'align-items', 'align-self', 'align-content'
-  ], {
-    feature: 'flexbox',
-    browsers
-  })
+  add(
+    [
+      'flex-direction',
+      'flex-wrap',
+      'flex-flow',
+      'justify-content',
+      'order',
+      'align-items',
+      'align-self',
+      'align-content'
+    ],
+    {
+      feature: 'flexbox',
+      browsers
+    }
+  )
 })
 
 // calc() unit
@@ -319,13 +394,17 @@ f(require('caniuse-lite/data/features/background-clip-text'), browsers =>
 
 // Font feature settings
 f(require('caniuse-lite/data/features/font-feature'), browsers =>
-  prefix([
-    'font-feature-settings', 'font-variant-ligatures',
-    'font-language-override'
-  ], {
-    feature: 'font-feature',
-    browsers
-  })
+  prefix(
+    [
+      'font-feature-settings',
+      'font-variant-ligatures',
+      'font-language-override'
+    ],
+    {
+      feature: 'font-feature',
+      browsers
+    }
+  )
 )
 
 // CSS font-kerning property
@@ -410,13 +489,24 @@ f(require('caniuse-lite/data/features/css3-tabsize'), browsers =>
 let intrinsic = require('caniuse-lite/data/features/intrinsic-width')
 
 let sizeProps = [
-  'width', 'min-width', 'max-width',
-  'height', 'min-height', 'max-height',
-  'inline-size', 'min-inline-size', 'max-inline-size',
-  'block-size', 'min-block-size', 'max-block-size',
-  'grid', 'grid-template',
-  'grid-template-rows', 'grid-template-columns',
-  'grid-auto-columns', 'grid-auto-rows'
+  'width',
+  'min-width',
+  'max-width',
+  'height',
+  'min-height',
+  'max-height',
+  'inline-size',
+  'min-inline-size',
+  'max-inline-size',
+  'block-size',
+  'min-block-size',
+  'max-block-size',
+  'grid',
+  'grid-template',
+  'grid-template-rows',
+  'grid-template-columns',
+  'grid-auto-columns',
+  'grid-auto-rows'
 ]
 
 f(intrinsic, browsers =>
@@ -482,15 +572,18 @@ f(require('caniuse-lite/data/features/pointer'), browsers =>
 let decoration = require('caniuse-lite/data/features/text-decoration')
 
 f(decoration, browsers =>
-  prefix([
-    'text-decoration-style',
-    'text-decoration-color',
-    'text-decoration-line',
-    'text-decoration'
-  ], {
-    feature: 'text-decoration',
-    browsers
-  })
+  prefix(
+    [
+      'text-decoration-style',
+      'text-decoration-color',
+      'text-decoration-line',
+      'text-decoration'
+    ],
+    {
+      feature: 'text-decoration',
+      browsers
+    }
+  )
 )
 
 f(decoration, { match: /x.*#[235]/ }, browsers =>
@@ -510,22 +603,36 @@ f(require('caniuse-lite/data/features/text-size-adjust'), browsers =>
 
 // CSS Masks
 f(require('caniuse-lite/data/features/css-masks'), browsers => {
-  prefix([
-    'mask-clip', 'mask-composite', 'mask-image',
-    'mask-origin', 'mask-repeat', 'mask-border-repeat',
-    'mask-border-source'
-  ], {
-    feature: 'css-masks',
-    browsers
-  })
-  prefix([
-    'mask', 'mask-position', 'mask-size',
-    'mask-border', 'mask-border-outset', 'mask-border-width',
-    'mask-border-slice'
-  ], {
-    feature: 'css-masks',
-    browsers
-  })
+  prefix(
+    [
+      'mask-clip',
+      'mask-composite',
+      'mask-image',
+      'mask-origin',
+      'mask-repeat',
+      'mask-border-repeat',
+      'mask-border-source'
+    ],
+    {
+      feature: 'css-masks',
+      browsers
+    }
+  )
+  prefix(
+    [
+      'mask',
+      'mask-position',
+      'mask-size',
+      'mask-border',
+      'mask-border-outset',
+      'mask-border-width',
+      'mask-border-slice'
+    ],
+    {
+      feature: 'css-masks',
+      browsers
+    }
+  )
 })
 
 // CSS clip-path property
@@ -615,25 +722,37 @@ f(crispedges, { match: /a x #2/ }, browsers =>
 let logicalProps = require('caniuse-lite/data/features/css-logical-props')
 
 f(logicalProps, browsers =>
-  prefix([
-    'border-inline-start', 'border-inline-end',
-    'margin-inline-start', 'margin-inline-end',
-    'padding-inline-start', 'padding-inline-end'
-  ], {
-    feature: 'css-logical-props',
-    browsers
-  })
+  prefix(
+    [
+      'border-inline-start',
+      'border-inline-end',
+      'margin-inline-start',
+      'margin-inline-end',
+      'padding-inline-start',
+      'padding-inline-end'
+    ],
+    {
+      feature: 'css-logical-props',
+      browsers
+    }
+  )
 )
 
 f(logicalProps, { match: /x\s#2/ }, browsers =>
-  prefix([
-    'border-block-start', 'border-block-end',
-    'margin-block-start', 'margin-block-end',
-    'padding-block-start', 'padding-block-end'
-  ], {
-    feature: 'css-logical-props',
-    browsers
-  })
+  prefix(
+    [
+      'border-block-start',
+      'border-block-end',
+      'margin-block-start',
+      'margin-block-end',
+      'padding-block-start',
+      'padding-block-end'
+    ],
+    {
+      feature: 'css-logical-props',
+      browsers
+    }
+  )
 )
 
 // CSS appearance
@@ -647,23 +766,24 @@ f(appearance, { match: /#2|x/ }, browsers =>
 
 // CSS Scroll snap points
 f(require('caniuse-lite/data/features/css-snappoints'), browsers =>
-  prefix([
-    'scroll-snap-type',
-    'scroll-snap-coordinate',
-    'scroll-snap-destination',
-    'scroll-snap-points-x', 'scroll-snap-points-y'
-  ], {
-    feature: 'css-snappoints',
-    browsers
-  })
+  prefix(
+    [
+      'scroll-snap-type',
+      'scroll-snap-coordinate',
+      'scroll-snap-destination',
+      'scroll-snap-points-x',
+      'scroll-snap-points-y'
+    ],
+    {
+      feature: 'css-snappoints',
+      browsers
+    }
+  )
 )
 
 // CSS Regions
 f(require('caniuse-lite/data/features/css-regions'), browsers =>
-  prefix([
-    'flow-into', 'flow-from',
-    'region-fragment'
-  ], {
+  prefix(['flow-into', 'flow-from', 'region-fragment'], {
     feature: 'css-regions',
     browsers
   })
@@ -673,8 +793,15 @@ f(require('caniuse-lite/data/features/css-regions'), browsers =>
 f(require('caniuse-lite/data/features/css-image-set'), browsers =>
   prefix(['image-set'], {
     props: [
-      'background', 'background-image', 'border-image', 'cursor',
-      'mask', 'mask-image', 'list-style', 'list-style-image', 'content'
+      'background',
+      'background-image',
+      'border-image',
+      'cursor',
+      'mask',
+      'mask-image',
+      'list-style',
+      'list-style-image',
+      'content'
     ],
     feature: 'css-image-set',
     browsers
@@ -694,8 +821,14 @@ f(writingMode, { match: /a|x/ }, browsers =>
 f(require('caniuse-lite/data/features/css-cross-fade'), browsers =>
   prefix(['cross-fade'], {
     props: [
-      'background', 'background-image', 'border-image', 'mask',
-      'list-style', 'list-style-image', 'content', 'mask-image'
+      'background',
+      'background-image',
+      'border-image',
+      'mask',
+      'list-style',
+      'list-style-image',
+      'content',
+      'mask-image'
     ],
     feature: 'css-cross-fade',
     browsers
@@ -713,13 +846,18 @@ f(require('caniuse-lite/data/features/css-read-only-write'), browsers =>
 
 // Text Emphasize
 f(require('caniuse-lite/data/features/text-emphasis'), browsers =>
-  prefix([
-    'text-emphasis', 'text-emphasis-position',
-    'text-emphasis-style', 'text-emphasis-color'
-  ], {
-    feature: 'text-emphasis',
-    browsers
-  })
+  prefix(
+    [
+      'text-emphasis',
+      'text-emphasis-position',
+      'text-emphasis-style',
+      'text-emphasis-color'
+    ],
+    {
+      feature: 'text-emphasis',
+      browsers
+    }
+  )
 )
 
 // CSS Grid Layout
@@ -731,16 +869,26 @@ f(grid, browsers => {
     feature: 'css-grid',
     browsers
   })
-  prefix([
-    'grid-template-columns', 'grid-template-rows',
-    'grid-row-start', 'grid-column-start',
-    'grid-row-end', 'grid-column-end',
-    'grid-row', 'grid-column', 'grid-area',
-    'grid-template', 'grid-template-areas', 'place-self'
-  ], {
-    feature: 'css-grid',
-    browsers
-  })
+  prefix(
+    [
+      'grid-template-columns',
+      'grid-template-rows',
+      'grid-row-start',
+      'grid-column-start',
+      'grid-row-end',
+      'grid-column-end',
+      'grid-row',
+      'grid-column',
+      'grid-area',
+      'grid-template',
+      'grid-template-areas',
+      'place-self'
+    ],
+    {
+      feature: 'css-grid',
+      browsers
+    }
+  )
 })
 
 f(grid, { match: /a x/ }, browsers =>

@@ -12,8 +12,9 @@ describe('isHack()', () => {
   })
 
   it('stops on another type', () => {
-    let css = parse('::-moz-selection {} ' +
-                          '@keyframes anim {} ::selection {}')
+    let css = parse(
+      '::-moz-selection {} ' + '@keyframes anim {} ::selection {}'
+    )
     expect(old.isHack(css.first)).toBe(true)
   })
 
@@ -23,8 +24,7 @@ describe('isHack()', () => {
   })
 
   it('finds unprefixed selector', () => {
-    let css = parse('::-moz-selection {} ' +
-                          '::-o-selection {} ::selection {}')
+    let css = parse('::-moz-selection {} ' + '::-o-selection {} ::selection {}')
     expect(old.isHack(css.first)).toBe(false)
   })
 })

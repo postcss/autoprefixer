@@ -41,65 +41,71 @@ let data = {
 }
 
 it('returns selected browsers and prefixes', () => {
-  let browsers = new Browsers(data.browsers,
-    ['chrome 30', 'firefox 21', 'firefox 20', 'ie 6'])
+  let browsers = new Browsers(data.browsers, [
+    'chrome 30',
+    'firefox 21',
+    'firefox 20',
+    'ie 6'
+  ])
   let prefixes = new Prefixes(data.prefixes, browsers)
 
-  let coverage = browserslist.coverage(
-    ['chrome 30', 'firefox 21', 'firefox 20', 'ie 6'])
+  let coverage = browserslist.coverage([
+    'chrome 30',
+    'firefox 21',
+    'firefox 20',
+    'ie 6'
+  ])
   let round = Math.round(coverage * 100) / 100.0
 
   expect(info(prefixes)).toEqual(
     'Browsers:\n' +
-        '  Chrome: 30\n' +
-        '  Firefox: 21, 20\n' +
-        '  IE: 6\n' +
-        '\n' +
-        `These browsers account for ${ round }% ` +
-        'of all users globally\n' +
-        '\n' +
-        'At-Rules:\n' +
-        '  @keyframes: moz\n' +
-        '\n' +
-        'Selectors:\n' +
-        '  d: moz\n' +
-        '\n' +
-        'Properties:\n' +
-        '  a: webkit, moz\n' +
-        '  grid-row *: ms\n' +
-        '  transition: moz\n' +
-        '\n' +
-        'Values:\n' +
-        '  b: moz, ms\n' +
-        '  c: moz\n' +
-        '  grid *: ms\n' +
-        '\n' +
-        '* - Prefixes will be added only on grid: true option.\n'
+      '  Chrome: 30\n' +
+      '  Firefox: 21, 20\n' +
+      '  IE: 6\n' +
+      '\n' +
+      `These browsers account for ${round}% ` +
+      'of all users globally\n' +
+      '\n' +
+      'At-Rules:\n' +
+      '  @keyframes: moz\n' +
+      '\n' +
+      'Selectors:\n' +
+      '  d: moz\n' +
+      '\n' +
+      'Properties:\n' +
+      '  a: webkit, moz\n' +
+      '  grid-row *: ms\n' +
+      '  transition: moz\n' +
+      '\n' +
+      'Values:\n' +
+      '  b: moz, ms\n' +
+      '  c: moz\n' +
+      '  grid *: ms\n' +
+      '\n' +
+      '* - Prefixes will be added only on grid: true option.\n'
   )
 })
 
-it('doesn\'t show transitions unless they are necessary', () => {
-  let browsers = new Browsers(data.browsers,
-    ['chrome 30', 'firefox 20'])
+it("doesn't show transitions unless they are necessary", () => {
+  let browsers = new Browsers(data.browsers, ['chrome 30', 'firefox 20'])
   let prefixes = new Prefixes(data.prefixes, browsers)
 
-  let coverage = browserslist.coverage(
-    ['chrome 30', 'firefox 20'])
+  let coverage = browserslist.coverage(['chrome 30', 'firefox 20'])
   let round = Math.round(coverage * 100) / 100.0
 
   expect(info(prefixes)).toEqual(
     'Browsers:\n' +
-        '  Chrome: 30\n' +
-        '  Firefox: 20\n' +
-        '\n' +
-        `These browsers account for ${ round }% ` +
-        'of all users globally\n' +
-        '\n' +
-        'Properties:\n' +
-        '  a: webkit, moz\n' +
-        '\n' +
-        'Values:\n' +
-        '  b: moz\n'
+      '  Chrome: 30\n' +
+      '  Firefox: 20\n' +
+      '\n' +
+      `These browsers account for ${round}% ` +
+      'of all users globally\n' +
+      '\n' +
+      'Properties:\n' +
+      '  a: webkit, moz\n' +
+      '\n' +
+      'Values:\n' +
+      '  b: moz\n'
   )
 })
 

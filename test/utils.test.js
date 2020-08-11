@@ -21,8 +21,7 @@ describe('.error()', () => {
 
 describe('.uniq()', () => {
   it('filters doubles in array', () => {
-    expect(utils.uniq(['1', '1', '2', '3', '3']))
-      .toEqual(['1', '2', '3'])
+    expect(utils.uniq(['1', '1', '2', '3', '3'])).toEqual(['1', '2', '3'])
   })
 })
 
@@ -52,8 +51,7 @@ describe('.regexp()', () => {
     expect(check('one, foo, two')).toBe(true)
     expect(check('one(),foo(),two()')).toBe(true)
 
-    expect('foo(), a, foo'.replace(regexp, '$1b$2'))
-      .toEqual('bfoo(), a, bfoo')
+    expect('foo(), a, foo'.replace(regexp, '$1b$2')).toEqual('bfoo(), a, bfoo')
 
     expect(check('foob')).toBe(false)
     expect(check('(foo)')).toBe(false)
@@ -105,15 +103,8 @@ describe('.splitSelector()', () => {
   it('splits simple selectors into an array', () => {
     let arr1 = utils.splitSelector('#foo.bar')
     let arr2 = utils.splitSelector('.foo, .bar')
-    expect(arr1).toEqual([
-      [
-        ['#foo', '.bar']
-      ]
-    ])
-    expect(arr2).toEqual([
-      [['.foo']],
-      [['.bar']]
-    ])
+    expect(arr1).toEqual([[['#foo', '.bar']]])
+    expect(arr2).toEqual([[['.foo']], [['.bar']]])
   })
 
   it('splits complex selectors into an array', () => {
@@ -126,12 +117,8 @@ describe('.splitSelector()', () => {
         ['.child-one', '.mod'],
         ['.child-two', '.mod']
       ],
-      [
-        ['.baz']
-      ],
-      [
-        ['.hello']
-      ]
+      [['.baz']],
+      [['.hello']]
     ])
   })
 })

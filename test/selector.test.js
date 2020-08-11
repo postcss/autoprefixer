@@ -29,8 +29,9 @@ describe('regexp()', () => {
 
 describe('check()', () => {
   it('checks rule selectors', () => {
-    let css = parse('body .selection {}, ' +
-            ':::selection {}, body ::selection {}')
+    let css = parse(
+      'body .selection {}, ' + ':::selection {}, body ::selection {}'
+    )
     expect(selector.check(css.nodes[0])).toBe(false)
     expect(selector.check(css.nodes[1])).toBe(false)
     expect(selector.check(css.nodes[2])).toBe(true)
@@ -85,8 +86,9 @@ describe('already()', () => {
   })
 
   it('stops on another type', () => {
-    let css = parse('::-moz-selection {} ' +
-            '@keyframes anim {} ::selection {}')
+    let css = parse(
+      '::-moz-selection {} ' + '@keyframes anim {} ::selection {}'
+    )
     expect(selector.already(css.nodes[2], prefixeds, '-moz-')).toBe(false)
   })
 
@@ -96,8 +98,7 @@ describe('already()', () => {
   })
 
   it('finds prefixed even if unknown prefix is between', () => {
-    let css = parse('::-moz-selection {} ' +
-            '::-o-selection {} ::selection {}')
+    let css = parse('::-moz-selection {} ' + '::-o-selection {} ::selection {}')
     expect(selector.already(css.nodes[2], prefixeds, '-moz-')).toBe(true)
   })
 })
@@ -115,14 +116,16 @@ describe('process()', () => {
     let css = parse('b ::-moz-selection{} b ::selection{}')
     selector.process(css.nodes[1])
     expect(css.toString()).toEqual(
-      'b ::-moz-selection{} b ::-ms-selection{} b ::selection{}')
+      'b ::-moz-selection{} b ::-ms-selection{} b ::selection{}'
+    )
   })
 
   it('checks parents prefix', () => {
     let css = parse('@-moz-page{ ::selection{} }')
     selector.process(css.first.first)
     expect(css.toString()).toEqual(
-      '@-moz-page{ ::-moz-selection{} ::selection{} }')
+      '@-moz-page{ ::-moz-selection{} ::selection{} }'
+    )
   })
 })
 

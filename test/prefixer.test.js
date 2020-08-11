@@ -5,16 +5,17 @@ let Prefixer = require('../lib/prefixer')
 let prefix, css
 beforeEach(() => {
   prefix = new Prefixer()
-  css = parse('@-ms-keyframes a { to { } } ' +
-                     ':-moz-full-screen { } a { } ' +
-                     '@-dev-keyframes s { to { } }')
+  css = parse(
+    '@-ms-keyframes a { to { } } ' +
+      ':-moz-full-screen { } a { } ' +
+      '@-dev-keyframes s { to { } }'
+  )
 })
 
 describe('.hack()', () => {
   it('registers hacks for subclasses', () => {
     class A extends Prefixer {}
-    class Hack extends A {
-    }
+    class Hack extends A {}
     Hack.names = ['a', 'b']
 
     A.hack(Hack)

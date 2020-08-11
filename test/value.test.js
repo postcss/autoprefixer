@@ -55,11 +55,13 @@ describe('.save()', () => {
 
 describe('check()', () => {
   it('checks value in string', () => {
-    let css = parse('a { 0: calc(1px + 1em); ' +
-                          '1: 1px calc(1px + 1em); ' +
-                          '2: (calc(1px + 1em)); ' +
-                          '3: -ms-calc; ' +
-                          '4: calced; }')
+    let css = parse(
+      'a { 0: calc(1px + 1em); ' +
+        '1: 1px calc(1px + 1em); ' +
+        '2: (calc(1px + 1em)); ' +
+        '3: -ms-calc; ' +
+        '4: calced; }'
+    )
 
     expect(calc.check(css.first.nodes[0])).toBe(true)
     expect(calc.check(css.first.nodes[1])).toBe(true)
@@ -78,10 +80,8 @@ describe('old()', () => {
 
 describe('replace()', () => {
   it('adds prefix to value', () => {
-    expect(calc.replace('1px calc(1em)', '-ms-'))
-      .toEqual('1px -ms-calc(1em)')
-    expect(calc.replace('1px,calc(1em)', '-ms-'))
-      .toEqual('1px,-ms-calc(1em)')
+    expect(calc.replace('1px calc(1em)', '-ms-')).toEqual('1px -ms-calc(1em)')
+    expect(calc.replace('1px,calc(1em)', '-ms-')).toEqual('1px,-ms-calc(1em)')
   })
 })
 

@@ -3,23 +3,27 @@ let Browsers = require('../lib/browsers')
 let Supports = require('../lib/supports')
 let brackets = require('../lib/brackets')
 
-let browsers = new Browsers({
-  firefox: {
-    prefix: 'moz',
-    versions: ['firefox 22']
-  }
-}, [
-  'firefox 22', 'firefox 21'
-])
-let prefixes = new Prefixes({
-  a: {
-    browsers: ['firefox 22']
+let browsers = new Browsers(
+  {
+    firefox: {
+      prefix: 'moz',
+      versions: ['firefox 22']
+    }
   },
-  b: {
-    browsers: ['firefox 22'],
-    props: 'c'
-  }
-}, browsers)
+  ['firefox 22', 'firefox 21']
+)
+let prefixes = new Prefixes(
+  {
+    a: {
+      browsers: ['firefox 22']
+    },
+    b: {
+      browsers: ['firefox 22'],
+      props: 'c'
+    }
+  },
+  browsers
+)
 let supports = new Supports(Prefixes, prefixes)
 
 function rm (str) {
@@ -34,13 +38,11 @@ function clean (str) {
 
 describe('parse()', () => {
   it('splits property name and value', () => {
-    expect(supports.parse('color:black'))
-      .toEqual(['color', 'black'])
+    expect(supports.parse('color:black')).toEqual(['color', 'black'])
   })
 
   it('cleans spaces', () => {
-    expect(supports.parse(' color : black '))
-      .toEqual(['color', 'black'])
+    expect(supports.parse(' color : black ')).toEqual(['color', 'black'])
   })
 
   it('parses everything', () => {
@@ -81,18 +83,15 @@ describe('prefixed()', () => {
 
 describe('normalize()', () => {
   it('reduces empty string', () => {
-    expect(supports.normalize([['', ['a'], '']]))
-      .toEqual([[['a']]])
+    expect(supports.normalize([['', ['a'], '']])).toEqual([[['a']]])
   })
 
   it('reduces declaration to string', () => {
-    expect(supports.normalize(['a: b', ['1']]))
-      .toEqual(['a: b(1)'])
+    expect(supports.normalize(['a: b', ['1']])).toEqual(['a: b(1)'])
   })
 
   it('reduces wrapped declaration to string', () => {
-    expect(supports.normalize(['', ['a: b', ['1']], '']))
-      .toEqual([['a: b(1)']])
+    expect(supports.normalize(['', ['a: b', ['1']], ''])).toEqual([['a: b(1)']])
   })
 })
 
@@ -110,25 +109,21 @@ describe('remove()', () => {
   })
 
   it('keeps and-conditions', () => {
-    expect(rm('(-moz-a: 1) and (a: 1)'))
-      .toEqual('(-moz-a: 1) and (a: 1)')
+    expect(rm('(-moz-a: 1) and (a: 1)')).toEqual('(-moz-a: 1) and (a: 1)')
   })
 
   it('keeps not-conditions', () => {
-    expect(rm('not (-moz-a: 1) or (a: 1)'))
-      .toEqual('not (-moz-a: 1) or (a: 1)')
+    expect(rm('not (-moz-a: 1) or (a: 1)')).toEqual('not (-moz-a: 1) or (a: 1)')
   })
 
   it('keeps hacks', () => {
-    expect(rm('(-moz-a: 1) or (b: 2)'))
-      .toEqual('(-moz-a: 1) or (b: 2)')
+    expect(rm('(-moz-a: 1) or (b: 2)')).toEqual('(-moz-a: 1) or (b: 2)')
   })
 })
 
 describe('prefixer()', () => {
   it('uses only browsers with @supports support', () => {
-    expect(supports.prefixer().browsers.selected)
-      .toEqual(['firefox 22'])
+    expect(supports.prefixer().browsers.selected).toEqual(['firefox 22'])
   })
 })
 
@@ -138,8 +133,7 @@ describe('cleanBrackets()', () => {
   })
 
   it('normalize brackets recursively', () => {
-    expect(clean('(((a: 1) or ((b: 2))))'))
-      .toEqual('((a: 1) or (b: 2))')
+    expect(clean('(((a: 1) or ((b: 2))))')).toEqual('((a: 1) or (b: 2))')
   })
 })
 
@@ -159,7 +153,6 @@ describe('process()', () => {
   it('replaces params with prefixed property', () => {
     let rule = { params: '(color black) and not (a: 1)' }
     supports.process(rule)
-    expect(rule.params)
-      .toEqual('(color black) and not ((-moz-a: 1) or (a: 1))')
+    expect(rule.params).toEqual('(color black) and not ((-moz-a: 1) or (a: 1))')
   })
 })

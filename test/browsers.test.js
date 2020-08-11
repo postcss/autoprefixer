@@ -5,8 +5,7 @@ let Browsers = require('../lib/browsers')
 
 describe('.prefixes()', () => {
   it('returns prefixes by default data', () => {
-    expect(Browsers.prefixes())
-      .toEqual(['-webkit-', '-moz-', '-ms-', '-o-'])
+    expect(Browsers.prefixes()).toEqual(['-webkit-', '-moz-', '-ms-', '-o-'])
   })
 })
 
@@ -34,21 +33,19 @@ describe('parse()', () => {
   })
 
   it('has aliases', () => {
-    expect((new Browsers(data, ['fx 10'])).selected)
-      .toEqual(['firefox 10'])
-    expect((new Browsers(data, ['ff 10'])).selected)
-      .toEqual(['firefox 10'])
+    expect(new Browsers(data, ['fx 10']).selected).toEqual(['firefox 10'])
+    expect(new Browsers(data, ['ff 10']).selected).toEqual(['firefox 10'])
   })
 
   it('ignores case', () => {
-    expect((new Browsers(data, ['Firefox 10'])).selected)
-      .toEqual(['firefox 10'])
+    expect(new Browsers(data, ['Firefox 10']).selected).toEqual(['firefox 10'])
   })
 
   it('uses browserslist config', () => {
     let css = path.join(__dirname, 'cases/config/test.css')
-    expect((new Browsers(data, undefined, { from: css })).selected)
-      .toEqual(['ie 10'])
+    expect(new Browsers(data, undefined, { from: css }).selected).toEqual([
+      'ie 10'
+    ])
   })
 })
 

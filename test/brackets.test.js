@@ -10,8 +10,7 @@ describe('.parse()', () => {
   })
 
   it('parses many brackets', () => {
-    expect(brackets.parse('a (b ()) a'))
-      .toEqual(['a ', ['b ', [''], ''], ' a'])
+    expect(brackets.parse('a (b ()) a')).toEqual(['a ', ['b ', [''], ''], ' a'])
   })
 
   it('parses errors', () => {
@@ -29,7 +28,8 @@ describe('.stringify()', () => {
   })
 
   it('stringifies many brackets', () => {
-    expect(brackets.stringify(['a ', ['b ', [''], ''], ' a']))
-      .toEqual('a (b ()) a')
+    expect(brackets.stringify(['a ', ['b ', [''], ''], ' a'])).toEqual(
+      'a (b ()) a'
+    )
   })
 })

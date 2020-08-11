@@ -5,7 +5,7 @@ let Prefixes = require('../lib/prefixes')
 
 let prefixes, tabsize
 beforeEach(() => {
-  prefixes = new Prefixes({ }, { })
+  prefixes = new Prefixes({}, {})
   tabsize = new Declaration('tab-size', ['-moz-', '-ms-'], prefixes)
 })
 
@@ -59,9 +59,7 @@ describe('calcBefore()', () => {
 
 describe('restoreBefore()', () => {
   it('removes cascade', () => {
-    let css = parse('a {\n' +
-                           '  -moz-tab-size: 4;\n' +
-                           '       tab-size: 4 }')
+    let css = parse('a {\n' + '  -moz-tab-size: 4;\n' + '       tab-size: 4 }')
     let decl = css.first.nodes[1]
     tabsize.restoreBefore(decl)
     expect(decl.raws.before).toEqual('\n  ')
@@ -87,21 +85,24 @@ describe('process()', () => {
     let css = parse('a { -moz-tab-size: 2; tab-size: 2 }')
     tabsize.process(css.first.nodes[1])
     expect(css.toString()).toEqual(
-      'a { -moz-tab-size: 2; -ms-tab-size: 2; tab-size: 2 }')
+      'a { -moz-tab-size: 2; -ms-tab-size: 2; tab-size: 2 }'
+    )
   })
 
   it('checks parents prefix', () => {
     let css = parse('::-moz-selection a { tab-size: 2 }')
     tabsize.process(css.first.first)
     expect(css.toString()).toEqual(
-      '::-moz-selection a { -moz-tab-size: 2; tab-size: 2 }')
+      '::-moz-selection a { -moz-tab-size: 2; tab-size: 2 }'
+    )
   })
 
   it('checks value for prefixes', () => {
     let css = parse('a { tab-size: -ms-calc(2) }')
     tabsize.process(css.first.first)
     expect(css.toString()).toEqual(
-      'a { -ms-tab-size: -ms-calc(2); tab-size: -ms-calc(2) }')
+      'a { -ms-tab-size: -ms-calc(2); tab-size: -ms-calc(2) }'
+    )
   })
 })
 
