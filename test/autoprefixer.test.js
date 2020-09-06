@@ -475,16 +475,6 @@ it('sets browserslist environment', () => {
   expect(processor.process(input, { from }).css).toEqual(output)
 })
 
-it('works without source in nodes', () => {
-  let root = postcss.root()
-  root.append({ selector: 'a' })
-  root.first.append({ prop: 'display', value: 'flex' })
-  compiler(root)
-  expect(root.toString()).toEqual(
-    'a {\n    display: -webkit-flex;\n    display: flex\n}'
-  )
-})
-
 it('takes values from other PostCSS plugins', () => {
   function plugin (root) {
     root.walkDecls(i => {
