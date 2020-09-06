@@ -25,13 +25,15 @@
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
   "license": "MIT",
   "repository": "postcss/autoprefixer",
+  "peerDependencies": {
+    "postcss": "postcss/postcss#ose"
+  },
   "dependencies": {
     "browserslist": "^4.14.1",
     "caniuse-lite": "^1.0.30001124",
     "colorette": "^1.2.1",
     "normalize-range": "^0.1.2",
     "num2fraction": "^1.2.2",
-    "postcss": "postcss/postcss#ose",
     "postcss-value-parser": "^4.1.0"
   },
   "browser": {
@@ -58,6 +60,7 @@
     "jest": "^26.4.2",
     "jest-ci": "^0.1.1",
     "lint-staged": "^10.3.0",
+    "postcss": "postcss/postcss#ose",
     "size-limit": "^4.5.7"
   },
   "lint-staged": {
