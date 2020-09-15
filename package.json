@@ -43,6 +43,7 @@
   "devDependencies": {
     "@logux/eslint-config": "^40.0.4",
     "@size-limit/preset-small-lib": "4.6.0",
+    "clean-publish": "^1.1.8",
     "eslint": "^7.9.0",
     "eslint-ci": "^1.0.0",
     "eslint-config-standard": "^14.1.1",
