@@ -73,7 +73,7 @@
   },
   "size-limit": [
     {
-      "limit": "120 KB"
+      "limit": "90 KB"
     }
   ],
   "eslintConfig": {
