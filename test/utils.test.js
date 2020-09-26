@@ -122,3 +122,21 @@ describe('.splitSelector()', () => {
     ])
   })
 })
+
+describe('.Cache', () => {
+  it('cache the key-value pair', () => {
+    let cache = new utils.Cache()
+
+    expect(cache.apply('123', '456')).toEqual('456')
+
+    // "123 => 456" shouldn't be overrided by "123 => 789" as it has been cached
+    expect(cache.apply('123', '789')).toEqual('456')
+  })
+
+  it('cache the return value of given function', () => {
+    let cache = new utils.Cache()
+
+    expect(cache.apply('123', () => '456')).toEqual('456')
+    expect(cache.apply('123', '789')).toEqual('456')
+  })
+})
