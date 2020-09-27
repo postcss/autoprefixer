@@ -26,11 +26,11 @@
   "license": "MIT",
   "repository": "postcss/autoprefixer",
   "peerDependencies": {
-    "postcss": "^8.0.2"
+    "postcss": "^8.1.0"
   },
   "dependencies": {
-    "browserslist": "^4.14.3",
-    "caniuse-lite": "^1.0.30001133",
+    "browserslist": "^4.14.5",
+    "caniuse-lite": "^1.0.30001137",
     "colorette": "^1.2.1",
     "normalize-range": "^0.1.2",
     "num2fraction": "^1.2.2",
@@ -44,7 +44,7 @@
     "@logux/eslint-config": "^40.0.5",
     "@size-limit/preset-small-lib": "4.6.0",
     "clean-publish": "^1.1.8",
-    "eslint": "^7.9.0",
+    "eslint": "^7.10.0",
     "eslint-ci": "^1.0.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-import": "^2.22.0",
@@ -61,7 +61,7 @@
     "jest": "^26.4.2",
     "jest-ci": "^0.1.1",
     "lint-staged": "^10.4.0",
-    "postcss": "^8.0.6",
+    "postcss": "^8.1.0",
     "size-limit": "^4.6.0"
   },
   "lint-staged": {
