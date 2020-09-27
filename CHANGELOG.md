@@ -1,6 +1,11 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 10.0.1
+* Fix PostCSS 8.1 compatability.
+* Add our OpenCollective to `package.json`.
+* Clean up code (by Sukka).
+
 ## 10.0 “Alis volat propriis”
 * Removed support for Node.js 6.x, 8.x, 11.x.
 * Moved `postcss` to `peerDependencies`.
