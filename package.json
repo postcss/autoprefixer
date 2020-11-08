@@ -13,8 +13,7 @@
     "postcss-plugin"
   ],
   "scripts": {
-    "lint": "eslint-ci . bin/*",
-    "test": "jest-ci --coverage && npm run lint && size-limit"
+    "test": "jest --coverage && eslint . bin/* && size-limit"
   },
   "main": "lib/autoprefixer.js",
   "bin": "bin/autoprefixer",
@@ -45,7 +44,6 @@
     "@size-limit/preset-small-lib": "4.7.0",
     "clean-publish": "^1.1.8",
     "eslint": "^7.13.0",
-    "eslint-ci": "^1.0.0",
     "eslint-config-standard": "^16.0.1",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jest": "^24.1.0",
@@ -59,7 +57,6 @@
     "fs-extra": "^9.0.1",
     "husky": "^4.3.0",
     "jest": "^26.6.3",
-    "jest-ci": "^0.1.1",
     "lint-staged": "^10.5.1",
     "postcss": "^8.1.6",
     "size-limit": "^4.7.0"
