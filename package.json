@@ -28,8 +28,8 @@
     "postcss": "^8.1.0"
   },
   "dependencies": {
-    "browserslist": "^4.14.6",
-    "caniuse-lite": "^1.0.30001156",
+    "browserslist": "^4.14.7",
+    "caniuse-lite": "^1.0.30001157",
     "colorette": "^1.2.1",
     "normalize-range": "^0.1.2",
     "num2fraction": "^1.2.2",
