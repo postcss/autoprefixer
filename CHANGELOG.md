@@ -1,6 +1,10 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 10.0.2
+* Removed `-ms-user-select: all` because IE and old Edge don’t support it.
+* Fixed Grid Layout warning.
+
 ## 10.0.1
 * Fix PostCSS 8.1 compatability.
 * Add our OpenCollective to `package.json`.
