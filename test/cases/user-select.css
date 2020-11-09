@@ -5,3 +5,7 @@ a {
 b {
   user-select: contain;
 }
+
+.all {
+  user-select: all;
+}

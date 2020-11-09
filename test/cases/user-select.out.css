@@ -9,3 +9,8 @@ b {
       -ms-user-select: element;
           user-select: contain;
 }
+
+.all {
+  -webkit-user-select: all;
+          user-select: all;
+}
