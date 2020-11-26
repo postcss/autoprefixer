@@ -27,5 +27,5 @@ a {
 
 a {
   -webkit-mask-composite: source-over, source-out, xor;
-          mask-composite: add, substract, exclude;
+          mask-composite: add, subtract, exclude;
 }
