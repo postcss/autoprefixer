@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 10.0.4
+* Fixed `Cannot read property 'proxyOf' of undefined` error (by Igor Kamyshev).
+
 ## 10.0.3
 * Fixed `substract` to `subtract` value for `mask-composite` (by Michelle Enos).
 
