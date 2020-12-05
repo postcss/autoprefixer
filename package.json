@@ -32,7 +32,7 @@
     "caniuse-lite": "^1.0.30001161",
     "colorette": "^1.2.1",
     "normalize-range": "^0.1.2",
-    "num2fraction": "^1.2.2",
+    "fraction.js": "^4.0.12",
     "postcss-value-parser": "^4.1.0"
   },
   "browser": {
