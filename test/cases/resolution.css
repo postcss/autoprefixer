@@ -6,3 +6,11 @@
 @media (min-resolution: 144dpi) { }
 
 @media (min-resolution: 2x) { }
+
+@media (min-resolution: 120dpi) { }
+
+@media (min-resolution: 2dppx) { }
+
+@media only screen and (min-resolution: 124.8dpi) { }
+
+@media (min-resolution: 113.38dpcm) { }

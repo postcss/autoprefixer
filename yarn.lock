@@ -3376,6 +3376,11 @@ forwarded@~0.1.2:
   resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.1.2.tgz#98c23dab1175657b8c0573e8ceccd91b0ff18c84"
   integrity sha1-mMI9qxF1ZXuMBXPozszZGw/xjIQ=
 
+fraction.js@^4.0.12:
+  version "4.0.12"
+  resolved "https://registry.yarnpkg.com/fraction.js/-/fraction.js-4.0.12.tgz#0526d47c65a5fb4854df78bc77f7bec708d7b8c3"
+  integrity sha512-8Z1K0VTG4hzYY7kA/1sj4/r1/RWLBD3xwReT/RCrUCbzPszjNQCCsy3ktkU/eaEqX3MYa4pY37a52eiBlPMlhA==
+
 fragment-cache@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/fragment-cache/-/fragment-cache-0.2.1.tgz#4290fad27f13e89be7f33799c6bc5a0abfff0d19"
@@ -5536,11 +5541,6 @@ nth-check@^1.0.2:
   integrity sha512-WeBOdju8SnzPN5vTUJYxYUxLeXpCaVP5i5e0LF8fg7WORF2Wd7wFX/pk0tYZk7s8T+J7VLy0Da6J1+wCT0AtHg==
   dependencies:
     boolbase "~1.0.0"
-
-num2fraction@^1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/num2fraction/-/num2fraction-1.2.2.tgz#6f682b6a027a4e9ddfa4564cd2589d1d4e669ede"
-  integrity sha1-b2gragJ6Tp3fpFZM0lidHU5mnt4=
 
 number-is-nan@^1.0.0:
   version "1.0.1"
