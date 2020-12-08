@@ -1,6 +1,10 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 10.1 “Pula”
+* Added `dpcm` unit support to `min-resolution: 2dppx` (by Robert Eisele).
+* Fixed rational approximation in `min-resolution` (by Robert Eisele).
+
 ## 10.0.4
 * Fixed `Cannot read property 'proxyOf' of undefined` error (by Igor Kamyshev).
 
