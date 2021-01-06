@@ -1,4 +1,4 @@
-<img width="94" height="71" src="logo.svg" title="Autoprefixer logo by Anton Lovchikov">
+<img width="94" height="71" src="../logo.svg" title="Autoprefixer logo by Anton Lovchikov">
 
 # Contributing to Autoprefixer
 
@@ -60,12 +60,12 @@ on [Can I use](https://caniuse.com/).
    and a callback. Like this:
 
    ```js
-  f(require('caniuse-lite/data/features/background-clip-text'), browsers =>
-    prefix(['background-clip'], {
-      feature: 'background-clip-text',
-      browsers
-    })
-  )
+   f(require('caniuse-lite/data/features/background-clip-text'), browsers =>
+     prefix(['background-clip'], {
+       feature: 'background-clip-text',
+       browsers
+     })
+   )
    ```
 
 3. If the prefix is simple (`-webkit-` for Safari, `-moz-` for Firefox,
@@ -84,14 +84,14 @@ on [Can I use](https://caniuse.com/).
    a prefix for value.
 
    ```js
-  Declaration.hack(require('./hacks/background-clip'))
+   Declaration.hack(require('./hacks/background-clip'))
    ```
 
 7. Create a `.css` and `.out.css` example in `test/cases`. Add this test to
    `test/autoprefixer.test.js`:
 
    ```js
-  it('supports background-clip', () => check('background-clip'))
+   it('supports background-clip', () => check('background-clip'))
    ```
 
    If you need different browsers, change `prefixer()` function in the top

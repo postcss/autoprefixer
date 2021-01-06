@@ -1,6 +1,10 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 10.2 “Sub rosa”
+* Added TypeScript definitions (by Dmitry Semigradsky).
+* Fixed docs (by Florian Pellet).
+
 ## 10.1 “Pula”
 * Added `dpcm` unit support to `min-resolution: 2dppx` (by Robert Eisele).
 * Fixed rational approximation in `min-resolution` (by Robert Eisele).
