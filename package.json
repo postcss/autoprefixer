@@ -29,7 +29,7 @@
     "postcss": "^8.1.0"
   },
   "dependencies": {
-    "browserslist": "^4.16.0",
+    "browserslist": "^4.16.1",
     "caniuse-lite": "^1.0.30001173",
     "colorette": "^1.2.1",
     "fraction.js": "^4.0.13",
