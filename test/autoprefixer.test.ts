@@ -1,8 +1,11 @@
-let postcss = require('postcss')
-let path = require('path')
-let fs = require('fs')
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-confusing-void-expression */
+import postcss, { AtRule, ChildNode, Container, Rule } from 'postcss'
+import path from 'path'
+import fs from 'fs'
 
-let autoprefixer = require('../lib/autoprefixer')
+// eslint-disable-next-line import/extensions
+import autoprefixer from '..'
 
 let grider = autoprefixer({
   overrideBrowserslist: ['Chrome 25', 'Edge 12', 'IE 10'],
@@ -82,7 +85,7 @@ let example = autoprefixer({
   overrideBrowserslist: ['defaults']
 })
 
-function prefixer (name) {
+function prefixer (name: string) {
   if (
     name === 'grid' ||
     name === 'grid-gap' ||
@@ -160,16 +163,16 @@ function prefixer (name) {
   }
 }
 
-function read (name) {
+function read (name: string) {
   let file = path.join(__dirname, '/cases/' + name + '.css')
   return fs.readFileSync(file).toString()
 }
 
-function universalizer (string) {
+function universalizer (string: string) {
   return string.replace(/\r/g, '')
 }
 
-function check (from, instance = prefixer(from)) {
+function check (from: string, instance = prefixer(from)) {
   let input = read(from)
   let output = read(from + '.out')
   let result = postcss([instance]).process(input)
@@ -228,10 +231,12 @@ afterEach(() => {
 
 it('throws on wrong options', () => {
   expect(() => {
-    autoprefixer({ browser: ['chrome 25', 'opera 12'] })
+    autoprefixer({ browser: ['chrome 25', 'opera 12'] } as autoprefixer.Options)
   }).toThrow(/overrideBrowserslist/)
   expect(() => {
-    autoprefixer({ browserslist: ['chrome 25', 'opera 12'] })
+    autoprefixer({
+      browserslist: ['chrome 25', 'opera 12']
+    } as autoprefixer.Options)
   }).toThrow(/overrideBrowserslist/)
 })
 
@@ -266,11 +271,14 @@ it('has default browsers', () => {
 })
 
 it('shows warning on browsers option', () => {
-  jest.spyOn(console, 'warn').mockImplementation(() => true)
-  let instance = autoprefixer({ browsers: ['last 1 version'] })
+  let consoleWarn = jest.spyOn(console, 'warn')
+  consoleWarn.mockImplementation(() => true)
+  let instance = autoprefixer({
+    browsers: ['last 1 version']
+  } as autoprefixer.Options)
   expect(instance.browsers).toEqual(['last 1 version'])
-  expect(console.warn).toHaveBeenCalledTimes(1)
-  expect(console.warn.mock.calls[0][0]).toContain('overrideBrowserslist')
+  expect(consoleWarn).toHaveBeenCalledTimes(1)
+  expect(consoleWarn.mock.calls[0][0]).toContain('overrideBrowserslist')
 })
 
 it('passes statistics to Browserslist', () => {
@@ -427,11 +435,15 @@ it('prevents doubling prefixes', () => {
   }
 })
 
+const isContainerNode = (node: ChildNode): node is AtRule | Rule => {
+  return 'nodes' in node
+}
+
 it('does not broke AST', () => {
-  function checkParent (node) {
+  function checkParent (node: Container) {
     node.walk(child => {
       expect(child.parent).toBeDefined()
-      if (child.nodes) checkParent(child)
+      if (isContainerNode(child)) checkParent(child)
     })
   }
   for (let type of COMMONS) {
@@ -449,13 +461,13 @@ it('parses difficult files', () => {
 
 it('marks parsing errors', () => {
   expect(() => {
-    postcss([cleaner]).process('a {').css
+    let css = postcss([cleaner]).process('a {').css
   }).toThrow('<css input>:1:1: Unclosed block')
 })
 
 it('shows file name in parse error', () => {
   expect(() => {
-    postcss([cleaner]).process('a {', { from: 'a.css' }).css
+    let css = postcss([cleaner]).process('a {', { from: 'a.css' }).css
   }).toThrow(/a.css:1:1: /)
 })
 
@@ -476,7 +488,7 @@ it('sets browserslist environment', () => {
 })
 
 it('takes values from other PostCSS plugins', () => {
-  function plugin (root) {
+  function plugin (root: Container) {
     root.walkDecls(i => {
       i.value = 'calc(0)'
     })
@@ -504,7 +516,7 @@ it('has disabled grid options by default', () => {
 })
 
 it('has different outputs for different grid options', () => {
-  function ap (gridValue) {
+  function ap (gridValue: autoprefixer.Options['grid']) {
     return autoprefixer({
       overrideBrowserslist: ['Edge 12', 'IE 10'],
       grid: gridValue
@@ -531,14 +543,13 @@ it('has different outputs for different grid options', () => {
 })
 
 it('has different outputs for different grid environment variables', () => {
-  function ap (gridValue) {
+  function ap (gridValue: autoprefixer.GridValue) {
     process.env.AUTOPREFIXER_GRID = gridValue
     return autoprefixer({ overrideBrowserslist: ['Edge 12', 'IE 10'] })
   }
   let input = read('grid-options')
   let outputAutoplace = read('grid-options.autoplace.out')
   let outputNoAutoplace = read('grid-options.no-autoplace.out')
-  let outputDisabled = read('grid-options.disabled.out')
 
   let resultAutoplace = postcss([ap('autoplace')]).process(input).css
   expect(resultAutoplace).toEqual(outputAutoplace)
@@ -597,7 +608,8 @@ it('ignores unknown versions on request', () => {
 })
 
 it('works with CSS Modules', () => {
-  postcss([autoprefixer()]).process(':export { selectors: _1q6ho_2 }').css
+  let css = postcss([autoprefixer()]).process(':export { selectors: _1q6ho_2 }')
+    .css
 })
 
 describe('hacks', () => {
