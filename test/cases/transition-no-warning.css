@@ -1,0 +1,4 @@
+.no-warn {
+  transition-property: color, opacity;
+  transition-duration: 1s, 2s;
+}

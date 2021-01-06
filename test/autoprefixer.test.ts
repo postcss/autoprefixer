@@ -369,6 +369,9 @@ it('prefixes transition', () => {
   ])
 })
 
+it('does not raise unnecessary warnings when prefixing transition', () =>
+  check('transition-no-warning'))
+
 it('works with broken transition', () => {
   let input = 'a{transition:,,}'
   let output = 'a{-webkit-transition:;-o-transition:;transition:}'
