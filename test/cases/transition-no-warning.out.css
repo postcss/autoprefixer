@@ -1,0 +1,8 @@
+.no-warn {
+  -webkit-transition-property: color, opacity;
+  -o-transition-property: color, opacity;
+  transition-property: color, opacity;
+  -webkit-transition-duration: 1s, 2s;
+       -o-transition-duration: 1s, 2s;
+          transition-duration: 1s, 2s;
+}

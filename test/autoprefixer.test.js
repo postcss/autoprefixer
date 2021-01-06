@@ -361,6 +361,15 @@ it('prefixes transition', () => {
   ])
 })
 
+it('does not raise unnecessary warnings when prefixing transition', () => {
+  let input = read('transition-no-warning')
+  let output = read('transition-no-warning.out')
+  let result = postcss([prefixer('transition')]).process(input)
+
+  expect(result.css).toEqual(output)
+  expect(result.warnings()).toHaveLength(0)
+})
+
 it('works with broken transition', () => {
   let input = 'a{transition:,,}'
   let output = 'a{-webkit-transition:;-o-transition:;transition:}'
