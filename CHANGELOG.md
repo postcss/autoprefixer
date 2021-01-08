@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 10.2.1
+* Fixed `transition-property` warnings (by @Sheraff).
+
 ## 10.2 “Sub rosa”
 * Added TypeScript definitions (by Dmitry Semigradsky).
 * Fixed docs (by Florian Pellet).
