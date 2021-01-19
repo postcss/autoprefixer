@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 10.2.3
+* Fixed PostCSS 8 support.
+
 ## 10.2.2
 * Fixed PostCSS 8 plugins compatibility.
 
