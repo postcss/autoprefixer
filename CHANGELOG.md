@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 10.2.2
+* Fixed PostCSS 8 plugins compatibility.
+
 ## 10.2.1
 * Fixed `transition-property` warnings (by @Sheraff).
 
