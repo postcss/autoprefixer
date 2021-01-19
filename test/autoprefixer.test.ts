@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/no-confusing-void-expression */
+/* eslint-disable @typescript-eslint/no-unused-expressions */
 import postcss, { AtRule, ChildNode, Container, Rule } from 'postcss'
 import path from 'path'
 import fs from 'fs'
@@ -300,28 +299,72 @@ it('passes statistics to Browserslist', () => {
   ).toMatch(/Browsers:\n\s\sChrome: 11\n\s\sIE: 11\n/)
 })
 
-it('prefixes values', () => check('values'))
-it('prefixes @keyframes', () => check('keyframes'))
-it('prefixes @viewport', () => check('viewport'))
-it('prefixes selectors', () => check('selectors'))
-it('prefixes resolution query', () => check('resolution'))
-it('removes common mistakes', () => check('mistakes'))
-it('reads notes for prefixes', () => check('notes'))
-it('keeps vendor-specific hacks', () => check('vendor-hack'))
-it('keeps values with vendor hacks', () => check('value-hack'))
-it('works with comments', () => check('comments'))
-it('uses visual cascade', () => check('cascade'))
-it('works with properties near', () => check('double'))
-it('checks prefixed in hacks', () => check('check-down'))
-it('normalize cascade after remove', () => check('uncascade'))
-it('prefix decls in @supports', () => check('supports'))
-it('saves declaration style', () => check('style'))
-it('uses ignore next control comments', () => check('ignore-next'))
-it('uses block control comments', () => check('disabled'))
-it('has actual example in docs', () => check('example'))
-it('process grouping rules correctly', () => check('grouping-rule'))
-it('transition on vendor specific rule', () => check('transition-spec'))
-it('ignore prefix in vendor at rules', () => check('at-rules'))
+it('prefixes values', () => {
+  check('values')
+})
+it('prefixes @keyframes', () => {
+  check('keyframes')
+})
+it('prefixes @viewport', () => {
+  check('viewport')
+})
+it('prefixes selectors', () => {
+  check('selectors')
+})
+it('prefixes resolution query', () => {
+  check('resolution')
+})
+it('removes common mistakes', () => {
+  check('mistakes')
+})
+it('reads notes for prefixes', () => {
+  check('notes')
+})
+it('keeps vendor-specific hacks', () => {
+  check('vendor-hack')
+})
+it('keeps values with vendor hacks', () => {
+  check('value-hack')
+})
+it('works with comments', () => {
+  check('comments')
+})
+it('uses visual cascade', () => {
+  check('cascade')
+})
+it('works with properties near', () => {
+  check('double')
+})
+it('checks prefixed in hacks', () => {
+  check('check-down')
+})
+it('normalize cascade after remove', () => {
+  check('uncascade')
+})
+it('prefix decls in @supports', () => {
+  check('supports')
+})
+it('saves declaration style', () => {
+  check('style')
+})
+it('uses ignore next control comments', () => {
+  check('ignore-next')
+})
+it('uses block control comments', () => {
+  check('disabled')
+})
+it('has actual example in docs', () => {
+  check('example')
+})
+it('process grouping rules correctly', () => {
+  check('grouping-rule')
+})
+it('transition on vendor specific rule', () => {
+  check('transition-spec')
+})
+it('ignore prefix in vendor at rules', () => {
+  check('at-rules')
+})
 
 it('uses control comments to whole scope', () => {
   let input = read('scope')
@@ -369,8 +412,9 @@ it('prefixes transition', () => {
   ])
 })
 
-it('does not raise unnecessary warnings when prefixing transition', () =>
-  check('transition-no-warning'))
+it('does not raise unnecessary warnings when prefixing transition', () => {
+  check('transition-no-warning')
+})
 
 it('works with broken transition', () => {
   let input = 'a{transition:,,}'
@@ -464,13 +508,13 @@ it('parses difficult files', () => {
 
 it('marks parsing errors', () => {
   expect(() => {
-    let css = postcss([cleaner]).process('a {').css
+    postcss([cleaner]).process('a {').css
   }).toThrow('<css input>:1:1: Unclosed block')
 })
 
 it('shows file name in parse error', () => {
   expect(() => {
-    let css = postcss([cleaner]).process('a {', { from: 'a.css' }).css
+    postcss([cleaner]).process('a {', { from: 'a.css' }).css
   }).toThrow(/a.css:1:1: /)
 })
 
@@ -611,38 +655,91 @@ it('ignores unknown versions on request', () => {
 })
 
 it('works with CSS Modules', () => {
-  let css = postcss([autoprefixer()]).process(':export { selectors: _1q6ho_2 }')
-    .css
+  postcss([autoprefixer()]).process(':export { selectors: _1q6ho_2 }').css
 })
 
 describe('hacks', () => {
-  it('ignores prefix IE filter', () => check('filter'))
-  it('supports webkit filters', () => check('advanced-filter'))
-  it('changes border image syntax', () => check('border-image'))
-  it('supports old Mozilla prefixes', () => check('border-radius'))
-  it('supports all flexbox syntaxes', () => check('flexbox'))
-  it('supports map flexbox props', () => check('flex-rewrite'))
-  it('supports all fullscreens', () => check('fullscreen'))
-  it('supports custom prefixes', () => check('custom-prefix'))
-  it('fixes break properties', () => check('multicolumn'))
-  it('ignores some 3D transforms', () => check('3d-transform'))
-  it('supports background-size', () => check('background-size'))
-  it('supports background-clip', () => check('background-clip'))
-  it('supports logical properties', () => check('logical'))
-  it('supports appearance', () => check('appearance'))
-  it('supports all placeholders', () => check('placeholder'))
-  it('supports placeholder-shown', () => check('placeholder-shown'))
-  it('supports image-rendering', () => check('image-rendering'))
-  it('supports border-box mask', () => check('mask-border'))
-  it('supports mask-composite', () => check('mask-composite'))
-  it('supports image-set()', () => check('image-set'))
-  it('supports writing-mode', () => check('writing-mode'))
-  it('supports cross-fade()', () => check('cross-fade'))
-  it('ignores modern direction', () => check('animation'))
-  it('supports overscroll-behavior', () => check('overscroll-behavior'))
-  it('supports color-adjust', () => check('color-adjust'))
-  it('supports backdrop-filter', () => check('backdrop-filter'))
-  it('supports user-select hack for IE', () => check('user-select'))
+  it('ignores prefix IE filter', () => {
+    check('filter')
+  })
+  it('supports webkit filters', () => {
+    check('advanced-filter')
+  })
+  it('changes border image syntax', () => {
+    check('border-image')
+  })
+  it('supports old Mozilla prefixes', () => {
+    check('border-radius')
+  })
+  it('supports all flexbox syntaxes', () => {
+    check('flexbox')
+  })
+  it('supports map flexbox props', () => {
+    check('flex-rewrite')
+  })
+  it('supports all fullscreens', () => {
+    check('fullscreen')
+  })
+  it('supports custom prefixes', () => {
+    check('custom-prefix')
+  })
+  it('fixes break properties', () => {
+    check('multicolumn')
+  })
+  it('ignores some 3D transforms', () => {
+    check('3d-transform')
+  })
+  it('supports background-size', () => {
+    check('background-size')
+  })
+  it('supports background-clip', () => {
+    check('background-clip')
+  })
+  it('supports logical properties', () => {
+    check('logical')
+  })
+  it('supports appearance', () => {
+    check('appearance')
+  })
+  it('supports all placeholders', () => {
+    check('placeholder')
+  })
+  it('supports placeholder-shown', () => {
+    check('placeholder-shown')
+  })
+  it('supports image-rendering', () => {
+    check('image-rendering')
+  })
+  it('supports border-box mask', () => {
+    check('mask-border')
+  })
+  it('supports mask-composite', () => {
+    check('mask-composite')
+  })
+  it('supports image-set()', () => {
+    check('image-set')
+  })
+  it('supports writing-mode', () => {
+    check('writing-mode')
+  })
+  it('supports cross-fade()', () => {
+    check('cross-fade')
+  })
+  it('ignores modern direction', () => {
+    check('animation')
+  })
+  it('supports overscroll-behavior', () => {
+    check('overscroll-behavior')
+  })
+  it('supports color-adjust', () => {
+    check('color-adjust')
+  })
+  it('supports backdrop-filter', () => {
+    check('backdrop-filter')
+  })
+  it('supports user-select hack for IE', () => {
+    check('user-select')
+  })
 
   it('supports appearance for IE', () => {
     let instance = autoprefixer({ overrideBrowserslist: 'Edge 15' })
