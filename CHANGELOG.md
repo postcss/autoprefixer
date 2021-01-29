@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 10.2.4
+* Fixed browser names in `npx autoprefixer --info`.
+
 ## 10.2.3
 * Fixed PostCSS 8 support.
 
