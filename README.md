@@ -1001,8 +1001,8 @@ IE will place `.grid-cell`, `::before` and `::after` in row 1 column 1.
 Modern browsers on the other hand will place `::before` in row 1 column 1,
 `.grid-cell` in row 1 column 2, and `::after` in row 2 column 1.
 
-See this [Code Pen](https://codepen.io/daniel-tonon/pen/gBymVw) to see a visualization
-of the issue. View the Code Pen in both a modern browser and IE to see the difference.
+See this [CodePen](https://codepen.io/daniel-tonon/pen/gBymVw) to see a visualization
+of the issue. View the CodePen in both a modern browser and IE to see the difference.
 
 Note that you can still create `::before` and `::after` elements as long as you manually
 place them outside the explicit grid.
