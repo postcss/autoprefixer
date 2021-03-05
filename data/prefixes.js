@@ -241,6 +241,7 @@ f(require('caniuse-lite/data/features/css-filter-function'), browsers =>
 
 // Backdrop-filter
 let backdrop = require('caniuse-lite/data/features/css-backdrop-filter')
+
 f(backdrop, { match: /y\sx|y\s#2/ }, browsers =>
   prefix(['backdrop-filter'], {
     feature: 'css-backdrop-filter',
@@ -305,6 +306,7 @@ f(require('caniuse-lite/data/features/user-select-none'), browsers =>
 
 // Flexible Box Layout
 let flexbox = require('caniuse-lite/data/features/flexbox')
+
 f(flexbox, { match: /a\sx/ }, browsers => {
   browsers = browsers.map(i => {
     if (/ie|firefox/.test(i)) {
@@ -685,6 +687,7 @@ f(require('caniuse-lite/data/features/css-deviceadaptation'), browsers =>
 
 // Resolution Media Queries
 let resolut = require('caniuse-lite/data/features/css-media-resolution')
+
 f(resolut, { match: /( x($| )|a #2)/ }, browsers =>
   prefix(['@resolution'], {
     feature: 'css-media-resolution',
@@ -757,6 +760,7 @@ f(logicalProps, { match: /x\s#2/ }, browsers =>
 
 // CSS appearance
 let appearance = require('caniuse-lite/data/features/css-appearance')
+
 f(appearance, { match: /#2|x/ }, browsers =>
   prefix(['appearance'], {
     feature: 'css-appearance',
@@ -810,6 +814,7 @@ f(require('caniuse-lite/data/features/css-image-set'), browsers =>
 
 // Writing Mode
 let writingMode = require('caniuse-lite/data/features/css-writing-mode')
+
 f(writingMode, { match: /a|x/ }, browsers =>
   prefix(['writing-mode'], {
     feature: 'css-writing-mode',
@@ -944,6 +949,7 @@ f(bidi, { match: /y x/ }, browsers =>
 
 // overscroll-behavior selector
 let over = require('caniuse-lite/data/features/css-overscroll-behavior')
+
 f(over, { match: /a #1/ }, browsers =>
   prefix(['overscroll-behavior'], {
     feature: 'css-overscroll-behavior',

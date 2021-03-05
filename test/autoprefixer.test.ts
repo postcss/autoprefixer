@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
-import postcss, { AtRule, ChildNode, Container, Rule } from 'postcss'
+import postcss, { AtRule, ChildNode, Container, Rule, Plugin } from 'postcss'
 import path from 'path'
 import fs from 'fs'
 
@@ -84,7 +84,7 @@ let example = autoprefixer({
   overrideBrowserslist: ['defaults']
 })
 
-function prefixer (name: string) {
+function prefixer (name: string): Plugin {
   if (
     name === 'grid' ||
     name === 'grid-gap' ||
@@ -162,16 +162,16 @@ function prefixer (name: string) {
   }
 }
 
-function read (name: string) {
+function read (name: string): string {
   let file = path.join(__dirname, '/cases/' + name + '.css')
   return fs.readFileSync(file).toString()
 }
 
-function universalizer (string: string) {
+function universalizer (string: string): string {
   return string.replace(/\r/g, '')
 }
 
-function check (from: string, instance = prefixer(from)) {
+function check (from: string, instance = prefixer(from)): void {
   let input = read(from)
   let output = read(from + '.out')
   let result = postcss([instance]).process(input)
@@ -487,7 +487,7 @@ const isContainerNode = (node: ChildNode): node is AtRule | Rule => {
 }
 
 it('does not broke AST', () => {
-  function checkParent (node: Container) {
+  function checkParent (node: Container): void {
     node.walk(child => {
       expect(child.parent).toBeDefined()
       if (isContainerNode(child)) checkParent(child)
@@ -535,7 +535,7 @@ it('sets browserslist environment', () => {
 })
 
 it('takes values from other PostCSS plugins', () => {
-  function plugin (root: Container) {
+  function plugin (root: Container): void {
     root.walkDecls(i => {
       i.value = 'calc(0)'
     })
@@ -563,7 +563,7 @@ it('has disabled grid options by default', () => {
 })
 
 it('has different outputs for different grid options', () => {
-  function ap (gridValue: autoprefixer.Options['grid']) {
+  function ap (gridValue: autoprefixer.Options['grid']): Plugin {
     return autoprefixer({
       overrideBrowserslist: ['Edge 12', 'IE 10'],
       grid: gridValue
@@ -590,7 +590,7 @@ it('has different outputs for different grid options', () => {
 })
 
 it('has different outputs for different grid environment variables', () => {
-  function ap (gridValue: autoprefixer.GridValue) {
+  function ap (gridValue: autoprefixer.GridValue): Plugin {
     process.env.AUTOPREFIXER_GRID = gridValue
     return autoprefixer({ overrideBrowserslist: ['Edge 12', 'IE 10'] })
   }
