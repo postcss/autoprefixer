@@ -155,4 +155,18 @@ describe('process()', () => {
     supports.process(rule)
     expect(rule.params).toEqual('(color black) and not ((-moz-a: 1) or (a: 1))')
   })
+
+  it("shouldn't throw errors", () => {
+    let rule = { params: 'not selector(:is(a, b))' }
+    supports.process(rule)
+    expect(rule.params).toEqual('not selector(:is(a, b))')
+  })
+
+  it("shouldn't throw errors (2)", () => {
+    let rule = { params: ' (selector( :nth-child(1n of a, b) )) or (c: b(1)) ' }
+    supports.process(rule)
+    expect(rule.params).toEqual(
+      ' (selector( :nth-child(1n of a, b) )) or ((c: -moz-b(1)) or (c: b(1))) '
+    )
+  })
 })
