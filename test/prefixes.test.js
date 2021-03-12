@@ -38,7 +38,7 @@ let bVal = new Value('b', ['-ms- new'], fill)
 let aProp = new Declaration('a', ['-moz-'], fill)
 aProp.values = [bVal]
 
-function old (prefixed) {
+function old(prefixed) {
   let name = prefixed.replace(/-[^-]+-( old)?/, '')
   return new OldValue(name, prefixed)
 }

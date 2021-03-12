@@ -42,7 +42,7 @@ describe('.escapeRegexp()', () => {
 describe('.regexp()', () => {
   it('generates RegExp that finds tokens in CSS values', () => {
     let regexp = utils.regexp('foo')
-    function check (string) {
+    function check(string) {
       return string.match(regexp) !== null
     }
 
@@ -60,7 +60,7 @@ describe('.regexp()', () => {
 
   it('escapes string if needed', () => {
     let regexp = utils.regexp('(a|b)')
-    function check (string) {
+    function check(string) {
       return string.match(regexp) !== null
     }
 

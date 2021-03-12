@@ -1,6 +1,6 @@
 let unpack = require('caniuse-lite').feature
 
-function browsersSort (a, b) {
+function browsersSort(a, b) {
   a = a.split(' ')
   b = b.split(' ')
   if (a[0] > b[0]) {
@@ -13,7 +13,7 @@ function browsersSort (a, b) {
 }
 
 // Convert Can I Use data
-function f (data, opts, callback) {
+function f(data, opts, callback) {
   data = unpack(data)
 
   if (!callback) {
@@ -39,13 +39,13 @@ function f (data, opts, callback) {
 // Add data for all properties
 let result = {}
 
-function prefix (names, data) {
+function prefix(names, data) {
   for (let name of names) {
     result[name] = Object.assign({}, data)
   }
 }
 
-function add (names, data) {
+function add(names, data) {
   for (let name of names) {
     result[name].browsers = result[name].browsers
       .concat(data.browsers)

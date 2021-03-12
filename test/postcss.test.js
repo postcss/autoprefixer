@@ -6,7 +6,7 @@ it('works with other PostCSS plugins', () => {
   let plugin = () => {
     return {
       postcssPlugin: 'test',
-      Rule (rule) {
+      Rule(rule) {
         rule.selector = 'b'
       },
       AtRule: {

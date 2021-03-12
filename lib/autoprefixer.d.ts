@@ -1,16 +1,16 @@
 import { Plugin } from 'postcss'
 import { Stats } from 'browserslist'
 
-declare function autoprefixer<T extends string[]> (
+declare function autoprefixer<T extends string[]>(
   ...args: [...T, autoprefixer.Options]
 ): Plugin & autoprefixer.ExportedAPI
 
-declare function autoprefixer (
+declare function autoprefixer(
   browsers: string[],
   options?: autoprefixer.Options
 ): Plugin & autoprefixer.ExportedAPI
 
-declare function autoprefixer (
+declare function autoprefixer(
   options?: autoprefixer.Options
 ): Plugin & autoprefixer.ExportedAPI
 

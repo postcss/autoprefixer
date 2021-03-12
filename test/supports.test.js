@@ -26,12 +26,12 @@ let prefixes = new Prefixes(
 )
 let supports = new Supports(Prefixes, prefixes)
 
-function rm (str) {
+function rm(str) {
   let ast = supports.normalize(brackets.parse(str))
   return brackets.stringify(supports.remove(ast, str))
 }
 
-function clean (str) {
+function clean(str) {
   let ast = supports.normalize(brackets.parse(str))
   return brackets.stringify(supports.cleanBrackets(ast))
 }

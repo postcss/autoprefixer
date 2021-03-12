@@ -28,13 +28,13 @@ describe('.hack()', () => {
 describe('.load()', () => {
   it('loads hacks', () => {
     class A extends Prefixer {
-      constructor () {
+      constructor() {
         super()
         this.klass = 'a'
       }
     }
     class Hack extends A {
-      constructor () {
+      constructor() {
         super()
         this.klass = 'hack'
       }
