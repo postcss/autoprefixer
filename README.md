@@ -1062,7 +1062,7 @@ If you wish to change the size of a `grid-gap`, you will need to redeclare the g
 Run `npx autoprefixer --info` in your project directory to check
 which browsers are selected and which properties will be prefixed:
 
-```
+```console
 $ npx autoprefixer --info
 Browsers:
   Edge: 16
