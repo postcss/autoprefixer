@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 10.2.6
+* Fixed “no prefixes needed” warning (by @Pwntheon).
+
 ## 10.2.5
 * Fixed `:` support in `@supports` (by Dmitry Semigradsky).
 * Fixed docs (by Christian Oliff).
