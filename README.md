@@ -5,7 +5,7 @@
      title="Autoprefixer logo by Anton Lovchikov">
 
 [PostCSS] plugin to parse CSS and add vendor prefixes to CSS rules using values
-from [Can I Use]. It is [recommended] by Google and used in Twitter and Alibaba.
+from [Can I Use]. It is recommended by Google and used in Twitter and Alibaba.
 
 Write your CSS rules without vendor prefixes (in fact, forget about them
 entirely):
@@ -59,7 +59,6 @@ Twitter account for news and releases: [@autoprefixer].
 
 [interactive demo]: https://autoprefixer.github.io/
 [@autoprefixer]:    https://twitter.com/autoprefixer
-[recommended]:      https://developers.google.com/web/tools/setup/setup-buildtools#dont_trip_up_with_vendor_prefixes
 [Can I Use]:        https://caniuse.com/
 [cult-img]:         http://cultofmartians.com/assets/badges/badge.svg
 [PostCSS]:          https://github.com/postcss/postcss
