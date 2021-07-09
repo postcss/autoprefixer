@@ -36,6 +36,47 @@ function f(data, opts, callback) {
   callback(need.sort(browsersSort))
 }
 
+// Convert MDN data
+function f2(data, opts, callback) {
+  data = data.__compat
+
+  if (!callback) {
+    ;[callback, opts] = [opts, {}]
+  }
+
+  let need = []
+
+  for (let browser in data.support) {
+    let versions = data.support[browser]
+
+    if (Array.isArray(versions)) {
+      versions = versions[0]
+    }
+
+    let versionAdded = versions.version_added
+
+    if (versionAdded) {
+      if (browser === 'samsunginternet_android') {
+        browser = 'samsung'
+      } else if (browser === 'safari_ios') {
+        browser = 'ios_saf'
+      } else if (browser === 'opera_android') {
+        browser = 'op_mob'
+      } else if (browser === 'chrome_android') {
+        browser = 'and_chr'
+      } else if (browser === 'firefox_android') {
+        browser = 'and_ff'
+      } else if (browser === 'webview_android') {
+        browser = 'android'
+      }
+
+      need.push(browser + ' ' + versionAdded)
+    }
+  }
+
+  callback(need.sort(browsersSort))
+}
+
 // Add data for all properties
 let result = {}
 
@@ -515,6 +556,17 @@ f(prefixFullscreen, browsers =>
 
 f(prefixFullscreen, { match: /x(\s#2|$)/ }, browsers =>
   prefix(['::backdrop'], {
+    selector: true,
+    feature: 'fullscreen',
+    browsers
+  })
+)
+
+// File selector button
+const bcd = require('@mdn/browser-compat-data')
+
+f2(bcd.css.selectors['file-selector-button'], browsers =>
+  prefix(['::file-selector-button'], {
     selector: true,
     feature: 'fullscreen',
     browsers
