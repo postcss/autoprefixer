@@ -29,7 +29,6 @@
     "postcss": "^8.1.0"
   },
   "dependencies": {
-    "@mdn/browser-compat-data": "^3.3.10",
     "browserslist": "^4.16.6",
     "caniuse-lite": "^1.0.30001230",
     "colorette": "^1.2.2",

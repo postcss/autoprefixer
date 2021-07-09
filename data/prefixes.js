@@ -36,47 +36,6 @@ function f(data, opts, callback) {
   callback(need.sort(browsersSort))
 }
 
-// Convert MDN data
-function f2(data, opts, callback) {
-  data = data.__compat
-
-  if (!callback) {
-    ;[callback, opts] = [opts, {}]
-  }
-
-  let need = []
-
-  for (let browser in data.support) {
-    let versions = data.support[browser]
-
-    if (Array.isArray(versions)) {
-      versions = versions[0]
-    }
-
-    let versionAdded = versions.version_added
-
-    if (versionAdded) {
-      if (browser === 'samsunginternet_android') {
-        browser = 'samsung'
-      } else if (browser === 'safari_ios') {
-        browser = 'ios_saf'
-      } else if (browser === 'opera_android') {
-        browser = 'op_mob'
-      } else if (browser === 'chrome_android') {
-        browser = 'and_chr'
-      } else if (browser === 'firefox_android') {
-        browser = 'and_ff'
-      } else if (browser === 'webview_android') {
-        browser = 'android'
-      }
-
-      need.push(browser + ' ' + versionAdded)
-    }
-  }
-
-  callback(need.sort(browsersSort))
-}
-
 // Add data for all properties
 let result = {}
 
@@ -563,15 +522,23 @@ f(prefixFullscreen, { match: /x(\s#2|$)/ }, browsers =>
 )
 
 // File selector button
-const bcd = require('@mdn/browser-compat-data')
-
-f2(bcd.css.selectors['file-selector-button'], browsers =>
-  prefix(['::file-selector-button'], {
-    selector: true,
-    feature: 'fullscreen',
-    browsers
-  })
-)
+prefix(['::file-selector-button'], {
+  selector: true,
+  feature: 'fullscreen',
+  browsers: [
+    'chrome 89',
+    'edge 89',
+    'firefox 82',
+    'opera 75',
+    'safari 14.1',
+    'android 89',
+    'and_chr 89',
+    'op_mob 63',
+    'and_ff 82',
+    'ios_saf 14.5',
+    'samsung 15.0'
+  ]
+})
 
 // Tab size
 let prefixTabsize = require('caniuse-lite/data/features/css3-tabsize')
