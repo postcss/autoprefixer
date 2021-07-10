@@ -57,7 +57,6 @@
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-unicorn": "^34.0.1",
-    "fs-extra": "^9.1.0",
     "jest": "^27.0.6",
     "lint-staged": "^11.0.0",
     "postcss": "^8.3.5",
