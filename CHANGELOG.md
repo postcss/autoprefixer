@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 10.3 “Чести своей не отдам никому”
+* Added `::file-selector-button` support (by Luke Warlow).
+
 ## 10.2.6
 * Fixed “no prefixes needed” warning (by @Pwntheon).
 
