@@ -685,6 +685,9 @@ describe('hacks', () => {
   it('supports all fullscreens', () => {
     check('fullscreen')
   })
+  it('supports file-selector-button', () => {
+    check('file-selector-button')
+  })
   it('supports custom prefixes', () => {
     check('custom-prefix')
   })
