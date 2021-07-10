@@ -56,6 +56,9 @@ let ffgradienter = autoprefixer({
 let selectorer = autoprefixer({
   overrideBrowserslist: ['Chrome 25', 'Firefox > 17', 'IE 10', 'Edge 12']
 })
+let fileSelectorButtoner = autoprefixer({
+  overrideBrowserslist: ['Chrome > 25', 'Firefox > 85']
+})
 let placeholderShowner = autoprefixer({
   overrideBrowserslist: ['IE >= 10']
 })
@@ -123,6 +126,8 @@ function prefixer(name: string): Plugin {
     return intrinsicer
   } else if (name === 'selectors' || name === 'placeholder') {
     return selectorer
+  } else if (name === 'selectors' || name === 'file-selector-button') {
+    return fileSelectorButtoner
   } else if (name === 'placeholder-shown') {
     return placeholderShowner
   } else if (name === 'backdrop-filter' || name === 'overscroll-behavior') {
@@ -679,6 +684,9 @@ describe('hacks', () => {
   })
   it('supports all fullscreens', () => {
     check('fullscreen')
+  })
+  it('supports file-selector-button', () => {
+    check('file-selector-button')
   })
   it('supports custom prefixes', () => {
     check('custom-prefix')
