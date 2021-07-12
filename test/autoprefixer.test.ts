@@ -382,7 +382,9 @@ it('ignore prefix in vendor at rules', () => {
   check('at-rules')
 })
 it('ignore content property', () => {
-  check('content')
+  let input = read('content')
+  let result = postcss([prefixer('scope')]).process(input)
+  expect(result.css).toEqual(input)
 })
 
 it('uses control comments to whole scope', () => {
