@@ -86,6 +86,15 @@ let clipper = autoprefixer({
 let example = autoprefixer({
   overrideBrowserslist: ['defaults']
 })
+let content = autoprefixer({
+  overrideBrowserslist: [
+    '> 2%',
+    'last 2 years',
+    'ie 11',
+    'not ie_mob > 0',
+    'not dead'
+  ]
+})
 
 function prefixer(name: string): Plugin {
   if (
@@ -162,6 +171,8 @@ function prefixer(name: string): Plugin {
     return supporter
   } else if (name === 'transition-spec') {
     return transitionSpec
+  } else if (name === 'content') {
+    return content
   } else {
     return compiler
   }
@@ -369,6 +380,9 @@ it('transition on vendor specific rule', () => {
 })
 it('ignore prefix in vendor at rules', () => {
   check('at-rules')
+})
+it('ignore content property', () => {
+  check('content')
 })
 
 it('uses control comments to whole scope', () => {
