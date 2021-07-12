@@ -699,6 +699,8 @@ f(prefixCssMasks, browsers => {
     [
       'mask',
       'mask-position',
+      'mask-position-x',
+      'mask-position-y',
       'mask-size',
       'mask-border',
       'mask-border-outset',
