@@ -2,7 +2,7 @@
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 10.3.2
-* Fixed `::file-selector-button` support (by Usman Yunusov)
+* Fixed `::file-selector-button` support (by Usman Yunusov).
 
 ## 10.3.1
 * Fixed adding wrong prefixes to `content` (by Luke Warlow).
