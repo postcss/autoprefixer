@@ -1,3 +1,9 @@
 ::file-selector-button {
   background: black
 }
+input::file-selector-button {
+  color: black
+}
+input:hover::file-selector-button {
+  color: white
+}
