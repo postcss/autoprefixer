@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 10.3.3
+* Fixed wrong `-moz-` prefix from  `::file-selector-button` (by Usman Yunusov).
+
 ## 10.3.2
 * Fixed `::file-selector-button` support (by Usman Yunusov).
 
