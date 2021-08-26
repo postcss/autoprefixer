@@ -57,7 +57,7 @@ let selectorer = autoprefixer({
   overrideBrowserslist: ['Chrome 25', 'Firefox > 17', 'IE 10', 'Edge 12']
 })
 let fileSelectorButtoner = autoprefixer({
-  overrideBrowserslist: ['Chrome > 25', 'Firefox > 85']
+  overrideBrowserslist: ['Chrome > 25', 'Firefox >= 82']
 })
 let placeholderShowner = autoprefixer({
   overrideBrowserslist: ['IE >= 10']
