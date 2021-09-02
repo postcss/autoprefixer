@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 10.3.4
+* Fixed `stretch` value in latest Firefox.
+
 ## 10.3.3
 * Fixed wrong `-moz-` prefix from  `::file-selector-button` (by Usman Yunusov).
 
