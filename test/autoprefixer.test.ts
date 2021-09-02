@@ -1047,4 +1047,14 @@ describe('hacks', () => {
     expect(result.css).toEqual(input)
     expect(result.warnings()).toHaveLength(0)
   })
+
+  it('supports latest Firefox stretch', () => {
+    let input = read('intrinsic')
+    let output = read('intrinsic.ff')
+    let result = postcss([
+      autoprefixer({ overrideBrowserslist: 'firefox 90' })
+    ]).process(input)
+    expect(result.css).toEqual(output)
+    expect(result.warnings()).toHaveLength(2)
+  })
 })

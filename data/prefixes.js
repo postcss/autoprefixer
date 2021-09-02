@@ -583,7 +583,15 @@ f(prefixIntrinsic, browsers =>
 )
 
 f(prefixIntrinsic, { match: /x|\s#4/ }, browsers =>
-  prefix(['fill', 'fill-available', 'stretch'], {
+  prefix(['fill', 'fill-available'], {
+    props: sizeProps,
+    feature: 'intrinsic-width',
+    browsers
+  })
+)
+
+f(prefixIntrinsic, { match: /x|\s#5/ }, browsers =>
+  prefix(['stretch'], {
     props: sizeProps,
     feature: 'intrinsic-width',
     browsers
