@@ -31,14 +31,10 @@
   "dependencies": {
     "browserslist": "^4.16.8",
     "caniuse-lite": "^1.0.30001252",
-    "colorette": "^1.3.0",
     "fraction.js": "^4.1.1",
+    "nanocolors": "^0.1.1",
     "normalize-range": "^0.1.2",
     "postcss-value-parser": "^4.1.0"
-  },
-  "browser": {
-    "colorette": false,
-    "chalk": false
   },
   "devDependencies": {
     "@logux/eslint-config": "^45.4.7",
