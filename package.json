@@ -32,7 +32,7 @@
     "browserslist": "^4.17.0",
     "caniuse-lite": "^1.0.30001259",
     "fraction.js": "^4.1.1",
-    "nanocolors": "^0.1.1",
+    "nanocolors": "^0.1.5",
     "normalize-range": "^0.1.2",
     "postcss-value-parser": "^4.1.0"
   },
