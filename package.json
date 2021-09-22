@@ -29,7 +29,7 @@
     "postcss": "^8.1.0"
   },
   "dependencies": {
-    "browserslist": "^4.17.0",
+    "browserslist": "^4.17.1",
     "caniuse-lite": "^1.0.30001259",
     "fraction.js": "^4.1.1",
     "nanocolors": "^0.1.5",
@@ -55,7 +55,7 @@
     "eslint-plugin-unicorn": "^36.0.0",
     "jest": "^27.2.1",
     "lint-staged": "^11.1.2",
-    "postcss": "^8.3.6",
+    "postcss": "^8.3.7",
     "prettier": "^2.4.1",
     "simple-git-hooks": "^2.6.1",
     "size-limit": "^5.0.4",
