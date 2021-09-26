@@ -10,8 +10,8 @@
     "postcss-plugin"
   ],
   "scripts": {
-    "lint": "eslint-ci . bin/*",
-    "test": "jest-ci --coverage && npm run lint && gulp && size-limit"
+    "lint": "eslint . bin/*",
+    "test": "jest --coverage && npm run lint && gulp && size-limit"
   },
   "bin": "./bin/autoprefixer",
   "funding": {
@@ -44,7 +44,6 @@
     "babelify": "^10.0.0",
     "browserify": "^16.5.1",
     "eslint": "^6.8.0",
-    "eslint-ci": "^1.0.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-es5": "^1.5.0",
     "eslint-plugin-import": "^2.21.2",
@@ -64,7 +63,6 @@
     "gulp-replace": "^1.0.0",
     "husky": "^4.2.5",
     "jest": "^24.9.0",
-    "jest-ci": "^0.1.1",
     "lint-staged": "^10.2.11",
     "size-limit": "^4.5.5"
   },
