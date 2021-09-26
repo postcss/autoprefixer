@@ -1,8 +1,12 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 10.3.6
+* Updated `nanocolors`.
+* Reduced package size.
+
 ## 10.3.5
-* Replace `colorette` to `nanocolors`.
+* Replaced `colorette` to `nanocolors`.
 
 ## 10.3.4
 * Fixed `stretch` value in latest Firefox.
