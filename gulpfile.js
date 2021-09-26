@@ -28,7 +28,8 @@ gulp.task('build:docs', () => {
       'package.json',
       'logo.svg',
       'AUTHORS',
-      'node_modules'
+      'node_modules',
+      'CHANGELOG.md'
     ])
     .map(i => '!' + i)
 
@@ -55,6 +56,7 @@ gulp.task('build:package', () => {
       delete json.husky
       delete json['size-limit']
       delete json['lint-staged']
+      delete json.eslintIgnore
       delete json.dependencies['@babel/register']
       return json
     }))
