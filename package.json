@@ -130,5 +130,8 @@
         "lines": 100
       }
     }
+  },
+  "clean-publish": {
+    "cleanDocs": true
   }
 }
