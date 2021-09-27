@@ -25,6 +25,9 @@
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
   "license": "MIT",
   "repository": "postcss/autoprefixer",
+  "bugs": {
+    "url": "https://github.com/postcss/autoprefixer/issues"
+  },
   "peerDependencies": {
     "postcss": "^8.1.0"
   },
