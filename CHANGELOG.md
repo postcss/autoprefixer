@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 10.3.7
+* Replaced `nanocolors` to `picocolors`.
+
 ## 10.3.6
 * Updated `nanocolors`.
 * Reduced package size.
