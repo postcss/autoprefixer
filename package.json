@@ -35,8 +35,8 @@
     "browserslist": "^4.17.1",
     "caniuse-lite": "^1.0.30001260",
     "fraction.js": "^4.1.1",
-    "nanocolors": "^0.2.8",
     "normalize-range": "^0.1.2",
+    "picocolors": "^0.2.1",
     "postcss-value-parser": "^4.1.0"
   },
   "devDependencies": {
