@@ -25,9 +25,9 @@
     "@babel/register": "^7.10.5",
     "browserslist": "^4.12.0",
     "caniuse-lite": "^1.0.30001109",
-    "nanocolors": "^0.2.8",
     "normalize-range": "^0.1.2",
     "num2fraction": "^1.2.2",
+    "picocolors": "^0.2.1",
     "postcss": "^7.0.32",
     "postcss-value-parser": "^4.1.0"
   },
