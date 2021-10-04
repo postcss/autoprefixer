@@ -43,6 +43,7 @@
     "babel-jest": "^25.2.6",
     "babelify": "^10.0.0",
     "browserify": "^16.5.1",
+    "clean-publish": "^3.0.3",
     "eslint": "^6.8.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-es5": "^1.5.0",
@@ -136,9 +137,8 @@
   "browserslist": [
     "defaults"
   ],
-  "browser": {
-    "colorette": false,
-    "chalk": false
+  "clean-publish": {
+    "cleanDocs": true
   },
   "babel": {
     "presets": [
