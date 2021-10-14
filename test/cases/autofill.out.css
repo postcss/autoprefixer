@@ -1,0 +1,7 @@
+input:-webkit-autofill {
+  background-color: red;
+}
+
+input:autofill {
+  background-color: red;
+}
