@@ -32,11 +32,11 @@
     "postcss": "^8.1.0"
   },
   "dependencies": {
-    "browserslist": "^4.17.3",
+    "browserslist": "^4.17.4",
     "caniuse-lite": "^1.0.30001264",
     "fraction.js": "^4.1.1",
     "normalize-range": "^0.1.2",
-    "picocolors": "^0.2.1",
+    "picocolors": "^1.0.0",
     "postcss-value-parser": "^4.1.0"
   },
   "devDependencies": {
