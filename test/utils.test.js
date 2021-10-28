@@ -27,15 +27,15 @@ describe('.uniq()', () => {
 
 describe('.removeNote()', () => {
   it('removes note', () => {
-    expect(utils.removeNote('-webkit- note')).toEqual('-webkit-')
-    expect(utils.removeNote('-webkit-')).toEqual('-webkit-')
+    expect(utils.removeNote('-webkit- note')).toBe('-webkit-')
+    expect(utils.removeNote('-webkit-')).toBe('-webkit-')
   })
 })
 
 describe('.escapeRegexp()', () => {
   it('escapes RegExp symbols', () => {
     let string = utils.escapeRegexp('^[()\\]')
-    expect(string).toEqual('\\^\\[\\(\\)\\\\\\]')
+    expect(string).toBe('\\^\\[\\(\\)\\\\\\]')
   })
 })
 
@@ -51,7 +51,7 @@ describe('.regexp()', () => {
     expect(check('one, foo, two')).toBe(true)
     expect(check('one(),foo(),two()')).toBe(true)
 
-    expect('foo(), a, foo'.replace(regexp, '$1b$2')).toEqual('bfoo(), a, bfoo')
+    expect('foo(), a, foo'.replace(regexp, '$1b$2')).toBe('bfoo(), a, bfoo')
 
     expect(check('foob')).toBe(false)
     expect(check('(foo)')).toBe(false)
@@ -76,7 +76,7 @@ describe('.regexp()', () => {
 describe('.editList()', () => {
   it('does save without changes', () => {
     let list = utils.editList('a,\nb, c', parsed => parsed)
-    expect(list).toEqual('a,\nb, c')
+    expect(list).toBe('a,\nb, c')
   })
 
   it('changes list', () => {
@@ -85,17 +85,17 @@ describe('.editList()', () => {
       expect(edit).toEqual([])
       return ['1', '2']
     })
-    expect(list).toEqual('1, 2')
+    expect(list).toBe('1, 2')
   })
 
   it('saves comma', () => {
     let list = utils.editList('a,\nb', () => ['1', '2'])
-    expect(list).toEqual('1,\n2')
+    expect(list).toBe('1,\n2')
   })
 
   it('parse one value', () => {
     let list = utils.editList('1', parsed => [parsed[0], '2'])
-    expect(list).toEqual('1, 2')
+    expect(list).toBe('1, 2')
   })
 })
 

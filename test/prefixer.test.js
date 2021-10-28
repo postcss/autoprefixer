@@ -21,7 +21,7 @@ describe('.hack()', () => {
     A.hack(Hack)
 
     expect(A.hacks).toEqual({ a: Hack, b: Hack })
-    expect(Prefixer.hacks).not.toBeDefined()
+    expect(Prefixer.hacks).toBeUndefined()
   })
 })
 
@@ -41,8 +41,8 @@ describe('.load()', () => {
     }
     A.hacks = { hacked: Hack }
 
-    expect(A.load('hacked').klass).toEqual('hack')
-    expect(A.load('a').klass).toEqual('a')
+    expect(A.load('hacked').klass).toBe('hack')
+    expect(A.load('a').klass).toBe('a')
   })
 })
 
@@ -53,16 +53,16 @@ describe('.clone()', () => {
     rule._autoprefixerValues = { '-ms-': 1 }
 
     let cloned = Prefixer.clone(rule, { selector: 'from' })
-    expect(cloned.selector).toEqual('from')
+    expect(cloned.selector).toBe('from')
 
-    expect(cloned._autoprefixerPrefix).not.toBeDefined()
-    expect(cloned._autoprefixerValues).not.toBeDefined()
+    expect(cloned._autoprefixerPrefix).toBeUndefined()
+    expect(cloned._autoprefixerValues).toBeUndefined()
   })
 
   it('fixed declaration between', () => {
     let parsed = parse('a { color : black }')
     let cloned = Prefixer.clone(parsed.first.first)
-    expect(cloned.raws.between).toEqual(' : ')
+    expect(cloned.raws.between).toBe(' : ')
   })
 })
 
@@ -72,22 +72,22 @@ describe('parentPrefix', () => {
   })
 
   it('finds in at-rules', () => {
-    expect(prefix.parentPrefix(css.first)).toEqual('-ms-')
+    expect(prefix.parentPrefix(css.first)).toBe('-ms-')
   })
 
   it('finds in selectors', () => {
-    expect(prefix.parentPrefix(css.nodes[1])).toEqual('-moz-')
+    expect(prefix.parentPrefix(css.nodes[1])).toBe('-moz-')
   })
 
   it('finds in parents', () => {
     let decl = css.first.first
-    expect(prefix.parentPrefix(decl)).toEqual('-ms-')
+    expect(prefix.parentPrefix(decl)).toBe('-ms-')
     expect(prefix.parentPrefix(css.nodes[2])).toBe(false)
   })
 
   it('caches prefix', () => {
     prefix.parentPrefix(css.first)
-    expect(css.first._autoprefixerPrefix).toEqual('-ms-')
+    expect(css.first._autoprefixerPrefix).toBe('-ms-')
 
     css.first._autoprefixerPrefix = false
     expect(prefix.parentPrefix(css.first)).toBe(false)

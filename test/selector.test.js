@@ -9,7 +9,7 @@ beforeEach(() => {
 
 describe('prefixed()', () => {
   it('adds prefix after non-letters symbols', () => {
-    expect(selector.prefixed('-moz-')).toEqual('::-moz-selection')
+    expect(selector.prefixed('-moz-')).toBe('::-moz-selection')
   })
 })
 
@@ -107,7 +107,7 @@ describe('replace()', () => {
   it('adds prefix to selectors', () => {
     expect(
       selector.replace('body ::selection, input::selection, a', '-ms-')
-    ).toEqual('body ::-ms-selection, input::-ms-selection, a')
+    ).toBe('body ::-ms-selection, input::-ms-selection, a')
   })
 })
 
@@ -115,7 +115,7 @@ describe('process()', () => {
   it('adds prefixes', () => {
     let css = parse('b ::-moz-selection{} b ::selection{}')
     selector.process(css.nodes[1])
-    expect(css.toString()).toEqual(
+    expect(css.toString()).toBe(
       'b ::-moz-selection{} b ::-ms-selection{} b ::selection{}'
     )
   })
@@ -123,7 +123,7 @@ describe('process()', () => {
   it('checks parents prefix', () => {
     let css = parse('@-moz-page{ ::selection{} }')
     selector.process(css.first.first)
-    expect(css.toString()).toEqual(
+    expect(css.toString()).toBe(
       '@-moz-page{ ::-moz-selection{} ::selection{} }'
     )
   })
@@ -132,7 +132,7 @@ describe('process()', () => {
 describe('old()', () => {
   it('returns object to find old selector', () => {
     let old = selector.old('-moz-')
-    expect(old.unprefixed).toEqual('::selection')
-    expect(old.prefix).toEqual('-moz-')
+    expect(old.unprefixed).toBe('::selection')
+    expect(old.prefix).toBe('-moz-')
   })
 })

@@ -52,15 +52,15 @@ describe('parse()', () => {
 describe('prefix()', () => {
   it('returns browser prefix', () => {
     let browsers = new Browsers(data, ['chrome 30'])
-    expect(browsers.prefix('chrome 30')).toEqual('-webkit-')
+    expect(browsers.prefix('chrome 30')).toBe('-webkit-')
   })
 
   it('returns right prefix for Operas', () => {
     let browsers = new Browsers(data, ['last 1 opera version'])
-    expect(browsers.prefix('opera 12')).toEqual('-o-')
-    expect(browsers.prefix(browsers.selected[0])).toEqual('-webkit-')
-    expect(browsers.prefix('op_mob 12')).toEqual('-o-')
-    expect(browsers.prefix(browsers.selected[0])).toEqual('-webkit-')
+    expect(browsers.prefix('opera 12')).toBe('-o-')
+    expect(browsers.prefix(browsers.selected[0])).toBe('-webkit-')
+    expect(browsers.prefix('op_mob 12')).toBe('-o-')
+    expect(browsers.prefix(browsers.selected[0])).toBe('-webkit-')
   })
 })
 

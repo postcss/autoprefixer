@@ -20,15 +20,15 @@ describe('.parse()', () => {
 
 describe('.stringify()', () => {
   it('stringifies simple string', () => {
-    expect(brackets.stringify(['test'])).toEqual('test')
+    expect(brackets.stringify(['test'])).toBe('test')
   })
 
   it('stringifies brackets', () => {
-    expect(brackets.stringify(['a ', ['b'], ' a'])).toEqual('a (b) a')
+    expect(brackets.stringify(['a ', ['b'], ' a'])).toBe('a (b) a')
   })
 
   it('stringifies many brackets', () => {
-    expect(brackets.stringify(['a ', ['b ', [''], ''], ' a'])).toEqual(
+    expect(brackets.stringify(['a ', ['b ', [''], ''], ' a'])).toBe(
       'a (b ()) a'
     )
   })

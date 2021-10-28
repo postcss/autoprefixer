@@ -19,7 +19,7 @@ describe('.save()', () => {
     width._autoprefixerValues = { '-ms-': '-ms-v' }
     Value.save(prefixes, width)
 
-    expect(css.toString()).toEqual('a { prop: -ms-v; prop: v }')
+    expect(css.toString()).toBe('a { prop: -ms-v; prop: v }')
   })
 
   it('updates declaration with prefix', () => {
@@ -29,7 +29,7 @@ describe('.save()', () => {
     width._autoprefixerValues = { '-ms-': '-ms-v' }
     Value.save(prefixes, width)
 
-    expect(css.toString()).toEqual('a { -ms-prop: -ms-v }')
+    expect(css.toString()).toBe('a { -ms-prop: -ms-v }')
   })
 
   it('ignores on another prefix property', () => {
@@ -39,7 +39,7 @@ describe('.save()', () => {
     width._autoprefixerValues = { '-ms-': '-ms-v' }
     Value.save(prefixes, width)
 
-    expect(css.toString()).toEqual('a { -ms-prop: v; prop: v }')
+    expect(css.toString()).toBe('a { -ms-prop: v; prop: v }')
   })
 
   it('ignores prefixes without changes', () => {
@@ -49,7 +49,7 @@ describe('.save()', () => {
     width._autoprefixerValues = { '-ms-': 'v' }
     Value.save(prefixes, width)
 
-    expect(css.toString()).toEqual('a { prop: v }')
+    expect(css.toString()).toBe('a { prop: v }')
   })
 })
 
@@ -80,8 +80,8 @@ describe('old()', () => {
 
 describe('replace()', () => {
   it('adds prefix to value', () => {
-    expect(calc.replace('1px calc(1em)', '-ms-')).toEqual('1px -ms-calc(1em)')
-    expect(calc.replace('1px,calc(1em)', '-ms-')).toEqual('1px,-ms-calc(1em)')
+    expect(calc.replace('1px calc(1em)', '-ms-')).toBe('1px -ms-calc(1em)')
+    expect(calc.replace('1px,calc(1em)', '-ms-')).toBe('1px,-ms-calc(1em)')
   })
 })
 
@@ -115,6 +115,6 @@ describe('process()', () => {
     })
 
     calc.process(decls[1])
-    expect(decls[1]._autoprefixerValues).not.toBeDefined()
+    expect(decls[1]._autoprefixerValues).toBeUndefined()
   })
 })

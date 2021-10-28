@@ -120,17 +120,17 @@ describe('.decl()', () => {
 
 describe('.unprefixed()', () => {
   it('returns unprefixed version', () => {
-    expect(empty.unprefixed('-moz-a')).toEqual('a')
+    expect(empty.unprefixed('-moz-a')).toBe('a')
   })
 })
 
 describe('.prefixed()', () => {
   it('adds prefix', () => {
-    expect(empty.prefixed('a', '-ms-')).toEqual('-ms-a')
+    expect(empty.prefixed('a', '-ms-')).toBe('-ms-a')
   })
 
   it('changes prefix', () => {
-    expect(empty.prefixed('a', '-ms-')).toEqual('-ms-a')
+    expect(empty.prefixed('a', '-ms-')).toBe('-ms-a')
   })
 })
 

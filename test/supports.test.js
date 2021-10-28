@@ -53,13 +53,13 @@ describe('parse()', () => {
 describe('virtual()', () => {
   it('returns virtual rule', () => {
     let decl = supports.virtual('color: black')
-    expect(decl.type).toEqual('rule')
-    expect(decl.toString()).toEqual('a{color: black}')
+    expect(decl.type).toBe('rule')
+    expect(decl.toString()).toBe('a{color: black}')
   })
 
   it('works with broken CSS', () => {
     let decl = supports.virtual('color black')
-    expect(decl.type).toEqual('rule')
+    expect(decl.type).toBe('rule')
   })
 })
 
@@ -68,16 +68,16 @@ describe('prefixed()', () => {
     let decls = supports.prefixed('a: one')
 
     expect(decls).toHaveLength(2)
-    expect(decls[0].toString()).toEqual('-moz-a: one')
-    expect(decls[1].toString()).toEqual('a: one')
+    expect(decls[0].toString()).toBe('-moz-a: one')
+    expect(decls[1].toString()).toBe('a: one')
   })
 
   it('returns decls with prefixed value', () => {
     let decls = supports.prefixed('c: b')
 
     expect(decls).toHaveLength(2)
-    expect(decls[0].toString()).toEqual('c: -moz-b')
-    expect(decls[1].toString()).toEqual('c: b')
+    expect(decls[0].toString()).toBe('c: -moz-b')
+    expect(decls[1].toString()).toBe('c: b')
   })
 })
 
@@ -97,27 +97,27 @@ describe('normalize()', () => {
 
 describe('remove()', () => {
   it('remove prefixed properties', () => {
-    expect(rm('(-moz-a: 1) or (a: 1)')).toEqual('(a: 1)')
+    expect(rm('(-moz-a: 1) or (a: 1)')).toBe('(a: 1)')
   })
 
   it('remove prefixed properties inside', () => {
-    expect(rm('(((-moz-a: 1) or (a: 1)))')).toEqual('(((a: 1)))')
+    expect(rm('(((-moz-a: 1) or (a: 1)))')).toBe('(((a: 1)))')
   })
 
   it('remove prefixed values', () => {
-    expect(rm('(c: -moz-b) or (c: -b-)')).toEqual('(c: -b-)')
+    expect(rm('(c: -moz-b) or (c: -b-)')).toBe('(c: -b-)')
   })
 
   it('keeps and-conditions', () => {
-    expect(rm('(-moz-a: 1) and (a: 1)')).toEqual('(-moz-a: 1) and (a: 1)')
+    expect(rm('(-moz-a: 1) and (a: 1)')).toBe('(-moz-a: 1) and (a: 1)')
   })
 
   it('keeps not-conditions', () => {
-    expect(rm('not (-moz-a: 1) or (a: 1)')).toEqual('not (-moz-a: 1) or (a: 1)')
+    expect(rm('not (-moz-a: 1) or (a: 1)')).toBe('not (-moz-a: 1) or (a: 1)')
   })
 
   it('keeps hacks', () => {
-    expect(rm('(-moz-a: 1) or (b: 2)')).toEqual('(-moz-a: 1) or (b: 2)')
+    expect(rm('(-moz-a: 1) or (b: 2)')).toBe('(-moz-a: 1) or (b: 2)')
   })
 })
 
@@ -129,11 +129,11 @@ describe('prefixer()', () => {
 
 describe('cleanBrackets()', () => {
   it('normalize brackets', () => {
-    expect(clean('((a: 1))')).toEqual('(a: 1)')
+    expect(clean('((a: 1))')).toBe('(a: 1)')
   })
 
   it('normalize brackets recursively', () => {
-    expect(clean('(((a: 1) or ((b: 2))))')).toEqual('((a: 1) or (b: 2))')
+    expect(clean('(((a: 1) or ((b: 2))))')).toBe('((a: 1) or (b: 2))')
   })
 })
 
@@ -141,31 +141,31 @@ describe('process()', () => {
   it('adds params with prefixed value', () => {
     let rule = { params: '(c: b)' }
     supports.process(rule)
-    expect(rule.params).toEqual('((c: -moz-b) or (c: b))')
+    expect(rule.params).toBe('((c: -moz-b) or (c: b))')
   })
 
   it('adds params with prefixed function', () => {
     let rule = { params: '(c: b(1))' }
     supports.process(rule)
-    expect(rule.params).toEqual('((c: -moz-b(1)) or (c: b(1)))')
+    expect(rule.params).toBe('((c: -moz-b(1)) or (c: b(1)))')
   })
 
   it('replaces params with prefixed property', () => {
     let rule = { params: '(color black) and not (a: 1)' }
     supports.process(rule)
-    expect(rule.params).toEqual('(color black) and not ((-moz-a: 1) or (a: 1))')
+    expect(rule.params).toBe('(color black) and not ((-moz-a: 1) or (a: 1))')
   })
 
   it("shouldn't throw errors", () => {
     let rule = { params: 'not selector(:is(a, b))' }
     supports.process(rule)
-    expect(rule.params).toEqual('not selector(:is(a, b))')
+    expect(rule.params).toBe('not selector(:is(a, b))')
   })
 
   it("shouldn't throw errors (2)", () => {
     let rule = { params: ' (selector( :nth-child(1n of a, b) )) or (c: b(1)) ' }
     supports.process(rule)
-    expect(rule.params).toEqual(
+    expect(rule.params).toBe(
       ' (selector( :nth-child(1n of a, b) )) or ((c: -moz-b(1)) or (c: b(1))) '
     )
   })

@@ -45,7 +45,7 @@ describe('maxPrefixed()', () => {
   it('returns max prefix length', () => {
     let decl = parse('a { tab-size: 4 }').first.first
     let list = ['-webkit-', '-webkit- old', '-moz-']
-    expect(tabsize.maxPrefixed(list, decl)).toEqual(8)
+    expect(tabsize.maxPrefixed(list, decl)).toBe(8)
   })
 })
 
@@ -53,7 +53,7 @@ describe('calcBefore()', () => {
   it('returns before with cascade', () => {
     let decl = parse('a { tab-size: 4 }').first.first
     let list = ['-webkit-', '-moz- old', '-moz-']
-    expect(tabsize.calcBefore(list, decl, '-moz- old')).toEqual('    ')
+    expect(tabsize.calcBefore(list, decl, '-moz- old')).toBe('    ')
   })
 })
 
@@ -62,7 +62,7 @@ describe('restoreBefore()', () => {
     let css = parse('a {\n' + '  -moz-tab-size: 4;\n' + '       tab-size: 4 }')
     let decl = css.first.nodes[1]
     tabsize.restoreBefore(decl)
-    expect(decl.raws.before).toEqual('\n  ')
+    expect(decl.raws.before).toBe('\n  ')
   })
 })
 
@@ -70,13 +70,13 @@ describe('prefixed()', () => {
   it('returns prefixed property', () => {
     let css = parse('a { tab-size: 2 }')
     let decl = css.first.first
-    expect(tabsize.prefixed(decl.prop, '-moz-')).toEqual('-moz-tab-size')
+    expect(tabsize.prefixed(decl.prop, '-moz-')).toBe('-moz-tab-size')
   })
 })
 
 describe('normalize()', () => {
   it('returns property name by specification', () => {
-    expect(tabsize.normalize('tab-size')).toEqual('tab-size')
+    expect(tabsize.normalize('tab-size')).toBe('tab-size')
   })
 })
 
@@ -84,7 +84,7 @@ describe('process()', () => {
   it('adds prefixes', () => {
     let css = parse('a { -moz-tab-size: 2; tab-size: 2 }')
     tabsize.process(css.first.nodes[1])
-    expect(css.toString()).toEqual(
+    expect(css.toString()).toBe(
       'a { -moz-tab-size: 2; -ms-tab-size: 2; tab-size: 2 }'
     )
   })
@@ -92,7 +92,7 @@ describe('process()', () => {
   it('checks parents prefix', () => {
     let css = parse('::-moz-selection a { tab-size: 2 }')
     tabsize.process(css.first.first)
-    expect(css.toString()).toEqual(
+    expect(css.toString()).toBe(
       '::-moz-selection a { -moz-tab-size: 2; tab-size: 2 }'
     )
   })
@@ -100,7 +100,7 @@ describe('process()', () => {
   it('checks value for prefixes', () => {
     let css = parse('a { tab-size: -ms-calc(2) }')
     tabsize.process(css.first.first)
-    expect(css.toString()).toEqual(
+    expect(css.toString()).toBe(
       'a { -ms-tab-size: -ms-calc(2); tab-size: -ms-calc(2) }'
     )
   })

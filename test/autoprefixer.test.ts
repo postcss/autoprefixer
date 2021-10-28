@@ -567,7 +567,7 @@ it('takes values from other PostCSS plugins', () => {
     })
   }
   let result = postcss([plugin, compiler]).process('a{width:0/**/0}')
-  expect(result.css).toEqual('a{width:-webkit-calc(0);width:calc(0)}')
+  expect(result.css).toBe('a{width:-webkit-calc(0);width:calc(0)}')
 })
 
 it('has option to disable @supports support', () => {
@@ -773,9 +773,7 @@ describe('hacks', () => {
   it('supports appearance for IE', () => {
     let instance = autoprefixer({ overrideBrowserslist: 'Edge 15' })
     let result = postcss([instance]).process('a { appearance: none }')
-    expect(result.css).toEqual(
-      'a { -webkit-appearance: none; appearance: none }'
-    )
+    expect(result.css).toBe('a { -webkit-appearance: none; appearance: none }')
   })
 
   it('changes angle in gradient', () => {
@@ -801,7 +799,7 @@ describe('hacks', () => {
 
   it('warns on old flexbox display', () => {
     let result = postcss([flexboxer]).process('a{ display: box; }')
-    expect(result.css).toEqual('a{ display: box; }')
+    expect(result.css).toBe('a{ display: box; }')
     expect(result.warnings().map(i => i.toString())).toEqual([
       'autoprefixer: <css input>:1:4: You should write display: flex ' +
         'by final spec instead of display: box'

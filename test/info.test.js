@@ -118,5 +118,5 @@ it('returns string for empty prefixes', () => {
 it('returns string for empty browsers', () => {
   let browsers = new Browsers(data.browsers, [])
   let prefixes = new Prefixes(data.prefixes, browsers)
-  expect(info(prefixes)).toEqual('No browsers selected')
+  expect(info(prefixes)).toBe('No browsers selected')
 })

@@ -27,7 +27,5 @@ it('works with other PostCSS plugins', () => {
     from: 'a.css'
   })
 
-  expect(result.css).toEqual(
-    'b{ -webkit-user-select: none; user-select: none; }'
-  )
+  expect(result.css).toBe('b{ -webkit-user-select: none; user-select: none; }')
 })
