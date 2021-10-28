@@ -15,8 +15,9 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 16
+          cache: yarn
       - name: Install dependencies
-        uses: bahmutov/npm-install@v1
+        run: yarn install --frozen-lockfile
       - name: Run tests
         run: yarn test
   short:
@@ -35,9 +36,8 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
+          cache: yarn
       - name: Install dependencies
-        uses: bahmutov/npm-install@v1
-        with:
-          install-command: yarn --frozen-lockfile --ignore-engines
+        run: yarn install --frozen-lockfile --ignore-engines
       - name: Run unit tests
         run: npx jest
