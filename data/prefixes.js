@@ -524,7 +524,7 @@ f(prefixFullscreen, { match: /x(\s#2|$)/ }, browsers =>
 // File selector button
 prefix(['::file-selector-button'], {
   selector: true,
-  feature: 'fullscreen',
+  feature: 'file-selector-button',
   browsers: [
     'chrome 89',
     'edge 89',
@@ -539,6 +539,17 @@ prefix(['::file-selector-button'], {
     'samsung 15.0'
   ]
 })
+
+// :autofill
+let prefixAutofill = require('caniuse-lite/data/features/css-autofill')
+
+f(prefixAutofill, browsers =>
+  prefix([':autofill'], {
+    selector: true,
+    feature: 'css-autofill',
+    browsers
+  })
+)
 
 // Tab size
 let prefixTabsize = require('caniuse-lite/data/features/css3-tabsize')

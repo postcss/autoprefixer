@@ -86,6 +86,9 @@ let clipper = autoprefixer({
 let example = autoprefixer({
   overrideBrowserslist: ['defaults']
 })
+let autofiller = autoprefixer({
+  overrideBrowserslist: ['Chrome > 90', 'Firefox >= 82']
+})
 let content = autoprefixer({
   overrideBrowserslist: [
     '> 2%',
@@ -137,6 +140,8 @@ function prefixer(name: string): Plugin {
     return selectorer
   } else if (name === 'selectors' || name === 'file-selector-button') {
     return fileSelectorButtoner
+  } else if (name === 'selectors' || name === 'autofill') {
+    return autofiller
   } else if (name === 'placeholder-shown') {
     return placeholderShowner
   } else if (name === 'backdrop-filter' || name === 'overscroll-behavior') {
