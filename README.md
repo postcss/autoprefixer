@@ -355,7 +355,7 @@ module.exports = {
 You can use the [postcss-cli] to run Autoprefixer from CLI:
 
 ```sh
-npm install postcss-cli autoprefixer
+npm install postcss postcss-cli autoprefixer
 npx postcss *.css --use autoprefixer -d build/
 ```
 
