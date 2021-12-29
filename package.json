@@ -13,7 +13,7 @@
     "postcss-plugin"
   ],
   "scripts": {
-    "test": "jest --coverage && eslint . bin/* && check-dts && size-limit",
+    "test": "jest --coverage && eslint . bin/* && size-limit",
     "unit": "jest"
   },
   "main": "lib/autoprefixer.js",
@@ -43,10 +43,6 @@
   "devDependencies": {
     "@logux/eslint-config": "^46.1.1",
     "@size-limit/preset-small-lib": "7.0.5",
-    "@types/jest": "^27.0.3",
-    "@typescript-eslint/eslint-plugin": "^5.8.1",
-    "@typescript-eslint/parser": "^5.8.1",
-    "check-dts": "^0.6.6",
     "clean-publish": "^3.4.4",
     "eslint": "^8.5.0",
     "eslint-config-standard": "^16.0.3",
@@ -56,10 +52,7 @@
     "eslint-plugin-promise": "^6.0.0",
     "jest": "^27.4.5",
     "postcss": "^8.4.5",
-    "prettier": "^2.5.1",
-    "size-limit": "^7.0.5",
-    "ts-jest": "^27.1.2",
-    "typescript": "^4.5.4"
+    "size-limit": "^7.0.5"
   },
   "prettier": {
     "arrowParens": "avoid",
@@ -75,10 +68,8 @@
     }
   ],
   "eslintConfig": {
-    "extends": "@logux/eslint-config/ts",
+    "extends": "@logux/eslint-config",
     "rules": {
-      "security/detect-non-literal-regexp": "off",
-      "security/detect-unsafe-regex": "off",
       "node/no-missing-require": "off",
       "no-unused-expressions": "off",
       "no-unused-vars": "off",
@@ -104,20 +95,16 @@
     ],
     "globals": {
       "beforeEach": "readonly",
+      "afterEach": "readonly",
       "afterAll": "readonly",
       "describe": "readonly",
       "expect": "readonly",
+      "jest": "readonly",
       "it": "readonly"
     }
   },
   "jest": {
-    "preset": "ts-jest",
     "testEnvironment": "node",
-    "globals": {
-      "ts-jest": {
-        "isolatedModules": true
-      }
-    },
     "coverageThreshold": {
       "global": {
         "lines": 100
