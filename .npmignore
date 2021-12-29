@@ -1,10 +1,8 @@
-yarn-error.log
-yarn.lock
+pnpm-lock.yaml
 
 .editorconfig
 test/
 coverage/
-.travis.yml
 
 .github/
 logo.svg
