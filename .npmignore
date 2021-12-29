@@ -4,6 +4,5 @@ pnpm-lock.yaml
 test/
 coverage/
 
-.github/
 logo.svg
 AUTHORS
