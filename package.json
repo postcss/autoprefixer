@@ -13,7 +13,8 @@
     "postcss-plugin"
   ],
   "scripts": {
-    "test": "jest --coverage && eslint . bin/* && check-dts && size-limit"
+    "test": "jest --coverage && eslint . bin/* && check-dts && size-limit",
+    "unit": "jest"
   },
   "main": "lib/autoprefixer.js",
   "bin": "bin/autoprefixer",
