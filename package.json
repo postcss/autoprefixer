@@ -32,51 +32,33 @@
     "postcss": "^8.1.0"
   },
   "dependencies": {
-    "browserslist": "^4.17.5",
-    "caniuse-lite": "^1.0.30001272",
-    "fraction.js": "^4.1.1",
+    "browserslist": "^4.19.1",
+    "caniuse-lite": "^1.0.30001294",
+    "fraction.js": "^4.1.2",
     "normalize-range": "^0.1.2",
     "picocolors": "^1.0.0",
-    "postcss-value-parser": "^4.1.0"
+    "postcss-value-parser": "^4.2.0"
   },
   "devDependencies": {
-    "@logux/eslint-config": "^46.0.1",
-    "@size-limit/preset-small-lib": "6.0.3",
-    "@types/jest": "^27.0.2",
-    "@typescript-eslint/eslint-plugin": "^5.2.0",
-    "@typescript-eslint/parser": "^5.2.0",
-    "check-dts": "^0.6.2",
-    "clean-publish": "^3.4.2",
-    "eslint": "^8.1.0",
+    "@logux/eslint-config": "^46.1.1",
+    "@size-limit/preset-small-lib": "7.0.5",
+    "@types/jest": "^27.0.3",
+    "@typescript-eslint/eslint-plugin": "^5.8.1",
+    "@typescript-eslint/parser": "^5.8.1",
+    "check-dts": "^0.6.6",
+    "clean-publish": "^3.4.4",
+    "eslint": "^8.5.0",
     "eslint-config-standard": "^16.0.3",
-    "eslint-plugin-import": "^2.25.2",
-    "eslint-plugin-jest": "^25.2.2",
+    "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prefer-let": "^3.0.0",
-    "eslint-plugin-promise": "^5.1.1",
-    "eslint-plugin-security": "^1.4.0",
-    "eslint-plugin-unicorn": "^37.0.1",
-    "jest": "^27.3.1",
-    "lint-staged": "^11.2.6",
-    "postcss": "^8.3.11",
-    "prettier": "^2.4.1",
-    "simple-git-hooks": "^2.7.0",
-    "size-limit": "^6.0.3",
-    "ts-jest": "^27.0.7",
-    "typescript": "^4.4.4"
-  },
-  "lint-staged": {
-    "*.js": [
-      "prettier --write",
-      "eslint --fix"
-    ],
-    "*.ts": [
-      "prettier --write",
-      "eslint --fix"
-    ]
-  },
-  "simple-git-hooks": {
-    "pre-commit": "npx lint-staged"
+    "eslint-plugin-prefer-let": "^3.0.1",
+    "eslint-plugin-promise": "^6.0.0",
+    "jest": "^27.4.5",
+    "postcss": "^8.4.5",
+    "prettier": "^2.5.1",
+    "size-limit": "^7.0.5",
+    "ts-jest": "^27.1.2",
+    "typescript": "^4.5.4"
   },
   "prettier": {
     "arrowParens": "avoid",
@@ -88,7 +70,7 @@
   },
   "size-limit": [
     {
-      "limit": "95 KB"
+      "limit": "105 KB"
     }
   ],
   "eslintConfig": {
@@ -118,7 +100,14 @@
           "import/order": "off"
         }
       }
-    ]
+    ],
+    "globals": {
+      "beforeEach": "readonly",
+      "afterAll": "readonly",
+      "describe": "readonly",
+      "expect": "readonly",
+      "it": "readonly"
+    }
   },
   "jest": {
     "preset": "ts-jest",
