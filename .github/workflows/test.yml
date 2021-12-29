@@ -73,24 +73,3 @@ jobs:
         run: pnpm unit
         env:
           FORCE_COLOR: 2
-  windows:
-    runs-on: windows-latest
-    name: Windows Quick
-    steps:
-      - name: Checkout the repository
-        uses: actions/checkout@v2
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: latest
-      - name: Install Node.js LTS
-        uses: actions/setup-node@v2
-        with:
-          node-version: 16
-          cache: pnpm
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile --ignore-scripts
-      - name: Run unit tests
-        run: pnpm unit
-        env:
-          FORCE_COLOR: 2
