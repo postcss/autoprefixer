@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 10.4.1
+* Fixed `::file-selector-button` data (by Luke Warlow).
+
 ## 10.4 “ǃke e꞉ ǀxarra ǁke”
 * Added `:autofill` support (by Luke Warlow).
 
