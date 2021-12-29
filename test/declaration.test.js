@@ -1,113 +1,96 @@
-let parse = require('postcss').parse
+let { equal, is } = require('uvu/assert')
+let { parse } = require('postcss')
+let { test } = require('uvu')
 
 let Declaration = require('../lib/declaration')
 let Prefixes = require('../lib/prefixes')
 
 let prefixes, tabsize
-beforeEach(() => {
+test.before.each(() => {
   prefixes = new Prefixes({}, {})
   tabsize = new Declaration('tab-size', ['-moz-', '-ms-'], prefixes)
 })
 
-describe('otherPrefixes()', () => {
-  it('checks values for other prefixes', () => {
-    expect(tabsize.otherPrefixes('black', '-moz-')).toBe(false)
-    expect(tabsize.otherPrefixes('-moz-black', '-moz-')).toBe(false)
-    expect(tabsize.otherPrefixes('-dev-black', '-moz-')).toBe(false)
-    expect(tabsize.otherPrefixes('-ms-black', '-moz-')).toBe(true)
-  })
+test.after.each(() => {
+  delete prefixes.options.cascade
 })
 
-describe('needCascade()', () => {
-  afterAll(() => {
-    delete prefixes.options.cascade
-  })
-
-  it('returns true by default', () => {
-    let css = parse('a {\n  tab-size: 4 }')
-    expect(tabsize.needCascade(css.first.first)).toBe(true)
-  })
-
-  it('return false is disabled', () => {
-    prefixes.options.cascade = false
-    let css = parse('a {\n  tab-size: 4 }')
-    expect(tabsize.needCascade(css.first.first)).toBe(false)
-  })
-
-  it('returns false on declarations in one line', () => {
-    let css = parse('a { tab-size: 4 } a {\n  tab-size: 4 }')
-    expect(tabsize.needCascade(css.first.first)).toBe(false)
-    expect(tabsize.needCascade(css.last.first)).toBe(true)
-  })
+test('checks values for other prefixes', () => {
+  is(tabsize.otherPrefixes('black', '-moz-'), false)
+  is(tabsize.otherPrefixes('-moz-black', '-moz-'), false)
+  is(tabsize.otherPrefixes('-dev-black', '-moz-'), false)
+  is(tabsize.otherPrefixes('-ms-black', '-moz-'), true)
 })
 
-describe('maxPrefixed()', () => {
-  it('returns max prefix length', () => {
-    let decl = parse('a { tab-size: 4 }').first.first
-    let list = ['-webkit-', '-webkit- old', '-moz-']
-    expect(tabsize.maxPrefixed(list, decl)).toBe(8)
-  })
+test('returns true by default', () => {
+  let css = parse('a {\n  tab-size: 4 }')
+  is(tabsize.needCascade(css.first.first), true)
 })
 
-describe('calcBefore()', () => {
-  it('returns before with cascade', () => {
-    let decl = parse('a { tab-size: 4 }').first.first
-    let list = ['-webkit-', '-moz- old', '-moz-']
-    expect(tabsize.calcBefore(list, decl, '-moz- old')).toBe('    ')
-  })
+test('return false is disabled', () => {
+  prefixes.options.cascade = false
+  let css = parse('a {\n  tab-size: 4 }')
+  is(tabsize.needCascade(css.first.first), false)
 })
 
-describe('restoreBefore()', () => {
-  it('removes cascade', () => {
-    let css = parse('a {\n' + '  -moz-tab-size: 4;\n' + '       tab-size: 4 }')
-    let decl = css.first.nodes[1]
-    tabsize.restoreBefore(decl)
-    expect(decl.raws.before).toBe('\n  ')
-  })
+test('returns false on declarations in one line', () => {
+  let css = parse('a { tab-size: 4 } a {\n  tab-size: 4 }')
+  is(tabsize.needCascade(css.first.first), false)
+  is(tabsize.needCascade(css.last.first), true)
 })
 
-describe('prefixed()', () => {
-  it('returns prefixed property', () => {
-    let css = parse('a { tab-size: 2 }')
-    let decl = css.first.first
-    expect(tabsize.prefixed(decl.prop, '-moz-')).toBe('-moz-tab-size')
-  })
+test('returns max prefix length', () => {
+  let decl = parse('a { tab-size: 4 }').first.first
+  let list = ['-webkit-', '-webkit- old', '-moz-']
+  equal(tabsize.maxPrefixed(list, decl), 8)
 })
 
-describe('normalize()', () => {
-  it('returns property name by specification', () => {
-    expect(tabsize.normalize('tab-size')).toBe('tab-size')
-  })
+test('returns before with cascade', () => {
+  let decl = parse('a { tab-size: 4 }').first.first
+  let list = ['-webkit-', '-moz- old', '-moz-']
+  equal(tabsize.calcBefore(list, decl, '-moz- old'), '    ')
 })
 
-describe('process()', () => {
-  it('adds prefixes', () => {
-    let css = parse('a { -moz-tab-size: 2; tab-size: 2 }')
-    tabsize.process(css.first.nodes[1])
-    expect(css.toString()).toBe(
-      'a { -moz-tab-size: 2; -ms-tab-size: 2; tab-size: 2 }'
-    )
-  })
-
-  it('checks parents prefix', () => {
-    let css = parse('::-moz-selection a { tab-size: 2 }')
-    tabsize.process(css.first.first)
-    expect(css.toString()).toBe(
-      '::-moz-selection a { -moz-tab-size: 2; tab-size: 2 }'
-    )
-  })
-
-  it('checks value for prefixes', () => {
-    let css = parse('a { tab-size: -ms-calc(2) }')
-    tabsize.process(css.first.first)
-    expect(css.toString()).toBe(
-      'a { -ms-tab-size: -ms-calc(2); tab-size: -ms-calc(2) }'
-    )
-  })
+test('removes cascade', () => {
+  let css = parse('a {\n' + '  -moz-tab-size: 4;\n' + '       tab-size: 4 }')
+  let decl = css.first.nodes[1]
+  tabsize.restoreBefore(decl)
+  equal(decl.raws.before, '\n  ')
 })
 
-describe('old()', () => {
-  it('returns list of prefixeds', () => {
-    expect(tabsize.old('tab-size', '-moz-')).toEqual(['-moz-tab-size'])
-  })
+test('returns prefixed property', () => {
+  let css = parse('a { tab-size: 2 }')
+  let decl = css.first.first
+  equal(tabsize.prefixed(decl.prop, '-moz-'), '-moz-tab-size')
 })
+
+test('returns property name by specification', () => {
+  equal(tabsize.normalize('tab-size'), 'tab-size')
+})
+
+test('adds prefixes', () => {
+  let css = parse('a { -moz-tab-size: 2; tab-size: 2 }')
+  tabsize.process(css.first.nodes[1])
+  equal(css.toString(), 'a { -moz-tab-size: 2; -ms-tab-size: 2; tab-size: 2 }')
+})
+
+test('checks parents prefix', () => {
+  let css = parse('::-moz-selection a { tab-size: 2 }')
+  tabsize.process(css.first.first)
+  equal(css.toString(), '::-moz-selection a { -moz-tab-size: 2; tab-size: 2 }')
+})
+
+test('checks value for prefixes', () => {
+  let css = parse('a { tab-size: -ms-calc(2) }')
+  tabsize.process(css.first.first)
+  equal(
+    css.toString(),
+    'a { -ms-tab-size: -ms-calc(2); tab-size: -ms-calc(2) }'
+  )
+})
+
+test('returns list of prefixeds', () => {
+  equal(tabsize.old('tab-size', '-moz-'), ['-moz-tab-size'])
+})
+
+test.run()

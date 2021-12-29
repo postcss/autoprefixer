@@ -1,3 +1,6 @@
+let { equal } = require('uvu/assert')
+let { test } = require('uvu')
+
 let Prefixes = require('../lib/prefixes')
 let Browsers = require('../lib/browsers')
 let Supports = require('../lib/supports')
@@ -36,137 +39,124 @@ function clean(str) {
   return brackets.stringify(supports.cleanBrackets(ast))
 }
 
-describe('parse()', () => {
-  it('splits property name and value', () => {
-    expect(supports.parse('color:black')).toEqual(['color', 'black'])
-  })
-
-  it('cleans spaces', () => {
-    expect(supports.parse(' color : black ')).toEqual(['color', 'black'])
-  })
-
-  it('parses everything', () => {
-    expect(supports.parse('color')).toEqual(['color', ''])
-  })
+test('splits property name and value', () => {
+  equal(supports.parse('color:black'), ['color', 'black'])
 })
 
-describe('virtual()', () => {
-  it('returns virtual rule', () => {
-    let decl = supports.virtual('color: black')
-    expect(decl.type).toBe('rule')
-    expect(decl.toString()).toBe('a{color: black}')
-  })
-
-  it('works with broken CSS', () => {
-    let decl = supports.virtual('color black')
-    expect(decl.type).toBe('rule')
-  })
+test('cleans spaces', () => {
+  equal(supports.parse(' color : black '), ['color', 'black'])
 })
 
-describe('prefixed()', () => {
-  it('returns decls with prefixed property', () => {
-    let decls = supports.prefixed('a: one')
-
-    expect(decls).toHaveLength(2)
-    expect(decls[0].toString()).toBe('-moz-a: one')
-    expect(decls[1].toString()).toBe('a: one')
-  })
-
-  it('returns decls with prefixed value', () => {
-    let decls = supports.prefixed('c: b')
-
-    expect(decls).toHaveLength(2)
-    expect(decls[0].toString()).toBe('c: -moz-b')
-    expect(decls[1].toString()).toBe('c: b')
-  })
+test('parses everything', () => {
+  equal(supports.parse('color'), ['color', ''])
 })
 
-describe('normalize()', () => {
-  it('reduces empty string', () => {
-    expect(supports.normalize([['', ['a'], '']])).toEqual([[['a']]])
-  })
-
-  it('reduces declaration to string', () => {
-    expect(supports.normalize(['a: b', ['1']])).toEqual(['a: b(1)'])
-  })
-
-  it('reduces wrapped declaration to string', () => {
-    expect(supports.normalize(['', ['a: b', ['1']], ''])).toEqual([['a: b(1)']])
-  })
+test('returns virtual rule', () => {
+  let decl = supports.virtual('color: black')
+  equal(decl.type, 'rule')
+  equal(decl.toString(), 'a{color: black}')
 })
 
-describe('remove()', () => {
-  it('remove prefixed properties', () => {
-    expect(rm('(-moz-a: 1) or (a: 1)')).toBe('(a: 1)')
-  })
-
-  it('remove prefixed properties inside', () => {
-    expect(rm('(((-moz-a: 1) or (a: 1)))')).toBe('(((a: 1)))')
-  })
-
-  it('remove prefixed values', () => {
-    expect(rm('(c: -moz-b) or (c: -b-)')).toBe('(c: -b-)')
-  })
-
-  it('keeps and-conditions', () => {
-    expect(rm('(-moz-a: 1) and (a: 1)')).toBe('(-moz-a: 1) and (a: 1)')
-  })
-
-  it('keeps not-conditions', () => {
-    expect(rm('not (-moz-a: 1) or (a: 1)')).toBe('not (-moz-a: 1) or (a: 1)')
-  })
-
-  it('keeps hacks', () => {
-    expect(rm('(-moz-a: 1) or (b: 2)')).toBe('(-moz-a: 1) or (b: 2)')
-  })
+test('works with broken CSS', () => {
+  let decl = supports.virtual('color black')
+  equal(decl.type, 'rule')
 })
 
-describe('prefixer()', () => {
-  it('uses only browsers with @supports support', () => {
-    expect(supports.prefixer().browsers.selected).toEqual(['firefox 22'])
-  })
+test('returns decls with prefixed property', () => {
+  let decls = supports.prefixed('a: one')
+
+  equal(decls.length, 2)
+  equal(decls[0].toString(), '-moz-a: one')
+  equal(decls[1].toString(), 'a: one')
 })
 
-describe('cleanBrackets()', () => {
-  it('normalize brackets', () => {
-    expect(clean('((a: 1))')).toBe('(a: 1)')
-  })
+test('returns decls with prefixed value', () => {
+  let decls = supports.prefixed('c: b')
 
-  it('normalize brackets recursively', () => {
-    expect(clean('(((a: 1) or ((b: 2))))')).toBe('((a: 1) or (b: 2))')
-  })
+  equal(decls.length, 2)
+  equal(decls[0].toString(), 'c: -moz-b')
+  equal(decls[1].toString(), 'c: b')
 })
 
-describe('process()', () => {
-  it('adds params with prefixed value', () => {
-    let rule = { params: '(c: b)' }
-    supports.process(rule)
-    expect(rule.params).toBe('((c: -moz-b) or (c: b))')
-  })
-
-  it('adds params with prefixed function', () => {
-    let rule = { params: '(c: b(1))' }
-    supports.process(rule)
-    expect(rule.params).toBe('((c: -moz-b(1)) or (c: b(1)))')
-  })
-
-  it('replaces params with prefixed property', () => {
-    let rule = { params: '(color black) and not (a: 1)' }
-    supports.process(rule)
-    expect(rule.params).toBe('(color black) and not ((-moz-a: 1) or (a: 1))')
-  })
-
-  it("shouldn't throw errors", () => {
-    let rule = { params: 'not selector(:is(a, b))' }
-    supports.process(rule)
-    expect(rule.params).toBe('not selector(:is(a, b))')
-  })
-
-  it("shouldn't throw errors (2)", () => {
-    let rule = { params: ' (selector( :nth-child(1n of a, b) )) or (c: b(1)) ' }
-    supports.process(rule)
-    expect(rule.params).toBe(
-      ' (selector( :nth-child(1n of a, b) )) or ((c: -moz-b(1)) or (c: b(1))) '
-    )
-  })
+test('reduces empty string', () => {
+  equal(supports.normalize([['', ['a'], '']]), [[['a']]])
 })
+
+test('reduces declaration to string', () => {
+  equal(supports.normalize(['a: b', ['1']]), ['a: b(1)'])
+})
+
+test('reduces wrapped declaration to string', () => {
+  equal(supports.normalize(['', ['a: b', ['1']], '']), [['a: b(1)']])
+})
+
+test('remove prefixed properties', () => {
+  equal(rm('(-moz-a: 1) or (a: 1)'), '(a: 1)')
+})
+
+test('remove prefixed properties inside', () => {
+  equal(rm('(((-moz-a: 1) or (a: 1)))'), '(((a: 1)))')
+})
+
+test('remove prefixed values', () => {
+  equal(rm('(c: -moz-b) or (c: -b-)'), '(c: -b-)')
+})
+
+test('keeps and-conditions', () => {
+  equal(rm('(-moz-a: 1) and (a: 1)'), '(-moz-a: 1) and (a: 1)')
+})
+
+test('keeps not-conditions', () => {
+  equal(rm('not (-moz-a: 1) or (a: 1)'), 'not (-moz-a: 1) or (a: 1)')
+})
+
+test('keeps hacks', () => {
+  equal(rm('(-moz-a: 1) or (b: 2)'), '(-moz-a: 1) or (b: 2)')
+})
+
+test('uses only browsers with @supports support', () => {
+  equal(supports.prefixer().browsers.selected, ['firefox 22'])
+})
+
+test('normalize brackets', () => {
+  equal(clean('((a: 1))'), '(a: 1)')
+})
+
+test('normalize brackets recursively', () => {
+  equal(clean('(((a: 1) or ((b: 2))))'), '((a: 1) or (b: 2))')
+})
+
+test('adds params with prefixed value', () => {
+  let rule = { params: '(c: b)' }
+  supports.process(rule)
+  equal(rule.params, '((c: -moz-b) or (c: b))')
+})
+
+test('adds params with prefixed function', () => {
+  let rule = { params: '(c: b(1))' }
+  supports.process(rule)
+  equal(rule.params, '((c: -moz-b(1)) or (c: b(1)))')
+})
+
+test('replaces params with prefixed property', () => {
+  let rule = { params: '(color black) and not (a: 1)' }
+  supports.process(rule)
+  equal(rule.params, '(color black) and not ((-moz-a: 1) or (a: 1))')
+})
+
+test("shouldn't throw errors", () => {
+  let rule = { params: 'not selector(:is(a, b))' }
+  supports.process(rule)
+  equal(rule.params, 'not selector(:is(a, b))')
+})
+
+test("shouldn't throw errors (2)", () => {
+  let rule = { params: ' (selector( :nth-child(1n of a, b) )) or (c: b(1)) ' }
+  supports.process(rule)
+  equal(
+    rule.params,
+    ' (selector( :nth-child(1n of a, b) )) or ((c: -moz-b(1)) or (c: b(1))) '
+  )
+})
+
+test.run()

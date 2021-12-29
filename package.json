@@ -13,8 +13,8 @@
     "postcss-plugin"
   ],
   "scripts": {
-    "test": "jest --coverage && eslint . bin/* && size-limit",
-    "unit": "jest"
+    "unit": "uvu . '\\.test\\.js$'",
+    "test": "c8 pnpm unit && eslint . bin/* && size-limit"
   },
   "main": "lib/autoprefixer.js",
   "bin": "bin/autoprefixer",
@@ -43,6 +43,7 @@
   "devDependencies": {
     "@logux/eslint-config": "^46.1.1",
     "@size-limit/preset-small-lib": "7.0.5",
+    "c8": "^7.10.0",
     "clean-publish": "^3.4.4",
     "eslint": "^8.5.0",
     "eslint-config-standard": "^16.0.3",
@@ -50,9 +51,10 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prefer-let": "^3.0.1",
     "eslint-plugin-promise": "^6.0.0",
-    "jest": "^27.4.5",
+    "nanospy": "^0.4.0",
     "postcss": "^8.4.5",
-    "size-limit": "^7.0.5"
+    "size-limit": "^7.0.5",
+    "uvu": "^0.5.2"
   },
   "prettier": {
     "arrowParens": "avoid",
@@ -92,24 +94,14 @@
           "import/order": "off"
         }
       }
-    ],
-    "globals": {
-      "beforeEach": "readonly",
-      "afterEach": "readonly",
-      "afterAll": "readonly",
-      "describe": "readonly",
-      "expect": "readonly",
-      "jest": "readonly",
-      "it": "readonly"
-    }
+    ]
   },
-  "jest": {
-    "testEnvironment": "node",
-    "coverageThreshold": {
-      "global": {
-        "lines": 100
-      }
-    }
+  "c8": {
+    "exclude": [
+      "**/*.test.*"
+    ],
+    "lines": 100,
+    "check-coverage": true
   },
   "clean-publish": {
     "cleanDocs": true

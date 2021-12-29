@@ -1,8 +1,10 @@
+let { equal } = require('uvu/assert')
+let { test } = require('uvu')
 let postcss = require('postcss')
 
 let autoprefixer = require('..')
 
-it('works with other PostCSS plugins', () => {
+test('works with other PostCSS plugins', () => {
   let plugin = () => {
     return {
       postcssPlugin: 'test',
@@ -27,5 +29,7 @@ it('works with other PostCSS plugins', () => {
     from: 'a.css'
   })
 
-  expect(result.css).toBe('b{ -webkit-user-select: none; user-select: none; }')
+  equal(result.css, 'b{ -webkit-user-select: none; user-select: none; }')
 })
+
+test.run()

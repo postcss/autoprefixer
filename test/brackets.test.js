@@ -1,35 +1,34 @@
+let { equal } = require('uvu/assert')
+let { test } = require('uvu')
+
 let brackets = require('../lib/brackets')
 
-describe('.parse()', () => {
-  it('parses simple string', () => {
-    expect(brackets.parse('test')).toEqual(['test'])
-  })
-
-  it('parses brackets', () => {
-    expect(brackets.parse('a (b) a')).toEqual(['a ', ['b'], ' a'])
-  })
-
-  it('parses many brackets', () => {
-    expect(brackets.parse('a (b ()) a')).toEqual(['a ', ['b ', [''], ''], ' a'])
-  })
-
-  it('parses errors', () => {
-    expect(brackets.parse('a (b (')).toEqual(['a ', ['b ', ['']]])
-  })
+test('parses simple string', () => {
+  equal(brackets.parse('test'), ['test'])
 })
 
-describe('.stringify()', () => {
-  it('stringifies simple string', () => {
-    expect(brackets.stringify(['test'])).toBe('test')
-  })
-
-  it('stringifies brackets', () => {
-    expect(brackets.stringify(['a ', ['b'], ' a'])).toBe('a (b) a')
-  })
-
-  it('stringifies many brackets', () => {
-    expect(brackets.stringify(['a ', ['b ', [''], ''], ' a'])).toBe(
-      'a (b ()) a'
-    )
-  })
+test('parses brackets', () => {
+  equal(brackets.parse('a (b) a'), ['a ', ['b'], ' a'])
 })
+
+test('parses many brackets', () => {
+  equal(brackets.parse('a (b ()) a'), ['a ', ['b ', [''], ''], ' a'])
+})
+
+test('parses errors', () => {
+  equal(brackets.parse('a (b ('), ['a ', ['b ', ['']]])
+})
+
+test('stringifies simple string', () => {
+  equal(brackets.stringify(['test']), 'test')
+})
+
+test('stringifies brackets', () => {
+  equal(brackets.stringify(['a ', ['b'], ' a']), 'a (b) a')
+})
+
+test('stringifies many brackets', () => {
+  equal(brackets.stringify(['a ', ['b ', [''], ''], ' a']), 'a (b ()) a')
+})
+
+test.run()

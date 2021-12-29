@@ -1,5 +1,7 @@
-let agents = require('caniuse-lite').agents
-let parse = require('postcss').parse
+let { equal, is } = require('uvu/assert')
+let { agents } = require('caniuse-lite')
+let { parse } = require('postcss')
+let { test } = require('uvu')
 
 let Declaration = require('../lib/declaration')
 let Prefixes = require('../lib/prefixes')
@@ -43,160 +45,153 @@ function old(prefixed) {
   return new OldValue(name, prefixed)
 }
 
-describe('select()', () => {
-  it('selects necessary prefixes', () => {
-    expect(fill.select(data.prefixes)).toEqual({
-      add: {
-        a: ['-moz-'],
-        b: ['-ms- new'],
-        c: ['-ms-']
+test('selects necessary prefixes', () => {
+  equal(fill.select(data.prefixes), {
+    add: {
+      a: ['-moz-'],
+      b: ['-ms- new'],
+      c: ['-ms-']
+    },
+    remove: {
+      a: ['-webkit-', '-ms-', '-moz- old'],
+      b: ['-ms-', '-moz-', '-webkit-'],
+      c: ['-moz-']
+    }
+  })
+})
+
+test('preprocesses prefixes add data', () => {
+  equal(fill.add, {
+    'selectors': [cSel],
+    'a': aProp,
+    '*': {
+      values: [bVal]
+    },
+    '@supports': new Supports(Prefixes, fill)
+  })
+})
+
+test('preprocesses prefixes remove data', () => {
+  equal(
+    JSON.stringify(fill.remove),
+    JSON.stringify({
+      'selectors': [cSel.old('-moz-')],
+      '-webkit-a': {
+        remove: true
       },
-      remove: {
-        a: ['-webkit-', '-ms-', '-moz- old'],
-        b: ['-ms-', '-moz-', '-webkit-'],
-        c: ['-moz-']
+      '-ms-a': {
+        remove: true
+      },
+      '-moz- olda': {
+        remove: true
+      },
+      'a': {
+        values: [old('-ms-b'), old('-moz-b'), old('-webkit-b')]
+      },
+      '*': {
+        values: [old('-ms-b'), old('-moz-b'), old('-webkit-b')]
       }
     })
-  })
+  )
 })
 
-describe('preprocess()', () => {
-  it('preprocesses prefixes add data', () => {
-    expect(fill.add).toEqual({
-      'selectors': [cSel],
-      'a': aProp,
-      '*': {
-        values: [bVal]
-      },
-      '@supports': new Supports(Prefixes, fill)
-    })
-  })
-
-  it('preprocesses prefixes remove data', () => {
-    expect(JSON.stringify(fill.remove)).toEqual(
-      JSON.stringify({
-        'selectors': [cSel.old('-moz-')],
-        '-webkit-a': {
-          remove: true
-        },
-        '-ms-a': {
-          remove: true
-        },
-        '-moz- olda': {
-          remove: true
-        },
-        'a': {
-          values: [old('-ms-b'), old('-moz-b'), old('-webkit-b')]
-        },
-        '*': {
-          values: [old('-ms-b'), old('-moz-b'), old('-webkit-b')]
-        }
-      })
-    )
-  })
+test('returns itself is no browsers are selected', () => {
+  equal(empty.cleaner(), empty)
 })
 
-describe('.cleaner()', () => {
-  it('returns itself is no browsers are selected', () => {
-    expect(empty.cleaner()).toEqual(empty)
-  })
-
-  it('returns Prefixes with empty browsers', () => {
-    let cleaner = new Prefixes(data.prefixes, new Browsers(data.browsers, []))
-    expect(Object.keys(fill.cleaner().add)).toHaveLength(2)
-    expect(fill.cleaner().remove).toEqual(cleaner.remove)
-  })
+test('returns Prefixes with empty browsers', () => {
+  let cleaner = new Prefixes(data.prefixes, new Browsers(data.browsers, []))
+  equal(Object.keys(fill.cleaner().add).length, 2)
+  equal(fill.cleaner().remove, cleaner.remove)
 })
 
-describe('.decl()', () => {
-  it('loads declarations by property', () => {
-    expect(empty.decl('a')).toEqual(new Declaration('a'))
-  })
-
-  it('caches values', () => {
-    expect(empty.decl('a')).toBe(empty.decl('a'))
-  })
+test('loads declarations by property', () => {
+  equal(empty.decl('a'), new Declaration('a'))
 })
 
-describe('.unprefixed()', () => {
-  it('returns unprefixed version', () => {
-    expect(empty.unprefixed('-moz-a')).toBe('a')
-  })
+test('caches values', () => {
+  equal(empty.decl('a'), empty.decl('a'))
 })
 
-describe('.prefixed()', () => {
-  it('adds prefix', () => {
-    expect(empty.prefixed('a', '-ms-')).toBe('-ms-a')
-  })
-
-  it('changes prefix', () => {
-    expect(empty.prefixed('a', '-ms-')).toBe('-ms-a')
-  })
+test('returns unprefixed version', () => {
+  equal(empty.unprefixed('-moz-a'), 'a')
 })
 
-describe('values()', () => {
-  it('returns values for this and all properties', () => {
-    expect(fill.values('add', 'a')).toEqual([bVal])
-    expect(fill.values('remove', 'a')).toEqual([
-      old('-ms-b'),
-      old('-moz-b'),
-      old('-webkit-b')
-    ])
-  })
+test('adds prefix', () => {
+  equal(empty.prefixed('a', '-ms-'), '-ms-a')
 })
 
-describe('group()', () => {
-  describe('down()', () => {
-    it('checks prefix group', () => {
-      let css = parse('a { -ms-a: 1; -o-a: 1; a: 1; b: 2 }')
-      let props = []
-
-      empty.group(css.first.first).down(i => props.push(i.prop))
-      expect(props).toEqual(['-o-a', 'a'])
-    })
-
-    it('checks prefix groups', () => {
-      let css = parse('a { -ms-a: 1; -o-a: 1; ' + 'a: -o-calc(1); a: 1; a: 2 }')
-      let props = []
-
-      empty.group(css.first.first).down(i => props.push(i.prop))
-      expect(props).toEqual(['-o-a', 'a', 'a'])
-    })
-
-    it('returns check decls inside group', () => {
-      let css = parse('a { -moz-a: 1; -ms-a: 1; -o-a: 1; a: 1 }')
-      let decl = css.first.first
-
-      expect(empty.group(decl).down(i => i.prop === '-o-a')).toBe(true)
-      expect(empty.group(decl).down(i => i.prop === '-o-b')).toBe(false)
-    })
-  })
-
-  describe('up()', () => {
-    it('checks prefix group', () => {
-      let css = parse('a { b: 2; -ms-a: 1; -o-a: 1; a: 1 }')
-      let props = []
-
-      empty.group(css.first.nodes[3]).up(i => props.push(i.prop))
-      expect(props).toEqual(['-o-a', '-ms-a'])
-    })
-
-    it('checks prefix groups', () => {
-      let css = parse(
-        'a { a: 2; -ms-a: 1; ' + '-o-a: 1; a: -o-calc(1); a: 1  }'
-      )
-      let props = []
-
-      empty.group(css.first.nodes[4]).up(i => props.push(i.prop))
-      expect(props).toEqual(['a', '-o-a', '-ms-a'])
-    })
-
-    it('returns check decls inside group', () => {
-      let css = parse('a { -moz-a: 1; -ms-a: 1; -o-a: 1; a: 1 }')
-      let decl = css.first.nodes[3]
-
-      expect(empty.group(decl).up(i => i.prop === '-ms-a')).toBe(true)
-      expect(empty.group(decl).up(i => i.prop === '-ms-b')).toBe(false)
-    })
-  })
+test('changes prefix', () => {
+  equal(empty.prefixed('a', '-ms-'), '-ms-a')
 })
+
+test('returns values for this and all properties', () => {
+  equal(fill.values('add', 'a'), [bVal])
+  equal(fill.values('remove', 'a'), [
+    old('-ms-b'),
+    old('-moz-b'),
+    old('-webkit-b')
+  ])
+})
+
+test('checks prefix group', () => {
+  let css = parse('a { -ms-a: 1; -o-a: 1; a: 1; b: 2 }')
+  let props = []
+
+  empty.group(css.first.first).down(i => props.push(i.prop))
+  equal(props, ['-o-a', 'a'])
+})
+
+test('checks prefix groups', () => {
+  let css = parse('a { -ms-a: 1; -o-a: 1; ' + 'a: -o-calc(1); a: 1; a: 2 }')
+  let props = []
+
+  empty.group(css.first.first).down(i => props.push(i.prop))
+  equal(props, ['-o-a', 'a', 'a'])
+})
+
+test('returns check decls inside group', () => {
+  let css = parse('a { -moz-a: 1; -ms-a: 1; -o-a: 1; a: 1 }')
+  let decl = css.first.first
+
+  is(
+    empty.group(decl).down(i => i.prop === '-o-a'),
+    true
+  )
+  is(
+    empty.group(decl).down(i => i.prop === '-o-b'),
+    false
+  )
+})
+
+test('checks prefix group', () => {
+  let css = parse('a { b: 2; -ms-a: 1; -o-a: 1; a: 1 }')
+  let props = []
+
+  empty.group(css.first.nodes[3]).up(i => props.push(i.prop))
+  equal(props, ['-o-a', '-ms-a'])
+})
+
+test('checks prefix groups', () => {
+  let css = parse('a { a: 2; -ms-a: 1; ' + '-o-a: 1; a: -o-calc(1); a: 1  }')
+  let props = []
+
+  empty.group(css.first.nodes[4]).up(i => props.push(i.prop))
+  equal(props, ['a', '-o-a', '-ms-a'])
+})
+
+test('returns check decls inside group', () => {
+  let css = parse('a { -moz-a: 1; -ms-a: 1; -o-a: 1; a: 1 }')
+  let decl = css.first.nodes[3]
+
+  is(
+    empty.group(decl).up(i => i.prop === '-ms-a'),
+    true
+  )
+  is(
+    empty.group(decl).up(i => i.prop === '-ms-b'),
+    false
+  )
+})
+
+test.run()

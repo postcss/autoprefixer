@@ -1,9 +1,11 @@
-let parse = require('postcss').parse
+let { equal, type, is } = require('uvu/assert')
+let { parse } = require('postcss')
+let { test } = require('uvu')
 
 let Prefixer = require('../lib/prefixer')
 
 let prefix, css
-beforeEach(() => {
+test.before.each(() => {
   prefix = new Prefixer()
   css = parse(
     '@-ms-keyframes a { to { } } ' +
@@ -12,93 +14,87 @@ beforeEach(() => {
   )
 })
 
-describe('.hack()', () => {
-  it('registers hacks for subclasses', () => {
-    class A extends Prefixer {}
-    class Hack extends A {}
-    Hack.names = ['a', 'b']
+test('registers hacks for subclasses', () => {
+  class A extends Prefixer {}
+  class Hack extends A {}
+  Hack.names = ['a', 'b']
 
-    A.hack(Hack)
+  A.hack(Hack)
 
-    expect(A.hacks).toEqual({ a: Hack, b: Hack })
-    expect(Prefixer.hacks).toBeUndefined()
-  })
+  equal(A.hacks, { a: Hack, b: Hack })
+  type(Prefixer.hacks, 'undefined')
 })
 
-describe('.load()', () => {
-  it('loads hacks', () => {
-    class A extends Prefixer {
-      constructor() {
-        super()
-        this.klass = 'a'
-      }
+test('loads hacks', () => {
+  class A extends Prefixer {
+    constructor() {
+      super()
+      this.klass = 'a'
     }
-    class Hack extends A {
-      constructor() {
-        super()
-        this.klass = 'hack'
-      }
+  }
+  class Hack extends A {
+    constructor() {
+      super()
+      this.klass = 'hack'
     }
-    A.hacks = { hacked: Hack }
+  }
+  A.hacks = { hacked: Hack }
 
-    expect(A.load('hacked').klass).toBe('hack')
-    expect(A.load('a').klass).toBe('a')
-  })
+  equal(A.load('hacked').klass, 'hack')
+  equal(A.load('a').klass, 'a')
 })
 
-describe('.clone()', () => {
-  it('cleans custom properties', () => {
-    let rule = css.first.first
-    rule._autoprefixerPrefix = '-ms-'
-    rule._autoprefixerValues = { '-ms-': 1 }
+test('cleans custom properties', () => {
+  let rule = css.first.first
+  rule._autoprefixerPrefix = '-ms-'
+  rule._autoprefixerValues = { '-ms-': 1 }
 
-    let cloned = Prefixer.clone(rule, { selector: 'from' })
-    expect(cloned.selector).toBe('from')
+  let cloned = Prefixer.clone(rule, { selector: 'from' })
+  equal(cloned.selector, 'from')
 
-    expect(cloned._autoprefixerPrefix).toBeUndefined()
-    expect(cloned._autoprefixerValues).toBeUndefined()
-  })
-
-  it('fixed declaration between', () => {
-    let parsed = parse('a { color : black }')
-    let cloned = Prefixer.clone(parsed.first.first)
-    expect(cloned.raws.between).toBe(' : ')
-  })
+  type(cloned._autoprefixerPrefix, 'undefined')
+  type(cloned._autoprefixerValues, 'undefined')
 })
 
-describe('parentPrefix', () => {
-  it('works with root node', () => {
-    expect(prefix.parentPrefix(css)).toBe(false)
-  })
-
-  it('finds in at-rules', () => {
-    expect(prefix.parentPrefix(css.first)).toBe('-ms-')
-  })
-
-  it('finds in selectors', () => {
-    expect(prefix.parentPrefix(css.nodes[1])).toBe('-moz-')
-  })
-
-  it('finds in parents', () => {
-    let decl = css.first.first
-    expect(prefix.parentPrefix(decl)).toBe('-ms-')
-    expect(prefix.parentPrefix(css.nodes[2])).toBe(false)
-  })
-
-  it('caches prefix', () => {
-    prefix.parentPrefix(css.first)
-    expect(css.first._autoprefixerPrefix).toBe('-ms-')
-
-    css.first._autoprefixerPrefix = false
-    expect(prefix.parentPrefix(css.first)).toBe(false)
-  })
-
-  it('finds only browsers prefixes', () => {
-    expect(prefix.parentPrefix(css.nodes[2])).toBe(false)
-  })
-
-  it('works with selector contained --', () => {
-    let parsed = parse(':--a { color: black }')
-    expect(prefix.parentPrefix(parsed.first.first)).toBe(false)
-  })
+test('fixed declaration between', () => {
+  let parsed = parse('a { color : black }')
+  let cloned = Prefixer.clone(parsed.first.first)
+  equal(cloned.raws.between, ' : ')
 })
+
+test('works with root node', () => {
+  is(prefix.parentPrefix(css), false)
+})
+
+test('finds in at-rules', () => {
+  equal(prefix.parentPrefix(css.first), '-ms-')
+})
+
+test('finds in selectors', () => {
+  equal(prefix.parentPrefix(css.nodes[1]), '-moz-')
+})
+
+test('finds in parents', () => {
+  let decl = css.first.first
+  equal(prefix.parentPrefix(decl), '-ms-')
+  is(prefix.parentPrefix(css.nodes[2]), false)
+})
+
+test('caches prefix', () => {
+  prefix.parentPrefix(css.first)
+  equal(css.first._autoprefixerPrefix, '-ms-')
+
+  css.first._autoprefixerPrefix = false
+  is(prefix.parentPrefix(css.first), false)
+})
+
+test('finds only browsers prefixes', () => {
+  is(prefix.parentPrefix(css.nodes[2]), false)
+})
+
+test('works with selector contained --', () => {
+  let parsed = parse(':--a { color: black }')
+  is(prefix.parentPrefix(parsed.first.first), false)
+})
+
+test.run()

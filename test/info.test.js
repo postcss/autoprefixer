@@ -1,5 +1,7 @@
+let { equal, match } = require('uvu/assert')
 let browserslist = require('browserslist')
-let agents = require('caniuse-lite').agents
+let { agents } = require('caniuse-lite')
+let { test } = require('uvu')
 
 let Browsers = require('../lib/browsers')
 let Prefixes = require('../lib/prefixes')
@@ -40,7 +42,7 @@ let data = {
   }
 }
 
-it('returns selected browsers and prefixes', () => {
+test('returns selected browsers and prefixes', () => {
   let browsers = new Browsers(data.browsers, [
     'chrome 30',
     'firefox 21',
@@ -57,7 +59,8 @@ it('returns selected browsers and prefixes', () => {
   ])
   let round = Math.round(coverage * 100) / 100.0
 
-  expect(info(prefixes)).toEqual(
+  equal(
+    info(prefixes),
     'Browsers:\n' +
       '  Chrome: 30\n' +
       '  Firefox: 21, 20\n' +
@@ -86,14 +89,15 @@ it('returns selected browsers and prefixes', () => {
   )
 })
 
-it("doesn't show transitions unless they are necessary", () => {
+test('does not show transitions unless they are necessary', () => {
   let browsers = new Browsers(data.browsers, ['chrome 30', 'firefox 20'])
   let prefixes = new Prefixes(data.prefixes, browsers)
 
   let coverage = browserslist.coverage(['chrome 30', 'firefox 20'])
   let round = Math.round(coverage * 100) / 100.0
 
-  expect(info(prefixes)).toEqual(
+  equal(
+    info(prefixes),
     'Browsers:\n' +
       '  Chrome: 30\n' +
       '  Firefox: 20\n' +
@@ -109,14 +113,16 @@ it("doesn't show transitions unless they are necessary", () => {
   )
 })
 
-it('returns string for empty prefixes', () => {
+test('returns string for empty prefixes', () => {
   let browsers = new Browsers(data.browsers, ['ie 7'])
   let prefixes = new Prefixes(data.prefixes, browsers)
-  expect(info(prefixes)).toMatch(/remove Autoprefixer/)
+  match(info(prefixes), /remove Autoprefixer/)
 })
 
-it('returns string for empty browsers', () => {
+test('returns string for empty browsers', () => {
   let browsers = new Browsers(data.browsers, [])
   let prefixes = new Prefixes(data.prefixes, browsers)
-  expect(info(prefixes)).toBe('No browsers selected')
+  equal(info(prefixes), 'No browsers selected')
 })
+
+test.run()
