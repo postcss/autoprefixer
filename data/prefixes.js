@@ -594,17 +594,21 @@ f(prefixIntrinsic, { match: /x|\s#4/ }, browsers =>
 )
 
 f(prefixIntrinsic, { match: /x|\s#5/ }, browsers =>
-  prefix(['stretch'], {
+  prefix(['fit-content'], {
     props: sizeProps,
     feature: 'intrinsic-width',
     browsers
   })
 )
 
-f(prefixIntrinsic, { match: /x|\s#5/ }, browsers =>
-  prefix(['fit-content'], {
+// Stretch value
+
+let prefixStretch = require('caniuse-lite/data/features/css-width-stretch')
+
+f(prefixStretch, browsers =>
+  prefix(['stretch'], {
     props: sizeProps,
-    feature: 'intrinsic-width',
+    feature: 'css-width-stretch',
     browsers
   })
 )

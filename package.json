@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "browserslist": "^4.19.1",
-    "caniuse-lite": "^1.0.30001296",
+    "caniuse-lite": "^1.0.30001297",
     "fraction.js": "^4.1.2",
     "normalize-range": "^0.1.2",
     "picocolors": "^1.0.0",

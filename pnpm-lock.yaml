@@ -5,7 +5,7 @@ specifiers:
   '@size-limit/preset-small-lib': 7.0.5
   browserslist: ^4.19.1
   c8: ^7.11.0
-  caniuse-lite: ^1.0.30001296
+  caniuse-lite: ^1.0.30001297
   clean-publish: ^3.4.5
   eslint: ^8.6.0
   eslint-config-standard: ^16.0.3
@@ -24,7 +24,7 @@ specifiers:
 
 dependencies:
   browserslist: 4.19.1
-  caniuse-lite: 1.0.30001296
+  caniuse-lite: 1.0.30001297
   fraction.js: 4.1.2
   normalize-range: 0.1.2
   picocolors: 1.0.0
@@ -273,8 +273,8 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001296
-      electron-to-chromium: 1.4.35
+      caniuse-lite: 1.0.30001297
+      electron-to-chromium: 1.4.37
       escalade: 3.1.1
       node-releases: 2.0.1
       picocolors: 1.0.0
@@ -316,8 +316,8 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /caniuse-lite/1.0.30001296:
-    resolution: {integrity: sha512-WfrtPEoNSoeATDlf4y3QvkwiELl9GyPLISV5GejTbbQRtQx4LhsXmc9IQ6XCL2d7UxCyEzToEZNMeqR79OUw8Q==}
+  /caniuse-lite/1.0.30001297:
+    resolution: {integrity: sha512-6bbIbowYG8vFs/Lk4hU9jFt7NknGDleVAciK916tp6ft1j+D//ZwwL6LbF1wXMQ32DMSjeuUV8suhh6dlmFjcA==}
     dev: false
 
   /chalk/4.1.2:
@@ -353,9 +353,9 @@ packages:
     hasBin: true
     dependencies:
       cross-spawn: 7.0.3
-      fast-glob: 3.2.7
+      fast-glob: 3.2.8
       fs-extra: 10.0.0
-      hosted-git-info: 4.0.2
+      hosted-git-info: 4.1.0
       lilconfig: 2.0.4
     dev: true
 
@@ -463,8 +463,8 @@ packages:
       esutils: 2.0.3
     dev: true
 
-  /electron-to-chromium/1.4.35:
-    resolution: {integrity: sha512-wzTOMh6HGFWeALMI3bif0mzgRrVGyP1BdFRx7IvWukFrSC5QVQELENuy+Fm2dCrAdQH9T3nuqr07n94nPDFBWA==}
+  /electron-to-chromium/1.4.37:
+    resolution: {integrity: sha512-XIvFB1omSAxYgHYX48sC+HR8i/p7lx7R+0cX9faElg1g++h9IilCrJ12+bQuY+d96Wp7zkBiJwMOv+AhLtLrTg==}
     dev: false
 
   /emoji-regex/8.0.0:
@@ -745,7 +745,7 @@ packages:
       eslint-import-resolver-node: 0.3.6
       eslint-module-utils: 2.7.2
       has: 1.0.3
-      is-core-module: 2.8.0
+      is-core-module: 2.8.1
       is-glob: 4.0.3
       minimatch: 3.0.4
       object.values: 1.1.5
@@ -908,8 +908,8 @@ packages:
     resolution: {integrity: sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==}
     dev: true
 
-  /fast-glob/3.2.7:
-    resolution: {integrity: sha512-rYGMRwip6lUMvYD3BTScMwT1HtAs2d71SMv66Vrxs0IekGZEjhM0pcMfjQPnknBt2zeCwQMEupiN02ZP4DiT1Q==}
+  /fast-glob/3.2.8:
+    resolution: {integrity: sha512-UsiHHXoDbC3iS7vBOFvld7Q9XqBu318xztdHiL10Fjov3AK5GI5bek2ZJkxZcjPguOYH39UL1W4A6w+l7tpNtw==}
     engines: {node: '>=8'}
     dependencies:
       '@nodelib/fs.stat': 2.0.5
@@ -1074,7 +1074,7 @@ packages:
     dependencies:
       array-union: 2.1.0
       dir-glob: 3.0.1
-      fast-glob: 3.2.7
+      fast-glob: 3.2.8
       ignore: 5.2.0
       merge2: 1.4.1
       slash: 3.0.0
@@ -1112,8 +1112,8 @@ packages:
       function-bind: 1.1.1
     dev: true
 
-  /hosted-git-info/4.0.2:
-    resolution: {integrity: sha512-c9OGXbZ3guC/xOlCg1Ci/VgWlwsqDv1yMQL1CWqXDL0hDjXuNcq0zuR4xqPSuasI3kqFDhqSyTjREz5gzq0fXg==}
+  /hosted-git-info/4.1.0:
+    resolution: {integrity: sha512-kyCuEOWjJqZuDbRHzL8V93NzQhwIB71oFWSyzVo+KPZI+pnQPPxucdkrOZvkLRnrf5URsQM+IJ09Dw29cRALIA==}
     engines: {node: '>=10'}
     dependencies:
       lru-cache: 6.0.0
@@ -1192,8 +1192,8 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /is-core-module/2.8.0:
-    resolution: {integrity: sha512-vd15qHsaqrRL7dtH6QNuy0ndJmRDrS9HAM1CAiSifNUFv4x1a0CCVsj18hJ1mShxIG6T2i1sO78MkP56r0nYRw==}
+  /is-core-module/2.8.1:
+    resolution: {integrity: sha512-SdNCUs284hr40hFTFP6l0IfZ/RSrMXF3qgoRHd3/79unUTvrFO/JoXwkGm+5J/Oe3E/b5GsnG330uUNgRpu1PA==}
     dependencies:
       has: 1.0.3
     dev: true
@@ -1645,7 +1645,7 @@ packages:
     resolution: {integrity: sha512-3wCbTpk5WJlyE4mSOtDLhqQmGFi0/TD9VPwmiolnk8U0wRgMEktqCXd3vy5buTO3tljvalNvKrjHEfrd2WpEKA==}
     hasBin: true
     dependencies:
-      is-core-module: 2.8.0
+      is-core-module: 2.8.1
       path-parse: 1.0.7
       supports-preserve-symlinks-flag: 1.0.0
     dev: true
@@ -1668,8 +1668,8 @@ packages:
       queue-microtask: 1.2.3
     dev: true
 
-  /sade/1.8.0:
-    resolution: {integrity: sha512-NRfCA8AVYuAA7Hu8bs18od6J4BdcXXwOv6OJuNgwbw8LcLK8JKwaM3WckLZ+MGyPJUS/ivVgK3twltrOIJJnug==}
+  /sade/1.8.1:
+    resolution: {integrity: sha512-xal3CZX1Xlo/k4ApwCFrHVACi9fBqJ7V+mwhBsuf/1IOKbBy098Fex+Wa/5QMubw09pSZ/u8EY8PWgevJsXp1A==}
     engines: {node: '>=6'}
     dependencies:
       mri: 1.2.0
@@ -1867,7 +1867,7 @@ packages:
       dequal: 2.0.2
       diff: 5.0.0
       kleur: 4.1.4
-      sade: 1.8.0
+      sade: 1.8.1
     dev: true
 
   /v8-compile-cache/2.3.0:
