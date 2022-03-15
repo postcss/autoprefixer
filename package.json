@@ -39,7 +39,7 @@
     "postcss": "^8.1.0"
   },
   "dependencies": {
-    "browserslist": "^4.20.0",
+    "browserslist": "^4.20.2",
     "caniuse-lite": "^1.0.30001317",
     "fraction.js": "^4.2.0",
     "normalize-range": "^0.1.2",
@@ -58,7 +58,7 @@
     "eslint-plugin-prefer-let": "^3.0.1",
     "eslint-plugin-promise": "^6.0.0",
     "nanospy": "^0.5.0",
-    "postcss": "^8.4.9",
+    "postcss": "^8.4.10",
     "size-limit": "^7.0.8",
     "uvu": "^0.5.3"
   },

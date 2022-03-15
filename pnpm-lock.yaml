@@ -3,7 +3,7 @@ lockfileVersion: 5.3
 specifiers:
   '@logux/eslint-config': ^46.1.1
   '@size-limit/preset-small-lib': 7.0.8
-  browserslist: ^4.20.0
+  browserslist: ^4.20.2
   c8: ^7.11.0
   caniuse-lite: ^1.0.30001317
   clean-publish: ^4.0.0
@@ -17,13 +17,13 @@ specifiers:
   nanospy: ^0.5.0
   normalize-range: ^0.1.2
   picocolors: ^1.0.0
-  postcss: ^8.4.9
+  postcss: ^8.4.10
   postcss-value-parser: ^4.2.0
   size-limit: ^7.0.8
   uvu: ^0.5.3
 
 dependencies:
-  browserslist: 4.20.0
+  browserslist: 4.20.2
   caniuse-lite: 1.0.30001317
   fraction.js: 4.2.0
   normalize-range: 0.1.2
@@ -42,7 +42,7 @@ devDependencies:
   eslint-plugin-prefer-let: 3.0.1
   eslint-plugin-promise: 6.0.0_eslint@8.11.0
   nanospy: 0.5.0
-  postcss: 8.4.9
+  postcss: 8.4.10
   size-limit: 7.0.8
   uvu: 0.5.3
 
@@ -59,7 +59,7 @@ packages:
       ajv: 6.12.6
       debug: 4.3.3
       espree: 9.3.1
-      globals: 13.12.1
+      globals: 13.13.0
       ignore: 5.2.0
       import-fresh: 3.3.0
       js-yaml: 4.1.0
@@ -263,8 +263,8 @@ packages:
       fill-range: 7.0.1
     dev: true
 
-  /browserslist/4.20.0:
-    resolution: {integrity: sha512-bnpOoa+DownbciXj0jVGENf8VYQnE2LNWomhYuCsMmmx9Jd9lwq0WXODuwpSsp8AVdKM2/HorrzxAfbKvWTByQ==}
+  /browserslist/4.20.2:
+    resolution: {integrity: sha512-CQOBCqp/9pDvDbx3xfMi+86pr4KXIf2FDkTTdeuYw8OxS9t898LA1Khq57gtufFILXpfgsSx5woNgsBgvGjpsA==}
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
@@ -872,7 +872,7 @@ packages:
       file-entry-cache: 6.0.1
       functional-red-black-tree: 1.0.1
       glob-parent: 6.0.2
-      globals: 13.12.1
+      globals: 13.13.0
       ignore: 5.2.0
       import-fresh: 3.3.0
       imurmurhash: 0.1.4
@@ -1074,8 +1074,8 @@ packages:
       path-is-absolute: 1.0.1
     dev: true
 
-  /globals/13.12.1:
-    resolution: {integrity: sha512-317dFlgY2pdJZ9rspXDks7073GpDmXdfbM3vYYp0HAMKGDh1FfWPleI2ljVNLQX5M5lXcAslTcPTrOrMEFOjyw==}
+  /globals/13.13.0:
+    resolution: {integrity: sha512-EQ7Q18AJlPwp3vUDL4mKA0KXrXyNIQyWon6T6XQiBQF0XHvRsiCSrWmmeATpUzdJN2HhWZU6Pdl0a9zdep5p6A==}
     engines: {node: '>=8'}
     dependencies:
       type-fest: 0.20.2
@@ -1575,8 +1575,8 @@ packages:
     resolution: {integrity: sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==}
     dev: false
 
-  /postcss/8.4.9:
-    resolution: {integrity: sha512-IxN4AJS45+nsjfQGR8qfPedL90Ibx5knHbtsXo5GHiF+K00xgN33rpUS2c0O22Z39xCMtUh1LNmw5VnZdl4YKQ==}
+  /postcss/8.4.10:
+    resolution: {integrity: sha512-84ERZDkObgU3JLeBzqB0DK3+kFHhhxAngTIeOL4cAykcVYaY4ie3iAzaroXpYeHJNZcPIVvbGAyRxDsqJUUSJg==}
     engines: {node: ^10 || ^12 || >=14}
     dependencies:
       nanoid: 3.3.1
