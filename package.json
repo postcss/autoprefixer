@@ -19,10 +19,16 @@
   "main": "lib/autoprefixer.js",
   "bin": "bin/autoprefixer",
   "types": "lib/autoprefixer.d.ts",
-  "funding": {
-    "type": "opencollective",
-    "url": "https://opencollective.com/postcss/"
-  },
+  "funding": [
+    {
+      "type": "opencollective",
+      "url": "https://opencollective.com/postcss/"
+    },
+    {
+      "type": "tidelift",
+      "url": "https://tidelift.com/funding/github/npm/autoprefixer"
+    }
+  ],
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
   "license": "MIT",
   "repository": "postcss/autoprefixer",
