@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 10.4.3
+* Fixed `package.funding` (by Álvaro Mondéjar).
+
 ## 10.4.2
 * Fixed missed `-webkit-` prefix for `width: stretch`.
 
