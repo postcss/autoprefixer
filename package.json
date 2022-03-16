@@ -58,7 +58,7 @@
     "eslint-plugin-prefer-let": "^3.0.1",
     "eslint-plugin-promise": "^6.0.0",
     "nanospy": "^0.5.0",
-    "postcss": "^8.4.11",
+    "postcss": "^8.4.12",
     "size-limit": "^7.0.8",
     "uvu": "^0.5.3"
   },
