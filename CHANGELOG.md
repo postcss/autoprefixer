@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 10.4.4
+* Fixed `package.funding` to have same value between all PostCSS packages.
+
 ## 10.4.3
 * Fixed `package.funding` (by Álvaro Mondéjar).
 
