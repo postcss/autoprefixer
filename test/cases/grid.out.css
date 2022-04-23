@@ -283,3 +283,9 @@
   -ms-grid-row: 1;
   -ms-grid-column: 2;
 }
+
+/** https://github.com/postcss/autoprefixer/issues/1446 */
+.issue-1446 {
+  grid-row-start: span 3;
+  grid-row-end: 5;
+}
