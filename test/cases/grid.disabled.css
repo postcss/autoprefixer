@@ -208,3 +208,9 @@
   grid-template-rows: 1fr;
   grid-template-columns: [content] 1fr;
 }
+
+/** https://github.com/postcss/autoprefixer/issues/1446 */
+.issue-1446 {
+  grid-row-start: span 3;
+  grid-row-end: 5;
+}
