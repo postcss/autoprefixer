@@ -111,7 +111,7 @@ test('splits complex selectors into an array', () => {
   ])
 })
 
-test('isPureNumber', () => {
+test('detects numbers', () => {
   equal(utils.isPureNumber(42), true)
   equal(utils.isPureNumber('42'), true)
   equal(utils.isPureNumber('autoprefixer'), false)
