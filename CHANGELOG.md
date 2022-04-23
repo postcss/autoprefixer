@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 10.4.5
+* Fixed `NaN` in grid (by @SukkaW).
+
 ## 10.4.4
 * Fixed `package.funding` to have same value between all PostCSS packages.
 
