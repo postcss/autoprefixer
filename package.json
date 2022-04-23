@@ -40,21 +40,21 @@
   },
   "dependencies": {
     "browserslist": "^4.20.2",
-    "caniuse-lite": "^1.0.30001317",
+    "caniuse-lite": "^1.0.30001332",
     "fraction.js": "^4.2.0",
     "normalize-range": "^0.1.2",
     "picocolors": "^1.0.0",
     "postcss-value-parser": "^4.2.0"
   },
   "devDependencies": {
-    "@logux/eslint-config": "^46.1.1",
+    "@logux/eslint-config": "^47.0.0",
     "@size-limit/preset-small-lib": "7.0.8",
-    "c8": "^7.11.0",
+    "c8": "^7.11.2",
     "clean-publish": "^4.0.0",
-    "eslint": "^8.11.0",
-    "eslint-config-standard": "^16.0.3",
-    "eslint-plugin-import": "^2.25.4",
-    "eslint-plugin-node": "^11.1.0",
+    "eslint": "^8.14.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.1.0",
     "eslint-plugin-prefer-let": "^3.0.1",
     "eslint-plugin-promise": "^6.0.0",
     "nanospy": "^0.5.0",
@@ -89,7 +89,7 @@
           "bin/autoprefixer"
         ],
         "rules": {
-          "node/global-require": "off"
+          "n/global-require": "off"
         }
       },
       {
