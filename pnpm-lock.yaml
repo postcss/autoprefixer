@@ -1,9 +1,9 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@logux/eslint-config': ^47.0.0
+  '@logux/eslint-config': ^47.2.0
   '@size-limit/preset-small-lib': 7.0.8
-  browserslist: ^4.20.2
+  browserslist: ^4.20.3
   c8: ^7.11.2
   caniuse-lite: ^1.0.30001332
   clean-publish: ^4.0.0
@@ -23,7 +23,7 @@ specifiers:
   uvu: ^0.5.3
 
 dependencies:
-  browserslist: 4.20.2
+  browserslist: 4.20.3
   caniuse-lite: 1.0.30001332
   fraction.js: 4.2.0
   normalize-range: 0.1.2
@@ -31,7 +31,7 @@ dependencies:
   postcss-value-parser: 4.2.0
 
 devDependencies:
-  '@logux/eslint-config': 47.0.0_6c64d8a29505f396e85a7a09189cde65
+  '@logux/eslint-config': 47.2.0_6c64d8a29505f396e85a7a09189cde65
   '@size-limit/preset-small-lib': 7.0.8_size-limit@7.0.8
   c8: 7.11.2
   clean-publish: 4.0.0
@@ -105,11 +105,11 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.11
     dev: true
 
-  /@logux/eslint-config/47.0.0_6c64d8a29505f396e85a7a09189cde65:
-    resolution: {integrity: sha512-pVIfwiwyYWbHmVPYeGQoPRScDRdcf93r0rYyreELooW8Dul0KyxTSVO+kn4e96grY7chNtvR2Omi+iBGxVZRmQ==}
+  /@logux/eslint-config/47.2.0_6c64d8a29505f396e85a7a09189cde65:
+    resolution: {integrity: sha512-nNPPkw+kfA2bLyhkxaqGzd3MWSN4S2dUf69xo2syskBd5ZfFk2WT9ssO+yDDUd26yNgN3AmweKztEwyUim9wOQ==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
-      eslint: ^8.13.0
+      eslint: ^8.14.0
       eslint-config-standard: ^17.0.0
       eslint-plugin-import: ^2.26.0
       eslint-plugin-n: ^15.1.0
@@ -280,8 +280,8 @@ packages:
       fill-range: 7.0.1
     dev: true
 
-  /browserslist/4.20.2:
-    resolution: {integrity: sha512-CQOBCqp/9pDvDbx3xfMi+86pr4KXIf2FDkTTdeuYw8OxS9t898LA1Khq57gtufFILXpfgsSx5woNgsBgvGjpsA==}
+  /browserslist/4.20.3:
+    resolution: {integrity: sha512-NBhymBQl1zM0Y5dQT/O+xiLP9/rzOIQdKM/eMJBAq7yBgaB6krIYLGejrwVYnSHZdqjscB1SPuAjHwxjvN6Wdg==}
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:

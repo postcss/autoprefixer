@@ -39,7 +39,7 @@
     "postcss": "^8.1.0"
   },
   "dependencies": {
-    "browserslist": "^4.20.2",
+    "browserslist": "^4.20.3",
     "caniuse-lite": "^1.0.30001332",
     "fraction.js": "^4.2.0",
     "normalize-range": "^0.1.2",
@@ -47,7 +47,7 @@
     "postcss-value-parser": "^4.2.0"
   },
   "devDependencies": {
-    "@logux/eslint-config": "^47.0.0",
+    "@logux/eslint-config": "^47.2.0",
     "@size-limit/preset-small-lib": "7.0.8",
     "c8": "^7.11.2",
     "clean-publish": "^4.0.0",
