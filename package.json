@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "browserslist": "^4.20.3",
-    "caniuse-lite": "^1.0.30001332",
+    "caniuse-lite": "^1.0.30001334",
     "fraction.js": "^4.2.0",
     "normalize-range": "^0.1.2",
     "picocolors": "^1.0.0",
@@ -54,11 +54,11 @@
     "eslint": "^8.14.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-n": "^15.1.0",
+    "eslint-plugin-n": "^15.2.0",
     "eslint-plugin-prefer-let": "^3.0.1",
     "eslint-plugin-promise": "^6.0.0",
     "nanospy": "^0.5.0",
-    "postcss": "^8.4.12",
+    "postcss": "^8.4.13",
     "size-limit": "^7.0.8",
     "uvu": "^0.5.3"
   },
