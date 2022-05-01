@@ -243,7 +243,7 @@ const COMMONS = [
   'grid-template',
   'grid-template-areas',
   'grid-gap',
-  'color-adjust'
+  'print-color-adjust'
 ]
 
 test.after.each(() => {
@@ -819,8 +819,20 @@ test('supports overscroll-behavior', () => {
   check('overscroll-behavior')
 })
 
-test('supports color-adjust', () => {
-  check('color-adjust')
+test('supports print-color-adjust', () => {
+  let input = read('print-color-adjust')
+  let output = read('print-color-adjust.out')
+  let result = postcss([prefixer('print-color-adjust')]).process(input)
+
+  equal(result.css, output)
+  equal(
+    result.warnings().map(i => i.toString()),
+    [
+      'autoprefixer: <css input>:2:3: Replace color-adjust ' +
+        'to print-color-adjust. The color-adjust shorthand ' +
+        'is currently deprecated.'
+    ]
+  )
 })
 
 test('supports backdrop-filter', () => {

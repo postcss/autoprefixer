@@ -1077,22 +1077,22 @@ f(prefixOverscroll, { match: /a #1/ }, browsers =>
   })
 )
 
-// color-adjust
-let prefixColorAdjust = require('caniuse-lite/data/features/css-color-adjust')
-
-f(prefixColorAdjust, browsers =>
-  prefix(['color-adjust'], {
-    feature: 'css-color-adjust',
-    browsers
-  })
-)
-
 // text-orientation
 let prefixTextOrientation = require('caniuse-lite/data/features/css-text-orientation')
 
 f(prefixTextOrientation, browsers =>
   prefix(['text-orientation'], {
     feature: 'css-text-orientation',
+    browsers
+  })
+)
+
+// print-color-adjust
+let prefixPrintAdjust = require('caniuse-lite/data/features/css-print-color-adjust')
+
+f(prefixPrintAdjust, browsers =>
+  prefix(['print-color-adjust', 'color-adjust'], {
+    feature: 'css-print-color-adjust',
     browsers
   })
 )
