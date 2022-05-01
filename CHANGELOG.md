@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 10.4.6
+* Fixed `print-color-adjust` support.
+
 ## 10.4.5
 * Fixed `NaN` in grid (by @SukkaW).
 
