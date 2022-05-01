@@ -33,7 +33,6 @@ jobs:
         node-version:
           - 16
           - 14
-          - 12
     name: Node.js ${{ matrix.node-version }} Quick
     steps:
       - name: Checkout the repository
@@ -53,7 +52,27 @@ jobs:
         run: pnpm unit
         env:
           FORCE_COLOR: 2
-  old:
+  old12:
+    runs-on: ubuntu-latest
+    name: Node.js 12 Quick
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v3
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: "^6.0.0"
+      - name: Install Node.js 10
+        uses: actions/setup-node@v3
+        with:
+          node-version: 12
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile --ignore-scripts
+      - name: Run unit tests
+        run: pnpm unit
+        env:
+          FORCE_COLOR: 2
+  old10:
     runs-on: ubuntu-latest
     name: Node.js 10 Quick
     steps:
