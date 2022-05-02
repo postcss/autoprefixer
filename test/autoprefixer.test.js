@@ -141,7 +141,11 @@ function prefixer(name) {
     return selectorer
   } else if (name === 'selectors' || name === 'file-selector-button') {
     return fileSelectorButtoner
-  } else if (name === 'selectors' || name === 'autofill') {
+  } else if (
+    name === 'selectors' ||
+    name === 'autofill' ||
+    name === 'print-color-adjust'
+  ) {
     return autofiller
   } else if (name === 'placeholder-shown') {
     return placeholderShowner
