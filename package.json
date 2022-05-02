@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "browserslist": "^4.20.3",
-    "caniuse-lite": "^1.0.30001334",
+    "caniuse-lite": "^1.0.30001335",
     "fraction.js": "^4.2.0",
     "normalize-range": "^0.1.2",
     "picocolors": "^1.0.0",
