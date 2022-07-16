@@ -5,7 +5,7 @@
 
 @media (min-resolution: 144dpi) { }
 
-@media (min-resolution: 2x) { }
+@media (min-resolution: 2dppx), (min-resolution: 2x) { }
 
 @media (min-resolution: 120dpi) { }
 
