@@ -33,9 +33,6 @@ of Autoprefixer.
 ::-moz-placeholder {
   color: gray;
 }
-:-ms-input-placeholder {
-  color: gray;
-}
 ::placeholder {
   color: gray;
 }
