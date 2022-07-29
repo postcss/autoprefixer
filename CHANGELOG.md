@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 10.4.8
+* Do not print `color-adjust` warning if `print-color-adjust` also is in rule.
+
 ## 10.4.7
 * Fixed `print-color-adjust` support in Firefox.
 
