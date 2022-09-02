@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "browserslist": "^4.21.3",
-    "caniuse-lite": "^1.0.30001373",
+    "caniuse-lite": "^1.0.30001388",
     "fraction.js": "^4.2.0",
     "normalize-range": "^0.1.2",
     "picocolors": "^1.0.0",
@@ -48,18 +48,18 @@
   },
   "devDependencies": {
     "@logux/eslint-config": "^47.2.0",
-    "@size-limit/preset-small-lib": "7.0.8",
+    "@size-limit/preset-small-lib": "8.0.1",
     "c8": "^7.12.0",
     "clean-publish": "^4.0.1",
-    "eslint": "^8.20.0",
+    "eslint": "^8.23.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-n": "^15.2.4",
+    "eslint-plugin-n": "^15.2.5",
     "eslint-plugin-prefer-let": "^3.0.1",
-    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-promise": "^6.0.1",
     "nanospy": "^0.5.0",
-    "postcss": "^8.4.14",
-    "size-limit": "^7.0.8",
+    "postcss": "^8.4.16",
+    "size-limit": "^8.0.1",
     "uvu": "^0.5.6"
   },
   "prettier": {
