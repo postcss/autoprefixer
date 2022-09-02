@@ -4,6 +4,8 @@ on:
     branches:
       - main
   pull_request:
+env:
+  FORCE_COLOR: 2
 permissions:
   contents: read
 jobs:
@@ -26,8 +28,6 @@ jobs:
         run: pnpm install --frozen-lockfile --ignore-scripts
       - name: Run tests
         run: pnpm test
-        env:
-          FORCE_COLOR: 2
   short:
     runs-on: ubuntu-latest
     strategy:
@@ -52,8 +52,6 @@ jobs:
         run: pnpm install --frozen-lockfile --ignore-scripts
       - name: Run unit tests
         run: pnpm unit
-        env:
-          FORCE_COLOR: 2
   old:
     runs-on: ubuntu-latest
     strategy:
@@ -79,5 +77,3 @@ jobs:
         run: pnpm install --frozen-lockfile --ignore-scripts
       - name: Run unit tests
         run: pnpm unit
-        env:
-          FORCE_COLOR: 2
