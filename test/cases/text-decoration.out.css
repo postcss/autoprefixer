@@ -11,11 +11,15 @@
 }
 
 .old {
-  text-decoration: underline;
+  -webkit-text-decoration: underline;
+     -moz-text-decoration: underline;
+          text-decoration: underline;
 }
 
 .global {
-  text-decoration: unset;
+  -webkit-text-decoration: unset;
+     -moz-text-decoration: unset;
+          text-decoration: unset;
 }
 
 .skip {
