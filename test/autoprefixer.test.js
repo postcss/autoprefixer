@@ -1139,8 +1139,11 @@ test('add prefix for backface-visibility for Safari 9', () => {
 
 test('supports text-decoration', () => {
   let input = read('text-decoration')
+  let output = read('text-decoration.out')
   let instance = prefixer('text-decoration')
   let result = postcss([instance]).process(input)
+  
+  equal(universalizer(result.css), universalizer(output))
   equal(
     result.warnings().map(i => i.toString()),
     [
