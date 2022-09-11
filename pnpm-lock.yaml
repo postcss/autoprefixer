@@ -5,7 +5,7 @@ specifiers:
   '@size-limit/preset-small-lib': 8.1.0
   browserslist: ^4.21.3
   c8: ^7.12.0
-  caniuse-lite: ^1.0.30001390
+  caniuse-lite: ^1.0.30001394
   clean-publish: ^4.0.1
   eslint: ^8.23.0
   eslint-config-standard: ^17.0.0
@@ -24,7 +24,7 @@ specifiers:
 
 dependencies:
   browserslist: 4.21.3
-  caniuse-lite: 1.0.30001390
+  caniuse-lite: 1.0.30001394
   fraction.js: 4.2.0
   normalize-range: 0.1.2
   picocolors: 1.0.0
@@ -303,8 +303,8 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001390
-      electron-to-chromium: 1.4.243
+      caniuse-lite: 1.0.30001394
+      electron-to-chromium: 1.4.247
       node-releases: 2.0.6
       update-browserslist-db: 1.0.7_browserslist@4.21.3
     dev: false
@@ -351,8 +351,8 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /caniuse-lite/1.0.30001390:
-    resolution: {integrity: sha512-sS4CaUM+/+vqQUlCvCJ2WtDlV81aWtHhqeEVkLokVJJa3ViN4zDxAGfq9R8i1m90uGHxo99cy10Od+lvn3hf0g==}
+  /caniuse-lite/1.0.30001394:
+    resolution: {integrity: sha512-TJ2GBCk9Oa6hw7Ta09E13PE0vHdwqL8mG9d1F2z42w87SpKykRksT4nt2IdGVI6n9TfeRHX60EM/WBxW/AdSfQ==}
     dev: false
 
   /chalk/4.1.2:
@@ -388,7 +388,7 @@ packages:
     hasBin: true
     dependencies:
       cross-spawn: 7.0.3
-      fast-glob: 3.2.11
+      fast-glob: 3.2.12
       lilconfig: 2.0.6
       micromatch: 4.0.5
     dev: true
@@ -508,8 +508,8 @@ packages:
       esutils: 2.0.3
     dev: true
 
-  /electron-to-chromium/1.4.243:
-    resolution: {integrity: sha512-BgLD2gBX43OSXwlT01oYRRD5NIB4n3okTRxkzEAC6G0SZG4TTlyrWMjbOo0fajCwqwpRtMHXQNMjtRN6qpNtfw==}
+  /electron-to-chromium/1.4.247:
+    resolution: {integrity: sha512-FLs6R4FQE+1JHM0hh3sfdxnYjKvJpHZyhQDjc2qFq/xFvmmRt/TATNToZhrcGUFzpF2XjeiuozrA8lI0PZmYYw==}
     dev: false
 
   /emoji-regex/8.0.0:
@@ -1028,8 +1028,8 @@ packages:
     resolution: {integrity: sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==}
     dev: true
 
-  /fast-glob/3.2.11:
-    resolution: {integrity: sha512-xrO3+1bxSo3ZVHAnqzyuewYT6aMFHRAd4Kcs92MAonjwQZLsK9d0SF1IyQ3k5PoirxTW0Oe/RqFgMQ6TcNE5Ew==}
+  /fast-glob/3.2.12:
+    resolution: {integrity: sha512-DVj4CQIYYow0BlaelwK1pHl5n5cRSJfM60UA0zK891sVInoPri2Ekj7+e1CT3/3qxXenpI+nBBmQAcJPJgaj4w==}
     engines: {node: '>=8.6.0'}
     dependencies:
       '@nodelib/fs.stat': 2.0.5
@@ -1192,7 +1192,7 @@ packages:
     dependencies:
       array-union: 2.1.0
       dir-glob: 3.0.1
-      fast-glob: 3.2.11
+      fast-glob: 3.2.12
       ignore: 5.2.0
       merge2: 1.4.1
       slash: 3.0.0
