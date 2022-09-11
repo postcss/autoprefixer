@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 10.4.9
+* Fixed `css-unicode-bidi` issue from latest Can I Use.
+
 ## 10.4.8
 * Do not print `color-adjust` warning if `print-color-adjust` also is in rule.
 
