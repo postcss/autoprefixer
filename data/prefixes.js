@@ -1041,54 +1041,10 @@ f(prefixAnyLink, browsers =>
 )
 
 // unicode-bidi
-// Can I Use DB removed this feature. Here is a copy from the last version.
-let prefixBidi = {
-  A: {
-    A: { 132: 'J D E F A B 1B' },
-    B: {
-      1: 'P Q R S T U V W X Y Z c d e f g h i j k l m n o a H',
-      132: 'C K L G M N O'
-    },
-    C: {
-      1: 'LB MB NB OB PB QB RB SB TB pB UB qB VB WB b XB YB ZB aB bB cB dB eB fB gB hB iB jB kB P Q R rB S T U V W X Y Z c d e f g h i j k l m n o a H sB',
-      33: '0 1 2 3 4 5 6 7 8 9 N O q r s t u v w x y z AB BB CB DB EB FB GB HB IB JB KB',
-      132: '2B oB I p J D E F 3B 4B',
-      292: 'A B C K L G M'
-    },
-    D: {
-      1: 'JB KB LB MB NB OB PB QB RB SB TB pB UB qB VB WB b XB YB ZB aB bB cB dB eB fB gB hB iB jB kB P Q R S T U V W X Y Z c d e f g h i j k l m n o a H sB 5B 6B',
-      132: 'I p J D E F A B C K L G M',
-      548: '0 1 2 3 4 5 6 7 8 9 N O q r s t u v w x y z AB BB CB DB EB FB GB HB IB'
-    },
-    E: {
-      132: 'I p J D E 7B tB 8B 9B AC',
-      548: 'F A B C K L G BC uB lB mB CC DC EC vB wB xB yB nB FC'
-    },
-    F: {
-      132: '0 1 2 3 4 5 6 7 8 9 F B C G M N O q r s t u v w x y z AB BB CB DB EB FB GB HB IB JB KB LB MB NB OB PB QB RB SB TB UB VB WB b XB YB ZB aB bB cB dB eB fB gB hB iB jB kB P Q R rB S T U V W X Y Z GC HC IC JC lB zB KC mB'
-    },
-    G: {
-      132: 'E tB LC 0B MC NC OC PC',
-      548: 'QC RC SC TC UC VC WC XC YC ZC aC bC cC dC eC vB wB xB yB nB'
-    },
-    H: { 16: 'fC' },
-    I: { 1: 'H', 16: 'oB I gC hC iC jC 0B kC lC' },
-    J: { 16: 'D A' },
-    K: { 1: 'b', 16: 'A B C lB zB mB' },
-    L: { 1: 'H' },
-    M: { 1: 'a' },
-    N: { 132: 'A B' },
-    O: { 16: 'mC' },
-    P: { 1: 'nC oC pC qC rC uB sC tC uC vC wC nB xC yC', 16: 'I' },
-    Q: { 16: 'zC' },
-    R: { 16: '0C' },
-    S: { 33: '1C' }
-  },
-  B: 4,
-  C: 'CSS unicode-bidi property'
-}
 
-f(prefixBidi, browsers =>
+let bidiIsolate = require('caniuse-lite/data/features/mdn-css-unicode-bidi-isolate')
+
+f(bidiIsolate, browsers =>
   prefix(['isolate'], {
     props: ['unicode-bidi'],
     feature: 'css-unicode-bidi',
@@ -1096,7 +1052,9 @@ f(prefixBidi, browsers =>
   })
 )
 
-f(prefixBidi, { match: /y x|a x #2/ }, browsers =>
+let bidiPlaintext = require('caniuse-lite/data/features/mdn-css-unicode-bidi-plaintext')
+
+f(bidiPlaintext, browsers =>
   prefix(['plaintext'], {
     props: ['unicode-bidi'],
     feature: 'css-unicode-bidi',
@@ -1104,7 +1062,9 @@ f(prefixBidi, { match: /y x|a x #2/ }, browsers =>
   })
 )
 
-f(prefixBidi, { match: /y x/ }, browsers =>
+let bidiOverride = require('caniuse-lite/data/features/mdn-css-unicode-bidi-isolate-override')
+
+f(bidiOverride, { match: /y x/ }, browsers =>
   prefix(['isolate-override'], {
     props: ['unicode-bidi'],
     feature: 'css-unicode-bidi',
