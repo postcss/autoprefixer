@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 10.4.10
+* Fixed `unicode-bidi` prefixes by moving to MDN data.
+
 ## 10.4.9
 * Fixed `css-unicode-bidi` issue from latest Can I Use.
 
