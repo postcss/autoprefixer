@@ -1,10 +1,19 @@
 .shorthand {
   -webkit-text-decoration: overline double red;
-     -moz-text-decoration: overline double red;
           text-decoration: overline double red;
 }
 
+.shorthand-single-value {
+  text-decoration: underline;
+}
+
 .full {
+  -webkit-text-decoration-color: green;
+     -moz-text-decoration-color: green;
+          text-decoration-color: green;
+  -webkit-text-decoration-line: line-through;
+     -moz-text-decoration-line: line-through;
+          text-decoration-line: line-through;
   -webkit-text-decoration-style: double;
      -moz-text-decoration-style: double;
           text-decoration-style: double;

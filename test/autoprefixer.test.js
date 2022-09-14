@@ -90,6 +90,9 @@ let example = autoprefixer({
 let autofiller = autoprefixer({
   overrideBrowserslist: ['Chrome > 90', 'Firefox >= 82']
 })
+let textDecorator = autoprefixer({
+  overrideBrowserslist: ['Chrome >= 57', 'Firefox >= 36', 'Safari >= 12.1']
+})
 let content = autoprefixer({
   overrideBrowserslist: [
     '> 2%',
@@ -137,6 +140,8 @@ function prefixer(name) {
     name === 'at-rules'
   ) {
     return intrinsicer
+  } else if (name === 'text-decoration-shorthand') {
+    return textDecorator
   } else if (name === 'selectors' || name === 'placeholder') {
     return selectorer
   } else if (name === 'selectors' || name === 'file-selector-button') {
@@ -1139,15 +1144,27 @@ test('add prefix for backface-visibility for Safari 9', () => {
 
 test('supports text-decoration', () => {
   let input = read('text-decoration')
+  let output = read('text-decoration.out')
   let instance = prefixer('text-decoration')
   let result = postcss([instance]).process(input)
+
+  equal(universalizer(result.css), universalizer(output))
   equal(
     result.warnings().map(i => i.toString()),
     [
-      'autoprefixer: <css input>:26:3: Replace text-decoration-skip: ink ' +
+      'autoprefixer: <css input>:32:3: Replace text-decoration-skip: ink ' +
         'to text-decoration-skip-ink: auto, because spec had been changed'
     ]
   )
+})
+
+test('supports text-decoration shorthand', () => {
+  let input = read('text-decoration')
+  let output = read('text-decoration.shorthand.out')
+  let instance = prefixer('text-decoration-shorthand')
+  let result = postcss([instance]).process(input)
+
+  equal(universalizer(result.css), universalizer(output))
 })
 
 test('supports -webkit-line-clamp', () => {

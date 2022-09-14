@@ -1,5 +1,6 @@
 .shorthand {
-  text-decoration: overline double red;
+  -webkit-text-decoration: overline double red;
+          text-decoration: overline double red;
 }
 
 .shorthand-single-value {
