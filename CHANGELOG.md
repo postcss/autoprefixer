@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 10.4.11
+* Fixed `text-decoration` prefixes by moving to MDN data (by Romain Menke).
+
 ## 10.4.10
 * Fixed `unicode-bidi` prefixes by moving to MDN data.
 
