@@ -669,57 +669,37 @@ f(prefixDecoration, { match: /x.*#[235]/ }, browsers =>
 let prefixDecorationShorthand = require('caniuse-lite/data/features/mdn-text-decoration-shorthand')
 
 f(prefixDecorationShorthand, browsers =>
-  prefix(
-    [
-      'text-decoration'
-    ],
-    {
-      feature: 'text-decoration',
-      browsers
-    }
-  )
+  prefix(['text-decoration'], {
+    feature: 'text-decoration',
+    browsers
+  })
 )
 
 let prefixDecorationColor = require('caniuse-lite/data/features/mdn-text-decoration-color')
 
 f(prefixDecorationColor, browsers =>
-  prefix(
-    [
-      'text-decoration-color'
-    ],
-    {
-      feature: 'text-decoration',
-      browsers
-    }
-  )
+  prefix(['text-decoration-color'], {
+    feature: 'text-decoration',
+    browsers
+  })
 )
 
 let prefixDecorationLine = require('caniuse-lite/data/features/mdn-text-decoration-line')
 
 f(prefixDecorationLine, browsers =>
-  prefix(
-    [
-      'text-decoration-line'
-    ],
-    {
-      feature: 'text-decoration',
-      browsers
-    }
-  )
+  prefix(['text-decoration-line'], {
+    feature: 'text-decoration',
+    browsers
+  })
 )
 
 let prefixDecorationStyle = require('caniuse-lite/data/features/mdn-text-decoration-style')
 
 f(prefixDecorationStyle, browsers =>
-  prefix(
-    [
-      'text-decoration-style'
-    ],
-    {
-      feature: 'text-decoration',
-      browsers
-    }
-  )
+  prefix(['text-decoration-style'], {
+    feature: 'text-decoration',
+    browsers
+  })
 )
 
 // Text Size Adjust
