@@ -39,8 +39,8 @@
     "postcss": "^8.1.0"
   },
   "dependencies": {
-    "browserslist": "^4.21.3",
-    "caniuse-lite": "^1.0.30001399",
+    "browserslist": "^4.21.4",
+    "caniuse-lite": "^1.0.30001407",
     "fraction.js": "^4.2.0",
     "normalize-range": "^0.1.2",
     "picocolors": "^1.0.0",
