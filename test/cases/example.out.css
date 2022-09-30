@@ -1,8 +1,6 @@
 ::-moz-placeholder {
   color: gray;
-}
-
-::placeholder {
+}::placeholder {
   color: gray;
 }
 
