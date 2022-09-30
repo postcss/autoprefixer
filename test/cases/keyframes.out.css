@@ -17,8 +17,7 @@
     -webkit-transform: rotate(0);
             transform: rotate(0)
   }
-}
-@-o-keyframes anim {
+}@-o-keyframes anim {
   from {
     top: calc(10% + 10px);
     -o-transform: rotate(10deg);
@@ -33,8 +32,7 @@
     -o-transform: rotate(0);
        transform: rotate(0)
   }
-}
-@keyframes anim {
+}@keyframes anim {
   from {
     top: -webkit-calc(10% + 10px);
     top: calc(10% + 10px);
