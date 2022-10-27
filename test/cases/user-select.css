@@ -9,3 +9,7 @@ b {
 .all {
   user-select: all;
 }
+
+.var {
+  user-select: var(--o-select);
+}

@@ -14,3 +14,9 @@ b {
   -webkit-user-select: all;
           user-select: all;
 }
+
+.var {
+  -webkit-user-select: var(--o-select);
+      -ms-user-select: var(--o-select);
+          user-select: var(--o-select);
+}
