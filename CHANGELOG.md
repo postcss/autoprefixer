@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 10.4.13
+* Fixed missed prefixes on vendor prefixes in name of CSS Custom Property.
+
 ## 10.4.12
 * Fixed support of unit-less zero angle in backgrounds (by 一丝).
 
