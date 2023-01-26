@@ -37,9 +37,9 @@ Before you begin contributing make sure you have a [GitHub account].
 * Clone a copy of it to your computer:
   `git clone https://github.com/USERNAME/autoprefixer` (replace `USERNAME`
   to your GitHub name).
-* Ensure that you have the [Yarn](https://yarnpkg.com/) package manager
+* Ensure that you have the [pnpm](https://pnpm.io/) package manager
   installed.
-* Run `yarn install` this will install all dependencies needed to run tests.
+* Run `pnpm install` this will install all dependencies needed to run tests.
 
 [GitHub account]: https://github.com/signup/free
 
@@ -97,6 +97,6 @@ on [Can I use](https://caniuse.com/).
    If you need different browsers, change `prefixer()` function in the top
    of test file.
 
-8. Run `yarn test`.
+8. Run `pnpm test`.
 9. Push the branch to GitHub.
 10. Open your fork on GitHub an send pull request.
