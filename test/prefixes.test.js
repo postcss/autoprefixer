@@ -1,5 +1,5 @@
 let { equal, is } = require('uvu/assert')
-let { agents } = require('caniuse-lite')
+let { agents } = require('caniuse-lite/dist/unpacker/agents')
 let { parse } = require('postcss')
 let { test } = require('uvu')
 

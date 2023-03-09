@@ -1,4 +1,4 @@
-let unpack = require('caniuse-lite').feature
+let unpack = require('caniuse-lite/dist/unpacker/feature')
 
 function browsersSort(a, b) {
   a = a.split(' ')

@@ -1,6 +1,6 @@
 let { equal, match } = require('uvu/assert')
 let browserslist = require('browserslist')
-let { agents } = require('caniuse-lite')
+let { agents } = require('caniuse-lite/dist/unpacker/agents')
 let { test } = require('uvu')
 
 let Browsers = require('../lib/browsers')
