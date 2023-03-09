@@ -39,27 +39,27 @@
     "postcss": "^8.1.0"
   },
   "dependencies": {
-    "browserslist": "^4.21.4",
-    "caniuse-lite": "^1.0.30001439",
+    "browserslist": "^4.21.5",
+    "caniuse-lite": "^1.0.30001464",
     "fraction.js": "^4.2.0",
     "normalize-range": "^0.1.2",
     "picocolors": "^1.0.0",
     "postcss-value-parser": "^4.2.0"
   },
   "devDependencies": {
-    "@logux/eslint-config": "^48.0.0",
-    "@size-limit/preset-small-lib": "8.1.0",
-    "c8": "^7.12.0",
-    "clean-publish": "^4.0.2",
-    "eslint": "^8.29.0",
+    "@logux/eslint-config": "^49.0.0",
+    "@size-limit/preset-small-lib": "8.2.4",
+    "c8": "^7.13.0",
+    "clean-publish": "^4.1.1",
+    "eslint": "^8.35.0",
     "eslint-config-standard": "^17.0.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-n": "^15.6.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.6.1",
     "eslint-plugin-prefer-let": "^3.0.1",
     "eslint-plugin-promise": "^6.1.1",
     "nanospy": "^0.5.0",
-    "postcss": "^8.4.20",
-    "size-limit": "^8.1.0",
+    "postcss": "^8.4.21",
+    "size-limit": "^8.2.4",
     "uvu": "^0.5.6"
   },
   "prettier": {
@@ -72,7 +72,7 @@
   },
   "size-limit": [
     {
-      "limit": "105 KB"
+      "limit": "60 KB"
     }
   ],
   "eslintConfig": {
