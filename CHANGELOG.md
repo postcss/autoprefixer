@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 10.4.14
+* Improved startup time and reduced JS bundle size (by Kārlis Gaņģis).
+
 ## 10.4.13
 * Fixed missed prefixes on vendor prefixes in name of CSS Custom Property.
 
