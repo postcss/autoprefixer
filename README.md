@@ -1,7 +1,7 @@
 # Autoprefixer [![Cult Of Martians][cult-img]][cult]
 
 <img align="right" width="94" height="71"
-     src="http://postcss.github.io/autoprefixer/logo.svg"
+     src="https://postcss.github.io/autoprefixer/logo.svg"
      title="Autoprefixer logo by Anton Lovchikov">
 
 [PostCSS] plugin to parse CSS and add vendor prefixes to CSS rules using values
@@ -57,9 +57,9 @@ Twitter account for news and releases: [@autoprefixer].
 [interactive demo]: https://autoprefixer.github.io/
 [@autoprefixer]:    https://twitter.com/autoprefixer
 [Can I Use]:        https://caniuse.com/
-[cult-img]:         http://cultofmartians.com/assets/badges/badge.svg
+[cult-img]:         https://cultofmartians.com/assets/badges/badge.svg
 [PostCSS]:          https://github.com/postcss/postcss
-[cult]:             http://cultofmartians.com/tasks/autoprefixer-grid.html
+[cult]:             https://cultofmartians.com/tasks/autoprefixer-grid.html
 
 
 ## Contents
@@ -463,7 +463,7 @@ result.warnings().forEach(warn => {
 
 Every Autoprefixer runner should display these warnings.
 
-[PostCSS warning API]: http://api.postcss.org/Warning.html
+[PostCSS warning API]: https://postcss.org/api/#warning
 
 
 ## Disabling
@@ -616,7 +616,7 @@ You can use PostCSS processor to process several CSS files
 to increase performance.
 
 [usage statistics]: https://github.com/browserslist/browserslist#custom-usage-data
-[PostCSS API]:      http://api.postcss.org
+[PostCSS API]:      https://postcss.org/api/
 
 ## Environment Variables
 
