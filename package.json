@@ -44,7 +44,7 @@
   },
   "dependencies": {
     "browserslist": "^4.21.5",
-    "caniuse-lite": "^1.0.30001464",
+    "caniuse-lite": "^1.0.30001470",
     "fraction.js": "^4.2.0",
     "normalize-range": "^0.1.2",
     "picocolors": "^1.0.0",
@@ -55,7 +55,7 @@
     "@size-limit/preset-small-lib": "8.2.4",
     "c8": "^7.13.0",
     "clean-publish": "^4.1.1",
-    "eslint": "^8.35.0",
+    "eslint": "^8.36.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-n": "^15.6.1",
