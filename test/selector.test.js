@@ -42,16 +42,16 @@ test('grouping rule gets correct _autoprefixerPrefixeds property', () => {
   rSel.prefixeds(css.first)
   equal(css.first._autoprefixerPrefixeds, {
     '::selection': {
-      '-webkit-': '.c::-webkit-selection',
       '-moz-': '.c::-moz-selection',
       '-ms-': '.c::-ms-selection',
-      '-o-': '.c::-o-selection'
+      '-o-': '.c::-o-selection',
+      '-webkit-': '.c::-webkit-selection'
     },
     ':read-only': {
-      '-webkit-': '.d:-webkit-read-only',
       '-moz-': '.d:-moz-read-only',
       '-ms-': '.d:-ms-read-only',
-      '-o-': '.d:-o-read-only'
+      '-o-': '.d:-o-read-only',
+      '-webkit-': '.d:-webkit-read-only'
     }
   })
 })
@@ -60,10 +60,10 @@ test('returns all available prefixed selectors', () => {
   let css = parse('::selection {}')
   equal(selector.prefixeds(css.first), {
     '::selection': {
-      '-webkit-': '::-webkit-selection',
       '-moz-': '::-moz-selection',
       '-ms-': '::-ms-selection',
-      '-o-': '::-o-selection'
+      '-o-': '::-o-selection',
+      '-webkit-': '::-webkit-selection'
     }
   })
 })

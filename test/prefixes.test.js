@@ -62,36 +62,38 @@ test('selects necessary prefixes', () => {
 
 test('preprocesses prefixes add data', () => {
   equal(fill.add, {
-    'selectors': [cSel],
-    'a': aProp,
+    '@supports': new Supports(Prefixes, fill),
     '*': {
       values: [bVal]
     },
-    '@supports': new Supports(Prefixes, fill)
+    'a': aProp,
+    'selectors': [cSel]
   })
 })
 
 test('preprocesses prefixes remove data', () => {
   equal(
-    JSON.stringify(fill.remove),
-    JSON.stringify({
-      'selectors': [cSel.old('-moz-')],
-      '-webkit-a': {
-        remove: true
-      },
-      '-ms-a': {
-        remove: true
-      },
-      '-moz- olda': {
-        remove: true
-      },
-      'a': {
-        values: [old('-ms-b'), old('-moz-b'), old('-webkit-b')]
-      },
-      '*': {
-        values: [old('-ms-b'), old('-moz-b'), old('-webkit-b')]
-      }
-    })
+    JSON.parse(JSON.stringify(fill.remove)),
+    JSON.parse(
+      JSON.stringify({
+        '-moz- olda': {
+          remove: true
+        },
+        '-ms-a': {
+          remove: true
+        },
+        '-webkit-a': {
+          remove: true
+        },
+        '*': {
+          values: [old('-ms-b'), old('-moz-b'), old('-webkit-b')]
+        },
+        'a': {
+          values: [old('-ms-b'), old('-moz-b'), old('-webkit-b')]
+        },
+        'selectors': [cSel.old('-moz-')]
+      })
+    )
   )
 })
 

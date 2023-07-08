@@ -1,4 +1,4 @@
-let { equal, type, is } = require('uvu/assert')
+let { equal, is, type } = require('uvu/assert')
 let { parse } = require('postcss')
 let { test } = require('uvu')
 

@@ -1,4 +1,4 @@
-let { equal, throws, type, match, not } = require('uvu/assert')
+let { equal, match, not, throws, type } = require('uvu/assert')
 let { restoreAll, spyOn } = require('nanospy')
 let { readFileSync } = require('fs')
 let { join } = require('path')
@@ -8,9 +8,9 @@ let postcss = require('postcss')
 let autoprefixer = require('..')
 
 let grider = autoprefixer({
-  overrideBrowserslist: ['Chrome 25', 'Edge 12', 'IE 10'],
   cascade: false,
-  grid: 'autoplace'
+  grid: 'autoplace',
+  overrideBrowserslist: ['Chrome 25', 'Edge 12', 'IE 10']
 })
 
 let cleaner = autoprefixer({
@@ -26,8 +26,8 @@ let borderer = autoprefixer({
   overrideBrowserslist: ['Safari 4', 'Firefox 3.6']
 })
 let cascader = autoprefixer({
-  overrideBrowserslist: ['Chrome > 19', 'Firefox 21', 'IE 10'],
-  cascade: true
+  cascade: true,
+  overrideBrowserslist: ['Chrome > 19', 'Firefox 21', 'IE 10']
 })
 let keyframer = autoprefixer({
   overrideBrowserslist: ['Chrome > 19', 'Opera 12']
@@ -48,8 +48,8 @@ let gradienter = autoprefixer({
   overrideBrowserslist: ['Chrome 25', 'Opera 12', 'Android 2.3']
 })
 let grouping = autoprefixer({
-  overrideBrowserslist: ['Chrome 25', 'Firefox > 17', 'IE 10', 'Edge 12'],
-  grid: 'autoplace'
+  grid: 'autoplace',
+  overrideBrowserslist: ['Chrome 25', 'Firefox > 17', 'IE 10', 'Edge 12']
 })
 let ffgradienter = autoprefixer({
   overrideBrowserslist: ['Chrome 25', 'Opera 12', 'Firefox 6']
@@ -532,8 +532,8 @@ test('does not remove unnecessary prefixes on request', () => {
 test('does not add prefixes on request', () => {
   for (let i of ['transition', 'values', 'fullscreen']) {
     let remover = autoprefixer({
-      overrideBrowserslist: ['Opera 12'],
-      add: false
+      add: false,
+      overrideBrowserslist: ['Opera 12']
     })
     let unprefixed = read(i)
     equal(postcss([remover]).process(unprefixed).css, unprefixed)
@@ -633,8 +633,8 @@ test('has disabled grid options by default', () => {
 test('has different outputs for different grid options', () => {
   function ap(gridValue) {
     return autoprefixer({
-      overrideBrowserslist: ['Edge 12', 'IE 10'],
-      grid: gridValue
+      grid: gridValue,
+      overrideBrowserslist: ['Edge 12', 'IE 10']
     })
   }
   let input = read('grid-options')
@@ -676,8 +676,8 @@ test('has different outputs for different grid environment variables', () => {
 test('has option to disable flexbox support', () => {
   let css = read('flexbox')
   let instance = autoprefixer({
-    overrideBrowserslist: ['IE 10'],
-    flexbox: false
+    flexbox: false,
+    overrideBrowserslist: ['IE 10']
   })
   let result = postcss([instance]).process(css)
   equal(result.css, css)
@@ -685,8 +685,8 @@ test('has option to disable flexbox support', () => {
 
 test('has option to disable 2009 flexbox support', () => {
   let ap = autoprefixer({
-    overrideBrowserslist: ['Chrome > 19'],
-    flexbox: 'no-2009'
+    flexbox: 'no-2009',
+    overrideBrowserslist: ['Chrome > 19']
   })
   let css = 'a{flex:1;transition:flex}'
   let result = postcss([ap]).process(css)
@@ -718,8 +718,8 @@ test('ignores unknown versions on request', () => {
   }, /Unknown version 100 of ie/)
   not.throws(() => {
     autoprefixer({
-      overrideBrowserslist: ['ie 100'],
-      ignoreUnknownVersions: true
+      ignoreUnknownVersions: true,
+      overrideBrowserslist: ['ie 100']
     }).info()
   })
 })
@@ -1045,8 +1045,8 @@ test('supports grid autoplacement', () => {
 test('shows Grid warnings only for IE', () => {
   let input = 'a { grid-template-rows: repeat(auto-fit, 1px) }'
   let instance = autoprefixer({
-    overrideBrowserslist: 'chrome 27',
-    grid: true
+    grid: true,
+    overrideBrowserslist: 'chrome 27'
   })
   let result = postcss([instance]).process(input)
   equal(result.warnings().length, 0)
@@ -1130,8 +1130,8 @@ test('add prefix for backface-visibility for Safari 9', () => {
   let input =
     'a{ ' + 'backface-visibility: hidden; ' + 'transform-style: preserve-3d }'
   let ap = autoprefixer({
-    overrideBrowserslist: ['Safari 9'],
-    flexbox: false
+    flexbox: false,
+    overrideBrowserslist: ['Safari 9']
   })
   equal(
     postcss([ap]).process(input).css,

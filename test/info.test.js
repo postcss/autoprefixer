@@ -10,17 +10,20 @@ let info = require('../lib/info')
 let data = {
   browsers: agents,
   prefixes: {
+    '@keyframes': {
+      browsers: ['firefox 21']
+    },
     'a': {
       browsers: ['firefox 21', 'firefox 20', 'chrome 30'],
       transition: true
     },
-    'c': {
-      browsers: ['firefox 21'],
-      props: ['c']
-    },
     'b': {
       browsers: ['ie 6', 'firefox 20'],
       props: ['a', '*']
+    },
+    'c': {
+      browsers: ['firefox 21'],
+      props: ['c']
     },
     'd': {
       browsers: ['firefox 21'],
@@ -32,9 +35,6 @@ let data = {
     },
     'grid-row': {
       browsers: ['ie 6']
-    },
-    '@keyframes': {
-      browsers: ['firefox 21']
     },
     'transition': {
       browsers: ['firefox 21']

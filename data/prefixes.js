@@ -68,9 +68,9 @@ f(prefixBorderRadius, browsers =>
       'border-bottom-left-radius'
     ],
     {
-      mistakes: ['-khtml-', '-ms-', '-o-'],
+      browsers,
       feature: 'border-radius',
-      browsers
+      mistakes: ['-khtml-', '-ms-', '-o-']
     }
   )
 )
@@ -80,9 +80,9 @@ let prefixBoxshadow = require('caniuse-lite/data/features/css-boxshadow')
 
 f(prefixBoxshadow, browsers =>
   prefix(['box-shadow'], {
-    mistakes: ['-khtml-'],
+    browsers,
     feature: 'css-boxshadow',
-    browsers
+    mistakes: ['-khtml-']
   })
 )
 
@@ -104,9 +104,9 @@ f(prefixAnimation, browsers =>
       '@keyframes'
     ],
     {
-      mistakes: ['-khtml-', '-ms-'],
+      browsers,
       feature: 'css-animation',
-      browsers
+      mistakes: ['-khtml-', '-ms-']
     }
   )
 )
@@ -124,9 +124,9 @@ f(prefixTransition, browsers =>
       'transition-timing-function'
     ],
     {
-      mistakes: ['-khtml-', '-ms-'],
       browsers,
-      feature: 'css-transitions'
+      feature: 'css-transitions',
+      mistakes: ['-khtml-', '-ms-']
     }
   )
 )
@@ -136,8 +136,8 @@ let prefixTransform2d = require('caniuse-lite/data/features/transforms2d')
 
 f(prefixTransform2d, browsers =>
   prefix(['transform', 'transform-origin'], {
-    feature: 'transforms2d',
-    browsers
+    browsers,
+    feature: 'transforms2d'
   })
 )
 
@@ -146,21 +146,21 @@ let prefixTransforms3d = require('caniuse-lite/data/features/transforms3d')
 
 f(prefixTransforms3d, browsers => {
   prefix(['perspective', 'perspective-origin'], {
-    feature: 'transforms3d',
-    browsers
-  })
-  return prefix(['transform-style'], {
-    mistakes: ['-ms-', '-o-'],
     browsers,
     feature: 'transforms3d'
+  })
+  return prefix(['transform-style'], {
+    browsers,
+    feature: 'transforms3d',
+    mistakes: ['-ms-', '-o-']
   })
 })
 
 f(prefixTransforms3d, { match: /y\sx|y\s#2/ }, browsers =>
   prefix(['backface-visibility'], {
-    mistakes: ['-ms-', '-o-'],
+    browsers,
     feature: 'transforms3d',
-    browsers
+    mistakes: ['-ms-', '-o-']
   })
 )
 
@@ -176,6 +176,9 @@ f(prefixGradients, { match: /y\sx/ }, browsers =>
       'repeating-radial-gradient'
     ],
     {
+      browsers,
+      feature: 'css-gradients',
+      mistakes: ['-ms-'],
       props: [
         'background',
         'background-image',
@@ -185,10 +188,7 @@ f(prefixGradients, { match: /y\sx/ }, browsers =>
         'list-style-image',
         'content',
         'mask-image'
-      ],
-      mistakes: ['-ms-'],
-      feature: 'css-gradients',
-      browsers
+      ]
     }
   )
 )
@@ -209,8 +209,8 @@ f(prefixGradients, { match: /a\sx/ }, browsers => {
       'repeating-radial-gradient'
     ],
     {
-      feature: 'css-gradients',
-      browsers
+      browsers,
+      feature: 'css-gradients'
     }
   )
 })
@@ -220,8 +220,8 @@ let prefixBoxsizing = require('caniuse-lite/data/features/css3-boxsizing')
 
 f(prefixBoxsizing, browsers =>
   prefix(['box-sizing'], {
-    feature: 'css3-boxsizing',
-    browsers
+    browsers,
+    feature: 'css3-boxsizing'
   })
 )
 
@@ -230,8 +230,8 @@ let prefixFilters = require('caniuse-lite/data/features/css-filters')
 
 f(prefixFilters, browsers =>
   prefix(['filter'], {
-    feature: 'css-filters',
-    browsers
+    browsers,
+    feature: 'css-filters'
   })
 )
 
@@ -240,6 +240,8 @@ let prefixFilterFunction = require('caniuse-lite/data/features/css-filter-functi
 
 f(prefixFilterFunction, browsers =>
   prefix(['filter-function'], {
+    browsers,
+    feature: 'css-filter-function',
     props: [
       'background',
       'background-image',
@@ -249,9 +251,7 @@ f(prefixFilterFunction, browsers =>
       'list-style-image',
       'content',
       'mask-image'
-    ],
-    feature: 'css-filter-function',
-    browsers
+    ]
   })
 )
 
@@ -260,8 +260,8 @@ let prefixBackdrop = require('caniuse-lite/data/features/css-backdrop-filter')
 
 f(prefixBackdrop, { match: /y\sx|y\s#2/ }, browsers =>
   prefix(['backdrop-filter'], {
-    feature: 'css-backdrop-filter',
-    browsers
+    browsers,
+    feature: 'css-backdrop-filter'
   })
 )
 
@@ -270,6 +270,8 @@ let prefixElementFunction = require('caniuse-lite/data/features/css-element-func
 
 f(prefixElementFunction, browsers =>
   prefix(['element'], {
+    browsers,
+    feature: 'css-element-function',
     props: [
       'background',
       'background-image',
@@ -279,9 +281,7 @@ f(prefixElementFunction, browsers =>
       'list-style-image',
       'content',
       'mask-image'
-    ],
-    feature: 'css-element-function',
-    browsers
+    ]
   })
 )
 
@@ -303,15 +303,15 @@ f(prefixMulticolumns, browsers => {
       'column-fill'
     ],
     {
-      feature: 'multicolumn',
-      browsers
+      browsers,
+      feature: 'multicolumn'
     }
   )
 
   let noff = browsers.filter(i => !/firefox/.test(i))
   prefix(['break-before', 'break-after', 'break-inside'], {
-    feature: 'multicolumn',
-    browsers: noff
+    browsers: noff,
+    feature: 'multicolumn'
   })
 })
 
@@ -320,9 +320,9 @@ let prefixUserSelect = require('caniuse-lite/data/features/user-select-none')
 
 f(prefixUserSelect, browsers =>
   prefix(['user-select'], {
-    mistakes: ['-khtml-'],
+    browsers,
     feature: 'user-select-none',
-    browsers
+    mistakes: ['-khtml-']
   })
 )
 
@@ -338,13 +338,13 @@ f(prefixFlexbox, { match: /a\sx/ }, browsers => {
     }
   })
   prefix(['display-flex', 'inline-flex'], {
-    props: ['display'],
+    browsers,
     feature: 'flexbox',
-    browsers
+    props: ['display']
   })
   prefix(['flex', 'flex-grow', 'flex-shrink', 'flex-basis'], {
-    feature: 'flexbox',
-    browsers
+    browsers,
+    feature: 'flexbox'
   })
   prefix(
     [
@@ -358,20 +358,20 @@ f(prefixFlexbox, { match: /a\sx/ }, browsers => {
       'align-content'
     ],
     {
-      feature: 'flexbox',
-      browsers
+      browsers,
+      feature: 'flexbox'
     }
   )
 })
 
 f(prefixFlexbox, { match: /y\sx/ }, browsers => {
   add(['display-flex', 'inline-flex'], {
-    feature: 'flexbox',
-    browsers
+    browsers,
+    feature: 'flexbox'
   })
   add(['flex', 'flex-grow', 'flex-shrink', 'flex-basis'], {
-    feature: 'flexbox',
-    browsers
+    browsers,
+    feature: 'flexbox'
   })
   add(
     [
@@ -385,8 +385,8 @@ f(prefixFlexbox, { match: /y\sx/ }, browsers => {
       'align-content'
     ],
     {
-      feature: 'flexbox',
-      browsers
+      browsers,
+      feature: 'flexbox'
     }
   )
 })
@@ -396,9 +396,9 @@ let prefixCalc = require('caniuse-lite/data/features/calc')
 
 f(prefixCalc, browsers =>
   prefix(['calc'], {
-    props: ['*'],
+    browsers,
     feature: 'calc',
-    browsers
+    props: ['*']
   })
 )
 
@@ -407,8 +407,8 @@ let prefixBackgroundOptions = require('caniuse-lite/data/features/background-img
 
 f(prefixBackgroundOptions, browsers =>
   prefix(['background-origin', 'background-size'], {
-    feature: 'background-img-opts',
-    browsers
+    browsers,
+    feature: 'background-img-opts'
   })
 )
 
@@ -417,8 +417,8 @@ let prefixBackgroundClipText = require('caniuse-lite/data/features/background-cl
 
 f(prefixBackgroundClipText, browsers =>
   prefix(['background-clip'], {
-    feature: 'background-clip-text',
-    browsers
+    browsers,
+    feature: 'background-clip-text'
   })
 )
 
@@ -433,8 +433,8 @@ f(prefixFontFeature, browsers =>
       'font-language-override'
     ],
     {
-      feature: 'font-feature',
-      browsers
+      browsers,
+      feature: 'font-feature'
     }
   )
 )
@@ -444,8 +444,8 @@ let prefixFontKerning = require('caniuse-lite/data/features/font-kerning')
 
 f(prefixFontKerning, browsers =>
   prefix(['font-kerning'], {
-    feature: 'font-kerning',
-    browsers
+    browsers,
+    feature: 'font-kerning'
   })
 )
 
@@ -454,8 +454,8 @@ let prefixBorderImage = require('caniuse-lite/data/features/border-image')
 
 f(prefixBorderImage, browsers =>
   prefix(['border-image'], {
-    feature: 'border-image',
-    browsers
+    browsers,
+    feature: 'border-image'
   })
 )
 
@@ -464,9 +464,9 @@ let prefixSelection = require('caniuse-lite/data/features/css-selection')
 
 f(prefixSelection, browsers =>
   prefix(['::selection'], {
-    selector: true,
+    browsers,
     feature: 'css-selection',
-    browsers
+    selector: true
   })
 )
 
@@ -475,9 +475,9 @@ let prefixPlaceholder = require('caniuse-lite/data/features/css-placeholder')
 
 f(prefixPlaceholder, browsers => {
   prefix(['::placeholder'], {
-    selector: true,
+    browsers: browsers.concat(['ie 10 old', 'ie 11 old', 'firefox 18 old']),
     feature: 'css-placeholder',
-    browsers: browsers.concat(['ie 10 old', 'ie 11 old', 'firefox 18 old'])
+    selector: true
   })
 })
 
@@ -486,9 +486,9 @@ let prefixPlaceholderShown = require('caniuse-lite/data/features/css-placeholder
 
 f(prefixPlaceholderShown, browsers => {
   prefix([':placeholder-shown'], {
-    selector: true,
+    browsers,
     feature: 'css-placeholder-shown',
-    browsers
+    selector: true
   })
 })
 
@@ -497,8 +497,8 @@ let prefixHyphens = require('caniuse-lite/data/features/css-hyphens')
 
 f(prefixHyphens, browsers =>
   prefix(['hyphens'], {
-    feature: 'css-hyphens',
-    browsers
+    browsers,
+    feature: 'css-hyphens'
   })
 )
 
@@ -507,17 +507,17 @@ let prefixFullscreen = require('caniuse-lite/data/features/fullscreen')
 
 f(prefixFullscreen, browsers =>
   prefix([':fullscreen'], {
-    selector: true,
+    browsers,
     feature: 'fullscreen',
-    browsers
+    selector: true
   })
 )
 
 f(prefixFullscreen, { match: /x(\s#2|$)/ }, browsers =>
   prefix(['::backdrop'], {
-    selector: true,
+    browsers,
     feature: 'fullscreen',
-    browsers
+    selector: true
   })
 )
 
@@ -526,9 +526,9 @@ let prefixFileSelectorButton = require('caniuse-lite/data/features/css-file-sele
 
 f(prefixFileSelectorButton, browsers =>
   prefix(['::file-selector-button'], {
-    selector: true,
+    browsers,
     feature: 'file-selector-button',
-    browsers
+    selector: true
   })
 )
 
@@ -537,9 +537,9 @@ let prefixAutofill = require('caniuse-lite/data/features/css-autofill')
 
 f(prefixAutofill, browsers =>
   prefix([':autofill'], {
-    selector: true,
+    browsers,
     feature: 'css-autofill',
-    browsers
+    selector: true
   })
 )
 
@@ -548,8 +548,8 @@ let prefixTabsize = require('caniuse-lite/data/features/css3-tabsize')
 
 f(prefixTabsize, browsers =>
   prefix(['tab-size'], {
-    feature: 'css3-tabsize',
-    browsers
+    browsers,
+    feature: 'css3-tabsize'
   })
 )
 
@@ -579,25 +579,25 @@ let sizeProps = [
 
 f(prefixIntrinsic, browsers =>
   prefix(['max-content', 'min-content'], {
-    props: sizeProps,
+    browsers,
     feature: 'intrinsic-width',
-    browsers
+    props: sizeProps
   })
 )
 
 f(prefixIntrinsic, { match: /x|\s#4/ }, browsers =>
   prefix(['fill', 'fill-available'], {
-    props: sizeProps,
+    browsers,
     feature: 'intrinsic-width',
-    browsers
+    props: sizeProps
   })
 )
 
 f(prefixIntrinsic, { match: /x|\s#5/ }, browsers =>
   prefix(['fit-content'], {
-    props: sizeProps,
+    browsers,
     feature: 'intrinsic-width',
-    browsers
+    props: sizeProps
   })
 )
 
@@ -607,9 +607,9 @@ let prefixStretch = require('caniuse-lite/data/features/css-width-stretch')
 
 f(prefixStretch, browsers =>
   prefix(['stretch'], {
-    props: sizeProps,
+    browsers,
     feature: 'css-width-stretch',
-    browsers
+    props: sizeProps
   })
 )
 
@@ -618,9 +618,9 @@ let prefixCursorsNewer = require('caniuse-lite/data/features/css3-cursors-newer'
 
 f(prefixCursorsNewer, browsers =>
   prefix(['zoom-in', 'zoom-out'], {
-    props: ['cursor'],
+    browsers,
     feature: 'css3-cursors-newer',
-    browsers
+    props: ['cursor']
   })
 )
 
@@ -629,9 +629,9 @@ let prefixCursorsGrab = require('caniuse-lite/data/features/css3-cursors-grab')
 
 f(prefixCursorsGrab, browsers =>
   prefix(['grab', 'grabbing'], {
-    props: ['cursor'],
+    browsers,
     feature: 'css3-cursors-grab',
-    browsers
+    props: ['cursor']
   })
 )
 
@@ -640,9 +640,9 @@ let prefixSticky = require('caniuse-lite/data/features/css-sticky')
 
 f(prefixSticky, browsers =>
   prefix(['sticky'], {
-    props: ['position'],
+    browsers,
     feature: 'css-sticky',
-    browsers
+    props: ['position']
   })
 )
 
@@ -651,8 +651,8 @@ let prefixPointer = require('caniuse-lite/data/features/pointer')
 
 f(prefixPointer, browsers =>
   prefix(['touch-action'], {
-    feature: 'pointer',
-    browsers
+    browsers,
+    feature: 'pointer'
   })
 )
 
@@ -661,8 +661,8 @@ let prefixDecoration = require('caniuse-lite/data/features/text-decoration')
 
 f(prefixDecoration, { match: /x.*#[235]/ }, browsers =>
   prefix(['text-decoration-skip', 'text-decoration-skip-ink'], {
-    feature: 'text-decoration',
-    browsers
+    browsers,
+    feature: 'text-decoration'
   })
 )
 
@@ -670,8 +670,8 @@ let prefixDecorationShorthand = require('caniuse-lite/data/features/mdn-text-dec
 
 f(prefixDecorationShorthand, browsers =>
   prefix(['text-decoration'], {
-    feature: 'text-decoration',
-    browsers
+    browsers,
+    feature: 'text-decoration'
   })
 )
 
@@ -679,8 +679,8 @@ let prefixDecorationColor = require('caniuse-lite/data/features/mdn-text-decorat
 
 f(prefixDecorationColor, browsers =>
   prefix(['text-decoration-color'], {
-    feature: 'text-decoration',
-    browsers
+    browsers,
+    feature: 'text-decoration'
   })
 )
 
@@ -688,8 +688,8 @@ let prefixDecorationLine = require('caniuse-lite/data/features/mdn-text-decorati
 
 f(prefixDecorationLine, browsers =>
   prefix(['text-decoration-line'], {
-    feature: 'text-decoration',
-    browsers
+    browsers,
+    feature: 'text-decoration'
   })
 )
 
@@ -697,8 +697,8 @@ let prefixDecorationStyle = require('caniuse-lite/data/features/mdn-text-decorat
 
 f(prefixDecorationStyle, browsers =>
   prefix(['text-decoration-style'], {
-    feature: 'text-decoration',
-    browsers
+    browsers,
+    feature: 'text-decoration'
   })
 )
 
@@ -707,8 +707,8 @@ let prefixTextSizeAdjust = require('caniuse-lite/data/features/text-size-adjust'
 
 f(prefixTextSizeAdjust, browsers =>
   prefix(['text-size-adjust'], {
-    feature: 'text-size-adjust',
-    browsers
+    browsers,
+    feature: 'text-size-adjust'
   })
 )
 
@@ -727,8 +727,8 @@ f(prefixCssMasks, browsers => {
       'mask-border-source'
     ],
     {
-      feature: 'css-masks',
-      browsers
+      browsers,
+      feature: 'css-masks'
     }
   )
   prefix(
@@ -742,8 +742,8 @@ f(prefixCssMasks, browsers => {
       'mask-border-slice'
     ],
     {
-      feature: 'css-masks',
-      browsers
+      browsers,
+      feature: 'css-masks'
     }
   )
 })
@@ -753,8 +753,8 @@ let prefixClipPath = require('caniuse-lite/data/features/css-clip-path')
 
 f(prefixClipPath, browsers =>
   prefix(['clip-path'], {
-    feature: 'css-clip-path',
-    browsers
+    browsers,
+    feature: 'css-clip-path'
   })
 )
 
@@ -763,8 +763,8 @@ let prefixBoxdecoration = require('caniuse-lite/data/features/css-boxdecorationb
 
 f(prefixBoxdecoration, browsers =>
   prefix(['box-decoration-break'], {
-    feature: 'css-boxdecorationbreak',
-    browsers
+    browsers,
+    feature: 'css-boxdecorationbreak'
   })
 )
 
@@ -773,8 +773,8 @@ let prefixObjectFit = require('caniuse-lite/data/features/object-fit')
 
 f(prefixObjectFit, browsers =>
   prefix(['object-fit', 'object-position'], {
-    feature: 'object-fit',
-    browsers
+    browsers,
+    feature: 'object-fit'
   })
 )
 
@@ -783,8 +783,8 @@ let prefixShapes = require('caniuse-lite/data/features/css-shapes')
 
 f(prefixShapes, browsers =>
   prefix(['shape-margin', 'shape-outside', 'shape-image-threshold'], {
-    feature: 'css-shapes',
-    browsers
+    browsers,
+    feature: 'css-shapes'
   })
 )
 
@@ -793,8 +793,8 @@ let prefixTextOverflow = require('caniuse-lite/data/features/text-overflow')
 
 f(prefixTextOverflow, browsers =>
   prefix(['text-overflow'], {
-    feature: 'text-overflow',
-    browsers
+    browsers,
+    feature: 'text-overflow'
   })
 )
 
@@ -803,8 +803,8 @@ let prefixDeviceadaptation = require('caniuse-lite/data/features/css-deviceadapt
 
 f(prefixDeviceadaptation, browsers =>
   prefix(['@viewport'], {
-    feature: 'css-deviceadaptation',
-    browsers
+    browsers,
+    feature: 'css-deviceadaptation'
   })
 )
 
@@ -813,8 +813,8 @@ let prefixResolut = require('caniuse-lite/data/features/css-media-resolution')
 
 f(prefixResolut, { match: /( x($| )|a #2)/ }, browsers =>
   prefix(['@resolution'], {
-    feature: 'css-media-resolution',
-    browsers
+    browsers,
+    feature: 'css-media-resolution'
   })
 )
 
@@ -823,8 +823,8 @@ let prefixTextAlignLast = require('caniuse-lite/data/features/css-text-align-las
 
 f(prefixTextAlignLast, browsers =>
   prefix(['text-align-last'], {
-    feature: 'css-text-align-last',
-    browsers
+    browsers,
+    feature: 'css-text-align-last'
   })
 )
 
@@ -833,16 +833,16 @@ let prefixCrispedges = require('caniuse-lite/data/features/css-crisp-edges')
 
 f(prefixCrispedges, { match: /y x|a x #1/ }, browsers =>
   prefix(['pixelated'], {
-    props: ['image-rendering'],
+    browsers,
     feature: 'css-crisp-edges',
-    browsers
+    props: ['image-rendering']
   })
 )
 
 f(prefixCrispedges, { match: /a x #2/ }, browsers =>
   prefix(['image-rendering'], {
-    feature: 'css-crisp-edges',
-    browsers
+    browsers,
+    feature: 'css-crisp-edges'
   })
 )
 
@@ -860,8 +860,8 @@ f(prefixLogicalProps, browsers =>
       'padding-inline-end'
     ],
     {
-      feature: 'css-logical-props',
-      browsers
+      browsers,
+      feature: 'css-logical-props'
     }
   )
 )
@@ -877,8 +877,8 @@ f(prefixLogicalProps, { match: /x\s#2/ }, browsers =>
       'padding-block-end'
     ],
     {
-      feature: 'css-logical-props',
-      browsers
+      browsers,
+      feature: 'css-logical-props'
     }
   )
 )
@@ -888,8 +888,8 @@ let prefixAppearance = require('caniuse-lite/data/features/css-appearance')
 
 f(prefixAppearance, { match: /#2|x/ }, browsers =>
   prefix(['appearance'], {
-    feature: 'css-appearance',
-    browsers
+    browsers,
+    feature: 'css-appearance'
   })
 )
 
@@ -906,8 +906,8 @@ f(prefixSnappoints, browsers =>
       'scroll-snap-points-y'
     ],
     {
-      feature: 'css-snappoints',
-      browsers
+      browsers,
+      feature: 'css-snappoints'
     }
   )
 )
@@ -917,8 +917,8 @@ let prefixRegions = require('caniuse-lite/data/features/css-regions')
 
 f(prefixRegions, browsers =>
   prefix(['flow-into', 'flow-from', 'region-fragment'], {
-    feature: 'css-regions',
-    browsers
+    browsers,
+    feature: 'css-regions'
   })
 )
 
@@ -927,6 +927,8 @@ let prefixImageSet = require('caniuse-lite/data/features/css-image-set')
 
 f(prefixImageSet, browsers =>
   prefix(['image-set'], {
+    browsers,
+    feature: 'css-image-set',
     props: [
       'background',
       'background-image',
@@ -937,9 +939,7 @@ f(prefixImageSet, browsers =>
       'list-style',
       'list-style-image',
       'content'
-    ],
-    feature: 'css-image-set',
-    browsers
+    ]
   })
 )
 
@@ -948,8 +948,8 @@ let prefixWritingMode = require('caniuse-lite/data/features/css-writing-mode')
 
 f(prefixWritingMode, { match: /a|x/ }, browsers =>
   prefix(['writing-mode'], {
-    feature: 'css-writing-mode',
-    browsers
+    browsers,
+    feature: 'css-writing-mode'
   })
 )
 
@@ -958,6 +958,8 @@ let prefixCrossFade = require('caniuse-lite/data/features/css-cross-fade')
 
 f(prefixCrossFade, browsers =>
   prefix(['cross-fade'], {
+    browsers,
+    feature: 'css-cross-fade',
     props: [
       'background',
       'background-image',
@@ -967,9 +969,7 @@ f(prefixCrossFade, browsers =>
       'list-style-image',
       'content',
       'mask-image'
-    ],
-    feature: 'css-cross-fade',
-    browsers
+    ]
   })
 )
 
@@ -978,9 +978,9 @@ let prefixReadOnly = require('caniuse-lite/data/features/css-read-only-write')
 
 f(prefixReadOnly, browsers =>
   prefix([':read-only', ':read-write'], {
-    selector: true,
+    browsers,
     feature: 'css-read-only-write',
-    browsers
+    selector: true
   })
 )
 
@@ -996,8 +996,8 @@ f(prefixTextEmphasis, browsers =>
       'text-emphasis-color'
     ],
     {
-      feature: 'text-emphasis',
-      browsers
+      browsers,
+      feature: 'text-emphasis'
     }
   )
 )
@@ -1007,9 +1007,9 @@ let prefixGrid = require('caniuse-lite/data/features/css-grid')
 
 f(prefixGrid, browsers => {
   prefix(['display-grid', 'inline-grid'], {
-    props: ['display'],
+    browsers,
     feature: 'css-grid',
-    browsers
+    props: ['display']
   })
   prefix(
     [
@@ -1027,16 +1027,16 @@ f(prefixGrid, browsers => {
       'place-self'
     ],
     {
-      feature: 'css-grid',
-      browsers
+      browsers,
+      feature: 'css-grid'
     }
   )
 })
 
 f(prefixGrid, { match: /a x/ }, browsers =>
   prefix(['grid-column-align', 'grid-row-align'], {
-    feature: 'css-grid',
-    browsers
+    browsers,
+    feature: 'css-grid'
   })
 )
 
@@ -1045,8 +1045,8 @@ let prefixTextSpacing = require('caniuse-lite/data/features/css-text-spacing')
 
 f(prefixTextSpacing, browsers =>
   prefix(['text-spacing'], {
-    feature: 'css-text-spacing',
-    browsers
+    browsers,
+    feature: 'css-text-spacing'
   })
 )
 
@@ -1055,9 +1055,9 @@ let prefixAnyLink = require('caniuse-lite/data/features/css-any-link')
 
 f(prefixAnyLink, browsers =>
   prefix([':any-link'], {
-    selector: true,
+    browsers,
     feature: 'css-any-link',
-    browsers
+    selector: true
   })
 )
 
@@ -1067,9 +1067,9 @@ let bidiIsolate = require('caniuse-lite/data/features/mdn-css-unicode-bidi-isola
 
 f(bidiIsolate, browsers =>
   prefix(['isolate'], {
-    props: ['unicode-bidi'],
+    browsers,
     feature: 'css-unicode-bidi',
-    browsers
+    props: ['unicode-bidi']
   })
 )
 
@@ -1077,9 +1077,9 @@ let bidiPlaintext = require('caniuse-lite/data/features/mdn-css-unicode-bidi-pla
 
 f(bidiPlaintext, browsers =>
   prefix(['plaintext'], {
-    props: ['unicode-bidi'],
+    browsers,
     feature: 'css-unicode-bidi',
-    browsers
+    props: ['unicode-bidi']
   })
 )
 
@@ -1087,9 +1087,9 @@ let bidiOverride = require('caniuse-lite/data/features/mdn-css-unicode-bidi-isol
 
 f(bidiOverride, { match: /y x/ }, browsers =>
   prefix(['isolate-override'], {
-    props: ['unicode-bidi'],
+    browsers,
     feature: 'css-unicode-bidi',
-    browsers
+    props: ['unicode-bidi']
   })
 )
 
@@ -1098,8 +1098,8 @@ let prefixOverscroll = require('caniuse-lite/data/features/css-overscroll-behavi
 
 f(prefixOverscroll, { match: /a #1/ }, browsers =>
   prefix(['overscroll-behavior'], {
-    feature: 'css-overscroll-behavior',
-    browsers
+    browsers,
+    feature: 'css-overscroll-behavior'
   })
 )
 
@@ -1108,8 +1108,8 @@ let prefixTextOrientation = require('caniuse-lite/data/features/css-text-orienta
 
 f(prefixTextOrientation, browsers =>
   prefix(['text-orientation'], {
-    feature: 'css-text-orientation',
-    browsers
+    browsers,
+    feature: 'css-text-orientation'
   })
 )
 
@@ -1118,7 +1118,7 @@ let prefixPrintAdjust = require('caniuse-lite/data/features/css-print-color-adju
 
 f(prefixPrintAdjust, browsers =>
   prefix(['print-color-adjust', 'color-adjust'], {
-    feature: 'css-print-color-adjust',
-    browsers
+    browsers,
+    feature: 'css-print-color-adjust'
   })
 )
