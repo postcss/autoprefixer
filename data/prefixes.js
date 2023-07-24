@@ -256,9 +256,9 @@ f(prefixFilterFunction, browsers =>
 )
 
 // Backdrop-filter
-let prefixBackdrop = require('caniuse-lite/data/features/css-backdrop-filter')
+let prefixBackdropFilter = require('caniuse-lite/data/features/css-backdrop-filter')
 
-f(prefixBackdrop, { match: /y\sx|y\s#2/ }, browsers =>
+f(prefixBackdropFilter, { match: /y\sx|y\s#2/ }, browsers =>
   prefix(['backdrop-filter'], {
     browsers,
     feature: 'css-backdrop-filter'
@@ -513,10 +513,14 @@ f(prefixFullscreen, browsers =>
   })
 )
 
-f(prefixFullscreen, { match: /x(\s#2|$)/ }, browsers =>
+// ::backdrop pseudo-element
+// https://caniuse.com/mdn-css_selectors_backdrop
+let prefixBackdrop = require('caniuse-lite/data/features/mdn-css-backdrop-pseudo-element')
+
+f(prefixBackdrop, browsers =>
   prefix(['::backdrop'], {
     browsers,
-    feature: 'fullscreen',
+    feature: 'backdrop',
     selector: true
   })
 )
