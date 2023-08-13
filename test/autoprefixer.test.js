@@ -60,6 +60,9 @@ let selectorer = autoprefixer({
 let fileSelectorButtoner = autoprefixer({
   overrideBrowserslist: ['Chrome > 25', 'Firefox >= 82']
 })
+let backdroper = autoprefixer({
+  overrideBrowserslist: ['IE >= 11', 'Chrome < 32', 'Safari >= 15.4']
+})
 let placeholderShowner = autoprefixer({
   overrideBrowserslist: ['IE >= 10']
 })
@@ -146,6 +149,8 @@ function prefixer(name) {
     return selectorer
   } else if (name === 'selectors' || name === 'file-selector-button') {
     return fileSelectorButtoner
+  } else if (name === 'selectors' || name === 'backdrop') {
+    return backdroper
   } else if (
     name === 'selectors' ||
     name === 'autofill' ||
@@ -758,6 +763,10 @@ test('supports all fullscreens', () => {
 
 test('supports file-selector-button', () => {
   check('file-selector-button')
+})
+
+test('supports ::backdrop', () => {
+  check('backdrop')
 })
 
 test('supports custom prefixes', () => {
