@@ -14,7 +14,10 @@
   ],
   "scripts": {
     "unit": "uvu . '\\.test\\.js$'",
-    "test": "c8 pnpm unit && eslint . bin/* && size-limit"
+    "test:coverage": "c8 pnpm unit",
+    "test:lint": "eslint . bin/*",
+    "test:size": "size-limit",
+    "test": "pnpm run /^test:/"
   },
   "main": "lib/autoprefixer.js",
   "bin": "bin/autoprefixer",
