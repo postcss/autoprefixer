@@ -47,7 +47,7 @@
   },
   "dependencies": {
     "browserslist": "^4.21.10",
-    "caniuse-lite": "^1.0.30001520",
+    "caniuse-lite": "^1.0.30001521",
     "fraction.js": "^4.2.0",
     "normalize-range": "^0.1.2",
     "picocolors": "^1.0.0",
@@ -65,7 +65,7 @@
     "eslint-plugin-prefer-let": "^3.0.1",
     "eslint-plugin-promise": "^6.1.1",
     "nanospy": "^1.0.0",
-    "postcss": "^8.4.27",
+    "postcss": "^8.4.28",
     "size-limit": "^8.2.6",
     "uvu": "^0.5.6"
   },
