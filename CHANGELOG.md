@@ -1,6 +1,10 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 10.4.16
+* Improved performance (by Romain Menke).
+* Fixed docs (by Christian Oliff).
+
 ## 10.4.15
 * Fixed `::backdrop` prefixes (by 一丝).
 * Fixed docs (by Christian Oliff).
