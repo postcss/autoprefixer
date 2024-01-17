@@ -5,9 +5,8 @@ a {
 }
 
 b {
-  -webkit-user-select: contain;
-      -ms-user-select: element;
-          user-select: contain;
+  -ms-user-select: element;
+      user-select: contain;
 }
 
 .all {
