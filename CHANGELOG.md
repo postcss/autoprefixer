@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 10.4.17
+* Fixed `user-select: contain` prefixes.
+
 ## 10.4.16
 * Improved performance (by Romain Menke).
 * Fixed docs (by Christian Oliff).
