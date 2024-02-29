@@ -23,7 +23,6 @@
   flex-direction: column;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-box-direction: reverse;
   -webkit-line-clamp: 2;
 }
 

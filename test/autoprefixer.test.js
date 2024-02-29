@@ -1178,8 +1178,10 @@ test('supports text-decoration shorthand', () => {
 
 test('supports -webkit-line-clamp', () => {
   let input = read('webkit-line-clamp')
+  let output = read('webkit-line-clamp.out')
   let result = postcss([cleaner]).process(input)
-  equal(result.css, input)
+
+  equal(universalizer(result.css), universalizer(output))
   equal(result.warnings().length, 0)
 })
 
