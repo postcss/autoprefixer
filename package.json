@@ -109,10 +109,16 @@
   },
   "c8": {
     "exclude": [
-      "**/*.test.*"
+      "test/*"
     ],
     "lines": 100,
-    "check-coverage": true
+    "check-coverage": true,
+    "reporter": [
+      "text",
+      "lcov"
+    ],
+    "skip-full": true,
+    "clean": true
   },
   "clean-publish": {
     "cleanDocs": true
