@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 10.4.18
+* Fixed removing `-webkit-box-orient` on `-webkit-line-clamp` (@Goodwine).
+
 ## 10.4.17
 * Fixed `user-select: contain` prefixes.
 
