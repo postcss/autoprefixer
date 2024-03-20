@@ -1,6 +1,10 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 10.4.19
+* Removed `end value has mixed support, consider using flex-end` warning
+  since `end`/`start` now have good support.
+
 ## 10.4.18
 * Fixed removing `-webkit-box-orient` on `-webkit-line-clamp` (@Goodwine).
 
