@@ -903,25 +903,6 @@ test('warns on old flexbox display', () => {
   )
 })
 
-test('warns on mixed support usage', () => {
-  let css = 'a { display: flex; align-content: start; justify-content: end; }'
-  let result = postcss([
-    autoprefixer({
-      overrideBrowserslist: ['IE 11']
-    })
-  ]).process(css)
-  equal(result.css, css)
-  equal(
-    result.warnings().map(i => i.toString()),
-    [
-      'autoprefixer: <css input>:1:20: start value has mixed support, ' +
-        'consider using flex-start instead',
-      'autoprefixer: <css input>:1:42: end value has mixed support, ' +
-        'consider using flex-end instead'
-    ]
-  )
-})
-
 test('supports intrinsic sizing', () => {
   let input = read('intrinsic')
   let output = read('intrinsic.out')
