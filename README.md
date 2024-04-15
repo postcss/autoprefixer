@@ -10,7 +10,19 @@ from [Can I Use]. It is recommended by Google and used in Twitter and Alibaba
 Write your CSS rules without vendor prefixes (in fact, forget about them
 entirely):
 
-```css
+```css::placeholder {
+  color: gray;
+}
+
+.image {
+  background-image: url(image@1x.png);
+}
+@media (min-resolution: 2dppx) {
+  .image {
+    background-image: url(image@2x.png);
+  }
+}
+
 ::placeholder {
   color: gray;
 }
