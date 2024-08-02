@@ -7,14 +7,15 @@ export default [
   ...loguxConfig,
   {
     rules: {
-      'no-console': 'off',
-      'node-import/prefer-node-protocol': 'off'
+      'n/prefer-node-protocol': 'off',
+      'no-console': 'off'
     }
   },
   {
     files: ['bin/autoprefixer'],
     rules: {
-      'n/global-require': 'off'
+      'n/global-require': 'off',
+      'n/no-unsupported-features/es-syntax': 'off'
     }
   },
   {
