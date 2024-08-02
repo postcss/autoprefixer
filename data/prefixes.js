@@ -597,13 +597,21 @@ f(prefixIntrinsic, { match: /x|\s#4/ }, browsers =>
   })
 )
 
-f(prefixIntrinsic, { match: /x|\s#5/ }, browsers =>
-  prefix(['fit-content'], {
-    browsers,
+f(prefixIntrinsic, { match: /x|\s#5/ }, browsers => {
+  let ffFix = browsers.filter(i => {
+    let [name, version] = i.split(' ')
+    if (name === 'firefox' || name === 'and_ff') {
+      return parseInt(version) < 94
+    } else {
+      return true
+    }
+  })
+  return prefix(['fit-content'], {
+    browsers: ffFix,
     feature: 'intrinsic-width',
     props: sizeProps
   })
-)
+})
 
 // Stretch value
 
