@@ -50,7 +50,7 @@
     "caniuse-lite": "^1.0.30001646",
     "fraction.js": "^4.3.7",
     "normalize-range": "^0.1.2",
-    "picocolors": "^1.0.1",
+    "picocolors": "^1.1.1",
     "postcss-value-parser": "^4.2.0"
   },
   "devDependencies": {
