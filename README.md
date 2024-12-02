@@ -54,7 +54,7 @@ Twitter account for news and releases: [@autoprefixer].
 <img src="https://evilmartians.com/badges/sponsored-by-evil-martians.svg" alt="Sponsored by Evil Martians" width="236" height="54">
 </a>
 
-[interactive demo]: https://autoprefixer.github.io/
+[interactive demo]: https://goonlinetools.com/autoprefixer/
 [@autoprefixer]:    https://twitter.com/autoprefixer
 [Can I Use]:        https://caniuse.com/
 [cult-img]:         https://cultofmartians.com/assets/badges/badge.svg
