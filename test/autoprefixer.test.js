@@ -1,9 +1,9 @@
-let { equal, match, not, throws, type } = require('uvu/assert')
-let { restoreAll, spyOn } = require('nanospy')
 let { readFileSync } = require('fs')
+let { restoreAll, spyOn } = require('nanospy')
 let { join } = require('path')
-let { test } = require('uvu')
 let postcss = require('postcss')
+let { test } = require('uvu')
+let { equal, match, not, throws, type } = require('uvu/assert')
 
 let autoprefixer = require('..')
 

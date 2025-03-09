@@ -1,10 +1,10 @@
-let { equal } = require('uvu/assert')
 let { test } = require('uvu')
+let { equal } = require('uvu/assert')
 
-let Prefixes = require('../lib/prefixes')
-let Browsers = require('../lib/browsers')
-let Supports = require('../lib/supports')
 let brackets = require('../lib/brackets')
+let Browsers = require('../lib/browsers')
+let Prefixes = require('../lib/prefixes')
+let Supports = require('../lib/supports')
 
 let browsers = new Browsers(
   {

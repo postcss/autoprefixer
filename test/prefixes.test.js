@@ -1,14 +1,14 @@
-let { equal, is } = require('uvu/assert')
 let { agents } = require('caniuse-lite/dist/unpacker/agents')
 let { parse } = require('postcss')
 let { test } = require('uvu')
+let { equal, is } = require('uvu/assert')
 
-let Declaration = require('../lib/declaration')
-let Prefixes = require('../lib/prefixes')
 let Browsers = require('../lib/browsers')
-let Supports = require('../lib/supports')
-let Selector = require('../lib/selector')
+let Declaration = require('../lib/declaration')
 let OldValue = require('../lib/old-value')
+let Prefixes = require('../lib/prefixes')
+let Selector = require('../lib/selector')
+let Supports = require('../lib/supports')
 let Value = require('../lib/value')
 
 let data = {

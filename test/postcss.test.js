@@ -1,6 +1,6 @@
-let { equal } = require('uvu/assert')
-let { test } = require('uvu')
 let postcss = require('postcss')
+let { test } = require('uvu')
+let { equal } = require('uvu/assert')
 
 let autoprefixer = require('..')
 

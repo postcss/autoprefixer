@@ -1,10 +1,10 @@
-let { equal, is } = require('uvu/assert')
 let { parse } = require('postcss')
 let { test } = require('uvu')
+let { equal, is } = require('uvu/assert')
 
 let Selector = require('../lib/selector')
 
-let selector, prefixeds
+let prefixeds, selector
 test.before.each(() => {
   selector = new Selector('::selection', ['-moz-', '-ms-'])
   prefixeds = selector.prefixeds(parse('::selection {}').first)

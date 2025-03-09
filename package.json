@@ -46,22 +46,22 @@
     "postcss": "^8.1.0"
   },
   "dependencies": {
-    "browserslist": "^4.23.3",
-    "caniuse-lite": "^1.0.30001646",
+    "browserslist": "^4.24.4",
+    "caniuse-lite": "^1.0.30001702",
     "fraction.js": "^4.3.7",
     "normalize-range": "^0.1.2",
-    "picocolors": "^1.0.1",
+    "picocolors": "^1.1.1",
     "postcss-value-parser": "^4.2.0"
   },
   "devDependencies": {
-    "@logux/eslint-config": "^53.2.1",
-    "@size-limit/preset-small-lib": "11.1.4",
-    "c8": "^10.1.2",
-    "clean-publish": "^5.0.0",
-    "eslint": "^9.8.0",
+    "@logux/eslint-config": "^55.0.1",
+    "@size-limit/preset-small-lib": "11.2.0",
+    "c8": "^10.1.3",
+    "clean-publish": "^5.1.0",
+    "eslint": "^9.22.0",
     "nanospy": "^1.0.0",
-    "postcss": "^8.4.40",
-    "size-limit": "^11.1.4",
+    "postcss": "^8.5.3",
+    "size-limit": "^11.2.0",
     "uvu": "^0.5.6"
   },
   "prettier": {

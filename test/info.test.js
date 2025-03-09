@@ -1,11 +1,11 @@
-let { equal, match } = require('uvu/assert')
 let browserslist = require('browserslist')
 let { agents } = require('caniuse-lite/dist/unpacker/agents')
 let { test } = require('uvu')
+let { equal, match } = require('uvu/assert')
 
 let Browsers = require('../lib/browsers')
-let Prefixes = require('../lib/prefixes')
 let info = require('../lib/info')
+let Prefixes = require('../lib/prefixes')
 
 let data = {
   browsers: agents,

@@ -1,5 +1,5 @@
-let { equal, is, throws } = require('uvu/assert')
 let { test } = require('uvu')
+let { equal, is, throws } = require('uvu/assert')
 
 let utils = require('../lib/utils')
 

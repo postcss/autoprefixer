@@ -1,9 +1,9 @@
-let { equal, is, type } = require('uvu/assert')
 let { parse } = require('postcss')
 let { test } = require('uvu')
+let { equal, is, type } = require('uvu/assert')
 
-let Prefixes = require('../lib/prefixes')
 let OldValue = require('../lib/old-value')
+let Prefixes = require('../lib/prefixes')
 let Value = require('../lib/value')
 
 let prefixes = new Prefixes()

@@ -1,10 +1,10 @@
-let { equal, is, type } = require('uvu/assert')
 let { parse } = require('postcss')
 let { test } = require('uvu')
+let { equal, is, type } = require('uvu/assert')
 
 let Prefixer = require('../lib/prefixer')
 
-let prefix, css
+let css, prefix
 test.before.each(() => {
   prefix = new Prefixer()
   css = parse(

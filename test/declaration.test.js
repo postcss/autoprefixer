@@ -1,6 +1,6 @@
-let { equal, is } = require('uvu/assert')
 let { parse } = require('postcss')
 let { test } = require('uvu')
+let { equal, is } = require('uvu/assert')
 
 let Declaration = require('../lib/declaration')
 let Prefixes = require('../lib/prefixes')
