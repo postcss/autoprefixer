@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 10.4.21
+* Fixed old `-moz-` prefix for `:placeholder-shown` (by @Marukome0743).
+
 ## 10.4.20
 * Fixed `fit-content` prefix for Firefox.
 
