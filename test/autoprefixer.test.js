@@ -64,7 +64,7 @@ let backdroper = autoprefixer({
   overrideBrowserslist: ['IE >= 11', 'Chrome < 32', 'Safari >= 15.4']
 })
 let placeholderShowner = autoprefixer({
-  overrideBrowserslist: ['IE >= 10']
+  overrideBrowserslist: ['IE >= 10', 'Firefox >= 4']
 })
 let transitionSpec = autoprefixer({
   overrideBrowserslist: ['Chrome > 19', 'Firefox 14', 'IE 10', 'Opera 12']
