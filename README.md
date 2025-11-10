@@ -16,12 +16,7 @@ entirely):
 }
 
 .image {
-  background-image: url(image@1x.png);
-}
-@media (min-resolution: 2dppx) {
-  .image {
-    background-image: url(image@2x.png);
-  }
+  width: stretch;
 }
 ```
 
@@ -38,13 +33,9 @@ of Autoprefixer.
 }
 
 .image {
-  background-image: url(image@1x.png);
-}
-@media (-webkit-min-device-pixel-ratio: 2),
-       (min-resolution: 2dppx) {
-  .image {
-    background-image: url(image@2x.png);
-  }
+  width: -webkit-fill-available;
+  width: -moz-available;
+  width: stretch;
 }
 ```
 
