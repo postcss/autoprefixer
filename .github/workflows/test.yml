@@ -77,4 +77,4 @@ jobs:
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile --ignore-scripts
       - name: Run unit tests
-        run: pnpm run unit
+        run: for f in test/*.test.js; do node "$f"; done
