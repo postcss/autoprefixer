@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 10.4.23
+* Reduced dependencies (by @hyperz111).
+
 ## 10.4.22
 * Fixed `stretch` prefixes on new Can I Use database.
 * Updated `fraction.js`.
