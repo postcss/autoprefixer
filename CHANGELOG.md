@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 10.4.24
+* Made Autoprefixer a little faster (by @Cherry).
+
 ## 10.4.23
 * Reduced dependencies (by @hyperz111).
 
