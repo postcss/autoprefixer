@@ -891,6 +891,16 @@ test('changes angle in gradient', () => {
   check('gradient-fix')
 })
 
+test('skips old webkit gradient for CSS variables', () => {
+  let input = 'a { background: linear-gradient(var(--direction), red, blue); }'
+  let result = postcss([gradienter]).process(input)
+
+  // Should not generate -webkit-gradient() when CSS variables are present
+  equal(result.css.includes('-webkit-gradient('), false)
+  // Should still generate -webkit-linear-gradient()
+  equal(result.css.includes('-webkit-linear-gradient('), true)
+})
+
 test('warns on old flexbox display', () => {
   let result = postcss([flexboxer]).process('a{ display: box; }')
   equal(result.css, 'a{ display: box; }')
