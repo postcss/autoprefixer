@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 10.4.26
+* Reduced package size.
+
 ## 10.4.25
 * Fixed broken gradients on CSS Custom Properties (by @serger777).
 
