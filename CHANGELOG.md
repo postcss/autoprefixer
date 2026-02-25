@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 10.4.25
+* Fixed broken gradients on CSS Custom Properties (by @serger777).
+
 ## 10.4.24
 * Made Autoprefixer a little faster (by @Cherry).
 
