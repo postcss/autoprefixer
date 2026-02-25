@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 10.4.27
+* Removed development key from `package.json`.
+
 ## 10.4.26
 * Reduced package size.
 
