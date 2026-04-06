@@ -817,6 +817,10 @@ test('supports mask-composite', () => {
   check('mask-composite')
 })
 
+test('supports mask-position-x and mask-position-y', () => {
+  check('mask-position')
+})
+
 test('supports image-set()', () => {
   check('image-set')
 })

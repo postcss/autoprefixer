@@ -1,0 +1,8 @@
+a {
+  -webkit-mask-position: center;
+          mask-position: center;
+  -webkit-mask-position-x: 10px;
+          mask-position-x: 10px;
+  -webkit-mask-position-y: 20px;
+          mask-position-y: 20px;
+}
