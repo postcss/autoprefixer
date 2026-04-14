@@ -241,6 +241,7 @@ const COMMONS = [
   'supports',
   'viewport',
   'resolution',
+  'resolution-dppx-fallback',
   'logical',
   'appearance',
   'advanced-filter',
@@ -515,6 +516,11 @@ test('removes unnecessary prefixes', () => {
     if (i === 'grid-template-areas') continue
     let input = read(i + '.out')
     let output = read(i)
+
+    if (i === 'resolution-dppx-fallback') {
+      output = '@media (min-resolution: 2dppx), (min-resolution: 2x) { }\n'
+    }
+
     equal(processor.process(input).css, output)
   }
 })
