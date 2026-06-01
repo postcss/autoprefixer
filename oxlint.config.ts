@@ -9,6 +9,7 @@ export default defineConfig({
     'typescript/no-base-to-string': 'off',
     'typescript/consistent-type-imports': 'off',
     'typescript/restrict-template-expressions': 'off',
+    'no-underscore-dangle': 'off',
     'no-console': 'off',
     'new-cap': 'off'
   },

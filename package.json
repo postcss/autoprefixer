@@ -41,24 +41,24 @@
   },
   "dependencies": {
     "browserslist": "^4.28.2",
-    "caniuse-lite": "^1.0.30001787",
+    "caniuse-lite": "^1.0.30001793",
     "fraction.js": "^5.3.4",
     "picocolors": "^1.1.1",
     "postcss-value-parser": "^4.2.0"
   },
   "devDependencies": {
-    "@logux/oxc-configs": "^0.3.3",
+    "@logux/oxc-configs": "^0.4.0",
     "@size-limit/preset-small-lib": "12.1.0",
-    "actions-up": "^1.13.0",
+    "actions-up": "^1.14.2",
     "c8": "^11.0.0",
-    "clean-publish": "^6.0.5",
+    "clean-publish": "^7.1.0",
     "eslint-plugin-prefer-let": "^4.2.2",
     "nanospy": "^1.0.0",
-    "oxlint": "^1.60.0",
-    "oxlint-tsgolint": "^0.20.0",
-    "postcss": "^8.5.9",
+    "oxlint": "^1.67.0",
+    "oxlint-tsgolint": "^0.23.0",
+    "postcss": "^8.5.15",
     "size-limit": "^12.1.0",
-    "typescript": "^6.0.2",
+    "typescript": "^6.0.3",
     "uvu": "^0.5.6"
   },
   "peerDependencies": {
