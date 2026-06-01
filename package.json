@@ -85,11 +85,6 @@
   "engines": {
     "node": "^10 || ^12 || >=14"
   },
-  "pnpm": {
-    "patchedDependencies": {
-      "yargs@17.7.2": "patches/yargs@17.7.2.patch"
-    }
-  },
   "clean-publish": {
     "cleanDocs": true
   }
