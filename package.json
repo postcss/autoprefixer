@@ -40,8 +40,8 @@
     "test": "pnpm run /^test:/"
   },
   "dependencies": {
-    "browserslist": "^4.28.2",
-    "caniuse-lite": "^1.0.30001793",
+    "browserslist": "^4.28.4",
+    "caniuse-lite": "^1.0.30001799",
     "fraction.js": "^5.3.4",
     "picocolors": "^1.1.1",
     "postcss-value-parser": "^4.2.0"
@@ -49,12 +49,12 @@
   "devDependencies": {
     "@logux/oxc-configs": "^0.4.0",
     "@size-limit/preset-small-lib": "12.1.0",
-    "actions-up": "^1.14.2",
+    "actions-up": "^1.14.3",
     "c8": "^11.0.0",
     "clean-publish": "^7.1.0",
     "eslint-plugin-prefer-let": "^4.2.2",
-    "nanospy": "^1.0.0",
-    "oxlint": "^1.67.0",
+    "nanospy": "^2.0.1",
+    "oxlint": "^1.71.0",
     "oxlint-tsgolint": "^0.23.0",
     "postcss": "^8.5.15",
     "size-limit": "^12.1.0",
