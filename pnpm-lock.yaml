@@ -39,9 +39,6 @@ importers:
       c8:
         specifier: ^11.0.0
         version: 11.0.0
-      clean-publish:
-        specifier: ^7.1.0
-        version: 7.1.0
       eslint-plugin-prefer-let:
         specifier: ^4.2.2
         version: 4.2.2
@@ -475,11 +472,6 @@ packages:
   caniuse-lite@1.0.30001799:
     resolution: {integrity: sha512-hG1bReV+OUU+MOqK4t/ZWI0tZOyz3rqS9XuhOUz1cIcbwBKjOyJEJuw9ER5JuNyqxNk8u/JUVbGibBOL1yrjFw==}
 
-  clean-publish@7.1.0:
-    resolution: {integrity: sha512-fnsFHW6fIq7Sr5Pf9YUsxB1up5pEA13DHg4Q/bZdphWssmIUuKV7G5Kaq2Q0X6UsCFm//uFbONOWTi7m4DvMTg==}
-    engines: {node: '>= 22.0.0'}
-    hasBin: true
-
   cliui@8.0.1:
     resolution: {integrity: sha512-BSeNnyus75C4//NQ9gQt1/csTXyo/8Sb+afLAkzAptFuMsod9HFokGNudZpi/oQV73hnVK+sR+5PVRMd+Dr7YQ==}
     engines: {node: '>=12'}
@@ -745,10 +737,6 @@ packages:
   test-exclude@8.0.0:
     resolution: {integrity: sha512-ZOffsNrXYggvU1mDGHk54I96r26P8SyMjO5slMKSc7+IWmtB/MQKnEC2fP51imB3/pT6YK5cT5E8f+Dd9KdyOQ==}
     engines: {node: 20 || >=22}
-
-  tinyexec@1.2.3:
-    resolution: {integrity: sha512-g62dB+w1/OEFnPvmX0yd/HnetYITOL+1nJW7kitOycOeAvmbWC/nu0fwmmQ/kupNojqExzyC/T++pST/jRJ2mQ==}
-    engines: {node: '>=18'}
 
   tinyglobby@0.2.17:
     resolution: {integrity: sha512-wXR/dYpcqKmfWpEdZjiKJOwCNFndD0DMnrW/cYjVGttEkBfVgcLFHoNrlj47mjOVic9yyNu65alsgF4NQyTa2g==}
@@ -1047,13 +1035,6 @@ snapshots:
 
   caniuse-lite@1.0.30001799: {}
 
-  clean-publish@7.1.0:
-    dependencies:
-      lilconfig: 3.1.3
-      picomatch: 4.0.4
-      tinyexec: 1.2.3
-      tinyglobby: 0.2.17
-
   cliui@8.0.1:
     dependencies:
       string-width: 4.2.3
@@ -1309,8 +1290,6 @@ snapshots:
       '@istanbuljs/schema': 0.1.6
       glob: 13.0.6
       minimatch: 10.2.5
-
-  tinyexec@1.2.3: {}
 
   tinyglobby@0.2.17:
     dependencies:

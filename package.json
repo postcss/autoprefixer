@@ -51,7 +51,6 @@
     "@size-limit/preset-small-lib": "12.1.0",
     "actions-up": "^1.14.3",
     "c8": "^11.0.0",
-    "clean-publish": "^7.1.0",
     "eslint-plugin-prefer-let": "^4.2.2",
     "nanospy": "^2.0.1",
     "oxlint": "^1.71.0",
