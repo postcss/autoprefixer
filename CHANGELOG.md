@@ -2,6 +2,10 @@
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 10.5.1
+
+- Fixed `grid-area` span reset for overriding areas (by @puneetdixit200).
+
 ## 10.5.0 “Each Endeavouring, All Achieving”
 
 - Added `mask-position-x` and `mask-position-y` support (by @toporek).
