@@ -1125,6 +1125,60 @@ test('should merge complex duplicate grid-area rules successfully', () => {
   equal(result.css, output)
 })
 
+test('resets grid-area spans when overriding a broader area', () => {
+  let input = `/* autoprefixer grid: autoplace */
+body {
+  display: grid;
+  grid-template:
+    "other other"
+    "one two";
+}
+
+body > * {
+  grid-area: other;
+}
+
+body > .one {
+  grid-area: one;
+}
+
+body > .two {
+  grid-area: two;
+}`
+  let output = `/* autoprefixer grid: autoplace */
+body {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: auto;
+  grid-template:
+    "other other"
+    "one two";
+}
+
+body > * {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: other;
+}
+
+body > .one {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-area: one;
+}
+
+body > .two {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-area: two;
+}`
+  let result = postcss([prefixer('grid-area')]).process(input)
+  equal(result.css, output)
+})
+
 test('ignores values for CSS3PIE props', () => {
   let css = read('pie')
   equal(postcss([compiler]).process(css).css, css)
