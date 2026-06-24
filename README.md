@@ -33,8 +33,8 @@ of Autoprefixer.
 }
 
 .image {
-  width: -webkit-fill-available;
   width: -moz-available;
+  width: -webkit-fill-available;
   width: stretch;
 }
 ```
