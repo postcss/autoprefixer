@@ -2,6 +2,10 @@
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 10.5.3
+
+- Fixed brackets and gradient parser (@alanturing881).
+
 ## 10.5.2
 
 - Moved `-webkit-fill-available` before `-moz-available`, so Firefox
