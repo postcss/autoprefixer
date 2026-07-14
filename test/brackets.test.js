@@ -19,6 +19,20 @@ test('parses errors', () => {
   equal(brackets.parse('a (b ('), ['a ', ['b ', ['']]])
 })
 
+test('parses unmatched closing bracket', () => {
+  equal(brackets.parse('@supports ) {}'), ['@supports ) {}'])
+  equal(brackets.parse('@supports (display:flex)) {}'), [
+    '@supports ',
+    ['display:flex'],
+    ') {}'
+  ])
+  equal(brackets.parse('@supports not (a:b)) {}'), [
+    '@supports not ',
+    ['a:b'],
+    ') {}'
+  ])
+})
+
 test('stringifies simple string', () => {
   equal(brackets.stringify(['test']), 'test')
 })
