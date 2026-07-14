@@ -905,6 +905,24 @@ test('skips old webkit gradient for CSS variables', () => {
   equal(result.css.includes('-webkit-linear-gradient('), true)
 })
 
+test('does not throw on empty or malformed gradient arguments', () => {
+  let inputs = [
+    'a { background-image: linear-gradient() }',
+    'a { background-image: radial-gradient() }',
+    'a { background-image: repeating-linear-gradient() }',
+    'a { background-image: repeating-radial-gradient() }',
+    'a { background-image: linear-gradient(red,) }',
+    'a { background-image: linear-gradient(,red) }',
+    'a { background-image: linear-gradient(red,,blue) }',
+    'a { background-image: linear-gradient(to right, red,) }'
+  ]
+  for (let input of inputs) {
+    // Would throw an uncaught TypeError before the empty-argument guards
+    let result = postcss([gradienter]).process(input, { from: undefined })
+    type(result.css, 'string')
+  }
+})
+
 test('warns on old flexbox display', () => {
   let result = postcss([flexboxer]).process('a{ display: box; }')
   equal(result.css, 'a{ display: box; }')
