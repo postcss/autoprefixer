@@ -2,6 +2,10 @@
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 10.5.4
+
+- Fixed prefixed rule duplication (by @xianjianlf2).
+
 ## 10.5.3
 
 - Fixed brackets and gradient parser (@alanturing881).
