@@ -86,6 +86,15 @@ test('finds prefixed even if unknown prefix is between', () => {
   is(selector.already(css.nodes[2], prefixeds, '-moz-'), true)
 })
 
+test('finds prefixed even if selector list was reformatted', () => {
+  let css = parse(
+    '.a::-moz-selection,\n.b::-moz-selection {}\n' +
+      '.a::selection,\n.b::selection {}'
+  )
+  let prefixeds2 = selector.prefixeds(css.nodes[1])
+  is(selector.already(css.nodes[1], prefixeds2, '-moz-'), true)
+})
+
 test('adds prefix to selectors', () => {
   equal(
     selector.replace('body ::selection, input::selection, a', '-ms-'),
