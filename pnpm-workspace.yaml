@@ -1,2 +1,6 @@
 allowBuilds:
   esbuild: false
+
+minimumReleaseAgeExclude:
+  - caniuse-lite
+  - browserslist
