@@ -1,4 +1,4 @@
-# Autoprefixer [![Cult Of Martians][cult-img]][cult]
+# Autoprefixer
 
 <img align="right" width="94" height="71"
      src="https://postcss.github.io/autoprefixer/logo.svg"
@@ -50,9 +50,7 @@ Twitter account for news and releases: [@autoprefixer].
 [interactive demo]: https://autoprefixer.github.io/
 [@autoprefixer]: https://twitter.com/autoprefixer
 [Can I Use]: https://caniuse.com/
-[cult-img]: https://cultofmartians.com/assets/badges/badge.svg
 [PostCSS]: https://github.com/postcss/postcss
-[cult]: https://cultofmartians.com/tasks/autoprefixer-grid.html
 
 ## Contents
 
