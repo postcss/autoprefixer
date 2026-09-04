@@ -40,23 +40,23 @@
     "test": "pnpm run /^test:/"
   },
   "dependencies": {
-    "browserslist": "^4.28.6",
-    "caniuse-lite": "^1.0.30001806",
+    "browserslist": "^4.28.9",
+    "caniuse-lite": "^1.0.30001810",
     "fraction.js": "^5.3.4",
     "picocolors": "^1.1.1",
     "postcss-value-parser": "^4.2.0"
   },
   "devDependencies": {
-    "@logux/oxc-configs": "^0.4.1",
-    "@size-limit/preset-small-lib": "12.1.0",
-    "actions-up": "^1.16.0",
-    "c8": "^11.0.0",
+    "@logux/oxc-configs": "^1.1.0",
+    "@size-limit/preset-small-lib": "13.0.3",
+    "actions-up": "^1.18.0",
+    "c8": "^12.0.0",
     "eslint-plugin-prefer-let": "^4.2.2",
     "nanospy": "^2.0.2",
-    "oxlint": "^1.74.0",
-    "oxlint-tsgolint": "^0.24.0",
-    "postcss": "^8.5.19",
-    "size-limit": "^12.1.0",
+    "oxlint": "^1.81.0",
+    "oxlint-tsgolint": "^7.0.2001",
+    "postcss": "^8.5.27",
+    "size-limit": "^13.0.3",
     "typescript": "^7.0.2",
     "uvu": "^0.5.6"
   },
