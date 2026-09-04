@@ -17,3 +17,5 @@
 @media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 13/10), only screen and (min-resolution: 124.8dpi) { }
 
 @media (-webkit-min-device-pixel-ratio: 3), (min--moz-device-pixel-ratio: 3), (-o-min-device-pixel-ratio: 3/1), (min-resolution: 113.38dpcm) { }
+
+@media (-webkit-min-device-pixel-ratio: 0.5), (min--moz-device-pixel-ratio: 0.5), (-o-min-device-pixel-ratio: 1/2), (min-resolution: .5dppx) { }

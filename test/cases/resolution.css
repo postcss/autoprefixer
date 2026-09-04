@@ -14,3 +14,5 @@
 @media only screen and (min-resolution: 124.8dpi) { }
 
 @media (min-resolution: 113.38dpcm) { }
+
+@media (min-resolution: .5dppx) { }

@@ -3,7 +3,7 @@ let { restoreAll, spyOn } = require('nanospy')
 let { join } = require('path')
 let postcss = require('postcss')
 let { test } = require('uvu')
-let { equal, match, not, throws, type } = require('uvu/assert')
+let { equal, match, not, ok, throws, type } = require('uvu/assert')
 
 let autoprefixer = require('..')
 
@@ -354,6 +354,14 @@ test('prefixes selectors', () => {
 
 test('prefixes resolution query', () => {
   check('resolution')
+})
+
+test('does not hang on long resolution query', () => {
+  let css = `@media (min-resolution: ${'9'.repeat(128000)}z) { a { color: red } }`
+  let start = Date.now()
+  let out = postcss([resolutioner]).process(css, { from: undefined }).css
+  equal(out, css)
+  ok(Date.now() - start < 2000)
 })
 
 test('removes common mistakes', () => {
