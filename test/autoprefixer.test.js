@@ -25,6 +25,9 @@ let filterer = autoprefixer({
 let borderer = autoprefixer({
   overrideBrowserslist: ['Safari 4', 'Firefox 3.6']
 })
+let fallbacker = autoprefixer({
+  overrideBrowserslist: ['Safari 12']
+})
 let cascader = autoprefixer({
   cascade: true,
   overrideBrowserslist: ['Chrome > 19', 'Firefox 21', 'IE 10']
@@ -169,6 +172,8 @@ function prefixer(name) {
     return keyframer
   } else if (name === 'border-radius') {
     return borderer
+  } else if (name === 'value-fallback') {
+    return fallbacker
   } else if (name === 'gradient') {
     return gradienter
   } else if (name === 'gradient-fix') {
@@ -378,6 +383,10 @@ test('keeps vendor-specific hacks', () => {
 
 test('keeps values with vendor hacks', () => {
   check('value-hack')
+})
+
+test('keeps prefixed value when the next value is not supported', () => {
+  check('value-fallback')
 })
 
 test('works with comments', () => {
