@@ -913,6 +913,56 @@ test('skips old webkit gradient for CSS variables', () => {
   equal(result.css.includes('-webkit-linear-gradient('), true)
 })
 
+test('skips old webkit gradients with color hints', () => {
+  let values = [
+    'linear-gradient(red 10%, 30%, blue 90%)',
+    'linear-gradient(to top, red 10%, 30%, blue 90%)',
+    'linear-gradient(red, 0, blue)',
+    'linear-gradient(red, 2em, blue)',
+    'linear-gradient(red, calc(20% + 10%), blue)',
+    'linear-gradient(red, min(20%, 30%), blue)',
+    'linear-gradient(red, max(20%, 30%), blue)',
+    'linear-gradient(red, clamp(20%, 30%, 40%), blue)',
+    'linear-gradient(red, /* hint */ 30% /* end */, blue)'
+  ]
+  for (let value of values) {
+    let input = `a { background: ${value}; }`
+    let result = postcss([gradienter]).process(input)
+
+    equal(result.css.includes('-webkit-gradient('), false)
+    equal(result.css.includes('-webkit-linear-gradient('), true)
+    equal(result.css.includes(value), true)
+  }
+})
+
+test('keeps old webkit gradients with ordinary color stops', () => {
+  let input = 'a { background: linear-gradient(to top, rgba(0,0,0,0.5) 10%, ' +
+    'hsl(0,50%,50%) 30%, blue 90%); }'
+  let result = postcss([gradienter]).process(input)
+
+  equal(
+    result.root.first.first.value,
+    '-webkit-gradient(linear, left bottom, left top, ' +
+      'color-stop(10%, rgba(0,0,0,0.5)), ' +
+      'color-stop(30%, hsl(0,50%,50%)), color-stop(90%, blue))'
+  )
+})
+
+test('skips old webkit gradients when a background layer has a color hint', () => {
+  let values = [
+    'linear-gradient(red, blue), linear-gradient(red, 30%, blue)',
+    'linear-gradient(red, 30%, blue), linear-gradient(red, blue)'
+  ]
+  for (let value of values) {
+    let input = `a { background: ${value}; }`
+    let result = postcss([gradienter]).process(input)
+
+    equal(result.css.includes('-webkit-gradient('), false)
+    equal(result.css.includes(value), true)
+    equal(result.css.includes('-webkit-linear-gradient('), true)
+  }
+})
+
 test('does not throw on empty or malformed gradient arguments', () => {
   let inputs = [
     'a { background-image: linear-gradient() }',
