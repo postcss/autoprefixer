@@ -2,6 +2,10 @@
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 10.5.6
+
+- Fixed producing wrong old `-webkit-` gradients (by @ryanchou1994).
+
 ## 10.5.5
 
 - Fixed resolution media query parsing performance (by @NotAFlightRisk).
