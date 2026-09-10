@@ -963,6 +963,49 @@ test('skips old webkit gradients when a background layer has a color hint', () =
   }
 })
 
+test('warns about color hints in old webkit gradients', () => {
+  let values = [
+    'linear-gradient(red 10%, 30%, blue 90%)',
+    'linear-gradient(red, calc(20% + 10%), blue)',
+    'linear-gradient(red, blue), linear-gradient(red, 30%, blue)'
+  ]
+  for (let value of values) {
+    let input = `a { background: ${value} }`
+    let result = postcss([gradienter]).process(input)
+
+    equal(
+      result.warnings().map(i => i.toString()),
+      [
+        'autoprefixer: <css input>:1:5: Gradient color hints are not ' +
+          'supported by old WebKit'
+      ]
+    )
+  }
+})
+
+test('does not warn about gradients without color hints', () => {
+  let values = [
+    'linear-gradient(red, blue)',
+    'linear-gradient(to top, red 10%, blue 90%)',
+    'linear-gradient(red, var(--middle), blue)'
+  ]
+  for (let value of values) {
+    let input = `a { background: ${value} }`
+    let result = postcss([gradienter]).process(input)
+
+    equal(result.warnings().length, 0)
+  }
+})
+
+test('does not warn about color hints without old webkit', () => {
+  let instance = autoprefixer({ overrideBrowserslist: ['Chrome 25'] })
+  let input = 'a { background: linear-gradient(red, 30%, blue) }'
+  let result = postcss([instance]).process(input)
+
+  equal(result.css.includes('-webkit-linear-gradient('), true)
+  equal(result.warnings().length, 0)
+})
+
 test('does not throw on empty or malformed gradient arguments', () => {
   let inputs = [
     'a { background-image: linear-gradient() }',
