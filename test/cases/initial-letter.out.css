@@ -1,0 +1,4 @@
+.dropcap::first-letter {
+  -webkit-initial-letter: 2;
+          initial-letter: 2;
+}
