@@ -435,3 +435,28 @@
     grid-template-rows: repeat(2, 100px);
   }
 }
+
+.longhand-gap {
+  display: -ms-grid;
+  display: grid;
+  grid-column-gap: 50px;
+  grid-row-gap: 40px;
+  grid-template-areas:
+    "p   p"
+    "q   q";
+  -ms-grid-columns: 1fr 50px 1fr;
+  grid-template-columns: repeat(2, 1fr);
+  -ms-grid-rows: 100px 40px 100px;
+  grid-template-rows: repeat(2, 100px);
+}
+
+/* must inherit gap from .longhand-gap */
+.longhand-gap.modifier {
+  grid-template-areas:
+    "p   p"
+    "q   q";
+  -ms-grid-columns: 1fr 50px 1fr;
+  grid-template-columns: repeat(2, 1fr);
+  -ms-grid-rows: 100px 40px 100px;
+  grid-template-rows: repeat(2, 100px);
+}

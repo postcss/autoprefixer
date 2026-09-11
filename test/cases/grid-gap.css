@@ -301,3 +301,23 @@
     grid-template-rows: repeat(2, 100px);
   }
 }
+
+.longhand-gap {
+  display: grid;
+  grid-column-gap: 50px;
+  grid-row-gap: 40px;
+  grid-template-areas:
+    "p   p"
+    "q   q";
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 100px);
+}
+
+/* must inherit gap from .longhand-gap */
+.longhand-gap.modifier {
+  grid-template-areas:
+    "p   p"
+    "q   q";
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 100px);
+}
