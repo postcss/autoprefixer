@@ -81,6 +81,9 @@ let backgrounder = autoprefixer({
 let resolutioner = autoprefixer({
   overrideBrowserslist: ['Safari 7', 'Opera 12', 'Firefox 15']
 })
+let letterer = autoprefixer({
+  overrideBrowserslist: ['Safari 15']
+})
 let overscroller = autoprefixer({
   overrideBrowserslist: ['Edge 17']
 })
@@ -187,6 +190,8 @@ function prefixer(name) {
     return example
   } else if (name === 'resolution') {
     return resolutioner
+  } else if (name === 'initial-letter') {
+    return letterer
   } else if (name === 'supports') {
     return supporter
   } else if (name === 'transition-spec') {
@@ -257,7 +262,8 @@ const COMMONS = [
   'grid-template',
   'grid-template-areas',
   'grid-gap',
-  'print-color-adjust'
+  'print-color-adjust',
+  'initial-letter'
 ]
 
 test.after.each(() => {
@@ -867,6 +873,10 @@ test('supports print-color-adjust', () => {
 
 test('supports backdrop-filter', () => {
   check('backdrop-filter')
+})
+
+test('supports initial-letter', () => {
+  check('initial-letter')
 })
 
 test('supports user-select hack for IE', () => {

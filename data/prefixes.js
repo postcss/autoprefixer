@@ -1139,3 +1139,13 @@ f(prefixPrintAdjust, browsers =>
     feature: 'css-print-color-adjust'
   })
 )
+
+// initial-letter
+let prefixInitialLetter = require('caniuse-lite/data/features/css-initial-letter')
+
+f(prefixInitialLetter, browsers =>
+  prefix(['initial-letter'], {
+    browsers,
+    feature: 'css-initial-letter'
+  })
+)
