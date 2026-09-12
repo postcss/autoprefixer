@@ -2,6 +2,10 @@
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 10.6.0 “Post tenebras lux”
+
+- Added `initial-letter` support (by @thomasmattheussen).
+
 ## 10.5.6
 
 - Fixed producing wrong old `-webkit-` gradients (by @ryanchou1994).
