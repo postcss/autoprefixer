@@ -48,14 +48,14 @@
   },
   "devDependencies": {
     "@logux/oxc-configs": "^1.2.0",
-    "@size-limit/preset-small-lib": "13.0.3",
+    "@size-limit/preset-small-lib": "13.1.1",
     "c8": "^12.0.0",
     "eslint-plugin-prefer-let": "^4.2.2",
     "nanospy": "^2.0.2",
-    "oxlint": "^1.82.0",
+    "oxlint": "^1.83.0",
     "oxlint-tsgolint": "^7.0.2001",
     "postcss": "^8.5.28",
-    "size-limit": "^13.0.3",
+    "size-limit": "^13.1.1",
     "typescript": "^7.0.2",
     "uvu": "^0.5.6"
   },
