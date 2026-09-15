@@ -2,6 +2,10 @@
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 10.6.1
+
+- Fixed grid gap set with the row-gap and column-gap longhands (by dualfroz).
+
 ## 10.6.0 “Post tenebras lux”
 
 - Added `initial-letter` support (by @thomasmattheussen).
