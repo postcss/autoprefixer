@@ -358,6 +358,35 @@ test('prefixes selectors', () => {
   check('selectors')
 })
 
+test('prefixes uppercase pseudo-elements', () => {
+  let css = 'input::PLACEHOLDER { color: red }'
+  let plugin = autoprefixer({ overrideBrowserslist: ['Chrome 40'] })
+  equal(
+    postcss([plugin]).process(css, { from: undefined }).css,
+    'input::-webkit-input-placeholder { color: red }\n' + css
+  )
+})
+
+test('prefixes mixed-case pseudo-classes without changing selector case', () => {
+  let css = '.Field#Input[type="TEXT"]:Read-Only { color: red }'
+  let plugin = autoprefixer({ overrideBrowserslist: ['Firefox 39'] })
+  equal(
+    postcss([plugin]).process(css, { from: undefined }).css,
+    '.Field#Input[type="TEXT"]:-moz-read-only { color: red }\n' + css
+  )
+})
+
+test('prefixes every matching selector regardless of case', () => {
+  let css = 'input::placeholder, textarea::PlaceHolder { color: red }'
+  let plugin = autoprefixer({ overrideBrowserslist: ['Chrome 40'] })
+  equal(
+    postcss([plugin]).process(css, { from: undefined }).css,
+    'input::-webkit-input-placeholder, ' +
+      'textarea::-webkit-input-placeholder { color: red }\n' +
+      css
+  )
+})
+
 test('prefixes resolution query', () => {
   check('resolution')
 })
