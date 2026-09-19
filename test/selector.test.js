@@ -33,6 +33,17 @@ test('checks rule selectors', () => {
   is(selector.check(css.nodes[2]), true)
 })
 
+test('checks mixed-case selectors repeatedly without matching quoted text', () => {
+  let css = parse('.Title::SeLeCtIoN, .Other::SELECTION {}')
+  let quoted = parse('[data-value="::SELECTION"] {}').first
+  for (let i = 0; i < 3; i++) {
+    is(selector.check(css.first), true)
+    is(selector.check(quoted), false)
+  }
+  equal(selector.prefixeds(css.first)['::selection']['-moz-'],
+    '.Title::-moz-selection, .Other::-moz-selection')
+})
+
 test('grouping rule gets correct _autoprefixerPrefixeds property', () => {
   let css = parse('.c::selection, .d:read-only {}')
   let rSel = new Selector(':read-only', ['-moz-'])
