@@ -11,6 +11,12 @@
   transition: filter 1s;
 }
 
+.not-hack3 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: none;
+}
+
 .hack {
   width: -webkit-calc(30% + 1px);
   display: -webkit-box;
