@@ -1,0 +1,58 @@
+.grid {
+  grid-gap: 1px;
+  -ms-grid-columns: 1fr 1px 1fr 1px 1fr;
+  grid-template-columns: repeat(3, 1fr);
+  -ms-grid-rows: 1fr 1px 1fr 1px 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  /* autoprefixer: ignore next warning */
+  grid-template-areas:
+    'left top-void right'
+    'left center right'
+    'left bottom-void right';
+}
+
+.grid-left {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 5;
+  -ms-grid-column: 1;
+  grid-area: left;
+}
+
+.grid-center {
+  -ms-grid-row: 3;
+  -ms-grid-column: 3;
+  grid-area: center;
+}
+
+.grid-right {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 5;
+  -ms-grid-column: 5;
+  grid-area: right;
+}
+
+.named {
+  -ms-grid-rows: 1fr;
+  grid-template-rows: 1fr;
+  /* autoprefixer: ignore next warning */
+  -ms-grid-columns: [content] 1fr;
+  grid-template-columns: [content] 1fr;
+}
+
+.named > *:nth-child(1) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+}
+
+.named > *:nth-child(2) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+}
+
+.gradient {
+  /* autoprefixer: ignore next warning */
+  background: -webkit-linear-gradient(top, white, black);
+  background: linear-gradient(top, white, black);
+  -webkit-mask: -webkit-linear-gradient(top, white, black);
+  mask: linear-gradient(top, white, black);
+}

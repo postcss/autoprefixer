@@ -1,0 +1,34 @@
+.grid {
+  grid-gap: 1px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  /* autoprefixer: ignore next warning */
+  grid-template-areas:
+    'left top-void right'
+    'left center right'
+    'left bottom-void right';
+}
+
+.grid-left {
+  grid-area: left;
+}
+
+.grid-center {
+  grid-area: center;
+}
+
+.grid-right {
+  grid-area: right;
+}
+
+.named {
+  grid-template-rows: 1fr;
+  /* autoprefixer: ignore next warning */
+  grid-template-columns: [content] 1fr;
+}
+
+.gradient {
+  /* autoprefixer: ignore next warning */
+  background: linear-gradient(top, white, black);
+  mask: linear-gradient(top, white, black);
+}

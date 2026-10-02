@@ -494,12 +494,14 @@ you can use control comments to disable Autoprefixer.
 }
 ```
 
-There are three types of control comments:
+There are four types of control comments:
 
 - `/* autoprefixer: (on|off) */`: enable/disable all Autoprefixer translations for the
   whole block both _before_ and _after_ the comment.
 - `/* autoprefixer: ignore next */`: disable Autoprefixer only for the next property
   or next rule selector or at-rule parameters (but not rule/at‑rule body).
+- `/* autoprefixer: ignore next warning */`: hide Autoprefixer warnings only for
+  the next property or rule/at-rule (but not its body). Prefixes are still added.
 - `/* autoprefixer grid: (autoplace|no-autoplace|off) */`: control how Autoprefixer handles
   grid translations for the whole block:
   - `autoplace`: enable grid translations with autoplacement support.
