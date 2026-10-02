@@ -1337,6 +1337,20 @@ body > .two {
   equal(result.css, output)
 })
 
+test('sets source for grid nodes', () => {
+  for (let name of [
+    'grid-template-areas',
+    'grid-media-rules',
+    'grid-autoplacement'
+  ]) {
+    let result = postcss([prefixer('grid')]).process(read(name), {
+      from: name + '.css',
+      map: { inline: false }
+    })
+    equal(result.map.toJSON().sources, [name + '.css'])
+  }
+})
+
 test('ignores values for CSS3PIE props', () => {
   let css = read('pie')
   equal(postcss([compiler]).process(css).css, css)
