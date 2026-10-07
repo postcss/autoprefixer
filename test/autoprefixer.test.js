@@ -447,6 +447,21 @@ test('uses ignore next control comments', () => {
   check('ignore-next')
 })
 
+test('uses ignore next warning control comments', () => {
+  let input = read('ignore-next-warning')
+  let output = read('ignore-next-warning.out')
+  let result = postcss([prefixer('grid')]).process(input)
+
+  equal(result.css, output)
+  equal(
+    result.warnings().map(i => i.toString()),
+    [
+      'autoprefixer: <css input>:33:3: Gradient has outdated direction ' +
+        'syntax. New syntax is like `to left` instead of `right`.'
+    ]
+  )
+})
+
 test('uses block control comments', () => {
   check('disabled')
 })
