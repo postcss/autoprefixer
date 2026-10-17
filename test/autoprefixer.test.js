@@ -387,6 +387,37 @@ test('prefixes every matching selector regardless of case', () => {
   )
 })
 
+test('keeps unprefixed selectors in prefixed grouping rules', () => {
+  let css = '.a:focus, .b:read-only { color: red }'
+  let plugin = autoprefixer({ overrideBrowserslist: ['Firefox 70'] })
+  equal(
+    postcss([plugin]).process(css, { from: undefined }).css,
+    '.a:focus, .b:-moz-read-only { color: red }\n' + css
+  )
+})
+
+test('does not mix selectors with other prefixes in grouping rules', () => {
+  let css = '.a:focus, .b::selection, .c:read-only { color: red }'
+  let plugin = autoprefixer({ overrideBrowserslist: ['Firefox 60'] })
+  equal(
+    postcss([plugin]).process(css, { from: undefined }).css,
+    '.a:focus, .b::-moz-selection { color: red }\n' +
+      '.a:focus, .c:-moz-read-only { color: red }\n' +
+      css
+  )
+})
+
+test('does not mix vendors in prefixed grouping rules', () => {
+  let css =
+    '.a::-moz-focus-inner, .b::-webkit-scrollbar, .c:read-only ' +
+    '{ color: red }'
+  let plugin = autoprefixer({ overrideBrowserslist: ['Firefox 60'] })
+  equal(
+    postcss([plugin]).process(css, { from: undefined }).css,
+    '.a::-moz-focus-inner, .c:-moz-read-only { color: red }\n' + css
+  )
+})
+
 test('prefixes resolution query', () => {
   check('resolution')
 })
