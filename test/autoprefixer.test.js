@@ -891,6 +891,22 @@ test('supports cross-fade()', () => {
   check('cross-fade')
 })
 
+test('reads only a leading cross-fade() percentage', () => {
+  let cases = [
+    ['cross-fade(+25% url(a.png), url(b.png))', 'url(a.png), url(b.png), +25%'],
+    ['cross-fade(1e1% url(a.png), url(b.png))', 'url(a.png), url(b.png), 1e1%'],
+    ['cross-fade(25%url(a.png),url(b.png))', 'url(a.png),url(b.png), 25%'],
+    ['cross-fade(var(--images))', 'var(--images), 0.5'],
+    ['cross-fade(25% var(--images))', 'var(--images), 25%']
+  ]
+  for (let [value, args] of cases) {
+    let input = `a { -webkit-mask-image: ${value}; }`
+    let result = postcss([compiler]).process(input)
+
+    equal(result.css, `a { -webkit-mask-image: -webkit-cross-fade(${args}); }`)
+  }
+})
+
 test('ignores modern direction', () => {
   check('animation')
 })

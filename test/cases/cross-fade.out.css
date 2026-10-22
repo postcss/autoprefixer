@@ -27,3 +27,23 @@ h3 {
   background-image: -webkit-cross-fade(linear-gradient(white, black), radial-gradient(circle closest-corner, white, black), .59);
   background-image: cross-fade(.59 linear-gradient(white, black), radial-gradient(circle closest-corner, white, black));
 }
+
+.digits {
+  background-image: -webkit-cross-fade(url(hero-1.png), url(hero-2.png), 0.5);
+  background-image: cross-fade(url(hero-1.png), url(hero-2.png));
+}
+
+.angle {
+  background-image: -webkit-cross-fade(url(foo.png), linear-gradient(45deg, white, black), 0.5);
+  background-image: cross-fade(url(foo.png), linear-gradient(45deg, white, black));
+}
+
+.layers {
+  background-image: -webkit-cross-fade(url(hero-1.png), url(hero-2.png), 0.5), url(bg.png);
+  background-image: cross-fade(url(hero-1.png), url(hero-2.png)), url(bg.png);
+}
+
+.comment {
+  background-image: -webkit-cross-fade(url(hero-1.png) /* first */, url(hero-2.png), 0.5);
+  background-image: cross-fade(url(hero-1.png) /* first */, url(hero-2.png));
+}
