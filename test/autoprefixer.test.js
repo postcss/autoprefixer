@@ -387,6 +387,77 @@ test('prefixes every matching selector regardless of case', () => {
   )
 })
 
+test('keeps unprefixed selectors in prefixed grouping rules', () => {
+  let css = '.a:focus, .b:read-only { color: red }'
+  let plugin = autoprefixer({ overrideBrowserslist: ['Firefox 70'] })
+  equal(
+    postcss([plugin]).process(css, { from: undefined }).css,
+    '.a:focus, .b:-moz-read-only { color: red }\n' + css
+  )
+})
+
+test('does not mix selectors with other prefixes in grouping rules', () => {
+  let css = '.a:focus, .b::selection, .c:read-only { color: red }'
+  let plugin = autoprefixer({ overrideBrowserslist: ['Firefox 60'] })
+  equal(
+    postcss([plugin]).process(css, { from: undefined }).css,
+    '.a:focus, .b::-moz-selection { color: red }\n' +
+      '.a:focus, .c:-moz-read-only { color: red }\n' +
+      css
+  )
+})
+
+test('drops selectors with vendor pseudos from prefixed grouping rules', () => {
+  let css =
+    '.a::-moz-focus-inner, .b::-webkit-scrollbar, .c:read-only ' +
+    '{ color: red }'
+  let plugin = autoprefixer({ overrideBrowserslist: ['Firefox 60'] })
+  equal(
+    postcss([plugin]).process(css, { from: undefined }).css,
+    '.c:-moz-read-only { color: red }\n' + css
+  )
+})
+
+test('drops selectors with newer pseudos from prefixed grouping rules', () => {
+  let cases = [
+    ['.a:focus-visible, .b:read-only', 'Firefox 70', '.b:-moz-read-only'],
+    ['.a:has(.x), .b:read-only', 'Firefox 70', '.b:-moz-read-only'],
+    [
+      '.a:is(.x), .b::placeholder',
+      'Chrome 50',
+      '.b::-webkit-input-placeholder'
+    ],
+    ['.a::marker, .b:fullscreen', 'Safari 10', '.b:-webkit-full-screen']
+  ]
+  for (let [selector, browser, prefixed] of cases) {
+    let css = `${selector} { color: red }`
+    let plugin = autoprefixer({ overrideBrowserslist: [browser] })
+    equal(
+      postcss([plugin]).process(css, { from: undefined }).css,
+      `${prefixed} { color: red }\n` + css
+    )
+  }
+})
+
+test('keeps CSS2 pseudos in prefixed grouping rules', () => {
+  let css = '.a:HOVER, .b::after, .c:first-child, .d:read-only { color: red }'
+  let plugin = autoprefixer({ overrideBrowserslist: ['Firefox 70'] })
+  equal(
+    postcss([plugin]).process(css, { from: undefined }).css,
+    '.a:HOVER, .b::after, .c:first-child, .d:-moz-read-only { color: red }\n' +
+      css
+  )
+})
+
+test('does not read colons in attributes or escapes as pseudos', () => {
+  let css = '[title="a:-b-c"], .md\\:flex, .c:read-only { color: red }'
+  let plugin = autoprefixer({ overrideBrowserslist: ['Firefox 70'] })
+  equal(
+    postcss([plugin]).process(css, { from: undefined }).css,
+    '[title="a:-b-c"], .md\\:flex, .c:-moz-read-only { color: red }\n' + css
+  )
+})
+
 test('prefixes resolution query', () => {
   check('resolution')
 })
