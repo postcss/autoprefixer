@@ -449,6 +449,24 @@ test('keeps CSS2 pseudos in prefixed grouping rules', () => {
   )
 })
 
+test('drops selectors with attribute flags from prefixed grouping rules', () => {
+  let css =
+    '[type="a" i], [type=b s], [type="c"i], [data-i], [title="d i"], ' +
+    '.e:read-only { color: red }'
+  let plugin = autoprefixer({ overrideBrowserslist: ['Firefox 70'] })
+  equal(
+    postcss([plugin]).process(css, { from: undefined }).css,
+    '[data-i], [title="d i"], .e:-moz-read-only { color: red }\n' + css
+  )
+})
+
+test('does not prefix grouping rules with different prefixes twice', () => {
+  let css = '.a:focus, .b::selection, .c:read-only { color: red }'
+  let plugin = autoprefixer({ overrideBrowserslist: ['Firefox 60'] })
+  let once = postcss([plugin]).process(css, { from: undefined }).css
+  equal(postcss([plugin]).process(once, { from: undefined }).css, once)
+})
+
 test('does not read colons in attributes or escapes as pseudos', () => {
   let css = '[title="a:-b-c"], .md\\:flex, .c:read-only { color: red }'
   let plugin = autoprefixer({ overrideBrowserslist: ['Firefox 70'] })
