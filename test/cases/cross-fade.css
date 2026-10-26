@@ -21,3 +21,19 @@ h3 {
 .foo {
   background-image: cross-fade(.59 linear-gradient(white, black), radial-gradient(circle closest-corner, white, black));
 }
+
+.digits {
+  background-image: cross-fade(url(hero-1.png), url(hero-2.png));
+}
+
+.angle {
+  background-image: cross-fade(url(foo.png), linear-gradient(45deg, white, black));
+}
+
+.layers {
+  background-image: cross-fade(url(hero-1.png), url(hero-2.png)), url(bg.png);
+}
+
+.comment {
+  background-image: cross-fade(url(hero-1.png) /* first */, url(hero-2.png));
+}
