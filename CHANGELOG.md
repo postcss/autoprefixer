@@ -2,6 +2,15 @@
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 10.6.2
+
+- Added `/* autoprefixer: ignore next warning */` (by @dualfroz).
+- Fixed losing unprefixed selectors in old browsers in grouping (by @ybai08).
+- Fixed selector duplicates on multiple Autoprefixer runs.
+- Fixed case-insensitive pseudo-selector prefixing (by @jakezwang).
+- Fixed `-webkit-cross-fade()` for images with numbers (by @mkantautas).
+- Fixed source maps for Grid prefixes (by @dualfroz).
+
 ## 10.6.1
 
 - Fixed grid gap set with the row-gap and column-gap longhands (by dualfroz).
