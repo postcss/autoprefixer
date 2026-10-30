@@ -1,0 +1,8 @@
+.fallback {
+  width: -webkit-calc(100% - 20px);
+  width: clamp(10rem, 50%, 60rem);
+}
+
+.overridden {
+  display: flex;
+}
