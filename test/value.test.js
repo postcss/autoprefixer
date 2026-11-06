@@ -70,6 +70,23 @@ test('checks value in string', () => {
   is(calc.check(css.first.nodes[4]), false)
 })
 
+test('checks values regardless of case on repeated calls', () => {
+  let css = parse('a { 0: CALC(1px + 1em); 1: Calc(1px + 1em) }')
+
+  for (let decl of css.first.nodes) {
+    is(calc.check(decl), true)
+    is(calc.check(decl), true)
+  }
+})
+
+test('keeps value boundaries when checking uppercase functions', () => {
+  let css = parse('a { 0: "CALC(1em)"; 1: -ms-CALC(1em); 2: CALCED }')
+
+  for (let decl of css.first.nodes) {
+    is(calc.check(decl), false)
+  }
+})
+
 test('check prefixed value', () => {
   equal(calc.old('-ms-'), new OldValue('calc', '-ms-calc'))
 })
