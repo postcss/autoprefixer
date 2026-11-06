@@ -972,6 +972,29 @@ test('supports image-set()', () => {
   check('image-set')
 })
 
+test('prefixes image-set functions regardless of case on repeated calls', () => {
+  let plugin = autoprefixer({ overrideBrowserslist: ['Safari 9'] })
+
+  for (let name of ['IMAGE-SET', 'Image-Set']) {
+    let css = `a { background-image: ${name}(url(Logo.PNG) 1x) }`
+    let expected =
+      `a { background-image: -webkit-${name}(url(Logo.PNG) 1x); ` +
+      `background-image: ${name}(url(Logo.PNG) 1x) }`
+
+    equal(postcss([plugin]).process(css, { from: undefined }).css, expected)
+    equal(postcss([plugin]).process(css, { from: undefined }).css, expected)
+  }
+})
+
+test('does not prefix image-set names inside strings or URLs', () => {
+  let plugin = autoprefixer({ overrideBrowserslist: ['Safari 9'] })
+  let css =
+    'a { content: "IMAGE-SET(foo 1x)"; ' +
+    'background-image: url("Image-Set(Logo.PNG)") }'
+
+  equal(postcss([plugin]).process(css, { from: undefined }).css, css)
+})
+
 test('supports writing-mode', () => {
   check('writing-mode')
 })
