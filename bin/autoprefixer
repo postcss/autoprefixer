@@ -1,5 +1,11 @@
 #!/usr/bin/env node
 
+// A reader that quits early (`| head`, `grep -q`) closes the pipe: exit quietly
+process.stdout.on('error', e => {
+  if (e.code === 'EPIPE') process.exit(0)
+  throw e
+})
+
 let mode = process.argv[2]
 if (mode === '--info') {
   process.stdout.write(require('../')().info() + '\n')
