@@ -1085,6 +1085,40 @@ test('changes angle in gradient', () => {
   check('gradient-fix')
 })
 
+test('handles uppercase gradient keywords and units', () => {
+  let process = value =>
+    postcss([gradienter]).process('a { background: ' + value + ' }').css
+  let cases = [
+    [
+      'linear-gradient(TO RIGHT, red, blue)',
+      'linear-gradient(to right, red, blue)'
+    ],
+    ['linear-gradient(90DEG, red, blue)', 'linear-gradient(90deg, red, blue)'],
+    [
+      'linear-gradient(0.25TURN, red, blue)',
+      'linear-gradient(0.25turn, red, blue)'
+    ],
+    [
+      'LINEAR-GRADIENT(to right, red, blue)',
+      'linear-gradient(to right, red, blue)'
+    ],
+    [
+      'radial-gradient(circle AT top left, red, blue)',
+      'radial-gradient(circle at top left, red, blue)'
+    ]
+  ]
+  for (let [upper, lower] of cases) {
+    equal(process(upper).toLowerCase(), process(lower))
+  }
+  equal(
+    process('linear-gradient(90DEG, red, blue)'),
+    'a { background: -webkit-gradient(linear, left top, right top, ' +
+      'from(red), to(blue)); background: -webkit-linear-gradient(left, red, ' +
+      'blue); background: -o-linear-gradient(left, red, blue); ' +
+      'background: linear-gradient(90DEG, red, blue) }'
+  )
+})
+
 test('skips old webkit gradient for CSS variables', () => {
   let input = 'a { background: linear-gradient(var(--direction), red, blue); }'
   let result = postcss([gradienter]).process(input)
