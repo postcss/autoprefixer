@@ -159,4 +159,13 @@ test("shouldn't throw errors (2)", () => {
   )
 })
 
+test('keeps selector() after another condition', () => {
+  let rule = { params: '(c: b(1)) and selector(::placeholder)' }
+  supports.process(rule)
+  equal(
+    rule.params,
+    '((c: -moz-b(1)) or (c: b(1))) and selector(::placeholder)'
+  )
+})
+
 test.run()
