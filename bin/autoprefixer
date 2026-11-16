@@ -6,9 +6,23 @@ process.stdout.on('error', e => {
   throw e
 })
 
-let mode = process.argv[2]
+let args = process.argv.slice(2)
+
+let env
+let envIndex = args.findIndex(i => i === '--env' || i.startsWith('--env='))
+if (envIndex !== -1) {
+  let inline = args[envIndex].startsWith('--env=')
+  env = inline ? args[envIndex].slice('--env='.length) : args[envIndex + 1]
+  if (!env || (!inline && env.startsWith('-'))) {
+    process.stderr.write('autoprefixer: --env needs an environment name\n')
+    process.exit(1)
+  }
+  args.splice(envIndex, inline ? 1 : 2)
+}
+
+let mode = args[0]
 if (mode === '--info') {
-  process.stdout.write(require('../')().info() + '\n')
+  process.stdout.write(require('../')({ env }).info() + '\n')
 } else if (mode === '--version') {
   process.stdout.write(
     'autoprefixer ' + require('../package.json').version + '\n'
@@ -19,10 +33,12 @@ if (mode === '--info') {
       '\n' +
       'Options:\n' +
       '  --info    Show target browsers and used prefixes\n' +
+      '  --env     Browserslist environment to use\n' +
       '  --version Show version number\n' +
       '  --help    Show help\n' +
       '\n' +
       'Usage:\n' +
-      '  autoprefixer --info\n'
+      '  autoprefixer --info\n' +
+      '  autoprefixer --info --env production\n'
   )
 }
