@@ -1055,15 +1055,6 @@ Properties:
   user-select: ms
 ```
 
-If your Browserslist config has [environment sections], use `--env`
-to inspect one of them:
-
-```console
-$ npx autoprefixer --info --env production
-```
-
-[environment sections]: https://github.com/browserslist/browserslist#configuring-for-different-environments
-
 JS API is also available:
 
 ```js

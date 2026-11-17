@@ -38,7 +38,6 @@ if (mode === '--info') {
       '  --help    Show help\n' +
       '\n' +
       'Usage:\n' +
-      '  autoprefixer --info\n' +
-      '  autoprefixer --info --env production\n'
+      '  autoprefixer --info\n'
   )
 }
