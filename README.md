@@ -460,7 +460,8 @@ You can use these plugin options to control some of Autoprefixer’s features.
 
 - `grid: "autoplace"` will enable `-ms-` prefixes for Grid Layout including some
   [limited autoplacement support](#grid-autoplacement-support-in-ie).
-- `supports: false` will disable `@supports` parameters prefixing.
+- `supports: false` will disable `@supports` parameters prefixing
+  and leave declarations inside `@supports` blocks untouched.
 - `flexbox: false` will disable flexbox properties prefixing.
   Or `flexbox: "no-2009"` will add prefixes only for final and IE
   versions of specification.
@@ -553,7 +554,8 @@ Available options are:
 - `remove` (boolean): should Autoprefixer [remove outdated] prefixes.
   Default is `true`.
 - `supports` (boolean): should Autoprefixer add prefixes for `@supports`
-  parameters. Default is `true`.
+  parameters and for declarations inside `@supports` blocks.
+  Default is `true`.
 - `flexbox` (boolean|string): should Autoprefixer add prefixes for flexbox
   properties. With `"no-2009"` value Autoprefixer will add prefixes only
   for final and IE 10 versions of specification. Default is `true`.
