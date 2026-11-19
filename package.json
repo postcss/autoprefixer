@@ -40,22 +40,22 @@
     "test": "pnpm run /^test:/"
   },
   "dependencies": {
-    "browserslist": "^4.28.9",
-    "caniuse-lite": "^1.0.30001810",
+    "browserslist": "^4.29.6",
+    "caniuse-lite": "^1.0.30001826",
     "fraction.js": "^5.3.4",
     "picocolors": "^1.1.1",
     "postcss-value-parser": "^4.2.0"
   },
   "devDependencies": {
     "@logux/oxc-configs": "^1.2.0",
-    "@size-limit/preset-small-lib": "13.1.1",
+    "@size-limit/preset-small-lib": "14.3.0",
     "c8": "^12.0.0",
     "eslint-plugin-prefer-let": "^4.2.2",
     "nanospy": "^2.0.2",
-    "oxlint": "^1.83.0",
-    "oxlint-tsgolint": "^7.0.2001",
-    "postcss": "^8.5.28",
-    "size-limit": "^13.1.1",
+    "oxlint": "^1.94.0",
+    "oxlint-tsgolint": "^7.0.2007",
+    "postcss": "^8.5.33",
+    "size-limit": "^14.3.0",
     "typescript": "^7.0.2",
     "uvu": "^0.5.6"
   },
