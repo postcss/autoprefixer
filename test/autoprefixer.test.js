@@ -774,6 +774,90 @@ test('has option to disable @supports support', () => {
   equal(result.css, css)
 })
 
+test('does not prefix declarations inside @supports with supports: false', () => {
+  let css =
+    '@supports (position: sticky) {\n' +
+    '  .a {\n' +
+    '    position: sticky;\n' +
+    '    user-select: none;\n' +
+    '  }\n' +
+    '}'
+  let instance = autoprefixer({
+    overrideBrowserslist: ['Safari 8', 'Chrome 30'],
+    supports: false
+  })
+  let result = postcss([instance]).process(css)
+  equal(result.css, css)
+})
+
+test('does not prefix declarations in nested @supports with supports: false', () => {
+  let css =
+    '@media screen {\n' +
+    '  @supports (position: sticky) {\n' +
+    '    .a {\n' +
+    '      position: sticky;\n' +
+    '    }\n' +
+    '  }\n' +
+    '}'
+  let instance = autoprefixer({
+    overrideBrowserslist: ['Safari 8', 'Chrome 30'],
+    supports: false
+  })
+  let result = postcss([instance]).process(css)
+  equal(result.css, css)
+})
+
+test('prefixes declarations inside @supports by default', () => {
+  let css =
+    '@supports (position: sticky) {\n' +
+    '  .a {\n' +
+    '    position: sticky;\n' +
+    '  }\n' +
+    '}'
+  let instance = autoprefixer({
+    overrideBrowserslist: ['Safari 8', 'Chrome 30']
+  })
+  let result = postcss([instance]).process(css)
+  equal(
+    result.css,
+    '@supports (position: sticky) {\n' +
+      '  .a {\n' +
+      '    position: -webkit-sticky;\n' +
+      '    position: sticky;\n' +
+      '  }\n' +
+      '}'
+  )
+})
+
+test('prefixes declarations outside @supports with supports: false', () => {
+  let css =
+    '.a {\n' +
+    '  position: sticky;\n' +
+    '}\n' +
+    '@supports (position: sticky) {\n' +
+    '  .b {\n' +
+    '    position: sticky;\n' +
+    '  }\n' +
+    '}'
+  let instance = autoprefixer({
+    overrideBrowserslist: ['Safari 8', 'Chrome 30'],
+    supports: false
+  })
+  let result = postcss([instance]).process(css)
+  equal(
+    result.css,
+    '.a {\n' +
+      '  position: -webkit-sticky;\n' +
+      '  position: sticky;\n' +
+      '}\n' +
+      '@supports (position: sticky) {\n' +
+      '  .b {\n' +
+      '    position: sticky;\n' +
+      '  }\n' +
+      '}'
+  )
+})
+
 test('has disabled grid options by default', () => {
   let ap = autoprefixer({ overrideBrowserslist: ['Edge 12', 'IE 10'] })
   let input = read('grid')
