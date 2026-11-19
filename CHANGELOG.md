@@ -2,6 +2,15 @@
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 10.7.0 “Quocunque Jeceris Stabit”
+
+- Added `--env` to the CLI (by @shreyanshj10).
+- Disabled prefixes inside `@supports` with `supports: false` (by @Ultroncn).
+- Fixed case-insensitive value detection (by @wozhenbang2004).
+- Fixed prefixed gradients with uppercase keywords and units (by @goranai).
+- Fixed crash on `selector()` after another `@supports` condition (by @onmax).
+- Fixed CLI error when stdout is closed early (by @KhaledSaeed18).
+
 ## 10.6.2
 
 - Added `/* autoprefixer: ignore next warning */` (by @dualfroz).
