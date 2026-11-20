@@ -55,7 +55,6 @@
 }
 
 .warn {
-  -ms-grid-column-span: 3;
   grid-column-end: 3;
   grid: subgrid;
   grid-gap: 1rem;
