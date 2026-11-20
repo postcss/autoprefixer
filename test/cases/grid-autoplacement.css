@@ -64,3 +64,19 @@
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 30px;
 }
+
+/* Multiple tracks in repeat without gaps */
+.grid-repeat-no-gap {
+  display: grid;
+  grid-template-rows: 50px 100px;
+  grid-template-columns: repeat(2, 50px 100px);
+}
+
+/* Repeated rows with nested functions and column flow */
+.grid-repeat-rows {
+  display: grid;
+  grid-template-rows: repeat(2, minmax(20px, auto) 30px);
+  grid-template-columns: 60px 100px;
+  grid-gap: 4px 8px;
+  grid-auto-flow: column;
+}
