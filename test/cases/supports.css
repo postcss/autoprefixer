@@ -26,3 +26,21 @@
 @supports (transition: color 1s) {
   transition: color 1s;
 }
+
+@supports (mask-image: url(https://example.com/mask.svg)) {
+  a {
+    color: black;
+  }
+}
+
+@supports (background-image: image-set(url("https://example.com:8080/image.png") 1x)) {
+  a {
+    color: black;
+  }
+}
+
+@supports (mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E")) {
+  a {
+    color: black;
+  }
+}

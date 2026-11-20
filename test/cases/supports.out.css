@@ -28,3 +28,21 @@
   -webkit-transition: color 1s;
   transition: color 1s;
 }
+
+@supports ((-webkit-mask-image: url(https://example.com/mask.svg)) or (mask-image: url(https://example.com/mask.svg))) {
+  a {
+    color: black;
+  }
+}
+
+@supports ((background-image: -webkit-image-set(url("https://example.com:8080/image.png") 1x)) or (background-image: image-set(url("https://example.com:8080/image.png") 1x))) {
+  a {
+    color: black;
+  }
+}
+
+@supports ((-webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E")) or (mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E"))) {
+  a {
+    color: black;
+  }
+}
