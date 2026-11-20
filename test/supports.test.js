@@ -43,6 +43,14 @@ test('splits property name and value', () => {
   equal(supports.parse('color:black'), ['color', 'black'])
 })
 
+test('keeps colons in values', () => {
+  equal(supports.parse('mask: url(https://example.com:8080/mask.svg)'), [
+    'mask',
+    'url(https://example.com:8080/mask.svg)'
+  ])
+  equal(supports.parse('content: ":"'), ['content', '":"'])
+})
+
 test('cleans spaces', () => {
   equal(supports.parse(' color : black '), ['color', 'black'])
 })
