@@ -1437,6 +1437,20 @@ test('supports grid layout', () => {
   equal(result2.css, output2)
 })
 
+test('skips grid end prefixes without a start', () => {
+  let input = 'a { grid-column-end: 3; grid-row-end: 4 }'
+  let result = postcss([prefixer('grid')]).process(input)
+
+  equal(result.css, input)
+  equal(
+    result.warnings().map(i => i.text),
+    [
+      'Can not prefix grid-column-end (grid-column-start is not found)',
+      'Can not prefix grid-row-end (grid-row-start is not found)'
+    ]
+  )
+})
+
 test('supports grid autoplacement', () => {
   let input = read('grid-autoplacement')
   let output = read('grid-autoplacement.out')
