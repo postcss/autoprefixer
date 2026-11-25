@@ -1479,6 +1479,34 @@ test('supports grid autoplacement', () => {
   )
 })
 
+test('does not warn about grid-gap with templates in media queries', () => {
+  let input = `.grid {
+  display: grid;
+  grid-gap: 30px;
+}
+@media (min-width: 601px) {
+  .grid {
+    grid-template: "a b" auto / 1fr 1fr;
+  }
+}
+@media (max-width: 600px) {
+  .grid {
+    grid-template: "a" auto "b" auto / 1fr;
+  }
+}
+.a { grid-area: a; }
+.b { grid-area: b; }`
+
+  for (let grid of [true, 'autoplace']) {
+    let instance = autoprefixer({
+      grid,
+      overrideBrowserslist: ['ie 11']
+    })
+    let result = postcss([instance]).process(input)
+    equal(result.warnings().length, 0)
+  }
+})
+
 test('shows Grid warnings only for IE', () => {
   let input = 'a { grid-template-rows: repeat(auto-fit, 1px) }'
   let instance = autoprefixer({
