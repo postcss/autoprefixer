@@ -504,6 +504,25 @@ test('keeps values with vendor hacks', () => {
   check('value-hack')
 })
 
+test('removes outdated prefixed values before a different unprefixed value', async () => {
+  let input =
+    '.example {\n' +
+    '    display: -webkit-box;\n' +
+    '    display: -ms-flexbox;\n' +
+    '    display: none;\n' +
+    '}'
+  let instance = autoprefixer({ overrideBrowserslist: ['>100%'] })
+  let result = await postcss([instance]).process(input, { from: undefined })
+  equal(universalizer(result.css), '.example {\n    display: none;\n}')
+})
+
+test('keeps prefixed values without an unprefixed declaration', async () => {
+  let input = '.hack { width: -webkit-calc(30% + 1px); display: -webkit-box }'
+  let instance = autoprefixer({ overrideBrowserslist: ['>100%'] })
+  let result = await postcss([instance]).process(input, { from: undefined })
+  equal(universalizer(result.css), input)
+})
+
 test('works with comments', () => {
   check('comments')
 })
