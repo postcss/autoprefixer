@@ -21,3 +21,16 @@ a {
 a {
   mask-composite: add, subtract, exclude;
 }
+
+a {
+  -webkit-mask: url(full.png) padding-box, url(full.png);
+  -webkit-mask-composite: xor;
+  mask: url(full.png) padding-box exclude, url(full.png);
+}
+
+a {
+  -webkit-mask: url(full.png);
+  -webkit-mask-composite: xor;
+  mask: url(full.png);
+  mask-composite: exclude;
+}
