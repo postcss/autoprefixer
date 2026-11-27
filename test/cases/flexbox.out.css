@@ -233,6 +233,20 @@ a {
       -ms-flex-flow: nowrap;
           flex-flow: nowrap;
 }
+.j {
+  -webkit-flex-flow: wrap-reverse;
+      -ms-flex-flow: wrap-reverse;
+          flex-flow: wrap-reverse;
+}
+.k {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-flow: wrap-reverse column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
+      -ms-flex-flow: wrap-reverse column;
+          flex-flow: wrap-reverse column;
+}
 .inherit {
   -webkit-box-ordinal-group: inherit;
   -webkit-order: inherit;

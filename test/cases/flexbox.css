@@ -68,6 +68,12 @@ a {
 .i {
   flex-flow: nowrap;
 }
+.j {
+  flex-flow: wrap-reverse;
+}
+.k {
+  flex-flow: wrap-reverse column;
+}
 .inherit {
   order: inherit;
   flex-direction: inherit;
