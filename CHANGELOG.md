@@ -2,6 +2,13 @@
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 10.7.1
+
+- Fixed `flex-flow: wrap-reverse` in 2009 flexbox fallback (by @goranai).
+- Fixed `-webkit-mask` duplicate with `-webkit-mask-composite` (by @goranai).
+- Fixed Grid end prefixes without a start (by @wozhenbang2004).
+- Fixed colons in `@supports` declaration values (by @xiaoyao-666-coder).
+
 ## 10.7.0 “Quocunque Jeceris Stabit”
 
 - Added `--env` to the CLI (by @shreyanshj10).
